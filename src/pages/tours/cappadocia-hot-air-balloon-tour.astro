@@ -1,0 +1,485 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const tour = {
+  title: 'Göreme Balloon Tour (Standard Flight)',
+  kicker: 'CAPPADOCIAGO',
+  rating: 4.92,
+  reviews: 941,
+  duration: '60 Minutes',
+  price: 49,
+  oldPrice: 80,
+  heroDesc: "Experience the magic of a Cappadocia Balloon Tour (Standard Flight) and witness the breathtaking sunrise over Göreme. Fly above the region's iconic fairy chimneys and spectacular valleys while enjoying one of the most unforgettable hot air balloon experiences in Cappadocia.",
+  overviewTitle: 'Göreme Balloon Tour (Standard Flight) Overview',
+  overviewParagraphs: [
+    "Cappadocia Balloon Tour (Standard Flight) is designed for travelers who want to discover Cappadocia's breathtaking landscapes from the sky at the best value. As the sun rises, you'll float above Göreme's iconic fairy chimneys, spectacular valleys, and unique volcanic rock formations, enjoying one of the most unforgettable hot air balloon experiences in Cappadocia.",
+    "This Cappadocia Balloon Tour (Standard Flight) lasts approximately one hour, giving you plenty of time to admire the breathtaking views of Göreme, fairy chimneys, scenic valleys, and unique volcanic rock formations. Combining safety, professional service, and spectacular sunrise views, it is one of the most unforgettable hot air balloon experiences in Cappadocia."
+  ],
+  priceTitle: 'Göreme Balloon Tour (Standard Flight) Price',
+  priceText: 'Göreme Balloon Tour (Standard Flight) is typically priced between €70 and €150 per person, though prices can rise above €200 during the busiest season (September–October) or in the days following a weather-related cancellation. For current availability, seasonal demand, and confirmed reservations, please contact us directly. Our team will provide the latest availability and help you secure your booking.',
+  whatsIncluded: [
+    'Hotel pickup and drop-off',
+    'Light breakfast before the flight',
+    'Transfer to the launch area',
+    'Safety briefing by an experienced pilot',
+    'Approximately 1-hour hot air balloon flight',
+    'Flight certificate',
+    'Full insurance coverage',
+    'Free Wi-Fi in the basket',
+    'Professional operation support',
+    'Clear service with no hidden fees'
+  ],
+  importantInfo: [
+    'Flights operate early in the morning throughout the year.',
+    'Flight duration and route may vary depending on weather conditions.',
+    'All passengers are insured with maximum coverage.',
+    'Comfortable clothing and suitable shoes are recommended.',
+    'Children under 16 may join only with an accompanying adult.',
+    'Children under 5 years old are not accepted.',
+    'Not suitable for pregnant guests or guests who have recently had major surgery.',
+    'The remaining payment is collected one day before or on the tour day; card payments may include a small commission per person.'
+  ],
+  flightDetailsTitle: 'Flight Details',
+  flightDetailsParagraphs: [
+    "The Cappadocia Balloon Tour (Standard Flight) is operated with baskets accommodating up to 28 passengers. Enjoy breathtaking sunrise views over Göreme's iconic fairy chimneys, spectacular valleys, and unique volcanic landscapes while experiencing one of the most popular hot air balloon tours in Cappadocia.",
+    'Your flight begins with an early morning hotel pickup and a comfortable transfer to the launch site. While the balloons are being prepared for takeoff, your experienced pilot provides a short safety briefing and explains the flight process, ensuring you are ready for an unforgettable sunrise adventure over Göreme.',
+    "As the sun rises, your flight takes you high above Göreme's breathtaking landscapes. Admire the golden light illuminating the region's iconic fairy chimneys, spectacular valleys, vineyards, and unique volcanic rock formations. Throughout the flight, you'll have plenty of opportunities to capture stunning photos and enjoy the peaceful beauty of Cappadocia from the sky."
+  ],
+  afterFlightTitle: 'After the Flight',
+  afterFlightText: 'After landing, our ground crew welcomes you and provides the necessary support during the landing process. Your flight certificate, a souvenir of this special experience, is presented to you. Afterwards, you are comfortably transferred back to your hotel.',
+  refundTitle: 'Refund Guarantee',
+  refundText: 'If flights are cancelled due to weather conditions, they may be rescheduled for the next available day. If rescheduling is not possible, a full refund is provided. Free cancellation may be available up to 24 hours before the flight. All reservations are subject to availability.',
+  advanceTitle: 'Why Should You Book in Advance?',
+  advanceText: 'Hot air balloon flights in Cappadocia operate under a regulated and supervised structure by the Turkish Civil Aviation Authority. Since daily seat capacity is limited, early booking is especially important during busy periods. Booking in advance increases the chance of securing a place and allows better planning.',
+  safetyTitle: 'Safety and Experience',
+  safetyText: 'Our Göreme Balloon Tour (Standard Flight) is operated by certified and highly experienced pilots holding PPL and SPL licenses. Every flight is conducted with the highest standards of safety and professionalism to ensure a smooth and enjoyable balloon experience. From hotel pickup to landing, our dedicated team is committed to providing excellent service, with 24/7 customer support available throughout your journey.'
+};
+---
+<Layout title={`${tour.title} | CappadociaGo`} description={tour.heroDesc}>
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="logo-mark"><img src="/images/logo.png" alt="CappadociaGo" /></a>
+    <ul class="nav-menu">
+      <li><a href="/#tours">Balloon Tours</a></li>
+      <li><a href="/#tours">Daily Tours</a></li>
+      <li><a href="/#tours">Activities</a></li>
+      <li><a href="/#tours">Private Tours</a></li>
+      <li><a href="/#tours">Transfers</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-sel">
+        <span class="flag-icon">🇬🇧</span>
+        <span class="lang-text">English</span>
+        <svg class="chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <a class="wa-btn" href="https://wa.me/905401015050" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</nav>
+
+<main class="tour-page">
+
+  <div class="tour-hero-band">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/">Home</a> <span>/</span> <span class="current">{tour.title}</span>
+      </div>
+      <span class="eyebrow-pill">{tour.kicker}</span>
+      <h1>Cappadocia <em class="hero-accent">Hot Air Balloon</em> Tour</h1>
+      <p class="tour-desc">{tour.heroDesc}</p>
+      <div class="tour-meta-row">
+        <span class="meta-chip"><span class="stars">★★★★★</span> {tour.rating} ({tour.reviews})</span>
+        <span class="meta-chip">🕐 Duration: {tour.duration}</span>
+        <span class="meta-chip">⚡ Instant Confirmation</span>
+        <span class="meta-chip">✔ TÜRSAB No: 18577</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="tour-gallery">
+      <div class="gallery-main" style="background-image:url('/images/hero-balloon.webp');background-position:center 35%;"></div>
+      <div class="gallery-side">
+        <div class="gallery-tile photo" style="background-image:url('/images/hero-balloon.webp');background-position:75% 20%;background-size:220%;">
+          <span class="tile-duotone gold"></span>
+        </div>
+        <div class="gallery-tile photo" style="background-image:url('/images/hero-balloon.webp');background-position:10% 55%;background-size:260%;">
+          <span class="tile-duotone teal"></span>
+        </div>
+        <div class="gallery-tile art">
+          <svg viewBox="0 0 100 100" fill="none">
+            <path d="M0 100V72 Q10 70 14 58 Q16 52 18 52 Q20 52 21 58 Q24 70 32 70 L40 70 Q42 60 45 60 Q48 60 50 70 L62 70 Q64 58 68 58 Q72 58 74 70 L86 70 Q88 62 92 62 Q96 62 98 72 L100 100Z" fill="url(#chimGrad)"/>
+            <defs><linearGradient id="chimGrad" x1="0" y1="0" x2="100" y2="100"><stop offset="0" stop-color="#3E7FE0"/><stop offset="1" stop-color="#123F8C"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="gallery-tile photo" style="background-image:url('/images/hero-balloon.webp');background-position:90% 80%;background-size:200%;">
+          <span class="tile-duotone plum"></span>
+          <span class="tile-more">+12</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-layout">
+
+
+      <div class="tour-content">
+
+        <section class="content-block">
+          <h2>{tour.overviewTitle}</h2>
+          {tour.overviewParagraphs.map((p) => <p>{p}</p>)}
+        </section>
+
+        <section class="content-block">
+          <h2>{tour.priceTitle}</h2>
+          <p>{tour.priceText}</p>
+        </section>
+
+        <section class="content-block">
+          <h2>What's Included in the Price</h2>
+          <div class="check-grid">
+            {tour.whatsIncluded.map((item) => (
+              <div class="check-item"><span class="check-ico">✓</span>{item}</div>
+            ))}
+          </div>
+        </section>
+
+        <section class="content-block">
+          <h2>Important Information</h2>
+          <div class="check-grid">
+            {tour.importantInfo.map((item) => (
+              <div class="check-item warn"><span class="check-ico">!</span>{item}</div>
+            ))}
+          </div>
+        </section>
+
+        <section class="content-block">
+          <h2>{tour.flightDetailsTitle}</h2>
+          {tour.flightDetailsParagraphs.map((p) => <p>{p}</p>)}
+        </section>
+
+        <section class="content-block">
+          <h2>{tour.afterFlightTitle}</h2>
+          <p>{tour.afterFlightText}</p>
+        </section>
+
+        <section class="content-block highlight">
+          <h2>{tour.refundTitle}</h2>
+          <p>{tour.refundText}</p>
+        </section>
+
+        <section class="content-block">
+          <h2>{tour.advanceTitle}</h2>
+          <p>{tour.advanceText}</p>
+        </section>
+
+        <section class="content-block">
+          <h2>{tour.safetyTitle}</h2>
+          <p>{tour.safetyText}</p>
+        </section>
+
+      </div>
+
+      <aside class="tour-sidebar">
+
+        <div class="price-box">
+          <div class="price-box-top">
+            <span class="price-box-label">Starting Price</span>
+            <div class="price-box-value">
+              <span class="price-old">€{tour.oldPrice}</span>
+              <span class="price-new">€{tour.price}</span>
+              <span class="price-unit">per person</span>
+            </div>
+          </div>
+          <div class="option-tabs">
+            <button class="option-tab active">Standard Flight</button>
+            <button class="option-tab">1-Hour Flight</button>
+          </div>
+          <div class="option-tabs secondary">
+            <button class="option-tab">Hotel Transfer</button>
+          </div>
+          <a class="btn-call" href="tel:+905401015050">📞 +90 540 101 50 50</a>
+          <a class="btn-wa-full" href="https://wa.me/905401015050" target="_blank" rel="noopener">Contact via WhatsApp</a>
+          <ul class="price-box-features">
+            <li>✓ The Standard Flight offers a comfortable basket arrangement and professionally organized flight</li>
+            <li>✓ Impressive sunrise views over Göreme</li>
+            <li>✓ Full insurance and professional operation support</li>
+            <li>✓ 24/7 customer support</li>
+          </ul>
+        </div>
+
+        <div class="reservation-form">
+          <h3>Quick Reservation Form</h3>
+          <p class="form-sub">Leave your details and our team will contact you as soon as possible.</p>
+          <form>
+            <label>Full Name<input type="text" placeholder="Full Name" /></label>
+            <label>Phone Number
+              <div class="phone-row">
+                <span class="phone-flag">🇹🇷 +90</span>
+                <input type="tel" placeholder="Phone number" />
+              </div>
+            </label>
+            <label>Email<input type="email" placeholder="Email address (optional)" /></label>
+            <label>Date<input type="text" placeholder="Select Date" /></label>
+            <label>Number of People
+              <select>
+                <option>Select People</option>
+                <option>1 Person</option>
+                <option>2 Persons</option>
+                <option>3 Persons</option>
+                <option>4+ Persons</option>
+              </select>
+            </label>
+            <label>Your Message<textarea placeholder="You can write your additional notes..."></textarea></label>
+            <button type="submit" class="btn-submit">Send Reservation Request</button>
+          </form>
+        </div>
+
+      </aside>
+    </div>
+
+    <div class="tour-footer-strip">
+      <div class="strip-contact">
+        <div class="strip-item">
+          <span class="strip-ico">📞</span>
+          <div><span class="strip-label">Telephone</span><strong>+90 540 101 50 50</strong></div>
+        </div>
+        <div class="strip-item">
+          <span class="strip-ico">💬</span>
+          <div><span class="strip-label">WhatsApp</span><strong>+90 540 101 50 50</strong></div>
+        </div>
+        <div class="strip-item">
+          <span class="strip-ico">✉️</span>
+          <div><span class="strip-label">E-Mail</span><strong>info@kapheratravel.com</strong></div>
+        </div>
+      </div>
+
+      <div class="strip-gallery">
+        <div class="strip-thumb" style="background-image:url('/images/hero-balloon.webp');"></div>
+        <div class="strip-thumb" style="background:linear-gradient(135deg,#123F8C,#3E7FE0);"></div>
+        <div class="strip-thumb" style="background:linear-gradient(135deg,#0A1B3E,#3E7FE0);"></div>
+        <div class="strip-thumb" style="background:linear-gradient(135deg,#6B4A12,#C9962F);"></div>
+      </div>
+
+      <div class="strip-social">
+        <a href="#"><span>📷</span> @cappadociago</a>
+        <a href="#"><span>📘</span> Facebook</a>
+      </div>
+
+      <div class="strip-links">
+        <a href="/#tours">Balloon Tours</a>
+        <a href="/#tours">Cappadocia Tours</a>
+        <a href="/#tours">Activities</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/legal/cancellation-refund">Cancellation &amp; Refund Policy</a>
+        <a href="/legal/privacy">Privacy Policy</a>
+        <a href="/legal/terms">Terms and Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="/images/logo.png" alt="CappadociaGo" style="height:46px;width:auto;margin-bottom:14px;filter:brightness(0) invert(1);" />
+        <p style="font-size:13.5px;line-height:1.6;max-width:280px;color:#A9B4CC;">Goreme-based local travel agency offering Cappadocia's balloon, daily, package, adventure and transfer tours all under one roof.</p>
+      </div>
+      <div><h5>Tours</h5><ul><li><a href="/#tours">Balloon Tours</a></li><li><a href="/#tours">Daily Tours</a></li><li><a href="/#tours">Package Tours</a></li><li><a href="/#tours">Activities</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="/#tours">About Us</a></li><li><a href="/#tours">Blog</a></li><li><a href="/#tours">Contact</a></li><li><a href="/#tours">FAQ</a></li></ul></div>
+      <div><h5>Customer Support</h5><ul><li><a href="/legal/cancellation-refund">Cancellation &amp; Refund Policy</a></li><li><a href="/legal/privacy">Privacy Policy</a></li><li><a href="/legal/terms">Terms &amp; Conditions</a></li><li><a href="/legal/distance-sales">Distance Sales Agreement</a></li><li><a href="/legal/kvkk">KVKK / Personal Data</a></li><li><a href="/legal/cookie-policy">Cookie Policy</a></li></ul></div>
+      <div><h5>Contact</h5><ul><li>📍 Cappadocia, Nevşehir, Türkiye</li><li>📞 +90 540 101 50 50</li><li>✉ info@kapheratravel.com</li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 CappadociaGo — Cappadocia Kaphera Travel Agency</span>
+      <span>TÜRSAB No: 18577</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/905401015050" target="_blank" rel="noopener">💬</a>
+
+</Layout>
+
+<style>
+  /* NAV (shared pattern) */
+  nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px;}
+  .logo-mark{display:flex;align-items:center;white-space:nowrap;}
+  .logo-mark img{height:40px;width:auto;display:block;}
+  .nav-menu{display:flex;gap:28px;font-size:14px;font-weight:500;color:#2A3532;list-style:none;}
+  .nav-menu a:hover{color:var(--gold-bright);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .lang-sel{font-size:14px;color:#123F8C;border:1px solid var(--line);border-radius:100px;padding:8px 14px;display:flex;gap:8px;align-items:center;cursor:pointer;background:#fff;}
+  .lang-sel .lang-text{font-weight:600;color:#123F8C;}
+  .lang-sel .chev{color:#8B95A8;}
+  .wa-btn{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;color:#25D366;}
+  @media(max-width:1020px){.nav-menu{display:none;}}
+
+  /* TOUR PAGE */
+  .tour-page{padding:0 0 90px;}
+
+  .tour-hero-band{
+    position:relative;padding:40px 0 76px;margin-bottom:-46px;overflow:hidden;
+    background-image:
+      linear-gradient(180deg, rgba(8,20,22,0.55) 0%, rgba(8,25,26,0.88) 60%, rgba(6,20,21,0.96) 100%),
+      url('/images/hero-balloon.webp');
+    background-size:cover;background-position:center 32%;
+  }
+  .breadcrumb{font-size:12.5px;color:#B9C3DC;margin-bottom:26px;}
+  .breadcrumb a{color:#fff;font-weight:600;}
+  .breadcrumb a:hover{color:var(--gold-bright);}
+  .breadcrumb .current{color:#F0D48A;}
+
+  .eyebrow-pill{
+    display:inline-block;border:1.5px solid var(--gold-bright);color:var(--gold-bright);
+    background:rgba(46,158,151,.12);
+    font-size:11.5px;font-weight:700;letter-spacing:.14em;padding:7px 16px;border-radius:100px;
+    text-transform:uppercase;margin-bottom:20px;
+  }
+  .tour-hero-band h1{
+    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,4.4vw,48px);
+    color:#fff;letter-spacing:-0.015em;margin-bottom:16px;max-width:720px;line-height:1.12;
+  }
+  .tour-hero-band h1 .hero-accent{
+    font-style:italic;font-weight:600;
+    background:linear-gradient(90deg, var(--gold-bright) 0%, #F0D48A 60%, #FFF6E2 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .tour-desc{font-size:15.5px;line-height:1.75;color:#DCE3F0;max-width:680px;margin-bottom:26px;}
+  .tour-meta-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .meta-chip{
+    display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+    border-radius:100px;padding:8px 15px;font-size:12.5px;font-weight:600;color:#fff;backdrop-filter:blur(4px);
+  }
+  .meta-chip .stars{color:#F0D48A;font-size:11px;}
+
+  .tour-gallery{
+    position:relative;z-index:3;
+    display:grid;grid-template-columns:1.4fr 1fr;gap:10px;margin-bottom:40px;height:380px;
+    border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -24px rgba(8,37,38,.45);
+  }
+  .gallery-main{background-size:cover;background-position:center;}
+  .gallery-side{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .gallery-tile{position:relative;overflow:hidden;background-size:cover;}
+  .gallery-tile.art{background:linear-gradient(160deg,var(--cream-2),var(--cream));display:flex;align-items:center;justify-content:center;padding:22%;}
+  .gallery-tile.art svg{width:100%;height:100%;}
+  .tile-duotone{position:absolute;inset:0;mix-blend-mode:color;}
+  .tile-duotone.gold{background:#C98A2E;}
+  .tile-duotone.teal{background:#123F8C;}
+  .tile-duotone.plum{background:#1B2E5E;}
+  .tile-more{
+    position:absolute;inset:0;background:rgba(8,25,26,.55);color:#fff;font-family:'Space Grotesk',monospace;
+    font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;
+  }
+  @media(max-width:820px){.tour-gallery{grid-template-columns:1fr;height:auto;}
+    .gallery-main{height:220px;} .gallery-side{grid-template-columns:repeat(4,1fr);height:80px;}}
+
+  .tour-layout{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:start;}
+  @media(max-width:980px){.tour-layout{grid-template-columns:1fr;}}
+
+  .content-block{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 32px;margin-bottom:20px;position:relative;overflow:hidden;}
+  .content-block::before{
+    content:'';position:absolute;top:0;left:32px;width:44px;height:3px;border-radius:0 0 3px 3px;
+    background:linear-gradient(90deg,var(--blue-deep),var(--gold-bright));
+  }
+  .content-block.highlight{background:var(--cream-2);border-color:var(--gold-bright);}
+  .content-block h2{font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:var(--blue-deeper);letter-spacing:-0.01em;margin-bottom:16px;margin-top:6px;}
+  .content-block p{font-size:14.5px;line-height:1.75;color:#4B564F;margin-bottom:12px;}
+  .content-block p:last-child{margin-bottom:0;}
+
+  .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;}
+  @media(max-width:600px){.check-grid{grid-template-columns:1fr;}}
+  .check-item{display:flex;gap:10px;font-size:14px;color:#4B564F;line-height:1.5;}
+  .check-ico{
+    flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#E5F5EE;color:#1E8A5F;
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-top:1px;
+  }
+  .check-item.warn .check-ico{background:#FEF3E2;color:#B8862E;}
+
+  /* SIDEBAR */
+  .tour-sidebar{position:sticky;top:96px;display:flex;flex-direction:column;gap:20px;}
+  .price-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;position:relative;overflow:hidden;}
+  .price-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue-deep),var(--gold-bright));}
+  .price-box-top{margin-bottom:16px;}
+  .price-box-label{font-size:11px;color:var(--stone);text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
+  .price-box-value{display:flex;align-items:baseline;gap:8px;margin-top:4px;}
+  .price-old{font-size:14px;color:var(--stone);text-decoration:line-through;}
+  .price-new{font-family:'Space Grotesk',monospace;font-size:30px;font-weight:700;color:var(--blue-deep);}
+  .price-unit{font-size:12px;color:var(--stone);}
+  .option-tabs{display:flex;gap:8px;margin-bottom:8px;}
+  .option-tabs.secondary{margin-bottom:16px;}
+  .option-tab{
+    flex:1;border:1px solid var(--line);background:var(--cream-2);color:var(--blue-deeper);
+    padding:9px 10px;border-radius:10px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;
+  }
+  .option-tab.active{background:var(--blue-deep);border-color:var(--blue-deep);color:#fff;}
+  .btn-call{
+    display:block;text-align:center;background:var(--cream-2);border:1px solid var(--line);color:var(--blue-deeper);
+    padding:12px;border-radius:10px;font-weight:700;font-size:13.5px;margin-bottom:10px;
+  }
+  .btn-wa-full{
+    display:block;text-align:center;background:#25D366;color:#fff;
+    padding:13px;border-radius:10px;font-weight:700;font-size:13.5px;margin-bottom:18px;
+  }
+  .price-box-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .price-box-features li{font-size:12.5px;line-height:1.5;color:#4B564F;}
+
+  .reservation-form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;}
+  .reservation-form h3{font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:var(--blue-deeper);margin-bottom:4px;}
+  .form-sub{font-size:12.5px;color:var(--stone);margin-bottom:18px;line-height:1.5;}
+  .reservation-form form{display:flex;flex-direction:column;gap:14px;}
+  .reservation-form label{display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:var(--stone);text-transform:uppercase;letter-spacing:.04em;}
+  .reservation-form input, .reservation-form select, .reservation-form textarea{
+    border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;
+    color:var(--ink);background:var(--cream);text-transform:none;font-weight:400;
+  }
+  .reservation-form textarea{resize:vertical;min-height:70px;}
+  .phone-row{display:flex;gap:8px;}
+  .phone-flag{
+    flex-shrink:0;border:1px solid var(--line);border-radius:10px;background:var(--cream);
+    padding:11px 12px;font-size:13.5px;font-weight:600;color:var(--ink);
+  }
+  .btn-submit{
+    background:var(--blue-deep);color:#fff;border:none;
+    padding:14px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;margin-top:4px;transition:background .2s;
+  }
+  .btn-submit:hover{background:var(--gold-bright);}
+
+  /* FOOTER STRIP (contact / gallery / social / quick links) */
+  .tour-footer-strip{
+    margin-top:60px;padding-top:40px;border-top:1px solid var(--line);
+    display:flex;flex-direction:column;gap:26px;
+  }
+  .strip-contact{display:flex;gap:36px;flex-wrap:wrap;}
+  .strip-item{display:flex;align-items:center;gap:10px;}
+  .strip-ico{width:36px;height:36px;border-radius:50%;background:var(--cream-2);display:flex;align-items:center;justify-content:center;font-size:15px;}
+  .strip-label{display:block;font-size:11px;color:var(--stone);}
+  .strip-item strong{font-size:14px;color:var(--blue-deeper);}
+  .strip-gallery{display:flex;gap:10px;flex-wrap:wrap;}
+  .strip-thumb{width:120px;height:80px;border-radius:10px;background-size:cover;background-position:center;}
+  .strip-social{display:flex;gap:16px;}
+  .strip-social a{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--blue-deep);}
+  .strip-links{display:flex;gap:10px;flex-wrap:wrap;}
+  .strip-links a{
+    border:1px solid var(--line);border-radius:100px;padding:9px 16px;font-size:12.5px;font-weight:600;
+    color:var(--blue-deeper);background:#fff;
+  }
+  .strip-links a:hover{background:var(--blue-deep);color:#fff;border-color:var(--blue-deep);}
+
+  /* FOOTER */
+  footer{background:var(--blue-deeper);color:#C9D3E8;padding:70px 28px 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 0.85fr 0.85fr 1.1fr 1fr;gap:32px;padding-bottom:44px;border-bottom:1px solid rgba(244,239,227,.12);}
+  @media(max-width:1000px){.footer-grid{grid-template-columns:1fr 1fr 1fr;}}
+  @media(max-width:600px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  footer h5{font-family:'Space Grotesk',monospace;font-size:11.5px;letter-spacing:.15em;color:var(--gold-bright);text-transform:uppercase;margin-bottom:14px;}
+  footer ul{display:flex;flex-direction:column;gap:9px;font-size:13.5px;list-style:none;}
+  footer ul li a{color:#C9D3E8;}
+  footer ul li a:hover{color:#F0D48A;}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:22px;font-size:12px;color:#7C88A3;flex-wrap:wrap;gap:8px;}
+
+  .wa-float{position:fixed;bottom:22px;right:22px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.25);z-index:60;}
+</style>
