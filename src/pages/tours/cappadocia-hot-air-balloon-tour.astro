@@ -285,7 +285,7 @@ const tour = {
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <img src="/images/logo.png" alt="CappadociaGo" style="height:46px;width:auto;margin-bottom:14px;filter:brightness(0) invert(1);" />
+        <div class="footer-logo-card"><img src="/images/logo.png" alt="CappadociaGo" style="height:52px;width:auto;display:block;" /></div>
         <p style="font-size:13.5px;line-height:1.6;max-width:280px;color:#A9B4CC;">Goreme-based local travel agency offering Cappadocia's balloon, daily, package, adventure and transfer tours all under one roof.</p>
       </div>
       <div><h5>Tours</h5><ul><li><a href="/#tours">Balloon Tours</a></li><li><a href="/#tours">Daily Tours</a></li><li><a href="/#tours">Package Tours</a></li><li><a href="/#tours">Activities</a></li></ul></div>
@@ -309,7 +309,11 @@ const tour = {
   nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px;}
   .logo-mark{display:flex;align-items:center;white-space:nowrap;}
-  .logo-mark img{height:40px;width:auto;display:block;}
+  .logo-mark img{height:56px;width:auto;display:block;}
+  .footer-logo-card{
+    display:inline-block;background:#fff;border-radius:14px;padding:12px 20px;margin-bottom:16px;
+    box-shadow:0 12px 28px -10px rgba(0,0,0,.4);
+  }
   .nav-menu{display:flex;gap:28px;font-size:14px;font-weight:500;color:#2A3532;list-style:none;}
   .nav-menu a:hover{color:var(--gold-bright);}
   .nav-right{display:flex;align-items:center;gap:14px;}
