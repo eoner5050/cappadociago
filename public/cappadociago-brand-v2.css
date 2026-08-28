@@ -55,3 +55,8 @@ body{font-family:'Plus Jakarta Sans',Inter,Arial,sans-serif!important}
 /* Footer */
 .tbc-site-footer{border-top:4px solid var(--cg-gold)!important;background:#fff!important}
 @media(max-width:900px){.tbc-tour-grid{grid-template-columns:1fr!important}.tbc-tour-side{position:static!important}.tbc-tour-list{grid-template-columns:1fr!important}}
+/* Premium header alignment pass */
+.tbc-sh{background:#fff!important;border-top:1px solid #eee7dc!important;border-bottom:1px solid #e5ebf1!important;box-shadow:0 4px 18px rgba(7,29,73,.045)!important}
+.tbc-sh-inner{max-width:1440px!important;height:92px!important;padding:0 36px!important;display:grid!important;grid-template-columns:minmax(270px,1fr) auto minmax(270px,1fr)!important;gap:24px!important;align-items:center!important}
+.tbc-sh-logo{justify-self:start!important}.tbc-sh-logo img{height:66px!important;width:auto!important;filter:none!important}.tbc-sh-nav{justify-self:center!important;gap:27px!important}.tbc-sh-nav a{font-family:'Fraunces',Georgia,serif!important;font-size:14px!important;font-weight:600!important;letter-spacing:.005em!important;color:#0a2244!important}.tbc-sh-actions{justify-self:end!important}.tbc-sh-language-btn,.tbc-sh-whatsapp{height:40px!important;border-radius:999px!important}
+@media(max-width:1000px){.tbc-sh-inner{grid-template-columns:auto 1fr auto!important}.tbc-sh-nav{display:none!important}}

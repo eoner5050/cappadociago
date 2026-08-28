@@ -434,15 +434,15 @@ const homepageReviews = [
 
       <div class="tbc-video-content">
         <span class="tbc-video-kicker">
-          {lang === "tr" ? "KAPADOKYA’YI KEŞFEDİN" : lang === "es" ? "DESCUBRE CAPADOCIA" : "DISCOVER CAPPADOCIA"}
+          {lang === "tr" ? "CAPPADOCIAGO • KAPADOKYA’YI KEŞFET" : lang === "es" ? "CAPPADOCIAGO • DESCUBRE CAPADOCIA" : "CAPPADOCIAGO • DISCOVER CAPPADOCIA"}
         </span>
 
         <h1 class="tbc-video-title">
-          {lang === "tr" ? "Kapadokya’yı Keşfet" : lang === "es" ? "Descubre Capadocia" : "Discover Cappadocia"}
+          {lang === "tr" ? "Gün Doğumu Balon Turları ve Unutulmaz Kapadokya Maceraları" : lang === "es" ? "Globos al Amanecer y Aventuras Inolvidables en Capadocia" : "Sunrise Hot Air Balloon Tours & Unforgettable Cappadocia Adventures"}
         </h1>
 
         <p class="tbc-video-text">
-          {lang === "tr" ? "CappadociaGo ile Kapadokya’yı keşfedin. Gün doğumu balon uçuşlarını, Red & Green turları, ATV ve Jeep safarilerini, at turlarını ve havalimanı transferlerini yerel destekle tek yerde karşılaştırın." : lang === "es" ? "Descubre Capadocia con CappadociaGo. Compara vuelos en globo al amanecer, Red & Green Tours, safaris en ATV y Jeep, paseos a caballo y traslados al aeropuerto con asistencia local." : "Discover Cappadocia with CappadociaGo. Compare sunrise hot air balloon flights, Red & Green Tours, ATV and Jeep safaris, horse riding and airport transfers — all with local support in one place."}
+          {lang === "tr" ? "Kapadokya’nın büyüsünü CappadociaGo ile yaşayın. Göreme’de günlük sıcak hava balonu uçuşları, Red & Green turlar, ATV ve Jeep safarileri, at turları ve sorunsuz havalimanı transferleri sunuyoruz. Kapadokya deneyiminizi güvenle planlayın." : lang === "es" ? "Vive la magia de Capadocia con CappadociaGo. Ofrecemos vuelos diarios en globo en Göreme, tours Red & Green, ATV y Jeep Safari, paseos a caballo y traslados al aeropuerto con asistencia local." : "Experience the magic of Cappadocia with CappadociaGo. We offer daily hot air balloon flights in Göreme, guided Red & Green Tours, ATV and Jeep safaris, horse riding and hassle-free airport transfers. Plan your Cappadocia adventure with trusted local support."}
         </p>
 
         <div class="tbc-video-actions">
@@ -676,49 +676,46 @@ const homepageReviews = [
 
       <div class="tours-grid" id="toursGrid" data-supabase-url={homepageSupabaseUrl} data-supabase-key={homepageSupabaseKey}>
         {t.tourCards.map((tour) => (
-          <div
-            class="tour-card-style2"
+          <article
+            class="tour-card-style2 premium-compare-card"
             data-category={tour.category}
             data-product-slug={resolveProductSlug(tour)}
             data-product-name={tour.title}
-            style={tour.href ? "position: relative;" : undefined}
           >
-            {tour.href && (
-              <a
-                href={tour.href}
-                aria-label={tour.title}
-                style="position: absolute; inset: 0; z-index: 10;"
-              ></a>
-            )}
+            {tour.href && <a href={tour.href} class="card-stretched-link" aria-label={tour.title}></a>}
 
-            <div class="card-img-box">
-              <span class="rating-badge">⭐ {tour.rating}</span>
-              <Image src={resolveTourCardImage(tour)} alt={tour.title} loading="lazy" decoding="async" width={480} height={320} />
+            <div class="compare-card-head">
+              <div class="compare-thumb">
+                <Image src={resolveTourCardImage(tour)} alt={tour.title} loading="lazy" decoding="async" width={120} height={120} />
+              </div>
+              <div class="compare-title-wrap">
+                <span class="compare-selection">✦ CAPPADOCIAGO SELECTION</span>
+                <h3 class="card-title-text">{tour.title}</h3>
+              </div>
+              <div class="compare-rating"><span class="rating-star">★</span><strong>{tour.rating}</strong><small>Reviews</small></div>
             </div>
 
-            <div class="card-body-box">
-              <span class="duration-text">{t.popular.duration}: {tour.duration}</span>
-              <h3 class="card-title-text">{tour.title}</h3>
+            <p class="compare-summary"><strong>{t.popular.duration}:</strong> {tour.duration}. Instant confirmation. Hotel pickup and local support.</p>
 
-              <div class="tag-row">
+            <div class="compare-features">
+              <span><b>◷</b>{tour.duration}</span>
+              <span><b>✓</b>Instant confirmation</span>
+              <span><b>⌂</b>Hotel pickup</span>
+              <span><b>◎</b>Local support</span>
+            </div>
+
+            <div class="compare-card-bottom">
+              <div class="compare-tags">
                 <span class="discount-tag">✓ {tour.tag}</span>
-
-                {tour.status && (
-                  <span class:list={["status-tag", tour.statusType === "red" ? "status-red" : "status-blue"]}>
-                    {tour.statusIcon} {tour.status}
-                  </span>
-                )}
+                {tour.status && <span class:list={["status-tag", tour.statusType === "red" ? "status-red" : "status-blue"]}>{tour.statusIcon} {tour.status}</span>}
               </div>
-
-              <div class="card-price-box">
-                <span class="starting-text">{t.popular.startingPrice}</span>
-                <div class="price-right" data-price-wrap>
-                  <span class="old-price" data-old-price>{tour.oldPrice}</span>
-                  <span class="current-price" data-current-price>{tour.currentPrice}</span>
-                </div>
+              <div class="compare-price" data-price-wrap>
+                <span class="starting-text">FROM</span>
+                <span class="old-price" data-old-price>{tour.oldPrice}</span>
+                <span class="current-price" data-current-price>{tour.currentPrice}</span>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
@@ -3480,4 +3477,15 @@ body{background:var(--cg-bg)!important;color:#0b1d36!important}
 .starting-text{font-size:9px!important;letter-spacing:.06em!important;}
 @media(max-width:1120px){.tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
 @media(max-width:720px){.site-header .header-container{height:76px!important;padding:0 16px!important}.site-header .logo img{height:56px!important}.tours-grid{grid-template-columns:1fr!important}.tour-card-style2{min-height:230px!important}.main-nav{display:none!important;}}
+</style>
+
+<style is:global>
+/* EXACT REFERENCE PASS — 2026-08-28 */
+.site-header{background:#fff!important;border-top:1px solid #eee7dc!important;border-bottom:1px solid #e8edf3!important;box-shadow:0 4px 18px rgba(7,29,73,.045)!important;position:relative!important;z-index:90!important}
+.site-header .header-container{max-width:1440px!important;height:92px!important;margin:auto!important;padding:0 36px!important;display:grid!important;grid-template-columns:minmax(270px,1fr) auto minmax(270px,1fr)!important;align-items:center!important;gap:24px!important}
+.site-header .logo{justify-self:start!important;display:flex!important;align-items:center!important;gap:14px!important}.site-header .logo img{height:66px!important;width:auto!important;filter:none!important}.header-instagram{height:38px!important;padding:0 13px!important;border:1px solid #dfe6ee!important;border-radius:999px!important;box-shadow:0 5px 14px rgba(7,29,73,.04)!important;font-size:10px!important;font-weight:700!important}.main-nav{justify-self:center!important}.main-nav ul{display:flex!important;gap:27px!important;align-items:center!important}.main-nav a{font-family:'Fraunces',Georgia,serif!important;font-size:14px!important;font-weight:600!important;letter-spacing:.005em!important;color:#0a2244!important;white-space:nowrap!important}.main-nav a:hover{color:#0b66b3!important}.header-right{justify-self:end!important;display:flex!important;align-items:center!important;gap:12px!important}.lang-btn{height:38px!important;border-radius:999px!important;background:#f8fbfe!important}.whatsapp-btn{height:40px!important;border-radius:999px!important;background:#fff!important;border:1px solid #cfe0eb!important;color:#0a2244!important;font-size:12px!important;font-weight:800!important}
+.tbc-video-hero{min-height:485px!important;background:#17324f!important}.tbc-mobile-hero img{filter:saturate(.82) brightness(.58) contrast(1.02)!important}.tbc-video-hero:after{content:''!important;position:absolute!important;inset:0!important;background:linear-gradient(90deg,rgba(16,43,73,.82),rgba(26,55,86,.72),rgba(16,43,73,.67))!important;z-index:1!important}.tbc-video-content{z-index:2!important;max-width:1180px!important;margin:0 auto!important;padding:70px 24px 64px!important;text-align:center!important;display:flex!important;flex-direction:column!important;align-items:center!important}.discover-hero-badge{display:inline-flex!important;align-items:center!important;justify-content:center!important;border:1px solid rgba(150,200,240,.65)!important;background:rgba(44,99,148,.44)!important;color:#fff!important;border-radius:999px!important;padding:8px 17px!important;font-size:11px!important;font-weight:800!important;letter-spacing:.08em!important;margin:0 0 22px!important}.tbc-video-title{font-family:'Fraunces',Georgia,serif!important;max-width:1030px!important;font-size:clamp(44px,5.4vw,78px)!important;line-height:1.01!important;letter-spacing:-.045em!important;font-weight:600!important;color:#fff!important;text-shadow:0 2px 16px rgba(0,0,0,.13)!important;margin:0 auto 28px!important}.tbc-video-text{max-width:790px!important;font-size:15px!important;line-height:1.65!important;font-weight:500!important;color:rgba(255,255,255,.88)!important;margin:0 auto 24px!important}.tbc-video-buttons,.tbc-partner-reviews,.tbc-hero-trust-points{display:none!important}
+.tours-section{background:#fbfcfe!important;padding:64px 0 78px!important}.tours-section .container{max-width:1320px!important}.section-title{font-family:'Fraunces',Georgia,serif!important;color:#0b2d64!important;font-size:38px!important;font-weight:600!important;text-align:center!important;margin-bottom:28px!important}.tours-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important}.premium-compare-card{position:relative!important;display:flex!important;flex-direction:column!important;min-height:355px!important;padding:20px 18px 16px!important;background:#fff!important;border:1px solid #dce5ee!important;border-radius:19px!important;box-shadow:0 12px 34px rgba(6,42,91,.055)!important;overflow:hidden!important;transition:.22s ease!important}.premium-compare-card:hover{transform:translateY(-4px)!important;border-color:#bfd2e3!important;box-shadow:0 18px 40px rgba(6,42,91,.11)!important}.card-stretched-link{position:absolute!important;inset:0!important;z-index:6!important}.compare-card-head{display:grid!important;grid-template-columns:64px minmax(0,1fr) 56px!important;gap:12px!important;align-items:start!important}.compare-thumb{width:64px!important;height:64px!important;border-radius:14px!important;overflow:hidden!important;box-shadow:0 8px 20px rgba(4,28,62,.12)!important}.compare-thumb img{width:100%!important;height:100%!important;object-fit:cover!important}.compare-selection{display:block!important;font-family:'Plus Jakarta Sans',sans-serif!important;color:#6580c5!important;font-size:8px!important;font-weight:800!important;letter-spacing:.05em!important;text-transform:uppercase!important;margin:1px 0 4px!important}.premium-compare-card .card-title-text{font-family:'Fraunces',Georgia,serif!important;color:#123f8c!important;font-size:22px!important;line-height:1.02!important;letter-spacing:-.035em!important;font-weight:650!important;margin:0!important}.compare-rating{display:grid!important;grid-template-columns:18px 1fr!important;grid-template-rows:auto auto!important;align-items:center!important;justify-items:end!important;color:#17243a!important}.rating-star{grid-row:1/3!important;color:#f2aa08!important;font-size:25px!important;line-height:1!important}.compare-rating strong{font-size:13px!important;line-height:1!important}.compare-rating small{font-size:7px!important;color:#8996a8!important;font-weight:700!important}.compare-summary{font-size:11px!important;line-height:1.65!important;color:#1f3654!important;margin:24px 0 12px!important;padding-bottom:12px!important;border-bottom:1px solid #e7edf3!important}.compare-features{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px 16px!important;font-size:9px!important;font-weight:700!important;color:#1c3456!important;padding:2px 0 14px!important}.compare-features span{display:flex!important;align-items:center!important;gap:7px!important}.compare-features b{width:24px!important;height:24px!important;border-radius:50%!important;background:#f0f4ff!important;color:#375ec4!important;display:grid!important;place-items:center!important;font-size:10px!important}.compare-card-bottom{margin-top:auto!important;border-top:1px solid #e7edf3!important;padding-top:13px!important;display:flex!important;justify-content:space-between!important;align-items:flex-end!important;gap:12px!important}.compare-tags{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:5px!important}.discount-tag,.status-tag{font-size:8px!important;padding:5px 8px!important;border-radius:999px!important}.compare-price{display:grid!important;grid-template-columns:auto auto!important;grid-template-rows:auto auto!important;align-items:end!important;justify-items:end!important;column-gap:7px!important}.compare-price .starting-text{grid-column:1/3!important;color:#97a3b4!important;font-size:8px!important;font-weight:800!important}.compare-price .old-price{font-size:10px!important;color:#a9b0ba!important;text-decoration:line-through!important}.compare-price .current-price{font-family:'Fraunces',Georgia,serif!important;color:#23469c!important;font-size:26px!important;line-height:1!important;font-weight:650!important}.category-tabs-section{background:#fff!important}.infinite-slider-section{background:#fff!important}
+@media(max-width:1000px){.site-header .header-container{grid-template-columns:auto 1fr auto!important}.main-nav{display:none!important}.tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.tbc-video-title{font-size:54px!important}}
+@media(max-width:680px){.site-header .header-container{height:76px!important;padding:0 16px!important}.site-header .logo img{height:54px!important}.header-instagram{display:none!important}.tours-grid{grid-template-columns:1fr!important}.tbc-video-hero{min-height:445px!important}.tbc-video-content{padding:56px 18px!important}.tbc-video-title{font-size:42px!important}.tbc-video-text{font-size:13px!important}.premium-compare-card{min-height:335px!important}.premium-compare-card .card-title-text{font-size:20px!important}}
 </style>
