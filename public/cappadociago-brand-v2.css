@@ -197,3 +197,79 @@ body{font-family:'Plus Jakarta Sans',Inter,Arial,sans-serif!important}
   .tbc-side-photo-item{height:66px!important;border-radius:9px!important}
   .tbc-tour-section{padding:22px 18px!important}.tbc-tour-section h2{font-size:23px!important}.tbc-tour-section p{font-size:12px!important}
 }
+
+/* =========================================================
+   V6 FINAL — reference-matched homepage + all tour detail pages
+   ========================================================= */
+:root{--v6-blue:#0b67b2;--v6-deep:#0b2f55;--v6-navy:#092744;--v6-gold:#d6a01f;--v6-gold-soft:#fff8e7;--v6-sky:#f2f8fc;--v6-line:#dce7ef;--v6-text:#52677b}
+
+/* Homepage hero: smaller, softer and more elegant */
+.tbc-video-hero{min-height:500px!important;background:#153551!important;overflow:visible!important}
+.tbc-video-hero:after,.tbc-video-overlay{background:linear-gradient(90deg,rgba(8,39,70,.82),rgba(13,51,85,.72),rgba(9,42,74,.76))!important}
+.tbc-video-content{max-width:1180px!important;padding:68px 24px 86px!important}
+.tbc-video-kicker,.discover-hero-badge{font-family:'Plus Jakarta Sans',Inter,sans-serif!important;font-size:9px!important;font-weight:700!important;letter-spacing:.105em!important;padding:7px 14px!important;margin-bottom:18px!important;background:rgba(255,255,255,.07)!important;border-color:rgba(222,179,72,.45)!important;color:#f5d986!important}
+.tbc-video-title{font-family:'Fraunces',Georgia,serif!important;font-size:clamp(38px,4.15vw,60px)!important;max-width:980px!important;line-height:1.02!important;font-weight:600!important;letter-spacing:-.04em!important;margin:0 auto 20px!important}
+.tbc-video-text{font-family:'Plus Jakarta Sans',Inter,sans-serif!important;max-width:760px!important;font-size:13px!important;line-height:1.7!important;font-weight:500!important;color:rgba(255,255,255,.82)!important}
+
+/* Homepage product display: reference card grid */
+.tours-section{padding:54px 0 78px!important;background:#fff!important}
+.tours-section .container{max-width:1240px!important}
+.tours-section .section-title{font-family:'Fraunces',Georgia,serif!important;text-align:center!important;font-size:clamp(30px,3vw,42px)!important;font-weight:600!important;color:var(--v6-navy)!important;margin:0 0 28px!important}
+.tours-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:18px!important;align-items:stretch!important}
+.home-tour-card{position:relative;background:#fff;border:1px solid #e1e8ee;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(10,47,84,.06);transition:transform .22s ease,box-shadow .22s ease;min-width:0}
+.home-tour-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(10,47,84,.11)}
+.home-tour-image{position:relative;height:205px;overflow:hidden;background:#eef4f8}
+.home-tour-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}.home-tour-card:hover .home-tour-image img{transform:scale(1.035)}
+.home-tour-label{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;min-height:31px;padding:0 11px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.9);box-shadow:0 4px 13px rgba(4,35,64,.09);font:600 10px/1 'Plus Jakarta Sans',Inter,sans-serif;color:#34495e;white-space:nowrap}
+.home-tour-body{padding:16px 16px 14px;font-family:'Plus Jakarta Sans',Inter,sans-serif}
+.home-tour-body h3{font-family:'Plus Jakarta Sans',Inter,sans-serif;font-size:17px;line-height:1.25;letter-spacing:-.02em;color:#1e2935;margin:0 0 9px;font-weight:700}
+.home-tour-rating{display:flex;align-items:center;gap:6px;margin-bottom:11px;font-size:12px;color:#607286}.home-tour-rating span{color:#ff6871;font-size:18px}.home-tour-rating strong{font-size:14px;color:#24384c}.home-tour-rating small{color:#8794a2;text-decoration:underline}
+.home-tour-meta{margin:0 -16px;padding:9px 16px;border-top:1px solid #edf1f4;border-bottom:1px solid #edf1f4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;font-weight:600;color:#445a6f;background:#fbfcfd}
+.home-tour-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;padding-top:12px}.home-tour-tags span{display:inline-flex;padding:5px 8px;border-radius:999px;background:var(--v6-gold-soft);color:#7c5b08;font-size:9px;font-weight:700}.home-tour-price{text-align:right;margin-left:auto}.home-tour-price small{display:block;color:#94a1ae;font-size:8px;font-weight:700}.home-tour-price del{font-size:10px;color:#9ca7b1;margin-right:5px}.home-tour-price strong{font-size:23px;line-height:1;color:var(--v6-navy);font-weight:800}.home-tour-price em{display:block;font-size:8px;color:#8996a3;font-style:normal;margin-top:3px}
+.reviews-section.tbc-combined-review-section{display:none!important}
+
+/* All-tour detail pages: last-reference layout */
+.page>.container{max-width:1180px!important}
+.page>.container,.tbc-tour-container{position:relative}
+/* Standardized component: use CSS grid at container level so gallery and booking sit side-by-side */
+.page>.container{display:grid!important;grid-template-columns:minmax(0,1.72fr) minmax(285px,.72fr)!important;column-gap:22px!important;align-items:start!important}
+.page>.container>.breadcrumb,.page>.container>.hero,.page>.container>.gallery-modal,.page>.container>.gallery-modal+*{ }
+.page>.container>.breadcrumb,.page>.container>.hero{grid-column:1/-1!important}
+.page>.container>.gallery{grid-column:1!important;grid-row:3!important;margin:0!important}
+.page>.container>.gallery-modal{position:fixed!important}
+.page>.container>.grid{display:contents!important}
+.page>.container>.grid>.main-col{grid-column:1!important;grid-row:4!important;margin-top:16px!important}
+.page>.container>.grid>.side{grid-column:2!important;grid-row:3 / span 2!important;position:sticky!important;top:100px!important;margin:0!important}
+
+/* bespoke balloon/private pages using tbc classes */
+.tbc-tour-container{display:grid!important;grid-template-columns:minmax(0,1.72fr) minmax(285px,.72fr)!important;column-gap:22px!important;align-items:start!important}
+.tbc-tour-container>.tbc-breadcrumb,.tbc-tour-container>.tbc-tour-hero{grid-column:1/-1!important}
+.tbc-tour-container>.tbc-photo-grid-wrapper{grid-column:1!important;grid-row:3!important;margin:0!important}
+.tbc-tour-container>.tbc-gallery-modal{position:fixed!important}
+.tbc-tour-container>.tbc-tour-grid{display:contents!important}
+.tbc-tour-container>.tbc-tour-grid>.tbc-tour-main{grid-column:1!important;grid-row:4!important;margin-top:16px!important}
+.tbc-tour-container>.tbc-tour-grid>.tbc-tour-side{grid-column:2!important;grid-row:3 / span 2!important;position:sticky!important;top:100px!important;margin:0!important}
+
+/* Detail title area: light, compact, homepage font system */
+.page{background:#f4f8fb!important;padding-top:22px!important}.breadcrumb,.tbc-breadcrumb{font:500 10px/1.5 'Plus Jakarta Sans',Inter,sans-serif!important}
+.hero,.tbc-tour-hero{padding:20px 24px!important;margin-bottom:16px!important;border-radius:16px!important;background:#fff!important;border:1px solid var(--v6-line)!important;border-top:3px solid var(--v6-gold)!important;box-shadow:0 7px 24px rgba(10,47,84,.055)!important;color:var(--v6-navy)!important}
+.hero:after{display:none!important}.kicker,.tbc-tour-kicker{background:var(--v6-gold-soft)!important;border:1px solid #eedda9!important;color:#8a650d!important;padding:5px 9px!important;font-size:8px!important;letter-spacing:.08em!important}
+.hero h1,.tbc-tour-title{font-family:'Fraunces',Georgia,serif!important;font-size:clamp(27px,3vw,39px)!important;line-height:1.06!important;letter-spacing:-.035em!important;font-weight:600!important;color:var(--v6-navy)!important;margin:10px 0 7px!important}
+.hero>p,.tbc-tour-desc{font-family:'Plus Jakarta Sans',Inter,sans-serif!important;font-size:11.5px!important;line-height:1.7!important;color:#63788b!important;max-width:900px!important}
+.hero-badges,.tbc-hero-badges-bar{margin-top:12px!important;padding-top:11px!important;border-top:1px solid #e7eef3!important;gap:6px!important}.hero-badges>span,.hero-badges>a,.tbc-hero-badges-bar .tbc-badge-item{min-height:28px!important;padding:5px 9px!important;border-radius:999px!important;background:#f8fbfd!important;border:1px solid #dce7ef!important;color:#35526d!important;font-size:8.5px!important}.hero-rating,.tbc-hero-badges-bar .tbc-badge-item:first-child{display:none!important}
+
+/* Reference collage: large left + four smaller right */
+.gallery,.tbc-photo-grid-wrapper{display:grid!important;grid-template-columns:1.55fr .9fr!important;height:315px!important;padding:6px!important;gap:6px!important;background:#fff!important;border:1px solid var(--v6-line)!important;border-radius:16px!important;box-shadow:0 7px 24px rgba(10,47,84,.055)!important;overflow:hidden!important}
+.main-photo,.tbc-main-photo{height:303px!important;border-radius:11px!important;overflow:hidden!important}.main-photo img,.tbc-main-photo img{width:100%!important;height:100%!important;object-fit:cover!important}.side-photos,.tbc-side-photos{height:303px!important;display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1fr 1fr!important;gap:6px!important}.side-photos button,.tbc-side-photo-item{height:auto!important;min-height:0!important;border-radius:9px!important;overflow:hidden!important}.side-photos img,.tbc-side-photo-item img{width:100%!important;height:100%!important;object-fit:cover!important}
+
+/* content & side cards closer to supplied reference */
+.card,.tbc-tour-card{border-radius:14px!important;border:1px solid var(--v6-line)!important;box-shadow:0 6px 20px rgba(9,45,82,.045)!important}.content>section,.tbc-tour-section{padding:20px 22px!important}.content h2,.tbc-tour-section h2{font-family:'Fraunces',Georgia,serif!important;font-size:19px!important;line-height:1.15!important;color:var(--v6-navy)!important;margin-bottom:10px!important}.content p,.tbc-tour-section p{font-family:'Plus Jakarta Sans',Inter,sans-serif!important;font-size:11px!important;line-height:1.78!important;color:#607286!important}.checks>div,.tbc-tour-list-item{font-size:10.5px!important;line-height:1.5!important}.price-card,.booking,.tbc-tour-side-card,.tbc-booking-card{border-radius:14px!important}.price-card{border-top:3px solid var(--v6-gold)!important}.booking,.tbc-booking-card{border-top:3px solid var(--v6-blue)!important}.price-card .price strong,.tbc-tour-price-value{color:var(--v6-navy)!important}.submit,.tbc-booking-submit{background:linear-gradient(135deg,var(--v6-blue),#278dd1)!important}.price-card .badges span,.tbc-tour-badge{background:var(--v6-gold-soft)!important;color:#795a0b!important;border-color:#ead79f!important}
+
+/* calendar soft blue/gold */
+.calendar,.tbc-custom-calendar{border:1px solid #d5e3ed!important;border-top:3px solid var(--v6-gold)!important;border-radius:15px!important;box-shadow:0 18px 42px rgba(8,44,80,.13)!important}.day,.tbc-cal-day{background:#f6fafe!important;color:var(--v6-navy)!important;border:1px solid #e3edf4!important;border-radius:9px!important}.day:hover:not(:disabled),.tbc-cal-day:hover:not(.is-disabled){background:var(--v6-gold-soft)!important;border-color:#ecd387!important}.day.selected,.tbc-cal-day.is-selected{background:var(--v6-blue)!important;color:#fff!important;border-color:var(--v6-blue)!important}.day span,.tbc-cal-day-price{color:var(--v6-gold)!important}
+
+/* no review/comment sections */
+.tbc-reviews-card,#reviews-section,.tbc-hidden-reviews,.tbc-load-more-wrap,.reviews-section{display:none!important}
+
+@media(max-width:980px){.tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.page>.container,.tbc-tour-container{display:block!important}.page>.container>.grid,.tbc-tour-container>.tbc-tour-grid{display:grid!important;grid-template-columns:1fr!important}.page>.container>.grid>.side,.tbc-tour-container>.tbc-tour-grid>.tbc-tour-side{position:static!important}.gallery,.tbc-photo-grid-wrapper{height:300px!important}.main-photo,.tbc-main-photo,.side-photos,.tbc-side-photos{height:288px!important}}
+@media(max-width:620px){.tbc-video-hero{min-height:430px!important}.tbc-video-content{padding:52px 18px 72px!important}.tbc-video-title{font-size:34px!important;line-height:1.04!important}.tbc-video-text{font-size:11.5px!important}.tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}.home-tour-image{height:128px}.home-tour-label{top:7px;left:7px;min-height:24px;padding:0 7px;font-size:7px}.home-tour-body{padding:10px}.home-tour-body h3{font-size:12px;margin-bottom:6px}.home-tour-rating{gap:4px;margin-bottom:7px}.home-tour-rating span{font-size:14px}.home-tour-rating strong{font-size:11px}.home-tour-meta{margin:0 -10px;padding:7px 10px;font-size:8px}.home-tour-footer{padding-top:8px}.home-tour-tags{display:none}.home-tour-price strong{font-size:18px}.home-tour-price em,.home-tour-price small{font-size:7px}.gallery,.tbc-photo-grid-wrapper{grid-template-columns:1fr!important;height:auto!important}.main-photo,.tbc-main-photo{height:230px!important}.side-photos,.tbc-side-photos{height:130px!important;grid-template-columns:repeat(4,1fr)!important;grid-template-rows:1fr!important}.hero,.tbc-tour-hero{padding:17px 16px!important}.hero h1,.tbc-tour-title{font-size:25px!important}.content>section,.tbc-tour-section{padding:17px!important}}

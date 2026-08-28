@@ -667,44 +667,25 @@ const homepageReviews = [
       <h2 class="section-title">{t.popular.title}</h2>
 
       <div class="tours-grid" id="toursGrid" data-supabase-url={homepageSupabaseUrl} data-supabase-key={homepageSupabaseKey}>
-        {t.tourCards.map((tour) => (
+        {t.tourCards.map((tour, index) => (
           <article
-            class="tour-card-style2 premium-compare-card"
+            class="home-tour-card"
             data-category={tour.category}
             data-product-slug={resolveProductSlug(tour)}
             data-product-name={tour.title}
           >
             {tour.href && <a href={tour.href} class="card-stretched-link" aria-label={tour.title}></a>}
-
-            <div class="compare-card-head">
-              <div class="compare-thumb">
-                <Image src={resolveTourCardImage(tour)} alt={tour.title} loading="lazy" decoding="async" width={120} height={120} />
-              </div>
-              <div class="compare-title-wrap">
-                <span class="compare-selection">✦ CAPPADOCIAGO SELECTION</span>
-                <h3 class="card-title-text">{tour.title}</h3>
-              </div>
-              <div class="compare-rating"><span class="rating-star">★</span><strong>{tour.rating}</strong><small>Reviews</small></div>
+            <div class="home-tour-image">
+              <Image src={resolveTourCardImage(tour)} alt={tour.title} loading="lazy" decoding="async" width={520} height={360} />
+              <span class="home-tour-label">{index % 4 === 0 ? '🔥 Best Seller' : index % 4 === 1 ? '🎯 Limited Availability' : index % 4 === 2 ? '✦ Premium Experience' : '☀ Local Favorite'}</span>
             </div>
-
-            <p class="compare-summary"><strong>{t.popular.duration}:</strong> {tour.duration}. Instant confirmation. Hotel pickup and local support.</p>
-
-            <div class="compare-features">
-              <span><b>◷</b>{tour.duration}</span>
-              <span><b>✓</b>Instant confirmation</span>
-              <span><b>⌂</b>Hotel pickup</span>
-              <span><b>◎</b>Local support</span>
-            </div>
-
-            <div class="compare-card-bottom">
-              <div class="compare-tags">
-                <span class="discount-tag">✓ {tour.tag}</span>
-                {tour.status && <span class:list={["status-tag", tour.statusType === "red" ? "status-red" : "status-blue"]}>{tour.statusIcon} {tour.status}</span>}
-              </div>
-              <div class="compare-price" data-price-wrap>
-                <span class="starting-text">FROM</span>
-                <span class="old-price" data-old-price>{tour.oldPrice}</span>
-                <span class="current-price" data-current-price>{tour.currentPrice}</span>
+            <div class="home-tour-body">
+              <h3>{tour.title}</h3>
+              <div class="home-tour-rating"><span>★</span><strong>{tour.rating}</strong><small>{tour.reviewCount || ''}</small></div>
+              <div class="home-tour-meta">{tour.duration} · Instant confirmation · Hotel pickup</div>
+              <div class="home-tour-footer">
+                <div class="home-tour-tags">{tour.status && <span>{tour.status}</span>}</div>
+                <div class="home-tour-price" data-price-wrap><small>FROM</small><del data-old-price>{tour.oldPrice}</del><strong data-current-price>{tour.currentPrice}</strong><em>per person</em></div>
               </div>
             </div>
           </article>
@@ -1430,7 +1411,7 @@ const homepageReviews = [
 
 // Tur Filtreleme Fonksiyonu
     const tabButtons = document.querySelectorAll('#tourCategoryTabs .tab-item');
-    const tourCards = document.querySelectorAll('#toursGrid .tour-card-style2');
+    const tourCards = document.querySelectorAll('#toursGrid .home-tour-card');
 
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1496,7 +1477,7 @@ const homepageReviews = [
     const key = grid.dataset.supabaseKey || '';
     if (!base || !key) return;
 
-    const cards = [...grid.querySelectorAll('.tour-card-style2[data-product-slug]')];
+    const cards = [...grid.querySelectorAll('.home-tour-card[data-product-slug]')];
     if (!cards.length) return;
 
     const headers = {
@@ -3904,3 +3885,5 @@ body{background:#fff!important}
   .tours-section .section-title{font-size:27px!important;margin-bottom:18px!important}
 }
 </style>
+
+<link rel="stylesheet" href="/cappadociago-brand-v2.css" />
