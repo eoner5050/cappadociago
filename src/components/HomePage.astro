@@ -3489,3 +3489,171 @@ body{background:var(--cg-bg)!important;color:#0b1d36!important}
 @media(max-width:1000px){.site-header .header-container{grid-template-columns:auto 1fr auto!important}.main-nav{display:none!important}.tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.tbc-video-title{font-size:54px!important}}
 @media(max-width:680px){.site-header .header-container{height:76px!important;padding:0 16px!important}.site-header .logo img{height:54px!important}.header-instagram{display:none!important}.tours-grid{grid-template-columns:1fr!important}.tbc-video-hero{min-height:445px!important}.tbc-video-content{padding:56px 18px!important}.tbc-video-title{font-size:42px!important}.tbc-video-text{font-size:13px!important}.premium-compare-card{min-height:335px!important}.premium-compare-card .card-title-text{font-size:20px!important}}
 </style>
+
+<style is:global>
+/* CAPPADOCIAGO REFINEMENT PASS — header / hero / booking / calendar */
+.site-header{
+  background:#ffffff!important;
+  border-top:1px solid #f2ede5!important;
+  border-bottom:1px solid #e5ebf1!important;
+  box-shadow:0 4px 20px rgba(9,42,82,.045)!important;
+  position:relative!important;
+}
+.site-header .header-container{
+  max-width:1380px!important;
+  height:82px!important;
+  padding:0 34px!important;
+  grid-template-columns:minmax(260px,1fr) auto minmax(260px,1fr)!important;
+  gap:30px!important;
+}
+.site-header .logo{gap:12px!important;min-width:0!important}
+.site-header .logo img{height:59px!important;max-width:180px!important;object-fit:contain!important}
+.header-instagram{
+  height:36px!important;
+  padding:0 12px!important;
+  font-family:Inter,Arial,sans-serif!important;
+  font-size:10px!important;
+  font-weight:600!important;
+  letter-spacing:.01em!important;
+  color:#17365f!important;
+  background:#fff!important;
+  border:1px solid #dce5ed!important;
+  box-shadow:0 3px 12px rgba(11,49,90,.035)!important;
+}
+.main-nav ul{gap:25px!important;margin:0!important;padding:0!important}
+.main-nav a{
+  font-family:Inter,Arial,sans-serif!important;
+  font-size:12.5px!important;
+  font-weight:700!important;
+  line-height:1.2!important;
+  letter-spacing:.015em!important;
+  color:#102f55!important;
+  text-transform:none!important;
+  white-space:nowrap!important;
+}
+.main-nav a:hover{color:#0870ba!important}
+.header-right{gap:10px!important}
+.lang-btn,.whatsapp-btn{font-family:Inter,Arial,sans-serif!important;font-size:11.5px!important;font-weight:700!important}
+.lang-btn{height:36px!important;padding:0 12px!important;background:#f8fbfd!important;border:1px solid #d8e4ed!important}
+.whatsapp-btn{height:38px!important;padding:0 13px!important;background:#fff!important;border:1px solid #d5e3ec!important;color:#12365d!important;box-shadow:none!important}
+
+.tbc-video-hero{min-height:500px!important}
+.tbc-video-content{padding:62px 24px 78px!important;max-width:1080px!important}
+.tbc-video-kicker{
+  margin-bottom:18px!important;
+  padding:7px 15px!important;
+  font-family:Inter,Arial,sans-serif!important;
+  font-size:9px!important;
+  font-weight:700!important;
+  letter-spacing:.11em!important;
+  color:#fff!important;
+  background:rgba(255,255,255,.10)!important;
+  border:1px solid rgba(255,255,255,.30)!important;
+}
+.tbc-video-title{
+  max-width:920px!important;
+  font-family:Georgia,'Times New Roman',serif!important;
+  font-size:clamp(42px,4.15vw,60px)!important;
+  line-height:1.04!important;
+  letter-spacing:-.035em!important;
+  font-weight:700!important;
+  margin:0 auto 20px!important;
+  text-wrap:balance!important;
+}
+.tbc-video-text{
+  max-width:760px!important;
+  font-family:Inter,Arial,sans-serif!important;
+  font-size:13.5px!important;
+  line-height:1.65!important;
+  font-weight:400!important;
+  color:rgba(255,255,255,.87)!important;
+  margin-bottom:20px!important;
+}
+.tbc-video-actions{display:flex!important;gap:10px!important;justify-content:center!important}
+.tbc-video-btn{min-height:38px!important;padding:0 17px!important;border-radius:999px!important;font-size:9px!important;letter-spacing:.05em!important}
+
+.tbc-booking-wrap{bottom:-68px!important;width:min(1080px,calc(100% - 38px))!important}
+.cg-experience-dock{
+  width:min(830px,calc(100% - 34px))!important;
+  border-top:2px solid #d8a019!important;
+  border-radius:16px 16px 0 0!important;
+  box-shadow:0 -7px 24px rgba(9,48,91,.09)!important;
+  background:#fff!important;
+}
+.cg-dock-item{min-height:61px!important;font-family:Inter,Arial,sans-serif!important;font-size:8.5px!important;font-weight:700!important;color:#4e6279!important;border-color:#edf1f5!important}
+.cg-dock-item.active,.cg-dock-item:hover{background:#eef7fd!important;color:#0864a8!important}
+.cg-dock-icon{font-size:14px!important;color:#c8900d!important}
+.tbc-booking-box{
+  padding:12px!important;
+  border:1px solid #d8e5ef!important;
+  border-top:0!important;
+  border-radius:16px!important;
+  background:linear-gradient(135deg,#f7fbfe 0%,#eef6fb 55%,#fff9e9 100%)!important;
+  box-shadow:0 18px 42px rgba(6,42,82,.13)!important;
+}
+.tbc-booking-grid{gap:8px!important}
+.tbc-select-btn,.dates-custom-box{
+  min-height:50px!important;
+  border:1px solid #d7e3ec!important;
+  border-radius:11px!important;
+  background:#fff!important;
+  box-shadow:0 2px 7px rgba(10,48,88,.025)!important;
+}
+.tbc-select-btn{font-family:Inter,Arial,sans-serif!important;font-size:10px!important;color:#173b63!important}
+.dates-top-label{font-family:Inter,Arial,sans-serif!important;font-size:7px!important;color:#718397!important;letter-spacing:.07em!important}
+.dates-inputs-row{font-family:Inter,Arial,sans-serif!important;font-size:10px!important;color:#16385d!important}
+.tbc-submit-btn{
+  min-height:50px!important;
+  border-radius:999px!important;
+  background:linear-gradient(135deg,#075aa6,#0b74bd)!important;
+  color:#fff!important;
+  box-shadow:0 7px 18px rgba(7,90,166,.18)!important;
+  font-family:Inter,Arial,sans-serif!important;
+  font-size:9px!important;
+  letter-spacing:.055em!important;
+}
+.tbc-submit-btn:hover{background:linear-gradient(135deg,#064f93,#0966aa)!important}
+
+:global(.tbc-date-popover){
+  width:min(680px,calc(100vw - 30px))!important;
+  padding:20px!important;
+  border:1px solid #d7e4ed!important;
+  border-top:3px solid #c99715!important;
+  border-radius:20px!important;
+  background:#fff!important;
+  box-shadow:0 24px 62px rgba(8,44,84,.17)!important;
+}
+:global(.tbc-date-title){font-family:Inter,Arial,sans-serif!important;color:#12365f!important;font-size:15px!important;font-weight:700!important}
+:global(.tbc-date-nav){width:38px!important;height:38px!important;background:#f5f9fc!important;border:1px solid #d7e5ee!important;color:#075aa6!important;font-size:21px!important;box-shadow:none!important}
+:global(.tbc-date-months){gap:24px!important}
+:global(.tbc-date-month-title){font-family:Inter,Arial,sans-serif!important;color:#12365f!important;font-size:16px!important;font-weight:700!important;margin-bottom:12px!important}
+:global(.tbc-date-weekdays span){font-family:Inter,Arial,sans-serif!important;color:#6d8195!important;font-size:9px!important;font-weight:700!important}
+:global(.tbc-date-grid){gap:5px!important}
+:global(.tbc-date-day){
+  min-height:38px!important;
+  border:1px solid #e2ebf2!important;
+  border-radius:9px!important;
+  background:#f7fbfe!important;
+  color:#173b63!important;
+  font-family:Inter,Arial,sans-serif!important;
+  font-size:11px!important;
+  font-weight:650!important;
+  transition:.15s ease!important;
+}
+:global(.tbc-date-day:hover:not(:disabled)){background:#fff6dc!important;border-color:#e5c361!important;color:#73530a!important;transform:none!important}
+:global(.tbc-date-day.is-range){background:#eaf5fc!important;border-color:#b9d9ee!important;color:#075aa6!important}
+:global(.tbc-date-day.is-selected){background:#075aa6!important;color:#fff!important;border-color:#075aa6!important;box-shadow:0 5px 12px rgba(7,90,166,.18)!important}
+:global(.tbc-date-day.is-today:not(.is-selected)){background:#fff9e8!important;border-color:#d9aa2b!important;box-shadow:none!important}
+:global(.tbc-date-day:disabled){background:#f5f6f8!important;border-color:#eef1f4!important;color:#b2bbc5!important}
+:global(.tbc-date-help){border-top:1px solid #e7edf2!important;color:#7a8a9c!important;font-size:10px!important;font-weight:600!important}
+
+@media(max-width:1150px){
+ .site-header .header-container{grid-template-columns:auto 1fr auto!important;padding:0 22px!important}.main-nav ul{gap:16px!important}.main-nav a{font-size:11.5px!important}.header-instagram{display:none!important}
+}
+@media(max-width:1000px){
+ .main-nav{display:none!important}.tbc-video-title{font-size:clamp(40px,6vw,54px)!important}.tbc-booking-wrap{bottom:-175px!important}
+}
+@media(max-width:680px){
+ .site-header .header-container{height:72px!important;padding:0 14px!important}.site-header .logo img{height:50px!important}.tbc-video-hero{min-height:455px!important}.tbc-video-content{padding:50px 18px 72px!important}.tbc-video-title{font-size:38px!important;line-height:1.06!important}.tbc-video-text{font-size:12.5px!important}.cg-experience-dock{width:calc(100% - 12px)!important}.tbc-booking-box{padding:10px!important}.tbc-booking-wrap{width:calc(100% - 16px)!important;bottom:-220px!important}
+}
+</style>
