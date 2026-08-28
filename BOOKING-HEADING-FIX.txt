@@ -1,0 +1,6 @@
+CappadociaGo booking heading fix
+- Added visible "Plan Your Flight & Tour with CappadociaGo" above the booking controls.
+- Heading overlaps the lower hero area in the reference position.
+- Existing Select Tour / date / Select Person / Search behavior preserved.
+- Fixed booking wrapper HTML close-order so CSS/layout is deterministic.
+- Cappadocia = logo blue, Go = logo gold.
