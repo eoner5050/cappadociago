@@ -469,7 +469,9 @@ const homepageReviews = [
         </div>
       </div>
 
-      <!-- REZERVASYON FORMU VE ÜZERİNDEKİ ORTALANMIŞ BAŞLIK -->
+    </section>
+
+    <!-- REZERVASYON FORMU VE ÜZERİNDEKİ ORTALANMIŞ BAŞLIK -->
       <div class="booking-section-heading" aria-label="Plan Your Flight & Tour with CappadociaGo">
         <span>Plan Your Flight & Tour with </span><strong class="booking-brand-blue">Cappadocia</strong><strong class="booking-brand-gold">Go</strong>
       </div>
@@ -600,7 +602,6 @@ const homepageReviews = [
           </div>
         </div>
       </div>
-    </section>
   </section>
 
   <!-- KAYAN KATEGORİ SLIDER'I -->
@@ -4448,5 +4449,54 @@ body{background:#fff!important}
   .tbc-video-text{font-size:12px!important;}
   .booking-section-heading{bottom:-27px!important;font-size:21px!important;line-height:1.14!important;}
   .tbc-booking-wrap{bottom:-250px!important;}
+}
+</style>
+
+<style is:global>
+/* VERIFIED STRUCTURAL FIX — booking lives below hero, not absolutely inside it */
+.site-header .logo > a.header-logo-whatsapp > img.header-logo-whatsapp-icon{
+  width:15px!important;height:15px!important;max-width:15px!important;min-width:15px!important;
+  flex:0 0 15px!important;object-fit:contain!important;
+}
+.site-header .logo > a.header-logo-whatsapp{
+  height:32px!important;min-height:32px!important;padding:0 10px!important;gap:6px!important;
+  font-size:10.5px!important;line-height:1!important;
+}
+.tbc-video-hero{overflow:hidden!important;}
+.tbc-video-hero::before{
+  content:""!important;display:block!important;position:absolute!important;inset:0!important;z-index:1!important;
+  pointer-events:none!important;background:rgba(7,48,88,.18)!important;
+}
+.tbc-video-content{
+  position:absolute!important;inset:0!important;left:0!important;right:0!important;top:0!important;bottom:0!important;
+  transform:none!important;margin:0!important;padding:44px 24px!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;
+}
+.tbc-video-title{font-size:clamp(39px,3.35vw,51px)!important;line-height:1.06!important;max-width:860px!important;}
+.tbc-hero-form{background:#fff!important;padding-bottom:0!important;}
+.booking-section-heading{
+  position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;
+  z-index:5!important;width:min(1080px,calc(100% - 36px))!important;margin:-6px auto 12px!important;padding:0 12px!important;
+  text-align:center!important;white-space:normal!important;font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
+  font-size:clamp(23px,1.65vw,28px)!important;line-height:1.12!important;font-weight:600!important;letter-spacing:-.018em!important;color:#0b4f8f!important;
+}
+.booking-section-heading .booking-brand-blue,.booking-section-heading .booking-brand-gold{font-size:1em!important;font-weight:600!important;}
+.tbc-booking-wrap{
+  position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;
+  width:min(1080px,calc(100% - 36px))!important;margin:0 auto 26px!important;z-index:5!important;
+}
+.tbc-booking-box{margin:0!important;}
+.infinite-slider-section{margin-top:0!important;padding-top:18px!important;}
+@media(max-width:1000px){
+  .site-header .logo > a.header-logo-whatsapp > img.header-logo-whatsapp-icon{width:14px!important;height:14px!important;max-width:14px!important;min-width:14px!important;flex-basis:14px!important;}
+  .booking-section-heading{margin:10px auto 10px!important;font-size:24px!important;}
+  .tbc-booking-wrap{width:calc(100% - 24px)!important;margin-bottom:22px!important;}
+}
+@media(max-width:680px){
+  .site-header .logo > a.header-logo-whatsapp{width:30px!important;height:30px!important;padding:0!important;justify-content:center!important;}
+  .site-header .logo > a.header-logo-whatsapp > img.header-logo-whatsapp-icon{width:14px!important;height:14px!important;max-width:14px!important;min-width:14px!important;}
+  .booking-section-heading{width:calc(100% - 22px)!important;font-size:20px!important;margin:10px auto 8px!important;}
+  .tbc-booking-wrap{width:calc(100% - 16px)!important;margin-bottom:18px!important;}
+  .tbc-video-title{font-size:30px!important;}
 }
 </style>
