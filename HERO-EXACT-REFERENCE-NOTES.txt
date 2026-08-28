@@ -1,0 +1,6 @@
+Hero exact-reference pass:
+- Desktop header/hero layout styled to match supplied reference screenshot.
+- Existing CappadociaGo text/content retained.
+- Booking controls (Select Tour / Dates / Select Person / calendar internals) were not restyled.
+- Hero background restored to the landscape image used in the reference-style build.
+- Partner review badges hidden; trust row shown as in reference.
