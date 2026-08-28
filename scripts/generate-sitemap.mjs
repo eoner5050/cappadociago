@@ -21,7 +21,6 @@ const IMPORTANT_SUFFIXES = [
   '/tours/green-tour-cappadocia/',
   '/balloon-tours/',
   '/cappadocia-tours/',
-  '/flight-status/',
 ];
 
 function xmlEscape(value) {

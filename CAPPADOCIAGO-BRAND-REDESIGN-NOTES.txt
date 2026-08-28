@@ -1,0 +1,16 @@
+CAPPADOCIAGO BRAND REDESIGN
+
+- Original full-color CappadociaGo logo preserved.
+- Header restyled around logo blue + gold palette.
+- Homepage hero/booking chrome moved to CappadociaGo blue/gold palette.
+- Homepage date picker recolored to logo palette; existing date-range logic preserved.
+- Homepage popular tour cards redesigned as photo-led premium product cards inspired by the supplied Discovery references.
+- Tour detail presentation restyled into a cleaner gallery + content + right-sidebar layout inspired by the supplied reference.
+- Existing booking/calendar logic kept; only visual palette and surface styling updated.
+- Supabase browser-side key loading accepts PUBLIC_SUPABASE_PUBLISHABLE_KEY or PUBLIC_SUPABASE_ANON_KEY.
+- Flight Status sitemap seed removed.
+- Admin/Supabase tables and reservation logic were not removed.
+
+After extracting:
+  npm ci
+  npm run build

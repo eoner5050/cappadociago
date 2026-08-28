@@ -1494,7 +1494,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // LIVE SUPABASE PRICE & AVAILABILITY CALENDAR – EN
   // =========================================================
   const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
-  const SUPABASE_KEY = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  const SUPABASE_KEY = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
   const TBC_PRODUCT_SLUG = 'private-cappadocia-mix-tour';
   const tbcMonthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const tbcText = {'left': 'left', 'closed': 'Closed', 'sold': 'Sold out', 'unavailable': 'Unavailable', 'loading': 'Loading availability...', 'selectPeople': 'Select People', 'person': 'Person', 'people': 'People', 'children': 'Children are included in this number of people.', 'unit': 'Price per person', 'total': 'Total price', 'request': 'New Reservation Request', 'name': 'Name', 'phone': 'Phone', 'date': 'Date', 'guests': 'People', 'message': 'Message', 'alert': 'Please complete name, phone, date and number of people before sending.'};
@@ -1635,3 +1635,4 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <FloatingAssistant lang="en" />
+<link rel="stylesheet" href="/cappadociago-brand-v2.css" />

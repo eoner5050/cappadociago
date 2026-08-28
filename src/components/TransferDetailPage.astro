@@ -7,7 +7,7 @@ const C = {
  es:{weekdays:["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"],selectDate:"Seleccionar fecha",selectPeople:"Seleccionar personas",children:"Los niños también están incluidos en este número de personas.",unit:"Precio por persona",total:"Precio total",home:"Inicio",transfers:"Traslados",service:"Servicio de Traslado",areas:"Zonas de Servicio",why:"¿Por Qué Elegir Este Servicio?",price:"Precio del Traslado",contact:"Contactar por WhatsApp",form:"Formulario de Reserva Rápida",formText:"Déjanos tus datos y nuestro equipo se pondrá en contacto contigo lo antes posible.",name:"Nombre Completo",phone:"Teléfono",date:"Fecha",people:"Número de Personas",message:"Tu Mensaje",send:"Enviar Solicitud de Reserva",reviews:"Reseñas"}
 }[lang];
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || "";
-const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || "";
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY || "";
 const links={en:`/en/transfers/${slug}`,tr:`/tr/transfers/${slug}`,es:`/es/transfers/${slug}`};
 ---
 <!doctype html><html lang={lang}><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">

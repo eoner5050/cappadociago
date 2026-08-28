@@ -1472,7 +1472,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // LIVE SUPABASE PRICE & AVAILABILITY CALENDAR – TR
   // =========================================================
   const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
-  const SUPABASE_KEY = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  const SUPABASE_KEY = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
   const TBC_PRODUCT_SLUG = 'goreme-comfort-hot-air-balloon-tour';
   const tbcMonthNames = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
   const tbcText = {'left': 'yer kaldı', 'closed': 'Kapalı', 'sold': 'Dolu', 'unavailable': 'Müsait değil', 'loading': 'Müsaitlik yükleniyor...', 'selectPeople': 'Kişi Seçin', 'person': 'Kişi', 'people': 'Kişi', 'children': 'Çocuklar da bu kişi sayısına dahildir.', 'unit': 'Kişi başı fiyat', 'total': 'Toplam fiyat', 'request': 'Yeni Rezervasyon Talebi', 'name': 'Ad Soyad', 'phone': 'Telefon', 'date': 'Tarih', 'guests': 'Kişi', 'message': 'Mesaj', 'alert': 'Lütfen ad, telefon, tarih ve kişi sayısı alanlarını tamamlayın.'};
@@ -1613,3 +1613,4 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <FloatingAssistant lang="tr" />
+<link rel="stylesheet" href="/cappadociago-brand-v2.css" />

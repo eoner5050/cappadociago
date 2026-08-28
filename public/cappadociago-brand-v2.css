@@ -1,0 +1,57 @@
+:root{
+  --cg-blue:#075aa6;
+  --cg-blue-deep:#062d63;
+  --cg-navy:#071d49;
+  --cg-sky:#eaf5ff;
+  --cg-gold:#c89112;
+  --cg-gold-bright:#e9aa18;
+  --cg-gold-soft:#fff6d9;
+  --cg-ink:#0b1d36;
+  --cg-muted:#607086;
+  --cg-line:#dce6ef;
+  --cg-bg:#f5f9fd;
+  --cg-white:#fff;
+}
+html,body{background:var(--cg-bg)!important;color:var(--cg-ink)!important}
+body{font-family:'Plus Jakarta Sans',Inter,Arial,sans-serif!important}
+/* Header: original logo stays in full color */
+.site-header,.tbc-sh{background:#fff!important;border-top:3px solid var(--cg-gold)!important;border-bottom:1px solid #dfe8f1!important;box-shadow:0 8px 26px rgba(7,45,99,.07)!important}
+.header-container,.tbc-sh-inner{min-height:86px!important}
+.logo img,.tbc-sh-logo img{filter:none!important;opacity:1!important;mix-blend-mode:normal!important;object-fit:contain!important}
+.main-nav a,.tbc-sh-nav a{color:var(--cg-navy)!important;font-weight:800!important}
+.main-nav a:hover,.main-nav a.active,.tbc-sh-nav a:hover,.tbc-sh-nav a.active{color:var(--cg-blue)!important}
+.main-nav a:after,.tbc-sh-nav a.active:after{background:linear-gradient(90deg,var(--cg-blue),var(--cg-gold))!important}
+.lang-btn,.tbc-sh-language-btn{background:#f7fbff!important;border:1px solid #cadbea!important;color:var(--cg-navy)!important}
+.whatsapp-btn,.tbc-sh-whatsapp{border-radius:999px!important;padding:10px 14px!important;background:#fff!important;color:var(--cg-navy)!important;border:1px solid #cfe0ec!important}
+.whatsapp-btn:hover,.tbc-sh-whatsapp:hover{border-color:#1fb56b!important;background:#effcf5!important}
+.header-instagram,.tbc-sh-instagram{background:#fff!important;border-color:#dbe6ef!important;color:var(--cg-blue-deep)!important}
+/* Tour detail: Discovery-inspired clean two-column content */
+.tbc-tour-page{background:linear-gradient(180deg,#f7fbff 0,#f4f8fc 100%)!important;padding-top:26px!important}
+.tbc-tour-container{max-width:1180px!important}
+.tbc-breadcrumb{font-size:11px!important;color:#6b7b90!important;margin-bottom:16px!important}
+.tbc-breadcrumb a{color:var(--cg-blue)!important}
+.tbc-tour-hero{background:#fff!important;border:1px solid var(--cg-line)!important;border-radius:22px!important;padding:24px 28px!important;box-shadow:0 10px 30px rgba(7,45,99,.06)!important}
+.tbc-tour-kicker{display:inline-flex!important;background:var(--cg-gold-soft)!important;color:#825e08!important;border:1px solid #efd58e!important;border-radius:999px!important;padding:6px 11px!important;font-size:9px!important;font-weight:900!important;letter-spacing:.08em!important}
+.tbc-tour-title{color:var(--cg-navy)!important;font-size:clamp(27px,3vw,42px)!important;letter-spacing:-.04em!important;line-height:1.08!important;margin:12px 0 9px!important}
+.tbc-tour-desc{color:#52647a!important;font-size:13px!important;line-height:1.72!important;max-width:900px!important}
+.tbc-hero-badges-bar{border-top:1px solid #e6edf4!important;margin-top:18px!important;padding-top:15px!important;gap:8px!important}
+.tbc-badge-item{background:#f8fbfe!important;border:1px solid #d9e5ef!important;color:var(--cg-blue-deep)!important;border-radius:999px!important;padding:8px 12px!important;font-size:10px!important;box-shadow:none!important}
+.tbc-stars{color:var(--cg-gold-bright)!important}.tbc-badge-link{color:var(--cg-blue)!important}
+.tbc-photo-grid-wrapper{margin-top:18px!important;background:#fff!important;border:1px solid var(--cg-line)!important;border-radius:22px!important;padding:8px!important;gap:7px!important;box-shadow:0 10px 30px rgba(7,45,99,.06)!important;overflow:hidden!important}
+.tbc-main-photo,.tbc-side-photo-item{border-radius:15px!important;overflow:hidden!important}.tbc-main-photo img,.tbc-side-photo-item img{transition:transform .35s ease!important}.tbc-main-photo:hover img,.tbc-side-photo-item:hover img{transform:scale(1.025)!important}
+.tbc-photo-badge{background:#fff!important;color:var(--cg-navy)!important;border:1px solid #d7e4ee!important;border-radius:10px!important;font-size:10px!important;font-weight:800!important}
+.tbc-tour-grid{grid-template-columns:minmax(0,1.8fr) minmax(300px,.85fr)!important;gap:22px!important;margin-top:22px!important;align-items:start!important}
+.tbc-tour-card{border:1px solid var(--cg-line)!important;border-radius:22px!important;background:#fff!important;box-shadow:0 10px 28px rgba(7,45,99,.06)!important}
+.tbc-tour-main-card{padding:0!important;overflow:hidden!important}
+.tbc-tour-section{padding:22px 24px!important;border-bottom:1px solid #e9eff5!important;margin:0!important}
+.tbc-tour-section:last-child{border-bottom:0!important}.tbc-tour-section h2{color:var(--cg-navy)!important;font-size:19px!important;letter-spacing:-.025em!important;margin:0 0 10px!important}.tbc-tour-section p{color:#50627a!important;font-size:12.5px!important;line-height:1.75!important;margin:0 0 10px!important}
+.tbc-tour-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px 14px!important}.tbc-tour-list-item{font-size:11.5px!important;color:#334a65!important;gap:8px!important}.tbc-tour-check{width:24px!important;height:24px!important;min-width:24px!important;border-radius:50%!important;background:var(--cg-sky)!important;color:var(--cg-blue)!important;display:grid!important;place-items:center!important;font-size:11px!important}
+.tbc-tour-side{position:sticky!important;top:105px!important}.tbc-tour-price-value{color:var(--cg-gold)!important}.tbc-tour-badge{background:var(--cg-gold-soft)!important;border-color:#efdca2!important;color:#7a5908!important}
+.tbc-tour-contact-link,.tbc-tour-whatsapp{border-color:#cbddea!important;color:var(--cg-navy)!important}.tbc-tour-contact-link:hover,.tbc-tour-whatsapp:hover{background:var(--cg-sky)!important;border-color:#a9cce4!important}
+.tbc-reviews-card{margin-top:22px!important}.tbc-review-user-avatar{background:linear-gradient(135deg,var(--cg-blue),var(--cg-navy))!important}.tbc-review-stars{color:var(--cg-gold-bright)!important}
+/* Existing detail booking/calendar: logic unchanged, palette upgraded */
+.tbc-booking-card{border-top:4px solid var(--cg-blue)!important}.tbc-booking-head h3{color:var(--cg-navy)!important}.tbc-booking-group input,.tbc-booking-group select,.tbc-booking-group textarea,.tbc-phone-group .iti__tel-input{border-color:#cddce8!important;border-radius:12px!important}.tbc-booking-group input:focus,.tbc-booking-group select:focus,.tbc-booking-group textarea:focus,.tbc-phone-group .iti__tel-input:focus{border-color:var(--cg-blue)!important;box-shadow:0 0 0 3px rgba(7,90,166,.10)!important}.tbc-booking-submit{background:linear-gradient(135deg,var(--cg-blue),#0b76c7)!important;color:#fff!important;box-shadow:0 8px 20px rgba(7,90,166,.20)!important}.tbc-booking-submit:hover{background:linear-gradient(135deg,var(--cg-navy),var(--cg-blue))!important}
+.tbc-custom-calendar{border:1px solid #c8dcea!important;border-top:4px solid var(--cg-gold)!important;background:#fff!important}.tbc-cal-title{color:var(--cg-navy)!important}.tbc-cal-nav,.tbc-calendar-icon{background:var(--cg-sky)!important;color:var(--cg-blue)!important}.tbc-cal-day{background:#f7fbff!important;border:1px solid #dfeaf3!important;color:var(--cg-navy)!important}.tbc-cal-day:hover:not(.is-disabled){background:var(--cg-gold-soft)!important;border-color:#efd077!important}.tbc-cal-day.is-selected{background:var(--cg-blue)!important;color:#fff!important;border-color:var(--cg-blue)!important}.tbc-cal-day-price{color:var(--cg-gold)!important}.tbc-selected-price-box{background:linear-gradient(135deg,#f1f9ff,#fff9e9)!important;border-color:#ccdfea!important}.tbc-selected-price-box strong{color:var(--cg-blue)!important}
+/* Footer */
+.tbc-site-footer{border-top:4px solid var(--cg-gold)!important;background:#fff!important}
+@media(max-width:900px){.tbc-tour-grid{grid-template-columns:1fr!important}.tbc-tour-side{position:static!important}.tbc-tour-list{grid-template-columns:1fr!important}}
