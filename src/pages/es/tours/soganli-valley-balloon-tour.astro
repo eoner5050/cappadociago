@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "es",
+  "slug": "soganli-valley-balloon-tour",
+  "title": "Tour en Globo por el Valle de Soğanlı (Vuelo Comfort)",
+  "hero": "Disfruta de un tranquilo vuelo en globo al amanecer sobre el Valle de Soğanlı con traslado al hotel, desayuno ligero y operación profesional.",
+  "image": "/images/tours/tbc-soganli-valley-balloon-tour.webp",
+  "rating": "4.87",
+  "reviewCount": 18,
+  "duration": "1 Hora",
+  "price": "160 €",
+  "badges": [
+    "Valle de Soğanlı",
+    "Vuelo Comfort",
+    "Traslado Hotel"
+  ],
+  "sections": [
+    {
+      "title": "Resumen del Tour en Globo por Soğanlı",
+      "paragraphs": [
+        "El Valle de Soğanlı ofrece un ambiente de vuelo más tranquilo entre formaciones rocosas, valles y paisajes tradicionales de Capadocia. El vuelo Comfort se organiza con una cesta más espaciosa."
+      ]
+    },
+    {
+      "title": "Precio del Tour en Globo por Soğanlı",
+      "paragraphs": [
+        "El tour está disponible desde 160 Euro por persona. Los precios y la disponibilidad diarios se muestran en el calendario de reserva."
+      ]
+    },
+    {
+      "title": "Programa del Tour",
+      "paragraphs": [
+        "Incluye recogida por la mañana, traslado al área de vuelo, desayuno ligero, vuelo de aproximadamente una hora, celebración y regreso al hotel."
+      ]
+    }
+  ],
+  "included": [
+    "Recogida y regreso al hotel",
+    "Soporte operativo profesional",
+    "Seguro cuando corresponda",
+    "Soporte de reserva"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Disponibilidad diaria en vivo",
+    "Reserva fácil por WhatsApp",
+    "Soporte local profesional",
+    "Planificación flexible"
+  ],
+  "gallery": [
+    "/images/tours/tbc-soganli-valley-balloon-tour.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

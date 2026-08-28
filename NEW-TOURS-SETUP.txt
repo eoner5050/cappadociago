@@ -1,0 +1,37 @@
+CAPPADOCIAGO - NEW TOURS / HOMEPAGE HANDOFF
+
+Added in EN / TR / ES:
+- Cappadocia Custom Package Tour (Ask for Price)
+- Private Red Tour Cappadocia
+- Private Green Tour Cappadocia
+- Cappadocia Mix Tour
+
+Homepage:
+- Slider cards are clickable and open their tour pages.
+- Hero booking Search redirects to the selected tour/transfer.
+- Selected start date and people count are passed in the URL.
+- Destination booking forms preselect the date/people and show the live Supabase price when available.
+- Removed unsupported 2-Day / 3-Day package choices from the hero selector.
+- Added Cappadocia Custom Package Tour to the selector.
+
+Pricing behavior:
+- Private Red / Private Green / Cappadocia Mix use GROUP price (not multiplied by guest count).
+- Cappadocia Custom Package Tour shows Ask for Price.
+- Other existing per-person tours keep per-person price x people total calculation.
+
+Supabase:
+Run supabase/live-booking-update.sql once in Supabase SQL Editor.
+This adds/updates the four new products.
+
+IMPORTANT:
+Keep your existing .env file. It is not included in this package.
+Required variables:
+PUBLIC_SUPABASE_URL=...
+PUBLIC_SUPABASE_PUBLISHABLE_KEY=...
+
+Test:
+1) npm run dev
+2) Open /en/, /tr/, /es/
+3) Select a tour + date + people in the homepage hero form.
+4) Click Search.
+5) Confirm destination page opens with date/people/live price preselected.

@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "en",
+  "slug": "ihlara-valley-balloons-tour",
+  "title": "Ihlara Valley Sunrise Balloon Tour",
+  "hero": "See Ihlara Valley from the sky at sunrise with a professional balloon flight, hotel transfer and light breakfast.",
+  "image": "/images/tours/Ihlara-Valley-Balloons-Tour.webp",
+  "rating": "4.89",
+  "reviewCount": 17,
+  "duration": "1 Hour",
+  "price": "60 €",
+  "badges": [
+    "Ihlara Valley",
+    "1-Hour Flight",
+    "Hotel Transfer"
+  ],
+  "sections": [
+    {
+      "title": "Ihlara Valley Sunrise Balloon Tour Overview",
+      "paragraphs": [
+        "This special sunrise flight offers a different perspective over Ihlara Valley’s canyon landscapes and natural scenery. The program starts early in the morning and includes transfers and pre-flight preparation."
+      ]
+    },
+    {
+      "title": "Ihlara Valley Balloon Tour Price",
+      "paragraphs": [
+        "Prices start from 60 Euro per person. Check the live calendar for current daily prices and availability."
+      ]
+    },
+    {
+      "title": "What Awaits You During the Flight?",
+      "paragraphs": [
+        "Enjoy peaceful morning views, changing light and a panoramic perspective of the valley while flying with a professional pilot."
+      ]
+    }
+  ],
+  "included": [
+    "Hotel pickup and drop-off",
+    "Professional operation support",
+    "Full insurance where applicable",
+    "Reservation support"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Live daily availability",
+    "Easy WhatsApp reservation",
+    "Professional local support",
+    "Flexible planning"
+  ],
+  "gallery": [
+    "/images/tours/Ihlara-Valley-Balloons-Tour.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

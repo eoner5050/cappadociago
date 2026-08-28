@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "en",
+  "slug": "pamukkale-balloons-tour",
+  "title": "Pamukkale Hot Air Balloon Tour",
+  "hero": "Watch sunrise over Pamukkale’s white travertines and surrounding landscape on an unforgettable hot air balloon flight.",
+  "image": "/images/tours/Pamukkale-Balloons-Tour.webp",
+  "rating": "4.95",
+  "reviewCount": 21,
+  "duration": "1 Hour",
+  "price": "90 €",
+  "badges": [
+    "Pamukkale",
+    "1-Hour Flight",
+    "Hotel Transfer"
+  ],
+  "sections": [
+    {
+      "title": "Pamukkale Hot Air Balloon Tour Overview",
+      "paragraphs": [
+        "Fly above Pamukkale at sunrise and enjoy a panoramic view of the travertines, surrounding countryside and historic landscape."
+      ]
+    },
+    {
+      "title": "Pamukkale Hot Air Balloon Tour Price",
+      "paragraphs": [
+        "The flight is available from 90 Euro per person. Live daily prices and availability are displayed in the booking calendar."
+      ]
+    },
+    {
+      "title": "What Awaits You During the Flight?",
+      "paragraphs": [
+        "After early pickup and flight preparation, enjoy approximately one hour in the sky followed by landing support and return transfer."
+      ]
+    }
+  ],
+  "included": [
+    "Hotel pickup and drop-off",
+    "Professional operation support",
+    "Full insurance where applicable",
+    "Reservation support"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Live daily availability",
+    "Easy WhatsApp reservation",
+    "Professional local support",
+    "Flexible planning"
+  ],
+  "gallery": [
+    "/images/tours/Pamukkale-Balloons-Tour.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

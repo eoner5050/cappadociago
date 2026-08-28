@@ -1,0 +1,17 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+const data = {
+  lang:"tr", slug:"blue-tour-cappadocia", title:"Blue Tour Cappadocia",
+  hero:"Ortahisar, Mustafapaşa, Soğanlı Vadisi ve Kaymaklı Yeraltı Şehri rotasında Kapadokya’nın farklı yüzünü keşfedin.",
+  image:"/images/tours/Blue-Tour-Cappadocia.webp", rating:"4.90", reviewCount:32, duration:"Tam Gün", price:"",
+  badges:["Tam Gün", "Profesyonel Rehber", "Otel Transferi"],
+  sections:[{title:"Blue Tour Cappadocia",paragraphs:["Kapadokya’nın etkileyici oluşumlarını ve eşsiz manzaralarını farklı bir rota üzerinden keşfetmek isteyen misafirler için Blue Tour Cappadocia, bölgenin özgün vadilerini ve tarihi yerleşimlerini bir araya getirir."]},{title:"Blue Tour Cappadocia Hakkında",paragraphs:["Blue Tour Cappadocia, bölgede daha farklı bir deneyim arayanlar için uygun bir seçenektir. Rota; yerel tarih, geleneksel köyler, vadiler ve yeraltı mirasını bir araya getirerek bol fotoğraf ve unutulmaz anı fırsatı sunar."]},{title:"Blue Tour Cappadocia Neleri Kapsar?",paragraphs:["Tur yaklaşık 09:30’da başlar. Tur öncesinde otelinizden alınır, gün boyunca profesyonel rehber eşliğinde ziyaret edilen noktalar hakkında bilgi edinirsiniz."]},{title:"Cappadocia Blue Tour Rotası",paragraphs:["Otelinizden alındıktan sonra ilk olarak Ortahisar’a gidilir. Ardından Bizans dönemine uzanan tarihi ve taş mimarisiyle bilinen Mustafapaşa Köyü ziyaret edilir.", "Rota daha sonra doğal güzellikleri ve kaya oyma mirasıyla dikkat çeken Soğanlı Vadisi’ne devam eder. Günün son önemli durağı, yüzyıllardır korunan büyüleyici yeraltı dünyasını keşfedebileceğiniz Kaymaklı Yeraltı Şehri’dir. Tur sonunda otelinize transfer sağlanır."]},{title:"Blue Tour Cappadocia Rezervasyonu",paragraphs:["Size uygun tarihi seçerek rezervasyon talebinizi gönderin. Ekibimiz güncel müsaitliği kontrol ederek Blue Tour deneyiminizi organize etmenize yardımcı olacaktır."]}],
+  included:["Otel alımı", "Ortahisar", "Mustafapaşa", "Soğanlı Vadisi", "Kaymaklı Yeraltı Şehri", "Otele dönüş"],
+  notIncluded:["Kişisel harcamalar", "Opsiyonel satın alımlar ve ekstra aktiviteler"],
+  highlights:["Ortahisar", "Mustafapaşa", "Soğanlı Vadisi", "Kaymaklı Yeraltı Şehri"],
+  gallery:["/images/tours/Blue-Tour-Cappadocia.webp","/images/tours/Blue-Tour-Cappadocia (1).webp","/images/tours/Blue-Tour-Cappadocia (2).webp","/images/tours/Blue-Tour-Cappadocia (3).webp","/images/tours/Blue-Tour-Cappadocia (4).webp","/images/tours/Blue-Tour-Cappadocia (5).webp"]
+};
+---
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

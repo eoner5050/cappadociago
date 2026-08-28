@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "tr",
+  "slug": "soganli-valley-balloon-tour",
+  "title": "Soğanlı Vadisi Sıcak Hava Balonu Turu (Konfor Uçuşu)",
+  "hero": "Soğanlı Vadisi üzerinde otel transferi, hafif kahvaltı ve profesyonel uçuş operasyonuyla sakin ve konforlu bir gün doğumu balon deneyimi yaşayın.",
+  "image": "/images/tours/tbc-soganli-valley-balloon-tour.webp",
+  "rating": "4.87",
+  "reviewCount": 18,
+  "duration": "1 Saat",
+  "price": "160 €",
+  "badges": [
+    "Soğanlı Vadisi",
+    "Konfor Uçuşu",
+    "Otel Transferi"
+  ],
+  "sections": [
+    {
+      "title": "Soğanlı Vadisi Balon Turu Genel Bakış",
+      "paragraphs": [
+        "Soğanlı Vadisi kaya oluşumları, vadileri ve geleneksel Kapadokya manzaralarıyla daha sakin bir balon uçuş atmosferi sunar. Konfor uçuşu daha ferah sepet düzeniyle planlanır."
+      ]
+    },
+    {
+      "title": "Soğanlı Vadisi Balon Turu Fiyatı",
+      "paragraphs": [
+        "Tur kişi başı 160 Euro’dan başlamaktadır. Günlük fiyat ve müsaitlik rezervasyon takviminde gösterilir."
+      ]
+    },
+    {
+      "title": "Tur Programı",
+      "paragraphs": [
+        "Sabah otelden alınış, uçuş alanına transfer, hafif kahvaltı, yaklaşık bir saatlik balon uçuşu, kutlama ve dönüş transferi programa dahildir."
+      ]
+    }
+  ],
+  "included": [
+    "Otelden alma ve bırakma",
+    "Profesyonel operasyon desteği",
+    "Uygun olduğu durumlarda sigorta",
+    "Rezervasyon desteği"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Canlı günlük müsaitlik",
+    "Kolay WhatsApp rezervasyonu",
+    "Profesyonel yerel destek",
+    "Esnek planlama"
+  ],
+  "gallery": [
+    "/images/tours/tbc-soganli-valley-balloon-tour.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

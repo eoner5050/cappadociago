@@ -1,0 +1,47 @@
+---
+import StandardizedPrivateTourPage from './StandardizedPrivateTourPage.astro';
+
+const {
+  lang = 'en', slug, title, hero = '', image, rating = '', reviewCount = 0,
+  duration = 'Flexible', price = '', badges = [], sections = [], included = [],
+  notIncluded = [], highlights = [], gallery = [], priceMode = 'perPerson'
+} = Astro.props;
+
+const overviewSections = sections.filter((s) => !/price/i.test(s.title || ''));
+const priceSection = sections.find((s) => /price/i.test(s.title || ''));
+const overviewTitle = overviewSections[0]?.title || (lang==='tr' ? `${title} Hakkında` : lang==='es' ? `Información sobre ${title}` : `${title} Overview`);
+const overviewParagraphs = overviewSections[0]?.paragraphs || [hero];
+const extraSections = [
+  ...overviewSections.slice(1).map((s) => ({ title: s.title, paragraphs: s.paragraphs || [] })),
+  ...(notIncluded.length ? [{
+    title: lang==='tr' ? 'Fiyata Dahil Olmayanlar' : lang==='es' ? 'No Incluido' : 'What’s Not Included',
+    items: notIncluded
+  }] : [])
+];
+const numericPrice = Number(String(price).replace(/[^0-9.,]/g,'').replace(',','.')) || 0;
+const effectivePriceMode = priceMode || 'perPerson';
+---
+<StandardizedPrivateTourPage
+  lang={lang}
+  slug={slug}
+  title={title}
+  heroDesc={hero}
+  overviewTitle={overviewTitle}
+  overviewParagraphs={overviewParagraphs}
+  priceTitle={priceSection?.title || (lang==='tr' ? `${title} Fiyatı` : lang==='es' ? `Precio de ${title}` : `${title} Price`)}
+  priceText={priceSection?.paragraphs?.join(' ') || (numericPrice ? `${price}` : '')}
+  included={included}
+  importantTitle={lang==='tr' ? 'Öne Çıkanlar' : lang==='es' ? 'Aspectos Destacados' : 'Highlights'}
+  important={highlights}
+  detailsTitle={lang==='tr' ? 'Tur Detayları' : lang==='es' ? 'Detalles del Tour' : 'Tour Details'}
+  details={overviewSections.slice(1).flatMap((s)=>s.paragraphs || [])}
+  extraSections={extraSections}
+  duration={duration}
+  rating={rating}
+  reviewCount={reviewCount}
+  mainImage={image}
+  galleryImages={gallery.filter((x)=>x && x!==image)}
+  priceMode={effectivePriceMode}
+  sidebarBadges={badges}
+  sideHighlights={highlights.slice(0,5)}
+/>

@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "tr",
+  slug: "cappadocia-pottery-making-experience",
+  title: "Kapadokya Çömlek Yapımı Deneyimi",
+  hero: "Avanos'un çömlek kültürünü kısa bir uygulamalı deneyim, otel transferi ve geleneksel seramik sanatını keşfetme fırsatıyla yaşayın.",
+  image: "/images/tours/tbc-cappadocia-pottery-making-experience.webp",
+  rating: "4.60",
+  reviewCount: 11,
+  duration: "20 Dakika",
+  price: "15 €",
+  badges: ["Çömlek", "20 Dakika", "Otel Transferi"],
+  sections: [{"title": "Kapadokya Çömlek Yapımı – Özel Deneyim", "paragraphs": ["Avanos, Kızılırmak'ın kırmızı kilinden şekillenen çömlekçilik ve seramik geleneğiyle ünlüdür. Bu kısa aktivitede geleneksel bir atölyeyi ziyaret eder ve çömlek yapımının temelini deneyimlersiniz.", "Program yaklaşık 20 dakika sürer. Otelinizden alınır, atölyeye götürülür ve deneyim sonrasında tekrar otelinize bırakılırsınız."]}, {"title": "Avanos Çömlekçiliği Hakkında", "paragraphs": ["Çömlekçilik yüzyıllardır Avanos kültürünün önemli bir parçasıdır. Ziyaret sırasında yerel ustaları izleyebilir, çömlek tornasını deneyebilir ve el yapımı seramik ürünlerini inceleyebilirsiniz."]}],
+  included: ["Otelden alma ve bırakma", "10–15 dakikalık çömlek yapımı uygulaması", "Çömlek alışverişi imkânı", "Alkolsüz içecekler", "Araç, sürücü ve yakıt"],
+  notIncluded: [],
+  highlights: ["Uygulamalı çömlek tornası deneyimi", "Geleneksel Avanos atölyesi", "Kısa ve kolay aktivite", "Otel transferi dahil"],
+  gallery: ["/images/tours/tbc-cappadocia-pottery-making-experience.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

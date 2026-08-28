@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "es",
+  slug: "cappadocia-classic-car-tour",
+  title: "Tour en Coche Clásico por Capadocia",
+  hero: "Disfruta de un paseo privado y nostálgico por los valles y miradores de Capadocia en un coche clásico, con opciones al amanecer, atardecer o durante el día.",
+  image: "/images/tours/Cappadocia-Classic-Car-Tour.webp",
+  rating: "4.56",
+  reviewCount: 8,
+  duration: "1 Hora",
+  price: "60 €",
+  badges: ["Coche Clásico", "Fotos", "Paseo Privado"],
+  sections: [{"title": "Sobre el Tour en Coche Clásico", "paragraphs": ["Este tour está pensado para quienes desean una experiencia especial de paseo y fotografía en un coche clásico. La ruta puede adaptarse al clima, tráfico y horario elegido."]}, {"title": "Precio del Tour", "paragraphs": ["La experiencia en coche clásico está disponible desde 60 Euro por hora. Contáctanos para conocer la disponibilidad y el mejor horario."]}, {"title": "Lugares Destacados", "paragraphs": ["Los lugares populares incluyen Love Valley, Rose Valley y miradores de Göreme. La ruta exacta puede variar."]}],
+  included: ["Coche clásico privado", "Conductor profesional", "Apoyo de traslado", "Plan flexible amanecer/atardecer", "Paradas para fotos"],
+  notIncluded: [],
+  highlights: ["Love Valley", "Rose Valley", "Zona panorámica de Göreme", "Paradas privadas para fotos"],
+  gallery: ["/images/tours/Cappadocia-Classic-Car-Tour.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

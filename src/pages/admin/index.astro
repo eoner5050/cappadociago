@@ -1,0 +1,185 @@
+---
+const title = "CappadociaGo — Admin";
+---
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <style is:global>
+    :root{
+      --navy:#0b1f3a;--blue:#17345d;--gold:#e3a800;--bg:#f4f7fb;
+      --white:#fff;--line:#dfe7ef;--muted:#64748b;--green:#159447;
+      --yellow:#d99a00;--red:#d83a3a;--gray:#8794a7;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--navy)}
+    button,input,select{font:inherit}
+    .shell{min-height:100vh;display:grid;grid-template-columns:230px 1fr}
+    aside{background:var(--navy);color:#fff;padding:26px 18px}
+    .brand{font-weight:900;line-height:1.2;margin-bottom:32px}.brand small{display:block;color:#e3a800;margin-top:4px}
+    .nav button{width:100%;text-align:left;border:0;background:transparent;color:#dce6f0;padding:12px 13px;border-radius:11px;font-weight:800;cursor:pointer}
+    .nav button.active,.nav button:hover{background:#17345d;color:#fff}
+    main{padding:26px}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}
+    .topbar h1{margin:0;font-size:28px}.userbar{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}
+    .btn{border:0;border-radius:11px;padding:11px 14px;font-weight:900;cursor:pointer}.btn.primary{background:var(--gold);color:var(--navy)}.btn.dark{background:var(--navy);color:#fff}.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--navy)}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 28px rgba(11,31,58,.06);padding:20px;margin-bottom:18px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.toolbar select,.toolbar input{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}
+    .month-nav{display:flex;gap:8px;align-items:center;margin-left:auto}.month-title{min-width:180px;text-align:center;font-weight:900}
+    .calendar{display:grid;grid-template-columns:repeat(7,minmax(170px,1fr));gap:12px;overflow-x:auto;padding:2px 2px 8px}
+    .dow{font-size:14px;font-weight:950;color:var(--navy);text-align:center;padding:8px 4px 10px;letter-spacing:.02em}
+    .day{min-height:228px;background:linear-gradient(180deg,#0f2948 0%,#0b213c 100%);border:1px solid #264a70;border-radius:16px;padding:11px;cursor:pointer;position:relative;box-shadow:0 8px 20px rgba(11,31,58,.12);color:#fff;transition:.18s ease}
+    .day.out{opacity:.52}.day:hover{transform:translateY(-2px);border-color:#e3a800;box-shadow:0 12px 25px rgba(11,31,58,.18)}
+    .day-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:9px;margin-bottom:8px;border-bottom:1px solid rgba(255,255,255,.16)}
+    .day-number{display:grid;place-items:center;min-width:38px;height:38px;padding:0 7px;border-radius:10px;background:#fff;color:var(--navy);font-weight:950;font-size:18px;box-shadow:inset 0 0 0 1px rgba(11,31,58,.08)}
+    .day-full-date{font-size:11px;color:#dce8f5;font-weight:900;letter-spacing:.02em;text-align:right}
+    .day-row{display:grid;grid-template-columns:68px 1fr;align-items:center;gap:8px;min-height:36px;padding:7px 8px;margin-top:6px;border-radius:9px;border:1px solid transparent}
+    .day-row.blue{background:#173b67;border-color:#2f5f91}.day-row.gold{background:#f5c94c;border-color:#e3a800;color:#0b1f3a}
+    .day-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:950;opacity:.88}
+    .day-row.blue .day-label{color:#cfe2f8}.day-row.gold .day-label{color:#604900}
+    .day-value{font-size:14px;font-weight:950;text-align:right;overflow-wrap:anywhere;color:inherit}
+    .day-price .day-value{font-size:16px}.day-status .day-value{font-size:13px}
+    .status{display:inline-flex;justify-content:center;align-items:center;font-size:10px;font-weight:950;padding:6px 8px;border-radius:999px;margin:0;text-align:center;justify-self:end}
+    .available{background:#dff6e8;color:#0f7138}.low{background:#fff1b8;color:#806000}.sold_out{background:#ffdada;color:#a61f1f}.closed{background:#e8edf4;color:#536276}
+    .ask-chip{display:block;margin-top:8px;padding:7px 8px;border-radius:8px;background:#e3a800;color:#0b1f3a;font-size:10px;font-weight:950;text-align:center}
+    #askPriceBtn{border:1px solid #edc955;background:#fff8dd;color:#805f00}
+    #askPriceBtn.on{background:var(--navy);border-color:var(--navy);color:#fff}
+    .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px}.login-card{width:min(420px,100%);background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 15px 40px rgba(11,31,58,.08)}
+    .login-card h1{margin:0 0 6px}.login-card p{color:var(--muted);font-size:13px}.field{margin:14px 0}.field label{display:block;font-size:12px;font-weight:900;margin-bottom:6px}.field input,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px}
+    .hidden{display:none!important}
+    dialog{width:min(520px,calc(100% - 30px));border:0;border-radius:18px;padding:0;box-shadow:0 25px 70px rgba(0,0,0,.25)}
+    .dialog-body{padding:22px}.dialog-body h3{margin-top:0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid .full{grid-column:1/-1}.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.product-card{border:1px solid var(--line);border-radius:13px;padding:15px}.product-card h3{font-size:14px;margin:0 0 8px}.product-card p{font-size:12px;color:var(--muted);margin:3px 0}
+    .notice{padding:10px 12px;border-radius:10px;background:#fff8dd;color:#805f00;font-size:12px;margin-bottom:14px}
+
+
+    .reservation-layout{display:grid;grid-template-columns:minmax(320px,430px) 1fr;gap:18px;align-items:start}
+    .reservation-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+    .reservation-card h2{margin:0 0 6px;font-size:20px}.reservation-card>p{margin:0 0 16px;color:var(--muted);font-size:12px}
+    .reservation-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.reservation-form-grid .full{grid-column:1/-1}
+    .reservation-form-grid label{display:block;font-size:11px;font-weight:950;margin-bottom:6px;color:#334b68}.reservation-form-grid input,.reservation-form-grid select,.reservation-form-grid textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;background:#fff;color:var(--navy)}
+    .reservation-form-grid textarea{min-height:105px;resize:vertical}.reservation-actions{display:flex;gap:8px;margin-top:14px}.reservation-actions .btn{flex:1}
+    .reservation-list{display:grid;gap:10px;max-height:680px;overflow:auto;padding-right:3px}.reservation-item{border:1px solid var(--line);border-radius:14px;padding:13px;background:#fbfcfe}.reservation-item-head{display:flex;justify-content:space-between;gap:10px;align-items:start;border-bottom:1px solid #edf1f6;padding-bottom:8px;margin-bottom:8px}.reservation-item h3{margin:0;font-size:14px}.reservation-date{font-size:11px;font-weight:900;color:#9a6900;background:#fff6d9;padding:5px 8px;border-radius:999px}.reservation-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 12px;font-size:11px;color:#43546b}.reservation-note{margin-top:8px;padding:9px;background:#eef5ff;border-radius:9px;font-size:11px;line-height:1.45}.reservation-item-actions{display:flex;justify-content:flex-end;margin-top:9px}.btn.danger{background:#fff0f0;color:#a72525;border:1px solid #f2caca}
+    @media(max-width:900px){.shell{grid-template-columns:1fr}aside{display:none}main{padding:14px}.products{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(7,minmax(155px,1fr))}.reservation-layout{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <section id="loginView" class="login-wrap">
+    <div class="login-card">
+      <h1>Yönetim Paneli</h1>
+      <p>Fiyat, kontenjan ve satış durumlarını yönetin.</p>
+      <div id="loginError" class="notice hidden"></div>
+      <form id="loginForm">
+        <div class="field"><label>E-posta</label><input id="email" type="email" required /></div>
+        <div class="field"><label>Şifre</label><input id="password" type="password" required /></div>
+        <button class="btn primary" style="width:100%" type="submit">Giriş Yap</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="appView" class="shell hidden">
+    <aside>
+      <div class="brand">CAPPADOCIAGO<small>CAPPADOCIA ADMIN</small></div>
+      <div class="nav">
+        <button class="active" data-tab="calendar">📅 Takvim</button>
+        <button data-tab="products">🎈 Ürünler</button>
+        <button data-tab="reservations">🧾 Rezervasyon Detayları</button>
+</div>
+    </aside>
+    <main>
+      <div class="topbar">
+        <div><h1 id="pageTitle">Fiyat & Kontenjan Takvimi</h1></div>
+        <div class="userbar"><span id="adminEmail"></span><button id="logoutBtn" class="btn ghost">Çıkış</button></div>
+      </div>
+
+      <section id="calendarTab">
+        <div class="panel">
+          <div class="toolbar">
+            <select id="productSelect"></select>
+            <button id="bulkBtn" class="btn primary">Tarih Aralığı Güncelle</button>
+            <button id="askPriceBtn" class="btn" type="button">💬 Ask For Price: Kapalı</button>
+            <div class="month-nav">
+              <button id="prevMonth" class="btn ghost">‹</button>
+              <div id="monthTitle" class="month-title"></div>
+              <button id="nextMonth" class="btn ghost">›</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div id="calendar" class="calendar"></div>
+        </div>
+      </section>
+
+      <section id="productsTab" class="hidden">
+        <div class="panel"><div id="productsGrid" class="products"></div></div>
+      </section>
+
+      <section id="reservationsTab" class="hidden">
+        <div class="reservation-layout">
+          <div class="reservation-card">
+            <h2>Manuel Rezervasyon Ekle</h2>
+            <p>Misafirin rezervasyon detaylarını tarih ve tur bazında kaydedin.</p>
+            <form id="reservationForm">
+              <input id="reservationId" type="hidden" />
+              <div class="reservation-form-grid">
+                <div><label>Rezervasyon Tarihi</label><input id="reservationDate" type="date" required /></div>
+                <div><label>Tur Adı</label><select id="reservationProduct" required></select></div>
+                <div><label>Müşteri Adı</label><input id="reservationName" type="text" required placeholder="Ad Soyad" /></div>
+                <div><label>Müşteri Sayısı</label><input id="reservationCount" type="number" min="1" value="1" required /></div>
+                <div><label>Otel</label><input id="reservationHotel" type="text" placeholder="Otel / Konaklama" /></div>
+                <div><label>Telefon</label><input id="reservationPhone" type="tel" placeholder="+90 ..." /></div>
+                <div class="full"><label>E-posta</label><input id="reservationEmail" type="email" placeholder="guest@example.com" /></div>
+                <div class="full"><label>Not</label><textarea id="reservationNote" placeholder="Pickup saati, özel istek, ödeme notu vb."></textarea></div>
+              </div>
+              <div class="reservation-actions"><button id="reservationReset" type="button" class="btn ghost">Temizle</button><button class="btn primary" type="submit">Rezervasyonu Kaydet</button></div>
+            </form>
+          </div>
+          <div class="reservation-card">
+            <h2>Kayıtlı Rezervasyonlar</h2>
+            <p>En yakın tarihli rezervasyonlar üstte gösterilir.</p>
+            <div id="reservationsList" class="reservation-list"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </section>
+
+  <dialog id="dayDialog">
+    <div class="dialog-body">
+      <h3 id="dayDialogTitle">Günü Güncelle</h3>
+      <form id="dayForm">
+        <input type="hidden" id="editDate" />
+        <div class="form-grid">
+          <div><label>Fiyat (€)</label><input id="editPrice" type="number" step="0.01" min="0" required /></div>
+          <div><label>Toplam Kontenjan</label><input id="editCapacity" type="number" min="0" required /></div>
+          <div><label>Satılan</label><input id="editBooked" type="number" min="0" required /></div>
+          <div><label>Durum</label><select id="editStatus"><option value="available">Müsait</option><option value="sold_out">Dolu</option><option value="closed">Satış Kapalı</option></select></div>
+        </div>
+        <div class="actions"><button type="button" class="btn ghost" id="dayCancel">Vazgeç</button><button class="btn primary">Kaydet</button></div>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="bulkDialog">
+    <div class="dialog-body">
+      <h3>Tarih Aralığı Güncelle</h3>
+      <form id="bulkForm">
+        <div class="form-grid">
+          <div><label>Başlangıç</label><input id="bulkStart" type="date" required /></div>
+          <div><label>Bitiş</label><input id="bulkEnd" type="date" required /></div>
+          <div><label>Fiyat (€)</label><input id="bulkPrice" type="number" step="0.01" min="0" required /></div>
+          <div><label>Kontenjan</label><input id="bulkCapacity" type="number" min="0" required /></div>
+          <div class="full"><label>Durum</label><select id="bulkStatus"><option value="available">Müsait</option><option value="closed">Satış Kapalı</option></select></div>
+        </div>
+        <div class="actions"><button type="button" class="btn ghost" id="bulkCancel">Vazgeç</button><button class="btn primary">Aralığı Kaydet</button></div>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="/src/scripts/admin.ts"></script>
+</body>
+</html>

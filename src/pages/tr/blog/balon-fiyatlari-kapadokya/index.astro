@@ -1,0 +1,7 @@
+---
+import LegacySeoArticle from "../../../../components/LegacySeoArticle.astro";
+import articles from "../../../../data/legacy-seo-articles.json";
+const article = (articles as any[]).find((item) => item.slug === "balon-fiyatlari-kapadokya" && item.lang === "tr");
+if (!article) return new Response("Not found", { status: 404 });
+---
+<LegacySeoArticle article={article} />

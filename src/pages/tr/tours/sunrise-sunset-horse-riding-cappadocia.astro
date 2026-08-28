@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "tr",
+  slug: "sunrise-sunset-horse-riding-cappadocia",
+  title: "Kapadokya Gün Doğumu veya Gün Batımı At Turu",
+  hero: "Gün doğumu veya gün batımının büyülü ışığında rehberli at binme ve manzara fotoğraf duraklarıyla Kapadokya vadilerini keşfedin.",
+  image: "/images/tours/Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp",
+  rating: "4.80",
+  reviewCount: 39,
+  duration: "1,5 Saat",
+  price: "35 €",
+  badges: ["At Turu", "Gün Doğumu / Batımı", "Rehberli Tur"],
+  sections: [{"title": "At Binme Deneyimi", "paragraphs": ["Deneyimli yerel rehber eşliğinde seçilmiş Kapadokya vadilerinde at binin. Gün doğumu ve gün batımı saatleri yumuşak ışık ve panoramik manzaralar nedeniyle özellikle popülerdir."]}, {"title": "Kimler İçin Uygun?", "paragraphs": ["Yeni başlayanlar ve daha önce at binmiş misafirler için uygundur. Kesin rota ve tempo koşullara ve sürüş seviyesine göre ayarlanır."]}, {"title": "Manzara ve Fotoğraf Durakları", "paragraphs": ["Rota vadiler, kaya oluşumları ve açık manzara noktalarına odaklanır; fotoğraf için kısa duraklar yapılabilir."]}],
+  included: ["Rehberli at turu", "Güvenlik bilgilendirmesi", "Seçilen gün doğumu veya gün batımı kalkışı", "Temel binicilik ekipmanı", "Yerel rehber desteği"],
+  notIncluded: [],
+  highlights: ["Gün doğumu/gün batımı seçeneği", "Vadi manzaraları", "Rehberli sürüş", "Fotoğraf durakları"],
+  gallery: ["/images/tours/Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

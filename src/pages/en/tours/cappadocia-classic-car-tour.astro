@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "en",
+  slug: "cappadocia-classic-car-tour",
+  title: "Cappadocia Classic Car Tour",
+  hero: "Enjoy a nostalgic private ride through Cappadocia's valleys and scenic viewpoints in a classic car, with flexible sunrise, sunset or daytime options.",
+  image: "/images/tours/Cappadocia-Classic-Car-Tour.webp",
+  rating: "4.56",
+  reviewCount: 8,
+  duration: "1 Hour",
+  price: "60 €",
+  badges: ["Classic Car", "Photo Stops", "Private Ride"],
+  sections: [{"title": "About the Cappadocia Classic Car Tour", "paragraphs": ["This tour is designed for guests who want a special sightseeing and photo experience in a nostalgic classic car. The route can be planned according to weather, traffic and your preferred time of day."]}, {"title": "Classic Car Tour Price", "paragraphs": ["The classic car experience is offered from 60 Euro per hour. Contact us for current vehicle availability and the most suitable shooting time."]}, {"title": "Featured Locations", "paragraphs": ["Popular locations include Love Valley, Rose Valley and scenic Göreme viewpoints. The exact route may change according to conditions."]}],
+  included: ["Private classic car", "Professional driver", "Hotel transfer support", "Flexible sunrise/sunset planning", "Photo stops in Cappadocia valleys"],
+  notIncluded: [],
+  highlights: ["Love Valley", "Rose Valley", "Göreme scenic area", "Private photo stops"],
+  gallery: ["/images/tours/Cappadocia-Classic-Car-Tour.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

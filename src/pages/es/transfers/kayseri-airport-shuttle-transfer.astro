@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "es",
+  slug: "kayseri-airport-shuttle-transfer",
+  title: "Traslado Shuttle Aeropuerto de Kayseri",
+  hero: "Traslado shuttle cómodo, programado y económico entre el Aeropuerto Kayseri Erkilet (ASR) y los hoteles de Capadocia.",
+  image: "/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp",
+  rating: "4.70",
+  reviewCount: 6,
+  duration: "Traslado Programado",
+  price: "15 €",
+  badges: ["Kayseri ASR", "Shuttle", "Traslado Hotel"],
+  sections: [{"title": "Servicio de Traslado", "paragraphs": ["Organizamos traslados shuttle programados desde el Aeropuerto Kayseri Erkilet (ASR) a tu hotel en Capadocia o desde tu hotel al aeropuerto. El servicio se coordina con el horario de tu vuelo.", "Nuestro conductor recibe a los pasajeros en el punto de encuentro de llegadas. La asistencia con equipaje, la espera programada y el estacionamiento estándar están incluidos."]}, {"title": "¿Por Qué Elegir Este Servicio?", "paragraphs": ["Un shuttle reservado previamente evita búsquedas de taxi de última hora y reduce el estrés del transporte después del vuelo. Los traslados de regreso también se coordinan con el vuelo.", "Ideal para viajeros que buscan un traslado económico y organizado entre Kayseri y Capadocia."]}],
+  included: ["Recepción en el aeropuerto", "Traslado shuttle compartido de ida", "Asistencia con equipaje", "Espera estándar en aeropuerto", "Vehículo, conductor y combustible"],
+  notIncluded: ["Gastos personales", "Paradas adicionales fuera de la ruta"],
+  highlights: ["Aeropuerto Kayseri Erkilet (ASR)", "Hoteles de Göreme, Ürgüp, Uçhisar y Avanos", "Planificación según el vuelo", "Reserva rápida por WhatsApp"],
+  gallery: ["/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp", "/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp", "/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp", "/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

@@ -1,0 +1,3356 @@
+---
+import { Image } from 'astro:assets';
+import { getSiteGallery, getTourGallery } from '../utils/tourGallery';
+const { t, lang } = Astro.props;
+const footerTourImages = getSiteGallery(4);
+const sliderTourImages = {
+  standard: getTourGallery({slug:'goreme-standart-hot-air-balloon-tour',title:'Göreme Standart Hot Air Balloon Tour',max:3})[1] || '/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp',
+  comfort: getTourGallery({slug:'goreme-comfort-hot-air-balloon-tour',title:'Göreme Comfort Hot Air Balloon Tour',max:3})[1] || '/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp',
+  red: getTourGallery({slug:'red-tour-cappadocia',title:'Red Tour Cappadocia',max:3})[1] || '/images/tours/Red-Tour-Cappadocia.webp',
+  green: getTourGallery({slug:'green-tour-cappadocia',title:'Green Tour Cappadocia',max:3})[1] || '/images/tours/tbc-green-tour-cappadocia.webp',
+  jeep: getTourGallery({slug:'jeep-safari-cappadocia',title:'Jeep Safari Cappadocia',max:3})[1] || '/images/tours/Jeep-Safari-Cappadocia.webp',
+  atv: getTourGallery({slug:'atv-tour-with-goreme-valleys',title:'Sunset ATV Tour Cappadocia',max:3})[1] || '/images/tours/ATV-Tour-With-Goreme-Valleys.webp',
+  horse: getTourGallery({slug:'sunrise-sunset-horse-riding-cappadocia',title:'Sunrise or Sunset Horse Riding Cappadocia',max:3})[1] || '/images/tours/Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp',
+  mix: getTourGallery({slug:'cappadocia-mix-tour',title:'Cappadocia Mix Tour',max:3})[1] || '/images/tours/Private-Tour-and-Mix-Tour.webp',
+  privateRed: getTourGallery({slug:'private-red-tour-cappadocia',title:'Private Red Tour Cappadocia',max:3})[1] || '/images/tours/Private-Red-Tour-Cappadocia.webp',
+  privateGreen: getTourGallery({slug:'private-green-tour-cappadocia',title:'Private Green Tour Cappadocia',max:3})[1] || '/images/tours/Private-Green-Tour-Cappadocia.webp'
+};
+
+const currentFlag = lang === "tr" ? "🇹🇷" : lang === "es" ? "🇪🇸" : "🇬🇧";
+const currentCode = lang === "tr" ? "TR" : lang === "es" ? "ES" : "EN";
+const homeUrl = `/${lang}/`;
+const homepageSupabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || "";
+const homepageSupabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY || "";
+
+const siteOrigin = "https://cappadociago.com";
+const canonicalUrl = `${siteOrigin}/${lang}/`;
+const seoContent = {
+  en: {
+    title: "Cappadocia Hot Air Balloon Tours | CappadociaGo",
+    description: "Book Cappadocia hot air balloon tours, daily tours, activities and airport transfers with local support and clear reservation planning.",
+    keywords: "Cappadocia hot air balloon tours, Cappadocia balloon flight, Cappadocia balloon ride, Cappadocia tours, Göreme balloon tour",
+    ogLocale: "en_US",
+    heroAlt: "Hot air balloons flying over Cappadocia at sunrise",
+    introTitle: "Cappadocia Hot Air Balloon Tours & Local Experiences",
+    introLead: "CappadociaGo helps travelers compare and book Cappadocia hot air balloon tours, daily sightseeing tours, activities and transfers from one clear, local platform.",
+    introText: "Start with a sunrise balloon flight over Göreme and Cappadocia’s valleys, then explore Red, Green and Blue Tours, ATV and Jeep safaris, horse riding, cultural experiences and airport transfers. Our local team also provides practical booking support before and after your reservation.",
+    balloonLink: "Explore Cappadocia balloon tours",
+    toursLink: "See Cappadocia daily tours",
+  },
+  tr: {
+    title: "Kapadokya Balon Turu | CappadociaGo",
+    description: "Kapadokya balon turu, günlük turlar, aktiviteler ve transferleri yerel destek ve açık rezervasyon bilgileriyle planlayın.",
+    keywords: "Kapadokya balon turu, Kapadokya sıcak hava balonu, Kapadokya balon uçuşu, Göreme balon turu, Kapadokya turları",
+    ogLocale: "tr_TR",
+    heroAlt: "Gün doğumunda Kapadokya üzerinde uçan sıcak hava balonları",
+    introTitle: "Kapadokya Balon Turu ve Yerel Deneyimler",
+    introLead: "CappadociaGo; Kapadokya balon turu, günlük gezi turları, aktiviteler ve transferleri tek bir yerel platform üzerinden karşılaştırıp planlamanıza yardımcı olur.",
+    introText: "Göreme ve Kapadokya vadileri üzerinde gün doğumu balon uçuşuyla başlayabilir; ardından Red, Green ve Blue Tour, ATV ve Jeep Safari, at turu, kültürel deneyimler ve havalimanı transferlerini inceleyebilirsiniz. Yerel ekibimiz rezervasyon öncesi ve sonrasında pickup, müsaitlik ve operasyonel değişiklikler konusunda destek sağlar.",
+    balloonLink: "Kapadokya balon turlarını incele",
+    toursLink: "Kapadokya günlük turlarını gör",
+  },
+  es: {
+    title: "Tour en Globo Capadocia | CappadociaGo",
+    description: "Reserva tours en globo en Capadocia, excursiones, actividades y traslados con asistencia de un equipo local.",
+    keywords: "tour en globo Capadocia, paseo en globo Capadocia, vuelo en globo Göreme, tours Capadocia, globo aerostático Capadocia",
+    ogLocale: "es_ES",
+    heroAlt: "Globos aerostáticos volando sobre Capadocia al amanecer",
+    introTitle: "Tours en Globo por Capadocia y Experiencias Locales",
+    introLead: "CappadociaGo te ayuda a comparar y reservar tours en globo por Capadocia, excursiones de un día, actividades y traslados desde una plataforma local y clara.",
+    introText: "Empieza con un vuelo en globo al amanecer sobre Göreme y los valles de Capadocia y continúa con Red, Green y Blue Tour, safaris en ATV o Jeep, paseos a caballo, experiencias culturales y traslados al aeropuerto. Nuestro equipo local también ayuda antes y después de la reserva con disponibilidad, recogida y cambios operativos.",
+    balloonLink: "Ver tours en globo por Capadocia",
+    toursLink: "Ver tours diarios por Capadocia",
+  }
+};
+const seo = seoContent[lang] || seoContent.en;
+
+const heroTrustContent = {
+  en: {
+    prime: "Prime Experiences",
+    support: "24/7 Live Support",
+    loved: "Highly Loved",
+    best: "Best-in-Class Tours"
+  },
+  tr: {
+    prime: "Seçkin Deneyimler",
+    support: "7/24 Canlı Destek",
+    loved: "Çok Sevilen",
+    best: "Sınıfının En İyi Turları"
+  },
+  es: {
+    prime: "Experiencias Premium",
+    support: "Soporte en Vivo 24/7",
+    loved: "Muy Recomendado",
+    best: "Tours de Primera Clase"
+  }
+};
+const heroTrust = heroTrustContent[lang] || heroTrustContent.en;
+
+const socialImage = `${siteOrigin}/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp`;
+
+function resolveTourCardImage(tour) {
+  const href = String(tour?.href || "");
+  const slug = href.split("/").filter(Boolean).pop() || String(tour?.title || "");
+  return getTourGallery({
+    slug,
+    title: String(tour?.title || ""),
+    preferred: [tour?.image].filter(Boolean),
+    max: 1
+  })[0] || tour?.image || getSiteGallery(1)[0] || "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp";
+}
+
+function resolveProductSlug(tour) {
+  const href = String(tour?.href || "");
+  const title = String(tour?.title || "");
+  const titleMap: Record<string, string> = {
+    "ATV Tour With Göreme Valleys": "atv-tour-with-goreme-valleys",
+    "Göreme Vadileri ATV Turu": "atv-tour-with-goreme-valleys",
+    "Tour ATV por los Valles de Göreme": "atv-tour-with-goreme-valleys",
+    "Private VIP Airport Transfer Cappadocia": "private-airport-transfer",
+    "Kapadokya Özel VIP Havalimanı Transferi": "private-airport-transfer",
+    "Traslado VIP Privado al Aeropuerto de Capadocia": "private-airport-transfer",
+    "Göreme Standard Hot Air Balloon Tour": "goreme-standart-hot-air-balloon-tour",
+    "Göreme Standart Hot Air Balloon Tour": "goreme-standart-hot-air-balloon-tour",
+    "Göreme Comfort Hot Air Balloon Tour": "goreme-comfort-hot-air-balloon-tour",
+    "Blue Tour Cappadocia": "blue-tour-cappadocia"
+  };
+  if (titleMap[title]) return titleMap[title];
+  return href.split("/").filter(Boolean).pop() || "";
+}
+
+
+
+const faqContent = {
+  en: {
+    title: "Frequently Asked Questions About Cappadocia Tours",
+    items: [
+      ["When do hot air balloons fly in Cappadocia?", "Hot air balloons in Cappadocia typically operate in two morning sessions around sunrise. Hotel pickup is generally arranged about one hour before the assigned flight, and the exact pickup time is shared one day before according to weather, wind direction and hotel location."],
+      ["How high do hot air balloons fly in Cappadocia?", "Hot air balloons can rise up to approximately 8,000 ft (2,400 m), depending on wind and weather conditions."],
+      ["How safe is hot air ballooning with CappadociaGo?", "Hot air ballooning is strictly regulated in Turkey by the Civil Aviation Authority (SHGM). Flights operate only when weather and wind conditions are suitable, and certified operators follow required safety procedures."],
+      ["Are hot air balloons insured?", "Yes. Balloon operators in Turkey are required to carry comprehensive insurance, and passenger insurance is included in the flight ticket."],
+      ["What if my flight gets cancelled due to bad weather?", "If civil aviation authorities cancel a flight because of unsafe weather, you can receive a full refund or, subject to availability, move your reservation to another suitable date."],
+      ["Can I change my flight date?", "Yes. Date changes can be requested subject to seat availability. Seasonal price differences or a reissue fee may apply for the new date."],
+      ["Where exactly do we fly from and through?", "The take-off point is selected according to the morning wind. Typical routes may pass over Göreme, Paşabağ, Çavuşin, Rose Valley, Love Valley, Swords Valley and Kızılçukur Valley."],
+      ["Do I need to pay a cancellation fee for voluntary cancellations?", "Voluntary cancellation conditions depend on how long before the activity you cancel. The applicable timelines and deductions are explained in the Distance Sales Agreement."],
+      ["Can I update my hotel pick-up location later?", "Yes. Contact our support team before the flight to update your pickup location, provided the new address is within our standard Cappadocia service area."],
+      ["What other daily tours and activities do you offer?", "Our portfolio includes Red, Green and Blue Tours, ATV and Jeep Safaris, horse riding, Turkish Night experiences, cultural activities and airport or private transfer services."],
+      ["What are the important safety rules before the flight?", "Listen carefully to the pilot's safety briefing and follow all instructions. In particular, use the correct landing position exactly as explained before touchdown."]
+    ]
+  },
+  tr: {
+    title: "Kapadokya Turları Hakkında Sıkça Sorulan Sorular",
+    items: [
+      ["Kapadokya'da sıcak hava balonları ne zaman uçar?", "Balon uçuşları genellikle gün doğumu çevresindeki iki sabah seansında yapılır. Otel alımı çoğunlukla uçuş saatinden yaklaşık bir saat önce planlanır; kesin saat hava, rüzgâr ve otel konumuna göre bir gün önce bildirilir."],
+      ["Sıcak hava balonları ne kadar yükselir?", "Rüzgâr ve hava koşullarına bağlı olarak balonlar yaklaşık 8.000 ft (2.400 m) seviyesine kadar yükselebilir."],
+      ["CappadociaGo ile balon uçuşu güvenli mi?", "Türkiye'deki balon uçuşları Sivil Havacılık Genel Müdürlüğü (SHGM) tarafından sıkı şekilde düzenlenir. Uçuşlar yalnızca uygun hava ve rüzgâr koşullarında, yetkili operatörlerle gerçekleştirilir."],
+      ["Balon uçuşlarında sigorta var mı?", "Evet. Türkiye'deki balon işletmelerinin kapsamlı sigorta bulundurması zorunludur ve yolcu sigortası uçuş biletine dahildir."],
+      ["Kötü hava nedeniyle uçuş iptal edilirse ne olur?", "Sivil havacılık otoriteleri uçuşu güvenli olmayan hava nedeniyle iptal ederse tam iade alabilir veya müsaitliğe bağlı olarak rezervasyonunuzu başka bir tarihe taşıyabilirsiniz."],
+      ["Uçuş tarihimi değiştirebilir miyim?", "Evet. Koltuk müsaitliğine bağlı olarak tarih değişikliği talep edebilirsiniz. Yeni tarihte sezon fiyat farkı veya yeniden düzenleme ücreti uygulanabilir."],
+      ["Tam olarak nereden kalkıyor ve nerelerin üzerinden uçuyoruz?", "Kalkış noktası sabah rüzgârına göre belirlenir. Rota Göreme, Paşabağ, Çavuşin, Gül Vadisi, Aşk Vadisi, Kılıçlar Vadisi ve Kızılçukur gibi bölgelerin üzerinden geçebilir."],
+      ["Kendi isteğimle iptal edersem ücret öder miyim?", "Gönüllü iptal koşulları, aktiviteye ne kadar süre kala iptal ettiğinize göre değişir. Süreler ve olası kesintiler Mesafeli Satış Sözleşmesi'nde açıklanmıştır."],
+      ["Otel alma konumumu daha sonra değiştirebilir miyim?", "Evet. Yeni adres standart Kapadokya servis bölgemiz içindeyse uçuş öncesinde destek ekibimizle iletişime geçerek güncelleyebilirsiniz."],
+      ["Başka hangi günlük turlar ve aktiviteler var?", "Red, Green ve Blue Tour; ATV ve Jeep Safari; at turu; Türk Gecesi; kültürel aktiviteler ve havaalanı/özel transfer hizmetleri sunuyoruz."],
+      ["Uçuş öncesinde dikkat edilmesi gereken güvenlik kuralları nelerdir?", "Pilotun güvenlik brifingini dikkatle dinleyin ve tüm talimatlara uyun. Özellikle iniş öncesinde anlatılan doğru iniş pozisyonunu uygulayın."]
+    ]
+  },
+  es: {
+    title: "Preguntas Frecuentes Sobre Tours en Capadocia",
+    items: [
+      ["¿Cuándo vuelan los globos aerostáticos en Capadocia?", "Los vuelos suelen operar en dos sesiones por la mañana alrededor del amanecer. La recogida en el hotel normalmente se organiza aproximadamente una hora antes y la hora exacta se confirma el día anterior según el clima, el viento y la ubicación del hotel."],
+      ["¿A qué altura vuelan los globos aerostáticos?", "Dependiendo del viento y del clima, los globos pueden alcanzar aproximadamente 8.000 pies (2.400 m)."],
+      ["¿Es seguro volar en globo con CappadociaGo?", "Los vuelos en globo en Turquía están estrictamente regulados por la Autoridad de Aviación Civil (SHGM). Solo se opera con condiciones meteorológicas adecuadas y operadores autorizados."],
+      ["¿Los vuelos en globo están asegurados?", "Sí. Los operadores de globos en Turquía deben contar con un seguro completo y el seguro de pasajeros está incluido en el billete."],
+      ["¿Qué ocurre si mi vuelo se cancela por mal tiempo?", "Si las autoridades cancelan el vuelo por condiciones inseguras, puedes recibir un reembolso completo o cambiar la reserva a otra fecha, sujeto a disponibilidad."],
+      ["¿Puedo cambiar la fecha de mi vuelo?", "Sí. Puedes solicitar un cambio de fecha sujeto a disponibilidad. Puede aplicarse una diferencia de tarifa estacional o una tasa de reemisión."],
+      ["¿Desde dónde despegamos y por dónde volamos?", "El punto de despegue se elige según el viento de la mañana. Las rutas habituales pueden pasar por Göreme, Paşabağ, Çavuşin, Rose Valley, Love Valley, Swords Valley y Kızılçukur."],
+      ["¿Hay una tasa si cancelo voluntariamente?", "Las condiciones dependen de cuánto tiempo antes de la actividad canceles. Los plazos y posibles deducciones se detallan en el Contrato de Venta a Distancia."],
+      ["¿Puedo cambiar después el lugar de recogida del hotel?", "Sí. Contacta con nuestro equipo antes del vuelo para actualizarlo, siempre que la nueva dirección esté dentro de nuestra zona estándar de servicio en Capadocia."],
+      ["¿Qué otros tours y actividades ofrecen?", "Ofrecemos Red, Green y Blue Tour, safaris en ATV y Jeep, paseos a caballo, Noche Turca, experiencias culturales y traslados privados o de aeropuerto."],
+      ["¿Cuáles son las reglas de seguridad más importantes?", "Escucha atentamente la charla de seguridad del piloto y sigue todas las instrucciones, especialmente la posición de aterrizaje indicada antes de tocar tierra."]
+    ]
+  }
+};
+const faq = faqContent[lang] || faqContent.en;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "TravelAgency"],
+      "@id": `${siteOrigin}/#organization`,
+      "name": "CappadociaGo",
+      "url": siteOrigin,
+      "logo": `${siteOrigin}/images/logo.png`,
+      "image": socialImage,
+      "telephone": "+90 540 101 50 50",
+      "email": "info@kapheratravel.com",
+      "sameAs": [
+        "https://www.instagram.com/cappadociago/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteOrigin}/#website`,
+      "url": siteOrigin,
+      "name": "CappadociaGo",
+      "publisher": { "@id": `${siteOrigin}/#organization` },
+      "inLanguage": ["en", "tr", "es"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#webpage`,
+      "url": canonicalUrl,
+      "name": seo.title,
+      "description": seo.description,
+      "isPartOf": { "@id": `${siteOrigin}/#website` },
+      "about": { "@id": `${siteOrigin}/#organization` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": socialImage },
+      "inLanguage": lang
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonicalUrl}#faq`,
+      "mainEntity": faqContent[lang]?.items?.map(([question, answer]) => ({
+        "@type": "Question",
+        "name": question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": answer
+        }
+      })) || faqContent.en.items.map(([question, answer]) => ({
+        "@type": "Question",
+        "name": question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": answer
+        }
+      }))
+    }
+  ]
+};
+
+
+const homepageReviews = [
+  {"source": "google", "name": "Rahul P.", "date": "Nov 2024", "rating": 5, "title": "Magical Cappadocia scenery", "text": "Praised the dramatic rock formations, panoramic views and photo opportunities around Love Valley."},
+  {"source": "tripadvisor", "name": "Mateusz G", "date": "11 Aug 2025", "rating": 5, "title": "Great", "text": "Highlighted a punctual, friendly driver, a clean vehicle and flexible scenic stops around Cappadocia."},
+  {"source": "google", "name": "Emrullah", "date": "Mar 2025", "rating": 5, "title": "A must-see at sunrise", "text": "Recommended the valley for sunrise balloon views, hiking and the distinctive fairy-chimney landscape."},
+  {"source": "tripadvisor", "name": "Vincent Vu", "date": "26 Sep 2025", "rating": 5, "title": "Solo trip, transfer, balloon and Green Tour", "text": "Said transfers, balloon arrangements and the Green Tour were coordinated smoothly with helpful WhatsApp communication."},
+  {"source": "google", "name": "Sruthi S.", "date": "2025", "rating": 5, "title": "Beautiful sunrise and sunset spot", "text": "Remembered the icy mountains, unusual rock formations and peaceful atmosphere as a magical Cappadocia moment."},
+  {"source": "tripadvisor", "name": "Dongmin L", "date": "3 Mar 2026", "rating": 5, "title": "It made my day", "text": "Loved the balloon flight and appreciated the support in rearranging the experience after weather affected the first attempt."},
+  {"source": "google", "name": "Mayra B.", "date": "Mar 2025", "rating": 4, "title": "Unique landscape", "text": "Enjoyed the unusual landscape and spring scenery, while noting that trail directions could be clearer."},
+  {"source": "tripadvisor", "name": "Daniella r", "date": "8 Aug 2025", "rating": 5, "title": "Great Green Tour experience", "text": "Praised the Ihlara Valley, underground city, Pigeon Valley views, knowledgeable guides and comfortable organization."},
+  {"source": "google", "name": "Weeranat W.", "date": "Jan 2025", "rating": 5, "title": "Breathtaking Love Valley", "text": "Described the landscape as one of the most impressive views of the trip, with excellent places for photos."},
+  {"source": "tripadvisor", "name": "Honey Lane P", "date": "23 Mar 2026", "rating": 5, "title": "Wonderful experience", "text": "Enjoyed meeting people on the group tour and appreciated having the activities arranged around a solo-travel schedule."},
+  {"source": "google", "name": "jaciel c.", "date": "2025", "rating": 5, "title": "Remarkable balloon views", "text": "Enjoyed seeing Love Valley from above and below during a family balloon experience and called the landmark remarkable."},
+  {"source": "tripadvisor", "name": "Antonino R", "date": "5 Apr 2026", "rating": 5, "title": "Turkish Hammam experience", "text": "Booked a last-minute hammam as a couple and praised the warm welcome and attentive service."},
+  {"source": "google", "name": "Nawel", "date": "Jan 2025", "rating": 5, "title": "Amazing sunrise experience", "text": "Loved the sunrise atmosphere and said the balloon-filled scenery was an absolute must-see."},
+  {"source": "tripadvisor", "name": "Megan I", "date": "30 Dec 2024", "rating": 5, "title": "Experience of a lifetime", "text": "Described the balloon ride as safe, professional and unforgettable, with breathtaking views and a very personal memory."},
+  {"source": "google", "name": "Samy S.", "date": "Sep 2024", "rating": 5, "title": "Peaceful and scenic", "text": "Praised the unusual landscape, calm atmosphere and easy opportunities for memorable photographs."},
+  {"source": "tripadvisor", "name": "GrandTour33312244849", "date": "7 Mar 2025", "rating": 5, "title": "I recommend", "text": "Reported a smooth first airport transfer with clear guidance and said the service was easy to recommend."},
+  {"source": "google", "name": "Bui S.", "date": "2025", "rating": 5, "title": "Beautiful place and easy booking", "text": "Highlighted the scenery, balloon and Jeep options, and recommended arranging tickets and hotel pickup in advance."},
+  {"source": "tripadvisor", "name": "Eric Chandra", "date": "28 Jan 2025", "rating": 5, "title": "Airport Transfer Kayseri to Goreme", "text": "Said the driver arrived on time, was polite and made the first journey from Kayseri to Göreme feel safe."},
+  {"source": "google", "name": "Roy F.", "date": "2025", "rating": 5, "title": "Wonderful balloon viewing", "text": "Visited at sunrise specifically to watch the balloons and loved seeing them fly overhead and pass nearby."},
+  {"source": "tripadvisor", "name": "Vacation37831204947", "date": "26 Apr 2026", "rating": 5, "title": "Great", "text": "Called the experience well organized and thanked the team for the overall planning."},
+  {"source": "google", "name": "Simba Q.", "date": "Oct 2024", "rating": 5, "title": "Amazing view", "text": "Loved the unique landscape and recommended using a hiking app because some trails can be confusing."},
+  {"source": "tripadvisor", "name": "gkhougeer", "date": "25 Apr 2026", "rating": 5, "title": "Something new to learn", "text": "Appreciated the scenery, guide support and the assistance that helped make the tour smooth and informative."},
+  {"source": "google", "name": "Mukremin T", "date": "10 May 2026", "rating": 5, "title": "Professional from start to finish", "text": "Praised the attentive reservation process, clean vehicles, organized operation and welcoming hospitality."},
+  {"source": "tripadvisor", "name": "Karen M", "date": "18 Apr 2026", "rating": 5, "title": "Top rated balloon ride", "text": "Mentioned on-time pickup, a skilled pilot and impressive scenery during the hot-air-balloon flight."},
+  {"source": "google", "name": "Ismail U", "date": "15 Feb 2026", "rating": 5, "title": "A wonderful balloon adventure", "text": "Described the colorful balloons rising with sunrise as an experience everyone should try at least once."},
+  {"source": "tripadvisor", "name": "catalinp969", "date": "Apr 2026", "rating": 5, "title": "Amazing horseback riding", "text": "Praised the polite guides, valley scenery and photo support during the horseback-riding experience."},
+  {"source": "google", "name": "İBRAHİM Ö", "date": "1 Nov 2024", "rating": 5, "title": "Unforgettable sunrise", "text": "Loved watching balloons lift off in the first morning light and recommended arriving warmly dressed for the cold."},
+  {"source": "tripadvisor", "name": "husseinfazleabas", "date": "14 Apr 2026", "rating": 5, "title": "Educational and entertaining", "text": "Praised the knowledgeable guide for combining historical explanations with engaging stories during the tour."},
+  {"source": "google", "name": "Kübra", "date": "5 Jan 2025", "rating": 5, "title": "Peaceful Love Valley", "text": "Recommended the valley for early-morning walks, balloon views, photography and its calm natural atmosphere."},
+  {"source": "tripadvisor", "name": "Becca5520", "date": "26 May 2026", "rating": 5, "title": "Breathtaking and memorable", "text": "Praised communication, early pickup, professional organization, breakfast and a balloon flight that felt safe throughout."},
+  {"source": "google", "name": "Simay Ü", "date": "8 Dec 2024", "rating": 5, "title": "A special morning in Cappadocia", "text": "Remembered the colorful balloons at sunrise, the peaceful valley views and excellent opportunities for photography."},
+  {"source": "tripadvisor", "name": "879maritaz", "date": "30 May 2026", "rating": 5, "title": "Great value for money", "text": "Highlighted responsive communication, friendly staff and a reliable shuttle service that made the experience easy."}
+];
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <!-- CappadociaGo favicon -->
+    <link rel="icon" type="image/webp" href="/favicon.webp?v=10" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{seo.title}</title>
+  <meta name="description" content={seo.description} />
+  <meta name="keywords" content={seo.keywords} />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="author" content="CappadociaGo" />
+  <meta name="theme-color" content="#071f4e" />
+
+
+
+<link rel="canonical" href={canonicalUrl} />
+  <link rel="alternate" hreflang="en" href={`${siteOrigin}/en/`} />
+  <link rel="alternate" hreflang="tr" href={`${siteOrigin}/tr/`} />
+  <link rel="alternate" hreflang="es" href={`${siteOrigin}/es/`} />
+  <link rel="alternate" hreflang="x-default" href={`${siteOrigin}/en/`} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CappadociaGo" />
+  <meta property="og:title" content={seo.title} />
+  <meta property="og:description" content={seo.description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={socialImage} />
+  <meta property="og:image:alt" content={seo.heroAlt} />
+  <meta property="og:locale" content={seo.ogLocale} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={seo.title} />
+  <meta name="twitter:description" content={seo.description} />
+  <meta name="twitter:image" content={socialImage} />
+
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+
+  <!-- Google Fonts: render-blocking olmadan yükle; ilk boyamada sistem fontu kullanılır. -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
+
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href={homeUrl} class="logo-home" aria-label="CappadociaGo Home" title="CappadociaGo - Home">
+          <img src="/images/logo.png" alt="CappadociaGo" width="400" height="600" loading="lazy" decoding="async"/>
+        </a>
+
+        <a
+          href="https://www.instagram.com/cappadociago/"
+          class="header-instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="CappadociaGo on Instagram"
+        >
+          <img
+            src="/images/icons/instagram-logo.webp"
+            alt=""
+            class="header-instagram-icon"
+            width="23"
+            height="23"
+            aria-hidden="true" loading="lazy"
+          />
+          <span>@cappadociago</span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href={`/${lang}/balloon-tours/`}>{t.nav.balloonTours}</a></li>
+          <li><a href={`/${lang}/cappadocia-tours/`}>{t.nav.cappadociaTours}</a></li>
+          <li><a href={`/${lang}/activities/`}>{t.nav.activities}</a></li>
+          <li><a href={`/${lang}/private-tours/`}>{t.nav.privateTours}</a></li>
+          <li><a href={`/${lang}/transfers/`}>{t.nav.transfers}</a></li>
+          <li></li>
+        </ul>
+      </nav>
+
+      <!-- DİL SEÇENEKLERİ MENÜSÜ -->
+      <div class="header-right">
+        <div class="lang-switcher" id="langSwitcher">
+          <button
+            class="lang-btn"
+            id="langButton"
+            type="button"
+            aria-label="Select language"
+            aria-expanded="false"
+          >
+            <span class="lang-flag">{currentFlag}</span>
+            <span class="lang-code">{currentCode}</span>
+            <span class="arrow">▾</span>
+          </button>
+
+          <div class="lang-dropdown" id="langDropdown">
+            <a href="/en/" data-lang-url="/en/" class:list={["lang-item", { active: lang === "en" }]}>
+              <span class="flag">🇬🇧</span>
+              <span>English</span>
+            </a>
+
+            <a href="/tr/" data-lang-url="/tr/" class:list={["lang-item", { active: lang === "tr" }]}>
+              <span class="flag">🇹🇷</span>
+              <span>Türkçe</span>
+            </a>
+
+            <a href="/es/" data-lang-url="/es/" class:list={["lang-item", { active: lang === "es" }]}>
+              <span class="flag">🇪🇸</span>
+              <span>Español</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="https://wa.me/905401015050" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+          <img
+            src="/images/icons/whatsapp-logo.webp"
+            alt=""
+            class="whatsapp-btn-icon"
+            width="18"
+            height="18"
+            aria-hidden="true" loading="lazy"
+          />
+          <span>{t.contact.whatsapp}</span>
+        </a>
+
+        <!-- MOBİL MENÜ BUTONU (HAMBURGER) -->
+        <button class="mobile-menu-toggle" type="button" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO VİDEO BÖLÜMÜ -->
+  <section class="tbc-hero-form">
+    <section class="tbc-video-hero">
+
+      <!-- Hero Görseli: Vercel üzerinden yerel olarak servis edilir -->
+      <picture class="tbc-mobile-hero">
+        <img
+          src="/images/hero/mobil-fotoo.webp"
+          alt={seo.heroAlt}
+          width="799"
+          height="600"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        >
+      </picture>
+
+      <div class="tbc-video-overlay"></div>
+
+      <div class="tbc-video-content">
+        <span class="tbc-video-kicker">
+          {t.hero.badge}
+        </span>
+
+        <h1 class="tbc-video-title">
+          {t.hero.title}
+        </h1>
+
+        <p class="tbc-video-text">
+          {t.hero.description}
+        </p>
+
+        <div class="tbc-video-actions">
+          <a href="#tours" class="tbc-video-btn tbc-video-btn-primary">
+            {t.hero.exploreTours}
+          </a>
+          <a href="tel:+905401015050" class="tbc-video-btn tbc-video-btn-secondary">
+            {t.hero.contactUs}
+          </a>
+        </div>
+
+        <div class="tbc-partner-reviews">
+          <div class="tbc-review-badge" aria-label="TripAdvisor rating">
+            <img src="/images/icons/tripadvisor-logo.webp" alt="TripAdvisor" class="tbc-badge-logo" width="22" height="22" loading="lazy" />
+            <div class="tbc-badge-info">
+              <div class="tbc-stars">★★★★★</div>
+              <span class="tbc-badge-text">{t.trust.tripadvisor}</span>
+            </div>
+          </div>
+
+          <div class="tbc-review-badge" aria-label="Google rating">
+            <img src="/images/icons/google-logo.webp" alt="Google" class="tbc-badge-logo" width="22" height="22" loading="lazy" />
+            <div class="tbc-badge-info">
+              <div class="tbc-stars">★★★★★</div>
+              <span class="tbc-badge-text">{t.trust.google}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tbc-hero-trust-points" aria-label="Why choose CappadociaGo">
+          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">✹</span><span>{heroTrust.prime}</span></div>
+          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">◉</span><span>{heroTrust.support}</span></div>
+          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">★</span><span>{heroTrust.loved}</span></div>
+          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">✦</span><span>{heroTrust.best}</span></div>
+        </div>
+      </div>
+
+      <!-- REZERVASYON FORMU VE ÜZERİNDEKİ ORTALANMIŞ BAŞLIK -->
+      <div class="tbc-booking-wrap">
+        <div class="external-form-title">
+          {lang === "tr" ? (
+            <>Hayalinizdeki <span class="accent-ready">uçuşa</span> <span class="accent-dreamy">hazır</span> mısınız?</>
+          ) : (
+            <><span class="accent-ready">Ready</span> to float over <span class="accent-cappadocia">Cappadocia</span> at sunrise?</>
+          )}
+        </div>
+        <div class="tbc-booking-box">
+          <form id="tbcBookingForm">
+            <input type="hidden" id="tourType" name="Tour Name" required>
+            <input type="hidden" id="guestCount" name="Number of Guests" required>
+
+            <div class="tbc-booking-grid">
+              
+              <!-- 1. Select Tour -->
+              <div class="tbc-field-wrap">
+                <div class="tbc-custom-select" data-target="tourType">
+                  <button type="button" class="tbc-select-btn">
+                    <span class="tbc-placeholder">{t.booking.selectTour}</span>
+                    <span class="tbc-arrow">▼</span>
+                  </button>
+                  <div class="tbc-options">
+                    
+                    <!-- Balloons Tours -->
+                    <div class="tbc-opt-group-title">{t.categories.balloonTours}</div>
+                    <div class="tbc-option" data-value="Göreme Comfort Hot Air Balloon Tour">Göreme Comfort Hot Air Balloon Tour</div>
+                    <div class="tbc-option" data-value="Göreme Standart Hot Air Balloon Tour">Göreme Standart Hot Air Balloon Tour</div>
+                    <div class="tbc-option" data-value="Ihlara Valley Balloons Tour">Ihlara Valley Balloons Tour</div>
+                    <div class="tbc-option" data-value="Pamukkale Balloons Tour">Pamukkale Balloons Tour</div>
+                    <div class="tbc-option" data-value="Soğanlı Valley Balloon Tour">Soğanlı Valley Balloon Tour</div>
+
+                    <!-- Daily Tours -->
+                    <div class="tbc-opt-group-title">{t.categories.dailyTours}</div>
+                    <div class="tbc-option" data-value="Cappadocia Custom Package Tour">Cappadocia Custom Package Tour</div>
+                    <div class="tbc-option" data-value="Blue Tour Cappadocia">Blue Tour Cappadocia</div>
+                    <div class="tbc-option" data-value="Red Tour Cappadocia">Red Tour Cappadocia</div>
+                    <div class="tbc-option" data-value="Green Tour Cappadocia">Green Tour Cappadocia</div>
+
+                    <!-- Private Tours -->
+                    <div class="tbc-opt-group-title">{t.categories.privateTours}</div>
+                    <div class="tbc-option" data-value="Private Red Tour Cappadocia">Private Red Tour Cappadocia</div>
+                    <div class="tbc-option" data-value="Private Green Tour Cappadocia">Private Green Tour Cappadocia</div>
+                    <div class="tbc-option" data-value="Cappadocia Mix Tour">Cappadocia Mix Tour</div>
+
+                    <!-- Transfers -->
+                    <div class="tbc-opt-group-title">{t.categories.transfers}</div>
+                    <div class="tbc-option" data-value="Kayseri Airport (ASR) Shuttle Transfer">Kayseri Airport (ASR) Shuttle Transfer</div>
+                    <div class="tbc-option" data-value="Nevşehir Airport (NAV) Shuttle Transfer">Nevşehir Airport (NAV) Shuttle Transfer</div>
+                    <div class="tbc-option" data-value="Private VIP Airport Transfer Cappadocia">Private VIP Airport Transfer Cappadocia</div>
+
+                    <!-- Activites -->
+                    <div class="tbc-opt-group-title">{t.categories.activities}</div>
+                    <div class="tbc-option" data-value="ATV Tour With Göreme Valleys">ATV Tour With Göreme Valleys</div>
+                    <div class="tbc-option" data-value="Jeep Safari Cappadocia">Jeep Safari Cappadocia</div>
+                    <div class="tbc-option" data-value="Sunrise or Sunset Horse Riding Cappadocia">Sunrise or Sunset Horse Riding Cappadocia</div>
+                    <div class="tbc-option" data-value="Cappadocia Sunset Camel Riding Tour">Cappadocia Sunset Camel Riding Tour</div>
+                    <div class="tbc-option" data-value="Cappadocia Classic Car Tour">Cappadocia Classic Car Tour</div>
+                    <div class="tbc-option" data-value="Photo Shoot & Flying Dress Experience">Photo Shoot & Flying Dress Experience</div>
+                    <div class="tbc-option" data-value="Cappadocia Pottery Making Experience">Cappadocia Pottery Making Experience</div>
+                    <div class="tbc-option" data-value="Turkish Night With Cave Dinner Cappadocia">Turkish Night With Cave Dinner Cappadocia</div>
+                    <div class="tbc-option" data-value="Balloons Watching Tour Cappadocia">Balloons Watching Tour Cappadocia</div>
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. TARİH SEKMESİ -->
+              <div class="tbc-field-wrap dates-custom-box" id="tbcDateField">
+                <span class="dates-top-label">{t.booking.accommodationDates}</span>
+                <div class="dates-inputs-row">
+                  <button class="date-slot" type="button" data-date-target="start" aria-label="Select start date">
+                    <span class="d-m" id="startMonth">Aug</span>
+                    <span class="d-d" id="startDay">15</span>
+                    <span class="d-a" aria-hidden="true">⌄</span>
+                  </button>
+                  <span class="date-divider" aria-hidden="true">—</span>
+                  <button class="date-slot" type="button" data-date-target="end" aria-label="Select end date">
+                    <span class="d-m" id="endMonth">Aug</span>
+                    <span class="d-d" id="endDay">16</span>
+                    <span class="d-a" aria-hidden="true">⌄</span>
+                  </button>
+                </div>
+                <input type="hidden" id="startDateInput" name="Start Date" required />
+                <input type="hidden" id="endDateInput" name="End Date" />
+                <div class="tbc-date-popover" id="tbcDatePopover" aria-hidden="true">
+                  <div class="tbc-date-head">
+                    <button type="button" class="tbc-date-nav" id="tbcDatePrev" aria-label="Previous month">‹</button>
+                    <div class="tbc-date-title" id="tbcDateTitle"></div>
+                    <button type="button" class="tbc-date-nav" id="tbcDateNext" aria-label="Next month">›</button>
+                  </div>
+                  <div class="tbc-date-months" id="tbcDateMonths"></div>
+                  <div class="tbc-date-help">
+                    {lang === "tr" ? "Başlangıç ve bitiş tarihini seçin" : lang === "es" ? "Seleccione la fecha de inicio y fin" : "Select start and end dates"}
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Select Person (Guests) -->
+              <div class="tbc-field-wrap">
+                <div class="tbc-custom-select" data-target="guestCount">
+                  <button type="button" class="tbc-select-btn">
+                    <span class="tbc-placeholder">{t.booking.selectPerson}</span>
+                    <span class="tbc-arrow">▼</span>
+                  </button>
+                  <div class="tbc-options">
+                    <div class="tbc-option" data-value="1 Person">1 Person</div>
+                    <div class="tbc-option" data-value="2 Persons">2 Persons</div>
+                    <div class="tbc-option" data-value="3 Persons">3 Persons</div>
+                    <div class="tbc-option" data-value="4 Persons">4 Persons</div>
+                    <div class="tbc-option" data-value="5+ Persons">5+ Persons</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Search Button -->
+              <div class="tbc-field-wrap">
+                <button class="tbc-submit" id="tbcSubmitBtn" type="submit">
+                  {t.booking.search}
+                </button>
+              </div>
+
+            </div>
+          </form>
+
+          <div class="tbc-success-box" id="tbcSuccessBox">
+            {t.booking.success}
+          </div>
+
+          <div class="tbc-error-box" id="tbcErrorBox">
+            {t.booking.error}
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- KAYAN KATEGORİ SLIDER'I -->
+  <section class="infinite-slider-section">
+    <div class="container">
+      <div class="slider-wrapper">
+        <button class="slider-arrow prev-btn" id="sliderPrevBtn" type="button">‹</button>
+        <div class="infinite-track-container" id="sliderTrackContainer">
+          <div class="infinite-track">
+            <a class="cat-card" href={`/${lang}/tours/goreme-standart-hot-air-balloon-tour`}><Image src={sliderTourImages.standard} alt="Göreme Standart Hot Air Balloon Tour" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Göreme Standart Balloon</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/goreme-comfort-hot-air-balloon-tour`}><Image src={sliderTourImages.comfort} alt="Göreme Comfort Hot Air Balloon Tour" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Göreme Comfort Balloon</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/red-tour-cappadocia`}><Image src={sliderTourImages.red} alt="Red Tour Cappadocia" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Red Tour Cappadocia</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/green-tour-cappadocia`}><Image src={sliderTourImages.green} alt="Green Tour Cappadocia" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Green Tour Cappadocia</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/jeep-safari-cappadocia`}><Image src={sliderTourImages.jeep} alt="Jeep Safari Cappadocia" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Jeep Safari Cappadocia</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/atv-tour-with-goreme-valleys`}><Image src={sliderTourImages.atv} alt="ATV Tour With Göreme Valleys" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>ATV Tour</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/sunrise-sunset-horse-riding-cappadocia`}><Image src={sliderTourImages.horse} alt="Horse Riding Cappadocia" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Horse Riding Tour</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/cappadocia-mix-tour`}><Image src={sliderTourImages.mix} alt="Cappadocia Mix Tour" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Cappadocia Mix Tour</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/private-red-tour-cappadocia`}><Image src={sliderTourImages.privateRed} alt="Private Red Tour Cappadocia" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Private Red Tour</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/private-green-tour-cappadocia`}><Image src={sliderTourImages.privateGreen} alt="Private Green Tour Cappadocia" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Private Green Tour</h3></div></a>
+            <!-- loop duplicates -->
+            <a class="cat-card" href={`/${lang}/tours/goreme-standart-hot-air-balloon-tour`}><Image src={sliderTourImages.standard} alt="Göreme Standart Hot Air Balloon Tour" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Göreme Standart Balloon</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/goreme-comfort-hot-air-balloon-tour`}><Image src={sliderTourImages.comfort} alt="Göreme Comfort Hot Air Balloon Tour" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Göreme Comfort Balloon</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/red-tour-cappadocia`}><Image src={sliderTourImages.red} alt="Red Tour Cappadocia" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Red Tour Cappadocia</h3></div></a>
+            <a class="cat-card" href={`/${lang}/tours/green-tour-cappadocia`}><Image src={sliderTourImages.green} alt="Green Tour Cappadocia" width={440} height={293} loading="lazy" decoding="async" /><div class="cat-overlay"><h3>Green Tour Cappadocia</h3></div></a>
+          </div>
+        </div>
+        <button class="slider-arrow next-btn" id="sliderNextBtn" type="button">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY TABS -->
+  <section class="category-tabs-section">
+    <div class="container">
+      <div class="category-tabs" id="tourCategoryTabs">
+        <button type="button" class="tab-item active" data-filter="all">{t.categories.allTours}</button>
+        <button type="button" class="tab-item" data-filter="balloon">{t.categories.balloonTours}</button>
+        <button type="button" class="tab-item" data-filter="daily">{t.categories.dailyTours}</button>
+        <button type="button" class="tab-item" data-filter="private">{t.categories.privateTours}</button>
+        <button type="button" class="tab-item" data-filter="transfers">{t.categories.transfers}</button>
+        <button type="button" class="tab-item" data-filter="activities">{t.categories.activities}</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOST POPULAR TOURS -->
+  <section class="tours-section" id="tours">
+    <div class="container">
+      <h2 class="section-title">{t.popular.title}</h2>
+
+      <div class="tours-grid" id="toursGrid" data-supabase-url={homepageSupabaseUrl} data-supabase-key={homepageSupabaseKey}>
+        {t.tourCards.map((tour) => (
+          <div
+            class="tour-card-style2"
+            data-category={tour.category}
+            data-product-slug={resolveProductSlug(tour)}
+            data-product-name={tour.title}
+            style={tour.href ? "position: relative;" : undefined}
+          >
+            {tour.href && (
+              <a
+                href={tour.href}
+                aria-label={tour.title}
+                style="position: absolute; inset: 0; z-index: 10;"
+              ></a>
+            )}
+
+            <div class="card-img-box">
+              <span class="rating-badge">⭐ {tour.rating}</span>
+              <Image src={resolveTourCardImage(tour)} alt={tour.title} loading="lazy" decoding="async" width={480} height={320} />
+            </div>
+
+            <div class="card-body-box">
+              <span class="duration-text">{t.popular.duration}: {tour.duration}</span>
+              <h3 class="card-title-text">{tour.title}</h3>
+
+              <div class="tag-row">
+                <span class="discount-tag">✓ {tour.tag}</span>
+
+                {tour.status && (
+                  <span class:list={["status-tag", tour.statusType === "red" ? "status-red" : "status-blue"]}>
+                    {tour.statusIcon} {tour.status}
+                  </span>
+                )}
+              </div>
+
+              <div class="card-price-box">
+                <span class="starting-text">{t.popular.startingPrice}</span>
+                <div class="price-right" data-price-wrap>
+                  <span class="old-price" data-old-price>{tour.oldPrice}</span>
+                  <span class="current-price" data-current-price>{tour.currentPrice}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+<!-- REVIEWS SECTION: 32 REVIEWS / 4 AT A TIME -->
+  <section class="reviews-section tbc-combined-review-section">
+    <div class="container">
+      <div class="reviews-header flex-header">
+        <div>
+          <span class="reviews-badge tbc-combined-badge">
+            <img src="/images/icons/tripadvisor-logo.webp" alt="" class="reviews-badge-logo" width="18" height="18" aria-hidden="true" loading="lazy" />
+            <img src="/images/icons/google-logo.webp" alt="" class="reviews-badge-logo" width="18" height="18" aria-hidden="true" loading="lazy" />
+            {lang === "tr" ? "MİSAFİR YORUMLARI" : lang === "es" ? "RESEÑAS DE HUÉSPEDES" : "GUEST REVIEWS"}
+          </span>
+          <h2 class="reviews-title">
+            {lang === "tr" ? "Misafirlerimiz Ne Diyor?" : lang === "es" ? "¿Qué Dicen Nuestros Huéspedes?" : "What Our Guests Say"}
+          </h2>
+        </div>
+
+        <div class="tbc-review-top-links">
+          <a
+            href="https://share.google/o3AA8wroDMV8i7DEI"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="view-all-btn google-btn"
+          >
+            Google ↗
+          </a>
+
+        </div>
+      </div>
+
+      <div class="reviews-slider-wrap tbc-25-slider">
+        <button class="rev-arrow rev-prev" id="tbc25PrevBtn" type="button" aria-label="Previous reviews">‹</button>
+
+        <div class="tbc-25-viewport" id="tbc25Viewport">
+          <div class="tbc-25-track" id="tbc25Track">
+            {homepageReviews.map((review) => (
+              <article class:list={["review-card", review.source === "tripadvisor" ? "ta-card" : "google-card"]}>
+                <div class="rev-header">
+                  <div class="rev-user">
+                    <span class="tbc-review-avatar-letter">{review.name.slice(0,1).toUpperCase()}</span>
+                    <div>
+                      <h4 class="rev-name">{review.name}</h4>
+                      <span class="rev-date">{review.date}</span>
+                    </div>
+                  </div>
+
+                  <span class:list={[review.source === "tripadvisor" ? "ta-pill" : "google-pill"]}>
+                    <img
+                      src={review.source === "tripadvisor" ? "/images/icons/tripadvisor-logo.webp" : "/images/icons/google-logo.webp"}
+                      alt=""
+                      class="review-pill-logo"
+                      width="15"
+                      height="15"
+                      aria-hidden="true" loading="lazy"
+                    />
+                    {review.source === "tripadvisor" ? "TripAdvisor" : "Google"}
+                  </span>
+                </div>
+
+                <div class:list={["rev-stars", review.source === "tripadvisor" ? "tbc-ta-stars" : "tbc-google-stars"]}>
+                  {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}
+                  <span class="check-icon">✓</span>
+                </div>
+
+                <p class="rev-comment">
+                  <strong>{review.title}</strong>
+                  {review.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <button class="rev-arrow rev-next" id="tbc25NextBtn" type="button" aria-label="Next reviews">›</button>
+      </div>
+
+      <div class="tbc-review-counter">
+        <span>32</span>
+        {lang === "tr" ? " güncel yorum" : lang === "es" ? " reseñas" : " reviews"}
+        <span class="tbc-review-counter-dot">•</span>
+        {lang === "tr" ? "Her tıklamada 4 kart" : lang === "es" ? "4 tarjetas por paso" : "4 cards per step"}
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR PARTNERS -->
+  <section class="tbc-premium-partners" aria-labelledby="tbc-partners-title">
+    <div class="tbc-premium-partners-glow tbc-premium-partners-glow-left" aria-hidden="true"></div>
+    <div class="tbc-premium-partners-glow tbc-premium-partners-glow-right" aria-hidden="true"></div>
+
+    <div class="tbc-premium-partners-head">
+      <span class="tbc-premium-partners-badge">
+        <span class="tbc-premium-partners-badge-dot"></span>
+        {t.partners.badge}
+      </span>
+
+      <h2 class="tbc-premium-partners-title" id="tbc-partners-title">
+        {lang === "tr" ? (
+          <>
+            <span>Güvenilir</span>
+            <strong> Global & Yerel </strong>
+            <span>Partnerler</span>
+          </>
+        ) : lang === "es" ? (
+          <>
+            <span>Socios</span>
+            <strong> Globales y Locales </strong>
+            <span>de Confianza</span>
+          </>
+        ) : (
+          <>
+            <span>Trusted</span>
+            <strong> Global & Local </strong>
+            <span>Partners</span>
+          </>
+        )}
+      </h2>
+
+      <p class="tbc-premium-partners-text">{t.partners.text}</p>
+    </div>
+
+    <div class="tbc-premium-partners-rows">
+      <div class="tbc-premium-marquee">
+        <div class="tbc-premium-track tbc-premium-track-left">
+          <div class="tbc-premium-card"><img src="/images/partners-premium/air-kapadokya.webp" alt="Air Kapadokya" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/anatolian-balloons.webp" alt="Anatolian Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/flower-balloons.webp" alt="Flower Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/urgup-balloons.webp" alt="Ürgüp Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/atmosfer-balloons.webp" alt="Atmosfer Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/guvercin-balloons.webp" alt="Güvercin Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
+
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/air-kapadokya.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/anatolian-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/flower-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/urgup-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/atmosfer-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/guvercin-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+        </div>
+      </div>
+
+      <div class="tbc-premium-marquee">
+        <div class="tbc-premium-track tbc-premium-track-right">
+          <div class="tbc-premium-card"><img src="/images/partners-premium/istanbul-balloons.webp" alt="Istanbul Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/kapadokya-balloons.webp" alt="Kapadokya Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/sultan-balloons.webp" alt="Sultan Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/turkiye-balloons.webp" alt="Türkiye Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/universal-balloon.webp" alt="Universal Balloon" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/thk.webp" alt="THK" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card"><img src="/images/partners-premium/assiana.webp" alt="Assiana" width="260" height="120" loading="lazy" decoding="async" /></div>
+
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/istanbul-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/kapadokya-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/sultan-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/turkiye-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/universal-balloon.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/thk.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/assiana.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO INTRODUCTION -->
+  <section class="tbc-seo-intro" aria-labelledby="tbc-seo-intro-title">
+    <div class="container">
+      <div class="tbc-seo-intro-card">
+        <span class="tbc-seo-intro-kicker">
+          {lang === "tr" ? "KAPADOKYA REHBERİ" : lang === "es" ? "GUÍA DE CAPADOCIA" : "CAPPADOCIA GUIDE"}
+        </span>
+        <h2 id="tbc-seo-intro-title">{seo.introTitle}</h2>
+        <p class="tbc-seo-intro-lead">{seo.introLead}</p>
+        <p>{seo.introText}</p>
+
+        <div class="tbc-seo-intro-links" aria-label={lang === "tr" ? "Kapadokya bağlantıları" : lang === "es" ? "Enlaces de Capadocia" : "Cappadocia links"}>
+          <a href={`/${lang}/balloon-tours/`}>{seo.balloonLink} <span aria-hidden="true">→</span></a>
+          <a href={`/${lang}/cappadocia-tours/`}>{seo.toursLink} <span aria-hidden="true">→</span></a>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="tbc-faq-section" id="faq">
+    <div class="container tbc-faq-container">
+      <div class="tbc-faq-head">
+        <span class="tbc-faq-kicker">FAQ</span>
+        <h2>{faq.title}</h2>
+      </div>
+      <div class="tbc-faq-list">
+        {faq.items.map(([question, answer], index) => (
+          <details class="tbc-faq-item" open={index === 0}>
+            <summary>
+              <span class="tbc-faq-chevron">›</span>
+              <span>{question}</span>
+            </summary>
+            <div class="tbc-faq-answer">{answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP CTA BANNER -->
+  <section class="footer-cta-banner">
+    <div class="container cta-flex">
+      <div class="cta-text">
+        <h2>{t.cta.title}</h2>
+        <p>{t.cta.text}</p>
+      </div>
+      <a href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer" class="cta-btn">
+        <img
+          src="/images/icons/whatsapp-logo.webp"
+          alt=""
+          class="cta-whatsapp-icon"
+          width="20"
+          height="20"
+          aria-hidden="true" loading="lazy"
+        />
+        <span>{t.cta.button}</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-top-row">
+      <div class="footer-brand-box">
+        <div class="brand-header">
+          <div class="footer-logo-wrapper">
+            <img 
+              src="/images/logo.png" 
+              alt="CappadociaGo" 
+              class="footer-logo-img transparent-logo" width="400" height="600" loading="lazy" decoding="async"/>
+          </div>
+        </div>
+        
+        <div class="contact-cards">
+          <div class="contact-card-item">
+            <div class="icon-circle icon-clean"><img src="/images/icons/telefon-logo.webp" alt="" class="contact-icon-img" width="24" height="24" aria-hidden="true" loading="lazy" /></div>
+            <div class="card-info">
+              <span class="card-label">{t.footer.phone}</span>
+              <a href="tel:+905401015050" class="card-value">+90 540 101 50 50</a>
+            </div>
+          </div>
+
+          <div class="contact-card-item">
+            <div class="icon-circle icon-clean">
+              <img
+                src="/images/icons/whatsapp-logo.webp"
+                alt=""
+                class="contact-whatsapp-icon"
+                width="24"
+                height="24"
+                aria-hidden="true" loading="lazy"
+              />
+            </div>
+            <div class="card-info">
+              <span class="card-label">{t.contact.whatsapp}</span>
+              <a href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer" class="card-value">+90 540 101 50 50</a>
+            </div>
+          </div>
+
+          <div class="contact-card-item">
+            <div class="icon-circle icon-clean"><img src="/images/icons/mail-logo.webp" alt="" class="contact-icon-img" width="24" height="24" aria-hidden="true" loading="lazy" /></div>
+            <div class="card-info">
+              <span class="card-label">{t.footer.mail}</span>
+              <a href="mailto:info@kapheratravel.com" class="card-value">info@kapheratravel.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-gallery-box">
+        <div class="mini-gallery">
+          {footerTourImages.map((src, index) => <img src={src} alt={`${seo.introTitle} - ${index + 1}`} loading="lazy" decoding="async" width="800" height="533"/>)}
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-middle-row">
+      <div class="footer-col">
+        <h4>CappadociaGo</h4>
+        <ul>
+          <li><a href={`/${lang}/`}>{t.footer.nav.home}</a></li>
+          <li><a href={`/${lang}/about-us/`}>{t.footer.nav.about}</a></li>
+          <li><a href={`/${lang}/#tours`}>{t.footer.nav.categories}</a></li>
+          <li><a href={`/${lang}/#blogs`}>{t.footer.nav.blogs}</a></li>
+          <li><a href={`/${lang}/contact/`}>{t.footer.nav.contact}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{t.footer.informationTitle}</h4>
+        <ul>
+          <li><a href={`/${lang}/balloon-tours/`}>{lang === "tr" ? "Balon Turları" : lang === "es" ? "Tours en Globo" : "Balloon Tours"}</a></li>
+          <li><a href={`/${lang}/cancellation-refund-policy/`}>{t.footer.information.cancellation}</a></li>
+          <li><a href={`/${lang}/distance-sales-agreement/`}>{t.footer.information.distanceSales}</a></li>
+          <li><a href={`/${lang}/kvkk-clarification-text/`}>{t.footer.information.kvk}</a></li>
+          <li><a href={`/${lang}/terms-and-conditions/`}>{t.footer.information.terms}</a></li>
+          <li><a href={`/${lang}/privacy-policy/`}>{t.footer.information.privacy}</a></li>
+          <li><a href={`/${lang}/faq/`}>{lang === "tr" ? "Sıkça Sorulan Sorular" : lang === "es" ? "Preguntas Frecuentes" : "FAQ"}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-info-col">
+        <h4>{t.footer.addressTitle}</h4>
+
+        <div class="footer-info-item">
+          <span class="footer-info-symbol">📍</span>
+          <span>Cappadocia, Nevşehir, Türkiye</span>
+        </div>
+
+        <div class="footer-info-item">
+          <img src="/images/icons/telefon-logo.webp" alt="" class="footer-info-icon" width="18" height="18" aria-hidden="true" loading="lazy" />
+          <a href="tel:+905401015050">{t.footer.phone}: +90 540 101 50 50</a>
+        </div>
+
+        <div class="footer-info-item">
+          <img src="/images/icons/mail-logo.webp" alt="" class="footer-info-icon" width="18" height="18" aria-hidden="true" loading="lazy" />
+          <a href="mailto:info@kapheratravel.com">{t.footer.mail}: info@kapheratravel.com</a>
+        </div>
+
+        <div class="footer-info-item tursab-text">
+          <span class="footer-info-symbol">🛡️</span>
+          <span>TÜRSAB No: 18577</span>
+        </div>
+      </div>
+
+      <div class="footer-col footer-connect-col">
+        <h4>{lang === "tr" ? "Bizi Takip Edin" : lang === "es" ? "Síguenos" : "Stay Connected"}</h4>
+        <p>
+          {lang === "tr"
+            ? "Kapadokya'dan güncel turlar, uçuş bilgileri ve hızlı destek için sosyal medya ve WhatsApp üzerinden bize ulaşın."
+            : lang === "es"
+              ? "Síguenos para conocer tours, información de vuelos y recibir asistencia rápida por redes sociales y WhatsApp."
+              : "Follow our Cappadocia updates, tour highlights and get fast support through social media and WhatsApp."}
+        </p>
+        <div class="footer-social-stack">
+          <a href="https://www.instagram.com/cappadociago/" target="_blank" rel="noopener noreferrer" class="footer-social-card">
+            <img src="/images/icons/instagram-logo.webp" alt="Instagram" width="22" height="22" loading="lazy" />
+            <span><strong>Instagram</strong><small>@cappadociago</small></span>
+          </a>
+          <a href="https://www.facebook.com/share/19A14kRwHz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="footer-social-card">
+            <img src="/images/icons/facebook-logo.webp" alt="Facebook" width="22" height="22" loading="lazy" />
+            <span><strong>Facebook</strong><small>CappadociaGo</small></span>
+          </a>
+          <a href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer" class="footer-social-card footer-social-whatsapp">
+            <img src="/images/icons/whatsapp-logo.webp" alt="WhatsApp" width="22" height="22" loading="lazy" />
+            <span><strong>WhatsApp</strong><small>+90 540 101 50 50</small></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>{t.footer.copyright}</p>
+    </div>
+  </footer>
+
+  <!-- İNTERAKTİF JS KODLARI -->
+  <script is:inline>
+  (function () {
+
+    // Dil menüsü: masaüstü + mobil güvenli geçiş
+    const langSwitcher = document.getElementById('langSwitcher');
+    const langButton = document.getElementById('langButton');
+    const langDropdown = document.getElementById('langDropdown');
+
+    if (langSwitcher && langButton && langDropdown) {
+      const closeLanguageMenu = () => {
+        langSwitcher.classList.remove('is-open');
+        langButton.setAttribute('aria-expanded', 'false');
+      };
+
+      const toggleLanguageMenu = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const willOpen = !langSwitcher.classList.contains('is-open');
+        closeLanguageMenu();
+
+        if (willOpen) {
+          langSwitcher.classList.add('is-open');
+          langButton.setAttribute('aria-expanded', 'true');
+        }
+      };
+
+      langButton.addEventListener('click', toggleLanguageMenu);
+
+      // Desktop tarayıcılarda link tıklamasını kesin yönlendirmeye çevir.
+      langDropdown.querySelectorAll('.lang-item').forEach((item) => {
+        item.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const url = this.getAttribute('data-lang-url') || this.getAttribute('href');
+          if (url) {
+            window.location.assign(url);
+          }
+        });
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!langSwitcher.contains(event.target)) {
+          closeLanguageMenu();
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeLanguageMenu();
+        }
+      });
+    }
+
+    // Kategori Slider Ok Butonları
+    const sliderContainer = document.getElementById('sliderTrackContainer');
+    const sliderPrev = document.getElementById('sliderPrevBtn');
+    const sliderNext = document.getElementById('sliderNextBtn');
+
+    if (sliderContainer && sliderPrev && sliderNext) {
+      sliderNext.addEventListener('click', () => {
+        sliderContainer.scrollBy({ left: 240, behavior: 'smooth' });
+      });
+      sliderPrev.addEventListener('click', () => {
+        sliderContainer.scrollBy({ left: -240, behavior: 'smooth' });
+      });
+    }
+
+    // Mobil Menü Aç/Kapat
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    if (mobileToggle && mainNav) {
+      mobileToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('is-open');
+        mobileToggle.classList.toggle('is-active');
+      });
+    }
+
+    const root = document.querySelector('.tbc-hero-form');
+    if (root) {
+      const selects = root.querySelectorAll('.tbc-custom-select');
+      const form = root.querySelector('#tbcBookingForm');
+      const submitBtn = root.querySelector('#tbcSubmitBtn');
+      const successBox = root.querySelector('#tbcSuccessBox');
+      const errorBox = root.querySelector('#tbcErrorBox');
+
+      function closeAllSelects() {
+        root.querySelectorAll('.tbc-custom-select').forEach(select => select.classList.remove('active'));
+        root.querySelectorAll('.tbc-field-wrap').forEach(wrap => wrap.classList.remove('is-open'));
+      }
+
+      selects.forEach(select => {
+        const button = select.querySelector('.tbc-select-btn');
+        const placeholder = select.querySelector('.tbc-placeholder');
+        const options = select.querySelectorAll('.tbc-option');
+        const targetId = select.getAttribute('data-target');
+        const hiddenInput = root.querySelector('#' + targetId);
+        const wrap = select.closest('.tbc-field-wrap');
+
+        if (!button || !placeholder || !hiddenInput) return;
+
+        button.addEventListener('click', function (event) {
+          event.stopPropagation();
+          const isActive = select.classList.contains('active');
+          closeAllSelects();
+
+          if (!isActive) {
+            select.classList.add('active');
+            if (wrap) wrap.classList.add('is-open');
+          }
+        });
+
+        options.forEach(option => {
+          option.addEventListener('click', function () {
+            const value = this.getAttribute('data-value');
+            placeholder.textContent = value;
+            hiddenInput.value = value;
+            closeAllSelects();
+          });
+        });
+      });
+
+      // LOGO RENKLERİNE UYUMLU ÇİFT AY TAKVİMİ
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const fullMonthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const weekdayNames = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+      const startInput = document.getElementById('startDateInput');
+      const endInput = document.getElementById('endDateInput');
+      const startMonth = document.getElementById('startMonth');
+      const startDay = document.getElementById('startDay');
+      const endMonth = document.getElementById('endMonth');
+      const endDay = document.getElementById('endDay');
+      const datePopover = document.getElementById('tbcDatePopover');
+      const dateMonths = document.getElementById('tbcDateMonths');
+      const dateTitle = document.getElementById('tbcDateTitle');
+      const datePrev = document.getElementById('tbcDatePrev');
+      const dateNext = document.getElementById('tbcDateNext');
+
+      const pad2 = (value) => String(value).padStart(2, '0');
+      const dateKey = (date) => `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
+      const fromKey = (key) => {
+        const [y, m, d] = key.split('-').map(Number);
+        return new Date(y, m - 1, d);
+      };
+      const dayOnly = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+      let activeDateTarget = 'start';
+      let calendarCursor = new Date();
+      calendarCursor.setDate(1);
+
+      const today = dayOnly(new Date());
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      if (startInput && !startInput.value) startInput.value = dateKey(today);
+      if (endInput && !endInput.value) endInput.value = dateKey(tomorrow);
+
+      const paintDateLabels = () => {
+        if (startInput?.value) {
+          const d = fromKey(startInput.value);
+          startMonth.textContent = monthNames[d.getMonth()];
+          startDay.textContent = d.getDate();
+        }
+        if (endInput?.value) {
+          const d = fromKey(endInput.value);
+          endMonth.textContent = monthNames[d.getMonth()];
+          endDay.textContent = d.getDate();
+        }
+      };
+
+      const isBetween = (date, start, end) => date > start && date < end;
+
+      const renderMonth = (year, month) => {
+        const monthWrap = document.createElement('div');
+        monthWrap.className = 'tbc-date-month';
+        monthWrap.innerHTML = `
+          <div class="tbc-date-month-title">${fullMonthNames[month]} ${year}</div>
+          <div class="tbc-date-weekdays">${weekdayNames.map((w) => `<span>${w}</span>`).join('')}</div>
+          <div class="tbc-date-grid"></div>
+        `;
+        const grid = monthWrap.querySelector('.tbc-date-grid');
+        const first = new Date(year, month, 1);
+        const last = new Date(year, month + 1, 0);
+        const offset = (first.getDay() + 6) % 7;
+
+        for (let i = 0; i < offset; i++) {
+          const blank = document.createElement('span');
+          blank.className = 'tbc-date-blank';
+          grid.appendChild(blank);
+        }
+
+        const selectedStart = startInput?.value ? fromKey(startInput.value) : null;
+        const selectedEnd = endInput?.value ? fromKey(endInput.value) : null;
+
+        for (let day = 1; day <= last.getDate(); day++) {
+          const current = new Date(year, month, day);
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'tbc-date-day';
+          btn.textContent = String(day);
+          btn.dataset.date = dateKey(current);
+
+          if (current < today) btn.disabled = true;
+          if (dateKey(current) === dateKey(today)) btn.classList.add('is-today');
+          if (selectedStart && dateKey(current) === dateKey(selectedStart)) btn.classList.add('is-selected');
+          if (selectedEnd && dateKey(current) === dateKey(selectedEnd)) btn.classList.add('is-selected');
+          if (selectedStart && selectedEnd && isBetween(current, selectedStart, selectedEnd)) btn.classList.add('is-range');
+
+          btn.addEventListener('click', () => {
+            if (!startInput || !endInput) return;
+            const selected = fromKey(btn.dataset.date);
+            if (activeDateTarget === 'start') {
+              startInput.value = btn.dataset.date;
+              const currentEnd = endInput.value ? fromKey(endInput.value) : null;
+              if (!currentEnd || currentEnd <= selected) {
+                const nextDay = new Date(selected);
+                nextDay.setDate(nextDay.getDate() + 1);
+                endInput.value = dateKey(nextDay);
+              }
+              activeDateTarget = 'end';
+            } else {
+              const start = startInput.value ? fromKey(startInput.value) : today;
+              if (selected <= start) {
+                startInput.value = btn.dataset.date;
+                const nextDay = new Date(selected);
+                nextDay.setDate(nextDay.getDate() + 1);
+                endInput.value = dateKey(nextDay);
+              } else {
+                endInput.value = btn.dataset.date;
+              }
+              activeDateTarget = 'start';
+              closeDatePopover();
+            }
+            paintDateLabels();
+            renderCalendar();
+          });
+
+          grid.appendChild(btn);
+        }
+        return monthWrap;
+      };
+
+      const renderCalendar = () => {
+        if (!dateMonths || !dateTitle) return;
+        const firstYear = calendarCursor.getFullYear();
+        const firstMonth = calendarCursor.getMonth();
+        const second = new Date(firstYear, firstMonth + 1, 1);
+        dateTitle.textContent = `${fullMonthNames[firstMonth]} ${firstYear} · ${fullMonthNames[second.getMonth()]} ${second.getFullYear()}`;
+        dateMonths.innerHTML = '';
+        dateMonths.appendChild(renderMonth(firstYear, firstMonth));
+        dateMonths.appendChild(renderMonth(second.getFullYear(), second.getMonth()));
+      };
+
+      const openDatePopover = (target = 'start') => {
+        if (!datePopover) return;
+        activeDateTarget = target;
+        const sourceValue = target === 'end' ? endInput?.value : startInput?.value;
+        if (sourceValue) {
+          const d = fromKey(sourceValue);
+          calendarCursor = new Date(d.getFullYear(), d.getMonth(), 1);
+        }
+        renderCalendar();
+        datePopover.classList.add('is-open');
+        datePopover.setAttribute('aria-hidden', 'false');
+      };
+
+      const closeDatePopover = () => {
+        if (!datePopover) return;
+        datePopover.classList.remove('is-open');
+        datePopover.setAttribute('aria-hidden', 'true');
+      };
+
+      document.querySelectorAll('[data-date-target]').forEach((slot) => {
+        slot.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          closeAllSelects();
+          openDatePopover(slot.getAttribute('data-date-target') || 'start');
+        });
+      });
+
+      datePrev?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        calendarCursor = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth() - 1, 1);
+        renderCalendar();
+      });
+
+      dateNext?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        calendarCursor = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth() + 1, 1);
+        renderCalendar();
+      });
+
+      datePopover?.addEventListener('click', (event) => event.stopPropagation());
+      paintDateLabels();
+      renderCalendar();
+
+      document.addEventListener('click', () => {
+        closeAllSelects();
+        closeDatePopover();
+      });
+
+      if (form) {
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          const tourType = root.querySelector('#tourType').value;
+          const startDate = root.querySelector('#startDateInput').value;
+          const guestCount = root.querySelector('#guestCount').value;
+
+          successBox.style.display = 'none';
+          errorBox.style.display = 'none';
+
+          if (!tourType || !startDate || !guestCount) {
+            errorBox.style.display = 'block';
+            return;
+          }
+          const currentLang = document.documentElement.lang || 'en';
+          const routes = {
+            'Göreme Comfort Hot Air Balloon Tour':'goreme-comfort-hot-air-balloon-tour',
+            'Göreme Standart Hot Air Balloon Tour':'goreme-standart-hot-air-balloon-tour',
+            'Ihlara Valley Balloons Tour':'ihlara-valley-balloons-tour',
+            'Pamukkale Balloons Tour':'pamukkale-balloons-tour',
+            'Soğanlı Valley Balloon Tour':'soganli-valley-balloon-tour',
+            'Cappadocia Custom Package Tour':'cappadocia-custom-package-tour',
+            'Blue Tour Cappadocia':'blue-tour-cappadocia',
+            'Red Tour Cappadocia':'red-tour-cappadocia',
+            'Green Tour Cappadocia':'green-tour-cappadocia',
+            'Private Red Tour Cappadocia':'private-red-tour-cappadocia',
+            'Private Green Tour Cappadocia':'private-green-tour-cappadocia',
+            'Cappadocia Mix Tour':'cappadocia-mix-tour',
+            'ATV Tour With Göreme Valleys':'atv-tour-with-goreme-valleys',
+            'Jeep Safari Cappadocia':'jeep-safari-cappadocia',
+            'Sunrise or Sunset Horse Riding Cappadocia':'sunrise-sunset-horse-riding-cappadocia',
+            'Cappadocia Sunset Camel Riding Tour':'cappadocia-sunset-camel-riding-tour',
+            'Cappadocia Classic Car Tour':'cappadocia-classic-car-tour',
+            'Photo Shoot & Flying Dress Experience':'photo-shoot-flying-dress-experience',
+            'Cappadocia Pottery Making Experience':'cappadocia-pottery-making-experience',
+            'Turkish Night With Cave Dinner Cappadocia':'turkish-night-with-cave-dinner-cappadocia',
+            'Balloons Watching Tour Cappadocia':'balloons-watching-tour-cappadocia'
+          };
+          const transferRoutes = {
+            'Kayseri Airport (ASR) Shuttle Transfer':'kayseri-airport-shuttle-transfer',
+            'Nevşehir Airport (NAV) Shuttle Transfer':'nevsehir-airport-shuttle-transfer',
+            'Private VIP Airport Transfer Cappadocia':'private-airport-transfer'
+          };
+          const rawPeople = parseInt(guestCount, 10) || 1;
+          const params = new URLSearchParams({ date: startDate, people: String(rawPeople) });
+          if (routes[tourType]) { window.location.href = `/${currentLang}/tours/${routes[tourType]}?${params.toString()}`; return; }
+          if (transferRoutes[tourType]) { window.location.href = `/${currentLang}/transfers/${transferRoutes[tourType]}?${params.toString()}`; return; }
+          errorBox.style.display = 'block';
+        });
+      }
+    }
+
+// Tur Filtreleme Fonksiyonu
+    const tabButtons = document.querySelectorAll('#tourCategoryTabs .tab-item');
+    const tourCards = document.querySelectorAll('#toursGrid .tour-card-style2');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        tourCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = '';
+            const wrapper = card.closest('.tour-card-link-wrapper');
+            if (wrapper) wrapper.style.display = '';
+          } else {
+            card.style.display = 'none';
+            const wrapper = card.closest('.tour-card-link-wrapper');
+            if (wrapper) wrapper.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 1. TRIPADVISOR SLIDER OKLARI
+    const taContainer = document.getElementById('taReviewsContainer');
+    const taPrevBtn = document.getElementById('taPrevBtn');
+    const taNextBtn = document.getElementById('taNextBtn');
+
+    if (taNextBtn && taPrevBtn && taContainer) {
+      taNextBtn.addEventListener('click', () => {
+        taContainer.scrollBy({ left: 350, behavior: 'smooth' });
+      });
+      taPrevBtn.addEventListener('click', () => {
+        taContainer.scrollBy({ left: -350, behavior: 'smooth' });
+      });
+    }
+
+    // 2. GOOGLE SLIDER OKLARI
+    const googleContainer = document.getElementById('googleReviewsContainer');
+    const googlePrevBtn = document.getElementById('googlePrevBtn');
+    const googleNextBtn = document.getElementById('googleNextBtn');
+
+    if (googleNextBtn && googlePrevBtn && googleContainer) {
+      googleNextBtn.addEventListener('click', () => {
+        googleContainer.scrollBy({ left: 350, behavior: 'smooth' });
+      });
+      googlePrevBtn.addEventListener('click', () => {
+        googleContainer.scrollBy({ left: -350, behavior: 'smooth' });
+      });
+    }
+
+    // Homepage live pricing is handled by the independent script below.
+  })();
+  </script>
+
+<script is:inline>
+(() => {
+  const runHomepagePrices = async () => {
+    const grid = document.getElementById('toursGrid');
+    if (!grid) return;
+
+    const base = grid.dataset.supabaseUrl || '';
+    const key = grid.dataset.supabaseKey || '';
+    if (!base || !key) return;
+
+    const cards = [...grid.querySelectorAll('.tour-card-style2[data-product-slug]')];
+    if (!cards.length) return;
+
+    const headers = {
+      apikey: key,
+      Authorization: `Bearer ${key}`
+    };
+
+    const today = new Date();
+    const todayKey =
+      `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+
+    const lang = document.documentElement.lang || 'en';
+    const askText =
+      lang === 'tr' ? 'Fiyat Sorunuz' :
+      lang === 'es' ? 'Consultar Precio' :
+      'Ask For Price';
+
+    const money = (n) => `${Math.round(Number(n))} €`;
+
+    for (const card of cards) {
+      const slug = String(card.dataset.productSlug || '').trim();
+      if (!slug) continue;
+
+      const currentEl = card.querySelector('[data-current-price]');
+      const oldEl = card.querySelector('[data-old-price]');
+      if (!currentEl || !oldEl) continue;
+
+      try {
+        // Fetch ALL active rows for this slug.
+        // This intentionally handles legacy/duplicate product rows safely.
+        const productRes = await fetch(
+          `${base}/rest/v1/products?slug=eq.${encodeURIComponent(slug)}&active=eq.true&select=id,default_price,ask_for_price`,
+          { headers, cache: 'no-store' }
+        );
+
+        if (!productRes.ok) continue;
+        const products = await productRes.json();
+        if (!Array.isArray(products) || !products.length) continue;
+
+        // Ask-for-price only wins when every active row for this slug is ask-for-price.
+        const allAsk = products.every(p => p.ask_for_price === true);
+        if (allAsk) {
+          currentEl.textContent = askText;
+          currentEl.classList.add('is-ask-price');
+          oldEl.textContent = '';
+          oldEl.style.display = 'none';
+          continue;
+        }
+
+        const ids = products.map(p => String(p.id || '')).filter(Boolean);
+        let validPrices = [];
+
+        // Query each matched product's future availability.
+        // We deliberately aggregate across duplicate/legacy product rows.
+        for (const id of ids) {
+          const avRes = await fetch(
+            `${base}/rest/v1/availability?product_id=eq.${encodeURIComponent(id)}&date=gte.${todayKey}&status=eq.available&select=price,capacity,booked&limit=1000`,
+            { headers, cache: 'no-store' }
+          );
+          if (!avRes.ok) continue;
+
+          const rows = await avRes.json();
+          for (const row of rows || []) {
+            const price = Number(row.price || 0);
+            const capacity = Number(row.capacity || 0);
+            const booked = Number(row.booked || 0);
+            if (price > 0 && capacity - booked > 0) validPrices.push(price);
+          }
+        }
+
+        // Future availability is the primary source.
+        // Only if there is no valid future price do we fall back to the lowest
+        // positive default_price among active rows for that slug.
+        let livePrice = validPrices.length ? Math.min(...validPrices) : 0;
+
+        if (!(livePrice > 0)) {
+          const defaults = products
+            .map(p => Number(p.default_price || 0))
+            .filter(v => v > 0);
+          if (defaults.length) livePrice = Math.min(...defaults);
+        }
+
+        if (!(livePrice > 0)) continue;
+
+        currentEl.classList.remove('is-ask-price');
+        currentEl.textContent = money(livePrice);
+        oldEl.textContent = money(livePrice * 1.20);
+        oldEl.style.display = '';
+        oldEl.style.textDecoration = 'line-through';
+        card.dataset.livePriceMode = 'price';
+      } catch (err) {
+        console.error('Homepage price error:', slug, err);
+      }
+    }
+  };
+
+  const start = () => {
+    runHomepagePrices();
+    window.setTimeout(runHomepagePrices, 2000);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else {
+    start();
+  }
+
+  window.addEventListener('pageshow', () => {
+    window.setTimeout(runHomepagePrices, 150);
+  });
+})();
+</script>
+
+
+
+
+<script>
+  (() => {
+    const viewport = document.getElementById("tbc25Viewport");
+    const track = document.getElementById("tbc25Track");
+    const prev = document.getElementById("tbc25PrevBtn");
+    const next = document.getElementById("tbc25NextBtn");
+    if (!viewport || !track || !prev || !next) return;
+
+    let page = 0;
+    let timer;
+
+    const cardsPerView = () => {
+      if (window.innerWidth <= 520) return 1;
+      if (window.innerWidth <= 800) return 2;
+      if (window.innerWidth <= 1050) return 3;
+      return 4;
+    };
+
+    const totalPages = () => {
+      const total = track.querySelectorAll(".review-card").length;
+      return Math.max(1, Math.ceil(total / cardsPerView()));
+    };
+
+    const render = () => {
+      const card = track.querySelector(".review-card");
+      if (!card) return;
+      const perView = cardsPerView();
+      const pages = totalPages();
+      if (page >= pages) page = 0;
+      if (page < 0) page = pages - 1;
+
+      const gap = 16;
+      const cardWidth = card.getBoundingClientRect().width;
+      const offsetCards = page * perView;
+      track.style.transform = `translateX(-${offsetCards * (cardWidth + gap)}px)`;
+    };
+
+    const move = (dir) => {
+      page += dir;
+      render();
+    };
+
+    const restart = () => {
+      clearInterval(timer);
+      timer = setInterval(() => move(1), 6000);
+    };
+
+    prev.addEventListener("click", () => { move(-1); restart(); });
+    next.addEventListener("click", () => { move(1); restart(); });
+
+    window.addEventListener("resize", () => {
+      page = 0;
+      render();
+    });
+
+    let startX = 0;
+    viewport.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    viewport.addEventListener("touchend", (e) => {
+      const delta = e.changedTouches[0].clientX - startX;
+      if (Math.abs(delta) > 45) {
+        move(delta < 0 ? 1 : -1);
+        restart();
+      }
+    }, { passive: true });
+
+    render();
+    restart();
+  })();
+</script>
+
+</body>
+</html>
+
+<!-- STİLLER -->
+<style>
+  :root {
+    --primary-navy: #0a1526;
+    --accent-gold: #ffd000;
+    --accent-orange: #ffd000;
+    --accent-green: #25d366;
+    --text-dark: #0a1526;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+    --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-main); }
+  body { background-color: #f8fafc; color: var(--text-dark); overflow-x: hidden; }
+
+  /* HEADER & YENİLENEN DİL MENÜSÜ STİLLERİ */
+  .site-header {
+    width: 100%;
+    background: rgba(255,255,255,.98);
+    border-bottom: 1px solid #e9eef5;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 18px rgba(10,21,38,.035);
+    backdrop-filter: blur(10px);
+  }
+
+  .header-container {
+    width: min(1380px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 0;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    flex: 0 0 auto;
+  }
+
+  .logo-home {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    text-decoration: none;
+  }
+
+  .logo-home img {
+    width: auto;
+    height: 82px;
+    max-width: 184px;
+    display: block;
+    object-fit: contain;
+  }
+
+  .header-instagram {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 34px;
+    padding: 6px 10px 6px 8px;
+    border: 1px solid #e4eaf1;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #30445d;
+    text-decoration: none;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    white-space: nowrap;
+    line-height: 1;
+    box-shadow: 0 3px 10px rgba(10,21,38,.035);
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  }
+
+  .header-instagram::before {
+    content: '';
+    width: 1px;
+    height: 26px;
+    position: absolute;
+    left: -7px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e7edf4;
+  }
+
+  .header-instagram:hover {
+    border-color: #cfd9e5;
+    box-shadow: 0 5px 16px rgba(10,21,38,.07);
+    transform: translateY(-1px);
+  }
+
+  .header-instagram-icon {
+    width: 19px;
+    height: 19px;
+    display: block;
+    object-fit: contain;
+    flex: 0 0 19px;
+  }
+
+  .main-nav {
+    min-width: 0;
+  }
+
+  .main-nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 18px;
+  }
+
+  .main-nav a {
+    position: relative;
+    text-decoration: none;
+    color: var(--primary-navy);
+    font-weight: 700;
+    font-size: 13px;
+    white-space: nowrap;
+    padding: 34px 0;
+    transition: color .2s ease;
+  }
+
+  .main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 25px;
+    height: 2px;
+    border-radius: 99px;
+    background: var(--accent-gold);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .2s ease;
+  }
+
+  .main-nav a:hover { color: #153f77; }
+  .main-nav a:hover::after { transform: scaleX(1); }
+
+  .header-right {
+    position: relative;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex: 0 0 auto;
+  }
+
+  .lang-switcher { position: relative; display: inline-block; z-index: 1205; pointer-events: auto; }
+  .lang-btn { background: var(--bg-light); border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer; color: var(--primary-navy); display: flex; align-items: center; gap: 6px; }
+  .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); min-width: 170px; max-height: 280px; overflow-y: auto; z-index: 99999; padding: 6px; pointer-events: auto; }
+  .lang-switcher.is-open .lang-dropdown { display: block; }
+  .lang-btn .arrow { display: inline-block; transition: transform 0.2s ease; }
+  .lang-switcher.is-open .arrow { transform: rotate(180deg); }
+  .lang-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: var(--primary-navy); text-decoration: none; font-size: 12.5px; font-weight: 600; border-radius: 8px; transition: background 0.2s; }
+  .lang-item:hover, .lang-item.active { background: #f1f5f9; color: var(--accent-orange); }
+
+  .whatsapp-btn {
+    background: transparent;
+    color: var(--primary-navy);
+    padding: 7px 4px;
+    border-radius: 0;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border: 0;
+    box-shadow: none;
+    line-height: 1;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .whatsapp-btn:hover { opacity: .78; transform: translateY(-1px); }
+  .whatsapp-btn-icon { width: 21px; height: 21px; display: block; object-fit: contain; flex: 0 0 21px; }
+
+  /* MOBİL MENÜ BUTONU (HAMBURGER) */
+  .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: space-between; width: 28px; height: 21px; padding: 0; z-index: 1002; }
+  .mobile-menu-toggle span { display: block; width: 100%; height: 3px; background-color: var(--primary-navy); border-radius: 3px; transition: all 0.3s ease; }
+
+  /* HERO AREA */
+  .tbc-hero-form { --tbc-border: #d9dce3; width: 100%; position: relative; }
+  .tbc-video-hero { position: relative; width: 100%; min-height: 760px; background: linear-gradient(180deg, #132235 0%, #0e1925 45%, #09121d 100%); overflow: visible; z-index: 1; }
+  .tbc-video-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; pointer-events: none; }
+  .tbc-video-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(9,18,29,0.92) 0%, rgba(9,18,29,0.80) 50%, rgba(9,18,29,0.62) 100%); z-index: 1; }
+  
+  .tbc-video-content { 
+    position: relative; 
+    z-index: 2; 
+    width: 100%; 
+    max-width: 1440px; 
+    margin: 0 auto; 
+    padding: 45px 24px 220px; 
+    color: #fff; 
+    text-align: left; 
+  }
+
+  .tbc-video-kicker { 
+    display: inline-block; 
+    margin-bottom: 12px; 
+    padding: 5px 12px; 
+    border-radius: 999px; 
+    background: rgba(255, 208, 0, 0.12); 
+    border: 1px solid var(--accent-gold); 
+    font-size: 11px; 
+    font-weight: 800; 
+    letter-spacing: .08em; 
+    text-transform: uppercase; 
+    color: var(--accent-gold); 
+  }
+
+  .tbc-video-title { 
+    margin: 0 0 14px; 
+    max-width: 680px; 
+    font-size: 40px; 
+    line-height: 1.12; 
+    font-weight: 800; 
+    color: #fff !important; 
+    letter-spacing: -0.5px;
+  }
+
+  .tbc-video-text { 
+    margin: 0 0 20px; 
+    font-size: 13.5px; 
+    line-height: 1.65; 
+    color: rgba(255,255,255,.82) !important; 
+    max-width: 580px; 
+  }
+
+  .tbc-video-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+  .tbc-video-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 20px; border-radius: 999px; text-decoration: none; font-size: 13px; font-weight: 800; }
+  .tbc-video-btn-primary { background: linear-gradient(135deg, var(--accent-orange), #cca300); color: var(--primary-navy); }
+  .tbc-video-btn-secondary { background: rgba(255,255,255,.10); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+
+  .tbc-partner-reviews { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 6px; }
+  .tbc-review-badge { display: inline-flex; align-items: center; gap: 8px; padding: 4px 2px; background: transparent; border: 0; border-radius: 0; color: #fff; text-decoration: none; cursor: default; user-select: none; }
+  .tbc-badge-logo { width: 22px; height: 22px; display: block; object-fit: contain; flex: 0 0 22px; }
+  .tbc-stars { color: #fbbc04; font-size: 11px; letter-spacing: 1px; }
+  .tbc-badge-text { font-size: 10.5px; color: rgba(255, 255, 255, 0.9); }
+
+  .tbc-hero-trust-points { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 28px; margin: 0 0 14px; color: #fff; }
+  .tbc-trust-point { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; color: rgba(255,255,255,.96); white-space: nowrap; }
+  .tbc-trust-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; color: #fff; font-size: 14px; line-height: 1; flex: 0 0 18px; }
+
+  /* REZERVASYON FORMU VE BAŞLIĞI */
+  .tbc-booking-wrap { 
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    bottom: 22px; 
+    z-index: 20; 
+    width: 100%; 
+    padding: 0 15px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  
+  .external-form-title {
+    width: 100%;
+    max-width: 1120px;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  .external-form-title .accent-ready,
+  .external-form-title .accent-cappadocia,
+  .external-form-title .accent-dreamy { color: var(--accent-gold); }
+
+  .tbc-booking-box { 
+    width: 100%; 
+    max-width: 1120px; 
+    margin: 0 auto; 
+    background: #ffd000; 
+    border-radius: 36px; 
+    box-shadow: 0 15px 40px rgba(0,0,0,.3); 
+    padding: 7px; 
+  }
+  
+  .tbc-booking-grid { display: grid; grid-template-columns: 1.2fr 1.6fr 1.1fr auto; gap: 5px; align-items: center; }
+  .tbc-field-wrap { position: relative; }
+
+  .tbc-select-btn { width: 100%; min-height: 50px; border: none; border-radius: 999px; padding: 0 18px; font-family: var(--font-heading); font-size: 13px; font-weight: 800; color: var(--primary-navy); background: #fff; outline: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+  .tbc-options { position: absolute; top: calc(100% + 8px); left: 0; width: 100%; background: #fff; border: 1px solid #dce5ef; border-radius: 18px; box-shadow: 0 18px 42px rgba(8, 34, 72, .18); padding: 8px; display: none; z-index: 99999; max-height: 280px; overflow-y: auto; font-family: var(--font-heading); }
+  .tbc-custom-select.active .tbc-options { display: block; }
+  .tbc-opt-group-title { font-family: var(--font-heading); font-size: 11px; font-weight: 900; color: #b98900; text-transform: uppercase; letter-spacing: 0.5px; padding: 9px 12px 5px; margin-top: 4px; border-bottom: 1px solid #eef2f7; pointer-events: none; }
+  .tbc-opt-group-title:first-child { margin-top: 0; padding-top: 4px; }
+  .tbc-option { min-height: 40px; display: flex; align-items: center; padding: 7px 12px; border-radius: 10px; cursor: pointer; font-family: var(--font-heading); font-size: 12.5px; font-weight: 700; line-height: 1.25; color: var(--primary-navy); }
+  .tbc-option:hover { background: #fff7d6; color: #0a2b5a; }
+
+  .dates-custom-box { border: none; border-radius: 999px; padding: 4px 16px; background: #fff; display: flex; flex-direction: column; justify-content: center; min-height: 50px; position: relative; }
+  .dates-top-label { font-family: var(--font-heading); font-size: 9.5px; font-weight: 900; color: var(--primary-navy); text-transform: uppercase; letter-spacing: -0.2px; margin-bottom: 1px; display: block; }
+  .dates-inputs-row { display: flex; align-items: center; gap: 8px; }
+  .date-slot { appearance: none; border: 0; background: transparent; padding: 0; position: relative; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; font-family: var(--font-heading); }
+  .date-slot:hover .d-a, .date-slot:focus-visible .d-a { color: #c49300; transform: translateY(1px); }
+  .date-divider { color: #d6a500; font-weight: 900; font-size: 11px; }
+  .d-m { font-family: var(--font-heading); font-size: 11.5px; font-weight: 800; color: var(--primary-navy); }
+  .d-d { font-family: var(--font-heading); font-size: 15px; font-weight: 900; color: var(--primary-navy); line-height: 1; }
+  .d-a { font-family: var(--font-heading); font-size: 15px; font-weight: 900; color: var(--primary-navy); transition: .18s ease; line-height: 1; }
+
+  .tbc-date-popover {
+    position: absolute; z-index: 100000; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(-6px); width: min(680px, calc(100vw - 28px));
+    padding: 18px; border: 1px solid rgba(10,43,90,.14); border-top: 4px solid #f5c400;
+    border-radius: 24px; background: radial-gradient(circle at 100% 0%, rgba(245,196,0,.12), transparent 28%), #fff;
+    box-shadow: 0 28px 70px rgba(8,34,72,.26); opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+  .tbc-date-popover.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .tbc-date-head { display:grid; grid-template-columns:42px 1fr 42px; align-items:center; gap:12px; margin-bottom:14px; }
+  .tbc-date-title { text-align:center; font-family:var(--font-heading); font-weight:900; color:var(--primary-navy); font-size:15px; }
+  .tbc-date-nav { width:40px; height:40px; border-radius:50%; border:1px solid rgba(10,43,90,.16); background:#fff9df; color:var(--primary-navy); font-size:24px; font-weight:900; cursor:pointer; display:grid; place-items:center; transition:.18s ease; }
+  .tbc-date-nav:hover { background:#f5c400; border-color:#f5c400; transform:translateY(-1px); }
+  .tbc-date-months { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+  .tbc-date-month { min-width:0; padding:14px; border:1px solid #e7edf4; border-radius:18px; background:linear-gradient(180deg,#fff 0%,#fbfcfe 100%); }
+  .tbc-date-month-title { margin:-2px 0 12px; text-align:center; font-family:var(--font-heading); font-size:15px; font-weight:900; color:var(--primary-navy); }
+  .tbc-date-weekdays,.tbc-date-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px; }
+  .tbc-date-weekdays { margin-bottom:5px; }
+  .tbc-date-weekdays span { text-align:center; font-family:var(--font-heading); font-size:10px; font-weight:900; color:#0a2b5a; text-transform:uppercase; padding:4px 0; }
+  .tbc-date-day { aspect-ratio:1/1; min-width:0; min-height:34px; border:1px solid #e2e8f0; border-radius:10px; background:#fffaf0; color:#243b5a; font-family:var(--font-heading); font-size:11px; font-weight:900; cursor:pointer; transition:.15s ease; }
+  .tbc-date-day:hover:not(:disabled) { background:#f5c400; color:#09203d; border-color:#f5c400; transform:translateY(-1px); }
+  .tbc-date-day.is-today { box-shadow:inset 0 0 0 2px #0a2b5a; background:#fff7cf; }
+  .tbc-date-day.is-selected { background:#0a2b5a; color:#fff; border-color:#0a2b5a; box-shadow:0 5px 12px rgba(10,43,90,.18); }
+  .tbc-date-day.is-range { background:#ffe98d; color:#0a2b5a; border-color:#ffe073; }
+  .tbc-date-day.is-range.is-selected { background:#0a2b5a; color:#fff; border-color:#0a2b5a; }
+  .tbc-date-day:disabled { background:#f4f6f8; border-color:#eef1f4; color:#bdc5cf; cursor:not-allowed; }
+  .tbc-date-blank { min-height:34px; }
+  .tbc-date-help { margin-top:14px; padding:11px 12px 0; border-top:1px solid #edf1f5; text-align:center; font-family:var(--font-heading); font-size:10.5px; font-weight:800; color:#6b7d95; }
+
+  .tbc-submit { min-height: 50px; border: 0; border-radius: 999px; padding: 0 30px; background: var(--primary-navy); color: #fff; font-family: var(--font-heading); font-size: 13.5px; font-weight: 900; letter-spacing: 0.5px; cursor: pointer; text-align: center; display: flex; align-items: center; justify-content: center; width: 100%; }
+  
+  .tbc-mobile-hero {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .tbc-mobile-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.075);
+    animation: tbcHeroImageIntro 8s cubic-bezier(.2,.7,.2,1) forwards;
+    will-change: transform;
+  }
+
+  .tbc-video-overlay {
+    animation: tbcHeroOverlayIntro .9s ease-out both;
+  }
+
+  .tbc-video-content {
+    animation: tbcHeroContentIntro .85s .12s cubic-bezier(.2,.75,.25,1) both;
+  }
+
+  .tbc-booking-wrap {
+    animation: tbcHeroBookingIntro .85s .28s cubic-bezier(.2,.75,.25,1) both;
+  }
+
+  @keyframes tbcHeroImageIntro {
+    from { transform: scale(1.075); }
+    to { transform: scale(1); }
+  }
+
+  @keyframes tbcHeroOverlayIntro {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes tbcHeroContentIntro {
+    from { opacity: 0; transform: translate3d(0, 18px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+
+  @keyframes tbcHeroBookingIntro {
+    from { opacity: 0; transform: translate3d(0, 14px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tbc-mobile-hero img,
+    .tbc-video-overlay,
+    .tbc-video-content,
+    .tbc-booking-wrap {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+
+  .tbc-success-box, .tbc-error-box { display: none; padding: 8px 12px; margin-top: 8px; font-size: 12px; border-radius: 10px; }
+  .tbc-success-box { background: #dcfce7; color: #166534; }
+  .tbc-error-box { background: #fee2e2; color: #991b1b; }
+
+  /* KAYAN SLIDER VE TABS */
+  .infinite-slider-section { padding: 24px 0; background: #f1f5f9; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+  .slider-wrapper { position: relative; display: flex; align-items: center; }
+  .infinite-track-container { width: 100%; overflow-x: auto; scroll-behavior: smooth; border-radius: 14px; scrollbar-width: none; }
+  .infinite-track-container::-webkit-scrollbar { display: none; }
+  .infinite-track { display: flex; gap: 14px; width: max-content; }
+
+  .cat-card { display:block; text-decoration:none; color:inherit; position: relative; width: 220px; height: 90px; border-radius: 14px; overflow: hidden; flex-shrink: 0; border: 1px solid #cbd5e1; }
+  .cat-card img { width: 100%; height: 100%; object-fit: cover; }
+  .cat-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(10, 21, 38, 0.9) 100%); display: flex; align-items: flex-end; padding: 10px 14px; }
+  .cat-overlay h3 { color: #ffffff; font-size: 13px; font-weight: 700; }
+
+  .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 50%; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: var(--primary-navy); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+  .prev-btn { left: -16px; } .next-btn { right: -16px; }
+
+  .category-tabs-section { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 12px 0; }
+  .category-tabs { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; }
+  .category-tabs::-webkit-scrollbar { display: none; }
+  .tab-item { padding: 8px 16px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 30px; color: var(--primary-navy); text-decoration: none; font-weight: 700; font-size: 13px; white-space: nowrap; cursor: pointer; }
+  .tab-item.active { background: var(--primary-navy); color: var(--accent-gold); border-color: var(--primary-navy); }
+
+  /* TUR KARTLARI VE MASAÜSTÜ DÜZENİ */
+  .tours-section { padding: 50px 0; }
+  .section-title { font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 30px; color: var(--primary-navy); }
+  .tours-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .tour-card-style2 { background: #ffffff; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; display: flex; flex-direction: column; transition: transform 0.3s ease; }
+  .tour-card-style2:hover { transform: translateY(-5px); }
+
+  .card-img-box { position: relative; height: 200px; }
+  .card-img-box img { width: 100%; height: 100%; object-fit: cover; }
+  .rating-badge { position: absolute; top: 10px; right: 10px; background: #ffffff; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 800; color: var(--primary-navy); }
+
+  .card-body-box { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; }
+  .duration-text { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; }
+  .card-title-text { font-size: 16px; font-weight: 800; color: var(--primary-navy); margin-bottom: 10px; }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .discount-tag { font-size: 11px; font-weight: 700; color: #166534; }
+  .status-tag { font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 10px; }
+  .status-red { color: #b91c1c; } .status-blue { color: #1d4ed8; }
+
+  .card-price-box { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; }
+  .starting-text { font-size: 11px; color: var(--text-muted); }
+  .price-right { text-align: right; }
+  .old-price { font-size: 13px; color: var(--text-muted); text-decoration: line-through; margin-right: 4px; }
+  .current-price { font-size: 24px; font-weight: 900; color: var(--primary-navy); }
+
+  /* REVIEWS */
+  .reviews-section { padding: 40px 0; border-bottom: 1px solid #e2e8f0; }
+  .ta-section { background: #f4fbf7; }
+  .google-section { background: #f4f8fe; }
+
+  .flex-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+
+  .reviews-badge { display: inline-flex; align-items: center; gap: 7px; padding: 0; border-radius: 0; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; background: transparent !important; }
+  .reviews-badge-logo { width: 18px; height: 18px; display: block; object-fit: contain; flex: 0 0 18px; }
+  .ta-badge { color: #008756; }
+  .google-badge { color: #1a73e8; }
+
+  .reviews-title { font-size: 24px; font-weight: 800; color: var(--primary-navy); }
+
+  .view-all-btn { display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 30px; font-size: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s ease; }
+  .ta-btn { background: #00aa6c; color: #ffffff; }
+  .google-btn { background: #4285f4; color: #ffffff; }
+
+  .reviews-slider-wrap { position: relative; max-width: 1150px; margin: 0 auto; display: flex; align-items: center; }
+  .reviews-track-container { width: 100%; overflow-x: auto; scroll-behavior: smooth; border-radius: 14px; scrollbar-width: none; padding: 8px 0; }
+  .reviews-track-container::-webkit-scrollbar { display: none; }
+  .reviews-track { display: flex; gap: 16px; }
+
+  .review-card { background: #ffffff; border-radius: 16px; padding: 20px; min-width: 280px; max-width: 330px; text-align: left; color: #111827; flex-shrink: 0; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04); }
+  .ta-card { border-top: 4px solid #00aa6c; }
+  .google-card { border-top: 4px solid #4285f4; }
+
+  .rev-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .rev-user { display: flex; align-items: center; gap: 8px; }
+  .rev-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+  .rev-name { font-size: 13px; font-weight: 800; color: #111827; margin: 0; }
+  .rev-date { font-size: 10px; color: #6b7280; }
+  
+  .ta-pill, .google-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 800; background: transparent; padding: 0; border-radius: 0; }
+  .ta-pill { color: #008756; }
+  .google-pill { color: #1a73e8; }
+  .review-pill-logo { width: 15px; height: 15px; display: block; object-fit: contain; flex: 0 0 15px; }
+
+  .rev-stars { color: #00aa6c; font-size: 12px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 4px; }
+  .check-icon { background: #3b82f6; color: #fff; width: 12px; height: 12px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 8px; }
+
+  .rev-comment { font-size: 12px; line-height: 1.5; color: #374151; }
+  .rev-comment strong { font-weight: 800; display: block; margin-bottom: 4px; color: #111827; }
+
+  .rev-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 10; color: #111827; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  .rev-prev { left: -16px; } .rev-next { right: -16px; }
+
+  /* OUR PARTNERS - PREMIUM TWO ROW SLIDER */
+  .tbc-premium-partners {
+    --partner-navy: #071f4e;
+    --partner-navy-soft: #0b356e;
+    --partner-gold: #f5b700;
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    padding: clamp(58px, 6vw, 84px) 0 clamp(58px, 6vw, 82px);
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% -10%, rgba(245,183,0,.11), transparent 30rem),
+      linear-gradient(180deg, #ffffff 0%, #f4f8fd 100%);
+    border-top: 1px solid #edf1f6;
+    border-bottom: 1px solid #e5ebf3;
+  }
+
+  .tbc-premium-partners-glow {
+    position: absolute;
+    z-index: -1;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    filter: blur(82px);
+    pointer-events: none;
+    opacity: .16;
+  }
+
+  .tbc-premium-partners-glow-left {
+    left: -120px;
+    top: 22%;
+    background: var(--partner-gold);
+  }
+
+  .tbc-premium-partners-glow-right {
+    right: -130px;
+    bottom: 4%;
+    background: #4e91dc;
+  }
+
+  .tbc-premium-partners-head {
+    width: min(1100px, calc(100% - 34px));
+    margin: 0 auto clamp(30px, 4vw, 44px);
+    text-align: center;
+  }
+
+  .tbc-premium-partners-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 7px 13px;
+    margin-bottom: 14px;
+    border: 1px solid rgba(7,31,78,.09);
+    border-radius: 999px;
+    background: rgba(255,255,255,.88);
+    box-shadow: 0 8px 26px rgba(7,31,78,.07);
+    color: var(--partner-navy);
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  .tbc-premium-partners-badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--partner-gold);
+    box-shadow: 0 0 0 4px rgba(245,183,0,.14);
+  }
+
+  .tbc-premium-partners-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .18em;
+    margin: 0;
+    color: var(--partner-navy);
+    font-family: var(--font-heading);
+    font-size: clamp(29px, 3.2vw, 48px);
+    font-weight: 900;
+    letter-spacing: -.035em;
+    line-height: 1.08;
+  }
+
+  .tbc-premium-partners-title strong {
+    color: var(--partner-gold);
+    font-weight: 900;
+    text-shadow: 0 7px 22px rgba(245,183,0,.16);
+  }
+
+  .tbc-premium-partners-text {
+    max-width: 820px;
+    margin: 14px auto 0;
+    color: #61748c;
+    font-size: clamp(13px, 1.1vw, 16px);
+    line-height: 1.7;
+  }
+
+  .tbc-premium-partners-rows {
+    display: grid;
+    gap: 18px;
+  }
+
+  .tbc-premium-marquee {
+    width: 100%;
+    overflow: hidden;
+    padding: 5px 0 8px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+  }
+
+  .tbc-premium-track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: 18px;
+    padding-inline: 9px;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .tbc-premium-card {
+    width: clamp(210px, 18vw, 280px);
+    height: clamp(112px, 10vw, 132px);
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    padding: 16px 20px;
+    overflow: hidden;
+    border: 1px solid rgba(7,31,78,.09);
+    border-radius: 22px;
+    background: rgba(255,255,255,.96);
+    box-shadow:
+      0 14px 36px rgba(7,31,78,.07),
+      inset 0 1px 0 rgba(255,255,255,.92);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+
+  .tbc-premium-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(245,183,0,.35);
+    box-shadow: 0 20px 46px rgba(7,31,78,.11);
+  }
+
+  .tbc-premium-card img {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    margin: 0;
+  }
+
+  .tbc-premium-track-left {
+    animation: tbc-premium-slide-left 34s linear infinite;
+  }
+
+  .tbc-premium-track-right {
+    animation: tbc-premium-slide-right 38s linear infinite;
+  }
+
+  .tbc-premium-marquee:hover .tbc-premium-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes tbc-premium-slide-left {
+    from { transform: translate3d(0,0,0); }
+    to { transform: translate3d(calc(-50% - 9px),0,0); }
+  }
+
+  @keyframes tbc-premium-slide-right {
+    from { transform: translate3d(calc(-50% - 9px),0,0); }
+    to { transform: translate3d(0,0,0); }
+  }
+
+  @media (max-width: 767px) {
+    .tbc-premium-partners {
+      padding: 52px 0 58px;
+    }
+
+    .tbc-premium-partners-head {
+      margin-bottom: 26px;
+    }
+
+    .tbc-premium-partners-title {
+      font-size: 27px;
+    }
+
+    .tbc-premium-partners-rows {
+      gap: 13px;
+    }
+
+    .tbc-premium-track {
+      gap: 14px;
+      padding-inline: 7px;
+    }
+
+    .tbc-premium-card {
+      width: 185px;
+      height: 100px;
+      padding: 12px 14px;
+      border-radius: 17px;
+    }
+
+    .tbc-premium-track-left { animation-duration: 29s; }
+    .tbc-premium-track-right { animation-duration: 32s; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tbc-premium-track {
+      animation: none !important;
+    }
+
+    .tbc-premium-marquee {
+      overflow-x: auto;
+      -webkit-mask-image: none;
+      mask-image: none;
+      scrollbar-width: thin;
+    }
+  }
+
+  /* SEO INTRODUCTION */
+  .tbc-seo-intro {
+    padding: 58px 0 18px;
+    background: linear-gradient(180deg, #f4f8fd 0%, #fffdf7 100%);
+  }
+
+  .tbc-seo-intro-card {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(28px, 4vw, 46px);
+    border: 1px solid #e7e2d5;
+    border-radius: 26px;
+    background:
+      radial-gradient(circle at 92% 0%, rgba(245,183,0,.10), transparent 20rem),
+      #ffffff;
+    box-shadow: 0 18px 48px rgba(7,31,78,.07);
+  }
+
+  .tbc-seo-intro-kicker {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    margin-bottom: 13px;
+    border-radius: 999px;
+    background: #fff6d6;
+    color: #8a6200;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .08em;
+  }
+
+  .tbc-seo-intro-card h2 {
+    max-width: 900px;
+    margin: 0 0 16px;
+    color: #071f4e;
+    font-family: var(--font-heading);
+    font-size: clamp(27px, 3vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -.025em;
+  }
+
+  .tbc-seo-intro-card p {
+    max-width: 980px;
+    margin: 0 0 13px;
+    color: #53667f;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .tbc-seo-intro-card .tbc-seo-intro-lead {
+    color: #243b5a;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .tbc-seo-intro-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .tbc-seo-intro-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 15px;
+    border: 1px solid #d8e2ef;
+    border-radius: 999px;
+    background: #f8fbff;
+    color: #071f4e;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+  }
+
+  .tbc-seo-intro-links a:hover {
+    transform: translateY(-2px);
+    border-color: #f5b700;
+    background: #fff9e7;
+  }
+
+  /* FAQ */
+  .tbc-faq-section { background: linear-gradient(180deg,#fffdf7 0%,#f6f8fc 100%); padding: 58px 0 64px; border-top: 1px solid #ece6d7; border-bottom: 1px solid #e5eaf2; }
+  .tbc-faq-container { max-width: 1040px; }
+  .tbc-faq-head { margin-bottom: 24px; text-align: center; }
+  .tbc-faq-kicker { display: inline-flex; align-items: center; border-radius: 999px; padding: 7px 13px; margin-bottom: 10px; background: #f5b700; color: #071f4e; font-family: var(--font-heading); font-size: 10px; font-weight: 900; letter-spacing: .8px; box-shadow: 0 6px 18px rgba(245,183,0,.22); }
+  .tbc-faq-head h2 { margin: 0; font-family: var(--font-heading); font-size: clamp(25px,3vw,36px); line-height: 1.15; font-weight: 900; color: #071f4e; }
+  .tbc-faq-list { display: grid; gap: 10px; }
+  .tbc-faq-item { background:#fff; border:1px solid #dfe6f0; border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(7,31,78,.055); transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease; }
+  .tbc-faq-item:hover { border-color:#f5c21a; transform:translateY(-1px); box-shadow:0 10px 28px rgba(7,31,78,.08); }
+  .tbc-faq-item summary { list-style:none; display:flex; align-items:center; gap:12px; padding:16px 18px; cursor:pointer; color:#071f4e; font-family:var(--font-heading); font-size:14px; font-weight:850; }
+  .tbc-faq-item summary::-webkit-details-marker { display:none; }
+  .tbc-faq-chevron { flex:0 0 28px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:#fff4c7; color:#a87600; font-size:22px; line-height:1; font-weight:800; transition:transform .2s ease,background .2s ease,color .2s ease; transform-origin:center; }
+  .tbc-faq-item[open] { border-color:#f5b700; }
+  .tbc-faq-item[open] .tbc-faq-chevron { transform:rotate(90deg); background:#071f4e; color:#f5b700; }
+  .tbc-faq-answer { padding:0 20px 18px 58px; max-width:920px; color:#52647c; font-size:13px; line-height:1.75; }
+
+  .footer-social-stack { display: grid; gap: 9px; margin-top: 14px; }
+  .footer-social-card { display: flex; align-items: center; gap: 10px; padding: 9px 11px; border: 1px solid #dce5ef; border-radius: 12px; background: #fff; text-decoration: none; color: #0a2b5a; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .footer-social-card:hover { transform: translateY(-2px); border-color: #ffd000; box-shadow: 0 8px 20px rgba(8,34,72,.08); }
+  .footer-social-card img { flex: 0 0 22px; object-fit: contain; }
+  .footer-social-card span { display: flex; min-width: 0; flex-direction: column; }
+  .footer-social-card strong { font-size: 11.5px; line-height: 1.2; color: #0a2b5a; }
+  .footer-social-card small { font-size: 10px; color: #64748b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .footer-social-whatsapp { background: #f0fff5; }
+
+  /* WHATSAPP CTA BANNER */
+  .footer-cta-banner { background: linear-gradient(135deg, #0a1526 0%, #112240 100%); padding: 30px 0; border-top: 1px solid rgba(255, 208, 0, 0.2); color: #ffffff; }
+  .cta-flex { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .cta-text h2 { font-size: 18px; font-weight: 800; color: var(--accent-gold); margin-bottom: 4px; }
+  .cta-text p { font-size: 13px; color: #cbd5e1; }
+  .cta-btn { background: transparent; color: #ffffff; padding: 8px 4px; border-radius: 0; border: 0; text-decoration: none; font-weight: 800; font-size: 13px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: opacity .2s ease, transform .2s ease; }
+  .cta-btn:hover { opacity: .82; transform: translateY(-1px); }
+  .cta-whatsapp-icon { width: 20px; height: 20px; display: block; object-fit: contain; flex: 0 0 20px; }
+  .contact-whatsapp-icon { width: 22px; height: 22px; display: block; object-fit: contain; flex: 0 0 22px; }
+
+  /* FOOTER */
+  .site-footer { background-color: #ffffff; color: #475569; padding-top: 40px; border-top: 1px solid #e5e7eb; }
+  .footer-top-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; padding-bottom: 30px; border-bottom: 1px solid #e5e7eb; }
+  .footer-brand-box { display: flex; flex-direction: column; gap: 16px; }
+
+  .transparent-logo { 
+    max-height: 90px; 
+    width: auto; 
+    display: block; 
+    object-fit: contain; 
+    background: transparent !important;
+  }
+
+  .contact-cards { display: flex; flex-wrap: wrap; gap: 12px; }
+  .contact-card-item { display: flex; align-items: center; gap: 10px; background: #ffffff; border: 1px solid #e2e8f0; padding: 10px 14px; border-radius: 12px; box-shadow: 0 6px 18px rgba(15,23,42,.05); }
+  .icon-circle { width: 30px; height: 30px; border-radius: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; flex: 0 0 30px; }
+  .icon-clean { background: transparent !important; box-shadow: none !important; }
+  .contact-icon-img, .contact-whatsapp-icon { width: 22px; height: 22px; display: block; object-fit: contain; flex: 0 0 22px; }
+  .orange-bg { background-color: var(--accent-orange); color: var(--primary-navy); }
+  .green-bg { background-color: var(--accent-green); color: #fff; }
+
+  .card-info { display: flex; flex-direction: column; }
+  .card-label { font-size: 10px; color: #64748b; font-weight: 600; }
+  .card-value { font-size: 13px; font-weight: 800; color: #0a1526; text-decoration: none; }
+
+  .mini-gallery { display: flex; gap: 10px; }
+  .mini-gallery img { width: 95px; height: 72px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 5px 14px rgba(15,23,42,.06); }
+
+  .footer-middle-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; padding: 30px 0; }
+  .footer-col h4 { color: #0a1526; font-size: 15px; font-weight: 800; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 6px; }
+  .footer-col a { color: #64748b; text-decoration: none; font-size: 12px; }
+
+  .tursab-text { color: var(--accent-gold); font-weight: 700; margin-top: 8px; font-size: 13px; }
+
+  .newsletter-form { display: flex; background: #ffffff; border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .newsletter-form input { border: none; padding: 8px 12px; width: 100%; font-size: 12px; outline: none; }
+  .newsletter-form button { background: var(--accent-orange); border: none; color: var(--primary-navy); padding: 0 14px; cursor: pointer; font-weight: 800; }
+
+  .social-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .social-links > span { font-size: 12px; font-weight: 700; color: #0a1526; }
+  .social-icons { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .social-link {
+    min-height: 30px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 2px 0;
+    text-decoration: none;
+    color: #334155;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .social-link:hover { opacity: .8; transform: translateY(-1px); }
+  .social-link span { color: #334155; font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+  .social-link-facebook { width: 30px; }
+  .social-icon-img { width: 24px; height: 24px; display: block; object-fit: contain; flex: 0 0 24px; }
+
+  .footer-bottom { border-top: 1px solid #e5e7eb; text-align: center; padding: 16px 0; font-size: 12px; color: #64748b; }
+
+
+  .site-footer .footer-col p,
+  .site-footer .footer-info-item {
+    color: #64748b;
+  }
+
+  .site-footer .footer-col a:hover,
+  .site-footer .card-value:hover,
+  .site-footer .social-link:hover span {
+    color: #b58d00;
+  }
+
+  .site-footer .footer-info-item a {
+    color: #64748b;
+    text-decoration: none;
+  }
+
+  .site-footer .footer-info-item a:hover {
+    color: #b58d00;
+  }
+
+  .site-footer .newsletter-form {
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 5px 14px rgba(15,23,42,.04);
+  }
+
+  /* MOBİL UYUM */
+  @media (max-width: 1180px) {
+    .header-instagram span { display: inline; }
+    .header-instagram {
+      width: auto;
+      height: 34px;
+      min-height: 34px;
+      padding: 6px 9px 6px 7px;
+      justify-content: center;
+      gap: 6px;
+    }
+    .header-instagram::before { left: -7px; }
+    .main-nav ul { gap: 15px; }
+    .main-nav a { font-size: 12.5px; }
+  }
+
+  @media (max-width: 720px) {
+    .tbc-date-popover { left: 0; transform: translateY(-4px); width: min(390px, calc(100vw - 24px)); }
+    .tbc-date-popover.is-open { transform: translateY(0); }
+    .tbc-date-months { grid-template-columns: 1fr; }
+    .tbc-date-month:nth-child(2) { display: none; }
+    .tbc-seo-intro { padding: 38px 0 10px; }
+    .tbc-seo-intro-card { padding: 24px 18px; border-radius: 20px; }
+    .tbc-seo-intro-card h2 { font-size: 26px; }
+    .tbc-seo-intro-card p { font-size: 14px; line-height: 1.75; }
+    .tbc-seo-intro-card .tbc-seo-intro-lead { font-size: 15px; }
+    .tbc-seo-intro-links { display: grid; grid-template-columns: 1fr; }
+    .tbc-seo-intro-links a { justify-content: space-between; }
+
+    .tbc-faq-section { padding: 38px 0 42px; }
+    .tbc-faq-item summary { font-size: 13px; }
+    .tbc-faq-answer { padding-left: 28px; font-size: 12px; }
+  }
+
+  @media (max-width: 900px) {
+    .header-container {
+      width: calc(100% - 24px);
+      height: 78px;
+      gap: 8px;
+    }
+    .logo { gap: 8px; min-width: 0; }
+    .logo-home img {
+      height: 70px;
+      max-width: 150px;
+    }
+    .header-instagram {
+      width: auto;
+      height: 32px;
+      min-height: 32px;
+      flex: 0 1 auto;
+      padding: 5px 8px 5px 6px;
+      border-color: #e6ebf2;
+      box-shadow: none;
+      gap: 5px;
+      max-width: 158px;
+      overflow: hidden;
+    }
+    .header-instagram span {
+      display: inline;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 9.5px;
+    }
+    .header-instagram::before { display: none; }
+    .header-instagram-icon {
+      width: 18px;
+      height: 18px;
+      flex-basis: 18px;
+    }
+    .header-right { gap: 7px; margin-left: auto; flex-shrink: 0; }
+    .main-nav { display: none; position: absolute; top: 78px; left: 0; width: 100%; background: #ffffff; flex-direction: column; padding: 20px; border-bottom: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .main-nav.is-open { display: block; }
+    .main-nav ul { flex-direction: column; gap: 14px; }
+    .mobile-menu-toggle { display: flex; }
+    
+    .tbc-mobile-hero { display: block; }
+    .tbc-video-bg { display: none; }
+    
+    /* Mobilde trust satırları ile rezervasyon başlığının üst üste binmesini önle. */
+    .tbc-video-hero { min-height: 790px; }
+    .tbc-video-content { padding: 30px 16px 310px; text-align: center; }
+    .tbc-video-title { font-size: 26px; line-height: 1.15; margin-bottom: 10px; }
+    .tbc-video-text { font-size: 13px; margin-bottom: 16px; }
+    .tbc-video-actions { justify-content: center; }
+    .tbc-partner-reviews { justify-content: center; }
+    .tbc-hero-trust-points { justify-content: center; gap: 8px 16px; margin-bottom: 10px; }
+    .tbc-trust-point { font-size: 10.5px; }
+    
+    .external-form-title { font-size: 32px; line-height: 1.2; margin-bottom: 8px; text-align: center; max-width: 100%; transform: translateY(6px); }
+    
+    .tbc-booking-wrap { bottom: 10px; }
+    .tbc-booking-box { border-radius: 20px; padding: 8px; }
+    .tbc-booking-grid { grid-template-columns: 1fr; gap: 6px; }
+    
+    .tours-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    
+    .tour-card-style2 { border-radius: 12px; }
+    .card-img-box { height: 120px; }
+    .card-body-box { padding: 10px; }
+    .card-title-text { font-size: 12px; margin-bottom: 6px; line-height: 1.2; min-height: 28px; }
+    .duration-text { font-size: 10px; }
+    .current-price { font-size: 16px; }
+    .old-price { font-size: 11px; }
+    .starting-text { font-size: 9px; }
+
+    .cta-flex { flex-direction: column; text-align: center; }
+    .footer-top-row { flex-direction: column; align-items: flex-start; }
+    .mini-gallery { overflow-x: auto; width: 100%; padding-bottom: 6px; }
+  }
+
+  @media (max-width: 560px) {
+    .header-container {
+      width: calc(100% - 14px);
+      height: 82px;
+      gap: 6px;
+    }
+    .logo { gap: 6px; min-width: 0; }
+    .logo-home img { height: 66px; max-width: 138px; }
+    .header-instagram {
+      width: auto;
+      max-width: 124px;
+      height: 30px;
+      min-height: 30px;
+      flex: 0 1 auto;
+      padding: 4px 7px 4px 5px;
+      gap: 4px;
+    }
+    .header-instagram span {
+      display: inline;
+      font-size: 8.5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .header-instagram-icon { width: 17px; height: 17px; flex-basis: 17px; }
+    .header-right { gap: 5px; }
+    .lang-btn { padding: 6px 8px; font-size: 11px; }
+    .whatsapp-btn { padding: 6px 1px; gap: 4px; font-size: 10.5px; }
+    .whatsapp-btn-icon { width: 18px; height: 18px; flex-basis: 18px; }
+    .mobile-menu-toggle { width: 26px; height: 20px; }
+  }
+
+  @media (max-width: 430px) {
+    .header-container { height: 80px; }
+    .logo-home img { height: 62px; max-width: 128px; }
+    .header-instagram {
+      max-width: 108px;
+      height: 28px;
+      min-height: 28px;
+      padding: 4px 6px 4px 5px;
+    }
+    .header-instagram span { display: inline; font-size: 8px; }
+    .header-instagram-icon { width: 16px; height: 16px; flex-basis: 16px; }
+    .whatsapp-btn span { display: none; }
+    .whatsapp-btn { width: 28px; justify-content: center; padding: 0; }
+    .lang-btn .lang-flag { display: none; }
+    .lang-btn { padding: 6px 7px; }
+  }
+
+
+  /* =========================================================
+     FINAL HEADER MOBILE OVERRIDES
+     - Keep full Instagram username visible on mobile
+     - Make the brand logo more prominent
+     - Preserve the existing EN / WhatsApp / hamburger layout
+     ========================================================= */
+  @media (max-width: 900px) {
+    .logo {
+      flex: 0 1 auto;
+      min-width: 0;
+      gap: 7px;
+    }
+
+    .logo-home {
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-home img {
+      height: 76px;
+      width: auto;
+      max-width: 158px;
+      transform: scale(1.08);
+      transform-origin: left center;
+    }
+
+    .header-instagram {
+      display: inline-flex !important;
+      flex: 0 0 auto;
+      width: auto;
+      max-width: none;
+      min-width: 0;
+      overflow: visible;
+      padding: 5px 7px 5px 6px;
+      gap: 4px;
+    }
+
+    .header-instagram span {
+      display: inline-block !important;
+      width: auto;
+      max-width: none;
+      overflow: visible;
+      text-overflow: clip;
+      white-space: nowrap;
+      font-size: 8.5px;
+      font-weight: 800;
+      letter-spacing: -0.22px;
+    }
+
+    .header-instagram-icon {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .header-container {
+      width: calc(100% - 12px);
+      height: 82px;
+      gap: 4px;
+    }
+
+    .logo {
+      gap: 4px;
+      flex: 0 1 auto;
+    }
+
+    .logo-home img {
+      height: 74px;
+      max-width: 150px;
+      transform: scale(1.10);
+    }
+
+    .header-instagram {
+      height: 29px;
+      min-height: 29px;
+      padding: 4px 6px 4px 5px;
+      gap: 3px;
+      border-radius: 999px;
+    }
+
+    .header-instagram span {
+      display: inline-block !important;
+      max-width: none !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      white-space: nowrap !important;
+      font-size: 7.8px;
+      letter-spacing: -0.28px;
+    }
+
+    .header-instagram-icon {
+      width: 16px;
+      height: 16px;
+      flex-basis: 16px;
+    }
+
+    .header-right {
+      gap: 4px;
+      margin-left: auto;
+      flex: 0 0 auto;
+    }
+
+    .lang-btn {
+      padding: 6px 7px;
+      font-size: 10.5px;
+    }
+
+    .whatsapp-btn {
+      padding: 0;
+      width: 27px;
+      height: 27px;
+      min-width: 27px;
+      justify-content: center;
+    }
+
+    .whatsapp-btn span {
+      display: none;
+    }
+
+    .whatsapp-btn-icon {
+      width: 17px;
+      height: 17px;
+      flex-basis: 17px;
+    }
+
+    .mobile-menu-toggle {
+      width: 25px;
+      height: 20px;
+      flex: 0 0 25px;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .header-container {
+      height: 80px;
+      gap: 3px;
+    }
+
+    .logo-home img {
+      height: 72px;
+      max-width: 146px;
+      transform: scale(1.12);
+    }
+
+    .header-instagram {
+      height: 27px;
+      min-height: 27px;
+      padding: 3px 5px 3px 4px;
+      gap: 3px;
+    }
+
+    .header-instagram span {
+      display: inline-block !important;
+      max-width: none !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      white-space: nowrap !important;
+      font-size: 7.2px;
+      letter-spacing: -0.32px;
+    }
+
+    .header-instagram-icon {
+      width: 15px;
+      height: 15px;
+      flex-basis: 15px;
+    }
+
+    .lang-btn {
+      padding: 6px 6px;
+      font-size: 10px;
+    }
+
+    .mobile-menu-toggle {
+      width: 24px;
+      flex-basis: 24px;
+    }
+  }
+
+
+  /* HOMEPAGE WHITE FOOTER */
+  .site-footer {
+    background: #ffffff !important;
+    color: #475569 !important;
+    border-top: 1px solid #e7edf4;
+  }
+
+  .footer-top-row {
+    border-bottom: 1px solid #e7edf4 !important;
+  }
+
+  .contact-card-item {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 7px 22px rgba(15, 23, 42, 0.045);
+  }
+
+  .card-label { color: #64748b !important; }
+  .card-value { color: #0a1526 !important; }
+  .card-value:hover { color: #b58d00 !important; }
+
+  .footer-col h4,
+  .social-links > span {
+    color: #0a1526 !important;
+  }
+
+  .footer-col,
+  .footer-col p,
+  .footer-col a,
+  .social-link,
+  .social-link span {
+    color: #64748b !important;
+  }
+
+  .footer-col a:hover,
+  .social-link:hover,
+  .social-link:hover span {
+    color: #b58d00 !important;
+  }
+
+  .tursab-text { color: #b58d00 !important; }
+
+  .footer-bottom {
+    border-top: 1px solid #e7edf4 !important;
+  }
+
+  .footer-bottom,
+  .footer-bottom p {
+    color: #64748b !important;
+  }
+
+  .mini-gallery {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .mini-gallery img {
+    width: 105px !important;
+    height: 76px !important;
+    object-fit: cover;
+    border-radius: 10px !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  }
+
+  .footer-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .footer-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: #64748b;
+  }
+
+  .footer-info-item a {
+    color: #64748b !important;
+    text-decoration: none;
+  }
+
+  .footer-info-item a:hover {
+    color: #b58d00 !important;
+  }
+
+  .footer-info-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex: 0 0 18px;
+    margin-top: 1px;
+  }
+
+  .footer-info-symbol {
+    width: 18px;
+    flex: 0 0 18px;
+    text-align: center;
+  }
+
+  .newsletter-form {
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 5px 16px rgba(15, 23, 42, .04);
+  }
+
+  @media (max-width: 900px) {
+    .mini-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .mini-gallery img {
+      width: 100% !important;
+      height: 88px !important;
+    }
+  }
+
+
+  /* =========================================
+     FOOTER - BEYAZ / LACIVERT PROFESYONEL TASARIM
+  ========================================= */
+  .site-footer {
+    background: #ffffff !important;
+    color: #334155 !important;
+    border-top: 1px solid #e5e7eb !important;
+  }
+
+  .site-footer .footer-top-row {
+    border-bottom: 1px solid #e5e7eb !important;
+  }
+
+  .site-footer .contact-card-item {
+    background: #ffffff !important;
+    border: 1px solid #dbe3ec !important;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  .site-footer .card-label {
+    color: #64748b !important;
+  }
+
+  .site-footer .card-value {
+    color: #0a1526 !important;
+  }
+
+  .site-footer .footer-col h4 {
+    color: #0a1526 !important;
+  }
+
+  .site-footer .footer-col a {
+    color: #334155 !important;
+  }
+
+  .site-footer .footer-col a:hover {
+    color: #b58d00 !important;
+  }
+
+  .site-footer .footer-col p,
+  .site-footer .footer-info-item,
+  .site-footer .footer-info-item span,
+  .site-footer .footer-info-item a {
+    color: #334155 !important;
+  }
+
+  .site-footer .footer-info-item a:hover {
+    color: #b58d00 !important;
+  }
+
+  .site-footer .tursab-text,
+  .site-footer .tursab-text span {
+    color: #0a1526 !important;
+    font-weight: 800 !important;
+  }
+
+  .site-footer .newsletter-col p {
+    color: #475569 !important;
+  }
+
+  .site-footer .newsletter-form {
+    background: #ffffff !important;
+    border: 1px solid #dbe3ec !important;
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  .site-footer .newsletter-form input {
+    background: #ffffff !important;
+    color: #0a1526 !important;
+  }
+
+  .site-footer .newsletter-form input::placeholder {
+    color: #94a3b8 !important;
+  }
+
+  .site-footer .social-links > span,
+  .site-footer .social-link,
+  .site-footer .social-link span {
+    color: #0a1526 !important;
+  }
+
+  .site-footer .mini-gallery img {
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .site-footer .footer-bottom {
+    background: #ffffff !important;
+    border-top: 1px solid #e5e7eb !important;
+    color: #64748b !important;
+  }
+
+  .site-footer .footer-bottom p {
+    color: #64748b !important;
+  }
+
+
+
+  /* =========================================================
+     25 REVIEW SLIDER — OLD CARD STYLE / 4 CARDS PER VIEW
+  ========================================================= */
+  .tbc-combined-review-section {
+    background: linear-gradient(180deg, #f5fbf8 0%, #f4f7fb 100%);
+    border-top: 1px solid #e1ebe7;
+    border-bottom: 1px solid #e1e8ef;
+  }
+
+  .tbc-combined-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0b7a55;
+  }
+
+  .tbc-review-top-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .tbc-25-slider {
+    position: relative;
+  }
+
+  .tbc-25-viewport {
+    width: 100%;
+    overflow: hidden;
+    padding: 8px 0 12px;
+  }
+
+  .tbc-25-track {
+    display: flex;
+    gap: 16px;
+    transition: transform .45s ease;
+    will-change: transform;
+  }
+
+  .tbc-25-track .review-card {
+    flex: 0 0 calc((100% - 48px) / 4);
+    min-width: 0;
+    max-width: none;
+    min-height: 245px;
+  }
+
+  .tbc-review-avatar-letter {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #17345d;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 900;
+  }
+
+  .tbc-ta-stars {
+    color: #00aa6c !important;
+    letter-spacing: 1px;
+  }
+
+  .tbc-google-stars {
+    color: #e8ad00 !important;
+    letter-spacing: 1px;
+  }
+
+  .tbc-25-track .rev-comment {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+
+  .tbc-review-counter {
+    margin-top: 10px;
+    text-align: center;
+    color: #7c8a9c;
+    font-size: 11px;
+  }
+
+  .tbc-review-counter > span:first-child {
+    color: #0b1f3a;
+    font-weight: 900;
+  }
+
+  .tbc-review-counter-dot {
+    display: inline-block;
+    margin: 0 7px;
+    color: #c2ccd6;
+  }
+
+  @media (max-width: 1050px) {
+    .tbc-25-track .review-card {
+      flex-basis: calc((100% - 32px) / 3);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .tbc-25-track .review-card {
+      flex-basis: calc((100% - 16px) / 2);
+    }
+
+    .tbc-review-top-links {
+      width: 100%;
+      margin-top: 12px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .tbc-25-track .review-card {
+      flex-basis: 100%;
+    }
+
+    .tbc-25-track .review-card {
+      min-height: 225px;
+    }
+  }
+
+
+
+  /* GLOBAL DATE PICKER - dynamically created calendar cells */
+  :global(.tbc-date-popover){width:min(690px,calc(100vw - 30px))!important;padding:18px 20px 16px!important;border:2px solid #f2c400!important;border-radius:22px!important;background:#fff!important;box-shadow:0 24px 60px rgba(5,27,64,.24)!important;}
+  :global(.tbc-date-head){display:grid!important;grid-template-columns:44px 1fr 44px!important;align-items:center!important;gap:12px!important;margin-bottom:14px!important;}
+  :global(.tbc-date-title){color:#0b2373!important;font-size:17px!important;font-weight:900!important;text-align:center!important;letter-spacing:-.25px!important;}
+  :global(.tbc-date-nav){width:42px!important;height:42px!important;border-radius:50%!important;border:1px solid #eadcaa!important;background:#fff9df!important;color:#0b2373!important;font-size:28px!important;font-weight:900!important;display:grid!important;place-items:center!important;cursor:pointer!important;}
+  :global(.tbc-date-months){display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px!important;}
+  :global(.tbc-date-month){min-width:0!important;}
+  :global(.tbc-date-month-title){color:#0b2373!important;font-size:18px!important;line-height:1.1!important;font-weight:900!important;text-align:left!important;margin:0 0 14px!important;}
+  :global(.tbc-date-weekdays){display:grid!important;grid-template-columns:repeat(7,1fr)!important;gap:4px!important;margin-bottom:5px!important;}
+  :global(.tbc-date-weekdays span){color:#0b2373!important;font-size:11px!important;line-height:1!important;font-weight:900!important;text-align:center!important;text-transform:uppercase!important;}
+  :global(.tbc-date-grid){display:grid!important;grid-template-columns:repeat(7,1fr)!important;gap:4px!important;}
+  :global(.tbc-date-day){width:100%!important;aspect-ratio:1/1!important;min-height:36px!important;border:0!important;border-radius:7px!important;background:#ffd900!important;color:#0b2373!important;font-size:12px!important;line-height:1!important;font-weight:900!important;display:grid!important;place-items:center!important;cursor:pointer!important;box-shadow:none!important;padding:0!important;}
+  :global(.tbc-date-day:hover:not(:disabled)){background:#f3bf00!important;transform:translateY(-1px)!important;}
+  :global(.tbc-date-day.is-range){background:#ffe987!important;color:#0b2373!important;}
+  :global(.tbc-date-day.is-selected){background:#0b2373!important;color:#fff!important;box-shadow:0 4px 10px rgba(11,35,115,.25)!important;}
+  :global(.tbc-date-day.is-today:not(.is-selected)){box-shadow:inset 0 0 0 2px #0b2373!important;}
+  :global(.tbc-date-day:disabled){background:#f3f4f6!important;color:#b1b6bf!important;cursor:not-allowed!important;opacity:1!important;}
+  :global(.tbc-date-help){margin-top:15px!important;padding-top:12px!important;border-top:1px solid #e9edf3!important;color:#66768c!important;text-align:center!important;font-size:11px!important;font-weight:800!important;}
+  @media(max-width:720px){:global(.tbc-date-popover){width:min(390px,calc(100vw - 20px))!important;padding:15px!important;border-radius:18px!important}:global(.tbc-date-months){grid-template-columns:1fr!important;gap:0!important}:global(.tbc-date-month:nth-child(2)){display:none!important}:global(.tbc-date-day){min-height:39px!important;font-size:12px!important}}
+
+  /* Supabase canlı ana sayfa fiyatları */
+  #toursGrid .old-price {
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    opacity: .62;
+    font-weight: 700;
+  }
+  #toursGrid .current-price.is-ask-price {
+    font-size: clamp(16px, 1.25vw, 21px);
+    color: #0b2a4f;
+    white-space: nowrap;
+  }
+</style>

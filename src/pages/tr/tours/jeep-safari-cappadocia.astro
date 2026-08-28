@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "tr",
+  slug: "jeep-safari-cappadocia",
+  title: "Kapadokya Jeep Safari Gün Doğumu veya Gün Batımı Vadi Turu",
+  hero: "Kapadokya'nın doğal güzelliklerini gün doğumu veya gün batımında vadiler ve panoramik manzara noktalarında off-road Jeep Safari macerasıyla birleştirin.",
+  image: "/images/tours/Jeep-Safari-Cappadocia.webp",
+  rating: "4.90",
+  reviewCount: 25,
+  duration: "3 Saat",
+  price: "40 €",
+  badges: ["Jeep Safari", "Off-Road Deneyim", "Otel Transferi"],
+  sections: [{"title": "Kapadokya Jeep Safari Genel Bakış", "paragraphs": ["Jeep Safari, gezi ve macerayı tek programda isteyen misafirler için hazırlanmıştır. Yaklaşık üç saat sürer; otel transferi, profesyonel sürücü desteği ve sigorta dahildir."]}, {"title": "Jeep Safari Deneyimi", "paragraphs": ["Vadiler, peri bacaları ve kaya oluşumları arasındaki toprak yollarda ilerleyin. Rota boyunca manzaralı fotoğraf durakları yapılır."]}, {"title": "Neden Kapadokya Jeep Safari?", "paragraphs": ["Eğlence, manzara ve unutulmaz fotoğrafları aynı aktivitede birleştiren klasik gezilere dinamik bir alternatiftir."]}],
+  included: ["Gidiş-dönüş otel transferi", "Off-road Jeep Safari", "Profesyonel sürücü", "Tam sigorta", "Yakıt ve araç giderleri"],
+  notIncluded: ["Kişisel harcamalar", "Yiyecek ve içecekler"],
+  highlights: ["Gün doğumu veya gün batımı rotası", "Off-road macera", "Otel transferi", "Çok sayıda manzara/fotoğraf durağı"],
+  gallery: ["/images/tours/Jeep-Safari-Cappadocia.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

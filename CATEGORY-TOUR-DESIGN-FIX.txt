@@ -1,0 +1,10 @@
+CATEGORY + TOUR DESIGN FIX
+
+- Added separate EN/TR/ES pages for Cappadocia Tours, Private Tours, Transfers and Activities.
+- Balloon Tours remains separate and navigation now links all category pages.
+- Flight Status was intentionally left untouched.
+- Removed the Cappadocia Package Tour card shown in the supplied screenshot from homepage data.
+- Reworked ActivityDetailPage to use the same full-width hero/gallery/content/sidebar/calendar design system as the standard balloon page, without changing each page's source content.
+- Existing private tour pages continue using the same standardized design component.
+- Added a working Blue Tour detail route so its category card does not lead to a 404.
+- Updated category navigation links across HomePage, BalloonToursPage and standardized detail pages.

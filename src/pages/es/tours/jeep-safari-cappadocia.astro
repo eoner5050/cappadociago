@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "es",
+  slug: "jeep-safari-cappadocia",
+  title: "Jeep Safari en Capadocia al Amanecer o Atardecer",
+  hero: "Combina la belleza natural de Capadocia con una aventura todoterreno en Jeep Safari al amanecer o al atardecer por valles y miradores panorámicos.",
+  image: "/images/tours/Jeep-Safari-Cappadocia.webp",
+  rating: "4.90",
+  reviewCount: 25,
+  duration: "3 Horas",
+  price: "40 €",
+  badges: ["Jeep Safari", "Todoterreno", "Traslado Hotel"],
+  sections: [{"title": "Resumen del Jeep Safari", "paragraphs": ["El Jeep Safari está diseñado para combinar turismo y aventura en un mismo programa. Dura unas tres horas e incluye recogida y regreso al hotel, conductor profesional y seguro."]}, {"title": "Experiencia Jeep Safari", "paragraphs": ["Recorre caminos de tierra entre valles, chimeneas de hadas y formaciones rocosas. Se realizan varias paradas panorámicas para fotos."]}, {"title": "¿Por Qué Elegirlo?", "paragraphs": ["Una alternativa dinámica a los tours clásicos para quienes buscan diversión, paisajes y fotografías memorables."]}],
+  included: ["Traslado ida y vuelta", "Jeep Safari todoterreno", "Conductor profesional", "Seguro completo", "Combustible y vehículo"],
+  notIncluded: ["Gastos personales", "Comida y bebidas"],
+  highlights: ["Ruta amanecer o atardecer", "Aventura todoterreno", "Traslado hotel", "Varias paradas panorámicas"],
+  gallery: ["/images/tours/Jeep-Safari-Cappadocia.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

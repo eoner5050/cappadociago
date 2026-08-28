@@ -1,0 +1,36 @@
+CAPPADOCIAGO - LIVE PRICE & AVAILABILITY PACKAGE
+
+1) Mevcut .env dosyanızı KORUYUN.
+   Gerekli değişkenler:
+   PUBLIC_SUPABASE_URL=...
+   PUBLIC_SUPABASE_PUBLISHABLE_KEY=...
+
+2) Supabase > SQL Editor bölümünde bir kez çalıştırın:
+   supabase/live-booking-products.sql
+
+   Bu SQL:
+   - müşteri takviminin products ve availability tablolarını salt-okunur görmesini sağlar,
+   - yeni 5 ürünü admin paneline ekler,
+   - mevcut ürünleri değiştirme/silme yetkisini müşteriye vermez.
+
+3) npm install
+4) npm run dev
+
+CANLI REZERVASYON SİSTEMİ
+- Admin panelindeki fiyat / kapasite / booked / status değerlerini okur.
+- Takvimde kapalı veya dolu gün seçilemez.
+- Tarihe özel kayıt yoksa ürünün default_price/default_capacity değeri kullanılır.
+- Starting from alanı gelecekteki müsait tarihlerdeki en düşük fiyatı gösterir.
+- Kişi sayısı seçildiğinde toplam fiyat otomatik hesaplanır.
+- Çocukların kişi sayısına dahil olduğu notu görünür.
+- Send Reservation Request, rezervasyon detaylarıyla WhatsApp mesajını hazırlar.
+- WhatsApp ikonu yeşil butonda gösterilir.
+
+YENİ EKLENEN SAYFALAR
+/en/tours/soganli-valley-balloon-tour
+/en/tours/ihlara-valley-balloons-tour
+/en/tours/pamukkale-balloons-tour
+/en/tours/balloons-watching-tour-cappadocia
+/en/tours/turkish-night-with-cave-dinner-cappadocia
+
+Aynı slug'lar /tr/ ve /es/ altında da 404 vermemesi için oluşturuldu; içerikleri daha sonra çevrilebilir.

@@ -1,0 +1,29 @@
+{
+  "redirects": [
+    {
+      "source": "/red-tour-kapadokya/",
+      "destination": "/en/tours/red-tour-cappadocia/",
+      "permanent": true
+    },
+    {
+      "source": "/private-cappadocia-tours/",
+      "destination": "/en/private-tours/",
+      "permanent": true
+    },
+    {
+      "source": "/cappadocia-transfers/",
+      "destination": "/en/transfers/",
+      "permanent": true
+    },
+    {
+      "source": "/tours-attractions/",
+      "destination": "/en/cappadocia-tours/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "destination": "/en/",
+      "permanent": false
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import StandardizedPrivateTourPage from '../../../components/StandardizedPrivateTourPage.astro';
+const props = {
+  "title": "Özel Kırmızı Tur Kapadokya",
+  "heroDesc": "Kuzey Kapadokya’nın en önemli noktalarını özel araç, profesyonel rehber ve grubunuza göre esnek tam günlük programla keşfedin.",
+  "overviewTitle": "Kapadokya Özel Kırmızı Tur Genel Bakış",
+  "overviewParagraphs": [
+    "Kapadokya Özel Kırmızı Tur, mahremiyet, esneklik ve uzman rehberlik isteyen misafirler için tam günlük bir gezi programıdır. Standart grup turundan farklı olarak lisanslı yerel rehber ve özel araçla kendi temponuzda gezersiniz.",
+    "Rota; peri bacaları, kaya yerleşimleri, kültürel atölyeler ve panoramik seyir noktalarını bir araya getirir. Çiftler, aileler, fotoğrafçılar ve küçük özel gruplar için uygundur."
+  ],
+  "priceTitle": "Özel Kırmızı Tur Fiyatı",
+  "priceText": "Gösterilen başlangıç fiyatı 18 kişiye kadar grubun toplam fiyatıdır; kişi başı değildir. Özel araç ve profesyonel tur rehberi dahildir.",
+  "included": [
+    "Profesyonel rehber eşliğinde özel tur",
+    "Klimalı ve konforlu özel araç",
+    "Belirtilen noktalara giriş ücretleri",
+    "Geleneksel Türk öğle yemeği",
+    "Çömlek atölyesi ziyareti ve gösterimi",
+    "Yerel deri mağazası ziyareti",
+    "Otelden alma ve otele bırakma"
+  ],
+  "importantTitle": "Fiyata Dahil Olmayanlar",
+  "important": [
+    "İçecek ve hediyelik eşya gibi kişisel harcamalar",
+    "Rehber ve şoför bahşişleri",
+    "Sıcak hava balonu gibi isteğe bağlı aktiviteler",
+    "Dahil olanlar bölümünde belirtilmeyen hizmetler"
+  ],
+  "detailsTitle": "Özel Kırmızı Tur Programı",
+  "details": [
+    "Paşabağ (Rahipler Vadisi): Dünyaca ünlü peri bacaları arasında yürüyüş.",
+    "Zelve Açık Hava Müzesi: Volkanik kayalara oyulmuş eski mağara yerleşimini keşif.",
+    "Devrent Vadisi: Hayvanlara ve farklı figürlere benzeyen sıra dışı kaya oluşumları.",
+    "Avanos Çömlek Atölyesi: Avanos’un geleneksel çömlek kültürünü ve yerel ustaları yakından görün.",
+    "Geleneksel Türk Öğle Yemeği: Yerel Kapadokya lezzetleri; talep halinde vejetaryen ve glütensiz seçenekler.",
+    "Aşk Vadisi: Panoramik manzaralar ve karakteristik kaya sütunları.",
+    "Uçhisar Kalesi: Göreme Milli Parkı ve çevre vadilerin geniş manzarası.",
+    "Yerel Deri Mağazası: Yerel üretim deri ürünlerini gördükten sonra otele dönüş."
+  ],
+  "extraSections": [
+    {
+      "title": "Neden Özel Kırmızı Tur?",
+      "items": [
+        "İlgi alanlarınıza göre kişiselleştirilebilir rota",
+        "Kalabalık gruplardan uzak özel konfor",
+        "İngilizce konuşan lisanslı tur rehberi",
+        "Çiftler, aileler, fotoğrafçılar ve VIP misafirler için uygun",
+        "Otelden alma ve otele bırakma dahil"
+      ]
+    }
+  ],
+  "duration": "Tam Gün",
+  "rating": "4.80",
+  "mainImage": "/images/tours/Private-Red-Tour-Cappadocia.webp",
+  "galleryImages": [
+    "/images/tours/Red-Tour-Cappadocia.webp",
+    "/images/tours/Private-Tour-and-Mix-Tour.webp",
+    "/images/tours/tbc-cappadocia-pottery-making-experience.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ],
+  "priceMode": "group",
+  "sidebarBadges": [
+    "Özel Araç",
+    "Profesyonel Rehber",
+    "18 Kişiye Kadar"
+  ],
+  "sideHighlights": [
+    "Esnek özel rota",
+    "Giriş ücretleri ve öğle yemeği dahil",
+    "Otelden alma ve bırakma",
+    "Özel rehber ve araç"
+  ]
+};
+---
+<StandardizedPrivateTourPage lang="tr" slug="private-red-tour-cappadocia" {...props} />
+<FloatingAssistant lang="tr" />

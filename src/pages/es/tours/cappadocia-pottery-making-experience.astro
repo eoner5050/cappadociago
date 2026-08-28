@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "es",
+  slug: "cappadocia-pottery-making-experience",
+  title: "Experiencia de Cerámica en Capadocia",
+  hero: "Descubre la tradición alfarera de Avanos con una breve experiencia práctica, traslado desde el hotel y tiempo para conocer la artesanía cerámica tradicional.",
+  image: "/images/tours/tbc-cappadocia-pottery-making-experience.webp",
+  rating: "4.60",
+  reviewCount: 11,
+  duration: "20 Minutos",
+  price: "15 €",
+  badges: ["Cerámica", "20 Minutos", "Traslado Hotel"],
+  sections: [{"title": "Experiencia Única de Cerámica en Capadocia", "paragraphs": ["Avanos es famoso por su alfarería y artesanía cerámica elaborada con la arcilla roja del río Kızılırmak. Esta actividad corta te presenta un taller tradicional y los principios básicos de la cerámica.", "La experiencia dura aproximadamente 20 minutos. Te recogemos en el hotel, te llevamos al taller y regresamos al finalizar."]}, {"title": "Sobre la Cerámica de Avanos", "paragraphs": ["La alfarería forma parte de la cultura de Avanos desde hace siglos. Durante la visita puedes observar a artesanos locales, probar el torno y conocer productos cerámicos hechos a mano."]}],
+  included: ["Recogida y regreso al hotel", "Práctica de cerámica de 10–15 minutos", "Oportunidad de compras", "Refrescos", "Vehículo, conductor y combustible"],
+  notIncluded: [],
+  highlights: ["Experiencia práctica con torno", "Taller tradicional de Avanos", "Actividad corta y sencilla", "Traslado al hotel incluido"],
+  gallery: ["/images/tours/tbc-cappadocia-pottery-making-experience.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

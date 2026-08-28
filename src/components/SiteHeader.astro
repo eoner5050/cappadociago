@@ -1,0 +1,72 @@
+---
+import FloatingAssistant from './FloatingAssistant.astro';
+const { lang = 'en', active = '' } = Astro.props;
+const copy = {
+  en: { balloon:'Balloon Tours', cappadocia:'Cappadocia Tours', activities:'Activities', private:'Private Tours', transfers:'Transfers' },
+  tr: { balloon:'Balon Turları', cappadocia:'Kapadokya Turları', activities:'Aktiviteler', private:'Özel Turlar', transfers:'Transferler' },
+  es: { balloon:'Tours en Globo', cappadocia:'Tours por Capadocia', activities:'Actividades', private:'Tours Privados', transfers:'Traslados' },
+};
+const c = copy[lang] || copy.en;
+const flag = lang === 'tr' ? '🇹🇷' : lang === 'es' ? '🇪🇸' : '🇬🇧';
+const code = lang.toUpperCase();
+const routeFor = (targetLang) => active === 'balloon'
+    ? `/${targetLang}/balloon-tours/`
+    : active === 'cappadocia'
+      ? `/${targetLang}/cappadocia-tours/`
+      : active === 'private'
+        ? `/${targetLang}/private-tours/`
+        : active === 'transfers'
+          ? `/${targetLang}/transfers/`
+          : active === 'activities'
+            ? `/${targetLang}/activities/`
+            : `/${targetLang}/`;
+---
+<header class="tbc-sh">
+  <div class="tbc-sh-inner">
+    <div class="tbc-sh-brand">
+      <a href={`/${lang}/`} class="tbc-sh-logo"><img src="/images/logo.png" alt="CappadociaGo" loading="lazy" width="600" height="200" /></a>
+      <a class="tbc-sh-instagram" href="https://www.instagram.com/cappadociago/" target="_blank" rel="noopener noreferrer">
+        <img src="/images/icons/instagram-logo.webp" alt="" loading="lazy" width="24" height="24" />
+        <span>@cappadociago</span>
+      </a>
+    </div>
+    <nav class="tbc-sh-nav" aria-label="Main navigation">
+      <a class={active==='balloon'?'active':''} href={`/${lang}/balloon-tours/`}>{c.balloon}</a>
+      <a class={active==='cappadocia'?'active':''} href={`/${lang}/cappadocia-tours/`}>{c.cappadocia}</a>
+      <a class={active==='activities'?'active':''} href={`/${lang}/activities/`}>{c.activities}</a>
+      <a class={active==='private'?'active':''} href={`/${lang}/private-tours/`}>{c.private}</a>
+      <a class={active==='transfers'?'active':''} href={`/${lang}/transfers/`}>{c.transfers}</a>
+      
+    </nav>
+    <div class="tbc-sh-actions">
+      <div class="tbc-sh-language">
+        <button type="button" class="tbc-sh-language-btn" aria-haspopup="true">{flag} {code} <span>⌄</span></button>
+        <div class="tbc-sh-language-menu">
+          <a href={routeFor('en')}>🇬🇧 English</a>
+          <a href={routeFor('tr')}>🇹🇷 Türkçe</a>
+          <a href={routeFor('es')}>🇪🇸 Español</a>
+        </div>
+      </div>
+      <a class="tbc-sh-whatsapp" href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer"><img src="/images/icons/whatsapp-logo.webp" alt="" loading="lazy" width="24" height="24" /> WhatsApp</a>
+    </div>
+  </div>
+</header>
+<FloatingAssistant lang={lang} />
+<script is:inline>
+  document.querySelectorAll('.tbc-sh-language').forEach((wrap) => {
+    const btn = wrap.querySelector('.tbc-sh-language-btn');
+    const menu = wrap.querySelector('.tbc-sh-language-menu');
+    btn?.addEventListener('click', (e) => { e.stopPropagation(); menu?.classList.toggle('open'); });
+    document.addEventListener('click', () => menu?.classList.remove('open'));
+  });
+</script>
+<style is:global>
+  .tbc-sh{width:100%;background:#fff;border-bottom:1px solid #e6ebf2;position:sticky;top:0;z-index:1200;box-shadow:0 4px 18px rgba(15,23,42,.035)}
+  .tbc-sh-inner{width:min(1380px,calc(100% - 32px));height:96px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .tbc-sh-brand,.tbc-sh-actions,.tbc-sh-instagram,.tbc-sh-whatsapp{display:flex;align-items:center}
+  .tbc-sh-logo img{height:78px;width:auto;display:block}.tbc-sh-instagram{gap:7px;margin-left:12px;padding:8px 12px;border:1px solid #dfe6ef;border-radius:999px;text-decoration:none;color:#35445a;font-size:11px;font-weight:800}.tbc-sh-instagram img,.tbc-sh-whatsapp img{width:19px;height:19px;object-fit:contain}
+  .tbc-sh-nav{display:flex;align-items:center;gap:24px}.tbc-sh-nav a{position:relative;text-decoration:none;color:#0a1526;font-size:13px;font-weight:800;white-space:nowrap;padding:37px 0 34px}.tbc-sh-nav a.active{color:#b88600}.tbc-sh-nav a.active:after{content:"";position:absolute;left:0;right:0;bottom:22px;height:2px;background:#e5ad00;border-radius:9px}
+  .tbc-sh-actions{gap:14px}.tbc-sh-language{position:relative}.tbc-sh-language-btn{border:1px solid #d7e0ea;background:#f8fafc;border-radius:999px;padding:9px 13px;color:#0a1526;font-size:12px;font-weight:900;cursor:pointer}.tbc-sh-language-menu{display:none;position:absolute;right:0;top:44px;min-width:155px;padding:6px;background:#fff;border:1px solid #e2e8f0;border-radius:13px;box-shadow:0 16px 35px rgba(15,23,42,.16)}.tbc-sh-language-menu.open{display:grid}.tbc-sh-language-menu a{padding:9px 10px;color:#0a1526;text-decoration:none;font-size:12px;font-weight:700;border-radius:8px}.tbc-sh-language-menu a:hover{background:#f5f7fb}
+  .tbc-sh-whatsapp{gap:7px;text-decoration:none;color:#0a1526;font-size:13px;font-weight:900;white-space:nowrap}
+  @media(max-width:1050px){.tbc-sh-nav{display:none}}@media(max-width:680px){.tbc-sh-inner{height:78px}.tbc-sh-logo img{height:62px}.tbc-sh-instagram{display:none}.tbc-sh-whatsapp{font-size:0}.tbc-sh-whatsapp img{width:24px;height:24px}}
+</style>

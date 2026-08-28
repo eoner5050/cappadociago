@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "es",
+  "slug": "turkish-night-with-cave-dinner-cappadocia",
+  "title": "Noche Turca con Cena en Cueva en Capadocia",
+  "hero": "Disfruta de música en vivo, danzas tradicionales, ambiente de cueva y cena durante una inolvidable Noche Turca en Capadocia.",
+  "image": "/images/tours/tbc-turkish-night-with-cave-dinner-cappadocia.webp",
+  "rating": "4.96",
+  "reviewCount": 28,
+  "duration": "3 Horas",
+  "price": "50 €",
+  "badges": [
+    "Noche Turca",
+    "Concepto Cueva",
+    "Cena"
+  ],
+  "sections": [
+    {
+      "title": "Sobre la Noche Turca",
+      "paragraphs": [
+        "Una animada noche cultural que combina música turca, bailes regionales y un espacio tradicional con concepto de cueva."
+      ]
+    },
+    {
+      "title": "Precio del Evento",
+      "paragraphs": [
+        "El programa comienza desde 50 Euro por persona. La disponibilidad y los precios se muestran en el calendario de reserva."
+      ]
+    },
+    {
+      "title": "Programa del Espectáculo",
+      "paragraphs": [
+        "La noche incluye diferentes actuaciones regionales, música y entretenimiento en un ambiente de cueva."
+      ]
+    }
+  ],
+  "included": [
+    "Recogida y regreso al hotel",
+    "Soporte operativo profesional",
+    "Seguro cuando corresponda",
+    "Soporte de reserva"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Disponibilidad diaria en vivo",
+    "Reserva fácil por WhatsApp",
+    "Soporte local profesional",
+    "Planificación flexible"
+  ],
+  "gallery": [
+    "/images/tours/tbc-turkish-night-with-cave-dinner-cappadocia.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

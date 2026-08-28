@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "tr",
+  "slug": "ihlara-valley-balloons-tour",
+  "title": "Ihlara Vadisi Gün Doğumu Balon Turu",
+  "hero": "Ihlara Vadisi’ni gün doğumunda profesyonel balon uçuşu, otel transferi ve hafif kahvaltı ile gökyüzünden keşfedin.",
+  "image": "/images/tours/Ihlara-Valley-Balloons-Tour.webp",
+  "rating": "4.89",
+  "reviewCount": 17,
+  "duration": "1 Saat",
+  "price": "60 €",
+  "badges": [
+    "Ihlara Vadisi",
+    "1 Saat Uçuş",
+    "Otel Transferi"
+  ],
+  "sections": [
+    {
+      "title": "Ihlara Vadisi Gün Doğumu Balon Turu Genel Bakış",
+      "paragraphs": [
+        "Bu özel gün doğumu uçuşu Ihlara Vadisi’nin kanyon yapısını ve doğal manzaralarını farklı bir açıdan görmenizi sağlar. Program sabah erken saatte başlar ve transfer ile uçuş öncesi hazırlıkları içerir."
+      ]
+    },
+    {
+      "title": "Ihlara Vadisi Balon Turu Fiyatı",
+      "paragraphs": [
+        "Fiyatlar kişi başı 60 Euro’dan başlamaktadır. Güncel günlük fiyat ve müsaitlik için canlı takvimi kontrol edin."
+      ]
+    },
+    {
+      "title": "Uçuşta Sizi Neler Bekliyor?",
+      "paragraphs": [
+        "Profesyonel pilot eşliğinde vadinin sakin sabah manzaralarını, değişen ışığı ve panoramik görünümünü gökyüzünden izleyin."
+      ]
+    }
+  ],
+  "included": [
+    "Otelden alma ve bırakma",
+    "Profesyonel operasyon desteği",
+    "Uygun olduğu durumlarda sigorta",
+    "Rezervasyon desteği"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Canlı günlük müsaitlik",
+    "Kolay WhatsApp rezervasyonu",
+    "Profesyonel yerel destek",
+    "Esnek planlama"
+  ],
+  "gallery": [
+    "/images/tours/Ihlara-Valley-Balloons-Tour.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

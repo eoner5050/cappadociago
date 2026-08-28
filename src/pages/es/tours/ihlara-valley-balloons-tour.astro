@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "es",
+  "slug": "ihlara-valley-balloons-tour",
+  "title": "Tour en Globo al Amanecer por el Valle de Ihlara",
+  "hero": "Descubre el Valle de Ihlara desde el cielo al amanecer con vuelo profesional, traslado al hotel y desayuno ligero.",
+  "image": "/images/tours/Ihlara-Valley-Balloons-Tour.webp",
+  "rating": "4.89",
+  "reviewCount": 17,
+  "duration": "1 Hora",
+  "price": "60 €",
+  "badges": [
+    "Valle de Ihlara",
+    "Vuelo 1 Hora",
+    "Traslado Hotel"
+  ],
+  "sections": [
+    {
+      "title": "Resumen del Tour en Globo por Ihlara",
+      "paragraphs": [
+        "Este vuelo especial al amanecer ofrece una perspectiva diferente de los paisajes del cañón y la naturaleza del Valle de Ihlara. El programa comienza temprano e incluye traslados y preparación previa al vuelo."
+      ]
+    },
+    {
+      "title": "Precio del Tour en Globo por Ihlara",
+      "paragraphs": [
+        "Los precios comienzan desde 60 Euro por persona. Consulta el calendario en vivo para ver precios y disponibilidad."
+      ]
+    },
+    {
+      "title": "¿Qué Puedes Esperar Durante el Vuelo?",
+      "paragraphs": [
+        "Disfruta de las tranquilas vistas matinales, la luz cambiante y una perspectiva panorámica del valle con un piloto profesional."
+      ]
+    }
+  ],
+  "included": [
+    "Recogida y regreso al hotel",
+    "Soporte operativo profesional",
+    "Seguro cuando corresponda",
+    "Soporte de reserva"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Disponibilidad diaria en vivo",
+    "Reserva fácil por WhatsApp",
+    "Soporte local profesional",
+    "Planificación flexible"
+  ],
+  "gallery": [
+    "/images/tours/Ihlara-Valley-Balloons-Tour.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

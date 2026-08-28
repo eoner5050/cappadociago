@@ -1,0 +1,17 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+const data = {
+  lang:"tr", slug:"atv-tour-with-goreme-valleys", title:"Göreme Vadileri ATV Turu",
+  hero:"Kapadokya vadilerinde gündüz veya gün batımı seçenekleriyle keyifli bir ATV deneyimi yaşayın; Göreme bölgesinde otel transferi dahildir.",
+  image:"/images/tours/ATV-Tour-With-Goreme-Valleys.webp", rating:"4.70", reviewCount:32, duration:"120 Dakika", price:"30 \u20ac",
+  badges:["ATV Safari", "120 Dakika", "Otel Transferi"],
+  sections:[{title:"Tur Detayları",paragraphs:["Hoş geldiniz! Kaynak tur metninde bu deneyim, gün batımının kızıl tonlarında doğayla çevrili unutulmaz bir macera olarak tanımlanıyor. Bu eşsiz deneyimde gün batımında keyifli bir ATV turuna katılabilirsiniz.", "Kapadokya ATV turları bölgenin en çok tercih edilen ve keyifli aktivitelerinden biridir. Tura gündüz veya tercihen gün batımında katılabilirsiniz. Göreme bölgesi için otel transferi de bulunmaktadır. ATV turu boyunca Kapadokya’nın güzel vadilerinin keyfini çıkarabilir ve harika fotoğraflar çekebilirsiniz.", "Rezervasyon için formu doldurabilir, bizi arayabilir veya WhatsApp üzerinden hemen iletişime geçebilirsiniz."]},{title:"Aktivite Hakkında",paragraphs:["120 dakika. Yaklaşık 2 saat süren bir aktivitedir."]},{title:"Otel Transferi",paragraphs:["Aktivite başlamadan yaklaşık 10–15 dakika önce otelinizden alıyoruz."]},{title:"Kolay İptal",paragraphs:["Rezervasyonunuzu aktivite başlangıcından 24 saat öncesine kadar iptal edebilirsiniz."]}],
+  included:["1,5 Saat Quad Safari (seçenek seçildiyse)", "Gün Doğumu Quad Safari (seçenek seçildiyse)", "Gün Batımı Quad Safari (seçenek seçildiyse)", "1 Saat Quad Safari (seçenek seçildiyse)", "Çift yön otel transferi", "Tam sigorta"],
+  notIncluded:["Kişisel harcamalar", "Yiyecek ve içecekler"],
+  highlights:["1,5 Saat Quad Safari (seçenek seçildiyse)", "Gün Doğumu Quad Safari (seçenek seçildiyse)", "Gün Batımı Quad Safari (seçenek seçildiyse)", "1 Saat Quad Safari (seçenek seçildiyse)"],
+  gallery:["/images/tours/ATV-Tour-With-Goreme-Valleys.webp"]
+};
+---
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

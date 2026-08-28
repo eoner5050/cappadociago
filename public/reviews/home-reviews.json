@@ -1,0 +1,64 @@
+{
+  "reviews": [
+    {
+      "source": "tripadvisor",
+      "name": "gkhougeer",
+      "rating": 5,
+      "date": "3 months ago",
+      "publishedAt": "2026-05-13T00:00:00Z",
+      "title": "Something new to learn from the tour",
+      "text": "This store was outstanding for us and first experience with scenery. I would appreciate the tour guides and Mr. Irem on everything's that has been done for us to make it nice tour.",
+      "avatar": "/images/hero/cappadocia-hero.webp"
+    },
+    {
+      "source": "tripadvisor",
+      "name": "John D.",
+      "rating": 5,
+      "date": "2 months ago",
+      "publishedAt": "2026-06-13T00:00:00Z",
+      "title": "Unforgettable Sunrise Experience",
+      "text": "Smooth booking process and breathtaking balloon flight over Göreme. The crew was professional and reassuring from start to finish!",
+      "avatar": "/images/hero/cappadocia-hero.webp"
+    },
+    {
+      "source": "tripadvisor",
+      "name": "Elena M.",
+      "rating": 5,
+      "date": "1 month ago",
+      "publishedAt": "2026-07-13T00:00:00Z",
+      "title": "Best Balloon Company in Cappadocia",
+      "text": "Everything was perfectly organized. Timely hotel pickup, great breakfast, champagne celebration, and top-tier safety standards.",
+      "avatar": "/images/hero/cappadocia-hero.webp"
+    },
+    {
+      "source": "google",
+      "name": "Sarah Jenkins",
+      "rating": 5,
+      "date": "1 month ago",
+      "publishedAt": "2026-07-13T00:00:00Z",
+      "title": "Wonderful Green Tour & Balloon Flight",
+      "text": "It was an outstanding experience in this tour with the scenery and guide tools. I would like to appreciate Mr. Irem support for making it so easy!",
+      "avatar": "/images/hero/cappadocia-hero.webp"
+    },
+    {
+      "source": "google",
+      "name": "Michael R.",
+      "rating": 5,
+      "date": "3 weeks ago",
+      "publishedAt": "2026-07-23T00:00:00Z",
+      "title": "Five Stars Customer Support!",
+      "text": "Instant responses via WhatsApp and fair prices. The flight pilot was super experienced and made soft landing look effortless.",
+      "avatar": "/images/hero/cappadocia-hero.webp"
+    },
+    {
+      "source": "google",
+      "name": "Ananya Gupta",
+      "rating": 5,
+      "date": "2 months ago",
+      "publishedAt": "2026-06-13T00:00:00Z",
+      "title": "Magical Experience!",
+      "text": "Highly recommended! We booked both the hot air balloon and ATV safari. Everything was smooth, transparent, and hassle-free.",
+      "avatar": "/images/hero/cappadocia-hero.webp"
+    }
+  ]
+}

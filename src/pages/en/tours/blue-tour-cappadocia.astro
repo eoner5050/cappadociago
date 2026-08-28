@@ -1,0 +1,17 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+const data = {
+  lang:"en", slug:"blue-tour-cappadocia", title:"Blue Tour Cappadocia",
+  hero:"Discover a different side of Cappadocia on a full-day Blue Tour through Ortahisar, Mustafapaşa, Soğanlı Valley and Kaymaklı Underground City.",
+  image:"/images/tours/Blue-Tour-Cappadocia.webp", rating:"4.90", reviewCount:32, duration:"Full Day", price:"",
+  badges:["Full Day", "Professional Guide", "Hotel Transfer"],
+  sections:[{title:"Blue Tours Cappadocia",paragraphs:["If you want to experience the magnificent formations and unique views of Cappadocia, the Blue Tour Cappadocia offers a memorable route through some of the region’s distinctive landscapes and historic settlements."]},{title:"About Blue Tour Cappadocia",paragraphs:["Blue Tour Cappadocia is a suitable choice for travelers looking for a different experience in the region. The route combines local history, traditional villages, valleys and underground heritage, creating many opportunities for photographs and unforgettable memories."]},{title:"What Does Blue Tour Cappadocia Include?",paragraphs:["The tour starts around 09:30. You are picked up from your hotel before the Blue Tour begins, and a tour guide accompanies you throughout the route to provide information about the places you visit."]},{title:"Cappadocia Blue Tour Route",paragraphs:["We pick you up from your hotel and continue first to Ortahisar, where you can learn about Cappadocia’s history with your guide. The second stop is Mustafapaşa Village, known for its rich history dating back to the Byzantine period and its characteristic stone architecture.", "The route then continues to Soğanlı Valley, a wide and peaceful valley known for its natural beauty and rock-cut heritage. The final major stop is Kaymaklı Underground City, offering a fascinating journey into a preserved underground world. At the end of the tour, a shuttle takes you back to your hotel."]},{title:"Blue Tour Cappadocia Booking",paragraphs:["Choose the date that suits you and send your reservation request. Our team will confirm availability and help you organize your Blue Tour Cappadocia experience."]}],
+  included:["Hotel pickup", "Ortahisar", "Mustafapaşa", "Soğanlı Valley", "Kaymaklı Underground City", "Hotel drop-off"],
+  notIncluded:["Personal expenses", "Optional purchases and extra activities"],
+  highlights:["Ortahisar", "Mustafapaşa", "Soğanlı Valley", "Kaymaklı Underground City"],
+  gallery:["/images/tours/Blue-Tour-Cappadocia.webp","/images/tours/Blue-Tour-Cappadocia (1).webp","/images/tours/Blue-Tour-Cappadocia (2).webp","/images/tours/Blue-Tour-Cappadocia (3).webp","/images/tours/Blue-Tour-Cappadocia (4).webp","/images/tours/Blue-Tour-Cappadocia (5).webp"]
+};
+---
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

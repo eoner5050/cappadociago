@@ -1,0 +1,75 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import StandardizedPrivateTourPage from '../../../components/StandardizedPrivateTourPage.astro';
+const props = {
+  "title": "Tour Verde Privado de Capadocia",
+  "heroDesc": "Descubre ciudades subterráneas, valles, artesanía local y paisajes volcánicos del sur de Capadocia con guía y vehículo privados.",
+  "overviewTitle": "Resumen del Tour Verde Privado",
+  "overviewParagraphs": [
+    "El Tour Verde Privado está diseñado para quienes desean una experiencia profunda y flexible lejos de las rutas más concurridas. Con guía y vehículo exclusivos descubrirás historia, naturaleza y cultura local a un ritmo cómodo.",
+    "Combina historia, senderismo, cultura y artesanía, ideal para parejas, familias y grupos pequeños."
+  ],
+  "priceTitle": "Precio del Tour Verde Privado",
+  "priceText": "El precio inicial mostrado es el precio total del grupo para hasta 18 personas; no es por persona. Incluye vehículo privado y guía profesional.",
+  "included": [
+    "Guía privado profesional de habla inglesa",
+    "Vehículo privado cómodo con aire acondicionado",
+    "Entradas a los lugares mencionados",
+    "Visita y demostración en taller de ónix",
+    "Almuerzo en restaurante local",
+    "Recogida y regreso al hotel"
+  ],
+  "importantTitle": "No Incluido",
+  "important": [
+    "Gastos personales",
+    "Propinas para guía y conductor",
+    "Experiencias opcionales como vuelo en globo",
+    "Servicios no indicados como incluidos"
+  ],
+  "detailsTitle": "Itinerario del Tour Verde Privado",
+  "details": [
+    "Panorama de Göreme: vistas de chimeneas de hadas y valles.",
+    "Valle de las Palomas: parada entre palomares históricos excavados en roca.",
+    "Taller de Ónix: artesanos locales trabajando piedra semipreciosa.",
+    "Ciudad Subterránea: refugios, túneles y habitaciones de varios niveles.",
+    "Valle de Ihlara: caminata suave junto al río y iglesias excavadas en roca.",
+    "Almuerzo en Restaurante de Pueblo: comida tradicional con ingredientes regionales.",
+    "Narlıgöl: parada final junto a un tranquilo lago de cráter volcánico."
+  ],
+  "extraSections": [
+    {
+      "title": "¿Por Qué Elegir el Tour Verde Privado?",
+      "items": [
+        "Itinerario personalizado y ritmo flexible",
+        "Transporte privado y guía exclusivo",
+        "Ideal para parejas, familias y grupos pequeños",
+        "Mezcla de historia, caminata, cultura y artesanía",
+        "Recogida y regreso al hotel"
+      ]
+    }
+  ],
+  "duration": "Día Completo",
+  "rating": "4.88",
+  "mainImage": "/images/tours/Private-Green-Tour-Cappadocia.webp",
+  "galleryImages": [
+    "/images/tours/tbc-green-tour-cappadocia.webp",
+    "/images/tours/Ihlara-Valley-Balloons-Tour.webp",
+    "/images/tours/Private-Tour-and-Mix-Tour.webp",
+    "/images/tours/Red-Tour-Cappadocia.webp"
+  ],
+  "priceMode": "group",
+  "sidebarBadges": [
+    "Vehículo Privado",
+    "Guía Profesional",
+    "Hasta 18 Personas"
+  ],
+  "sideHighlights": [
+    "Ruta privada por el sur de Capadocia",
+    "Ciudad subterránea y Valle de Ihlara",
+    "Almuerzo y entradas incluidos",
+    "Ritmo flexible para tu grupo"
+  ]
+};
+---
+<StandardizedPrivateTourPage lang="es" slug="private-green-tour-cappadocia" {...props} />
+<FloatingAssistant lang="es" />

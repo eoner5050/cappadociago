@@ -1,0 +1,1402 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+// src/pages/tours/goreme-standart-hot-air-balloon-tour.astro
+const tour = {
+  title: 'Tour en Globo por Göreme (Vuelo Estándar)',
+  kicker: 'CAPPADOCIAGO',
+  heroDesc: 'Vive la magia de un Tour en Globo por Capadocia (Vuelo Estándar) y contempla el impresionante amanecer sobre Göreme. Vuela sobre las famosas chimeneas de hadas y los espectaculares valles de la región mientras disfrutas de una de las experiencias en globo aerostático más inolvidables de Capadocia.',
+  overviewTitle: 'Resumen del Tour en Globo por Göreme (Vuelo Estándar)',
+  overviewParagraphs: [
+    'El Tour en Globo por Capadocia (Vuelo Estándar) está pensado para viajeros que desean descubrir los impresionantes paisajes de Capadocia desde el cielo con una excelente relación calidad-precio. Al amanecer, sobrevolarás las famosas chimeneas de hadas de Göreme, sus espectaculares valles y sus singulares formaciones rocosas volcánicas.',
+    'Este Tour en Globo por Capadocia (Vuelo Estándar) dura aproximadamente una hora, ofreciéndote tiempo suficiente para admirar las increíbles vistas de Göreme, las chimeneas de hadas, los valles y las formaciones volcánicas. Combinando seguridad, servicio profesional y espectaculares vistas del amanecer, es una de las experiencias en globo más inolvidables de Capadocia.'
+  ],
+  priceTitle: 'Precio del Tour en Globo por Göreme (Vuelo Estándar)',
+  priceText: 'El Tour en Globo por Göreme (Vuelo Estándar) está previsto desde 80 € por persona. Para consultar disponibilidad actual, demanda de temporada y reservas confirmadas, contáctanos directamente. Nuestro equipo te informará de las últimas plazas disponibles y te ayudará a asegurar tu reserva.',
+  whatsIncluded: [
+    'Recogida y regreso al hotel',
+    'Desayuno ligero antes del vuelo',
+    'Traslado a la zona de despegue',
+    'Información de seguridad por un piloto experimentado',
+    'Vuelo en globo aerostático de aproximadamente 1 hora',
+    'Certificado de vuelo',
+    'Cobertura de seguro completa',
+    'Wi-Fi gratuito en la cesta',
+    'Asistencia profesional de operaciones',
+    'Servicio transparente sin cargos ocultos'
+  ],
+  importantInfo: [
+    'Los vuelos se realizan a primera hora de la mañana durante todo el año.',
+    'La duración y la ruta del vuelo pueden variar según las condiciones meteorológicas.',
+    'Todos los pasajeros cuentan con cobertura de seguro completa.',
+    'Se recomienda ropa cómoda y calzado adecuado.',
+    'Los menores de 16 años solo pueden participar acompañados por un adulto.',
+    'No se aceptan niños menores de 5 años.',
+    'No es adecuado para embarazadas ni para personas que hayan tenido recientemente una cirugía importante.',
+    'El pago restante se cobra un día antes o el día del tour; los pagos con tarjeta pueden incluir una comisión de 15 € por persona.'
+  ],
+  flightDetailsTitle: 'Detalles del Vuelo',
+  flightDetailsParagraphs: [
+    'El Tour en Globo por Capadocia (Vuelo Estándar) se realiza con cestas con capacidad para 28 pasajeros. Disfruta de impresionantes vistas del amanecer sobre las famosas chimeneas de hadas de Göreme, sus espectaculares valles y sus paisajes volcánicos.',
+    'Tu Tour en Globo por Capadocia (Vuelo Estándar) comienza con la recogida en el hotel a primera hora y un cómodo traslado a la zona de despegue. Mientras los globos se preparan, tu piloto experimentado ofrece una breve explicación de seguridad y describe el proceso del vuelo.',
+    'Al amanecer, el globo te eleva sobre los impresionantes paisajes de Göreme. Contempla la luz dorada iluminando las chimeneas de hadas, los valles, los viñedos y las formaciones rocosas volcánicas. Durante el vuelo tendrás muchas oportunidades para tomar fotografías increíbles y disfrutar de la tranquilidad de Capadocia desde el cielo.'
+  ],
+  afterFlightTitle: 'Después del Vuelo',
+  afterFlightText: 'Después del aterrizaje, nuestro equipo de tierra te recibe y presta la asistencia necesaria. Recibirás tu certificado de vuelo como recuerdo de esta experiencia especial. Después serás trasladado cómodamente de regreso a tu hotel.',
+  refundTitle: 'Garantía de Reembolso',
+  refundText: 'Si los vuelos se cancelan por condiciones meteorológicas, podrán reprogramarse para el siguiente día disponible. Si no es posible reprogramar, se realizará un reembolso completo. Puede haber cancelación gratuita hasta 24 horas antes del vuelo. Todas las reservas están sujetas a disponibilidad.',
+  advanceTitle: '¿Por Qué Reservar con Anticipación?',
+  advanceText: 'Los vuelos en globo aerostático en Capadocia funcionan bajo una estructura regulada y supervisada por la Autoridad de Aviación Civil de Turquía. Como la capacidad diaria es limitada, reservar con antelación es especialmente importante en periodos de alta demanda.',
+  safetyTitle: 'Seguridad y Experiencia',
+  safetyText: 'Nuestro Tour en Globo por Capadocia (Vuelo Estándar) está operado por pilotos certificados y altamente experimentados con licencias PPL y SPL. Cada vuelo se realiza con altos estándares de seguridad y profesionalidad para ofrecer una experiencia cómoda y agradable. Nuestro equipo ofrece además atención al cliente 24/7 durante todo el viaje.'
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{tour.title} | CappadociaGo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR - ANA SAYFA İLE AYNI TASARIM -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="/es/" class="logo-home" aria-label="CappadociaGo Home" title="CappadociaGo - Inicio">
+          <img src="/images/logo/turkey-balloons-cappadocia.webp" alt="CappadociaGo" />
+        </a>
+
+        <a
+          href="https://www.instagram.com/cappadociago/"
+          class="header-instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="CappadociaGo on Instagram"
+        >
+          <img
+            src="/images/icons/instagram-logo.webp"
+            alt=""
+            class="header-instagram-icon"
+            width="23"
+            height="23"
+            aria-hidden="true"
+          />
+          <span>@cappadociago</span>
+        </a>
+      </div>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="/es/">Tours en Globo</a></li>
+          <li><a href="/es/">Tours por Capadocia</a></li>
+          <li><a href="/es/">Actividades</a></li>
+          <li><a href="/es/">Tours Privados</a></li>
+          <li><a href="/es/transfers/">Traslados</a></li>
+          <li><a href="#">Estado de Vuelos</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switcher" id="langSwitcher">
+          <button
+            class="lang-btn"
+            id="langButton"
+            type="button"
+            aria-label="Select language"
+            aria-expanded="false"
+          >
+            <span class="lang-flag">🇪🇸</span>
+            <span class="lang-code">ES</span>
+            <span class="arrow">▾</span>
+          </button>
+
+          <div class="lang-dropdown" id="langDropdown">
+            <a href="/en/tours/goreme-standart-hot-air-balloon-tour" data-lang-url="/en/tours/goreme-standart-hot-air-balloon-tour" class="lang-item">
+              <span class="flag">🇬🇧</span>
+              <span>English</span>
+            </a>
+            <a href="/tr/tours/goreme-standart-hot-air-balloon-tour" data-lang-url="/tr/tours/goreme-standart-hot-air-balloon-tour" class="lang-item">
+              <span class="flag">🇹🇷</span>
+              <span>Türkçe</span>
+            </a>
+            <a href="/es/tours/goreme-standart-hot-air-balloon-tour" data-lang-url="/es/tours/goreme-standart-hot-air-balloon-tour" class="lang-item active">
+              <span class="flag">🇪🇸</span>
+              <span>Español</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="https://wa.me/905401015050" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+          <img
+            src="/images/icons/whatsapp-logo.webp"
+            alt=""
+            class="whatsapp-btn-icon"
+            width="18"
+            height="18"
+            aria-hidden="true"
+          />
+          <span>WhatsApp</span>
+        </a>
+
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="tbc-tour-page">
+    <div class="tbc-tour-container">
+
+      <!-- BREADCRUMB -->
+      <div class="tbc-breadcrumb">
+        <a href="/es/">Inicio</a> <span>›</span> <span>{tour.title}</span>
+      </div>
+
+      <!-- HERO ALANI -->
+      <div class="tbc-tour-hero">
+        <div class="tbc-tour-kicker">{tour.kicker}</div>
+        <h1 class="tbc-tour-title">{tour.title}</h1>
+        <p class="tbc-tour-desc">{tour.heroDesc}</p>
+
+        <!-- ÖZELLİK ROZETLERİ (94 Yorum) -->
+        <div class="tbc-hero-badges-bar">
+          <div class="tbc-badge-item">
+            <span class="tbc-stars">★★★★★</span>
+            <strong class="tbc-badge-val">4.95</strong>
+            <span class="tbc-badge-sep">|</span>
+            <span class="tbc-badge-link" id="tbc-scrollToReviews">94 Reseñas ❯</span>
+          </div>
+          <div class="tbc-badge-item">
+            <span class="tbc-badge-icon">⏱</span>
+            <span>Duración del Tour: 60 Minutos</span>
+          </div>
+          <div class="tbc-badge-item">
+            <span class="tbc-badge-icon">⚡</span>
+            <span>¡Confirmación Instantánea!</span>
+          </div>
+          <a href="https://wa.me/905401015050" class="tbc-badge-item tbc-badge-wa" target="_blank" rel="noopener">
+            <span>💬</span>
+            <strong>905401015050</strong>
+          </a>
+        </div>
+      </div>
+
+      <!-- PHOTO GALLERY GRID -->
+      <div class="tbc-photo-grid-wrapper">
+        <div class="tbc-main-photo">
+          <img src="/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp" alt="Cappadocia Main Balloon View" />
+          <div class="tbc-photo-badge">📁 Ver 11 fotos</div>
+        </div>
+        <div class="tbc-side-photos">
+          <div class="tbc-side-photo-item">
+            <img src="/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp" alt="Medal View" />
+          </div>
+          <div class="tbc-side-photo-item">
+            <img src="/images/tours/Red-Tour-Cappadocia.webp" alt="Sunrise Balloon" />
+          </div>
+          <div class="tbc-side-photo-item">
+            <img src="/images/tours/tbc-green-tour-cappadocia.webp" alt="Landscape View" />
+          </div>
+          <div class="tbc-side-photo-item">
+            <img src="/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp" alt="Group Flight" />
+          </div>
+        </div>
+      </div>
+
+      <div class="tbc-tour-grid">
+
+        <!-- MAIN CONTENT -->
+        <div class="tbc-tour-main">
+          <div class="tbc-tour-card tbc-tour-main-card">
+
+            <div class="tbc-tour-section">
+              <h2>{tour.overviewTitle}</h2>
+              {tour.overviewParagraphs.map(p => (
+                <p>{p}</p>
+              ))}
+            </div>
+
+            <div class="tbc-tour-section">
+              <h2>{tour.priceTitle}</h2>
+              <p>{tour.priceText}</p>
+            </div>
+
+            <div class="tbc-tour-section">
+              <h2>Qué Incluye el Precio</h2>
+              <div class="tbc-tour-list">
+                {tour.whatsIncluded.map(item => (
+                  <div class="tbc-tour-list-item"><span class="tbc-tour-check">✓</span><span>{item}</span></div>
+                ))}
+              </div>
+            </div>
+
+            <div class="tbc-tour-section">
+              <h2>Información Importante</h2>
+              <div class="tbc-tour-list">
+                {tour.importantInfo.map(info => (
+                  <div class="tbc-tour-list-item"><span class="tbc-tour-check">✓</span><span>{info}</span></div>
+                ))}
+              </div>
+            </div>
+
+            <div class="tbc-tour-section">
+              <h2>{tour.flightDetailsTitle}</h2>
+              {tour.flightDetailsParagraphs.map(fp => (
+                <p>{fp}</p>
+              ))}
+            </div>
+
+            <div class="tbc-tour-section">
+              <h2>{tour.afterFlightTitle}</h2>
+              <p>{tour.afterFlightText}</p>
+            </div>
+
+            <div class="tbc-tour-section">
+              <h2>{tour.refundTitle}</h2>
+              <p>{tour.refundText}</p>
+            </div>
+
+            <div class="tbc-tour-section">
+              <h2>{tour.advanceTitle}</h2>
+              <p>{tour.advanceText}</p>
+            </div>
+
+            <div class="tbc-tour-section">
+              <h2>{tour.safetyTitle}</h2>
+              <p>{tour.safetyText}</p>
+            </div>
+
+          </div>
+
+          <!-- YORUMLAR -->
+          <div class="tbc-tour-card tbc-reviews-card" id="reviews-section">
+            <h3 class="tbc-reviews-main-title">Reseñas (94)</h3>
+
+            <div class="tbc-reviews-container" id="tbc-reviews-container">
+
+              <!-- 1. Çince -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">陈</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Chen Wei</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">10 July 2026</div>
+                </div>
+                <p class="tbc-review-text">卡帕多奇亚的热气球之旅无与伦比！日出时的风景美得让人窒息，飞行员非常专业且温和。</p>
+              </div>
+
+              <!-- 2. Çince -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">王</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Wang Fang</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">15 October 2025</div>
+                </div>
+                <p class="tbc-review-text">一生一定要体验一次的项目！从高空俯瞰奇特的岩石地貌，感觉像在童话世界里一样。</p>
+              </div>
+
+              <!-- 3. Çince -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">李</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Li Na</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">22 May 2024</div>
+                </div>
+                <p class="tbc-review-text">非常棒的体验！接送准时，飞行平稳，降落后的香槟庆祝仪式很有仪式感。</p>
+              </div>
+
+              <!-- 4. Japonca -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">佐</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Sato Hiroshi</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">4 June 2026</div>
+                </div>
+                <p class="tbc-review-text">息をのむほど美しい日の出と奇岩の景色でした。パイロットの操縦技術も素晴らしく、安心して楽しめました。</p>
+              </div>
+
+              <!-- 5. Japonca -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">田</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Tanaka Kenji</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">18 November 2025</div>
+                </div>
+                <p class="tbc-review-text">カッパドキアでのバルーンツアーは最高でした。空の上からの景色は一生忘れられない思い出です。</p>
+              </div>
+
+              <!-- 6. Japonca -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">渡</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Watanabe Yuki</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">9 August 2024</div>
+                </div>
+                <p class="tbc-review-text">朝早くのお迎えから着陸まで、スタッフの皆さんがとても親切でプロフェッショナルでした。</p>
+              </div>
+
+              <!-- 7. Japonca -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">伊</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Ito Sakura</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">12 March 2025</div>
+                </div>
+                <p class="tbc-review-text">幻想的な景色の中で空中散歩が楽しめました。お勧め度100%です！</p>
+              </div>
+
+              <!-- 8. İspanyolca -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">C</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Carlos Ruiz</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">30 January 2026</div>
+                </div>
+                <p class="tbc-review-text">¡Una experiencia totalmente mágica! Ver el amanecer sobre las chimeneas de hadas es algo que todos deben vivir al menos una vez.</p>
+              </div>
+
+              <!-- 9. İspanyolca -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">M</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">María Gómez</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">14 September 2025</div>
+                </div>
+                <p class="tbc-review-text">El personal fue muy amable y el piloto muy experimentado. Todo salió perfecto y el aterrizaje fue súper suave.</p>
+              </div>
+
+              <!-- 10. Fransızca -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">P</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Pierre Dupont</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">3 April 2024</div>
+                </div>
+                <p class="tbc-review-text">Un vol en montgolfière inoubliable ! Les paysages de Cappadoce vus du ciel au lever du soleil sont magiques.</p>
+              </div>
+
+              <!-- 11. İtalyanca -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">G</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Giulia Rossi</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">20 July 2025</div>
+                </div>
+                <p class="tbc-review-text">Emozione pura! Volare sopra la Cappadocia all'alba è stata una delle esperienze più belle della mia vita.</p>
+              </div>
+
+              <!-- 12. Türkçe -->
+              <div class="tbc-review-item">
+                <div class="tbc-review-top">
+                  <div class="tbc-review-user-avatar">A</div>
+                  <div>
+                    <div class="tbc-review-stars">★★★★★</div>
+                    <h4 class="tbc-review-name">Ahmet Yılmaz</h4>
+                    <span class="tbc-review-tour-type">Göreme Balloon Ride (Standard Flight)</span>
+                  </div>
+                  <div class="tbc-review-date">12 May 2026</div>
+                </div>
+                <p class="tbc-review-text">Tek kelimeyle harikaydı. Göreme'nin muhteşem manzarasını havadan izlemek rüya gibiydi. Herkese tavsiye ederim.</p>
+              </div>
+
+              <!-- GİZLİ YORUMLAR -->
+              <div class="tbc-hidden-reviews" id="tbc-hidden-reviews" style="display: none;">
+                <!-- Ek 82 Yorum -->
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">A</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Alejandro Morales</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">18 August 2025</div></div><p class="tbc-review-text">Excelente servicio y organización impecable. ¡Muy recomendable!</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">L</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Lucía Fernández</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">5 February 2024</div></div><p class="tbc-review-text">Una maravilla de viaje en globo por los valles.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">D</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Diego Alonso</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">27 October 2026</div></div><p class="tbc-review-text">Puntuales, seguros y muy amables. Increíble vista.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">S</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Sofía Navarro</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">11 June 2025</div></div><p class="tbc-review-text">El mejor momento de nuestras vacaciones en Turquía.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">J</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Javier Castillo</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">9 January 2024</div></div><p class="tbc-review-text">Paisajes lunares impresionantes desde el aire.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">V</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Valentina Ortega</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">23 March 2026</div></div><p class="tbc-review-text">Todo muy bien organizado, el piloto un crack.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">F</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Fernando Silva</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">19 August 2024</div></div><p class="tbc-review-text">Increíble experiencia, volvería sin duda alguna.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">C</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Carmen Romero</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">30 December 2025</div></div><p class="tbc-review-text">Un vuelo tranquilo y muy hermoso al amanecer.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">M</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Mateo Herrera</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">15 April 2024</div></div><p class="tbc-review-text">Inolvidable aventura sobre las chimeneas de hadas.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">E</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Elena Molina</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">6 July 2026</div></div><p class="tbc-review-text">Excelente atención al cliente y puntualidad.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">P</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Pablo Domínguez</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">2 September 2025</div></div><p class="tbc-review-text">Una pasada total, superó lo que esperaba.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">A</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Ana Belén</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">14 February 2024</div></div><p class="tbc-review-text">Súper recomendado, la vista es de otro planeta.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">R</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Raúl Medina</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">21 May 2026</div></div><p class="tbc-review-text">Todo perfecto, desde el pick-up hasta el final.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">C</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Camille Martin</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">17 November 2024</div></div><p class="tbc-review-text">Une vue panoramique extraordinaire sur les vallées.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">L</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Lucas Bernard</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">29 August 2025</div></div><p class="tbc-review-text">Super équipe, vol très sécure et agréable.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">M</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Manon Leroy</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">10 June 2026</div></div><p class="tbc-review-text">Magique du début à la fin, à faire absolument !</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">M</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Marco Colombo</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">4 March 2024</div></div><p class="tbc-review-text">Paesaggi fantastici e organizzazione perfetta.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">A</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Alessia Romano</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">12 October 2025</div></div><p class="tbc-review-text">Un'esperienza da sogno che rifarei mille volte.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">F</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Federico Conti</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">8 January 2026</div></div><p class="tbc-review-text">Pilota bravissimo e panorami mozzafiato.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">S</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Sara Moretti</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">19 July 2024</div></div><p class="tbc-review-text">Tutto perfetto, servizio impeccabile.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">L</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Luca Ferrari</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">25 September 2025</div></div><p class="tbc-review-text">Spettacolare! Il sole che sorge sulle valli è unico.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">E</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Elena Ricci</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">3 May 2026</div></div><p class="tbc-review-text">Molto professionali e puntuali. Consigliatissimo!</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">D</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Davide Marino</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">14 December 2024</div></div><p class="tbc-review-text">Un'avventura fantastica in un posto magico.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">H</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Hans Weber</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">21 June 2025</div></div><p class="tbc-review-text">Absolut professionell und ein atemberaubender Ausblick!</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">K</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Katrin Bauer</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">9 February 2026</div></div><p class="tbc-review-text">Wunderbarer Flug, sehr sicheres Gefühl an Bord.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">김</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Kim Minjun</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">15 October 2024</div></div><p class="tbc-review-text">카파도키아 열기구 투어는 정말 환상적이었습니다! 일출이 너무 아름다워요.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">이</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Lee Seojun</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">28 May 2025</div></div><p class="tbc-review-text">친절한 조종사님 덕분에 안전하고 즐겁게 비행했습니다. 추천합니다!</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">M</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Mehmet Demir</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">7 August 2024</div></div><p class="tbc-review-text">Kusursuz bir organizasyon, pilotumuz çok tecrübeliydi. Teşekkürler.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">А</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Alexander Ivanov</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">19 January 2025</div></div><p class="tbc-review-text">Потрясающий полёт! Виды на Каппадокию на рассвете просто завораживают.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">Е</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Elena Smirnova</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">2 April 2024</div></div><p class="tbc-review-text">Всё прошло на высшем уровне. Безопасно, красиво и очень организованно.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">Д</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Dmitry Sokolov</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">11 June 2026</div></div><p class="tbc-review-text">Незабываемые впечатления! Обязательно полетим еще раз.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">О</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Olga Petrova</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">30 August 2024</div></div><p class="tbc-review-text">Волшебное зрелище, сотни шаров в небе на рассвете. Рекомендую!</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">М</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Mikhail Volkov</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">22 November 2025</div></div><p class="tbc-review-text">Отличный сервис, трансфер вовремя, пилот профессионал своего дела.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">J</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">John Smith</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">14 May 2026</div></div><p class="tbc-review-text">An absolute masterpiece of a flight. Truly breathtaking.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">E</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Emily Davis</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">3 October 2025</div></div><p class="tbc-review-text">Such a wonderful morning over Göreme valleys!</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">M</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Michael Brown</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">18 July 2024</div></div><p class="tbc-review-text">Smooth takeoff and landing, great pilot and crew.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">S</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Sarah Johnson</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">25 February 2026</div></div><p class="tbc-review-text">Memories that will last a lifetime. Highly recommended!</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">D</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">David Wilson</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">12 December 2024</div></div><p class="tbc-review-text">Fantastic organization and stunning views.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">J</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Jessica Taylor</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">6 June 2025</div></div><p class="tbc-review-text">Best experience during our trip to Turkey.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">R</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Robert Anderson</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">29 January 2026</div></div><p class="tbc-review-text">Very professional operation from start to end.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">L</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Laura Thomas</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">15 August 2024</div></div><p class="tbc-review-text">Magical sunrise over the fairy chimneys.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">W</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">William Jackson</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">20 September 2025</div></div><p class="tbc-review-text">Top notch service and breathtaking scenery.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">K</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Karen White</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">4 April 2024</div></div><p class="tbc-review-text">Everything was well coordinated and safe.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">C</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Christopher Harris</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">11 November 2025</div></div><p class="tbc-review-text">An unforgettable adventure in the sky.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">A</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Amanda Martin</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">8 July 2024</div></div><p class="tbc-review-text">Loved every single moment of the flight.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">B</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Brian Clark</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">22 March 2026</div></div><p class="tbc-review-text">Great communication and wonderful views.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">N</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Nicole Lewis</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">17 May 2025</div></div><p class="tbc-review-text">The landscape looks surreal from above.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">K</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Kevin Robinson</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">30 January 2024</div></div><p class="tbc-review-text">Exceeded all our expectations completely.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">R</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Rachel Walker</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">19 October 2025</div></div><p class="tbc-review-text">Safe, professional, and absolutely gorgeous.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">S</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Steven Young</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">5 June 2024</div></div><p class="tbc-review-text">Wonderful experience, worth every euro.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">M</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Megan King</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">27 February 2026</div></div><p class="tbc-review-text">Such a peaceful and scenic flight.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">J</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Jason Wright</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">14 August 2025</div></div><p class="tbc-review-text">Phenomenal views over Göreme valleys.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">H</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Hannah Scott</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">9 January 2024</div></div><p class="tbc-review-text">An absolute dream come true for us.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">A</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Andrew Green</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">21 July 2025</div></div><p class="tbc-review-text">Flawless organization and great crew.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">O</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Olivia Baker</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">3 March 2026</div></div><p class="tbc-review-text">Breathtaking scenery and lovely pilots.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">P</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Patrick Adams</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">16 November 2024</div></div><p class="tbc-review-text">Stunning colors during sunrise flight.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">V</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Victoria Nelson</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">28 April 2025</div></div><p class="tbc-review-text">Superb service and unforgettable views.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">G</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">George Hill</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">12 December 2024</div></div><p class="tbc-review-text">Highly professional and very friendly staff.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">Z</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Zoe Ramirez</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">7 June 2026</div></div><p class="tbc-review-text">Simply wonderful adventure in Cappadocia.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">T</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Timothy Campbell</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">22 September 2025</div></div><p class="tbc-review-text">Smooth landing and fantastic sunrise.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">S</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Samantha Mitchell</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">15 January 2024</div></div><p class="tbc-review-text">An absolute highlight of our trip.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">E</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Ethan Roberts</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">18 May 2025</div></div><p class="tbc-review-text">Brilliant views and great pilot commentary.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">C</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Chloe Carter</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">29 August 2024</div></div><p class="tbc-review-text">Magical experience from the first minute.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">B</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Brandon Phillips</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">10 February 2026</div></div><p class="tbc-review-text">Professional crew and gorgeous landscape.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">M</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Mia Evans</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">4 July 2025</div></div><p class="tbc-review-text">Could not ask for a better morning flight.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">L</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Logan Turner</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">19 March 2024</div></div><p class="tbc-review-text">Top shelf operation and stunning views.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">H</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Harper Parker</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">26 October 2025</div></div><p class="tbc-review-text">Loved the entire balloon tour experience.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">C</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Caleb Collins</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">8 June 2026</div></div><p class="tbc-review-text">An absolute must-do when visiting Göreme.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">A</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Ava Edwards</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">12 January 2025</div></div><p class="tbc-review-text">Such a wonderful adventure in the sky.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">L</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Landon Stewart</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">30 August 2024</div></div><p class="tbc-review-text">Exceptional service and unforgettable memories.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">E</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Ella Flores</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">14 April 2026</div></div><p class="tbc-review-text">Wonderful team and breathtaking sunrise.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">N</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Nathan Morris</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">21 September 2025</div></div><p class="tbc-review-text">Smooth flight and wonderful landscape.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">G</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Grace Rogers</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">5 February 2024</div></div><p class="tbc-review-text">Pure magic over the valleys of Cappadocia.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">J</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Jordan Reed</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">19 July 2025</div></div><p class="tbc-review-text">Very professional crew and great flight.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">S</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Scarlett Cook</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">3 March 2026</div></div><p class="tbc-review-text">An experience of a lifetime. Loved it!</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">L</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Luke Morgan</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">27 November 2024</div></div><p class="tbc-review-text">Fantastic views and seamless transfers.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">A</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Aria Bell</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">11 June 2025</div></div><p class="tbc-review-text">Stunning sunrise and wonderful pilot.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">G</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Gabriel Murphy</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">24 August 2024</div></div><p class="tbc-review-text">Superb adventure from start to finish.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">V</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Violet Bailey</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">2 January 2026</div></div><p class="tbc-review-text">Breathtaking views over the fairy chimneys.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">A</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Anthony Rivera</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">19 May 2025</div></div><p class="tbc-review-text">Professional service and gorgeous flight.</p></div>
+                <div class="tbc-review-item"><div class="tbc-review-top"><div class="tbc-review-user-avatar">M</div><div><div class="tbc-review-stars">★★★★★</div><h4 class="tbc-review-name">Maya Cooper</h4><span class="tbc-review-tour-type">Standard Flight</span></div><div class="tbc-review-date">30 October 2024</div></div><p class="tbc-review-text">Simply unforgettable morning experience.</p></div>
+              </div>
+
+              <!-- TÜMÜNÜ GÖR BUTONU -->
+              <div class="tbc-load-more-wrap" id="tbc-load-more-wrap">
+                <button type="button" class="tbc-load-more-btn" id="tbc-load-more-btn">Ver las 94 Reseñas ▾</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="tbc-tour-side">
+          <div class="tbc-tour-card tbc-tour-side-card">
+            <div class="tbc-tour-price-top">
+              <span class="tbc-tour-price-label">Precio del Tour</span>
+              <div class="tbc-tour-price-value">
+                <strong id="tbc-main-price">80 €</strong>
+                <span>por persona</span>
+              </div>
+              <div class="tbc-tour-badge-row">
+                <div class="tbc-tour-badge">Standart Flight</div>
+                <div class="tbc-tour-badge">Vuelo de 1 Hora</div>
+                <div class="tbc-tour-badge">Traslado al Hotel</div>
+              </div>
+            </div>
+
+            <div class="tbc-tour-contact-box">
+              <a class="tbc-tour-contact-link" href="tel:+905401015050">📞 +90 540 844 0050</a>
+              <a class="tbc-tour-whatsapp" href="https://wa.me/905401015050" target="_blank" rel="noopener">Contactar por WhatsApp</a>
+            </div>
+
+            <div class="tbc-tour-side-list">
+              <div><span>✓</span><div>The Standard Flight offers a comfortable basket arrangement and a professionally organized flight.</div></div>
+              <div><span>✓</span><div>Impresionantes vistas del amanecer sobre Göreme</div></div>
+              <div><span>✓</span><div>Seguro completo y asistencia profesional</div></div>
+              <div><span>✓</span><div>Atención al cliente 24/7</div></div>
+            </div>
+          </div>
+
+          <div class="tbc-tour-card tbc-booking-card">
+            <div class="tbc-booking-head">
+              <h3>Formulario de Reserva Rápida</h3>
+              <p>Déjanos tus datos y nuestro equipo se pondrá en contacto contigo lo antes posible.</p>
+            </div>
+
+            <form class="tbc-booking-form" action="#" method="post">
+              <div class="tbc-booking-group">
+                <label for="tbc-name">Nombre Completo</label>
+                <input type="text" id="tbc-name" name="name" placeholder="Nombre completo" required>
+              </div>
+
+              <div class="tbc-booking-group tbc-phone-group">
+                <label for="tbc-phone">Número de Teléfono</label>
+                <input type="tel" id="tbc-phone" name="phone" placeholder="Número de teléfono" required>
+                <input type="hidden" id="tbc-phone-full" name="full_phone">
+              </div>
+
+              <div class="tbc-booking-group tbc-date-group">
+                <label for="tbc-date">Fecha</label>
+                <div class="tbc-date-picker-wrap">
+                  <input type="text" id="tbc-date" name="date" placeholder="Seleccionar fecha" autocomplete="off" readonly required>
+                  <button type="button" class="tbc-calendar-icon" id="tbc-calendar-open" aria-label="Abrir calendario">📅</button>
+
+                  <div class="tbc-custom-calendar" id="tbc-custom-calendar">
+                    <div class="tbc-calendar-header">
+                      <button type="button" class="tbc-cal-nav" id="tbc-prev-month">‹</button>
+                      <div class="tbc-cal-title" id="tbc-cal-title"></div>
+                      <button type="button" class="tbc-cal-nav" id="tbc-next-month">›</button>
+                    </div>
+
+                    <div class="tbc-calendar-weekdays">
+                      <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+                    </div>
+
+                    <div class="tbc-calendar-days" id="tbc-calendar-days"></div>
+
+                    <div class="tbc-calendar-note">
+                      Prices shown under the dates are starting prices por persona.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tbc-booking-group">
+                <label for="tbc-person">Número de Personas</label>
+                <select id="tbc-person" name="person" required>
+                  <option value="">Seleccionar personas</option>
+                  <option>1 Persona</option>
+                  <option>2 Personas</option>
+                  <option>3 Personas</option>
+                  <option>4 Personas</option>
+                  <option>5+ Personas</option>
+                </select>
+              </div>
+
+              <div class="tbc-selected-price-box" id="tbc-selected-price-box">
+                <span>Precio de la fecha seleccionada</span>
+                <strong id="tbc-selected-price-text">Selecciona una fecha</strong>
+              </div>
+              <input type="hidden" id="tbc-selected-price-input" name="selected_price">
+
+              <div class="tbc-booking-group tbc-booking-group-full">
+                <label for="tbc-message">Tu Mensaje</label>
+                <textarea id="tbc-message" name="message" placeholder="Puedes escribir aquí una nota adicional."></textarea>
+              </div>
+
+              <div class="tbc-booking-group tbc-booking-group-full">
+                <button type="submit" class="tbc-booking-submit">Enviar Solicitud de Reserva</button>
+              </div>
+            </form>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="tbc-site-footer tbc-footer-white">
+    <div class="tbc-footer-container">
+      <div class="tbc-footer-col-left">
+        <img src="/images/logo/turkey-balloons-cappadocia-2.webp" alt="CappadociaGo" class="tbc-footer-logo-big" />
+      </div>
+
+      <div class="tbc-footer-col-right">
+        <div class="tbc-footer-contacts">
+          <div class="tbc-f-contact-item">
+            <div class="tbc-f-icon tbc-f-icon-clean">
+              <img src="/images/icons/telefon-logo.webp" alt="" class="tbc-footer-contact-icon" width="26" height="26" aria-hidden="true" />
+            </div>
+            <div>
+              <span class="tbc-f-label">Teléfono</span>
+              <a href="tel:+905401015050">+90 540 844 00 50</a>
+            </div>
+          </div>
+
+          <div class="tbc-f-contact-item">
+            <div class="tbc-f-icon tbc-f-icon-clean">
+              <img src="/images/icons/whatsapp-logo.webp" alt="" class="tbc-footer-contact-icon" width="26" height="26" aria-hidden="true" />
+            </div>
+            <div>
+              <span class="tbc-f-label">WhatsApp</span>
+              <a href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer">+90 540 844 00 50</a>
+            </div>
+          </div>
+
+          <div class="tbc-f-contact-item tbc-f-email">
+            <div class="tbc-f-icon tbc-f-icon-clean">
+              <img src="/images/icons/mail-logo.webp" alt="" class="tbc-footer-contact-icon" width="26" height="26" aria-hidden="true" />
+            </div>
+            <div>
+              <span class="tbc-f-label">Correo Electrónico</span>
+              <a href="mailto:booking@cappadociago.com">booking@cappadociago.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tbc-footer-gallery">
+          <img src="/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp" alt="Göreme Standard Balloon Tour" />
+          <img src="/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp" alt="Göreme Comfort Balloon Tour" />
+          <img src="/images/tours/Red-Tour-Cappadocia.webp" alt="Red Tour Cappadocia" />
+          <img src="/images/tours/tbc-green-tour-cappadocia.webp" alt="Green Tour Cappadocia" />
+        </div>
+
+        <div class="tbc-footer-social-inline">
+          <a href="https://www.instagram.com/cappadociago/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="/images/icons/instagram-logo.webp" alt="Instagram" width="26" height="26" />
+            <span>@cappadociago</span>
+          </a>
+
+          <a href="https://www.facebook.com/share/19A14kRwHz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="/images/icons/facebook-logo.webp" alt="Facebook" width="26" height="26" />
+            <span>Facebook</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+<style>
+
+  /* ANA SAYFA İLE AYNI HEADER */
+  .site-header {
+    width: 100%;
+    background: rgba(255,255,255,.98);
+    border-bottom: 1px solid #e9eef5;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 18px rgba(10,21,38,.035);
+    backdrop-filter: blur(10px);
+  }
+  .header-container {
+    width: min(1380px, calc(100% - 32px));
+    margin: 0 auto;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .logo { display:flex; align-items:center; gap:12px; flex:0 0 auto; min-width:0; }
+  .logo-home { display:flex; align-items:center; text-decoration:none; }
+  .logo-home img { width:auto; height:82px; max-width:184px; display:block; object-fit:contain; }
+  .header-instagram {
+    position: relative;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    min-height:34px;
+    padding:6px 10px 6px 8px;
+    border:1px solid #e4eaf1;
+    border-radius:999px;
+    background:#fff;
+    color:#30445d;
+    text-decoration:none;
+    font-size:10.5px;
+    font-weight:700;
+    white-space:nowrap;
+    box-shadow:0 3px 10px rgba(10,21,38,.035);
+  }
+  .header-instagram::before {
+    content:'';
+    width:1px;
+    height:26px;
+    position:absolute;
+    left:-7px;
+    top:50%;
+    transform:translateY(-50%);
+    background:#e7edf4;
+  }
+  .header-instagram-icon { width:19px; height:19px; object-fit:contain; flex:0 0 19px; }
+  .main-nav ul { display:flex; align-items:center; list-style:none; gap:18px; margin:0; padding:0; }
+  .main-nav a {
+    position:relative;
+    text-decoration:none;
+    color:#0a1526;
+    font-weight:700;
+    font-size:13px;
+    white-space:nowrap;
+    padding:34px 0;
+  }
+  .main-nav a::after {
+    content:'';
+    position:absolute;
+    left:0; right:0; bottom:25px;
+    height:2px;
+    border-radius:99px;
+    background:#ffd000;
+    transform:scaleX(0);
+    transition:transform .2s ease;
+  }
+  .main-nav a:hover::after { transform:scaleX(1); }
+  .header-right { position:relative; z-index:1200; display:flex; align-items:center; gap:9px; flex:0 0 auto; }
+  .lang-switcher { position:relative; display:inline-block; z-index:1205; }
+  .lang-btn {
+    background:#f8fafc;
+    border:1px solid #cbd5e1;
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:700;
+    font-size:12px;
+    cursor:pointer;
+    color:#0a1526;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .lang-dropdown {
+    display:none;
+    position:absolute;
+    top:calc(100% + 8px);
+    right:0;
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    min-width:170px;
+    z-index:99999;
+    padding:6px;
+  }
+  .lang-switcher.is-open .lang-dropdown { display:block; }
+  .lang-btn .arrow { transition:transform .2s ease; }
+  .lang-switcher.is-open .arrow { transform:rotate(180deg); }
+  .lang-item {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 12px;
+    color:#0a1526;
+    text-decoration:none;
+    font-size:12.5px;
+    font-weight:600;
+    border-radius:8px;
+  }
+  .lang-item:hover, .lang-item.active { background:#f1f5f9; color:#d4a900; }
+  .whatsapp-btn {
+    background:transparent;
+    color:#0a1526;
+    padding:7px 4px;
+    text-decoration:none;
+    font-weight:800;
+    font-size:12.5px;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+  }
+  .whatsapp-btn-icon { width:21px; height:21px; object-fit:contain; }
+  .mobile-menu-toggle {
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    flex-direction:column;
+    justify-content:space-between;
+    width:28px;
+    height:21px;
+    padding:0;
+  }
+  .mobile-menu-toggle span { display:block; width:100%; height:3px; background:#0a1526; border-radius:3px; }
+
+  /* BEYAZ FOOTER */
+  .tbc-site-footer.tbc-footer-white {
+    width:100%;
+    background:#ffffff !important;
+    border-top:1px solid #e5e7eb;
+    padding:46px 20px;
+    color:#0a1526 !important;
+  }
+  .tbc-footer-white .tbc-footer-container {
+    max-width:1240px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .tbc-footer-white .tbc-footer-logo-big {
+    max-height:180px;
+    width:auto;
+    display:block;
+    object-fit:contain;
+  }
+  .tbc-footer-white .tbc-footer-col-right {
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    max-width:760px;
+  }
+  .tbc-footer-white .tbc-footer-contacts {
+    display:flex;
+    flex-wrap:wrap;
+    gap:26px;
+  }
+  .tbc-footer-white .tbc-f-contact-item {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:180px;
+  }
+  .tbc-footer-white .tbc-f-icon-clean {
+    width:36px;
+    height:36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f8fafc !important;
+    border:1px solid #e2e8f0;
+    border-radius:12px !important;
+    flex:0 0 36px;
+  }
+  .tbc-footer-white .tbc-footer-contact-icon {
+    width:23px;
+    height:23px;
+    display:block;
+    object-fit:contain;
+  }
+  .tbc-footer-white .tbc-f-label {
+    display:block;
+    font-size:11px;
+    color:#64748b;
+    font-weight:700;
+    margin-bottom:2px;
+  }
+  .tbc-footer-white .tbc-footer-contacts a {
+    color:#0a1526 !important;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:800;
+  }
+  .tbc-footer-white .tbc-footer-contacts a:hover { color:#b58d00 !important; }
+  .tbc-footer-white .tbc-footer-gallery {
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .tbc-footer-white .tbc-footer-gallery img {
+    width:110px;
+    height:75px;
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid #e2e8f0;
+  }
+  .tbc-footer-white .tbc-footer-social-inline {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .tbc-footer-white .tbc-footer-social-inline a {
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:7px 10px;
+    border:1px solid #e2e8f0;
+    border-radius:999px;
+    background:#fff;
+    color:#0a1526;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
+  }
+  .tbc-footer-white .tbc-footer-social-inline img {
+    width:20px;
+    height:20px;
+    object-fit:contain;
+  }
+
+  @media (max-width:1024px) {
+    .header-container { height:80px; gap:8px; }
+    .logo-home img { height:68px; max-width:145px; }
+    .header-instagram { max-width:150px; }
+    .main-nav {
+      display:none;
+      position:absolute;
+      top:80px;
+      left:0;
+      width:100%;
+      background:#fff;
+      padding:20px;
+      border-bottom:1px solid #e2e8f0;
+      box-shadow:0 10px 25px rgba(0,0,0,.1);
+    }
+    .main-nav.is-open { display:block; }
+    .main-nav ul { flex-direction:column; gap:14px; align-items:flex-start; }
+    .main-nav a { padding:4px 0; }
+    .mobile-menu-toggle { display:flex; }
+    .tbc-footer-white .tbc-footer-container { flex-direction:column; align-items:flex-start; }
+  }
+
+  @media (max-width:600px) {
+    .header-container { width:calc(100% - 20px); height:80px; gap:5px; }
+    .logo-home img { height:64px; max-width:130px; }
+    .header-instagram { max-width:112px; padding:4px 6px 4px 5px; font-size:8px; gap:4px; }
+    .header-instagram-icon { width:16px; height:16px; flex-basis:16px; }
+    .whatsapp-btn span { display:none; }
+    .whatsapp-btn { width:28px; justify-content:center; padding:0; }
+    .whatsapp-btn-icon { width:18px; height:18px; }
+    .lang-btn .lang-flag { display:none; }
+    .lang-btn { padding:6px 7px; }
+    .tbc-footer-white .tbc-footer-contacts { flex-direction:column; gap:16px; }
+    .tbc-footer-white .tbc-footer-gallery img { width:calc(50% - 6px); height:85px; }
+  }
+
+  .tbc-tour-page * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Plus Jakarta Sans', Arial, sans-serif; background: #0f172a; color: #f8fafc; }
+  .tbc-site-header { width: 100%; background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+  .tbc-header-container { max-width: 1320px; margin: 0 auto; padding: 0 20px; height: 95px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .tbc-logo-big { height: 75px; width: auto; display: block; transition: transform 0.3s; }
+  .tbc-main-nav ul { display: flex; list-style: none; gap: 24px; margin: 0; padding: 0; }
+  .tbc-main-nav a { text-decoration: none; color: #0f172a; font-weight: 700; font-size: 14px; transition: color 0.2s; }
+  .tbc-main-nav a:hover { color: #eab308; }
+  .tbc-header-right { display: flex; align-items: center; gap: 12px; }
+  .tbc-top-lang { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 30px; font-weight: 700; font-size: 13px; cursor: pointer; color: #0f172a; display: flex; align-items: center; gap: 6px; }
+  .tbc-top-whatsapp { background: #22c55e; color: #fff; padding: 9px 18px; border-radius: 30px; font-weight: 700; font-size: 13px; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: background 0.2s; }
+  .tbc-top-whatsapp:hover { background: #16a34a; }
+  .tbc-tour-page { width: 100%; background: #0f172a; padding: 20px 16px 70px; }
+  .tbc-tour-container { max-width: 1240px; margin: 0 auto; }
+  .tbc-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #94a3b8; margin-bottom: 20px; font-weight: 600; }
+  .tbc-breadcrumb a { color: #f8fafc; text-decoration: none; transition: color 0.2s; }
+  .tbc-breadcrumb a:hover { color: #eab308; }
+  .tbc-breadcrumb span { color: #eab308; }
+  .tbc-tour-hero { position: relative; overflow: hidden; border-radius: 24px; padding: 40px 36px; margin-bottom: 24px; background: linear-gradient(135deg, rgba(15,23,42,.95), rgba(30,41,59,.9)); box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4); color: #fff; border: 1px solid #334155; }
+  .tbc-tour-kicker { display: inline-flex; align-items: center; min-height: 30px; padding: 0 14px; border-radius: 999px; background: #eab308; color: #0f172a; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
+  .tbc-tour-title { margin: 0 0 12px; font-size: 38px; line-height: 1.15; font-weight: 800; letter-spacing: -.02em; color: #fff; }
+  .tbc-tour-desc { margin: 0 0 24px; max-width: 960px; font-size: 15px; line-height: 1.8; color: #cbd5e1; }
+  .tbc-hero-badges-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+  .tbc-badge-item { display: inline-flex; align-items: center; gap: 8px; background: #1e293b; border: 1px solid #334155; padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #f8fafc; }
+  .tbc-stars { color: #eab308; font-size: 14px; letter-spacing: 1px; }
+  .tbc-badge-val { color: #f8fafc; font-weight: 800; }
+  .tbc-badge-sep { color: #475569; }
+  .tbc-badge-link { color: #38bdf8; cursor: pointer; }
+  .tbc-badge-icon { font-size: 15px; }
+  .tbc-badge-wa { background: #22c55e !important; border-color: #22c55e !important; color: #ffffff !important; text-decoration: none; }
+  .tbc-badge-wa strong { font-weight: 800; }
+  .tbc-photo-grid-wrapper { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-bottom: 30px; border-radius: 24px; overflow: hidden; background: #1e293b; border: 1px solid #334155; padding: 12px; box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4); }
+  .tbc-main-photo { position: relative; border-radius: 16px; overflow: hidden; height: 380px; background: #0f172a; }
+  .tbc-main-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+  .tbc-main-photo:hover img { transform: scale(1.02); }
+  .tbc-photo-badge { position: absolute; bottom: 16px; left: 16px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #f8fafc; padding: 8px 16px; border-radius: 12px; font-size: 13px; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.15); }
+  .tbc-side-photos { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px; height: 380px; }
+  .tbc-side-photo-item { border-radius: 12px; overflow: hidden; background: #0f172a; }
+  .tbc-side-photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+  .tbc-side-photo-item:hover img { transform: scale(1.04); }
+  .tbc-tour-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: start; }
+  .tbc-tour-main, .tbc-tour-side { min-width: 0; }
+  .tbc-tour-side { display: flex; flex-direction: column; gap: 18px; }
+  .tbc-tour-card { background: #1e293b; border: 1px solid #334155; border-radius: 28px; box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4); color: #f8fafc; }
+  .tbc-tour-main-card { padding: 32px; margin-bottom: 24px; }
+  .tbc-tour-section { padding: 0 0 24px; margin: 0 0 24px; border-bottom: 1px solid #334155; }
+  .tbc-tour-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+  .tbc-tour-section h2 { margin: 0 0 14px; font-size: 26px; line-height: 1.18; color: #f8fafc; font-weight: 800; letter-spacing: -.02em; }
+  .tbc-tour-section p { margin: 0 0 14px; font-size: 15px; line-height: 1.95; color: #94a3b8; }
+  .tbc-tour-section p:last-child { margin-bottom: 0; }
+  .tbc-tour-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 18px; margin-top: 16px; }
+  .tbc-tour-list-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.8; color: #cbd5e1; }
+  .tbc-tour-check { width: 20px; height: 20px; min-width: 20px; border-radius: 50%; margin-top: 3px; background: rgba(34, 197, 94, 0.15); color: #22c55e; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+  .tbc-reviews-card { padding: 32px; }
+  .tbc-reviews-main-title { margin: 0 0 24px; font-size: 24px; font-weight: 800; color: #f8fafc; border-bottom: 1px solid #334155; padding-bottom: 16px; }
+  .tbc-review-item { padding: 20px 0; border-bottom: 1px solid #334155; }
+  .tbc-review-item:last-child { border-bottom: none; }
+  .tbc-review-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px; position: relative; }
+  .tbc-review-user-avatar { width: 44px; height: 44px; border-radius: 50%; background: #3b82f6; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+  .tbc-review-stars { color: #eab308; font-size: 13px; letter-spacing: 1px; margin-bottom: 3px; }
+  .tbc-review-name { margin: 0; font-size: 16px; font-weight: 800; color: #f8fafc; }
+  .tbc-review-tour-type { font-size: 12px; color: #94a3b8; font-weight: 600; }
+  .tbc-review-date { position: absolute; right: 0; top: 0; font-size: 12px; color: #94a3b8; font-weight: 600; }
+  .tbc-review-text { margin: 0; font-size: 14px; line-height: 1.8; color: #cbd5e1; }
+  .tbc-load-more-wrap { margin-top: 24px; text-align: center; padding-top: 16px; border-top: 1px solid #334155; }
+  .tbc-load-more-btn { background: #0f172a; border: 1px solid #eab308; color: #eab308; padding: 12px 28px; border-radius: 999px; font-weight: 800; font-size: 14px; cursor: pointer; transition: all 0.2s ease; }
+  .tbc-load-more-btn:hover { background: #eab308; color: #0f172a; }
+  .tbc-tour-side-card { padding: 22px; }
+  .tbc-tour-price-top { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid #334155; }
+  .tbc-tour-price-label { display: block; margin-bottom: 6px; font-size: 13px; color: #94a3b8; font-weight: 700; }
+  .tbc-tour-price-value { display: flex; align-items: flex-end; gap: 8px; color: #eab308; }
+  .tbc-tour-price-value strong { font-size: 40px; line-height: 1; font-weight: 900; }
+  .tbc-tour-price-value span { font-size: 15px; font-weight: 700; color: #94a3b8; padding-bottom: 4px; }
+  .tbc-tour-badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .tbc-tour-badge { display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px; border-radius: 999px; background: #0f172a; border: 1px solid #334155; color: #eab308; font-size: 12px; font-weight: 800; }
+  .tbc-tour-contact-box { margin-top: 0; padding-top: 0; border-top: 0; display: grid; gap: 10px; }
+  .tbc-tour-contact-link, .tbc-tour-whatsapp { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 800; }
+  .tbc-tour-contact-link { background: #0f172a; border: 1px solid #334155; color: #f8fafc; }
+  .tbc-tour-whatsapp { background: #22c55e; color: #fff; }
+  .tbc-tour-side-list { margin-top: 18px; display: grid; gap: 10px; }
+  .tbc-tour-side-list div { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.75; color: #cbd5e1; }
+  .tbc-tour-side-list span { color: #eab308; font-weight: 900; }
+  .tbc-booking-card { padding: 22px; }
+  .tbc-booking-head { margin-bottom: 16px; }
+  .tbc-booking-head h3 { margin: 0 0 8px; font-size: 20px; line-height: 1.2; color: #f8fafc; font-weight: 800; }
+  .tbc-booking-head p { margin: 0; font-size: 14px; line-height: 1.75; color: #94a3b8; }
+  .tbc-booking-form { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .tbc-booking-group { display: flex; flex-direction: column; }
+  .tbc-booking-group-full { grid-column: 1 / -1; }
+  .tbc-booking-group label { margin-bottom: 7px; font-size: 13px; font-weight: 700; color: #cbd5e1; }
+  .tbc-booking-group input, .tbc-booking-group select, .tbc-booking-group textarea { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid #334155; border-radius: 16px; background: #0f172a; font-size: 14px; color: #f8fafc; outline: none; transition: .2s ease; }
+  .tbc-booking-group textarea { min-height: 110px; resize: vertical; }
+  .tbc-booking-group input:focus, .tbc-booking-group select:focus, .tbc-booking-group textarea:focus { border-color: #eab308; box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.15); }
+  .tbc-booking-submit { width: 100%; min-height: 50px; border: 0; border-radius: 999px; background: #eab308; color: #0f172a; font-size: 14px; font-weight: 800; cursor: pointer; transition: .2s ease; }
+  .tbc-booking-submit:hover { background: #ca8a04; color: #fff; }
+  .tbc-phone-group .iti { width: 100%; display: block; }
+  .tbc-phone-group .iti__tel-input { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid #334155; border-radius: 16px; background: #0f172a; font-size: 14px; color: #f8fafc; outline: none; }
+  .tbc-phone-group .iti__country-list { z-index: 99999; border-radius: 16px; background: #1e293b; color: #f8fafc; box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6); border: 1px solid #334155; }
+  .tbc-phone-group .iti__country { padding: 8px 10px; }
+  .tbc-phone-group .iti__country:hover { background: #334155; }
+  .tbc-date-picker-wrap { position: relative; width: 100%; }
+  .tbc-date-picker-wrap input { padding-right: 48px; cursor: pointer; }
+  .tbc-calendar-icon { position: absolute; right: 10px; top: 50%; width: 34px; height: 34px; transform: translateY(-50%); border: 0; border-radius: 12px; background: #1e293b; color: #eab308; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .tbc-custom-calendar { position: absolute; top: calc(100% + 10px); left: 0; width: 320px; max-width: calc(100vw - 40px); background: #1e293b; border: 1px solid #334155; border-radius: 20px; box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6); padding: 16px; z-index: 9999; display: none; }
+  .tbc-custom-calendar.is-open { display: block; }
+  .tbc-calendar-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .tbc-cal-title { font-size: 15px; font-weight: 900; color: #f8fafc; text-align: center; }
+  .tbc-cal-nav { width: 36px; height: 36px; border: 0; border-radius: 12px; background: #0f172a; color: #eab308; font-size: 24px; cursor: pointer; }
+  .tbc-cal-nav:hover { background: #334155; }
+  .tbc-calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 8px; }
+  .tbc-calendar-weekdays span { text-align: center; font-size: 11px; font-weight: 800; color: #94a3b8; }
+  .tbc-calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+  .tbc-cal-day { min-height: 46px; border: 0; border-radius: 13px; background: #0f172a; color: #f8fafc; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4px 2px; }
+  .tbc-cal-day:hover { background: #334155; }
+  .tbc-cal-day.is-empty, .tbc-cal-day.is-disabled { cursor: default; opacity: .3; background: transparent; }
+  .tbc-cal-day.is-selected { background: #eab308; color: #0f172a; }
+  .tbc-cal-day-number { display: block; font-size: 13px; font-weight: 900; line-height: 1.1; }
+  .tbc-cal-day-price { display: block; margin-top: 3px; font-size: 10px; line-height: 1; font-weight: 800; color: #eab308; }
+  .tbc-cal-day.is-selected .tbc-cal-day-price { color: #0f172a; }
+  .tbc-calendar-note { margin-top: 12px; padding-top: 12px; border-top: 1px solid #334155; font-size: 11px; line-height: 1.5; color: #94a3b8; }
+  .tbc-selected-price-box { grid-column: 1 / -1; display: none; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 15px; border-radius: 16px; background: #0f172a; border: 1px solid #334155; }
+  .tbc-selected-price-box.is-visible { display: flex; }
+  .tbc-selected-price-box span { font-size: 13px; font-weight: 700; color: #94a3b8; }
+  .tbc-selected-price-box strong { font-size: 18px; font-weight: 900; color: #eab308; }
+  .tbc-site-footer { width: 100%; background: #0b1120; border-top: 1px solid #1e293b; padding: 50px 20px; color: #f8fafc; }
+  .tbc-footer-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .tbc-footer-col-left .tbc-footer-logo-big { max-height: 180px; width: auto; display: block; }
+  .tbc-footer-col-right { display: flex; flex-direction: column; gap: 24px; max-width: 700px; }
+  .tbc-footer-contacts { display: flex; flex-wrap: wrap; gap: 30px; }
+  .tbc-f-contact-item { display: flex; align-items: center; gap: 14px; }
+  .tbc-f-icon { width: 44px; height: 44px; border-radius: 50%; background: #ff5722; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; flex-shrink: 0; }
+  .whatsapp-icon { background: #22c55e; }
+  .email-icon { background: #ff5722; }
+  .phone-icon { background: #ff5722; }
+  .tbc-f-label { display: block; font-size: 12px; color: #94a3b8; font-weight: 600; }
+  .tbc-footer-contacts a { color: #f8fafc; text-decoration: none; font-size: 15px; font-weight: 700; transition: color 0.2s; }
+  .tbc-footer-contacts a:hover { color: #eab308; }
+  .tbc-footer-gallery { display: flex; gap: 12px; }
+  .tbc-footer-gallery img { width: 110px; height: 75px; object-fit: cover; border-radius: 12px; border: 1px solid #334155; }
+  @media (max-width: 1024px) {
+    .tbc-tour-grid { grid-template-columns: 1fr; }
+    .tbc-tour-list { grid-template-columns: 1fr; }
+    .tbc-tour-side { order: -1; }
+    .tbc-main-nav { display: none; }
+    .tbc-footer-container { flex-direction: column; align-items: flex-start; }
+    .tbc-footer-gallery { flex-wrap: wrap; }
+    .tbc-photo-grid-wrapper { grid-template-columns: 1fr; }
+    .tbc-side-photos { height: auto; grid-template-columns: repeat(4, 1fr); }
+    .tbc-hero-badges-bar { flex-direction: column; align-items: stretch; }
+    .tbc-review-date { position: static; margin-top: 4px; display: block; }
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Header dil menüsü
+  const langSwitcher = document.getElementById("langSwitcher");
+  const langButton = document.getElementById("langButton");
+  const langDropdown = document.getElementById("langDropdown");
+
+  if (langSwitcher && langButton && langDropdown) {
+    const closeLanguageMenu = () => {
+      langSwitcher.classList.remove("is-open");
+      langButton.setAttribute("aria-expanded", "false");
+    };
+
+    langButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const willOpen = !langSwitcher.classList.contains("is-open");
+      closeLanguageMenu();
+      if (willOpen) {
+        langSwitcher.classList.add("is-open");
+        langButton.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    langDropdown.querySelectorAll(".lang-item").forEach((item) => {
+      item.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const url = this.getAttribute("data-lang-url") || this.getAttribute("href");
+        if (url) window.location.assign(url);
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!langSwitcher.contains(event.target)) closeLanguageMenu();
+    });
+  }
+
+  // Mobil menü
+  const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+  const mainNav = document.getElementById("mainNav");
+  if (mobileMenuToggle && mainNav) {
+    mobileMenuToggle.addEventListener("click", function () {
+      mainNav.classList.toggle("is-open");
+    });
+  }
+
+  const tbcDefaultPrice = "80 €";
+  const tbcMinDateKey = "2026-08-12";
+  const tbcMaxDateKey = "2027-12-31";
+
+  const tbcDatePrices = {
+    "2026-08-12": "300 €",
+    "2026-08-13": "230 €",
+    "2026-08-14": "120 €",
+    "2026-08-15": "140 €"
+  };
+
+  const tbcMonthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+  function tbcDateKeyToDate(dateKey) {
+    const parts = dateKey.split("-");
+    return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+  }
+
+  const tbcStartDate = tbcDateKeyToDate(tbcMinDateKey);
+  const tbcEndDate = tbcDateKeyToDate(tbcMaxDateKey);
+  const tbcMinMonthDate = new Date(tbcStartDate.getFullYear(), tbcStartDate.getMonth(), 1);
+  const tbcMaxMonthDate = new Date(tbcEndDate.getFullYear(), tbcEndDate.getMonth(), 1);
+  const tbcToday = new Date();
+
+  const tbcDateInput = document.getElementById("tbc-date");
+  const tbcCalendar = document.getElementById("tbc-custom-calendar");
+  const tbcCalendarOpen = document.getElementById("tbc-calendar-open");
+  const tbcCalendarDays = document.getElementById("tbc-calendar-days");
+  const tbcCalendarTitle = document.getElementById("tbc-cal-title");
+  const tbcPrevMonthBtn = document.getElementById("tbc-prev-month");
+  const tbcNextMonthBtn = document.getElementById("tbc-next-month");
+  const tbcSelectedPriceBox = document.getElementById("tbc-selected-price-box");
+  const tbcSelectedPriceText = document.getElementById("tbc-selected-price-text");
+  const tbcSelectedPriceInput = document.getElementById("tbc-selected-price-input");
+  const tbcMainPrice = document.getElementById("tbc-main-price");
+
+  let tbcCurrentMonth = tbcStartDate.getMonth();
+  let tbcCurrentYear = tbcStartDate.getFullYear();
+  let tbcSelectedDateKey = "";
+
+  function tbcPadNumber(number) { return String(number).padStart(2, "0"); }
+  function tbcMakeDateKey(year, month, day) { return year + "-" + tbcPadNumber(month + 1) + "-" + tbcPadNumber(day); }
+  function tbcFormatDisplayDate(year, month, day) { return tbcPadNumber(day) + "." + tbcPadNumber(month + 1) + "." + year; }
+  function tbcGetPriceForDate(dateKey) { return tbcDatePrices[dateKey] || tbcDefaultPrice; }
+
+  function tbcIsSameDate(dateObj, year, month, day) {
+    return year === dateObj.getFullYear() && month === dateObj.getMonth() && day === dateObj.getDate();
+  }
+
+  function tbcIsDateAllowed(year, month, day) {
+    const dateObj = new Date(year, month, day);
+    dateObj.setHours(0, 0, 0, 0);
+    return dateObj >= tbcStartDate && dateObj <= tbcEndDate;
+  }
+
+  function tbcRenderCalendar() {
+    if (!tbcCalendarDays || !tbcCalendarTitle) return;
+    tbcCalendarDays.innerHTML = "";
+    tbcCalendarTitle.textContent = tbcMonthNames[tbcCurrentMonth] + " " + tbcCurrentYear;
+
+    const firstDay = new Date(tbcCurrentYear, tbcCurrentMonth, 1);
+    const lastDay = new Date(tbcCurrentYear, tbcCurrentMonth + 1, 0);
+
+    let firstDayIndex = firstDay.getDay();
+    firstDayIndex = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+
+    for (let i = 0; i < firstDayIndex; i++) {
+      const emptyDay = document.createElement("button");
+      emptyDay.type = "button";
+      emptyDay.className = "tbc-cal-day is-empty";
+      emptyDay.disabled = true;
+      tbcCalendarDays.appendChild(emptyDay);
+    }
+
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+      const dateKey = tbcMakeDateKey(tbcCurrentYear, tbcCurrentMonth, day);
+      const price = tbcGetPriceForDate(dateKey);
+      const allowed = tbcIsDateAllowed(tbcCurrentYear, tbcCurrentMonth, day);
+
+      const dayButton = document.createElement("button");
+      dayButton.type = "button";
+      dayButton.className = "tbc-cal-day";
+
+      if (!allowed) {
+        dayButton.classList.add("is-disabled");
+        dayButton.disabled = true;
+      }
+
+      if (dateKey === tbcSelectedDateKey) {
+        dayButton.classList.add("is-selected");
+      }
+
+      if (tbcIsSameDate(tbcToday, tbcCurrentYear, tbcCurrentMonth, day)) {
+        dayButton.classList.add("is-today");
+      }
+
+      dayButton.innerHTML = '<span class="tbc-cal-day-number">' + day + '</span><span class="tbc-cal-day-price">' + price + '</span>';
+
+      if (allowed) {
+        dayButton.addEventListener("click", function () {
+          tbcSelectedDateKey = dateKey;
+          tbcDateInput.value = tbcFormatDisplayDate(tbcCurrentYear, tbcCurrentMonth, day);
+          tbcSelectedPriceText.textContent = price;
+          tbcSelectedPriceInput.value = price;
+          tbcSelectedPriceBox.classList.add("is-visible");
+          if (tbcMainPrice) { tbcMainPrice.textContent = price; }
+          tbcCalendar.classList.remove("is-open");
+          tbcRenderCalendar();
+        });
+      }
+      tbcCalendarDays.appendChild(dayButton);
+    }
+  }
+
+  function tbcOpenCalendar() { tbcCalendar.classList.add("is-open"); tbcRenderCalendar(); }
+  function tbcCloseCalendar() { tbcCalendar.classList.remove("is-open"); }
+
+  if (tbcDateInput && tbcCalendar && tbcCalendarOpen) {
+    tbcDateInput.addEventListener("click", tbcOpenCalendar);
+    tbcCalendarOpen.addEventListener("click", tbcOpenCalendar);
+  }
+
+  if (tbcPrevMonthBtn) {
+    tbcPrevMonthBtn.addEventListener("click", function () {
+      const previousMonthDate = new Date(tbcCurrentYear, tbcCurrentMonth - 1, 1);
+      if (previousMonthDate < tbcMinMonthDate) return;
+      tbcCurrentMonth--;
+      if (tbcCurrentMonth < 0) { tbcCurrentMonth = 11; tbcCurrentYear--; }
+      tbcRenderCalendar();
+    });
+  }
+
+  if (tbcNextMonthBtn) {
+    tbcNextMonthBtn.addEventListener("click", function () {
+      const nextMonthDate = new Date(tbcCurrentYear, tbcCurrentMonth + 1, 1);
+      if (nextMonthDate > tbcMaxMonthDate) return;
+      tbcCurrentMonth++;
+      if (tbcCurrentMonth > 11) { tbcCurrentMonth = 0; tbcCurrentYear++; }
+      tbcRenderCalendar();
+    });
+  }
+
+  document.addEventListener("click", function (event) {
+    if (!tbcCalendar || !tbcDateInput || !tbcCalendarOpen) return;
+    if (!tbcCalendar.contains(event.target) && !tbcDateInput.contains(event.target) && !tbcCalendarOpen.contains(event.target)) {
+      tbcCloseCalendar();
+    }
+  });
+
+  const tbcPhoneInput = document.getElementById("tbc-phone");
+  const tbcPhoneFullInput = document.getElementById("tbc-phone-full");
+  let tbcPhoneIti = null;
+
+  if (tbcPhoneInput && window.intlTelInput) {
+    tbcPhoneIti = window.intlTelInput(tbcPhoneInput, {
+      initialCountry: "tr",
+      separateDialCode: true,
+      nationalMode: false,
+      autoPlaceholder: "aggressive",
+      preferredCountries: ["tr", "us", "gb", "de", "fr", "nl", "ru", "sa"],
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js"
+    });
+  }
+
+  const tbcBookingFormEl = document.querySelector(".tbc-booking-form");
+  if (tbcBookingFormEl) {
+    tbcBookingFormEl.addEventListener("submit", function () {
+      if (tbcPhoneIti && tbcPhoneFullInput) {
+        tbcPhoneFullInput.value = tbcPhoneIti.getNumber() || tbcPhoneInput.value;
+      }
+    });
+  }
+
+  tbcRenderCalendar();
+
+  const loadMoreBtn = document.getElementById("tbc-load-more-btn");
+  const hiddenReviews = document.getElementById("tbc-hidden-reviews");
+  const scrollToReviewsBadge = document.getElementById("tbc-scrollToReviews");
+  const reviewsSection = document.getElementById("reviews-section");
+
+  if (loadMoreBtn && hiddenReviews) {
+    loadMoreBtn.addEventListener("click", function () {
+      hiddenReviews.style.display = "block";
+      loadMoreBtn.style.display = "none";
+    });
+  }
+
+  if (scrollToReviewsBadge && reviewsSection) {
+    scrollToReviewsBadge.addEventListener("click", function () {
+      reviewsSection.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+});
+</script>
+<FloatingAssistant lang="en" />

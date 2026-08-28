@@ -1,0 +1,17 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+const data = {
+  lang:"en", slug:"atv-tour-with-goreme-valleys", title:"ATV Tour With Göreme Valleys",
+  hero:"Enjoy a pleasant ATV tour through Cappadocia’s valleys, with daytime and sunset options and hotel transfer service in the Göreme area.",
+  image:"/images/tours/ATV-Tour-With-Goreme-Valleys.webp", rating:"4.70", reviewCount:32, duration:"120 Minutes", price:"30 \u20ac",
+  badges:["ATV Safari", "120 Minutes", "Hotel Transfer"],
+  sections:[{title:"Tour Details",paragraphs:["Welcome! Our horse tour experience offers an unforgettable adventure surrounded by nature with red air at sunset. In this unique experience, you will have the opportunity to take a pleasant ATV tour at sunset.", "Cappadocia ATV Tours are one of the most preferred and enjoyable activities in Cappadocia. You can take ATV tours during the day or preferably at sunset. We also have hotel transfers for the Göreme region. On ATV tours, you will enjoy the beautiful valleys of Cappadocia and take wonderful photographs.", "To make a reservation, you can fill out our reservation form, call us or contact us immediately via WhatsApp."]},{title:"About the Activity",paragraphs:["120 minutes. An activity that will last 2 hours."]},{title:"Hotel Transfer",paragraphs:["We pick you up from your hotel 10–15 minutes before the activity starts."]},{title:"Easy Cancellation",paragraphs:["You can cancel your reservation up to 24 hours before the start of the activity."]}],
+  included:["1.5 Hours Quad Safari (if option selected)", "Sunrise Quad Safari (if option selected)", "Sunset Quad Safari (if option selected)", "1 Hour Quad Safari (if option selected)", "Hotel Transfer (Both Ways)", "Full Insurance"],
+  notIncluded:["Personal Spendings", "Food & Drinks"],
+  highlights:["1.5 Hours Quad Safari (if option selected)", "Sunrise Quad Safari (if option selected)", "Sunset Quad Safari (if option selected)", "1 Hour Quad Safari (if option selected)"],
+  gallery:["/images/tours/ATV-Tour-With-Goreme-Valleys.webp"]
+};
+---
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

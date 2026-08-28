@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "es",
+  slug: "sunrise-sunset-horse-riding-cappadocia",
+  title: "Paseo a Caballo al Amanecer o Atardecer en Capadocia",
+  hero: "Explora los valles de Capadocia a caballo durante la luz mágica del amanecer o atardecer, con paseo guiado y paradas para fotos.",
+  image: "/images/tours/Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp",
+  rating: "4.80",
+  reviewCount: 39,
+  duration: "1,5 Horas",
+  price: "35 €",
+  badges: ["Paseo a Caballo", "Amanecer / Atardecer", "Tour Guiado"],
+  sections: [{"title": "Experiencia a Caballo", "paragraphs": ["Recorre valles seleccionados de Capadocia con un guía local experimentado. Las salidas al amanecer y atardecer son especialmente populares por la luz suave y las vistas panorámicas."]}, {"title": "¿Para Quién Es Adecuado?", "paragraphs": ["Apto para principiantes y personas con experiencia. La ruta y el ritmo se adaptan a las condiciones y al nivel del jinete."]}, {"title": "Paisajes y Fotos", "paragraphs": ["La ruta se centra en valles, formaciones rocosas y miradores abiertos con breves paradas para fotografías."]}],
+  included: ["Paseo guiado a caballo", "Información de seguridad", "Salida seleccionada amanecer/atardecer", "Equipo básico", "Guía local"],
+  notIncluded: [],
+  highlights: ["Opción amanecer/atardecer", "Paisajes de valles", "Paseo guiado", "Paradas para fotos"],
+  gallery: ["/images/tours/Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

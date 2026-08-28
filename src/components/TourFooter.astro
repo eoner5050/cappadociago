@@ -1,0 +1,53 @@
+---
+import { getFooterGallery } from '../utils/tourGallery';
+const { lang = 'en' } = Astro.props;
+const imgs = getFooterGallery(4);
+const labels = {
+  en:{phone:'Telephone',mail:'E-Mail'},
+  tr:{phone:'Telefon',mail:'E-Posta'},
+  es:{phone:'Teléfono',mail:'E-Mail'}
+}[lang] || {phone:'Telephone',mail:'E-Mail'};
+---
+<footer class="tbc-unified-footer">
+  <div class="tbc-unified-footer-inner">
+    <div class="tbc-unified-footer-brand">
+      <a href={`/${lang}/`} aria-label="CappadociaGo">
+        <img src="/images/logo.png" alt="CappadociaGo" width="600" height="200" loading="lazy" decoding="async" />
+      </a>
+    </div>
+
+    <div class="tbc-unified-footer-content">
+      <div class="tbc-unified-footer-contacts">
+        <div class="tbc-unified-contact">
+          <span class="tbc-unified-icon"><img src="/images/icons/telefon-logo.webp" alt="" width="26" height="26" loading="lazy" aria-hidden="true" /></span>
+          <div><small>{labels.phone}</small><a href="tel:+905401015050">+90 540 101 50 50</a></div>
+        </div>
+        <div class="tbc-unified-contact">
+          <span class="tbc-unified-icon"><img src="/images/icons/whatsapp-logo.webp" alt="" width="26" height="26" loading="lazy" aria-hidden="true" /></span>
+          <div><small>WhatsApp</small><a href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer">+90 540 101 50 50</a></div>
+        </div>
+        <div class="tbc-unified-contact">
+          <span class="tbc-unified-icon"><img src="/images/icons/mail-logo.webp" alt="" width="26" height="26" loading="lazy" aria-hidden="true" /></span>
+          <div><small>{labels.mail}</small><a href="mailto:info@kapheratravel.com">info@kapheratravel.com</a></div>
+        </div>
+      </div>
+
+      {imgs.length > 0 && <div class="tbc-unified-footer-gallery">
+        {imgs.map((src, i) => <img src={src} alt={`CappadociaGo gallery ${i + 1}`} width="320" height="220" loading="lazy" decoding="async" />)}
+      </div>}
+
+      <div class="tbc-unified-footer-social">
+        <a href="https://www.instagram.com/cappadociago/" target="_blank" rel="noopener noreferrer"><img src="/images/icons/instagram-logo.webp" alt="Instagram" width="24" height="24" loading="lazy" />@cappadociago</a>
+        <a href="https://www.facebook.com/share/19A14kRwHz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"><img src="/images/icons/facebook-logo.webp" alt="Facebook" width="24" height="24" loading="lazy" />Facebook</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<style is:global>
+.tbc-unified-footer{background:#fff;border-top:1px solid #e7edf3;margin-top:42px;padding:34px 16px 42px;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#071d3b}
+.tbc-unified-footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:50px;align-items:center}
+.tbc-unified-footer-brand{display:flex;align-items:center;justify-content:center;min-height:155px}.tbc-unified-footer-brand img{width:130px;height:auto;display:block;object-fit:contain}
+.tbc-unified-footer-content{display:grid;gap:17px}.tbc-unified-footer-contacts{display:flex;gap:28px;align-items:center;flex-wrap:wrap}.tbc-unified-contact{display:flex;align-items:center;gap:10px}.tbc-unified-icon{width:38px;height:38px;border:1px solid #dce6ef;border-radius:12px;display:grid;place-items:center;background:#fbfdff}.tbc-unified-icon img{width:22px;height:22px;object-fit:contain}.tbc-unified-contact small{display:block;font-size:9px;color:#63758b;margin-bottom:3px}.tbc-unified-contact a{font-size:12px;color:#071d3b;text-decoration:none;font-weight:800;white-space:nowrap}.tbc-unified-footer-gallery{display:grid;grid-template-columns:repeat(4,92px);gap:10px}.tbc-unified-footer-gallery img{width:92px;height:66px;object-fit:cover;border-radius:9px;border:1px solid #dce6ef;display:block}.tbc-unified-footer-social{display:flex;gap:10px;flex-wrap:wrap}.tbc-unified-footer-social a{display:flex;align-items:center;gap:7px;border:1px solid #dce6ef;border-radius:999px;padding:7px 12px;color:#071d3b;text-decoration:none;font-size:10px;font-weight:800;background:#fff}.tbc-unified-footer-social img{width:20px;height:20px;object-fit:contain}
+@media(max-width:900px){.tbc-unified-footer-inner{grid-template-columns:1fr;gap:18px}.tbc-unified-footer-brand{min-height:auto;justify-content:flex-start}.tbc-unified-footer-brand img{width:105px}.tbc-unified-footer-contacts{gap:14px}.tbc-unified-footer-gallery{grid-template-columns:repeat(4,minmax(0,1fr));max-width:430px}.tbc-unified-footer-gallery img{width:100%;height:72px}}
+@media(max-width:600px){.tbc-unified-footer{padding:28px 18px 34px}.tbc-unified-footer-contacts{display:grid;grid-template-columns:1fr}.tbc-unified-footer-gallery{grid-template-columns:repeat(2,1fr)}.tbc-unified-footer-gallery img{height:92px}.tbc-unified-footer-social{display:grid}.tbc-unified-footer-social a{justify-content:center}}
+</style>

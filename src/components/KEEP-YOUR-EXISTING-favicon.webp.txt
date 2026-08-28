@@ -1,0 +1,2 @@
+Do not replace your existing public/favicon.webp.
+This package points both HomePage.astro and SeoHead.astro only to /favicon.webp?v=10.

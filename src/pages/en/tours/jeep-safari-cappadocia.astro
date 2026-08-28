@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "en",
+  slug: "jeep-safari-cappadocia",
+  title: "Cappadocia Jeep Safari Sunrise or Sunset Valley Tour",
+  hero: "Combine Cappadocia's natural beauty with off-road adventure on a sunrise or sunset Jeep Safari through scenic valleys and panoramic viewpoints.",
+  image: "/images/tours/Jeep-Safari-Cappadocia.webp",
+  rating: "4.90",
+  reviewCount: 25,
+  duration: "3 Hours",
+  price: "40 €",
+  badges: ["Jeep Safari", "Off-Road Experience", "Hotel Transfer"],
+  sections: [{"title": "Overview of the Cappadocia Jeep Safari Tour", "paragraphs": ["The Jeep Safari is designed for guests who want sightseeing and adventure in one program. The route lasts about three hours and includes hotel pickup and drop-off, professional driver support and insurance."]}, {"title": "Jeep Safari Experience", "paragraphs": ["Travel on dirt roads between valleys, fairy chimneys and rock formations. Several scenic photo stops are made during the route."]}, {"title": "Why Choose Cappadocia Jeep Safari?", "paragraphs": ["A dynamic alternative to classic sightseeing, suitable for guests looking for fun, landscapes and memorable photos in the same activity."]}],
+  included: ["Round-trip hotel transfer", "Off-road Jeep Safari", "Professional driver", "Full insurance coverage", "Fuel and vehicle expenses"],
+  notIncluded: ["Personal expenses", "Food and drinks"],
+  highlights: ["Sunrise or sunset valley route", "Off-road adventure", "Hotel transfer", "Multiple scenic photo stops"],
+  gallery: ["/images/tours/Jeep-Safari-Cappadocia.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

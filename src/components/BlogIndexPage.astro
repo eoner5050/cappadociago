@@ -1,0 +1,189 @@
+---
+import articles from "../data/legacy-seo-articles.json";
+
+const { lang = "en" } = Astro.props;
+const supported = ["en", "tr", "es"];
+if (!supported.includes(lang)) return new Response("Not found", { status: 404 });
+
+const copy = {
+  en: {
+    eyebrow: "CAPPADOCIA TRAVEL JOURNAL",
+    title: "Cappadocia Travel Guides",
+    description: "Practical Cappadocia travel guides covering hot air balloon flights, balloon prices, daily tours, weather planning and local experiences.",
+    balloon: "Balloon Tours", tours: "Cappadocia Tours",
+    read: "Read guide", emptyTitle: "Spanish guides are being prepared",
+    emptyText: "Our localized Spanish travel guides will be published here after editorial review. In the meantime, explore our current Cappadocia tours and experiences.",
+    explore: "Explore Cappadocia Tours", badge: "TRAVEL GUIDES", score: "Guide",
+    footer: "Local Cappadocia travel planning, balloon information and daily tour guides."
+  },
+  tr: {
+    eyebrow: "KAPADOKYA SEYAHAT GÜNLÜĞÜ",
+    title: "Kapadokya Gezi Rehberleri",
+    description: "Sıcak hava balonu uçuşları, balon turu fiyatları, günlük turlar, hava durumu planlaması ve yerel deneyimler için güncel Kapadokya rehberleri.",
+    balloon: "Balon Turları", tours: "Kapadokya Turları",
+    read: "Rehberi oku", emptyTitle: "Yeni Türkçe rehberler hazırlanıyor",
+    emptyText: "Editoryal kontrolden geçen yeni Türkçe Kapadokya rehberleri burada yayınlanacaktır.",
+    explore: "Kapadokya Turlarını İncele", badge: "SEYAHAT REHBERLERİ", score: "Rehber",
+    footer: "Kapadokya seyahat planlaması, balon bilgileri ve günlük tur rehberleri."
+  },
+  es: {
+    eyebrow: "DIARIO DE VIAJE DE CAPADOCIA",
+    title: "Guías de Viaje de Capadocia",
+    description: "Guías prácticas de Capadocia sobre vuelos en globo aerostático, precios, excursiones diarias, planificación según el clima y experiencias locales.",
+    balloon: "Tours en Globo", tours: "Tours de Capadocia",
+    read: "Leer guía", emptyTitle: "Estamos preparando las guías en español",
+    emptyText: "Las guías localizadas en español se publicarán aquí después de una revisión editorial. Mientras tanto, consulta nuestros tours y experiencias de Capadocia.",
+    explore: "Explorar Tours de Capadocia", badge: "GUÍAS DE VIAJE", score: "Guía",
+    footer: "Planificación de viajes en Capadocia, información de globos y guías de excursiones."
+  }
+}[lang];
+
+const list = (articles as any[])
+  .filter((a) => a.lang === lang)
+  .sort((a,b) => Number(b.oldRankMathScore || 0) - Number(a.oldRankMathScore || 0));
+
+const origin = "https://www.cappadociago.com";
+const canonical = `${origin}/${lang}/blog/`;
+const alternate = (l) => `${origin}/${l}/blog/`;
+
+const schema = {
+  "@context":"https://schema.org",
+  "@type":"CollectionPage",
+  name: copy.title,
+  description: copy.description,
+  url: canonical,
+  inLanguage: lang,
+  isPartOf: { "@type":"WebSite", name:"CappadociaGo", url:origin },
+  mainEntity: {
+    "@type":"ItemList",
+    itemListElement:list.map((a,i)=>({
+      "@type":"ListItem", position:i+1, name:a.title,
+      url: a.newPath ? `${origin}${a.newPath}` : canonical
+    }))
+  }
+};
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>{copy.title} | CappadociaGo</title>
+  <meta name="description" content={copy.description}/>
+  <meta name="robots" content="index,follow,max-image-preview:large"/>
+  <link rel="canonical" href={canonical}/>
+  <link rel="alternate" hreflang="en" href={alternate("en")}/>
+  <link rel="alternate" hreflang="tr" href={alternate("tr")}/>
+  <link rel="alternate" hreflang="es" href={alternate("es")}/>
+  <link rel="alternate" hreflang="x-default" href={alternate("en")}/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content={copy.title}/>
+  <meta property="og:description" content={copy.description}/>
+  <meta property="og:url" content={canonical}/>
+  <meta property="og:site_name" content="CappadociaGo"/>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  <style>
+    :root{--navy:#071f4e;--gold:#f5b700;--cream:#f7f3e9;--ink:#243951;--muted:#68798e;--line:#e4ded2}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+      radial-gradient(circle at 7% 4%,rgba(245,183,0,.08),transparent 25%),linear-gradient(180deg,#f8f5ed,#f5f1e7);color:var(--ink)}
+    a{text-decoration:none}.shell{width:min(1080px,calc(100% - 36px));margin:auto}
+    .top{background:#fff;border-bottom:1px solid #e5e9ef;position:sticky;top:0;z-index:30}
+    .topin{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo img{display:block;width:auto;height:62px}.nav{display:flex;align-items:center;gap:20px}.nav a{color:var(--navy);font-size:12px;font-weight:850}
+    .langs{display:flex;gap:6px;margin-left:8px}.langs a{border:1px solid #dfe5ec;border-radius:999px;padding:7px 9px;font-size:10px;background:#fff}.langs a[aria-current="page"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .hero{padding:22px 0 18px}.heroCard{position:relative;overflow:hidden;border-radius:23px;padding:32px 30px 28px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 34px rgba(7,31,78,.055)}
+    .heroCard:after{content:"";position:absolute;left:30px;right:30px;bottom:0;height:1px;background:linear-gradient(90deg,var(--gold),#e8e0d2)}
+    .eyebrow{position:relative;display:inline-flex;padding:7px 12px;border-radius:999px;background:var(--gold);color:#1c2230;font-size:9px;font-weight:950;letter-spacing:.1em}
+    h1{position:relative;color:var(--navy);font-size:clamp(30px,4vw,42px);line-height:1.08;letter-spacing:-.035em;margin:14px 0 9px;max-width:780px}
+    .lead{position:relative;max-width:780px;color:var(--muted);font-size:13.5px;line-height:1.8;margin:0}
+    .quick{position:relative;display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.quick a{padding:10px 14px;border-radius:999px;background:#fff;color:var(--navy);border:1px solid #dbe3ec;font-size:11px;font-weight:900}.quick a:last-child{background:#fff7d8;border-color:#e7c45d}
+    .sectionHead{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:24px 0 14px}.sectionHead h2{color:var(--navy);font-size:24px;margin:0;letter-spacing:-.025em}.sectionHead p{margin:0;color:var(--muted);font-size:11px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding-bottom:58px}
+    .card{display:flex;flex-direction:column;min-height:240px;background:#fff;border:1px solid var(--line);border-radius:19px;padding:22px;color:inherit;box-shadow:0 9px 24px rgba(7,31,78,.04);transition:.2s ease}
+    .card:hover{transform:translateY(-3px);border-color:#e2bd4c;box-shadow:0 14px 32px rgba(7,31,78,.075)}
+    .meta{font-size:9px;font-weight:950;color:#987000;letter-spacing:.08em;text-transform:uppercase}.card h2{font-size:19px;line-height:1.3;color:var(--navy);margin:10px 0}.card p{font-size:12.5px;line-height:1.72;color:var(--muted);margin:0}
+    .kw{margin-top:auto;padding-top:17px;color:#8290a1;font-size:9.5px}.read{margin-top:11px;color:var(--navy);font-size:11px;font-weight:950}
+    .empty{grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:21px;padding:36px;text-align:center}.empty h2{color:var(--navy);margin:0 0 8px}.empty p{max-width:680px;margin:0 auto 18px;color:var(--muted);line-height:1.7}.empty a{display:inline-flex;background:var(--gold);color:#302400;font-weight:900;padding:12px 16px;border-radius:999px}
+    footer{background:#fff;border-top:1px solid #e6eaf0;color:#68778b;padding:27px 0;text-align:center;font-size:11px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.nav>a{display:none}}
+    @media(max-width:620px){.shell{width:min(100% - 24px,1080px)}.topin{min-height:76px}.logo img{height:53px}.hero{padding-top:16px}.heroCard{padding:25px 20px;border-radius:20px}.heroCard:after{left:20px;right:20px}h1{font-size:30px}.lead{font-size:13px}.grid{grid-template-columns:1fr}.sectionHead{align-items:start;flex-direction:column}.card{min-height:215px}}
+  
+/* TOUR DETAIL VISUAL SYSTEM — information pages (no price/calendar/booking UI) */
+:root{--tbc-navy:#0b1f3a;--tbc-navy2:#17345d;--tbc-gold:#e3a800;--tbc-bg:#f7f4ec;--tbc-surface:#fff;--tbc-border:#e7dfcf;--tbc-text:#10213a;--tbc-muted:#64748b}
+body{background:radial-gradient(circle at 10% 0%,rgba(227,168,0,.08),transparent 28%),radial-gradient(circle at 90% 8%,rgba(23,52,93,.05),transparent 26%),var(--tbc-bg)!important;color:var(--tbc-text)!important}
+.wrap,.shell{max-width:1240px!important;width:min(1240px,calc(100% - 32px))!important;margin-left:auto!important;margin-right:auto!important}
+main .wrap{padding-top:20px!important}
+.crumb{font-size:14px!important;margin-bottom:20px!important;color:#64748b!important;font-weight:600!important}.crumb a{color:var(--tbc-navy)!important}.crumb span{color:var(--tbc-gold)!important}
+.hero,.heroCard{border-radius:24px!important;padding:40px 36px!important;background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,250,240,.96))!important;border:1px solid var(--tbc-border)!important;box-shadow:0 14px 34px rgba(11,31,58,.08)!important;color:var(--tbc-text)!important;overflow:hidden!important}
+.hero:after,.heroCard:after{content:none!important}
+.hero>span,.hero .eyebrow,.heroCard .eyebrow{display:inline-flex!important;align-items:center!important;min-height:30px!important;padding:0 14px!important;border-radius:999px!important;background:var(--tbc-gold)!important;color:var(--tbc-navy)!important;font-size:11px!important;font-weight:800!important;letter-spacing:.08em!important;text-transform:uppercase!important;box-shadow:0 5px 14px rgba(227,168,0,.18)!important}
+.hero h1,.heroCard h1{margin:14px 0 12px!important;font-size:38px!important;line-height:1.15!important;font-weight:800!important;letter-spacing:-.02em!important;color:var(--tbc-navy)!important}
+.hero p,.heroCard .lead{max-width:960px!important;font-size:15px!important;line-height:1.8!important;color:#475569!important;margin:0!important}
+.card,.contact-card,.info-main,.social-card,.faq{background:#fff!important;border:1px solid var(--tbc-border)!important;box-shadow:0 14px 34px rgba(11,31,58,.07)!important}
+.card{border-radius:28px!important;padding:32px!important;margin-top:24px!important}.card h2,.info-main h2,.social-card h3{color:var(--tbc-navy)!important;font-size:26px!important}.card>p,.bullet p,.info-row p,.answer p{font-size:15px!important;line-height:1.95!important;color:var(--tbc-muted)!important}
+.contact-grid{gap:18px!important;margin-top:24px!important}.contact-card{border-radius:24px!important;padding:22px!important}.info-panel{gap:24px!important;margin-top:24px!important}.info-main,.social-card{border-radius:28px!important;padding:32px!important}
+.faq-list{gap:14px!important;margin-top:24px!important}.faq{border-radius:22px!important}.faq[open]{border-color:#d9b74d!important;box-shadow:0 14px 34px rgba(11,31,58,.09)!important}summary{padding:20px 22px!important;font-size:15px!important}summary i{background:var(--tbc-navy)!important;color:var(--tbc-gold)!important}
+@media(max-width:850px){.wrap,.shell{width:min(100% - 24px,1240px)!important}.hero,.heroCard{padding:28px 22px!important}.hero h1,.heroCard h1{font-size:30px!important}.card,.info-main,.social-card{padding:24px!important}}
+
+
+/* Blog-specific alignment with tour detail layout */
+.hero{padding:22px 0 18px!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important}
+.heroCard{padding:40px 36px!important}
+.grid .card{margin-top:0!important;border-radius:24px!important;padding:24px!important;min-height:240px!important}
+.grid .card h2{font-size:19px!important;color:var(--tbc-navy)!important}
+.grid .card p{font-size:13px!important;line-height:1.8!important;color:var(--tbc-muted)!important}
+.sectionHead h2{color:var(--tbc-navy)!important}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="shell topin">
+    <a class="logo" href={`/${lang}/`}><img src="/images/logo.png" alt="CappadociaGo" width="600" height="200"/></a>
+    <nav class="nav" aria-label="Blog navigation">
+      <a href={`/${lang}/balloon-tours/`}>{copy.balloon}</a>
+      <a href={`/${lang}/cappadocia-tours/`}>{copy.tours}</a>
+      
+      <span class="langs">
+        {["en","tr","es"].map(l=><a href={`/${l}/blog/`} aria-current={l===lang?"page":undefined}>{l.toUpperCase()}</a>)}
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero"><div class="shell"><div class="heroCard">
+    <span class="eyebrow">{copy.eyebrow}</span>
+    <h1>{copy.title}</h1>
+    <p class="lead">{copy.description}</p>
+    <div class="quick">
+      <a href={`/${lang}/balloon-tours/`}>{copy.balloon}</a>
+      
+      <a href={`/${lang}/cappadocia-tours/`}>{copy.tours}</a>
+    </div>
+  </div></div></section>
+
+  <section class="shell">
+    <div class="sectionHead"><h2>{copy.badge}</h2><p>{list.length ? `${list.length} ${copy.score.toLowerCase()}` : ""}</p></div>
+    <div class="grid">
+      {list.length ? list.map((a)=>
+        <a class="card" href={a.newPath}>
+          <div class="meta">{copy.score}</div>
+          <h2>{a.title}</h2>
+          <p>{a.description}</p>
+          <div class="kw">{a.focusKeyword || ""}</div>
+          <div class="read">{copy.read} →</div>
+        </a>
+      ) :
+        <div class="empty">
+          <h2>{copy.emptyTitle}</h2>
+          <p>{copy.emptyText}</p>
+          <a href={`/${lang}/cappadocia-tours/`}>{copy.explore}</a>
+        </div>
+      }
+    </div>
+  </section>
+</main>
+<footer><div class="shell">© 2026 CappadociaGo · {copy.footer}</div></footer>
+</body>
+</html>

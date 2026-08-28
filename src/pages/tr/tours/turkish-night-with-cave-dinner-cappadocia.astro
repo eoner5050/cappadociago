@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "tr",
+  "slug": "turkish-night-with-cave-dinner-cappadocia",
+  "title": "Kapadokya Mağara Restoranlı Türk Gecesi",
+  "hero": "Kapadokya’da canlı müzik, geleneksel danslar, mağara atmosferi ve akşam yemeği eşliğinde unutulmaz bir Türk Gecesi yaşayın.",
+  "image": "/images/tours/tbc-turkish-night-with-cave-dinner-cappadocia.webp",
+  "rating": "4.96",
+  "reviewCount": 28,
+  "duration": "3 Saat",
+  "price": "50 €",
+  "badges": [
+    "Türk Gecesi",
+    "Mağara Konsepti",
+    "Akşam Yemeği"
+  ],
+  "sections": [
+    {
+      "title": "Türk Gecesi Hakkında",
+      "paragraphs": [
+        "Türk müziği, yöresel dans gösterileri ve geleneksel mağara mekânını bir araya getiren hareketli bir kültür gecesidir."
+      ]
+    },
+    {
+      "title": "Etkinlik Fiyatı",
+      "paragraphs": [
+        "Program kişi başı 50 Euro’dan başlamaktadır. Günlük müsaitlik ve fiyatlar rezervasyon takviminde gösterilir."
+      ]
+    },
+    {
+      "title": "Gösteri Programı",
+      "paragraphs": [
+        "Gece boyunca farklı yöresel gösteriler, müzik ve mağara konseptinde eğlence programı sunulur."
+      ]
+    }
+  ],
+  "included": [
+    "Otelden alma ve bırakma",
+    "Profesyonel operasyon desteği",
+    "Uygun olduğu durumlarda sigorta",
+    "Rezervasyon desteği"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Canlı günlük müsaitlik",
+    "Kolay WhatsApp rezervasyonu",
+    "Profesyonel yerel destek",
+    "Esnek planlama"
+  ],
+  "gallery": [
+    "/images/tours/tbc-turkish-night-with-cave-dinner-cappadocia.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

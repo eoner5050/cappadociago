@@ -1,0 +1,76 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import StandardizedPrivateTourPage from '../../../components/StandardizedPrivateTourPage.astro';
+const props = {
+  "title": "Kapadokya Özel Paket Tur",
+  "heroDesc": "Hayaliniz, bizim Kapadokya deneyimimiz: kalış gününüze ve yapmak istediğiniz aktivitelere göre tamamen size özel tatil paketi oluşturun.",
+  "overviewTitle": "Kapadokya Özel Paket Tur Genel Bakış",
+  "overviewParagraphs": [
+    "Kapadokya tatilinizi tamamen tercihlerinize göre şekillendirin. Bölgede kalacağınız gün sayısına göre ikonik turları, macera aktivitelerini ve kültürel keşifleri birleştiren özel bir paket hazırlanır.",
+    "Bize kalış sürenizi ve ilgi duyduğunuz deneyimleri söyleyin; ekibimiz bunları pratik ve akıcı bir programa dönüştürsün."
+  ],
+  "priceTitle": "Özel Paket Fiyatı",
+  "priceText": "Fiyat Sorunuz. Teklifiniz grup büyüklüğü, gün sayısı, seçilen turlar, aktiviteler, transferler ve istediğiniz diğer hizmetlere göre hazırlanır.",
+  "included": [
+    "Size özel program planlama",
+    "Özel Kırmızı veya Yeşil Tur seçeneği",
+    "Gün doğumu sıcak hava balonu ekleme seçeneği",
+    "ATV safari, at turu veya Jeep safari seçenekleri",
+    "Havalimanı transferi ve özel araç seçenekleri",
+    "Seyahat danışmanı desteği"
+  ],
+  "importantTitle": "Aktivite Menüsü",
+  "important": [
+    "Kültürel Keşif: Özel Kırmızı Tur veya Özel Yeşil Tur",
+    "Gökyüzü Deneyimi: Gün doğumu sıcak hava balonu uçuşu",
+    "ATV Safari: Vadilerde eğlenceli sürüş",
+    "At Turu: Güzel Atlar Diyarı’nda sakin yolculuk",
+    "Jeep Safari: Ulaşılması zor tepeler ve vadiler"
+  ],
+  "detailsTitle": "Örnek 3 Günlük Paket",
+  "details": [
+    "1. Gün: Varış, otele giriş ve Özel Kırmızı Tur.",
+    "2. Gün: Gün doğumu sıcak hava balonu ve Özel Yeşil Tur.",
+    "3. Gün: Gün doğumu ATV Safari veya at turu, şehir turu ve ayrılış."
+  ],
+  "extraSections": [
+    {
+      "title": "Nasıl Çalışır?",
+      "paragraphs": [
+        "Program kalış sürenize ve tercihlerinize göre hazırlanır. Örnek plan yalnızca taslaktır ve seyahat planınıza göre değiştirilebilir."
+      ]
+    },
+    {
+      "title": "Neden Bizimle Planlamalısınız?",
+      "items": [
+        "Tam esneklik: yalnızca istediğiniz turları seçin",
+        "Havalimanı transferleri, özel araçlar ve profesyonel rehberlerle uçtan uca konfor",
+        "Grup büyüklüğü ve aktivitelere göre özel fiyatlandırma"
+      ]
+    }
+  ],
+  "duration": "Esnek",
+  "rating": "",
+  "mainImage": "/images/tours/Cappadocia-Package-Tour.webp",
+  "galleryImages": [
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/Private-Red-Tour-Cappadocia.webp",
+    "/images/tours/Private-Green-Tour-Cappadocia.webp",
+    "/images/tours/ATV-Tour-With-Goreme-Valleys.webp"
+  ],
+  "priceMode": "ask",
+  "sidebarBadges": [
+    "Size Özel",
+    "Esnek Gün",
+    "Fiyat Sorunuz"
+  ],
+  "sideHighlights": [
+    "Yalnızca istediğiniz deneyimleri seçin",
+    "Balon, tur ve aktiviteleri birleştirin",
+    "Özel transfer seçenekleri",
+    "Kişisel seyahat danışmanı"
+  ]
+};
+---
+<StandardizedPrivateTourPage lang="tr" slug="cappadocia-custom-package-tour" {...props} />
+<FloatingAssistant lang="tr" />

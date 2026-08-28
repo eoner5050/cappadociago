@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "es",
+  "slug": "pamukkale-balloons-tour",
+  "title": "Tour en Globo Aerostático por Pamukkale",
+  "hero": "Contempla el amanecer sobre los travertinos blancos de Pamukkale y su paisaje en un inolvidable vuelo en globo.",
+  "image": "/images/tours/Pamukkale-Balloons-Tour.webp",
+  "rating": "4.95",
+  "reviewCount": 21,
+  "duration": "1 Hora",
+  "price": "90 €",
+  "badges": [
+    "Pamukkale",
+    "Vuelo 1 Hora",
+    "Traslado Hotel"
+  ],
+  "sections": [
+    {
+      "title": "Resumen del Tour en Globo por Pamukkale",
+      "paragraphs": [
+        "Vuela sobre Pamukkale al amanecer y disfruta de vistas panorámicas de los travertinos, el campo y el paisaje histórico."
+      ]
+    },
+    {
+      "title": "Precio del Tour en Globo por Pamukkale",
+      "paragraphs": [
+        "El vuelo está disponible desde 90 Euro por persona. Los precios diarios y la disponibilidad se muestran en el calendario."
+      ]
+    },
+    {
+      "title": "¿Qué Puedes Esperar Durante el Vuelo?",
+      "paragraphs": [
+        "Después de la recogida temprana y la preparación, disfruta de aproximadamente una hora de vuelo, asistencia en el aterrizaje y traslado de regreso."
+      ]
+    }
+  ],
+  "included": [
+    "Recogida y regreso al hotel",
+    "Soporte operativo profesional",
+    "Seguro cuando corresponda",
+    "Soporte de reserva"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Disponibilidad diaria en vivo",
+    "Reserva fácil por WhatsApp",
+    "Soporte local profesional",
+    "Planificación flexible"
+  ],
+  "gallery": [
+    "/images/tours/Pamukkale-Balloons-Tour.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

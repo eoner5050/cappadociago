@@ -1,0 +1,77 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import StandardizedPrivateTourPage from '../../../components/StandardizedPrivateTourPage.astro';
+const props = {
+  "title": "Tour Rojo Privado de Capadocia",
+  "heroDesc": "Explora lo mejor del norte de Capadocia con vehículo privado, guía profesional de habla inglesa y un itinerario flexible de día completo para tu grupo.",
+  "overviewTitle": "Resumen del Tour Rojo Privado",
+  "overviewParagraphs": [
+    "El Tour Rojo Privado de Capadocia es una experiencia de día completo para viajeros que buscan privacidad, flexibilidad y guía experta. Tu grupo viaja con guía local autorizado y vehículo privado a un ritmo cómodo.",
+    "La ruta combina chimeneas de hadas, asentamientos en cuevas, talleres culturales y miradores panorámicos."
+  ],
+  "priceTitle": "Precio del Tour Rojo Privado",
+  "priceText": "El precio inicial mostrado es el precio total del grupo para hasta 18 personas; no es un precio por persona. Incluye vehículo privado y guía profesional.",
+  "included": [
+    "Tour privado con guía profesional",
+    "Vehículo privado cómodo con aire acondicionado",
+    "Entradas a las atracciones indicadas",
+    "Almuerzo tradicional turco",
+    "Visita y demostración en taller de cerámica",
+    "Visita a tienda local de cuero",
+    "Recogida y regreso al hotel"
+  ],
+  "importantTitle": "No Incluido",
+  "important": [
+    "Gastos personales como bebidas y recuerdos",
+    "Propinas para guía y conductor",
+    "Actividades opcionales como vuelo en globo",
+    "Servicios no indicados como incluidos"
+  ],
+  "detailsTitle": "Itinerario del Tour Rojo Privado",
+  "details": [
+    "Paşabağ: paseo entre las famosas chimeneas de hadas.",
+    "Museo al Aire Libre de Zelve: antiguo asentamiento excavado en roca volcánica.",
+    "Valle Devrent: formaciones rocosas con formas imaginativas.",
+    "Taller de Cerámica de Avanos: descubre la tradición alfarera local.",
+    "Almuerzo Tradicional Turco: especialidades regionales; opciones vegetarianas y sin gluten bajo petición.",
+    "Love Valley: vistas panorámicas y torres de roca características.",
+    "Castillo de Uçhisar: amplio panorama del Parque Nacional de Göreme.",
+    "Tienda Local de Cuero: visita antes del regreso al hotel."
+  ],
+  "extraSections": [
+    {
+      "title": "¿Por Qué Elegir el Tour Rojo Privado?",
+      "items": [
+        "Itinerario personalizado",
+        "Comodidad exclusiva sin grandes grupos",
+        "Guía autorizado de habla inglesa",
+        "Ideal para parejas, familias y grupos privados",
+        "Recogida y regreso al hotel"
+      ]
+    }
+  ],
+  "duration": "Día Completo",
+  "rating": "4.80",
+  "mainImage": "/images/tours/Private-Red-Tour-Cappadocia.webp",
+  "galleryImages": [
+    "/images/tours/Red-Tour-Cappadocia.webp",
+    "/images/tours/Private-Tour-and-Mix-Tour.webp",
+    "/images/tours/tbc-cappadocia-pottery-making-experience.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ],
+  "priceMode": "group",
+  "sidebarBadges": [
+    "Vehículo Privado",
+    "Guía Profesional",
+    "Hasta 18 Personas"
+  ],
+  "sideHighlights": [
+    "Ruta privada flexible",
+    "Entradas y almuerzo incluidos",
+    "Recogida y regreso al hotel",
+    "Guía y vehículo privados"
+  ]
+};
+---
+<StandardizedPrivateTourPage lang="es" slug="private-red-tour-cappadocia" {...props} />
+<FloatingAssistant lang="es" />

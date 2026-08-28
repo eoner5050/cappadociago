@@ -1,0 +1,46 @@
+---
+import SeoHead from './SeoHead.astro';
+const { lang='en', title, items=[] } = Astro.props;
+const c={en:{home:'Home',badge:'HELP CENTER',intro:'Clear answers before you book your Cappadocia experience.'},tr:{home:'Ana Sayfa',badge:'YARDIM MERKEZİ',intro:'Kapadokya deneyiminizi rezerve etmeden önce merak ettiklerinize net cevaplar.'},es:{home:'Inicio',badge:'CENTRO DE AYUDA',intro:'Respuestas claras antes de reservar tu experiencia en Capadocia.'}}[lang]||{};
+---
+<!doctype html><html lang={lang}><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><SeoHead title={`${title} | CappadociaGo`} description={c.intro} lang={lang} /><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body><header><a href={`/${lang}/`}><img src="/images/logo.png" alt="CappadociaGo" loading="lazy" width="600" height="200"/></a><a class="wa" href="https://wa.me/905401015050">WhatsApp</a></header><main><div class="wrap"><div class="crumb"><a href={`/${lang}/`}>{c.home}</a><span>›</span><span>FAQ</span></div><section class="hero"><span>{c.badge}</span><h1>{title}</h1><p>{c.intro}</p></section><section class="faq-list">{items.map((it,index)=><details class="faq" open={index===0}><summary><b>{String(index+1).padStart(2,'0')}</b><span>{it.q}</span><i>›</i></summary><div class="answer">{it.a.map(p=><p>{p}</p>)}</div></details>)}</section></div></main><footer><strong>CappadociaGo</strong><span>+90 540 101 50 50 · info@kapheratravel.com</span></footer>
+<style>
+:root{--navy:#071f4e;--gold:#f5b700;--cream:#f7f3e9;--ink:#102744;--muted:#63758b;--line:#e4ded2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 7% 4%,rgba(245,183,0,.08),transparent 25%),linear-gradient(180deg,#f8f5ed,#f5f1e7);color:var(--navy);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+header{height:86px;background:#fff;border-bottom:1px solid #e5e9ef;display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100vw - 1080px)/2));position:sticky;top:0;z-index:30}
+header img{height:62px;width:auto}.wa{background:#fff;color:var(--navy);border:1px solid #dbe3ec;text-decoration:none;font-weight:900;font-size:12px;padding:10px 16px;border-radius:999px}
+.wrap{max-width:1080px;margin:auto;padding:22px 18px 68px}.crumb{display:flex;gap:7px;font-size:11px;color:#6d7b8d;margin-bottom:13px}.crumb a{color:var(--navy);text-decoration:none;font-weight:700}
+.hero{border-radius:23px;padding:32px 30px 28px;background:#fff;color:var(--navy);border:1px solid var(--line);box-shadow:0 14px 34px rgba(7,31,78,.055);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;left:30px;right:30px;bottom:0;height:1px;background:linear-gradient(90deg,var(--gold),#e8e0d2)}
+.hero>span{display:inline-flex;background:var(--gold);color:#1c2230;padding:7px 12px;border-radius:999px;font-size:9px;font-weight:900;letter-spacing:.7px}
+.hero h1{font-size:clamp(28px,3.7vw,40px);line-height:1.12;margin:13px 0 8px;letter-spacing:-.025em}.hero p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.75}
+.faq-list{display:grid;gap:12px;margin-top:18px}.faq{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(7,31,78,.04)}
+.faq[open]{border-color:#e5bf46;box-shadow:0 12px 30px rgba(7,31,78,.065)}
+summary{list-style:none;display:grid;grid-template-columns:42px 1fr 30px;align-items:center;gap:12px;padding:17px 20px;cursor:pointer;font-weight:850;font-size:14px}
+summary::-webkit-details-marker{display:none}summary b{width:38px;height:38px;border-radius:12px;background:#fff5d2;color:#966d00;display:grid;place-items:center;font-size:11px}
+summary i{font-style:normal;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold);font-size:22px;transition:.2s}.faq[open] summary i{transform:rotate(90deg)}
+.answer{padding:0 70px 18px 74px}.answer p{color:#52647c;font-size:13.5px;line-height:1.8;margin:0 0 10px}
+footer{background:#fff;color:#66768b;border-top:1px solid #e6eaf0;display:flex;justify-content:space-between;gap:15px;padding:24px max(20px,calc((100vw - 1080px)/2));font-size:11px}
+@media(max-width:640px){
+ header{height:76px;padding:0 14px}header img{height:53px}.wrap{padding:16px 12px 50px}.hero{padding:25px 20px}.hero:after{left:20px;right:20px}.hero h1{font-size:28px}
+ .answer{padding:0 20px 18px 20px}summary{grid-template-columns:34px 1fr 28px;padding:15px 14px}summary b{width:32px;height:32px}footer{flex-direction:column}
+}
+
+/* TOUR DETAIL VISUAL SYSTEM — information pages (no price/calendar/booking UI) */
+:root{--tbc-navy:#0b1f3a;--tbc-navy2:#17345d;--tbc-gold:#e3a800;--tbc-bg:#f7f4ec;--tbc-surface:#fff;--tbc-border:#e7dfcf;--tbc-text:#10213a;--tbc-muted:#64748b}
+body{background:radial-gradient(circle at 10% 0%,rgba(227,168,0,.08),transparent 28%),radial-gradient(circle at 90% 8%,rgba(23,52,93,.05),transparent 26%),var(--tbc-bg)!important;color:var(--tbc-text)!important}
+.wrap,.shell{max-width:1240px!important;width:min(1240px,calc(100% - 32px))!important;margin-left:auto!important;margin-right:auto!important}
+main .wrap{padding-top:20px!important}
+.crumb{font-size:14px!important;margin-bottom:20px!important;color:#64748b!important;font-weight:600!important}.crumb a{color:var(--tbc-navy)!important}.crumb span{color:var(--tbc-gold)!important}
+.hero,.heroCard{border-radius:24px!important;padding:40px 36px!important;background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,250,240,.96))!important;border:1px solid var(--tbc-border)!important;box-shadow:0 14px 34px rgba(11,31,58,.08)!important;color:var(--tbc-text)!important;overflow:hidden!important}
+.hero:after,.heroCard:after{content:none!important}
+.hero>span,.hero .eyebrow,.heroCard .eyebrow{display:inline-flex!important;align-items:center!important;min-height:30px!important;padding:0 14px!important;border-radius:999px!important;background:var(--tbc-gold)!important;color:var(--tbc-navy)!important;font-size:11px!important;font-weight:800!important;letter-spacing:.08em!important;text-transform:uppercase!important;box-shadow:0 5px 14px rgba(227,168,0,.18)!important}
+.hero h1,.heroCard h1{margin:14px 0 12px!important;font-size:38px!important;line-height:1.15!important;font-weight:800!important;letter-spacing:-.02em!important;color:var(--tbc-navy)!important}
+.hero p,.heroCard .lead{max-width:960px!important;font-size:15px!important;line-height:1.8!important;color:#475569!important;margin:0!important}
+.card,.contact-card,.info-main,.social-card,.faq{background:#fff!important;border:1px solid var(--tbc-border)!important;box-shadow:0 14px 34px rgba(11,31,58,.07)!important}
+.card{border-radius:28px!important;padding:32px!important;margin-top:24px!important}.card h2,.info-main h2,.social-card h3{color:var(--tbc-navy)!important;font-size:26px!important}.card>p,.bullet p,.info-row p,.answer p{font-size:15px!important;line-height:1.95!important;color:var(--tbc-muted)!important}
+.contact-grid{gap:18px!important;margin-top:24px!important}.contact-card{border-radius:24px!important;padding:22px!important}.info-panel{gap:24px!important;margin-top:24px!important}.info-main,.social-card{border-radius:28px!important;padding:32px!important}
+.faq-list{gap:14px!important;margin-top:24px!important}.faq{border-radius:22px!important}.faq[open]{border-color:#d9b74d!important;box-shadow:0 14px 34px rgba(11,31,58,.09)!important}summary{padding:20px 22px!important;font-size:15px!important}summary i{background:var(--tbc-navy)!important;color:var(--tbc-gold)!important}
+@media(max-width:850px){.wrap,.shell{width:min(100% - 24px,1240px)!important}.hero,.heroCard{padding:28px 22px!important}.hero h1,.heroCard h1{font-size:30px!important}.card,.info-main,.social-card{padding:24px!important}}
+
+</style></body></html>

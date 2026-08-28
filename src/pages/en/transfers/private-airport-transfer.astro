@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "en",
+  slug: "private-airport-transfer",
+  title: "Cappadocia Private VIP Airport Transfer",
+  hero: "Private door-to-door airport transfer between Cappadocia hotels and either Kayseri Erkilet Airport (ASR) or Nevşehir Cappadocia Airport (NAV).",
+  image: "/images/tours/Private-VIP-Airport-Transfer-Cappadocia.webp",
+  rating: "4.90",
+  reviewCount: 3,
+  duration: "Private Service",
+  price: "90 €",
+  badges: ["Kayseri ASR / Nevşehir NAV", "Private Vehicle", "VIP Transfer"],
+  sections: [{"title": "Private Cappadocia Transfer Experience", "paragraphs": ["Choose Kayseri or Nevşehir Airport for a private, door-to-door transfer to Cappadocia. The vehicle is reserved only for your party and pickup is planned according to your flight or requested hotel departure time.", "The service operates in both directions: airport to hotel and hotel to airport. It is especially suitable for couples, families and private groups who prefer a direct transfer without shared shuttle stops."]}, {"title": "Flexible Airport Choice", "paragraphs": ["Your private transfer can be arranged for Kayseri Erkilet Airport (ASR) or Nevşehir Cappadocia Airport (NAV). Simply provide your flight information and hotel details when booking.", "Private service provides more flexibility for luggage, family travel and departure planning."]}],
+  included: ["Private vehicle reserved for your party", "Airport meet & greet", "Direct hotel pickup or drop-off", "Luggage assistance", "Vehicle, driver and fuel"],
+  notIncluded: ["Personal expenses", "Additional waiting caused by major flight changes when not pre-advised"],
+  highlights: ["Kayseri or Nevşehir Airport", "Private door-to-door service", "No shared shuttle stops", "Flexible flight-time planning"],
+  gallery: ["/images/tours/Private-VIP-Airport-Transfer-Cappadocia.webp", "/images/tours/Private-VIP-Airport-Transfer-Cappadocia.webp", "/images/tours/Private-VIP-Airport-Transfer-Cappadocia.webp", "/images/tours/Private-VIP-Airport-Transfer-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

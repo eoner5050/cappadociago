@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "tr",
+  "slug": "pamukkale-balloons-tour",
+  "title": "Pamukkale Sıcak Hava Balonu Turu",
+  "hero": "Pamukkale’nin beyaz travertenleri ve çevre manzarası üzerinde gün doğumunu unutulmaz bir sıcak hava balonu uçuşuyla izleyin.",
+  "image": "/images/tours/Pamukkale-Balloons-Tour.webp",
+  "rating": "4.95",
+  "reviewCount": 21,
+  "duration": "1 Saat",
+  "price": "90 €",
+  "badges": [
+    "Pamukkale",
+    "1 Saat Uçuş",
+    "Otel Transferi"
+  ],
+  "sections": [
+    {
+      "title": "Pamukkale Sıcak Hava Balonu Turu Genel Bakış",
+      "paragraphs": [
+        "Gün doğumunda Pamukkale üzerinde uçarak travertenlerin, çevredeki kırsal alanın ve tarihi manzaranın panoramik görünümünü izleyin."
+      ]
+    },
+    {
+      "title": "Pamukkale Balon Turu Fiyatı",
+      "paragraphs": [
+        "Uçuş kişi başı 90 Euro’dan başlamaktadır. Günlük canlı fiyat ve müsaitlik rezervasyon takviminde gösterilir."
+      ]
+    },
+    {
+      "title": "Uçuşta Sizi Neler Bekliyor?",
+      "paragraphs": [
+        "Erken saat otel alımı ve uçuş hazırlığının ardından yaklaşık bir saat gökyüzünde kalır, iniş desteği ve dönüş transferiyle programı tamamlarsınız."
+      ]
+    }
+  ],
+  "included": [
+    "Otelden alma ve bırakma",
+    "Profesyonel operasyon desteği",
+    "Uygun olduğu durumlarda sigorta",
+    "Rezervasyon desteği"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Canlı günlük müsaitlik",
+    "Kolay WhatsApp rezervasyonu",
+    "Profesyonel yerel destek",
+    "Esnek planlama"
+  ],
+  "gallery": [
+    "/images/tours/Pamukkale-Balloons-Tour.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

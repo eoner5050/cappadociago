@@ -1,0 +1,17 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+const data = {
+  lang:"es", slug:"atv-tour-with-goreme-valleys", title:"Tour en ATV por los Valles de Göreme",
+  hero:"Disfruta de un tour en ATV por los valles de Capadocia con opciones de día o atardecer y traslado desde hoteles de la zona de Göreme.",
+  image:"/images/tours/ATV-Tour-With-Goreme-Valleys.webp", rating:"4.70", reviewCount:32, duration:"120 Minutos", price:"30 \u20ac",
+  badges:["Safari ATV", "120 Minutos", "Traslado de Hotel"],
+  sections:[{title:"Detalles del Tour",paragraphs:["¡Bienvenido! El texto original describe esta experiencia como una aventura inolvidable rodeada de naturaleza bajo los tonos rojos del atardecer. En esta experiencia tendrás la oportunidad de disfrutar de un agradable tour en ATV al atardecer.", "Los tours en ATV de Capadocia son una de las actividades más populares y divertidas de la región. Puedes realizarlos durante el día o, preferiblemente, al atardecer. También ofrecemos traslado desde hoteles de la zona de Göreme. Durante el recorrido disfrutarás de los hermosos valles de Capadocia y podrás tomar magníficas fotografías.", "Para reservar, completa nuestro formulario, llámanos o contáctanos directamente por WhatsApp."]},{title:"Sobre la Actividad",paragraphs:["120 minutos. Una actividad de aproximadamente 2 horas."]},{title:"Traslado del Hotel",paragraphs:["Te recogemos en tu hotel aproximadamente 10–15 minutos antes del inicio de la actividad."]},{title:"Cancelación Fácil",paragraphs:["Puedes cancelar tu reserva hasta 24 horas antes del inicio de la actividad."]}],
+  included:["Safari Quad de 1,5 horas (si se selecciona)", "Safari Quad al amanecer (si se selecciona)", "Safari Quad al atardecer (si se selecciona)", "Safari Quad de 1 hora (si se selecciona)", "Traslado de hotel ida y vuelta", "Seguro completo"],
+  notIncluded:["Gastos personales", "Comida y bebidas"],
+  highlights:["Safari Quad de 1,5 horas (si se selecciona)", "Safari Quad al amanecer (si se selecciona)", "Safari Quad al atardecer (si se selecciona)", "Safari Quad de 1 hora (si se selecciona)"],
+  gallery:["/images/tours/ATV-Tour-With-Goreme-Valleys.webp"]
+};
+---
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

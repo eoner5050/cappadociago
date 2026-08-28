@@ -1,0 +1,163 @@
+---
+import SeoHead from './SeoHead.astro';
+const { lang = 'en' } = Astro.props;
+const copy = {
+  en: {
+    title: 'Contact CappadociaGo',
+    intro: 'A local Cappadocia booking team for balloon flights, guided tours, adventures and airport transfers. Our team is available before and after booking to help with pickup, availability, weather-related changes and cancellation details.',
+    home: 'Home', phone: 'Telephone', whatsapp: 'WhatsApp', email: 'E-mail', address: 'Address', license: 'Travel Agency License',
+    hours: 'Reservation Support', hoursText: 'Quick support via WhatsApp and phone.',
+    write: 'Contact us directly', directions: 'Open location', wa: 'Chat on WhatsApp', call: 'Call now', mail: 'Send e-mail',
+    balloon:'Balloon Tours', tours:'Cappadocia Tours', activities:'Activities', private:'Private Tours', transfers:'Transfers'
+  },
+  tr: {
+    title: 'CappadociaGo İletişim',
+    intro: 'Balon uçuşları, rehberli Kapadokya turları, macera aktiviteleri ve havalimanı transferleri için yerel ekibimiz yanınızda. Rezervasyon öncesi ve sonrasında pickup, müsaitlik, hava koşullarına bağlı değişiklikler ve iptal detaylarında destek sağlıyoruz.',
+    home: 'Ana Sayfa', phone: 'Telefon', whatsapp: 'WhatsApp', email: 'E-posta', address: 'Adres', license: 'Seyahat Acentası Belgesi',
+    hours: 'Rezervasyon Desteği', hoursText: 'WhatsApp ve telefon üzerinden hızlı destek.',
+    write: 'Doğrudan iletişime geçin', directions: 'Konumu aç', wa: 'WhatsApp ile yaz', call: 'Şimdi ara', mail: 'E-posta gönder',
+    balloon:'Balon Turları', tours:'Kapadokya Turları', activities:'Aktiviteler', private:'Özel Turlar', transfers:'Transferler'
+  },
+  es: {
+    title: 'Contacto CappadociaGo',
+    intro: 'Nuestro equipo local de Capadocia ayuda con vuelos en globo, visitas guiadas, aventuras y traslados al aeropuerto, antes y después de la reserva.',
+    home: 'Inicio', phone: 'Teléfono', whatsapp: 'WhatsApp', email: 'Correo electrónico', address: 'Dirección', license: 'Licencia de Agencia de Viajes',
+    hours: 'Soporte de Reservas', hoursText: 'Asistencia rápida por WhatsApp y teléfono.',
+    write: 'Contacta directamente', directions: 'Abrir ubicación', wa: 'Escribir por WhatsApp', call: 'Llamar ahora', mail: 'Enviar correo',
+    balloon:'Tours en Globo', tours:'Tours por Capadocia', activities:'Actividades', private:'Tours Privados', transfers:'Traslados'
+  }
+}[lang] || null;
+const flag = lang === 'tr' ? '🇹🇷' : lang === 'es' ? '🇪🇸' : '🇬🇧';
+const code = lang.toUpperCase();
+const address = 'Cappadocia, Nevşehir, Türkiye';
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <SeoHead title={`${copy.title} | CappadociaGo`} description={copy.intro} lang={lang} />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <a class="logo" href={`/${lang}/`}><img src="/images/logo.png" alt="CappadociaGo" loading="lazy" width="600" height="200" /></a>
+      <nav>
+        <a href={`/${lang}/balloon-tours/`}>{copy.balloon}</a>
+        <a href={`/${lang}/cappadocia-tours/`}>{copy.tours}</a>
+        <a href={`/${lang}/activities/`}>{copy.activities}</a>
+        <a href={`/${lang}/private-tours/`}>{copy.private}</a>
+        <a href={`/${lang}/transfers/`}>{copy.transfers}</a>
+        
+      </nav>
+      <div class="header-right"><span>{flag} {code}</span><a href="https://wa.me/905401015050" target="_blank" rel="noopener">WhatsApp</a></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="crumb"><a href={`/${lang}/`}>{copy.home}</a><span>›</span><span>{copy.title}</span></div>
+      <section class="hero">
+        <span class="eyebrow">CAPPADOCIAGO</span>
+        <h1>{copy.title}</h1>
+        <p>{copy.intro}</p>
+      </section>
+
+      <section class="contact-grid">
+        <article class="contact-card">
+          <div class="icon navy">☎</div><div><span>{copy.phone}</span><a href="tel:+905401015050">+90 540 101 50 50</a></div>
+          <a class="action" href="tel:+905401015050">{copy.call}</a>
+        </article>
+        <article class="contact-card">
+          <div class="icon green">●</div><div><span>{copy.whatsapp}</span><a href="https://wa.me/905401015050" target="_blank" rel="noopener">+90 540 101 50 50</a></div>
+          <a class="action green-btn" href="https://wa.me/905401015050" target="_blank" rel="noopener">{copy.wa}</a>
+        </article>
+        <article class="contact-card wide">
+          <div class="icon gold">✉</div><div><span>{copy.email}</span><a href="mailto:info@kapheratravel.com">info@kapheratravel.com</a></div>
+          <a class="action" href="mailto:info@kapheratravel.com">{copy.mail}</a>
+        </article>
+      </section>
+
+      <section class="info-panel">
+        <div class="info-main">
+          <h2>{copy.write}</h2>
+          <div class="info-row"><strong>{copy.address}</strong><p>{address}</p></div>
+          <div class="info-row"><strong>{copy.license}</strong><p>Cappadocia Kaphera Travel Agency · TÜRSAB No: 18577</p></div>
+          <div class="info-row"><strong>{copy.hours}</strong><p>{copy.hoursText}</p></div>
+          <div class="buttons">
+            <a class="btn primary" href="https://wa.me/905401015050" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Cappadocia+Nevsehir+Turkiye" target="_blank" rel="noopener">{copy.directions}</a>
+          </div>
+        </div>
+        <aside class="social-card">
+          <h3>Social Media</h3>
+          <a href="https://www.instagram.com/cappadociago/" target="_blank" rel="noopener">Instagram <span>@cappadociago</span></a>
+          <a href="https://www.facebook.com/share/19A14kRwHz/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook <span>CappadociaGo</span></a>
+          <a href="https://wa.me/905401015050" target="_blank" rel="noopener">WhatsApp <span>+90 540 101 50 50</span></a>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <footer><strong>CappadociaGo</strong><span>{address}</span><span>info@kapheratravel.com · +90 540 101 50 50</span></footer>
+
+
+<style>
+:root{--navy:#071f4e;--gold:#f5b700;--cream:#f7f3e9;--ink:#102744;--muted:#67788d;--line:#e4ded2}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Plus Jakarta Sans',Arial,sans-serif;background:
+radial-gradient(circle at 7% 4%,rgba(245,183,0,.08),transparent 25%),linear-gradient(180deg,#f8f5ed,#f5f1e7);color:var(--ink)}
+.site-header{background:#fff;border-bottom:1px solid #e5e9ef;position:sticky;top:0;z-index:50}
+.header-container{max-width:1200px;height:86px;margin:auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo img{height:62px;width:auto;display:block}.header-container nav{display:flex;gap:20px}
+.header-container nav a,.header-right a{color:var(--navy);text-decoration:none;font-size:12px;font-weight:800}
+.header-right{display:flex;align-items:center;gap:12px;font-size:11px;color:#718096}
+.header-right a{border:1px solid #dbe3ec;border-radius:999px;padding:9px 13px}
+.wrap{max-width:1080px;margin:auto;padding:22px 18px 68px}
+.crumb{display:flex;gap:7px;font-size:11px;color:#718096;margin-bottom:13px}.crumb a{color:var(--navy);text-decoration:none;font-weight:700}
+.hero{border-radius:23px;padding:32px 30px 28px;background:#fff;color:var(--navy);border:1px solid var(--line);box-shadow:0 14px 34px rgba(7,31,78,.055);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;left:30px;right:30px;bottom:0;height:1px;background:linear-gradient(90deg,var(--gold),#e8e0d2)}
+.eyebrow{display:inline-flex;background:var(--gold);color:#182034;border-radius:999px;padding:7px 12px;font-size:9px;font-weight:900;letter-spacing:.5px}
+.hero h1{margin:13px 0 7px;font-size:clamp(28px,3.7vw,40px);line-height:1.12;letter-spacing:-.025em}
+.hero p{max-width:780px;margin:0;color:var(--muted);font-size:13.5px;line-height:1.8}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:19px;padding:19px;display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:13px;box-shadow:0 10px 25px rgba(7,31,78,.045)}
+.contact-card.wide{grid-column:1/-1}.icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-weight:900}
+.icon.navy{background:#eef4ff;color:var(--navy)}.icon.green{background:#edfff3;color:#15a64a}.icon.gold{background:#fff6d2;color:#9f7400}
+.contact-card span{display:block;color:#7a8797;font-size:10px;font-weight:700;margin-bottom:4px}.contact-card a{color:var(--navy);text-decoration:none;font-size:13px;font-weight:900}
+.action{border:1px solid #dbe3ee;border-radius:999px;padding:9px 13px;background:#fff}.green-btn{background:#1cac50!important;color:#fff!important;border-color:#1cac50!important}
+.info-panel{display:grid;grid-template-columns:1.45fr .8fr;gap:16px;margin-top:16px}
+.info-main,.social-card{background:#fff;border:1px solid var(--line);border-radius:21px;padding:28px;box-shadow:0 12px 30px rgba(7,31,78,.045)}
+.info-main h2,.social-card h3{margin:0 0 18px;color:var(--navy);font-size:21px;letter-spacing:-.02em}
+.info-row{padding:14px 0;border-top:1px solid #ebe5dc}.info-row strong{display:block;color:var(--navy);font-size:11px;margin-bottom:5px}
+.info-row p{margin:0;color:#5d6e83;font-size:12.5px;line-height:1.7}.buttons{display:flex;gap:10px;margin-top:18px}
+.btn{display:inline-flex;padding:11px 16px;border-radius:999px;border:1px solid #dbe3ee;color:var(--navy);text-decoration:none;font-size:12px;font-weight:900}.btn.primary{background:var(--gold);border-color:var(--gold)}
+.social-card{display:flex;flex-direction:column;gap:10px}.social-card h3{margin-bottom:8px}.social-card>a{display:flex;justify-content:space-between;gap:10px;padding:12px 14px;border:1px solid #e4eaf1;border-radius:13px;color:var(--navy);text-decoration:none;font-size:12px;font-weight:900}
+.social-card span{color:#7b8798;font-size:10px;font-weight:600;text-align:right}
+footer{background:#fff;border-top:1px solid #e6ebf0;padding:24px max(18px,calc((100vw - 1080px)/2));display:flex;justify-content:space-between;gap:16px;color:#68778b;font-size:10px}
+@media(max-width:850px){
+ .header-container nav{display:none}.header-container{height:76px}.logo img{height:53px}.wrap{padding:16px 12px 50px}
+ .contact-grid,.info-panel{grid-template-columns:1fr}.contact-card.wide{grid-column:auto}.hero{padding:25px 20px}.hero:after{left:20px;right:20px}.hero h1{font-size:28px}
+ .contact-card{grid-template-columns:42px 1fr}.contact-card .action{grid-column:2}.info-main,.social-card{padding:22px}footer{flex-direction:column}
+}
+
+/* TOUR DETAIL VISUAL SYSTEM — information pages (no price/calendar/booking UI) */
+:root{--tbc-navy:#0b1f3a;--tbc-navy2:#17345d;--tbc-gold:#e3a800;--tbc-bg:#f7f4ec;--tbc-surface:#fff;--tbc-border:#e7dfcf;--tbc-text:#10213a;--tbc-muted:#64748b}
+body{background:radial-gradient(circle at 10% 0%,rgba(227,168,0,.08),transparent 28%),radial-gradient(circle at 90% 8%,rgba(23,52,93,.05),transparent 26%),var(--tbc-bg)!important;color:var(--tbc-text)!important}
+.wrap,.shell{max-width:1240px!important;width:min(1240px,calc(100% - 32px))!important;margin-left:auto!important;margin-right:auto!important}
+main .wrap{padding-top:20px!important}
+.crumb{font-size:14px!important;margin-bottom:20px!important;color:#64748b!important;font-weight:600!important}.crumb a{color:var(--tbc-navy)!important}.crumb span{color:var(--tbc-gold)!important}
+.hero,.heroCard{border-radius:24px!important;padding:40px 36px!important;background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,250,240,.96))!important;border:1px solid var(--tbc-border)!important;box-shadow:0 14px 34px rgba(11,31,58,.08)!important;color:var(--tbc-text)!important;overflow:hidden!important}
+.hero:after,.heroCard:after{content:none!important}
+.hero>span,.hero .eyebrow,.heroCard .eyebrow{display:inline-flex!important;align-items:center!important;min-height:30px!important;padding:0 14px!important;border-radius:999px!important;background:var(--tbc-gold)!important;color:var(--tbc-navy)!important;font-size:11px!important;font-weight:800!important;letter-spacing:.08em!important;text-transform:uppercase!important;box-shadow:0 5px 14px rgba(227,168,0,.18)!important}
+.hero h1,.heroCard h1{margin:14px 0 12px!important;font-size:38px!important;line-height:1.15!important;font-weight:800!important;letter-spacing:-.02em!important;color:var(--tbc-navy)!important}
+.hero p,.heroCard .lead{max-width:960px!important;font-size:15px!important;line-height:1.8!important;color:#475569!important;margin:0!important}
+.card,.contact-card,.info-main,.social-card,.faq{background:#fff!important;border:1px solid var(--tbc-border)!important;box-shadow:0 14px 34px rgba(11,31,58,.07)!important}
+.card{border-radius:28px!important;padding:32px!important;margin-top:24px!important}.card h2,.info-main h2,.social-card h3{color:var(--tbc-navy)!important;font-size:26px!important}.card>p,.bullet p,.info-row p,.answer p{font-size:15px!important;line-height:1.95!important;color:var(--tbc-muted)!important}
+.contact-grid{gap:18px!important;margin-top:24px!important}.contact-card{border-radius:24px!important;padding:22px!important}.info-panel{gap:24px!important;margin-top:24px!important}.info-main,.social-card{border-radius:28px!important;padding:32px!important}
+.faq-list{gap:14px!important;margin-top:24px!important}.faq{border-radius:22px!important}.faq[open]{border-color:#d9b74d!important;box-shadow:0 14px 34px rgba(11,31,58,.09)!important}summary{padding:20px 22px!important;font-size:15px!important}summary i{background:var(--tbc-navy)!important;color:var(--tbc-gold)!important}
+@media(max-width:850px){.wrap,.shell{width:min(100% - 24px,1240px)!important}.hero,.heroCard{padding:28px 22px!important}.hero h1,.heroCard h1{font-size:30px!important}.card,.info-main,.social-card{padding:24px!important}}
+
+</style>
+</body></html>

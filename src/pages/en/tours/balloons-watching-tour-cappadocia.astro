@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "en",
+  "slug": "balloons-watching-tour-cappadocia",
+  "title": "Balloons Watching Tour Cappadocia",
+  "hero": "Watch hundreds of colorful hot air balloons rise over Cappadocia at sunrise from carefully selected panoramic viewpoints.",
+  "image": "/images/tours/tbc-balloons-watching-tour-cappadocia.webp",
+  "rating": "4.89",
+  "reviewCount": 19,
+  "duration": "2 Hours",
+  "price": "35 €",
+  "badges": [
+    "Balloon Watching",
+    "Sunrise",
+    "Hotel Transfer"
+  ],
+  "sections": [
+    {
+      "title": "Cappadocia Balloon Watching Experience",
+      "paragraphs": [
+        "A great option for guests who prefer to watch and photograph the balloon spectacle from the ground. The route follows sunrise viewpoints according to flight conditions."
+      ]
+    },
+    {
+      "title": "Tour Price",
+      "paragraphs": [
+        "The watching tour starts from 35 Euro per person. Live availability is displayed in the booking calendar."
+      ]
+    },
+    {
+      "title": "Sunrise Photo Stops",
+      "paragraphs": [
+        "The program includes scenic stops selected according to balloon take-off direction, weather and sunrise light."
+      ]
+    }
+  ],
+  "included": [
+    "Hotel pickup and drop-off",
+    "Professional operation support",
+    "Full insurance where applicable",
+    "Reservation support"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Live daily availability",
+    "Easy WhatsApp reservation",
+    "Professional local support",
+    "Flexible planning"
+  ],
+  "gallery": [
+    "/images/tours/tbc-balloons-watching-tour-cappadocia.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

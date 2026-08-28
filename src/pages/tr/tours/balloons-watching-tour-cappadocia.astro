@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "tr",
+  "slug": "balloons-watching-tour-cappadocia",
+  "title": "Kapadokya Balon İzleme Turu",
+  "hero": "Kapadokya’da yüzlerce renkli sıcak hava balonunun gün doğumunda gökyüzüne yükselişini seçilmiş panoramik noktalardan izleyin.",
+  "image": "/images/tours/tbc-balloons-watching-tour-cappadocia.webp",
+  "rating": "4.89",
+  "reviewCount": 19,
+  "duration": "2 Saat",
+  "price": "35 €",
+  "badges": [
+    "Balon İzleme",
+    "Gün Doğumu",
+    "Otel Transferi"
+  ],
+  "sections": [
+    {
+      "title": "Kapadokya Balon İzleme Deneyimi",
+      "paragraphs": [
+        "Balonları yerden izlemek ve fotoğraflamak isteyen misafirler için ideal bir seçenektir. Rota, uçuş koşullarına göre gün doğumu seyir noktalarını takip eder."
+      ]
+    },
+    {
+      "title": "Tur Fiyatı",
+      "paragraphs": [
+        "Balon izleme turu kişi başı 35 Euro’dan başlamaktadır. Canlı müsaitlik rezervasyon takviminde gösterilir."
+      ]
+    },
+    {
+      "title": "Gün Doğumu Fotoğraf Durakları",
+      "paragraphs": [
+        "Programda balon kalkış yönü, hava durumu ve gün doğumu ışığına göre seçilen manzara durakları yer alır."
+      ]
+    }
+  ],
+  "included": [
+    "Otelden alma ve bırakma",
+    "Profesyonel operasyon desteği",
+    "Uygun olduğu durumlarda sigorta",
+    "Rezervasyon desteği"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Canlı günlük müsaitlik",
+    "Kolay WhatsApp rezervasyonu",
+    "Profesyonel yerel destek",
+    "Esnek planlama"
+  ],
+  "gallery": [
+    "/images/tours/tbc-balloons-watching-tour-cappadocia.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

@@ -1,0 +1,18 @@
+CAPPADOCIAGO - SON DUZENLEMELER
+
+- EN / TR / ES tur sayfalari tek tasarim sisteminde toplandi.
+- Standart/Red Tour sayfalarindaki beyaz kart + krem zemin + 1 buyuk / 4 kucuk galeri gorunumu ortak tasarima uygulandi.
+- Her tur galerisi 6 fotograf uretecek sekilde slug/dosya ailesi mantigi guclendirildi.
+- Turun kendi adiyla eslesen fotograf ailesi her zaman ilk tercih; alakasiz fuzzy eslesme kaldirildi.
+- Kaynakta 6 fotograf bulunmayan az sayidaki tur yalnizca acikca tanimlanan ayni kategori/notr destek fotograflariyla 6'ya tamamlanir.
+- 6'dan sonraki fazla tur fotograflari ortak footer galerisinde degerlendirilir.
+- Tum tur sayfalarina ekran goruntusundeki yapida ortak alt bilgi/footer eklendi: logo, telefon, WhatsApp, e-posta, 4 fotograf, Instagram, Facebook.
+- Orijinal public/images/tours fotograf dosyalari silinmedi veya yeniden adlandirilmadi.
+- Eski gecici fix/restore/diagnose scriptleri, build cache, dist, .vercel, node_modules ve yedek klasorleri paketten temizlendi.
+- SEO audit: 161 route, On-page ortalama 98/100, Technical SEO 99/100, 301/canonical/broken/orphan sorun 0 (Astro build oncesi audit).
+
+KURULUM / KONTROL
+1) npm install
+2) npm run build
+3) npm run dev
+4) Once tur sayfalarini kontrol edin; sonra Vercel deploy yapin.

@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "en",
+  slug: "cappadocia-sunset-camel-riding-tour",
+  title: "Cappadocia Sunset Camel Riding Tour",
+  hero: "Experience Cappadocia from a different perspective on a guided camel ride through valleys and panoramic scenery, especially beautiful at sunset.",
+  image: "/images/tours/Cappadocia-Sunset-Camel-Riding-Tour.webp",
+  rating: "4.50",
+  reviewCount: 5,
+  duration: "1.5 Hours",
+  price: "55 €",
+  badges: ["Camel Tour", "Sunset", "Hotel Transfer"],
+  sections: [{"title": "About the Cappadocia Camel Tour", "paragraphs": ["Camel riding is a peaceful way to explore Cappadocia's valleys and rock formations. The tour is guided and can be planned around sunset for warm light and scenic views."]}, {"title": "Camel Tour Experience", "paragraphs": ["After hotel pickup, you meet the camels and receive a short introduction before beginning the route. The pace is calm and suitable for enjoying the landscape and taking photos."]}, {"title": "Important Information", "paragraphs": ["Comfortable clothing is recommended. This activity may not be suitable for guests with certain mobility limitations or health conditions."]}],
+  included: ["Round-trip hotel transfer", "Full insurance coverage", "Camel riding experience", "Expert local guide", "All equipment"],
+  notIncluded: ["Personal expenses", "Food and drinks"],
+  highlights: ["Sunset valley scenery", "Guided camel ride", "Hotel transfer", "Photo stops"],
+  gallery: ["/images/tours/Cappadocia-Sunset-Camel-Riding-Tour.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

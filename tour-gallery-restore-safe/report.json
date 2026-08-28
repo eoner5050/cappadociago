@@ -1,0 +1,239 @@
+{
+  "results": [
+    {
+      "ok": true,
+      "src": "goreme-standart-hot-air-balloon-tour.webp",
+      "dst": "Goreme-Standart-Hot-Air-Balloon-Tour.webp",
+      "reason": "case-safe alias",
+      "skipped": "already-exists"
+    },
+    {
+      "ok": true,
+      "src": "goreme-comfort-hot-air-balloon-tour.webp",
+      "dst": "Goreme-Comfort-Hot-Air-Balloon-Tour.webp",
+      "reason": "case-safe alias",
+      "skipped": "already-exists"
+    },
+    {
+      "ok": true,
+      "src": "green-tour-cappadocia.webp",
+      "dst": "Green-Tour-Cappadocia.webp",
+      "reason": "case-safe alias",
+      "skipped": "already-exists"
+    },
+    {
+      "ok": true,
+      "src": "cappadocia-pottery-making-experience.webp",
+      "dst": "Cappadocia-Pottery-Making-Experience.webp",
+      "reason": "case-safe alias",
+      "skipped": "already-exists"
+    },
+    {
+      "ok": true,
+      "src": "turkish-night-with-cave-dinner-cappadocia.webp",
+      "dst": "Turkish-Night-With-Cave-Dinner-Cappadocia.webp",
+      "reason": "case-safe alias",
+      "skipped": "already-exists"
+    },
+    {
+      "ok": true,
+      "src": "balloons-watching-tour-cappadocia.webp",
+      "dst": "Balloons-Watching-Tour-Cappadocia.webp",
+      "reason": "case-safe alias",
+      "skipped": "already-exists"
+    },
+    {
+      "ok": true,
+      "src": "soganli-valley-balloon-tour.webp",
+      "dst": "Soganli-Valley-Balloon-Tour.webp",
+      "reason": "case-safe alias",
+      "skipped": "already-exists"
+    },
+    {
+      "ok": true,
+      "src": "Photo Shoot & Flying Dress Experience.webp",
+      "dst": "Photo-Shoot-and-Flying-Dress-Experience.webp",
+      "reason": "photo-shoot card/fallback alias",
+      "created": true
+    },
+    {
+      "ok": true,
+      "src": "sunrise-sunset-horse-riding-cappadocia.webp",
+      "dst": "Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp",
+      "reason": "horse-riding card/fallback alias",
+      "created": true
+    },
+    {
+      "ok": true,
+      "src": "Blue-Tour-Cappadocia.webp",
+      "dst": "Blue-Tour-Cappadocia-Discover-Hidden-Valleys.webp",
+      "reason": "blue-tour card/fallback alias",
+      "created": true
+    },
+    {
+      "ok": true,
+      "src": "Private-Mix-Cappadocia-Tour.webp",
+      "dst": "Private-Cappadocia-Mix-Tour.webp",
+      "reason": "private-mix card/fallback alias",
+      "created": true
+    },
+    {
+      "ok": true,
+      "src": "pamukkale-balloons-tour (1).webp",
+      "dst": "Pamukkale-Balloons-Tour.webp",
+      "reason": "pamukkale card/fallback alias; gallery (1)-(6) preserved",
+      "created": true
+    }
+  ],
+  "families": [
+    {
+      "slug": "goreme-standart-hot-air-balloon-tour",
+      "count": 9,
+      "firstSix": [
+        "goreme-standart-hot-air-balloon-tour (2).webp",
+        "goreme-standart-hot-air-balloon-tour (3).webp",
+        "goreme-standart-hot-air-balloon-tour (4).webp",
+        "goreme-standart-hot-air-balloon-tour (5).webp",
+        "goreme-standart-hot-air-balloon-tour (6).webp",
+        "goreme-standart-hot-air-balloon-tour (7).webp"
+      ],
+      "extra": [
+        "goreme-standart-hot-air-balloon-tour (8).webp",
+        "goreme-standart-hot-air-balloon-tour (9).webp",
+        "goreme-standart-hot-air-balloon-tour.webp"
+      ]
+    },
+    {
+      "slug": "goreme-comfort-hot-air-balloon-tour",
+      "count": 5,
+      "firstSix": [
+        "goreme-comfort-hot-air-balloon-tour (2).webp",
+        "goreme-comfort-hot-air-balloon-tour (3).webp",
+        "goreme-comfort-hot-air-balloon-tour (4).webp",
+        "goreme-comfort-hot-air-balloon-tour (5).webp",
+        "goreme-comfort-hot-air-balloon-tour.webp"
+      ],
+      "extra": []
+    },
+    {
+      "slug": "green-tour-cappadocia",
+      "count": 7,
+      "firstSix": [
+        "green-tour-cappadocia (2).webp",
+        "green-tour-cappadocia (3).webp",
+        "green-tour-cappadocia (4).webp",
+        "green-tour-cappadocia (5).webp",
+        "green-tour-cappadocia (6).webp",
+        "green-tour-cappadocia (7).webp"
+      ],
+      "extra": [
+        "green-tour-cappadocia.webp"
+      ]
+    },
+    {
+      "slug": "cappadocia-pottery-making-experience",
+      "count": 7,
+      "firstSix": [
+        "cappadocia-pottery-making-experience (2).webp",
+        "cappadocia-pottery-making-experience (3).webp",
+        "cappadocia-pottery-making-experience (4).webp",
+        "cappadocia-pottery-making-experience (5).webp",
+        "cappadocia-pottery-making-experience (6).webp",
+        "cappadocia-pottery-making-experience (7).webp"
+      ],
+      "extra": [
+        "cappadocia-pottery-making-experience.webp"
+      ]
+    },
+    {
+      "slug": "turkish-night-with-cave-dinner-cappadocia",
+      "count": 7,
+      "firstSix": [
+        "turkish-night-with-cave-dinner-cappadocia (1).webp",
+        "turkish-night-with-cave-dinner-cappadocia (2).webp",
+        "turkish-night-with-cave-dinner-cappadocia (3).webp",
+        "turkish-night-with-cave-dinner-cappadocia (4).webp",
+        "turkish-night-with-cave-dinner-cappadocia (5).webp",
+        "turkish-night-with-cave-dinner-cappadocia (6).webp"
+      ],
+      "extra": [
+        "turkish-night-with-cave-dinner-cappadocia.webp"
+      ]
+    },
+    {
+      "slug": "balloons-watching-tour-cappadocia",
+      "count": 7,
+      "firstSix": [
+        "balloons-watching-tour-cappadocia (1).webp",
+        "balloons-watching-tour-cappadocia (2).webp",
+        "balloons-watching-tour-cappadocia (3).webp",
+        "balloons-watching-tour-cappadocia (4).webp",
+        "balloons-watching-tour-cappadocia (5).webp",
+        "balloons-watching-tour-cappadocia (6).webp"
+      ],
+      "extra": [
+        "balloons-watching-tour-cappadocia.webp"
+      ]
+    },
+    {
+      "slug": "soganli-valley-balloon-tour",
+      "count": 6,
+      "firstSix": [
+        "soganli-valley-balloon-tour (1).webp",
+        "soganli-valley-balloon-tour (2).webp",
+        "soganli-valley-balloon-tour (3).webp",
+        "soganli-valley-balloon-tour (4).webp",
+        "soganli-valley-balloon-tour (5).webp",
+        "soganli-valley-balloon-tour.webp"
+      ],
+      "extra": []
+    },
+    {
+      "slug": "pamukkale-balloons-tour",
+      "count": 7,
+      "firstSix": [
+        "pamukkale-balloons-tour (1).webp",
+        "pamukkale-balloons-tour (2).webp",
+        "pamukkale-balloons-tour (3).webp",
+        "pamukkale-balloons-tour (4).webp",
+        "pamukkale-balloons-tour (5).webp",
+        "pamukkale-balloons-tour (6).webp"
+      ],
+      "extra": [
+        "Pamukkale-Balloons-Tour.webp"
+      ]
+    },
+    {
+      "slug": "photo-shoot-flying-dress-experience",
+      "count": 8,
+      "firstSix": [
+        "Photo Shoot & Flying Dress Experience (2).webp",
+        "Photo Shoot & Flying Dress Experience (3).webp",
+        "Photo Shoot & Flying Dress Experience (4).webp",
+        "Photo Shoot & Flying Dress Experience (5).webp",
+        "Photo Shoot & Flying Dress Experience (6).webp",
+        "Photo Shoot & Flying Dress Experience (7).webp"
+      ],
+      "extra": [
+        "Photo Shoot & Flying Dress Experience (8).webp",
+        "Photo Shoot & Flying Dress Experience.webp"
+      ]
+    },
+    {
+      "slug": "sunrise-sunset-horse-riding-cappadocia",
+      "count": 8,
+      "firstSix": [
+        "sunrise-sunset-horse-riding-cappadocia (1).webp",
+        "sunrise-sunset-horse-riding-cappadocia (2).webp",
+        "sunrise-sunset-horse-riding-cappadocia (3).webp",
+        "sunrise-sunset-horse-riding-cappadocia (4).webp",
+        "sunrise-sunset-horse-riding-cappadocia (5).webp",
+        "sunrise-sunset-horse-riding-cappadocia (6).webp"
+      ],
+      "extra": [
+        "sunrise-sunset-horse-riding-cappadocia (7).webp",
+        "sunrise-sunset-horse-riding-cappadocia.webp"
+      ]
+    }
+  ]
+}

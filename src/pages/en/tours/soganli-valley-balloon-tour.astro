@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "en",
+  "slug": "soganli-valley-balloon-tour",
+  "title": "Soğanlı Valley Hot Air Balloon Tour (Comfort Flight)",
+  "hero": "Enjoy a calm and comfortable sunrise balloon flight over Soğanlı Valley with hotel transfer, light breakfast and professional flight operation.",
+  "image": "/images/tours/tbc-soganli-valley-balloon-tour.webp",
+  "rating": "4.87",
+  "reviewCount": 18,
+  "duration": "1 Hour",
+  "price": "160 €",
+  "badges": [
+    "Soğanlı Valley",
+    "Comfort Flight",
+    "Hotel Transfer"
+  ],
+  "sections": [
+    {
+      "title": "Soğanlı Valley Balloon Tour Overview",
+      "paragraphs": [
+        "Soğanlı Valley offers a quieter balloon flight atmosphere with rock formations, valleys and traditional Cappadocia scenery. The comfort flight is planned with a more spacious basket arrangement."
+      ]
+    },
+    {
+      "title": "Soğanlı Valley Balloon Tour Price",
+      "paragraphs": [
+        "The tour is available from 160 Euro per person. Daily prices and availability are shown in the reservation calendar."
+      ]
+    },
+    {
+      "title": "Tour Program",
+      "paragraphs": [
+        "Morning hotel pickup, transfer to the flight area, light breakfast, approximately one-hour balloon flight, celebration and return transfer are included in the program."
+      ]
+    }
+  ],
+  "included": [
+    "Hotel pickup and drop-off",
+    "Professional operation support",
+    "Full insurance where applicable",
+    "Reservation support"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Live daily availability",
+    "Easy WhatsApp reservation",
+    "Professional local support",
+    "Flexible planning"
+  ],
+  "gallery": [
+    "/images/tours/tbc-soganli-valley-balloon-tour.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

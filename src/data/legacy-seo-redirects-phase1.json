@@ -1,0 +1,135 @@
+[
+  {
+    "score": 87,
+    "old": "/language/en/cappadocia-balloon-tours/",
+    "target": "/en/balloon-tours/",
+    "keyword": "Cappadocia Hot Air Balloon Tours",
+    "reason": "Exact category intent match"
+  },
+  {
+    "score": 86,
+    "old": "/1-gunluk-kapadokya-turlari/",
+    "target": "/tr/cappadocia-tours/",
+    "keyword": "1 Günlük Kapadokya Turları",
+    "reason": "Daily Cappadocia tours category is the closest intent match"
+  },
+  {
+    "score": 86,
+    "old": "/goreme-hot-air-balloon-rides/",
+    "target": "/en/tours/goreme-standart-hot-air-balloon-tour/",
+    "keyword": "Göreme Hot Air Balloon Rides",
+    "reason": "Exact Göreme standard balloon product intent"
+  },
+  {
+    "score": 86,
+    "old": "/language/en/air-balloon-ride-turkey/",
+    "target": "/en/balloon-tours/",
+    "keyword": "Air balloon ride turkey",
+    "reason": "Balloon ride category intent"
+  },
+  {
+    "score": 86,
+    "old": "/language/en/balloon-flight-cappadocia-cost/",
+    "target": "/en/balloon-tours/",
+    "keyword": "Balloon flight cappadocia cost",
+    "reason": "Balloon pricing/comparison intent belongs to balloon category"
+  },
+  {
+    "score": 86,
+    "old": "/language/en/best-cappadocia-day-tour-from-turkey/",
+    "target": "/en/cappadocia-tours/",
+    "keyword": "Best cappadocia day tour from turkey",
+    "reason": "Cappadocia day-tour category intent"
+  },
+  {
+    "score": 86,
+    "old": "/language/en/best-cappadocia-green-tour/",
+    "target": "/en/tours/green-tour-cappadocia/",
+    "keyword": "Best cappadocia green tour",
+    "reason": "Exact Green Tour intent"
+  },
+  {
+    "score": 86,
+    "old": "/language/en/best-hot-air-balloons-cappadocia/",
+    "target": "/en/balloon-tours/",
+    "keyword": "Best hot air balloons cappadocia",
+    "reason": "Balloon comparison/category intent"
+  },
+  {
+    "score": 86,
+    "old": "/language/en/cappadocia-balloon-tour-price/",
+    "target": "/en/balloon-tours/",
+    "keyword": "Cappadocia Balloon Tour Price",
+    "reason": "Balloon category contains current Supabase-driven prices"
+  },
+  {
+    "score": 85,
+    "old": "/language/en/air-balloon-cappadocia-price/",
+    "target": "/en/balloon-tours/",
+    "keyword": "Air balloon cappadocia price",
+    "reason": "Current balloon pricing intent"
+  },
+  {
+    "score": 85,
+    "old": "/language/en/best-balloon-flights-in-cappadocia/",
+    "target": "/en/balloon-tours/",
+    "keyword": "Best balloon flights in cappadocia",
+    "reason": "Balloon tour comparison/category intent"
+  },
+  {
+    "score": 84,
+    "old": "/balon-fiyatlari-kapadokya/",
+    "target": "/tr/balloon-tours/",
+    "keyword": "Balon Fiyatları Kapadokya",
+    "reason": "Current Turkish balloon prices/category intent"
+  },
+  {
+    "score": 84,
+    "old": "/language/en/air-balloon-in-cappadocia-price/",
+    "target": "/en/balloon-tours/",
+    "keyword": "Air balloon in cappadocia price",
+    "reason": "Current balloon pricing intent"
+  },
+  {
+    "score": 84,
+    "old": "/language/en/balloons-of-cappadocia-travel-agency/",
+    "target": "/en/about-us/",
+    "keyword": "Balloons of cappadocia travel agency",
+    "reason": "Agency/company intent"
+  },
+  {
+    "score": 84,
+    "old": "/sicak-hava-balon-cappadocia/",
+    "target": "/tr/balloon-tours/",
+    "keyword": "Sıcak Hava Balon Cappadocia",
+    "reason": "Exact Turkish balloon category intent"
+  },
+  {
+    "score": 83,
+    "old": "/language/en/cappadocia-turkey-holidays/",
+    "target": "/en/cappadocia-tours/",
+    "keyword": "Cappadocia turkey holidays",
+    "reason": "Destination/tour-planning intent"
+  },
+  {
+    "score": 82,
+    "old": "/balon-dahil-kapadokya-turu/",
+    "target": "/tr/cappadocia-tours/",
+    "keyword": "Balon Dahil Kapadokya Turu",
+    "reason": "Cappadocia tour-planning intent; avoids sending to unrelated product"
+  },
+  {
+    "score": 82,
+    "old": "/language/en/antalya-to-cappadocia-turkey-distance/",
+    "target": "/en/cappadocia-tours/",
+    "keyword": "Antalya to cappadocia turkey distance",
+    "reason": "Travel-planning intent; temporary closest relevant hub until dedicated guide is created"
+  },
+  {
+    "score": 81,
+    "old": "/language/en/istanbul-cappadocia-tours-turkey/",
+    "target": "/en/cappadocia-tours/",
+    "keyword": "Istanbul cappadocia tours turkey",
+    "reason": "Cappadocia tour-planning intent"
+  }
+]

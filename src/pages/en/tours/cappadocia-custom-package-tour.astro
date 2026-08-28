@@ -1,0 +1,82 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import StandardizedPrivateTourPage from '../../../components/StandardizedPrivateTourPage.astro';
+const props = {
+  "title": "Cappadocia Custom Package Tour",
+  "heroDesc": "Your dream, our Cappadocia experience: build a tailor-made holiday package around the number of days you will stay and the activities you want to experience.",
+  "overviewTitle": "Cappadocia Custom Package Tour Overview",
+  "overviewParagraphs": [
+    "Customize your Cappadocia vacation entirely to your preferences. Based on the number of days you plan to stay, we design a tailor-made package covering the region’s iconic tours, adventure activities and cultural explorations.",
+    "Tell us how long you will be in Cappadocia and which experiences interest you; our team will combine them into a practical itinerary."
+  ],
+  "priceTitle": "Custom Package Price",
+  "priceText": "Ask for Price. Your quote is prepared according to group size, number of days, selected tours, activities, transfers and other requested services.",
+  "included": [
+    "Tailor-made itinerary planning",
+    "Choice of private Red or Green Tour",
+    "Option to add a sunrise hot air balloon flight",
+    "ATV safari, horse riding or Jeep safari options",
+    "Airport transfer and private vehicle options",
+    "Travel consultant support"
+  ],
+  "importantTitle": "Activity Menu",
+  "important": [
+    "Cultural Exploration: Private Red Tour (North) or Private Green Tour (South)",
+    "Sky Experience: Sunrise Hot Air Balloon Flight",
+    "ATV Safari: Fun rides through Cappadocia’s valleys",
+    "Horse Riding: A peaceful journey through the Land of Beautiful Horses",
+    "Jeep Safari: Explore hard-to-reach peaks and valleys"
+  ],
+  "detailsTitle": "Sample 3-Day Package Structure",
+  "details": [
+    "Day 1: Arrival, hotel check-in and Private Red Tour.",
+    "Day 2: Sunrise hot air balloon flight and Private Green Tour.",
+    "Day 3: Sunrise ATV Safari or horse riding, city tour and departure."
+  ],
+  "extraSections": [
+    {
+      "title": "How It Works",
+      "paragraphs": [
+        "We plan the program according to the duration of your stay and your preferences. The sample schedule is only a draft and can be changed to suit your travel plans."
+      ]
+    },
+    {
+      "title": "Why Plan With Us?",
+      "items": [
+        "Fully flexible: choose only the tours you want",
+        "End-to-end comfort with airport transfers, private vehicles and professional guides",
+        "Custom pricing based on group size and selected activities"
+      ]
+    },
+    {
+      "title": "Plan Your Cappadocia Experience",
+      "paragraphs": [
+        "Select your preferred date and number of travelers, then send your request. Our travel consultant will prepare a personalized quote."
+      ]
+    }
+  ],
+  "duration": "Flexible",
+  "rating": "",
+  "mainImage": "/images/tours/Cappadocia-Package-Tour.webp",
+  "galleryImages": [
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/Private-Red-Tour-Cappadocia.webp",
+    "/images/tours/Private-Green-Tour-Cappadocia.webp",
+    "/images/tours/ATV-Tour-With-Goreme-Valleys.webp"
+  ],
+  "priceMode": "ask",
+  "sidebarBadges": [
+    "Tailor Made",
+    "Flexible Days",
+    "Ask for Price"
+  ],
+  "sideHighlights": [
+    "Choose only the experiences you want",
+    "Add balloon, tours and activities",
+    "Private transfer options",
+    "Personal travel consultant"
+  ]
+};
+---
+<StandardizedPrivateTourPage lang="en" slug="cappadocia-custom-package-tour" {...props} />
+<FloatingAssistant lang="en" />

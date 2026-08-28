@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "es",
+  "slug": "balloons-watching-tour-cappadocia",
+  "title": "Tour de Observación de Globos en Capadocia",
+  "hero": "Observa cientos de globos aerostáticos de colores elevarse sobre Capadocia al amanecer desde miradores panorámicos seleccionados.",
+  "image": "/images/tours/tbc-balloons-watching-tour-cappadocia.webp",
+  "rating": "4.89",
+  "reviewCount": 19,
+  "duration": "2 Horas",
+  "price": "35 €",
+  "badges": [
+    "Observación de Globos",
+    "Amanecer",
+    "Traslado Hotel"
+  ],
+  "sections": [
+    {
+      "title": "Experiencia de Observación de Globos",
+      "paragraphs": [
+        "Una excelente opción para quienes prefieren ver y fotografiar los globos desde tierra. La ruta sigue miradores del amanecer según las condiciones de vuelo."
+      ]
+    },
+    {
+      "title": "Precio del Tour",
+      "paragraphs": [
+        "El tour comienza desde 35 Euro por persona. La disponibilidad en vivo se muestra en el calendario."
+      ]
+    },
+    {
+      "title": "Paradas Fotográficas al Amanecer",
+      "paragraphs": [
+        "El programa incluye miradores seleccionados según la dirección de despegue, el clima y la luz del amanecer."
+      ]
+    }
+  ],
+  "included": [
+    "Recogida y regreso al hotel",
+    "Soporte operativo profesional",
+    "Seguro cuando corresponda",
+    "Soporte de reserva"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Disponibilidad diaria en vivo",
+    "Reserva fácil por WhatsApp",
+    "Soporte local profesional",
+    "Planificación flexible"
+  ],
+  "gallery": [
+    "/images/tours/tbc-balloons-watching-tour-cappadocia.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

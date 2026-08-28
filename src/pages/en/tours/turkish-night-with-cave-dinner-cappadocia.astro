@@ -1,0 +1,63 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  "lang": "en",
+  "slug": "turkish-night-with-cave-dinner-cappadocia",
+  "title": "Turkish Night With Cave Dinner Cappadocia",
+  "hero": "Enjoy live music, traditional dances, cave atmosphere and dinner during a memorable Turkish Night in Cappadocia.",
+  "image": "/images/tours/tbc-turkish-night-with-cave-dinner-cappadocia.webp",
+  "rating": "4.96",
+  "reviewCount": 28,
+  "duration": "3 Hours",
+  "price": "50 €",
+  "badges": [
+    "Turkish Night",
+    "Cave Concept",
+    "Dinner"
+  ],
+  "sections": [
+    {
+      "title": "About Turkish Night",
+      "paragraphs": [
+        "A lively cultural evening combining Turkish music, regional dance performances and a traditional cave venue."
+      ]
+    },
+    {
+      "title": "Event Price",
+      "paragraphs": [
+        "The program starts from 50 Euro per person. Daily availability and prices are shown in the reservation calendar."
+      ]
+    },
+    {
+      "title": "Show Program",
+      "paragraphs": [
+        "The evening includes different regional performances, music and entertainment in a cave-style atmosphere."
+      ]
+    }
+  ],
+  "included": [
+    "Hotel pickup and drop-off",
+    "Professional operation support",
+    "Full insurance where applicable",
+    "Reservation support"
+  ],
+  "notIncluded": [],
+  "highlights": [
+    "Live daily availability",
+    "Easy WhatsApp reservation",
+    "Professional local support",
+    "Flexible planning"
+  ],
+  "gallery": [
+    "/images/tours/tbc-turkish-night-with-cave-dinner-cappadocia.webp",
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+    "/images/tours/tbc-green-tour-cappadocia.webp"
+  ]
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

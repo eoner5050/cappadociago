@@ -1,0 +1,132 @@
+---
+import SeoHead from './SeoHead.astro';
+import SiteHeader from './SiteHeader.astro';
+import { en } from '../i18n/en';
+import { tr } from '../i18n/tr';
+import { es } from '../i18n/es';
+import { getTourGallery } from '../utils/tourGallery';
+const { lang='en', category='cappadocia' } = Astro.props;
+const categorySupabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const categorySupabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+const dictionaries = { en, tr, es };
+const t = dictionaries[lang] || en;
+const copy={
+ en:{duration:'Duration',starting:'Starting Price',head:{balloon:['Cappadocia Balloon Tours','Sunrise balloon experiences in Göreme, Ihlara, Pamukkale and Soğanlı, plus balloon watching experiences.'],cappadocia:['Cappadocia Tours','Explore the same Cappadocia day tours and flexible experiences featured on our homepage.'],private:['Private Tours','Private Cappadocia experiences with flexible service and dedicated arrangements.'],transfers:['Cappadocia Airport Transfers','Airport shuttle and private VIP transfer services featured on our homepage.'],activities:['Cappadocia Activities','Adventure, culture and special Cappadocia experiences featured on our homepage.']}},
+ tr:{duration:'Süre',starting:'Başlangıç Fiyatı',head:{balloon:['Kapadokya Balon Turları','Göreme, Ihlara, Pamukkale ve Soğanlı balon deneyimleri ile balon izleme turlarını keşfedin.'],cappadocia:['Kapadokya Turları','Ana sayfamızda yer alan Kapadokya günlük turları ve esnek deneyimlerin tamamını keşfedin.'],private:['Özel Turlar','Size özel düzenlenen esnek Kapadokya tur deneyimleri.'],transfers:['Kapadokya Havalimanı Transferleri','Ana sayfamızdaki havalimanı shuttle ve VIP transfer seçenekleri.'],activities:['Kapadokya Aktiviteleri','Ana sayfamızda yer alan macera, kültür ve özel Kapadokya deneyimleri.']}},
+ es:{duration:'Duración',starting:'Precio Desde',head:{balloon:['Tours en Globo por Capadocia','Experiencias en globo en Göreme, Ihlara, Pamukkale y Soğanlı, además de tours de observación.'],cappadocia:['Tours por Capadocia','Descubre los tours diarios y experiencias flexibles que aparecen en nuestra página principal.'],private:['Tours Privados','Experiencias privadas en Capadocia con servicio flexible.'],transfers:['Traslados en Capadocia','Servicios shuttle y traslados VIP que aparecen en nuestra página principal.'],activities:['Actividades en Capadocia','Aventura, cultura y experiencias especiales de nuestra página principal.']}}
+};
+const c=copy[lang]||copy.en; const [heading,intro]=c.head[category];
+const titleSlugMap = {
+  'Göreme Standart Hot Air Balloon Tour':'goreme-standart-hot-air-balloon-tour','Göreme Standart Sıcak Hava Balonu Turu':'goreme-standart-hot-air-balloon-tour','Tour Estándar en Globo Aerostático por Göreme':'goreme-standart-hot-air-balloon-tour',
+  'Göreme Comfort Hot Air Balloon Tour':'goreme-comfort-hot-air-balloon-tour','Göreme Comfort Sıcak Hava Balonu Turu':'goreme-comfort-hot-air-balloon-tour','Tour Comfort en Globo Aerostático por Göreme':'goreme-comfort-hot-air-balloon-tour',
+  'Ihlara Valley Balloons Tour':'ihlara-valley-balloons-tour','Ihlara Vadisi Balon Turu':'ihlara-valley-balloons-tour','Tour en Globo por el Valle de Ihlara':'ihlara-valley-balloons-tour',
+  'Pamukkale Balloons Tour':'pamukkale-balloons-tour','Pamukkale Balon Turu':'pamukkale-balloons-tour','Tour en Globo por Pamukkale':'pamukkale-balloons-tour',
+  'Soğanlı Valley Balloon Tour':'soganli-valley-balloon-tour','Soğanlı Vadisi Balon Turu':'soganli-valley-balloon-tour','Tour en Globo por el Valle de Soğanlı':'soganli-valley-balloon-tour',
+  'Balloons Watching Tour Cappadocia':'balloons-watching-tour-cappadocia','Kapadokya Balon İzleme Turu':'balloons-watching-tour-cappadocia','Tour de Observación de Globos en Capadocia':'balloons-watching-tour-cappadocia',
+  'Blue Tour Cappadocia (Discover Hidden Valleys)':'blue-tour-cappadocia','Blue Tour Kapadokya (Gizli Vadileri Keşfedin)':'blue-tour-cappadocia','Blue Tour Capadocia (Descubre Valles Ocultos)':'blue-tour-cappadocia',
+  'Red Tour Cappadocia':'red-tour-cappadocia','Kapadokya Kırmızı Tur':'red-tour-cappadocia','Tour Rojo de Capadocia':'red-tour-cappadocia',
+  'Green Tour Cappadocia':'green-tour-cappadocia','Kapadokya Yeşil Tur':'green-tour-cappadocia','Tour Verde de Capadocia':'green-tour-cappadocia',
+  'Cappadocia Mix Tour':'cappadocia-mix-tour','Özel Mix Kapadokya Turu':'cappadocia-mix-tour',
+  'Cappadocia Custom Package Tour':'cappadocia-custom-package-tour','Kapadokya Özel Paket Tur':'cappadocia-custom-package-tour','Paquete Personalizado de Capadocia':'cappadocia-custom-package-tour',
+  'Private Red Tour Cappadocia':'private-red-tour-cappadocia','Özel Kapadokya Kırmızı Tur':'private-red-tour-cappadocia','Tour Rojo Privado de Capadocia':'private-red-tour-cappadocia',
+  'Private Green Tour Cappadocia':'private-green-tour-cappadocia','Özel Kapadokya Yeşil Tur':'private-green-tour-cappadocia','Tour Verde Privado de Capadocia':'private-green-tour-cappadocia',
+};
+const slugOf = (card) => {
+  const href=(card.href||'').split('?')[0].replace(/\/$/,'');
+  const fromHref = href ? href.split('/').pop() : '';
+  return titleSlugMap[card.title] || fromHref;
+};
+const preferredImages = {
+  'goreme-standart-hot-air-balloon-tour':'/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp',
+  'goreme-comfort-hot-air-balloon-tour':'/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp',
+  'ihlara-valley-balloons-tour':'/images/tours/Ihlara-Valley-Balloons-Tour.webp',
+  'pamukkale-balloons-tour':'/images/tours/pamukkale-balloons-tour (1).webp',
+  'soganli-valley-balloon-tour':'/images/tours/tbc-soganli-valley-balloon-tour.webp',
+  'balloons-watching-tour-cappadocia':'/images/tours/tbc-balloons-watching-tour-cappadocia.webp',
+  'blue-tour-cappadocia':'/images/tours/Blue-Tour-Cappadocia.webp',
+  'red-tour-cappadocia':'/images/tours/Red-Tour-Cappadocia.webp',
+  'green-tour-cappadocia':'/images/tours/tbc-green-tour-cappadocia.webp',
+  'cappadocia-mix-tour':'/images/tours/Private-Tour-and-Mix-Tour.webp',
+  'cappadocia-custom-package-tour':'/images/tours/Cappadocia-Package-Tour.webp',
+  'private-red-tour-cappadocia':'/images/tours/Private-Red-Tour-Cappadocia.webp',
+  'private-green-tour-cappadocia':'/images/tours/Private-Green-Tour-Cappadocia.webp',
+  'kayseri-airport-shuttle-transfer':'/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp',
+  'nevsehir-airport-shuttle-transfer':'/images/tours/Nevsehir-Airport-NAV-Shuttle-Transfer.webp',
+  'private-airport-transfer':'/images/tours/Private-VIP-Airport-Transfer-Cappadocia.webp',
+  'atv-tour-with-goreme-valleys':'/images/tours/ATV-Tour-With-Goreme-Valleys.webp',
+  'cappadocia-pottery-making-experience':'/images/tours/tbc-cappadocia-pottery-making-experience.webp',
+  'cappadocia-classic-car-tour':'/images/tours/Cappadocia-Classic-Car-Tour.webp',
+  'photo-shoot-flying-dress-experience':'/images/tours/Photo Shoot & Flying Dress Experience.webp',
+  'jeep-safari-cappadocia':'/images/tours/Jeep-Safari-Cappadocia.webp',
+  'turkish-night-with-cave-dinner-cappadocia':'/images/tours/tbc-turkish-night-with-cave-dinner-cappadocia.webp',
+  'sunrise-sunset-horse-riding-cappadocia':'/images/tours/sunrise-sunset-horse-riding-cappadocia.webp',
+  'cappadocia-sunset-camel-riding-tour':'/images/tours/Cappadocia-Sunset-Camel-Riding-Tour.webp',
+};
+const cardImage = (tour) => {
+  const slug = slugOf(tour);
+  return getTourGallery({ slug, title:String(tour?.title||''), preferred:[tour?.image].filter(Boolean), max:1 })[0] || tour.image;
+};
+const hrefFor = (tour) => {
+  const slug = slugOf(tour);
+  if (groups.transfers.has(slug)) return `/${lang}/transfers/${slug}`;
+  return `/${lang}/tours/${slug}`;
+};
+const groups = {
+  balloon: new Set(['goreme-comfort-hot-air-balloon-tour','goreme-standart-hot-air-balloon-tour','ihlara-valley-balloons-tour','pamukkale-balloons-tour','soganli-valley-balloon-tour','balloons-watching-tour-cappadocia']),
+  cappadocia: new Set(['blue-tour-cappadocia','red-tour-cappadocia','green-tour-cappadocia','cappadocia-mix-tour','cappadocia-custom-package-tour']),
+  private: new Set(['private-green-tour-cappadocia','private-red-tour-cappadocia']),
+  transfers: new Set(['kayseri-airport-shuttle-transfer','nevsehir-airport-shuttle-transfer','private-airport-transfer']),
+};
+const used = new Set([...groups.balloon,...groups.cappadocia,...groups.private,...groups.transfers]);
+const cards = t.tourCards.filter((card) => {
+  const slug=slugOf(card);
+  if(category==='activities') return !used.has(slug);
+  return groups[category]?.has(slug);
+});
+---
+<!doctype html>
+<html lang={lang}>
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><SeoHead title={`${heading} | CappadociaGo`} description={intro} lang={lang} /><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></head>
+<body>
+<SiteHeader lang={lang} active={category}/>
+<section class="cat-hero"><div class="cat-container"><span>CAPPADOCIAGO</span><h1>{heading}</h1><p>{intro}</p></div></section>
+<main class="cat-section"><div class="cat-container"><div class="cat-grid" id="categoryToursGrid" data-supabase-url={categorySupabaseUrl} data-supabase-key={categorySupabaseKey}>
+{cards.map((tour) => (
+  <article class="cat-card" data-product-href={tour.href} data-product-slug={slugOf(tour)} data-product-name={tour.title}>
+    <a class="cat-cover" href={hrefFor(tour)} aria-label={tour.title}></a>
+    <div class="cat-img"><img src={cardImage(tour)} alt={tour.title} loading="lazy" width="800" height="533"/><b>⭐ {tour.rating}</b></div>
+    <div class="cat-body"><small>{c.duration}: {tour.duration}</small><h2>{tour.title}</h2><em>✓ {tour.tag}</em>{tour.status && <span class={`cat-status ${tour.statusType||''}`}>{tour.statusIcon} {tour.status}</span>}
+      <div class="cat-price"><span>{c.starting}</span><div><del data-cat-old-price>{tour.oldPrice || ""}</del><strong data-cat-current-price>{tour.currentPrice}</strong></div></div>
+    </div>
+  </article>
+))}
+</div></div></main>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f3eb;color:#071a35;font-family:Inter,Arial,sans-serif}.cat-container{width:min(1180px,calc(100% - 32px));margin:auto}.cat-hero{padding:46px 0 38px;background:linear-gradient(135deg,#fffdf8,#f5efe1);border-bottom:1px solid #e7dfd0}.cat-hero span{display:inline-block;background:#efb000;color:#071a35;padding:7px 12px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.4px}.cat-hero h1{font:900 40px/1.12 Montserrat;margin:14px 0 10px;color:#071a35}.cat-hero p{max-width:760px;margin:0;color:#607089;line-height:1.7;font-size:15px}.cat-section{padding:42px 0 70px}.cat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.cat-card{position:relative;background:#fff;border:1px solid #e2ded4;border-radius:20px;overflow:hidden;box-shadow:0 10px 28px rgba(31,41,55,.07);transition:.22s ease}.cat-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(31,41,55,.11)}.cat-cover{position:absolute;inset:0;z-index:5}.cat-img{height:215px;position:relative;background:#edf1f5}.cat-img img{width:100%;height:100%;object-fit:cover;display:block}.cat-img b{position:absolute;right:11px;top:11px;background:#fff;padding:6px 9px;border-radius:999px;font-size:11px;box-shadow:0 4px 12px #0002}.cat-body{padding:18px 18px 20px}.cat-body small{color:#65758b;font-size:11px;font-weight:600}.cat-body h2{font:800 16px/1.4 Montserrat;margin:6px 0 8px;min-height:45px}.cat-body em{font-size:10px;color:#167337;font-style:normal;font-weight:800}.cat-status{font-size:9px;font-weight:800;color:#1e4ca1;margin-left:8px}.cat-status.red{color:#c33}.cat-price{display:flex;justify-content:space-between;align-items:end;margin-top:26px}.cat-price>span{font-size:10px;color:#75849a}.cat-price del{font-size:12px;color:#7d8796;margin-right:6px}.cat-price strong{font:900 25px Montserrat;color:#071a35}@media(max-width:940px){.cat-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.cat-hero h1{font-size:30px}.cat-grid{grid-template-columns:1fr}}
+</style>
+
+<script>
+(() => {
+  const grid=document.getElementById('categoryToursGrid');
+  if(!grid) return;
+  const base=grid.dataset.supabaseUrl||'', key=grid.dataset.supabaseKey||'';
+  if(!base||!key) return;
+  const cards=[...grid.querySelectorAll('.cat-card[data-product-slug]')];
+  const headers={apikey:key,Authorization:`Bearer ${key}`};
+  const norm=(v='')=>String(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+  const today=new Date(), todayKey=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+  Promise.all([
+    fetch(`${base}/rest/v1/products?active=eq.true&select=id,slug,name,default_price,ask_for_price`,{headers,cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)),
+    fetch(`${base}/rest/v1/availability?date=gte.${todayKey}&status=eq.available&select=product_id,price,capacity,booked&limit=5000`,{headers,cache:'no-store'}).then(r=>r.ok?r.json():[])
+  ]).then(([products,availability])=>{
+    const bySlug=new Map(products.map(p=>[String(p.slug||'').trim().toLowerCase(),p]));
+    const byName=new Map(products.map(p=>[norm(p.name),p]));
+    const minById=new Map();
+    for(const r of availability){const price=Number(r.price||0),remaining=Number(r.capacity||0)-Number(r.booked||0);if(price<=0||remaining<=0)continue;const id=String(r.product_id||''),prev=minById.get(id);if(!(prev>0)||price<prev)minById.set(id,price)}
+    const pageLang=document.documentElement.lang||'en', ask=pageLang==='tr'?'Fiyat Sorunuz':pageLang==='es'?'Consultar Precio':'Ask For Price';
+    for(const card of cards){const product=bySlug.get(String(card.dataset.productSlug||'').trim().toLowerCase())||byName.get(norm(card.dataset.productName||''));if(!product)continue;const cur=card.querySelector('[data-cat-current-price]'),old=card.querySelector('[data-cat-old-price]');if(!cur||!old)continue;if(product.ask_for_price){cur.textContent=ask;old.textContent='';old.style.display='none';continue}const min=Number(minById.get(String(product.id))||0)||Number(product.default_price||0);if(!(min>0))continue;cur.textContent=`${Math.round(min)} €`;old.textContent=`${Math.round(min*1.20)} €`;old.style.display='';}
+  }).catch(e=>console.error('Category live prices failed',e));
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "es",
+  slug: "cappadocia-sunset-camel-riding-tour",
+  title: "Paseo en Camello al Atardecer en Capadocia",
+  hero: "Vive Capadocia desde una perspectiva diferente con un paseo guiado en camello por valles y paisajes panorámicos, especialmente bonito al atardecer.",
+  image: "/images/tours/Cappadocia-Sunset-Camel-Riding-Tour.webp",
+  rating: "4.50",
+  reviewCount: 5,
+  duration: "1,5 Horas",
+  price: "55 €",
+  badges: ["Tour en Camello", "Atardecer", "Traslado Hotel"],
+  sections: [{"title": "Sobre el Tour en Camello", "paragraphs": ["El paseo en camello es una forma tranquila de explorar los valles y formaciones rocosas de Capadocia. Es guiado y puede organizarse al atardecer para disfrutar de la luz cálida."]}, {"title": "Experiencia en Camello", "paragraphs": ["Después de la recogida en el hotel, conocerás a los camellos y recibirás una breve introducción antes de comenzar. El ritmo es tranquilo y adecuado para disfrutar del paisaje y hacer fotos."]}, {"title": "Información Importante", "paragraphs": ["Se recomienda ropa cómoda. La actividad puede no ser adecuada para personas con ciertas limitaciones de movilidad o condiciones de salud."]}],
+  included: ["Traslado ida y vuelta", "Seguro completo", "Experiencia en camello", "Guía local experto", "Todo el equipo"],
+  notIncluded: ["Gastos personales", "Comida y bebidas"],
+  highlights: ["Paisajes al atardecer", "Paseo guiado en camello", "Traslado hotel", "Paradas para fotos"],
+  gallery: ["/images/tours/Cappadocia-Sunset-Camel-Riding-Tour.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="es" />

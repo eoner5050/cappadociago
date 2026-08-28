@@ -1,0 +1,29 @@
+TBC PRE-PRODUCTION FIX
+
+1) Vercel/production görsel sorunu:
+- tourGallery.ts artık runtime fs.readdirSync kullanmıyor.
+- public/images/tours dosya listesi src/data/tourImages.generated.ts içine build-safe manifest olarak alındı.
+- Böylece Vercel serverless ortamında tur galerileri boş kalmıyor.
+- Önceki proje paketlerinden yanlışlıkla kaybolmuş 7 orijinal ana tur görseli geri getirildi.
+- src altındaki statik /images/... referanslarının tamamı gerçek public dosyalarıyla eşleştirildi.
+
+2) Tur bilgi rozetleri:
+- Ortak tur bileşenine yıldız/rating + Reviews, gerçek duration, Instant Confirmation ve WhatsApp 905401015050 eklendi.
+- ActivityDetailPage reviewCount bilgisini ortak tasarıma iletiyor.
+- Mevcut tur duration değerleri korunuyor.
+- Sadece Red Tour ve Green Tour: EN 1 Day / TR 1 Gün / ES 1 Día.
+
+3) Footer:
+- Tur sayfalarının footer fotoğrafları gerçek ve production-safe balon görsellerine bağlandı.
+
+4) Kontrol:
+- SEO audit: 161 route, On-page 98/100, Technical SEO 99/100, 301=0, canonical=0, broken=0, orphan=0.
+- src içindeki statik /images/... referans kontrolü: 0 eksik dosya.
+
+Çalıştırma:
+npm install
+npm run build
+npm run dev
+
+Local kontrol sonrası:
+npx vercel --prod

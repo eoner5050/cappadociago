@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "tr",
+  slug: "kayseri-airport-shuttle-transfer",
+  title: "Kayseri Havalimanı Shuttle Transfer",
+  hero: "Kayseri Erkilet Havalimanı (ASR) ile Kapadokya otelleri arasında konforlu, planlı ve uygun fiyatlı shuttle transfer hizmeti.",
+  image: "/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp",
+  rating: "4.70",
+  reviewCount: 6,
+  duration: "Planlı Transfer",
+  price: "15 €",
+  badges: ["Kayseri ASR", "Shuttle", "Otel Transferi"],
+  sections: [{"title": "Transfer Hizmeti", "paragraphs": ["Kayseri Erkilet Havalimanı'ndan (ASR) Kapadokya'daki otelinize veya otelinizden havalimanına planlı shuttle transfer düzenliyoruz. Hizmet uçuş saatinize göre koordine edilir.", "Şoförümüz yolcuları belirlenen geliş buluşma noktasında karşılar. Bagaj desteği, planlı bekleme süresi ve standart havalimanı otoparkı hizmete dahildir."]}, {"title": "Neden Bu Hizmeti Seçmelisiniz?", "paragraphs": ["Önceden ayarlanmış shuttle transfer, uçuş sonrası son dakika taksi arama ve ulaşım stresini ortadan kaldırır. Dönüş transferleri de uçuş saatinize göre planlanır.", "Kayseri ile Kapadokya arasında ekonomik ve düzenli havalimanı ulaşımı isteyen misafirler için uygundur."]}],
+  included: ["Havalimanı karşılama", "Tek yön paylaşımlı shuttle transfer", "Bagaj desteği", "Standart havalimanı bekleme süresi", "Araç, sürücü ve yakıt"],
+  notIncluded: ["Kişisel harcamalar", "Planlanan rota dışındaki ekstra duraklar"],
+  highlights: ["Kayseri Erkilet Havalimanı (ASR)", "Göreme, Ürgüp, Uçhisar ve Avanos otelleri", "Uçuş saatine göre planlama", "Hızlı WhatsApp rezervasyonu"],
+  gallery: ["/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp", "/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp", "/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp", "/images/tours/Kayseri-Airport-ASR-Shuttle-Transfer.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

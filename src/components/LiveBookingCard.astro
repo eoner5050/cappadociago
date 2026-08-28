@@ -1,0 +1,325 @@
+---
+const {
+  slug,
+  title,
+  lang = "en",
+  fallbackPrice = 0,
+  fallbackCapacity = 10,
+  priceLabel,
+  badges = [],
+  highlights = [],
+} = Astro.props;
+
+const copy = {
+  en: {
+    price: "Tour Price, starting from",
+    perPerson: "per person",
+    contact: "Contact via WhatsApp",
+    reserve: "Quick Reservation Form",
+    reserveText: "Leave your details and our team will contact you as soon as possible.",
+    name: "Full Name",
+    phone: "Phone Number",
+    date: "Date",
+    people: "Number of People",
+    selectPeople: "Select People",
+    children: "Children are included in this number of people.",
+    selected: "Selected date price",
+    total: "Total price",
+    message: "Your Message",
+    placeholder: "You can write your additional note.",
+    send: "Send Reservation Request",
+    left: "left",
+    closed: "Closed",
+    soldOut: "Sold out",
+    unavailable: "Unavailable",
+    loading: "Loading availability...",
+    error: "Availability could not be loaded.",
+    note: "Prices shown under the dates are per person.",
+    person: "Person",
+    peopleWord: "People",
+    priceOnRequest: "Price on Request",
+  },
+  tr: {
+    price: "Tur Fiyatı, başlangıç",
+    perPerson: "kişi başı",
+    contact: "WhatsApp ile İletişim",
+    reserve: "Hızlı Rezervasyon Formu",
+    reserveText: "Bilgilerinizi bırakın, ekibimiz en kısa sürede sizinle iletişime geçsin.",
+    name: "Ad Soyad",
+    phone: "Telefon",
+    date: "Tarih",
+    people: "Kişi Sayısı",
+    selectPeople: "Kişi Seçin",
+    children: "Çocuklar da bu kişi sayısına dahildir.",
+    selected: "Seçilen tarih kişi başı fiyat",
+    total: "Toplam fiyat",
+    message: "Mesajınız",
+    placeholder: "Ek notunuzu yazabilirsiniz.",
+    send: "Rezervasyon Talebi Gönder",
+    left: "yer kaldı",
+    closed: "Kapalı",
+    soldOut: "Dolu",
+    unavailable: "Müsait değil",
+    loading: "Müsaitlik yükleniyor...",
+    error: "Müsaitlik yüklenemedi.",
+    note: "Tarihlerin altındaki fiyatlar kişi başıdır.",
+    person: "Kişi",
+    peopleWord: "Kişi",
+    priceOnRequest: "Fiyat Sorunuz",
+  },
+  es: {
+    price: "Precio del tour, desde",
+    perPerson: "por persona",
+    contact: "Contactar por WhatsApp",
+    reserve: "Formulario de Reserva Rápida",
+    reserveText: "Déjanos tus datos y nuestro equipo se pondrá en contacto contigo lo antes posible.",
+    name: "Nombre Completo",
+    phone: "Teléfono",
+    date: "Fecha",
+    people: "Número de Personas",
+    selectPeople: "Seleccionar Personas",
+    children: "Los niños también están incluidos en este número de personas.",
+    selected: "Precio por persona para la fecha",
+    total: "Precio total",
+    message: "Tu Mensaje",
+    placeholder: "Puedes escribir una nota adicional.",
+    send: "Enviar Solicitud de Reserva",
+    left: "disponibles",
+    closed: "Cerrado",
+    soldOut: "Agotado",
+    unavailable: "No disponible",
+    loading: "Cargando disponibilidad...",
+    error: "No se pudo cargar la disponibilidad.",
+    note: "Los precios bajo las fechas son por persona.",
+    person: "Persona",
+    peopleWord: "Personas",
+    priceOnRequest: "Precio a Consultar",
+  },
+}[lang] || null;
+
+const c = copy || copy.en;
+const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
+---
+
+<div class="lbc-wrap" id={`lbc-${safeId}`} data-slug={slug} data-title={title} data-lang={lang} data-fallback-price={fallbackPrice} data-fallback-capacity={fallbackCapacity} data-copy={JSON.stringify(c)}>
+  <section class="lbc-card lbc-price-card">
+    <div class="lbc-label">{priceLabel || c.price}</div>
+    <div class="lbc-start-price"><del data-lbc-old-price></del><strong data-lbc-start-price>{Number(fallbackPrice || 0) > 0 ? `${Number(fallbackPrice).toFixed(0)} €` : c.priceOnRequest}</strong><span data-lbc-price-suffix>{c.perPerson}</span></div>
+    <a data-lbc-ask-link class="lbc-ask-link" href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer">💬 {c.priceOnRequest}</a>
+    {badges.length > 0 && <div class="lbc-badges">{badges.slice(0,4).map((b)=><span>{b}</span>)}</div>}
+    <div class="lbc-separator"></div>
+    <a class="lbc-phone" href="tel:+905401015050">☎ +90 540 101 50 50</a>
+    <a class="lbc-wa" href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer">
+      <img src="/images/icons/whatsapp-logo.webp" alt="" width="19" height="19" loading="lazy" />
+      <span>{c.contact}</span>
+    </a>
+    {highlights.length > 0 && <div class="lbc-highlights">{highlights.slice(0,4).map((h)=><div><span>✓</span><p>{h}</p></div>)}</div>}
+  </section>
+
+  <section class="lbc-card lbc-form-card">
+    <h3>{c.reserve}</h3>
+    <p class="lbc-form-desc">{c.reserveText}</p>
+    <form data-lbc-form>
+      <label>{c.name}</label>
+      <input data-lbc-name type="text" placeholder={c.name} required />
+
+      <label>{c.phone}</label>
+      <input data-lbc-phone type="tel" placeholder="+90 5xx xxx xx xx" required />
+
+      <label>{c.date}</label>
+      <div class="lbc-date-wrap">
+        <input data-lbc-date type="text" placeholder={lang === "tr" ? "Tarih Seçin" : lang === "es" ? "Seleccionar Fecha" : "Select Date"} readonly required />
+        <button data-lbc-open type="button" class="lbc-date-btn" aria-label="Open calendar">📅</button>
+        <div data-lbc-calendar class="lbc-calendar">
+          <div class="lbc-cal-head">
+            <button data-lbc-prev type="button">‹</button>
+            <strong data-lbc-title></strong>
+            <button data-lbc-next type="button">›</button>
+          </div>
+          <div class="lbc-weekdays"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          <div data-lbc-days class="lbc-days"></div>
+          <div class="lbc-note">{c.note}</div>
+        </div>
+      </div>
+
+      <label>{c.people}</label>
+      <select data-lbc-people required><option value="">{c.selectPeople}</option></select>
+      <div class="lbc-children-note">{c.children}</div>
+
+      <div data-lbc-price-box class="lbc-price-box">
+        <div><span>{c.selected}</span><strong data-lbc-unit>—</strong></div>
+        <div class="lbc-total-row"><span>{c.total}</span><strong data-lbc-total>—</strong></div>
+      </div>
+
+      <label>{c.message}</label>
+      <textarea data-lbc-message placeholder={c.placeholder}></textarea>
+      <button class="lbc-submit" type="submit">{c.send}</button>
+    </form>
+  </section>
+</div>
+
+<style>
+  .lbc-wrap{display:flex;flex-direction:column;gap:16px;width:100%;font-family:inherit;color:#0b1f3a}
+  .lbc-card{background:#fff;border:1px solid #e1e7ef;border-radius:22px;padding:20px;box-shadow:0 12px 28px rgba(11,31,58,.06)}
+  .lbc-label{font-size:12px;color:#64748b;font-weight:700}
+  .lbc-start-price{display:flex;align-items:flex-end;gap:8px;margin:7px 0 10px}.lbc-start-price del{display:none;font-size:16px;line-height:1.2;color:#8b95a5;text-decoration:line-through;font-weight:700;padding-bottom:4px}.lbc-start-price del.has-price{display:inline}.lbc-start-price strong{font-size:38px;line-height:1;color:#bd8500;font-weight:900}.lbc-start-price span{font-size:12px;color:#64748b;font-weight:700;padding-bottom:4px}
+  .lbc-badges{display:flex;flex-wrap:wrap;gap:7px}.lbc-badges span{background:#fffaf0;border:1px solid #ecd793;border-radius:999px;padding:6px 10px;font-size:10px;font-weight:800;color:#765500}
+  .lbc-ask-link{display:none;align-items:center;justify-content:center;min-height:42px;border-radius:999px;background:#0b2d55;color:#fff;text-decoration:none;font-size:12px;font-weight:900;margin:10px 0}.lbc-ask-link.is-visible{display:flex}.lbc-ask-link:hover{background:#071f3d}.lbc-separator{height:1px;background:#e5e7eb;margin:18px 0}
+  .lbc-phone,.lbc-wa{display:flex;align-items:center;justify-content:center;gap:7px;min-height:45px;border-radius:999px;text-decoration:none;font-weight:900;font-size:13px;margin-top:9px}.lbc-phone{border:1px solid #d8e1ec;color:#0b1f3a;background:#fff}.lbc-wa{background:#16a34a;color:#fff;border:1px solid #16a34a}.lbc-wa img{display:block;object-fit:contain}
+  .lbc-highlights{margin-top:16px;display:grid;gap:8px}.lbc-highlights>div{display:flex;gap:8px;align-items:flex-start}.lbc-highlights span{color:#d99a00;font-weight:900}.lbc-highlights p{margin:0;font-size:12px;line-height:1.55;color:#475569}
+  .lbc-form-card h3{margin:0 0 7px;font-size:20px;color:#0b1f3a}.lbc-form-desc{margin:0 0 13px;color:#64748b;font-size:12px;line-height:1.55}
+  .lbc-form-card label{display:block;margin:11px 0 6px;font-size:11px;font-weight:800;color:#253b59}
+  .lbc-form-card input,.lbc-form-card select,.lbc-form-card textarea{width:100%;min-height:45px;border:1px solid #cfd9e6;border-radius:12px;padding:11px 13px;background:#fff;color:#10213a;font:inherit;font-size:13px;outline:none}.lbc-form-card input:focus,.lbc-form-card select:focus,.lbc-form-card textarea:focus{border-color:#e3a800;box-shadow:0 0 0 3px rgba(227,168,0,.13)}
+  .lbc-form-card textarea{min-height:90px;resize:vertical}.lbc-children-note{font-size:11px;color:#64748b;margin-top:7px;line-height:1.4}
+  .lbc-date-wrap{position:relative}.lbc-date-wrap>input{padding-right:48px}.lbc-date-btn{position:absolute!important;right:8px!important;top:50%!important;transform:translateY(-50%)!important;width:34px!important;height:34px!important;min-height:34px!important;margin:0!important;padding:0!important;border:0!important;border-radius:10px!important;background:#fff8e7!important;display:grid!important;place-items:center!important;cursor:pointer!important;color:#bd8500!important}
+  .lbc-calendar{position:absolute;top:calc(100% + 8px);right:0;width:350px;max-width:calc(100vw - 30px);z-index:10000;background:#fff;border:1px solid #dbe3ec;border-radius:18px;padding:14px;box-shadow:0 20px 50px rgba(15,23,42,.18);display:none;overflow:hidden}.lbc-calendar.is-open{display:block}
+  .lbc-cal-head{display:grid;grid-template-columns:36px 1fr 36px;align-items:center;gap:7px;margin-bottom:10px}.lbc-cal-head strong{text-align:center;font-size:14px}.lbc-cal-head button{width:36px!important;height:36px!important;min-height:36px!important;margin:0!important;padding:0!important;border:0!important;border-radius:10px!important;background:#fff8e7!important;color:#a87500!important;font-size:22px!important;cursor:pointer!important}
+  .lbc-weekdays,.lbc-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;width:100%}.lbc-weekdays{margin-bottom:5px}.lbc-weekdays span{text-align:center;font-size:10px;font-weight:800;color:#64748b}
+  :global(.lbc-day){width:100%!important;min-width:0!important;min-height:57px!important;margin:0!important;padding:4px 1px!important;border:1px solid #e2e8f0!important;border-radius:9px!important;background:#fff!important;color:#0b1f3a!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;cursor:pointer!important;font-family:inherit!important}
+  :global(.lbc-day:hover:not(:disabled)){border-color:#e3a800!important;background:#fffaf0!important}:global(.lbc-day:disabled){cursor:not-allowed!important;opacity:.48!important;background:#f8fafc!important}:global(.lbc-day.is-empty){border-color:transparent!important;background:transparent!important;opacity:1!important}:global(.lbc-day.is-selected){background:#fff2bf!important;border-color:#e3a800!important}
+  :global(.lbc-day-num){display:block!important;font-size:12px!important;font-weight:900!important;line-height:1.05!important}:global(.lbc-day-price){display:block!important;font-size:9px!important;font-weight:800!important;line-height:1.1!important;color:#b27d00!important;margin-top:2px!important;white-space:nowrap!important}:global(.lbc-day-stock){display:block!important;font-size:7px!important;line-height:1.05!important;color:#168342!important;margin-top:2px!important;white-space:nowrap!important;max-width:100%!important;overflow:hidden!important;text-overflow:ellipsis!important}:global(.lbc-day-stock.closed){color:#7b8797!important}
+  :global(.lbc-cal-message){grid-column:1/-1;text-align:center;padding:18px 6px;color:#64748b;font-size:12px}
+  .lbc-note{border-top:1px solid #e5e7eb;margin-top:10px;padding-top:9px;color:#64748b;font-size:10px;line-height:1.4}
+  .lbc-price-box{display:none;margin-top:12px;border:1px solid #ecd793;background:#fffaf0;border-radius:13px;padding:11px 13px}.lbc-price-box.is-visible{display:block}.lbc-price-box>div{display:flex;justify-content:space-between;gap:10px;align-items:center}.lbc-price-box span{font-size:11px;color:#64748b;font-weight:700}.lbc-price-box strong{font-size:16px;color:#a87500}.lbc-total-row{border-top:1px solid #eedfa9;margin-top:8px;padding-top:8px}.lbc-total-row strong{font-size:20px}
+  .lbc-submit{width:100%;border:0;border-radius:999px;background:#e3a800;color:#0b1f3a;font-weight:900;padding:13px;margin-top:13px;cursor:pointer;font-size:13px}.lbc-submit:hover{background:#c99300}
+  @media(max-width:480px){.lbc-card{padding:17px}.lbc-calendar{width:min(345px,calc(100vw - 24px));right:-6px}.lbc-weekdays,.lbc-days{gap:3px}:global(.lbc-day){min-height:52px!important}:global(.lbc-day-price){font-size:8px!important}:global(.lbc-day-stock){font-size:6.5px!important}}
+</style>
+
+<script>
+(() => {
+  document.querySelectorAll(".lbc-wrap:not([data-ready='1'])").forEach((root) => {
+    root.dataset.ready = "1";
+    const c = JSON.parse(root.dataset.copy || "{}");
+    const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+    const SUPABASE_KEY = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+    const slug = root.dataset.slug || "";
+    const tourTitle = root.dataset.title || slug;
+    const fallbackPrice = Number(root.dataset.fallbackPrice || 0);
+    const fallbackCapacity = Number(root.dataset.fallbackCapacity || 10);
+
+    const $ = (s) => root.querySelector(s);
+    const el = {
+      start: $("[data-lbc-start-price]"), oldStart: $("[data-lbc-old-price]"), suffix: $("[data-lbc-price-suffix]"), askLink: $("[data-lbc-ask-link]"), form: $("[data-lbc-form]"), name: $("[data-lbc-name]"), phone: $("[data-lbc-phone]"),
+      date: $("[data-lbc-date]"), open: $("[data-lbc-open]"), calendar: $("[data-lbc-calendar]"), days: $("[data-lbc-days]"), title: $("[data-lbc-title]"),
+      prev: $("[data-lbc-prev]"), next: $("[data-lbc-next]"), people: $("[data-lbc-people]"), priceBox: $("[data-lbc-price-box]"), unit: $("[data-lbc-unit]"), total: $("[data-lbc-total]"), message: $("[data-lbc-message]")
+    };
+
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    let product = null, availability = {}, selectedRow = null, selectedKey = "", askForPrice = false;
+    const now = new Date(); let year = now.getFullYear(), month = now.getMonth();
+    const pad = (n) => String(n).padStart(2,"0");
+    const key = (y,m,d) => `${y}-${pad(m+1)}-${pad(d)}`;
+    const formatDate = (y,m,d) => `${pad(d)}.${pad(m+1)}.${y}`;
+    const money = (n) => Number(n || 0) > 0 ? `${Number(n).toLocaleString(undefined,{maximumFractionDigits:2})} €` : c.priceOnRequest;
+    const remaining = (r) => Math.max(Number(r?.capacity || 0)-Number(r?.booked || 0),0);
+    const past = (y,m,d) => { const a=new Date(y,m,d);a.setHours(0,0,0,0);const b=new Date();b.setHours(0,0,0,0);return a<b; };
+
+    async function get(path){
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${SUPABASE_KEY}`}});
+      if(!res.ok) throw new Error(await res.text());
+      return res.json();
+    }
+
+    async function loadProduct(){
+      const rows=await get(`products?slug=eq.${encodeURIComponent(slug)}&active=eq.true&select=id,slug,name,default_price,default_capacity,ask_for_price&limit=1`);
+      product=rows?.[0] || {id:null,slug,name:tourTitle,default_price:fallbackPrice,default_capacity:fallbackCapacity,ask_for_price:false};
+      askForPrice=!!product.ask_for_price;
+      if(el.start) el.start.textContent=askForPrice?c.priceOnRequest:money(product.default_price || fallbackPrice);
+      if(el.oldStart){ el.oldStart.textContent=''; el.oldStart.classList.remove('has-price'); }
+      if(el.suffix) el.suffix.style.display=askForPrice?'none':'';
+      if(el.askLink){ el.askLink.classList.toggle('is-visible',askForPrice); el.askLink.href=`https://wa.me/905401015050?text=${encodeURIComponent(`Hello CappadociaGo, please send me a price for ${tourTitle}.`)}`; }
+      if(product.id && !askForPrice) await loadMinimumPrice();
+    }
+
+    async function loadMinimumPrice(){
+      const today=key(now.getFullYear(),now.getMonth(),now.getDate());
+      const rows=await get(`availability?product_id=eq.${encodeURIComponent(product.id)}&date=gte.${today}&status=eq.available&select=price,capacity,booked&order=price.asc&limit=500`);
+      const valid=(rows||[]).filter(r=>Number(r.capacity)>Number(r.booked) && Number(r.price)>0);
+      const min=valid.length?Math.min(...valid.map(r=>Number(r.price))):Number(product.default_price || fallbackPrice);
+      if(el.start) el.start.textContent=money(min);
+      if(el.oldStart){
+        if(min>0){ el.oldStart.textContent=money(Math.round(min*1.20)); el.oldStart.classList.add('has-price'); }
+        else { el.oldStart.textContent=''; el.oldStart.classList.remove('has-price'); }
+      }
+    }
+
+    async function loadMonth(){
+      availability={};
+      if(!product?.id){ render(); return; }
+      const first=`${year}-${pad(month+1)}-01`, lastDay=new Date(year,month+1,0).getDate(), last=`${year}-${pad(month+1)}-${pad(lastDay)}`;
+      const rows=await get(`availability?product_id=eq.${encodeURIComponent(product.id)}&date=gte.${first}&date=lte.${last}&select=date,price,capacity,booked,status&order=date.asc`);
+      (rows||[]).forEach(r=>availability[r.date]=r);
+      render();
+    }
+
+    function effectiveRow(dateKey){
+      const r=availability[dateKey];
+      if(r) return r;
+      const dp=Number(product?.default_price ?? fallbackPrice);
+      return {date:dateKey,price:dp,capacity:Number(product?.default_capacity ?? fallbackCapacity),booked:0,status:dp>0?"available":"closed",isDefault:true};
+    }
+
+    function available(r){ return r && r.status==="available" && Number(r.capacity)>0 && remaining(r)>0; }
+
+    function render(){
+      if(!el.days) return;
+      el.days.innerHTML=""; el.title.textContent=`${months[month]} ${year}`;
+      const first=new Date(year,month,1), last=new Date(year,month+1,0); let idx=first.getDay(); idx=idx===0?6:idx-1;
+      for(let i=0;i<idx;i++){const b=document.createElement("button");b.type="button";b.className="lbc-day is-empty";b.disabled=true;el.days.appendChild(b)}
+      for(let d=1;d<=last.getDate();d++){
+        const dk=key(year,month,d), r=effectiveRow(dk), isPast=past(year,month,d), ok=!isPast&&available(r), rem=remaining(r), b=document.createElement("button");
+        b.type="button";b.className="lbc-day";if(!ok)b.disabled=true;if(dk===selectedKey)b.classList.add("is-selected");
+        let status="";
+        if(isPast) status=c.unavailable; else if(r.status==="closed")status=c.closed; else if(r.status==="sold_out"||rem<=0)status=c.soldOut; else status=`${rem} ${c.left}`;
+        b.innerHTML=`<span class="lbc-day-num">${d}</span>${ok&&!askForPrice?`<span class="lbc-day-price">${money(r.price)}</span>`:""}${ok&&askForPrice?`<span class="lbc-day-price">${c.priceOnRequest}</span>`:""}<span class="lbc-day-stock ${ok?"":"closed"}">${status}</span>`;
+        if(ok)b.addEventListener("click",()=>selectDate(dk,r,d)); el.days.appendChild(b);
+      }
+    }
+
+    function fillPeople(max){
+      el.people.innerHTML=`<option value="">${c.selectPeople}</option>`;
+      for(let i=1;i<=Math.min(max,30);i++){const o=document.createElement("option");o.value=String(i);o.textContent=i===1?`1 ${c.person}`:`${i} ${c.peopleWord}`;el.people.appendChild(o)}
+    }
+
+    function selectDate(dk,r,d){
+      selectedKey=dk;selectedRow=r;el.date.value=formatDate(year,month,d);fillPeople(remaining(r));el.priceBox.classList.add("is-visible");el.unit.textContent=askForPrice?c.priceOnRequest:money(r.price);el.total.textContent=askForPrice?c.priceOnRequest:money(r.price);el.people.value="";el.calendar.classList.remove("is-open");render();
+    }
+
+    function updateTotal(){
+      if(!selectedRow) return;const n=Number(el.people.value||0);if(askForPrice){el.unit.textContent=c.priceOnRequest;el.total.textContent=c.priceOnRequest;return;}el.unit.textContent=money(selectedRow.price);el.total.textContent=n?money(Number(selectedRow.price)*n):money(selectedRow.price);
+    }
+
+    async function refresh(){
+      el.days.innerHTML=`<div class="lbc-cal-message">${c.loading}</div>`;
+      try{await loadMonth()}catch(e){console.error(e);el.days.innerHTML=`<div class="lbc-cal-message">${c.error}</div>`}
+    }
+
+    el.open?.addEventListener("click",async()=>{el.calendar.classList.toggle("is-open");if(el.calendar.classList.contains("is-open"))await refresh()});
+    el.date?.addEventListener("click",async()=>{el.calendar.classList.add("is-open");await refresh()});
+    el.prev?.addEventListener("click",async()=>{month--;if(month<0){month=11;year--}await refresh()});
+    el.next?.addEventListener("click",async()=>{month++;if(month>11){month=0;year++}await refresh()});
+    el.people?.addEventListener("change",updateTotal);
+    document.addEventListener("click",(ev)=>{if(!root.contains(ev.target))el.calendar?.classList.remove("is-open")});
+
+    el.form?.addEventListener("submit",(ev)=>{
+      ev.preventDefault();
+      if(!selectedRow||!el.people.value){el.date.focus();return;}
+      const qty=Number(el.people.value), total=Number(selectedRow.price)*qty;
+      const msg=[
+        "CappadociaGo - Reservation Request",
+        `Tour: ${tourTitle}`,
+        `Name: ${el.name.value}`,
+        `Phone: ${el.phone.value}`,
+        `Date: ${el.date.value}`,
+        `People: ${qty}`,
+        `Price: ${askForPrice?c.priceOnRequest:money(selectedRow.price)}`,
+        `Total price: ${askForPrice?c.priceOnRequest:money(total)}`,
+        el.message.value?`Message: ${el.message.value}`:""
+      ].filter(Boolean).join("\n");
+      window.open(`https://wa.me/905401015050?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+    });
+
+    (async()=>{try{if(!SUPABASE_URL||!SUPABASE_KEY)throw new Error("Supabase env missing");await loadProduct();await refresh()}catch(e){console.error(e);if(el.start)el.start.textContent=money(fallbackPrice);if(el.days)el.days.innerHTML=`<div class="lbc-cal-message">${c.error}</div>`}})();
+  });
+})();
+</script>

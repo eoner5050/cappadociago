@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "en",
+  slug: "nevsehir-airport-shuttle-transfer",
+  title: "Nevşehir Airport Shuttle Transfer",
+  hero: "Comfortable and scheduled shuttle transportation between Nevşehir Cappadocia Airport (NAV) and Cappadocia hotels.",
+  image: "/images/tours/Nevsehir-Airport-NAV-Shuttle-Transfer.webp",
+  rating: "4.80",
+  reviewCount: 9,
+  duration: "Scheduled Transfer",
+  price: "15 €",
+  badges: ["Nevşehir NAV", "Shuttle", "Hotel Transfer"],
+  sections: [{"title": "Transfer Service", "paragraphs": ["We organize scheduled shuttle transfers from Nevşehir Cappadocia Airport (NAV) to your hotel or from your Cappadocia hotel to the airport. Departure times are coordinated with your flight.", "Our driver welcomes passengers at the designated arrivals meeting area and transfers them to Cappadocia hotels with organized luggage assistance."]}, {"title": "Why Choose This Service?", "paragraphs": ["Nevşehir Airport is a convenient arrival point for Cappadocia. A pre-booked shuttle makes the airport-to-hotel journey simple and avoids last-minute transportation problems.", "Hotel-to-airport return service can also be arranged according to your departure flight."]}],
+  included: ["Airport meet & greet", "One-way shared shuttle transfer", "Luggage assistance", "Standard airport waiting time", "Vehicle, driver and fuel"],
+  notIncluded: ["Personal expenses", "Extra stops outside the scheduled route"],
+  highlights: ["Nevşehir Cappadocia Airport (NAV)", "Cappadocia hotel transfer", "Flight-based scheduling", "Fast WhatsApp reservation"],
+  gallery: ["/images/tours/Nevsehir-Airport-NAV-Shuttle-Transfer.webp", "/images/tours/Nevsehir-Airport-NAV-Shuttle-Transfer.webp", "/images/tours/Nevsehir-Airport-NAV-Shuttle-Transfer.webp", "/images/tours/Nevsehir-Airport-NAV-Shuttle-Transfer.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

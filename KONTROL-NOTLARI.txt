@@ -1,0 +1,46 @@
+CAPPADOCIAGO - KONTROL EDİLMİŞ SÜRÜM
+
+Yapılan düzeltmeler:
+- EN / TR / ES rezervasyon takvimleri tek mantığa getirildi.
+- Türkçe ve İspanyolca takvim ayları, durum metinleri ve kişi seçimleri kendi dilinde gösteriliyor.
+- Takvim hücrelerinin sağa taşma / birleşme sorunu için global takvim CSS'i düzeltildi.
+- Müsait, Kapalı, Dolu ve kalan kontenjan durumları Supabase availability tablosundan okunuyor.
+- availability kaydı olmayan ileri tarihler ürünün default_price ve default_capacity değerini kullanıyor.
+- Başlayan fiyat, ürünün varsayılan fiyatı ve gelecekteki müsait özel fiyatlar arasındaki en düşük pozitif fiyatı gösteriyor.
+- Kişi sayısı seçilince kişi başı fiyat ve toplam fiyat hesaplanıyor.
+- “Çocuklar da kişi sayısına dahildir” notu EN / TR / ES dillerine göre gösteriliyor.
+- Rezervasyon gönderimi WhatsApp'a ad, telefon, tarih, kişi sayısı, kişi başı ve toplam fiyatla hazırlanıyor.
+- ActivityDetailPage ve TransferDetailPage kullanan tüm aktivite / transfer sayfalarına canlı takvim eklendi.
+- Göreme Comfort, Göreme Standard, Red, Green ve Private Mix sayfalarının üç dilde eski sabit takvim kodları kaldırılıp canlı Supabase takvimine geçirildi.
+- Yeni sayfalar EN / TR / ES olarak eklendi:
+  * Soğanlı Valley Balloon Tour
+  * Ihlara Valley Balloons Tour
+  * Pamukkale Balloons Tour
+  * Turkish Night With Cave Dinner Cappadocia
+  * Balloons Watching Tour Cappadocia
+- Ana liste / balon turu kartlarındaki bu sayfaların linkleri düzeltildi.
+- i18n dosyalarındaki bu ürünlerin boş linkleri ve bazı İspanyolca metin hataları düzeltildi.
+- Tüm .astro frontmatter ve normal script blokları Node sözdizimi kontrolünden geçirildi.
+
+KURULUM:
+1) Mevcut .env dosyanızı KORUYUN. Bu pakette güvenlik için .env yoktur.
+2) Bu paketi proje klasörünüzün üzerine kopyalayın.
+3) Supabase > SQL Editor içinde bir kez:
+   supabase/live-booking-update.sql
+   dosyasındaki SQL'i çalıştırın.
+4) Terminal:
+   npm install
+   npm run dev
+5) EN / TR / ES sayfalarda tarih takvimini test edin.
+
+NOT:
+- E-posta otomatik gönderimi henüz bağlı değildir.
+- WhatsApp rezervasyon mesajı hazır şekilde açılır; normal WhatsApp kullanımında müşteri son “Gönder” işlemini yapar.
+
+
+ANA SAYFA GUNCELLEMESI - 13.08.2026
+- Balloon Tours ust menu baglantisi /{lang}/balloon-tours/ rotasina duzeltildi.
+- Ana sayfadaki "Private Tour & Mix Tour" kart adi "Cappadocia Mix Tour" olarak degistirildi.
+- 2-Day Private Cappadocia Package Tour ana sayfa karti kaldirildi.
+- 3-Day All-Inclusive Cappadocia Package Tour ana sayfa karti kaldirildi.
+- Degisiklikler EN/TR/ES kart verilerine uygulandi.

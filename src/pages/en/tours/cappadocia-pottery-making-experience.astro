@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "en",
+  slug: "cappadocia-pottery-making-experience",
+  title: "Cappadocia Pottery Making Experience",
+  hero: "Discover Avanos pottery culture with a short hands-on pottery experience, hotel transfer and time to explore traditional ceramic craftsmanship.",
+  image: "/images/tours/tbc-cappadocia-pottery-making-experience.webp",
+  rating: "4.60",
+  reviewCount: 11,
+  duration: "20 Minutes",
+  price: "15 €",
+  badges: ["Pottery", "20 Minutes", "Hotel Transfer"],
+  sections: [{"title": "Cappadocia Pottery Making Experience – Unique Experience", "paragraphs": ["Avanos is famous for pottery making and ceramic craftsmanship shaped by the red clay of the Kızılırmak River. This short activity introduces you to a traditional workshop and the basics of pottery making.", "The experience takes about 20 minutes. You are picked up from your hotel, taken to the workshop and returned after the program."]}, {"title": "About Avanos Pottery", "paragraphs": ["Pottery has been part of Avanos culture for centuries. During the visit you can watch local artisans, try the pottery wheel and browse handmade ceramic products."]}],
+  included: ["Hotel pickup and drop-off", "10–15 minute pottery making practice", "Pottery shopping opportunity", "Soft drinks", "Vehicle, driver and fuel"],
+  notIncluded: [],
+  highlights: ["Hands-on pottery wheel experience", "Traditional Avanos workshop", "Short and easy activity", "Hotel transfer included"],
+  gallery: ["/images/tours/tbc-cappadocia-pottery-making-experience.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

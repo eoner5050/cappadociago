@@ -1,0 +1,76 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import StandardizedPrivateTourPage from '../../../components/StandardizedPrivateTourPage.astro';
+const props = {
+  "title": "Paquete Personalizado de Capadocia",
+  "heroDesc": "Tu sueño, nuestra experiencia en Capadocia: crea un paquete a medida según los días de estancia y las actividades que quieres vivir.",
+  "overviewTitle": "Resumen del Paquete Personalizado",
+  "overviewParagraphs": [
+    "Personaliza tus vacaciones en Capadocia según tus preferencias. Diseñamos un paquete a medida que combina tours emblemáticos, actividades de aventura y experiencias culturales según los días de estancia.",
+    "Indícanos cuánto tiempo estarás en Capadocia y qué experiencias te interesan; nuestro equipo preparará un itinerario práctico."
+  ],
+  "priceTitle": "Precio del Paquete Personalizado",
+  "priceText": "Consultar Precio. La cotización se prepara según el tamaño del grupo, número de días, tours, actividades, traslados y otros servicios solicitados.",
+  "included": [
+    "Planificación de itinerario a medida",
+    "Tour Rojo o Verde Privado",
+    "Opción de añadir vuelo en globo al amanecer",
+    "Opciones de ATV, paseo a caballo o Jeep Safari",
+    "Traslados al aeropuerto y vehículo privado",
+    "Asistencia de consultor de viaje"
+  ],
+  "importantTitle": "Menú de Actividades",
+  "important": [
+    "Exploración Cultural: Tour Rojo Privado o Tour Verde Privado",
+    "Experiencia en el Cielo: Vuelo en Globo al Amanecer",
+    "ATV Safari por los valles",
+    "Paseo a Caballo por la Tierra de los Bellos Caballos",
+    "Jeep Safari por picos y valles de difícil acceso"
+  ],
+  "detailsTitle": "Ejemplo de Paquete de 3 Días",
+  "details": [
+    "Día 1: Llegada, check-in y Tour Rojo Privado.",
+    "Día 2: Globo al amanecer y Tour Verde Privado.",
+    "Día 3: ATV al amanecer o paseo a caballo, city tour y salida."
+  ],
+  "extraSections": [
+    {
+      "title": "¿Cómo Funciona?",
+      "paragraphs": [
+        "Planificamos el programa según la duración de tu estancia y tus preferencias. El ejemplo es solo un borrador y puede modificarse."
+      ]
+    },
+    {
+      "title": "¿Por Qué Planificar con Nosotros?",
+      "items": [
+        "Total flexibilidad: elige solo los tours que deseas",
+        "Comodidad integral con traslados, vehículos privados y guías profesionales",
+        "Precio personalizado según grupo y actividades"
+      ]
+    }
+  ],
+  "duration": "Flexible",
+  "rating": "",
+  "mainImage": "/images/tours/Cappadocia-Package-Tour.webp",
+  "galleryImages": [
+    "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+    "/images/tours/Private-Red-Tour-Cappadocia.webp",
+    "/images/tours/Private-Green-Tour-Cappadocia.webp",
+    "/images/tours/ATV-Tour-With-Goreme-Valleys.webp"
+  ],
+  "priceMode": "ask",
+  "sidebarBadges": [
+    "A Medida",
+    "Días Flexibles",
+    "Consultar Precio"
+  ],
+  "sideHighlights": [
+    "Elige solo las experiencias que quieras",
+    "Combina globo, tours y actividades",
+    "Opciones de traslado privado",
+    "Consultor personal de viaje"
+  ]
+};
+---
+<StandardizedPrivateTourPage lang="es" slug="cappadocia-custom-package-tour" {...props} />
+<FloatingAssistant lang="es" />

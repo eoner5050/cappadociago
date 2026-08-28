@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "tr",
+  slug: "photo-shoot-flying-dress-experience",
+  title: "Fotoğraf Çekimi ve Uçuşan Elbise Deneyimi",
+  hero: "Kapadokya'nın etkileyici vadilerinde özel profesyonel fotoğraf çekimi ve uçuşan elbise konseptiyle unutulmaz kareler oluşturun.",
+  image: "/images/tours/Photo-Shoot-and-Flying-Dress-Experience.webp",
+  rating: "4.78",
+  reviewCount: 9,
+  duration: "2 Saat",
+  price: "Price on Request",
+  badges: ["Özel Çekim", "Özel Elbise", "Profesyonel Düzenleme"],
+  sections: [{"title": "Özel Fotoğraf Çekimi Deneyimi", "paragraphs": ["Deneyim, Kapadokya'nın doğal manzaralarını özel profesyonel fotoğrafçıyla birleştirir. Her kare seçtiğiniz konsept, lokasyon ve elbise stiline göre planlanır."]}, {"title": "Kimler İçin Uygun?", "paragraphs": ["Kapadokya vadileri ve kaya oluşumlarında yüksek kaliteli fotoğraf isteyen solo gezginler, çiftler ve aileler için uygundur."]}, {"title": "Fotoğraf Çekim Lokasyonları", "paragraphs": ["Çavuşin Kalesi, Aşk Vadisi ve Gül Vadisi kullanılabilecek lokasyonlardandır. Kesin yerler ışık, hava ve konsepte göre belirlenir."]}],
+  included: ["Özel profesyonel fotoğrafçı", "Özel elbise konsepti", "20 profesyonel düzenlenmiş seçili fotoğraf", "Özel klimalı ulaşım", "Lokasyon planlaması"],
+  notIncluded: [],
+  highlights: ["Çavuşin Kalesi", "Aşk Vadisi", "Gül Vadisi", "Özel fotoğraf çekimi"],
+  gallery: ["/images/tours/Photo-Shoot-and-Flying-Dress-Experience.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

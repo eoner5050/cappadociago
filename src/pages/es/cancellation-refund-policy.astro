@@ -1,0 +1,8 @@
+---
+import FloatingAssistant from "../../components/FloatingAssistant.astro";
+import LegalPage from "../../components/LegalPage.astro";
+import { legalContent } from "../../data/legalContent";
+const doc = legalContent["cancellation"];
+---
+<LegalPage lang="es" title={doc.title} paragraphs={doc.paragraphs} />
+<FloatingAssistant lang="es" />

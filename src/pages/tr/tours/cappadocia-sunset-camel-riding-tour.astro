@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "tr",
+  slug: "cappadocia-sunset-camel-riding-tour",
+  title: "Kapadokya Gün Batımı Deve Turu",
+  hero: "Özellikle gün batımında vadiler ve panoramik manzaralar arasında rehberli deve turuyla Kapadokya'yı farklı bir açıdan deneyimleyin.",
+  image: "/images/tours/Cappadocia-Sunset-Camel-Riding-Tour.webp",
+  rating: "4.50",
+  reviewCount: 5,
+  duration: "1,5 Saat",
+  price: "55 €",
+  badges: ["Deve Turu", "Gün Batımı", "Otel Transferi"],
+  sections: [{"title": "Kapadokya Deve Turu Hakkında", "paragraphs": ["Deve turu Kapadokya vadileri ve kaya oluşumlarını sakin bir tempoda keşfetmenin keyifli bir yoludur. Tur rehberlidir ve sıcak ışık ile manzara için gün batımı saatlerine göre planlanabilir."]}, {"title": "Deve Turu Deneyimi", "paragraphs": ["Otel transferinden sonra develerle tanışır ve kısa bir bilgilendirme alırsınız. Rota sakin tempoda ilerler, manzarayı izlemek ve fotoğraf çekmek için uygundur."]}, {"title": "Önemli Bilgi", "paragraphs": ["Rahat kıyafetler tavsiye edilir. Bu aktivite bazı hareket kısıtlılığı veya sağlık durumları bulunan misafirler için uygun olmayabilir."]}],
+  included: ["Gidiş-dönüş otel transferi", "Tam sigorta", "Deve binme deneyimi", "Uzman yerel rehber", "Tüm ekipman"],
+  notIncluded: ["Kişisel harcamalar", "Yiyecek ve içecekler"],
+  highlights: ["Gün batımı vadi manzarası", "Rehberli deve turu", "Otel transferi", "Fotoğraf durakları"],
+  gallery: ["/images/tours/Cappadocia-Sunset-Camel-Riding-Tour.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />

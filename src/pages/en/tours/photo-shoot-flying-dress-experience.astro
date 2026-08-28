@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "en",
+  slug: "photo-shoot-flying-dress-experience",
+  title: "Photo Shoot & Flying Dress Experience",
+  hero: "Create unforgettable photographs in Cappadocia's dramatic valleys with a private professional photo shoot and special flying-dress concept.",
+  image: "/images/tours/Photo-Shoot-and-Flying-Dress-Experience.webp",
+  rating: "4.78",
+  reviewCount: 9,
+  duration: "2 Hours",
+  price: "Price on Request",
+  badges: ["Private Shoot", "Special Dress", "Professional Editing"],
+  sections: [{"title": "Private Photo Shoot Experience", "paragraphs": ["The experience combines Cappadocia's natural landscapes with a private professional photographer. Each frame is planned around your chosen concept, location and dress style."]}, {"title": "Who Is This Experience Suitable For?", "paragraphs": ["Suitable for solo travelers, couples and families who want high-quality photographs in Cappadocia's valleys and rock formations."]}, {"title": "Photo Shoot Locations", "paragraphs": ["Possible locations include Çavuşin Castle, Love Valley and Rose Valley. Final locations depend on light, weather and the selected concept."]}],
+  included: ["Private professional photographer", "Special dress concept", "20 professionally edited selected photos", "Private air-conditioned transportation", "Location planning"],
+  notIncluded: [],
+  highlights: ["Çavuşin Castle", "Love Valley", "Rose Valley", "Private photo session"],
+  gallery: ["/images/tours/Photo-Shoot-and-Flying-Dress-Experience.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

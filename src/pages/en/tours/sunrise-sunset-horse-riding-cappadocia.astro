@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "en",
+  slug: "sunrise-sunset-horse-riding-cappadocia",
+  title: "Sunrise or Sunset Horse Riding Cappadocia",
+  hero: "Explore Cappadocia's valleys on horseback during the magical light of sunrise or sunset, with guided riding and scenic photo stops.",
+  image: "/images/tours/Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp",
+  rating: "4.80",
+  reviewCount: 39,
+  duration: "1.5 Hours",
+  price: "35 €",
+  badges: ["Horse Riding", "Sunrise / Sunset", "Guided Tour"],
+  sections: [{"title": "Horse Riding Experience", "paragraphs": ["Ride through selected Cappadocia valleys with an experienced local guide. Sunrise and sunset departures are especially popular because of the soft light and panoramic views."]}, {"title": "Who Is It Suitable For?", "paragraphs": ["Suitable for beginners and guests with previous riding experience. The exact route and pace are adjusted according to conditions and rider ability."]}, {"title": "Scenery and Photo Stops", "paragraphs": ["The route focuses on valleys, rock formations and open viewpoints where short stops can be made for photographs."]}],
+  included: ["Guided horse ride", "Safety briefing", "Selected sunrise or sunset departure", "Basic riding equipment", "Local guide support"],
+  notIncluded: [],
+  highlights: ["Sunrise or sunset option", "Valley scenery", "Guided riding", "Photo stops"],
+  gallery: ["/images/tours/Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="en" />

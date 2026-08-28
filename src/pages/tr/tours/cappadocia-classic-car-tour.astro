@@ -1,0 +1,25 @@
+---
+import FloatingAssistant from "../../../components/FloatingAssistant.astro";
+import ActivityDetailPage from "../../../components/ActivityDetailPage.astro";
+
+const data = {
+  lang: "tr",
+  slug: "cappadocia-classic-car-tour",
+  title: "Kapadokya Klasik Araba Turu",
+  hero: "Klasik bir araçla Kapadokya vadileri ve manzara noktalarında nostaljik özel bir sürüş deneyimi yaşayın; gün doğumu, gün batımı veya gündüz seçeneklerinden birini tercih edin.",
+  image: "/images/tours/Cappadocia-Classic-Car-Tour.webp",
+  rating: "4.56",
+  reviewCount: 8,
+  duration: "1 Saat",
+  price: "60 €",
+  badges: ["Klasik Araba", "Fotoğraf", "Özel Sürüş"],
+  sections: [{"title": "Kapadokya Klasik Araba Turu Hakkında", "paragraphs": ["Bu tur, nostaljik klasik araçla özel gezi ve fotoğraf deneyimi isteyen misafirler için hazırlanmıştır. Rota hava, trafik ve tercih ettiğiniz saate göre planlanabilir."]}, {"title": "Klasik Araba Turu Fiyatı", "paragraphs": ["Klasik araba deneyimi saatlik 60 Euro'dan başlamaktadır. Güncel araç müsaitliği ve en uygun çekim saati için bizimle iletişime geçebilirsiniz."]}, {"title": "Öne Çıkan Lokasyonlar", "paragraphs": ["Aşk Vadisi, Gül Vadisi ve Göreme manzara noktaları popüler duraklardır. Kesin rota koşullara göre değişebilir."]}],
+  included: ["Özel klasik araç", "Profesyonel sürücü", "Otel transfer desteği", "Esnek gün doğumu/gün batımı planı", "Vadilerde fotoğraf durakları"],
+  notIncluded: [],
+  highlights: ["Aşk Vadisi", "Gül Vadisi", "Göreme manzara alanı", "Özel fotoğraf durakları"],
+  gallery: ["/images/tours/Cappadocia-Classic-Car-Tour.webp", "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp", "/images/tours/tbc-green-tour-cappadocia.webp", "/images/tours/Red-Tour-Cappadocia.webp"],
+};
+---
+
+<ActivityDetailPage {...data} />
+<FloatingAssistant lang="tr" />
