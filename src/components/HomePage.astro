@@ -420,7 +420,7 @@ const homepageReviews = [
       <!-- Hero Görseli: Vercel üzerinden yerel olarak servis edilir -->
       <picture class="tbc-mobile-hero">
         <img
-          src="/images/hot-air-balloons-at-sunrise-in-cappadocia-turkey-2021-08-26-19-00-17-utc-min-1-scaled.webp"
+          src="/images/Cappadocia-20.webp"
           alt={seo.heroAlt}
           width="799"
           height="600"
@@ -3887,3 +3887,45 @@ body{background:#fff!important}
 </style>
 
 <link rel="stylesheet" href="/cappadociago-brand-v2.css" />
+
+
+<style is:global>
+/* HERO IMAGE REFRESH — user supplied Cappadocia-20.webp */
+.tbc-video-hero{
+  background:#244d72!important;
+  overflow:hidden!important;
+}
+.tbc-mobile-hero{
+  overflow:hidden!important;
+  transform:translateZ(0)!important;
+}
+.tbc-mobile-hero img{
+  object-position:center 49%!important;
+  filter:saturate(.98) brightness(.92) contrast(1.01)!important;
+  transform:scale(1.035)!important;
+  animation:cgHeroDrift 20s ease-in-out infinite alternate!important;
+  will-change:transform!important;
+}
+.tbc-video-overlay{
+  background:linear-gradient(90deg,rgba(10,43,76,.49) 0%,rgba(16,50,82,.39) 50%,rgba(15,44,72,.34) 100%)!important;
+}
+.tbc-video-title{
+  text-shadow:0 2px 16px rgba(4,27,51,.20)!important;
+}
+.tbc-video-text{
+  color:rgba(255,255,255,.94)!important;
+  text-shadow:0 1px 5px rgba(5,32,58,.28)!important;
+}
+@keyframes cgHeroDrift{
+  0%{transform:scale(1.035) translate3d(-.35%,0,0)}
+  50%{transform:scale(1.065) translate3d(.25%,-.45%,0)}
+  100%{transform:scale(1.045) translate3d(.65%,0,0)}
+}
+@media(max-width:680px){
+  .tbc-mobile-hero img{object-position:center 48%!important;animation-duration:17s!important}
+  .tbc-video-overlay{background:linear-gradient(180deg,rgba(10,42,73,.40),rgba(10,42,73,.50))!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .tbc-mobile-hero img{animation:none!important;transform:scale(1.035)!important}
+}
+</style>
