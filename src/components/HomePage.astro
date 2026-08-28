@@ -434,7 +434,7 @@ const homepageReviews = [
 
       <div class="tbc-video-content">
         <span class="tbc-video-kicker">
-          {lang === "tr" ? "KAPADOKYA’YI BİZİMLE KEŞFEDİN" : lang === "es" ? "DESCUBRE CAPADOCIA CON NOSOTROS" : "DISCOVER CAPPADOCIA WITH US"}
+          {lang === "tr" ? "KAPADOKYA’YI KEŞFEDİN" : lang === "es" ? "DESCUBRE CAPADOCIA" : "DISCOVER CAPPADOCIA"}
         </span>
 
         <h1 class="tbc-video-title">
@@ -442,7 +442,7 @@ const homepageReviews = [
         </h1>
 
         <p class="tbc-video-text">
-          {lang === "tr" ? "Balon uçuşlarından günlük turlara, safari aktivitelerinden havalimanı transferlerine kadar Kapadokya’daki en özel deneyimleri tek yerde planlayın." : lang === "es" ? "Planifica en un solo lugar vuelos en globo, tours diarios, safaris, actividades y traslados al aeropuerto en Capadocia." : "From sunrise balloon flights to daily tours, safari adventures and airport transfers, plan Cappadocia’s most memorable experiences in one place."}
+          {lang === "tr" ? "CappadociaGo ile Kapadokya’yı keşfedin. Gün doğumu balon uçuşlarını, Red & Green turları, ATV ve Jeep safarilerini, at turlarını ve havalimanı transferlerini yerel destekle tek yerde karşılaştırın." : lang === "es" ? "Descubre Capadocia con CappadociaGo. Compara vuelos en globo al amanecer, Red & Green Tours, safaris en ATV y Jeep, paseos a caballo y traslados al aeropuerto con asistencia local." : "Discover Cappadocia with CappadociaGo. Compare sunrise hot air balloon flights, Red & Green Tours, ATV and Jeep safaris, horse riding and airport transfers — all with local support in one place."}
         </p>
 
         <div class="tbc-video-actions">
@@ -3444,4 +3444,40 @@ body{background:var(--cg-bg)!important;color:#0b1d36!important}
 .category-tabs-section{background:#fff!important;border-color:#e2eaf2!important}.tab-item{color:#60728a!important}.tab-item.active,.tab-item:hover{background:var(--cg-blue)!important;color:#fff!important;border-color:var(--cg-blue)!important}.slider-arrow{background:#fff!important;color:var(--cg-blue)!important;border-color:#cbddea!important}.cat-card{border-radius:18px!important;border:1px solid #dbe6ef!important}.cat-overlay{background:linear-gradient(0deg,rgba(4,31,73,.78),transparent 75%)!important}.cat-overlay h3{color:#fff!important}
 @media(max-width:980px){.tours-grid{grid-template-columns:1fr!important}.tour-card-style2{grid-template-columns:42% 58%!important}}
 @media(max-width:620px){.site-header .header-container{height:76px!important}.site-header .logo img{height:60px!important}.tour-card-style2{grid-template-columns:1fr!important}.card-img-box{min-height:205px!important;height:205px!important}.card-body-box{padding:16px!important}.card-title-text{font-size:18px!important}.tours-grid{gap:14px!important}}
+</style>
+
+<style is:global>
+/* CappadociaGo premium marketplace refinement */
+.site-header{background:#fff!important;border-bottom:1px solid #e8edf3!important;box-shadow:0 5px 24px rgba(5,34,77,.035)!important;}
+.site-header .header-container{max-width:1440px!important;height:92px!important;padding:0 38px!important;}
+.site-header .logo img{height:68px!important;width:auto!important;object-fit:contain!important;}
+.header-instagram{border:1px solid #dbe6f0!important;background:#fff!important;border-radius:999px!important;padding:9px 13px!important;box-shadow:0 4px 14px rgba(7,45,99,.045)!important;font-size:11px!important;font-weight:700!important;color:#123f8c!important;}
+.main-nav ul{gap:30px!important;}
+.main-nav a{font-family:Georgia,'Times New Roman',serif!important;font-size:14.5px!important;font-weight:600!important;letter-spacing:.005em!important;color:#10264c!important;position:relative!important;padding:34px 0!important;}
+.main-nav a:after{content:'';position:absolute;left:0;right:100%;bottom:25px;height:2px;background:linear-gradient(90deg,#123f8c,#c9962f);transition:.2s ease;}
+.main-nav a:hover:after{right:0;}
+.lang-btn,.whatsapp-btn{border:1px solid #d5e1ec!important;background:#fff!important;border-radius:999px!important;min-height:42px!important;}
+.whatsapp-btn{color:#10264c!important;font-size:12px!important;font-weight:800!important;}
+.tbc-video-overlay{background:linear-gradient(90deg,rgba(7,28,59,.83) 0%,rgba(11,45,91,.66) 48%,rgba(8,27,57,.40) 100%)!important;}
+.tbc-video-kicker{background:rgba(255,255,255,.10)!important;border:1px solid rgba(255,255,255,.35)!important;border-radius:999px!important;padding:9px 18px!important;letter-spacing:.16em!important;}
+.tbc-video-title{max-width:980px!important;font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(44px,5.1vw,76px)!important;line-height:1.03!important;font-weight:700!important;letter-spacing:-.035em!important;}
+.tbc-video-text{max-width:780px!important;font-size:15px!important;line-height:1.75!important;}
+/* compact premium tour comparison cards */
+.tours-section{background:#fbfcfe!important;}
+.tours-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;}
+.tour-card-style2{position:relative!important;display:grid!important;grid-template-columns:78px 1fr!important;grid-template-rows:auto!important;min-height:255px!important;padding:20px 18px!important;background:#fff!important;border:1px solid #dce5ee!important;border-radius:20px!important;box-shadow:0 12px 34px rgba(6,42,91,.055)!important;overflow:hidden!important;}
+.tour-card-style2:hover{transform:translateY(-3px)!important;box-shadow:0 17px 38px rgba(6,42,91,.10)!important;border-color:#c5d6e6!important;}
+.card-img-box{width:66px!important;height:66px!important;min-height:66px!important;border-radius:14px!important;overflow:hidden!important;margin:0!important;align-self:start!important;box-shadow:0 6px 16px rgba(7,45,99,.09)!important;}
+.card-img-box img{width:100%!important;height:100%!important;object-fit:cover!important;}
+.rating-badge{position:absolute!important;top:18px!important;right:18px!important;left:auto!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;color:#12264d!important;font-size:12px!important;font-weight:800!important;}
+.card-body-box{padding:0 0 0 12px!important;display:flex!important;flex-direction:column!important;min-width:0!important;}
+.duration-text{order:2!important;color:#60738a!important;font-size:10.5px!important;font-weight:600!important;margin:14px 0 8px!important;}
+.card-title-text{order:1!important;padding-right:54px!important;font-family:Georgia,'Times New Roman',serif!important;color:#123f8c!important;font-size:20px!important;line-height:1.06!important;letter-spacing:-.025em!important;min-height:66px!important;margin:0!important;}
+.tag-row{order:3!important;border-top:1px solid #e8edf3!important;padding-top:12px!important;margin-top:4px!important;display:flex!important;gap:6px!important;flex-wrap:wrap!important;}
+.discount-tag,.status-tag{font-size:9.5px!important;padding:5px 8px!important;border-radius:999px!important;}
+.card-price-box{order:4!important;margin-top:auto!important;padding-top:14px!important;border-top:1px solid #edf1f5!important;}
+.current-price{font-family:Georgia,'Times New Roman',serif!important;color:#123f8c!important;font-size:27px!important;}
+.starting-text{font-size:9px!important;letter-spacing:.06em!important;}
+@media(max-width:1120px){.tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
+@media(max-width:720px){.site-header .header-container{height:76px!important;padding:0 16px!important}.site-header .logo img{height:56px!important}.tours-grid{grid-template-columns:1fr!important}.tour-card-style2{min-height:230px!important}.main-nav{display:none!important;}}
 </style>

@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 
 <nav>
   <div class="wrap">
-    <a href="/" class="logo-mark"><img src="/images/logo.png" alt="CappadociaGo" /></a>
+    <div class="brand-cluster"><a href="/" class="logo-mark"><img src="/images/logo.png" alt="CappadociaGo" /></a><a class="ig-pill" href="https://www.instagram.com/cappadociago/" target="_blank" rel="noopener noreferrer">◎ @cappadociago</a></div>
     <ul class="nav-menu">
       <li><a href="#tours">Balloon Tours</a></li>
       <li><a href="#tours">Daily Tours</a></li>
@@ -27,9 +27,9 @@ import Layout from '../layouts/Layout.astro';
 <header class="hero">
   <div class="hero-top">
     <div class="wrap">
-      <span class="eyebrow-pill">CappadociaGo</span>
-      <h1 class="hero-title">Discover the Magic of <em class="hero-accent">Cappadocia</em></h1>
-      <p class="hero-sub">Welcome to CappadociaGo. Experience unforgettable sunrise hot air balloon flights, Goreme balloon tours, Green &amp; Red daily tours, ATV safaris, and seamless airport transfers. Book your dream Cappadocia adventure securely today.</p>
+      <span class="eyebrow-pill">DISCOVER CAPPADOCIA</span>
+      <h1 class="hero-title">Sunrise Balloon Flights &amp; <em class="hero-accent">Unforgettable Cappadocia Experiences</em></h1>
+      <p class="hero-sub">Discover Cappadocia with CappadociaGo. Compare sunrise hot air balloon flights, Red &amp; Green Tours, ATV and Jeep safaris, horse riding and airport transfers — all with local support in one place.</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#tours">Explore Tours</a>
         <a class="btn-ghost" href="#">Contact Us</a>
@@ -83,14 +83,14 @@ import Layout from '../layouts/Layout.astro';
     <div class="cat-slider-wrap">
       <button class="cat-arrow cat-arrow-left" id="catArrowLeft" aria-label="Scroll left" type="button">‹</button>
       <div class="cat-slider" id="catSlider">
-        <a href="#tours" class="cat-card" style="background:linear-gradient(135deg,#123F8C,#3E7FE0);"><span>Balloon Tours</span></a>
-        <a href="#tours" class="cat-card" style="background:linear-gradient(135deg,#0A1B3E,#3E7FE0);"><span>Daily Tours</span></a>
-        <a href="#tours" class="cat-card" style="background:linear-gradient(135deg,#6B4A12,#C9962F);"><span>Package Tours</span></a>
-        <a href="#tours" class="cat-card" style="background:linear-gradient(135deg,#1B2E5E,#5B86D6);"><span>Activities</span></a>
+        <a href="#tours" class="cat-card" style="background:url('/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp') center/cover;"><span>Balloon Tours</span></a>
+        <a href="#tours" class="cat-card" style="background:url('/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp') center/cover;"><span>Daily Tours</span></a>
+        <a href="#tours" class="cat-card" style="background:url('/images/tours/tbc-green-tour-cappadocia.webp') center/cover;"><span>Package Tours</span></a>
+        <a href="#tours" class="cat-card" style="background:url('/images/tours/Red-Tour-Cappadocia.webp') center/cover;"><span>Activities</span></a>
         <a href="#tours" class="cat-card" style="background:linear-gradient(135deg,#123F8C,#7EB3FF);"><span>Transfers</span></a>
-        <a href="#tours" class="cat-card" style="background:linear-gradient(135deg,#9C6B1E,#F0D48A);"><span>Private Tours</span></a>
-        <a href="#tours" class="cat-card" style="background:linear-gradient(135deg,#0A1B3E,#123F8C);"><span>Safari Tours</span></a>
-        <a href="#tours" class="cat-card" style="background:linear-gradient(135deg,#3E7FE0,#F0D48A);"><span>Sunset Tours</span></a>
+        <a href="#tours" class="cat-card" style="background:url('/images/tours/Private-Green-Tour-Cappadocia.webp') center/cover;"><span>Private Tours</span></a>
+        <a href="#tours" class="cat-card" style="background:url('/images/tours/Private-Red-Tour-Cappadocia.webp') center/cover;"><span>Safari Tours</span></a>
+        <a href="#tours" class="cat-card" style="background:url('/images/tours/ATV-Tour-With-Goreme-Valleys.webp') center/cover;"><span>Sunset Tours</span></a>
       </div>
       <button class="cat-arrow cat-arrow-right" id="catArrowRight" aria-label="Scroll right" type="button">›</button>
     </div>
@@ -721,4 +721,29 @@ import Layout from '../layouts/Layout.astro';
   .foot-bottom{display:flex;justify-content:space-between;padding-top:22px;font-size:12px;color:#7C88A3;flex-wrap:wrap;gap:8px;}
 
   .wa-float{position:fixed;bottom:22px;right:22px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.25);z-index:60;}
+</style>
+
+<style>
+/* premium header + compact comparison cards */
+nav .wrap{height:92px;max-width:1440px;}
+.brand-cluster{display:flex;align-items:center;gap:13px;}
+.logo-mark img{height:68px!important;}
+.ig-pill{border:1px solid #dbe6f0;background:#fff;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:700;color:#123f8c;box-shadow:0 4px 14px rgba(7,45,99,.045);}
+.nav-menu{gap:30px!important;}
+.nav-menu a{font-family:'Fraunces',Georgia,serif!important;font-size:14.5px!important;font-weight:600!important;color:#10264c!important;position:relative;padding:34px 0!important;}
+.nav-menu a:after{content:'';position:absolute;left:0;right:100%;bottom:25px;height:2px;background:linear-gradient(90deg,#123f8c,#c9962f);transition:.2s ease}.nav-menu a:hover:after{right:0;}
+.hero-title{max-width:1020px!important;font-size:clamp(44px,5.2vw,78px)!important;line-height:1.02!important;}
+.hero-sub{max-width:790px!important;}
+.tours-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;}
+.tour-card{display:grid!important;grid-template-columns:72px 1fr!important;position:relative!important;padding:18px!important;border-radius:20px!important;min-height:245px!important;overflow:hidden!important;box-shadow:0 12px 34px rgba(6,42,91,.055)!important;}
+.tour-img{width:64px!important;height:64px!important;border-radius:14px!important;padding:0!important;overflow:hidden!important;box-shadow:0 6px 16px rgba(7,45,99,.09)!important;}
+.rate-badge{position:absolute!important;top:18px!important;right:18px!important;background:transparent!important;padding:0!important;font-size:12px!important;}
+.tour-body{padding:0 0 0 12px!important;display:flex!important;flex-direction:column!important;}
+.tour-duration{order:2!important;margin:12px 0 8px!important;font-size:10.5px!important;}
+.tour-card h3{order:1!important;font-size:20px!important;line-height:1.06!important;min-height:64px!important;padding-right:52px!important;color:#123f8c!important;}
+.tour-tags{order:3!important;border-top:1px solid #e8edf3!important;padding-top:12px!important;margin-top:2px!important;}
+.price-row{order:4!important;margin-top:auto!important;padding-top:14px!important;}
+.price-new{font-family:'Fraunces',Georgia,serif!important;font-size:27px!important;color:#123f8c!important;}
+@media(max-width:1050px){.tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
+@media(max-width:720px){nav .wrap{height:76px}.ig-pill{display:none}.logo-mark img{height:56px!important}.tours-grid{grid-template-columns:1fr!important}.tour-card{min-height:220px!important;}}
 </style>
