@@ -3829,3 +3829,66 @@ body{background:var(--cg-bg)!important;color:#0b1d36!important}
   .tbc-video-hero{min-height:450px!important}.tbc-video-content{padding:54px 18px 70px!important}.tbc-video-title{font-size:36px!important;line-height:1.06!important}.tbc-video-text{font-size:12.5px!important}
 }
 </style>
+
+<style is:global>
+/* =========================================================
+   HOME FINAL POLISH — spacing, card grid and mobile balance
+   ========================================================= */
+:root{--cg-home-blue:#0b67b2;--cg-home-deep:#0c2f57;--cg-home-navy:#0a2342;--cg-home-gold:#d59a18;--cg-home-sky:#edf6fd;--cg-home-line:#dbe7f0;--cg-home-bg:#f7fbfe}
+body{background:#fff!important}
+.tbc-hero-form{background:#fff!important}
+.tbc-video-hero{border-bottom:1px solid rgba(255,255,255,.12)!important}
+.tbc-video-content{padding-top:62px!important}
+.tbc-video-title{max-width:920px!important}
+.cg-experience-dock{box-shadow:0 14px 38px rgba(9,47,86,.10)!important;border:1px solid #d9e5ef!important;border-top:3px solid var(--cg-home-gold)!important;overflow:hidden!important}
+.cg-experience-dock a{border-color:#e7eef4!important;color:#31516f!important;background:#fff!important}
+.cg-experience-dock a:hover,.cg-experience-dock a.active{background:var(--cg-home-sky)!important;color:var(--cg-home-blue)!important}
+.tbc-booking-wrap{z-index:20!important}
+.tbc-booking-box{padding:16px!important;border-radius:18px!important;background:linear-gradient(135deg,#f7fbff 0%,#eef6fc 72%,#fffaf0 100%)!important;border:1px solid #d8e5ef!important}
+.infinite-slider-section{padding-top:112px!important}
+.tours-section{padding-top:28px!important}
+.tours-section .section-title,.tours-section h2{font-family:'Fraunces',Georgia,serif!important;color:var(--cg-home-navy)!important;letter-spacing:-.035em!important}
+.tours-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;align-items:stretch!important}
+.premium-compare-card{height:100%!important;min-width:0!important;overflow:hidden!important;border:1px solid var(--cg-home-line)!important;box-shadow:0 12px 34px rgba(10,47,83,.07)!important;background:#fff!important}
+.premium-compare-card:hover{transform:translateY(-3px)!important;box-shadow:0 18px 42px rgba(10,47,83,.11)!important;border-color:#c7dae8!important}
+.premium-compare-card .card-title-text{font-family:'Fraunces',Georgia,serif!important;color:var(--cg-home-navy)!important;font-weight:600!important;line-height:1.05!important}
+.premium-compare-card .card-price,.premium-compare-card .live-price{color:var(--cg-home-blue)!important}
+.premium-compare-card .tour-badge,.premium-compare-card .discount-badge{background:#eef8f3!important;color:#178553!important;border-color:#cde9db!important}
+
+@media(max-width:980px){
+  .tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .infinite-slider-section{padding-top:185px!important}
+}
+@media(max-width:680px){
+  .tbc-video-hero{min-height:430px!important}
+  .tbc-video-content{padding:46px 16px 64px!important}
+  .tbc-video-title{font-size:32px!important;line-height:1.06!important;max-width:390px!important}
+  .tbc-video-text{font-size:11.5px!important;line-height:1.55!important;max-width:360px!important}
+  .tbc-booking-wrap{bottom:-212px!important;width:calc(100% - 14px)!important}
+  .tbc-booking-box{padding:10px!important;border-radius:15px!important}
+  .infinite-slider-section{padding-top:252px!important}
+  .tours-section{padding-left:10px!important;padding-right:10px!important}
+  .tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+  .premium-compare-card{min-height:0!important;border-radius:14px!important}
+  .premium-compare-card .card-head{padding:10px!important;gap:7px!important}
+  .premium-compare-card .card-thumb{width:54px!important;height:54px!important;border-radius:10px!important;flex:0 0 54px!important}
+  .premium-compare-card .card-title-text{font-size:15px!important;line-height:1.02!important}
+  .premium-compare-card .card-selection{font-size:6.5px!important;letter-spacing:.04em!important}
+  .premium-compare-card .card-rating{font-size:9px!important}
+  .premium-compare-card .card-body{padding:0 10px 10px!important}
+  .premium-compare-card .card-description{font-size:9px!important;line-height:1.45!important;min-height:42px!important}
+  .premium-compare-card .feature-grid{grid-template-columns:1fr!important;gap:5px!important;padding:8px 0!important}
+  .premium-compare-card .feature-item{font-size:8px!important;gap:5px!important}
+  .premium-compare-card .feature-item:nth-child(n+3){display:none!important}
+  .premium-compare-card .price-row{padding-top:8px!important;align-items:flex-end!important}
+  .premium-compare-card .price-main{font-size:21px!important}
+  .premium-compare-card .old-price{font-size:9px!important}
+  .premium-compare-card .price-label{font-size:7px!important}
+  .premium-compare-card .tour-badge,.premium-compare-card .discount-badge{font-size:7px!important;padding:4px 6px!important}
+}
+@media(max-width:390px){
+  .tours-grid{gap:7px!important}
+  .premium-compare-card .card-title-text{font-size:14px!important}
+  .premium-compare-card .card-thumb{width:48px!important;height:48px!important;flex-basis:48px!important}
+}
+</style>
