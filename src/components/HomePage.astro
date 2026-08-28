@@ -434,7 +434,7 @@ const homepageReviews = [
 
       <div class="tbc-video-content">
         <span class="tbc-video-kicker">
-          {lang === "tr" ? "CAPPADOCIAGO • KAPADOKYA’YI KEŞFET" : lang === "es" ? "CAPPADOCIAGO • DESCUBRE CAPADOCIA" : "CAPPADOCIAGO • DISCOVER CAPPADOCIA"}
+          CappadociaGo
         </span>
 
         <h1 class="tbc-video-title">
@@ -483,11 +483,7 @@ const homepageReviews = [
       <!-- REZERVASYON FORMU VE ÜZERİNDEKİ ORTALANMIŞ BAŞLIK -->
       <div class="tbc-booking-wrap">
         <div class="external-form-title">
-          {lang === "tr" ? (
-            <>Hayalinizdeki <span class="accent-ready">uçuşa</span> <span class="accent-dreamy">hazır</span> mısınız?</>
-          ) : (
-            <><span class="accent-ready">Ready</span> to float over <span class="accent-cappadocia">Cappadocia</span> at sunrise?</>
-          )}
+          Plan Your Flight & Tour with <span class="booking-brand-blue">Cappadocia</span><span class="booking-brand-gold">Go</span>
         </div>
         <div class="tbc-booking-box">
           <form id="tbcBookingForm">
@@ -4188,5 +4184,60 @@ body{background:#fff!important}
   .tbc-trust-point{font-size:9px!important;}
   .external-form-title{font-size:28px!important;margin-bottom:9px!important;}
   .tbc-booking-wrap{bottom:10px!important;width:calc(100% - 16px)!important;}
+}
+
+
+/* =========================================================
+   FINAL HERO CENTERING + BOOKING HEADING TUNE
+   2026-08-29 — preserves booking controls/date picker logic
+   ========================================================= */
+@media (min-width:1001px){
+  .tbc-video-content{
+    position:absolute!important;
+    left:50%!important;
+    top:45.5%!important;
+    transform:translate(-50%,-50%)!important;
+    width:min(900px,calc(100% - 40px))!important;
+    max-width:900px!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .tbc-video-kicker{
+    margin-bottom:20px!important;
+    text-transform:none!important;
+    letter-spacing:.035em!important;
+    font-size:11px!important;
+    padding:8px 18px!important;
+  }
+  .tbc-video-title{margin-bottom:25px!important;}
+  .tbc-video-text{margin-bottom:20px!important;}
+  .tbc-video-actions{margin-bottom:18px!important;}
+}
+
+.external-form-title{
+  font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
+  font-size:clamp(27px,2.25vw,36px)!important;
+  line-height:1.12!important;
+  font-weight:600!important;
+  letter-spacing:-.025em!important;
+  color:#f7fbff!important;
+  text-shadow:0 2px 12px rgba(3,23,46,.12)!important;
+}
+.external-form-title .booking-brand-blue{color:#39a4f2!important;}
+.external-form-title .booking-brand-gold{color:#e6aa12!important;}
+
+@media (max-width:1000px){
+  .tbc-video-content{
+    padding-top:105px!important;
+  }
+}
+@media (max-width:680px){
+  .tbc-video-content{
+    padding-top:88px!important;
+  }
+  .external-form-title{
+    font-size:24px!important;
+    line-height:1.16!important;
+  }
 }
 </style>
