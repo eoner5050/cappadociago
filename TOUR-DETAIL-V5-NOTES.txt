@@ -1,0 +1,9 @@
+CappadociaGo Tour Detail V5
+- All 66 EN/TR/ES tour detail pages inherit the same homepage blue/navy/gold theme.
+- Gallery changed from 1+2x2 collage to a wide cinematic image with a 4-thumbnail rail.
+- Review/comment sections are removed from the visible UI, including the review badge/link.
+- Detail headings use Fraunces, body copy uses Plus Jakarta Sans for softer typography.
+- Booking/calendar logic is untouched; only visual styling is overridden.
+- Homepage hero category dock above booking is removed.
+- All Tours / Balloon Tours / Daily Tours / Private Tours / Transfers / Activities tabs are centered directly above Most Popular Tours.
+- Mobile tour cards remain a 2-column grid from V4.

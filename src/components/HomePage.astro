@@ -489,14 +489,6 @@ const homepageReviews = [
             <><span class="accent-ready">Ready</span> to float over <span class="accent-cappadocia">Cappadocia</span> at sunrise?</>
           )}
         </div>
-        <div class="cg-experience-dock" aria-label="Cappadocia experience categories">
-          <a class="cg-dock-item active" href={`/${lang}/balloon-tours/`}><span class="cg-dock-icon">◉</span><b>{lang === "tr" ? "Balon" : lang === "es" ? "Globos" : "Balloons"}</b></a>
-          <a class="cg-dock-item" href={`/${lang}/cappadocia-tours/`}><span class="cg-dock-icon">◇</span><b>{lang === "tr" ? "Turlar" : lang === "es" ? "Tours" : "Tours"}</b></a>
-          <a class="cg-dock-item" href={`/${lang}/activities/`}><span class="cg-dock-icon">✦</span><b>{lang === "tr" ? "Aktiviteler" : lang === "es" ? "Actividades" : "Activities"}</b></a>
-          <a class="cg-dock-item" href={`/${lang}/private-tours/`}><span class="cg-dock-icon">★</span><b>{lang === "tr" ? "Özel Turlar" : lang === "es" ? "Privados" : "Private"}</b></a>
-          <a class="cg-dock-item" href={`/${lang}/transfers/`}><span class="cg-dock-icon">↗</span><b>{lang === "tr" ? "Transfer" : lang === "es" ? "Traslados" : "Transfers"}</b></a>
-          <a class="cg-dock-item" href="#tours"><span class="cg-dock-icon">⌁</span><b>{lang === "tr" ? "Tümü" : lang === "es" ? "Todos" : "All Tours"}</b></a>
-        </div>
         <div class="tbc-booking-box">
           <form id="tbcBookingForm">
             <input type="hidden" id="tourType" name="Tour Name" required>
@@ -3890,5 +3882,25 @@ body{background:#fff!important}
   .tours-grid{gap:7px!important}
   .premium-compare-card .card-title-text{font-size:14px!important}
   .premium-compare-card .card-thumb{width:48px!important;height:48px!important;flex-basis:48px!important}
+}
+</style>
+
+<style is:global>
+/* FINAL CATEGORY NAV PLACEMENT — centered directly above Most Popular Tours */
+.cg-experience-dock{display:none!important}
+.category-tabs-section{padding:20px 0 4px!important;background:#fff!important;border-bottom:0!important}
+.category-tabs-section .container{display:flex!important;justify-content:center!important}
+.category-tabs{display:flex!important;justify-content:center!important;align-items:center!important;gap:9px!important;overflow-x:auto!important;max-width:100%!important;padding:2px 8px 8px!important;margin:0 auto!important}
+.tab-item{font-family:'Plus Jakarta Sans',Inter,sans-serif!important;font-size:11px!important;font-weight:600!important;letter-spacing:-.01em!important;padding:9px 16px!important;border-radius:999px!important;border:1px solid #cadbea!important;background:#fff!important;color:#536a82!important;box-shadow:none!important}
+.tab-item.active,.tab-item:hover{background:#0b67b2!important;color:#fff!important;border-color:#0b67b2!important}
+.tours-section{padding-top:18px!important}
+.tours-section .section-title{margin-top:0!important;margin-bottom:24px!important;font-size:clamp(29px,3.1vw,42px)!important;font-weight:600!important}
+@media(max-width:680px){
+  .category-tabs-section{padding-top:14px!important}
+  .category-tabs-section .container{padding:0 6px!important}
+  .category-tabs{justify-content:flex-start!important;gap:7px!important;padding-bottom:7px!important}
+  .tab-item{font-size:9px!important;padding:7px 11px!important}
+  .tours-section{padding-top:10px!important}
+  .tours-section .section-title{font-size:27px!important;margin-bottom:18px!important}
 }
 </style>
