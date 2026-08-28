@@ -1,7 +1,4 @@
----
-import { SITE_URL, resolveSeo, canonicalUrl, alternateUrls, normalizePath } from '../data/seoMigrated';
-import { seoAdminOverrides } from '../data/seoAdmin.generated';
-
+﻿---
 const {
   title = 'CappadociaGo',
   description = '',
@@ -11,114 +8,49 @@ const {
   noindex = false,
 } = Astro.props;
 
-const path = Astro.url.pathname;
-const baseSeo = resolveSeo(path, title, description);
-const override = seoAdminOverrides[normalizePath(path)] || {};
+const SITE_URL = 'https://www.cappadociago.com';
 
-const seo = {
-  title: override.title || baseSeo.title,
-  description: override.description || baseSeo.description,
-  focusKeyword: override.focusKeyword || baseSeo.focusKeyword,
-};
+const pathname = Astro.url.pathname;
+const canonical = `${SITE_URL}${pathname === '/' ? '/' : pathname.replace(/\/$/, '')}`;
 
-const canonical = override.canonicalUrl || canonicalUrl(path);
-const alternates = alternateUrls(path);
-const finalNoindex = noindex || override.index === false;
-const schemaType = override.schemaType || 'WebPage';
-
-const socialTitle = override.ogTitle || seo.title;
-const socialDescription = override.ogDescription || seo.description;
-const socialImage = override.ogImage || image;
-
-const imageUrl = socialImage?.startsWith('http')
-  ? socialImage
-  : `${SITE_URL}${socialImage || '/images/logo.png'}`;
-
-const pageSchema = {
-  '@context': 'https://schema.org',
-  '@type': schemaType,
-  name: seo.title,
-  description: seo.description || undefined,
-  url: canonical,
-  inLanguage: lang,
-  isPartOf: {
-    '@type': 'WebSite',
-    name: 'CappadociaGo',
-    url: SITE_URL
-  }
-};
-
-const orgSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'CappadociaGo',
-  url: SITE_URL,
-  logo: `${SITE_URL}/images/logo.png`,
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+90-540-844-00-50',
-    contactType: 'customer service'
-  },
-  sameAs: [
-    'https://www.instagram.com/cappadociago/'
-  ]
-};
+const imageUrl = image?.startsWith('http')
+  ? image
+  : `${SITE_URL}${image || '/images/logo.png'}`;
 ---
 
-<title>{seo.title}</title>
+<title>{title}</title>
 
-{seo.description && <meta name="description" content={seo.description} />}
+{description && (
+  <meta name="description" content={description} />
+)}
 
 <meta
   name="robots"
-  content={finalNoindex
+  content={noindex
     ? 'noindex,nofollow'
     : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}
 />
 
 <link rel="canonical" href={canonical} />
 
-{alternates.map((a) => (
-  <link rel="alternate" hreflang={a.lang} href={a.href} />
-))}
-
-{alternates.length > 0 && (
-  <link
-    rel="alternate"
-    hreflang="x-default"
-    href={alternates.find((a) => a.lang === 'en')?.href}
-  />
-)}
-
-<!-- CappadociaGo favicon -->
 <link rel="icon" type="image/webp" href="/favicon.webp?v=10" />
 
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content="CappadociaGo" />
-<meta property="og:title" content={socialTitle} />
+<meta property="og:title" content={title} />
 
-{socialDescription && (
-  <meta property="og:description" content={socialDescription} />
+{description && (
+  <meta property="og:description" content={description} />
 )}
 
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={imageUrl} />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={socialTitle} />
+<meta name="twitter:title" content={title} />
 
-{socialDescription && (
-  <meta name="twitter:description" content={socialDescription} />
+{description && (
+  <meta name="twitter:description" content={description} />
 )}
 
 <meta name="twitter:image" content={imageUrl} />
-
-<script
-  type="application/ld+json"
-  set:html={JSON.stringify(pageSchema)}
-></script>
-
-<script
-  type="application/ld+json"
-  set:html={JSON.stringify(orgSchema)}
-></script>
