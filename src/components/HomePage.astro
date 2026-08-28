@@ -420,7 +420,7 @@ const homepageReviews = [
       <!-- Hero Görseli: Vercel üzerinden yerel olarak servis edilir -->
       <picture class="tbc-mobile-hero">
         <img
-          src="/images/hero/mobil-fotoo.webp"
+          src="/images/hot-air-balloons-at-sunrise-in-cappadocia-turkey-2021-08-26-19-00-17-utc-min-1-scaled.webp"
           alt={seo.heroAlt}
           width="799"
           height="600"
@@ -434,15 +434,15 @@ const homepageReviews = [
 
       <div class="tbc-video-content">
         <span class="tbc-video-kicker">
-          {t.hero.badge}
+          {lang === "tr" ? "KAPADOKYA’YI BİZİMLE KEŞFEDİN" : lang === "es" ? "DESCUBRE CAPADOCIA CON NOSOTROS" : "DISCOVER CAPPADOCIA WITH US"}
         </span>
 
         <h1 class="tbc-video-title">
-          {t.hero.title}
+          {lang === "tr" ? "Kapadokya’yı Keşfet" : lang === "es" ? "Descubre Capadocia" : "Discover Cappadocia"}
         </h1>
 
         <p class="tbc-video-text">
-          {t.hero.description}
+          {lang === "tr" ? "Balon uçuşlarından günlük turlara, safari aktivitelerinden havalimanı transferlerine kadar Kapadokya’daki en özel deneyimleri tek yerde planlayın." : lang === "es" ? "Planifica en un solo lugar vuelos en globo, tours diarios, safaris, actividades y traslados al aeropuerto en Capadocia." : "From sunrise balloon flights to daily tours, safari adventures and airport transfers, plan Cappadocia’s most memorable experiences in one place."}
         </p>
 
         <div class="tbc-video-actions">
@@ -488,6 +488,14 @@ const homepageReviews = [
           ) : (
             <><span class="accent-ready">Ready</span> to float over <span class="accent-cappadocia">Cappadocia</span> at sunrise?</>
           )}
+        </div>
+        <div class="cg-experience-dock" aria-label="Cappadocia experience categories">
+          <a class="cg-dock-item active" href={`/${lang}/balloon-tours/`}><span class="cg-dock-icon">◉</span><b>{lang === "tr" ? "Balon" : lang === "es" ? "Globos" : "Balloons"}</b></a>
+          <a class="cg-dock-item" href={`/${lang}/cappadocia-tours/`}><span class="cg-dock-icon">◇</span><b>{lang === "tr" ? "Turlar" : lang === "es" ? "Tours" : "Tours"}</b></a>
+          <a class="cg-dock-item" href={`/${lang}/activities/`}><span class="cg-dock-icon">✦</span><b>{lang === "tr" ? "Aktiviteler" : lang === "es" ? "Actividades" : "Activities"}</b></a>
+          <a class="cg-dock-item" href={`/${lang}/private-tours/`}><span class="cg-dock-icon">★</span><b>{lang === "tr" ? "Özel Turlar" : lang === "es" ? "Privados" : "Private"}</b></a>
+          <a class="cg-dock-item" href={`/${lang}/transfers/`}><span class="cg-dock-icon">↗</span><b>{lang === "tr" ? "Transfer" : lang === "es" ? "Traslados" : "Transfers"}</b></a>
+          <a class="cg-dock-item" href="#tours"><span class="cg-dock-icon">⌁</span><b>{lang === "tr" ? "Tümü" : lang === "es" ? "Todos" : "All Tours"}</b></a>
         </div>
         <div class="tbc-booking-box">
           <form id="tbcBookingForm">
@@ -3352,5 +3360,68 @@ const homepageReviews = [
     font-size: clamp(16px, 1.25vw, 21px);
     color: #0b2a4f;
     white-space: nowrap;
+  }
+
+
+  /* =========================================================
+     CAPPADOCIAGO — destination marketplace hero redesign
+     Inspired by the supplied travel landing-page composition.
+     Existing booking and Supabase behaviour stays unchanged.
+     ========================================================= */
+  .site-header{
+    position:absolute!important;top:0;left:0;right:0;z-index:40!important;
+    background:linear-gradient(180deg,rgba(5,20,43,.86),rgba(5,20,43,.18))!important;
+    border-bottom:1px solid rgba(255,255,255,.15)!important;box-shadow:none!important;
+  }
+  .header-container{min-height:88px!important;max-width:1240px!important;}
+  .logo img{filter:brightness(0) invert(1);max-height:58px!important;width:auto!important;}
+  .header-instagram{color:rgba(255,255,255,.86)!important;}
+  .main-nav a{color:#fff!important;font-size:11px!important;text-transform:uppercase!important;letter-spacing:.08em!important;font-weight:800!important;}
+  .main-nav a::after{background:#f2b544!important;}
+  .lang-btn{background:rgba(255,255,255,.12)!important;border-color:rgba(255,255,255,.32)!important;color:#fff!important;backdrop-filter:blur(10px);}
+  .whatsapp-btn{background:#f2b544!important;color:#071a35!important;border:0!important;box-shadow:0 8px 22px rgba(0,0,0,.16)!important;}
+  .mobile-menu-toggle span{background:#fff!important;}
+
+  .tbc-video-hero{min-height:790px!important;background:#081b35!important;overflow:visible!important;}
+  .tbc-mobile-hero{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;}
+  .tbc-mobile-hero img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 48%!important;filter:saturate(.94) contrast(1.04)!important;}
+  .tbc-video-overlay{position:absolute!important;inset:0!important;background:linear-gradient(180deg,rgba(8,22,48,.50) 0%,rgba(22,19,51,.38) 40%,rgba(29,16,46,.74) 100%)!important;}
+  .tbc-video-content{position:relative!important;z-index:3!important;max-width:930px!important;margin:0 auto!important;padding:205px 30px 210px!important;text-align:center!important;display:flex!important;flex-direction:column!important;align-items:center!important;}
+  .tbc-video-kicker{background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.28)!important;color:#fff!important;border-radius:999px!important;padding:8px 15px!important;font-size:10px!important;font-weight:800!important;letter-spacing:.16em!important;backdrop-filter:blur(12px)!important;}
+  .tbc-video-title{font-family:'Montserrat',sans-serif!important;color:#fff!important;text-transform:uppercase!important;font-size:clamp(46px,6vw,86px)!important;line-height:.98!important;letter-spacing:-.045em!important;font-weight:900!important;margin:20px 0 12px!important;text-shadow:0 6px 30px rgba(0,0,0,.28)!important;}
+  .tbc-video-text{max-width:730px!important;color:rgba(255,255,255,.92)!important;font-size:14px!important;line-height:1.7!important;margin:0 auto 20px!important;}
+  .tbc-video-actions{gap:10px!important;margin-top:4px!important;}
+  .tbc-video-btn{min-height:43px!important;padding:0 19px!important;border-radius:999px!important;font-size:10px!important;letter-spacing:.08em!important;text-transform:uppercase!important;}
+  .tbc-video-btn-primary{background:linear-gradient(100deg,#efa93a,#f6c35a)!important;color:#071a35!important;}
+  .tbc-video-btn-secondary{background:rgba(255,255,255,.12)!important;color:#fff!important;border:1px solid rgba(255,255,255,.36)!important;backdrop-filter:blur(12px)!important;}
+  .tbc-partner-reviews{margin-top:16px!important;justify-content:center!important;}
+  .tbc-review-badge{background:rgba(255,255,255,.10)!important;border-color:rgba(255,255,255,.22)!important;backdrop-filter:blur(10px)!important;}
+  .tbc-hero-trust-points{display:none!important;}
+
+  .tbc-booking-wrap{position:absolute!important;left:50%!important;bottom:-82px!important;transform:translateX(-50%)!important;width:min(1160px,calc(100% - 34px))!important;z-index:12!important;}
+  .external-form-title{display:none!important;}
+  .cg-experience-dock{width:min(900px,calc(100% - 30px));margin:0 auto -1px;display:grid;grid-template-columns:repeat(6,1fr);background:#fff;border-radius:18px 18px 0 0;overflow:hidden;box-shadow:0 -8px 28px rgba(10,27,62,.12);position:relative;z-index:2;}
+  .cg-dock-item{min-height:74px;display:flex;gap:7px;align-items:center;justify-content:center;flex-direction:column;color:#536276;border-right:1px solid #edf0f4;font-size:10px;text-transform:uppercase;letter-spacing:.035em;transition:.18s ease;}
+  .cg-dock-item:last-child{border-right:0}.cg-dock-icon{font-size:19px;color:#eba52f;line-height:1}.cg-dock-item b{font-weight:800}.cg-dock-item:hover{background:#fff8e8;color:#071a35}.cg-dock-item.active{background:linear-gradient(135deg,#e89a27,#f4ba43);color:#fff}.cg-dock-item.active .cg-dock-icon{color:#fff}
+  .tbc-booking-box{border-radius:18px!important;border:0!important;padding:20px!important;background:linear-gradient(105deg,#f0a22d 0%,#db7c57 42%,#5b3fb1 100%)!important;box-shadow:0 18px 50px rgba(17,31,63,.25)!important;overflow:visible!important;}
+  .tbc-booking-grid{grid-template-columns:1.28fr 1.55fr .92fr .72fr!important;gap:10px!important;}
+  .tbc-field-wrap{min-width:0!important;}
+  .tbc-select-btn,.dates-custom-box{border-radius:3px!important;background:#fff!important;border:0!important;min-height:52px!important;box-shadow:0 1px 0 rgba(0,0,0,.04)!important;}
+  .tbc-select-btn{font-size:11px!important;padding:0 14px!important;}
+  .dates-custom-box{padding:5px 13px!important;}
+  .dates-top-label{font-size:8px!important;letter-spacing:.04em!important;color:#6d7687!important;}
+  .d-m{font-size:9px!important}.d-d,.d-a{font-size:13px!important}
+  .tbc-submit{border-radius:999px!important;min-height:52px!important;background:#22164f!important;font-size:10px!important;letter-spacing:.09em!important;box-shadow:0 8px 18px rgba(24,13,67,.22)!important;}
+  .infinite-slider-section{padding-top:132px!important;}
+
+  @media(max-width:980px){
+    .site-header{position:absolute!important}.header-instagram{display:none!important}.header-container{min-height:72px!important}
+    .tbc-video-content{padding-top:170px!important}.tbc-video-hero{min-height:830px!important}
+    .tbc-booking-wrap{bottom:-185px!important}.tbc-booking-grid{grid-template-columns:1fr 1fr!important}.tbc-booking-box{padding:14px!important}.infinite-slider-section{padding-top:240px!important}
+  }
+  @media(max-width:700px){
+    .tbc-video-hero{min-height:910px!important}.tbc-video-content{padding:145px 18px 300px!important}.tbc-video-title{font-size:43px!important}.tbc-video-text{font-size:12.5px!important}.tbc-partner-reviews{display:none!important}
+    .cg-experience-dock{grid-template-columns:repeat(3,1fr);border-radius:15px 15px 0 0;width:calc(100% - 16px)}.cg-dock-item{min-height:55px;font-size:8px}.cg-dock-icon{font-size:15px}
+    .tbc-booking-wrap{bottom:-220px!important;width:calc(100% - 18px)!important}.tbc-booking-grid{grid-template-columns:1fr!important}.tbc-booking-box{border-radius:15px!important;padding:12px!important}.infinite-slider-section{padding-top:275px!important}
   }
 </style>

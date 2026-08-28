@@ -1,0 +1,10 @@
+CappadociaGo Admin Redesign
+- Admin UI redesigned with CappadociaGo turquoise/cream/navy palette.
+- Calendar day cards, date labels and typography reduced for a cleaner compact view.
+- Reservation tab now includes Tour, Start Date and End Date filters plus clear action.
+- Filter summary shows matching reservation count and total guest count.
+- Existing Supabase products, availability, admin auth and reservation flows are preserved.
+- Files are UTF-8 encoded to avoid Turkish-character mojibake.
+
+Build note:
+The package was statically validated in the preparation environment. A clean npm dependency installation could not finish within that environment's execution timeout, so run `npm ci` and `npm run build` in the deployment/local environment before pushing.

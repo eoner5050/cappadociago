@@ -1,0 +1,6 @@
+HOME / TOURS REDESIGN - 2026-08-28
+• Homepage hero redesigned to destination marketplace composition.
+• Category dock and booking/search band added.
+• /en|tr|es/cappadocia-tours and other category pages redesigned.
+• Existing Supabase pricing, booking, admin and reservation filters preserved.
+• Legacy SeoHead imports removed from actual project source.

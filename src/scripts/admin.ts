@@ -60,7 +60,13 @@ const bulkDialog = $("bulkDialog") as HTMLDialogElement;
 const reservationForm = $("reservationForm") as HTMLFormElement;
 const reservationProduct = $("reservationProduct") as HTMLSelectElement;
 const reservationsList = $("reservationsList");
+const reservationFilterProduct = $("reservationFilterProduct") as HTMLSelectElement;
+const reservationFilterStart = $("reservationFilterStart") as HTMLInputElement;
+const reservationFilterEnd = $("reservationFilterEnd") as HTMLInputElement;
+const reservationFilterClear = $("reservationFilterClear") as HTMLButtonElement;
+const reservationFilterSummary = $("reservationFilterSummary");
 let products: Product[] = [];
+let reservationRows: Reservation[] = [];
 let availability = new Map<string, Availability>();
 let currentDate = new Date();
 currentDate.setDate(1);
@@ -119,6 +125,7 @@ async function loadProducts() {
   products = data || [];
   productSelect.innerHTML = products.map(p=>`<option value="${p.id}">${p.name}</option>`).join("");
   if (reservationProduct) reservationProduct.innerHTML = products.map(p=>`<option value="${p.id}">${p.name}</option>`).join("");
+  if (reservationFilterProduct) reservationFilterProduct.innerHTML = `<option value="">Tüm turlar</option>` + products.map(p=>`<option value="${p.id}">${p.name}</option>`).join("");
   $("productsGrid").innerHTML = products.map(p=>`
     <div class="product-card"><h3>${p.name}</h3><p>${p.category}</p>
     <p>Fiyat modu: <b>${p.ask_for_price ? "Fiyat Sorunuz" : "Takvim / Sabit Fiyat"}</b></p>
@@ -241,13 +248,25 @@ function escapeHtml(value:any){
   return String(value ?? "").replace(/[&<>'"]/g,(ch)=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[ch] as string));
 }
 
-async function loadReservations(){
+function renderReservations(){
   if(!reservationsList) return;
-  reservationsList.innerHTML='<div class="notice">Rezervasyonlar yükleniyor…</div>';
-  const {data,error}=await supabase.from("reservations").select("*").order("reservation_date",{ascending:true}).order("created_at",{ascending:false}).limit(250);
-  if(error){ reservationsList.innerHTML=`<div class="notice">${escapeHtml(error.message)}<br><b>Önce supabase/admin-reservations.sql dosyasını çalıştırın.</b></div>`; return; }
-  const rows=(data||[]) as Reservation[];
-  if(!rows.length){reservationsList.innerHTML='<div class="notice">Henüz manuel rezervasyon kaydı yok.</div>';return;}
+  const productId=reservationFilterProduct?.value || "";
+  const start=reservationFilterStart?.value || "";
+  const end=reservationFilterEnd?.value || "";
+  const rows=reservationRows.filter(r=>{
+    if(productId && r.product_id!==productId) return false;
+    if(start && r.reservation_date<start) return false;
+    if(end && r.reservation_date>end) return false;
+    return true;
+  });
+  if(reservationFilterSummary){
+    const totalPeople=rows.reduce((sum,r)=>sum+(Number(r.customer_count)||0),0);
+    reservationFilterSummary.textContent=`${rows.length} rezervasyon · ${totalPeople} misafir`;
+  }
+  if(!rows.length){
+    reservationsList.innerHTML='<div class="empty-state">Seçilen filtrelere uygun rezervasyon bulunamadı.</div>';
+    return;
+  }
   reservationsList.innerHTML=rows.map(r=>`<article class="reservation-item">
     <div class="reservation-item-head"><div><h3>${escapeHtml(r.customer_name)}</h3><small>${escapeHtml(r.tour_name)}</small></div><span class="reservation-date">${new Date(r.reservation_date+'T00:00:00').toLocaleDateString('tr-TR')}</span></div>
     <div class="reservation-meta"><span><b>Kişi:</b> ${r.customer_count}</span><span><b>Otel:</b> ${escapeHtml(r.hotel||'-')}</span><span><b>Telefon:</b> ${escapeHtml(r.phone||'-')}</span><span><b>E-posta:</b> ${escapeHtml(r.email||'-')}</span></div>
@@ -260,6 +279,25 @@ async function loadReservations(){
     if(error) return alert(error.message); await loadReservations();
   }));
 }
+
+async function loadReservations(){
+  if(!reservationsList) return;
+  reservationsList.innerHTML='<div class="notice">Rezervasyonlar yükleniyor…</div>';
+  const {data,error}=await supabase.from("reservations").select("*").order("reservation_date",{ascending:true}).order("created_at",{ascending:false}).limit(500);
+  if(error){ reservationsList.innerHTML=`<div class="notice">${escapeHtml(error.message)}<br><b>Supabase rezervasyon tablosunu kontrol edin.</b></div>`; return; }
+  reservationRows=(data||[]) as Reservation[];
+  renderReservations();
+}
+
+reservationFilterProduct?.addEventListener('change',renderReservations);
+reservationFilterStart?.addEventListener('change',renderReservations);
+reservationFilterEnd?.addEventListener('change',renderReservations);
+reservationFilterClear?.addEventListener('click',()=>{
+  reservationFilterProduct.value='';
+  reservationFilterStart.value='';
+  reservationFilterEnd.value='';
+  renderReservations();
+});
 
 reservationForm?.addEventListener("submit",async(e)=>{
   e.preventDefault();

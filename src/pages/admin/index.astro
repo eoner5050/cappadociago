@@ -10,60 +10,37 @@ const title = "CappadociaGo — Admin";
   <meta name="robots" content="noindex,nofollow" />
   <style is:global>
     :root{
-      --navy:#0b1f3a;--blue:#17345d;--gold:#e3a800;--bg:#f4f7fb;
-      --white:#fff;--line:#dfe7ef;--muted:#64748b;--green:#159447;
-      --yellow:#d99a00;--red:#d83a3a;--gray:#8794a7;
+      --ink:#18324a;--ink-2:#28495f;--brand:#55c7c1;--brand-dark:#2faaa5;--accent:#f3b23c;
+      --bg:#f7fafb;--panel:#ffffff;--line:#e4ecef;--muted:#7b8e99;--soft:#eef8f7;
+      --ok:#2f9d6a;--warn:#b67b12;--danger:#c94b4b;--shadow:0 10px 30px rgba(31,72,90,.07);
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--navy)}
-    button,input,select{font:inherit}
-    .shell{min-height:100vh;display:grid;grid-template-columns:230px 1fr}
-    aside{background:var(--navy);color:#fff;padding:26px 18px}
-    .brand{font-weight:900;line-height:1.2;margin-bottom:32px}.brand small{display:block;color:#e3a800;margin-top:4px}
-    .nav button{width:100%;text-align:left;border:0;background:transparent;color:#dce6f0;padding:12px 13px;border-radius:11px;font-weight:800;cursor:pointer}
-    .nav button.active,.nav button:hover{background:#17345d;color:#fff}
-    main{padding:26px}
-    .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}
-    .topbar h1{margin:0;font-size:28px}.userbar{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}
-    .btn{border:0;border-radius:11px;padding:11px 14px;font-weight:900;cursor:pointer}.btn.primary{background:var(--gold);color:var(--navy)}.btn.dark{background:var(--navy);color:#fff}.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--navy)}
-    .panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 28px rgba(11,31,58,.06);padding:20px;margin-bottom:18px}
-    .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.toolbar select,.toolbar input{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}
-    .month-nav{display:flex;gap:8px;align-items:center;margin-left:auto}.month-title{min-width:180px;text-align:center;font-weight:900}
-    .calendar{display:grid;grid-template-columns:repeat(7,minmax(170px,1fr));gap:12px;overflow-x:auto;padding:2px 2px 8px}
-    .dow{font-size:14px;font-weight:950;color:var(--navy);text-align:center;padding:8px 4px 10px;letter-spacing:.02em}
-    .day{min-height:228px;background:linear-gradient(180deg,#0f2948 0%,#0b213c 100%);border:1px solid #264a70;border-radius:16px;padding:11px;cursor:pointer;position:relative;box-shadow:0 8px 20px rgba(11,31,58,.12);color:#fff;transition:.18s ease}
-    .day.out{opacity:.52}.day:hover{transform:translateY(-2px);border-color:#e3a800;box-shadow:0 12px 25px rgba(11,31,58,.18)}
-    .day-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:9px;margin-bottom:8px;border-bottom:1px solid rgba(255,255,255,.16)}
-    .day-number{display:grid;place-items:center;min-width:38px;height:38px;padding:0 7px;border-radius:10px;background:#fff;color:var(--navy);font-weight:950;font-size:18px;box-shadow:inset 0 0 0 1px rgba(11,31,58,.08)}
-    .day-full-date{font-size:11px;color:#dce8f5;font-weight:900;letter-spacing:.02em;text-align:right}
-    .day-row{display:grid;grid-template-columns:68px 1fr;align-items:center;gap:8px;min-height:36px;padding:7px 8px;margin-top:6px;border-radius:9px;border:1px solid transparent}
-    .day-row.blue{background:#173b67;border-color:#2f5f91}.day-row.gold{background:#f5c94c;border-color:#e3a800;color:#0b1f3a}
-    .day-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:950;opacity:.88}
-    .day-row.blue .day-label{color:#cfe2f8}.day-row.gold .day-label{color:#604900}
-    .day-value{font-size:14px;font-weight:950;text-align:right;overflow-wrap:anywhere;color:inherit}
-    .day-price .day-value{font-size:16px}.day-status .day-value{font-size:13px}
-    .status{display:inline-flex;justify-content:center;align-items:center;font-size:10px;font-weight:950;padding:6px 8px;border-radius:999px;margin:0;text-align:center;justify-self:end}
-    .available{background:#dff6e8;color:#0f7138}.low{background:#fff1b8;color:#806000}.sold_out{background:#ffdada;color:#a61f1f}.closed{background:#e8edf4;color:#536276}
-    .ask-chip{display:block;margin-top:8px;padding:7px 8px;border-radius:8px;background:#e3a800;color:#0b1f3a;font-size:10px;font-weight:950;text-align:center}
-    #askPriceBtn{border:1px solid #edc955;background:#fff8dd;color:#805f00}
-    #askPriceBtn.on{background:var(--navy);border-color:var(--navy);color:#fff}
-    .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px}.login-card{width:min(420px,100%);background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 15px 40px rgba(11,31,58,.08)}
-    .login-card h1{margin:0 0 6px}.login-card p{color:var(--muted);font-size:13px}.field{margin:14px 0}.field label{display:block;font-size:12px;font-weight:900;margin-bottom:6px}.field input,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px}
-    .hidden{display:none!important}
-    dialog{width:min(520px,calc(100% - 30px));border:0;border-radius:18px;padding:0;box-shadow:0 25px 70px rgba(0,0,0,.25)}
-    .dialog-body{padding:22px}.dialog-body h3{margin-top:0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid .full{grid-column:1/-1}.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
-    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.product-card{border:1px solid var(--line);border-radius:13px;padding:15px}.product-card h3{font-size:14px;margin:0 0 8px}.product-card p{font-size:12px;color:var(--muted);margin:3px 0}
-    .notice{padding:10px 12px;border-radius:10px;background:#fff8dd;color:#805f00;font-size:12px;margin-bottom:14px}
-
-
-    .reservation-layout{display:grid;grid-template-columns:minmax(320px,430px) 1fr;gap:18px;align-items:start}
-    .reservation-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
-    .reservation-card h2{margin:0 0 6px;font-size:20px}.reservation-card>p{margin:0 0 16px;color:var(--muted);font-size:12px}
-    .reservation-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.reservation-form-grid .full{grid-column:1/-1}
-    .reservation-form-grid label{display:block;font-size:11px;font-weight:950;margin-bottom:6px;color:#334b68}.reservation-form-grid input,.reservation-form-grid select,.reservation-form-grid textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;background:#fff;color:var(--navy)}
-    .reservation-form-grid textarea{min-height:105px;resize:vertical}.reservation-actions{display:flex;gap:8px;margin-top:14px}.reservation-actions .btn{flex:1}
-    .reservation-list{display:grid;gap:10px;max-height:680px;overflow:auto;padding-right:3px}.reservation-item{border:1px solid var(--line);border-radius:14px;padding:13px;background:#fbfcfe}.reservation-item-head{display:flex;justify-content:space-between;gap:10px;align-items:start;border-bottom:1px solid #edf1f6;padding-bottom:8px;margin-bottom:8px}.reservation-item h3{margin:0;font-size:14px}.reservation-date{font-size:11px;font-weight:900;color:#9a6900;background:#fff6d9;padding:5px 8px;border-radius:999px}.reservation-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 12px;font-size:11px;color:#43546b}.reservation-note{margin-top:8px;padding:9px;background:#eef5ff;border-radius:9px;font-size:11px;line-height:1.45}.reservation-item-actions{display:flex;justify-content:flex-end;margin-top:9px}.btn.danger{background:#fff0f0;color:#a72525;border:1px solid #f2caca}
-    @media(max-width:900px){.shell{grid-template-columns:1fr}aside{display:none}main{padding:14px}.products{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(7,minmax(155px,1fr))}.reservation-layout{grid-template-columns:1fr}}
+    html{font-size:14px}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);font-weight:400}
+    button,input,select,textarea{font:inherit;color:inherit} button{cursor:pointer}
+    .shell{min-height:100vh;display:grid;grid-template-columns:210px minmax(0,1fr)}
+    aside{background:#fff;border-right:1px solid var(--line);padding:24px 15px;position:sticky;top:0;height:100vh}
+    .brand{font-size:14px;font-weight:800;letter-spacing:.04em;color:var(--ink);line-height:1.25;margin:2px 8px 28px}.brand small{display:block;color:var(--brand-dark);font-size:9px;letter-spacing:.13em;margin-top:5px;font-weight:800}
+    .nav{display:grid;gap:5px}.nav button{width:100%;text-align:left;border:0;background:transparent;color:#59707d;padding:10px 11px;border-radius:10px;font-size:12px;font-weight:650;transition:.15s ease}.nav button:hover{background:#f3f8f8;color:var(--ink)}.nav button.active{background:var(--soft);color:#248c88;box-shadow:inset 3px 0 var(--brand)}
+    main{padding:24px 26px 36px;min-width:0}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.topbar h1{margin:0;font-size:21px;line-height:1.2;font-weight:700;letter-spacing:-.015em}.userbar{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px}
+    .btn{border:1px solid transparent;border-radius:9px;padding:9px 12px;font-size:11px;font-weight:650;line-height:1;min-height:34px}.btn.primary{background:var(--brand);color:#103b3a}.btn.primary:hover{background:#49bbb5}.btn.dark{background:var(--ink);color:#fff}.btn.ghost{background:#fff;border-color:var(--line);color:var(--ink)}.btn.ghost:hover{background:#f8fbfc}.btn.danger{background:#fff5f5;color:#a63b3b;border-color:#f0d3d3}
+    .panel,.reservation-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:15px;margin-bottom:14px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.toolbar select,.toolbar input{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:#fff;font-size:11px;min-height:34px}.toolbar #productSelect{min-width:280px;max-width:420px}
+    .month-nav{display:flex;gap:7px;align-items:center;margin-left:auto}.month-title{min-width:132px;text-align:center;font-size:12px;font-weight:700;text-transform:capitalize}
+    #askPriceBtn{border-color:#f2d69a;background:#fffaf0;color:#9a6811}#askPriceBtn.on{background:var(--ink);border-color:var(--ink);color:#fff}
+    .calendar{display:grid;grid-template-columns:repeat(7,minmax(118px,1fr));gap:7px;overflow-x:auto;padding:0 0 5px}.dow{font-size:9px;font-weight:700;color:#728692;text-align:center;padding:4px 2px 7px;text-transform:uppercase;letter-spacing:.06em}
+    .day{min-height:139px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:8px;cursor:pointer;position:relative;color:var(--ink);transition:.16s ease}.day:hover{transform:translateY(-1px);border-color:#9bd9d5;box-shadow:0 8px 20px rgba(42,117,114,.09)}.day.out{opacity:.38;background:#f8fafb}
+    .day-head{display:flex;align-items:center;justify-content:space-between;gap:6px;padding-bottom:6px;margin-bottom:5px;border-bottom:1px solid #edf2f4}.day-number{display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:var(--soft);color:#267f7b;font-weight:750;font-size:12px}.day-full-date{font-size:8px;color:#94a3ab;font-weight:600;text-align:right}
+    .day-row{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:5px;min-height:22px;padding:3px 5px;margin-top:3px;border-radius:6px;background:#f8fafb;border:1px solid #edf2f4}.day-row.gold{background:#fff9ec;border-color:#f6e7c6}.day-label{font-size:7px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;color:#8b9aa2}.day-value{font-size:9px;font-weight:700;text-align:right;white-space:nowrap}.day-price .day-value{font-size:10px}.status{display:inline-flex;justify-content:center;align-items:center;font-size:7px;font-weight:750;padding:3px 6px;border-radius:999px;justify-self:end}.available{background:#eaf8f1;color:#23794f}.low{background:#fff4d9;color:#8d671c}.sold_out{background:#fff0f0;color:#ac4040}.closed{background:#eef2f4;color:#697c86}.ask-chip{display:block;margin-top:4px;padding:4px 5px;border-radius:6px;background:#fff5db;color:#8f6616;font-size:7px;font-weight:700;text-align:center}
+    .products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.product-card{border:1px solid var(--line);border-radius:11px;padding:12px;background:#fff}.product-card h3{font-size:11px;margin:0 0 6px;font-weight:700}.product-card p{font-size:9px;color:var(--muted);margin:3px 0;line-height:1.45}
+    .reservation-layout{display:grid;grid-template-columns:minmax(300px,360px) minmax(0,1fr);gap:14px;align-items:start}.reservation-card h2{margin:0 0 4px;font-size:15px;font-weight:700}.reservation-card>p{margin:0 0 13px;color:var(--muted);font-size:10px;line-height:1.5}.reservation-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.reservation-form-grid .full{grid-column:1/-1}.reservation-form-grid label,.form-grid label{display:block;font-size:9px;font-weight:700;margin-bottom:5px;color:#5b707c}.reservation-form-grid input,.reservation-form-grid select,.reservation-form-grid textarea,.form-grid input,.form-grid select{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px 9px;background:#fff;font-size:10px;outline:none}.reservation-form-grid input:focus,.reservation-form-grid select:focus,.reservation-form-grid textarea:focus,.form-grid input:focus,.form-grid select:focus{border-color:#89d4cf;box-shadow:0 0 0 3px rgba(85,199,193,.1)}.reservation-form-grid textarea{min-height:75px;resize:vertical}.reservation-actions{display:flex;gap:7px;margin-top:11px}.reservation-actions .btn{flex:1}
+    .reservation-filterbar{display:grid;grid-template-columns:minmax(180px,1.4fr) repeat(2,minmax(130px,.8fr)) auto;gap:7px;margin:0 0 12px;padding:10px;background:#f8fbfb;border:1px solid var(--line);border-radius:11px;align-items:end}.filter-field label{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.06em;color:#8a9aa3;font-weight:700;margin-bottom:4px}.filter-field select,.filter-field input{width:100%;border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 8px;font-size:10px;min-height:32px}.filter-actions{display:flex;gap:5px}.filter-summary{font-size:9px;color:var(--muted);margin:-5px 0 10px}
+    .reservation-list{display:grid;gap:7px;max-height:690px;overflow:auto;padding-right:2px}.reservation-item{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}.reservation-item-head{display:flex;justify-content:space-between;gap:10px;align-items:start;border-bottom:1px solid #edf2f4;padding-bottom:7px;margin-bottom:7px}.reservation-item h3{margin:0;font-size:11px;font-weight:700}.reservation-item small{font-size:9px;color:#6f838e}.reservation-date{font-size:8px;font-weight:700;color:#267f7b;background:var(--soft);padding:4px 6px;border-radius:999px;white-space:nowrap}.reservation-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 10px;font-size:9px;color:#5a6e79}.reservation-note{margin-top:6px;padding:7px;background:#f6fafb;border-radius:7px;font-size:9px;line-height:1.4}.reservation-item-actions{display:flex;justify-content:flex-end;margin-top:7px}.empty-state{padding:24px 12px;text-align:center;border:1px dashed #d6e3e7;border-radius:10px;color:var(--muted);font-size:10px;background:#fbfdfd}
+    .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#f7fafb,#eef8f7)}.login-card{width:min(380px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:0 18px 50px rgba(31,72,90,.09)}.login-card h1{margin:0 0 5px;font-size:19px}.login-card p{color:var(--muted);font-size:10px}.field{margin:12px 0}.field label{display:block;font-size:9px;font-weight:700;margin-bottom:5px}.field input,.field select{width:100%;padding:9px;border:1px solid var(--line);border-radius:9px;font-size:11px}.notice{padding:9px 10px;border-radius:8px;background:#fff8e8;color:#896317;font-size:10px;margin-bottom:11px}.hidden{display:none!important}
+    dialog{width:min(500px,calc(100% - 30px));border:0;border-radius:15px;padding:0;box-shadow:0 25px 70px rgba(0,0,0,.18)}dialog::backdrop{background:rgba(19,42,55,.32)}.dialog-body{padding:19px}.dialog-body h3{margin:0 0 14px;font-size:15px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-grid .full{grid-column:1/-1}.actions{display:flex;justify-content:flex-end;gap:7px;margin-top:14px}
+    @media(max-width:1180px){.products{grid-template-columns:repeat(2,1fr)}.calendar{grid-template-columns:repeat(7,minmax(110px,1fr))}.reservation-filterbar{grid-template-columns:1fr 1fr}.filter-actions{align-self:end}}
+    @media(max-width:900px){.shell{grid-template-columns:1fr}aside{height:auto;position:static;border-right:0;border-bottom:1px solid var(--line);padding:11px 14px}.brand{margin:0 0 10px}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;width:auto}.reservation-layout{grid-template-columns:1fr}main{padding:16px}.toolbar #productSelect{min-width:210px}.month-nav{margin-left:0}.calendar{grid-template-columns:repeat(7,minmax(105px,1fr))}}
+    @media(max-width:600px){html{font-size:13px}.topbar{align-items:flex-start}.userbar{flex-direction:column;align-items:flex-end}.reservation-form-grid,.reservation-filterbar{grid-template-columns:1fr}.products{grid-template-columns:1fr}.panel{padding:10px}.calendar{grid-template-columns:repeat(7,minmax(98px,1fr))}}
   </style>
 </head>
 <body>
@@ -138,8 +115,15 @@ const title = "CappadociaGo — Admin";
             </form>
           </div>
           <div class="reservation-card">
-            <h2>Kayıtlı Rezervasyonlar</h2>
-            <p>En yakın tarihli rezervasyonlar üstte gösterilir.</p>
+            <h2>Gelen Rezervasyonlar</h2>
+            <p>Tur ve tarih aralığına göre rezervasyonları hızlıca filtreleyin.</p>
+            <div class="reservation-filterbar">
+              <div class="filter-field"><label>Tur</label><select id="reservationFilterProduct"><option value="">Tüm turlar</option></select></div>
+              <div class="filter-field"><label>Başlangıç</label><input id="reservationFilterStart" type="date" /></div>
+              <div class="filter-field"><label>Bitiş</label><input id="reservationFilterEnd" type="date" /></div>
+              <div class="filter-actions"><button id="reservationFilterClear" type="button" class="btn ghost">Temizle</button></div>
+            </div>
+            <div id="reservationFilterSummary" class="filter-summary"></div>
             <div id="reservationsList" class="reservation-list"></div>
           </div>
         </div>
