@@ -306,14 +306,14 @@ const homepageReviews = [
 
   <!-- Google Fonts: render-blocking olmadan yükle; ilk boyamada sistem fontu kullanılır. -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
     media="print"
     onload="this.media='all'"
   />
   <noscript>
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
   </noscript>
@@ -423,7 +423,7 @@ const homepageReviews = [
 
       <div class="tbc-video-content">
         <span class="tbc-video-kicker">
-          CappadociaGo
+          <span class="tbc-kicker-blue">Cappadocia</span><span class="tbc-kicker-gold">Go</span>
         </span>
 
         <h1 class="tbc-video-title">
@@ -474,7 +474,7 @@ const homepageReviews = [
     <!-- BOOKING CALLOUT — hero altına taşan görünür başlık + mevcut rezervasyon paneli -->
     <div class="booking-callout">
       <div class="booking-section-heading" aria-label="Plan Your Flight & Tour with CappadociaGo">
-        <span>Plan Your Flight &amp; Tour with </span><strong class="booking-brand-blue">Cappadocia</strong><strong class="booking-brand-gold">Go</strong>
+        <span>Plan Your Flight &amp; Tour with&nbsp;</span><strong class="booking-brand-blue">Cappadocia</strong><strong class="booking-brand-gold">Go</strong>
       </div>
       <div class="tbc-booking-wrap">
         <div class="tbc-booking-box">
@@ -4578,33 +4578,25 @@ body{background:#fff!important}
 .tbc-video-kicker{
   display:inline-flex!important;
   align-items:center!important;
-  gap:8px!important;
+  gap:0!important;
   margin:0 0 20px!important;
-  padding:9px 20px!important;
+  padding:9px 22px!important;
   border-radius:999px!important;
-  border:1px solid rgba(233,181,69,.55)!important;
-  background:rgba(10,36,74,.42)!important;
+  border:1px solid rgba(255,255,255,.95)!important;
+  border-top:2px solid #c98a1f!important;
+  background:rgba(255,255,255,.94)!important;
   -webkit-backdrop-filter:blur(10px)!important;
   backdrop-filter:blur(10px)!important;
-  color:#f6d999!important;
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  font-size:11px!important;
+  font-size:13px!important;
   font-weight:800!important;
-  letter-spacing:.22em!important;
-  text-transform:uppercase!important;
+  letter-spacing:.01em!important;
+  text-transform:none!important;
   text-shadow:none!important;
-  box-shadow:0 8px 24px rgba(4,20,45,.25)!important;
+  box-shadow:0 10px 26px rgba(4,20,45,.28)!important;
 }
-.tbc-video-kicker::before{
-  content:""!important;
-  width:6px!important;
-  height:6px!important;
-  border-radius:50%!important;
-  background:linear-gradient(135deg,#e9b545,#c98a1f)!important;
-  box-shadow:0 0 0 3px rgba(233,181,69,.25)!important;
-  display:inline-block!important;
-  flex:0 0 auto!important;
-}
+.tbc-kicker-blue{color:#0a3d8a!important;font-weight:800!important;}
+.tbc-kicker-gold{color:#c98a1f!important;font-weight:800!important;}
 .tbc-video-title{
   color:#ffffff!important;
   font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
@@ -4658,7 +4650,7 @@ body{background:#fff!important}
 .tbc-trust-icon{color:#e9b545!important;}
 
 @media(max-width:680px){
-  .tbc-video-kicker{padding:7px 16px!important;letter-spacing:.16em!important;font-size:10px!important;}
+  .tbc-video-kicker{padding:7px 17px!important;font-size:11px!important;}
 }
 
 /* Premium booking heading: real brand palette, calm glass surface. */
@@ -4667,11 +4659,11 @@ body{background:#fff!important}
   align-items:baseline!important;
   justify-content:center!important;
   flex-wrap:wrap!important;
-  gap:0!important;
+  gap:0 .28em!important;
   width:max-content!important;
   max-width:calc(100% - 28px)!important;
   margin:0 auto 14px!important;
-  padding:12px 24px 13px!important;
+  padding:13px 26px 14px!important;
   border-radius:17px!important;
   border:1px solid rgba(18,91,154,.16)!important;
   border-top:2px solid rgba(213,155,17,.72)!important;
@@ -4684,20 +4676,23 @@ body{background:#fff!important}
   font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
   font-size:clamp(27px,2.25vw,36px)!important;
   line-height:1.08!important;
-  font-weight:600!important;
-  letter-spacing:-.027em!important;
+  font-weight:500!important;
+  letter-spacing:-.02em!important;
 }
 .booking-callout .booking-section-heading > span{
   color:#0b3765!important;
-  font-weight:600!important;
+  font-weight:500!important;
+  font-style:normal!important;
 }
 .booking-callout .booking-brand-blue{
   color:#0a3d8a!important;
   font-weight:700!important;
+  font-style:italic!important;
 }
 .booking-callout .booking-brand-gold{
   color:#c98a1f!important;
   font-weight:700!important;
+  font-style:italic!important;
 }
 
 /* Tie the booking controls visually to the heading without changing functionality. */
