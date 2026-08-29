@@ -5380,6 +5380,7 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   position:sticky!important;
   top:0!important;left:0!important;right:0!important;
   z-index:1000!important;
+  margin:0!important;
   box-shadow:0 4px 18px rgba(20,45,74,.06)!important;
   -webkit-backdrop-filter:blur(10px)!important;
   backdrop-filter:blur(10px)!important;
@@ -5452,9 +5453,10 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   top:auto!important;left:auto!important;transform:none!important;
   width:100%!important;max-width:860px!important;
   margin:0 auto!important;
-  padding:90px 24px 260px!important;
+  padding:110px 24px 260px!important;
   display:flex!important;flex-direction:column!important;align-items:center!important;
   text-align:center!important;
+  overflow:visible!important;
 }
 .tbc-video-title::after{
   content:""!important;display:block!important;
@@ -5466,6 +5468,7 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
 /* ---- Kicker ---- */
 .tbc-video-kicker{
   display:inline-block!important;
+  position:relative!important;
   margin:0 0 16px!important;
   padding:7px 16px!important;
   border-radius:999px!important;
@@ -5477,6 +5480,7 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   color:#ffffff!important;
   text-shadow:none!important;
   box-shadow:none!important;
+  z-index:3!important;
 }
 
 /* ---- Title ---- */
@@ -5623,7 +5627,7 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   .site-header .header-container{height:78px!important;}
   .site-header .logo img{height:70px!important;max-width:150px!important;}
   .tbc-video-hero{min-height:850px!important;}
-  .tbc-video-content{padding:90px 16px 340px!important;}
+  .tbc-video-content{padding:100px 16px 340px!important;}
   .tbc-video-title{font-size:clamp(30px,7vw,38px)!important;line-height:1.15!important;margin-bottom:10px!important;}
   .tbc-video-text{font-size:13px!important;margin-bottom:16px!important;}
   .tbc-hero-trust-points{justify-content:center!important;gap:8px 16px!important;margin-bottom:10px!important;}
