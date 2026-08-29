@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import TourPremiumTheme from '../../components/TourPremiumTheme.astro';
+import TourFooter from '../../components/TourFooter.astro';
 
 const tour = {
   title: 'Göreme Balloon Tour (Standard Flight)',
@@ -265,24 +266,7 @@ const tour = {
   </div>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo-card"><img src="/images/logo.png" alt="CappadociaGo" style="height:52px;width:auto;display:block;" /></div>
-        <p style="font-size:13.5px;line-height:1.6;max-width:280px;color:#A9B4CC;">Goreme-based local travel agency offering Cappadocia's balloon, daily, package, adventure and transfer tours all under one roof.</p>
-      </div>
-      <div><h5>Tours</h5><ul><li><a href="/#tours">Balloon Tours</a></li><li><a href="/#tours">Daily Tours</a></li><li><a href="/#tours">Package Tours</a></li><li><a href="/#tours">Activities</a></li></ul></div>
-      <div><h5>Company</h5><ul><li><a href="/#tours">About Us</a></li><li><a href="/#tours">Blog</a></li><li><a href="/#tours">Contact</a></li><li><a href="/#tours">FAQ</a></li></ul></div>
-      <div><h5>Customer Support</h5><ul><li><a href="/legal/cancellation-refund">Cancellation &amp; Refund Policy</a></li><li><a href="/legal/privacy">Privacy Policy</a></li><li><a href="/legal/terms">Terms &amp; Conditions</a></li><li><a href="/legal/distance-sales">Distance Sales Agreement</a></li><li><a href="/legal/kvkk">KVKK / Personal Data</a></li><li><a href="/legal/cookie-policy">Cookie Policy</a></li></ul></div>
-      <div><h5>Contact</h5><ul><li>📍 Cappadocia, Nevşehir, Türkiye</li><li>📞 +90 540 101 50 50</li><li>✉ info@kapheratravel.com</li></ul></div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 CappadociaGo — Cappadocia Kaphera Travel Agency</span>
-      <span>TÜRSAB No: 18577</span>
-    </div>
-  </div>
-</footer>
+<TourFooter lang="en" />
 
 <a class="wa-float" href="https://wa.me/905401015050" target="_blank" rel="noopener">💬</a>
 
@@ -474,3 +458,7 @@ const tour = {
 <link rel="stylesheet" href="/cappadociago-brand-v2.css" />
 
 <link rel="stylesheet" href="/tour-reference-layout.css" />
+<!-- FINAL GLOBAL TOUR BACKGROUND -->
+<style is:global>
+html,body{background:radial-gradient(circle at 12% 3%,rgba(217,165,31,.10),transparent 24%),radial-gradient(circle at 88% 18%,rgba(7,90,166,.10),transparent 28%),linear-gradient(180deg,#eef5fa 0%,#e8f0f6 52%,#f3eee5 100%)!important;background-attachment:fixed!important;color:#062d63!important}.tbc-page,.page,.tour-page,.tour-detail-page,main{background:transparent!important}
+</style>

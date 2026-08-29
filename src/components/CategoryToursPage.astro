@@ -1,5 +1,6 @@
 ---
 import SeoHead from './SeoHead.astro';
+import TourFooter from './TourFooter.astro';
 import SiteHeader from './SiteHeader.astro';
 import { en } from '../i18n/en';
 import { tr } from '../i18n/tr';
@@ -157,6 +158,7 @@ const cards = t.tourCards.filter((card) => {
 })();
 </script>
 
+<TourFooter lang={lang} />
 </body></html>
 
 <style is:global>
@@ -164,4 +166,7 @@ const cards = t.tourCards.filter((card) => {
 :root{--cgc-blue:#0b67b2;--cgc-deep:#0d3158;--cgc-navy:#0a2342;--cgc-gold:#d59a18;--cgc-sky:#eef7fd;--cgc-line:#dbe7f0;--cgc-bg:#f6fafe}
 body{background:var(--cgc-bg)!important;color:var(--cgc-navy)!important}.site-header{background:#fff!important;border-bottom:1px solid var(--cgc-line)!important;box-shadow:0 4px 18px rgba(9,47,86,.045)!important}.category-hero,.hero{background:linear-gradient(120deg,#123b63,#0d3158 58%,#0a2748)!important;color:#fff!important;border:0!important;box-shadow:0 14px 34px rgba(9,47,86,.14)!important}.category-hero h1,.hero h1{font-family:'Fraunces',Georgia,serif!important;color:#fff!important;font-weight:600!important;letter-spacing:-.035em!important}.category-hero p,.hero p{color:rgba(255,255,255,.78)!important}.tour-card,.card{border-color:var(--cgc-line)!important;box-shadow:0 12px 30px rgba(9,47,86,.06)!important}.tour-card h2,.tour-card h3,.card h2,.card h3{font-family:'Fraunces',Georgia,serif!important;color:var(--cgc-navy)!important}.price,.tour-price{color:var(--cgc-blue)!important}.btn,.tour-card a[class*='button']{background:var(--cgc-blue)!important;color:#fff!important}
 @media(max-width:680px){.cards,.grid,.tour-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.tour-card,.card{min-width:0!important}.tour-card h2,.tour-card h3,.card h2,.card h3{font-size:15px!important}}
+</style>
+<style is:global>
+body{background:radial-gradient(circle at 12% 5%,rgba(217,165,31,.08),transparent 28%),linear-gradient(180deg,#f0f6fb 0%,#e9f1f7 48%,#f5f0e6 100%)!important;color:#062d63!important}.category-page,.category-shell,main{background:transparent!important}
 </style>

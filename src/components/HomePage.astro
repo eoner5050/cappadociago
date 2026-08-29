@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import { getSiteGallery, getTourGallery } from '../utils/tourGallery';
+import SiteHeader from './SiteHeader.astro';
+import TourFooter from './TourFooter.astro';
 const { t, lang } = Astro.props;
 const footerTourImages = getSiteGallery(4);
 const sliderTourImages = {
@@ -410,86 +412,8 @@ const homepageReviews = [
 
 </head>
 <body>
-
-  <!-- HEADER / NAVBAR -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="logo">
-        <a href={homeUrl} class="logo-home" aria-label="CappadociaGo Home" title="CappadociaGo - Home">
-          <img src="/images/logo.png" alt="CappadociaGo" width="400" height="600" loading="lazy" decoding="async"/>
-        </a>
-
-        <a
-          href="https://wa.me/905401015050"
-          class="header-social-pill header-phone-pill"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="WhatsApp +90 540 101 50 50"
-        >
-          <img
-            src="/images/icons/whatsapp-logo.webp"
-            alt="WhatsApp"
-            width="22"
-            height="22"
-            loading="lazy"
-          />
-          <span>+90 540 101 50 50</span>
-        </a>
-      </div>
-      <nav class="main-nav">
-        <ul>
-          <li><a href={`/${lang}/balloon-tours/`}>{t.nav.balloonTours}</a></li>
-          <li><a href={`/${lang}/cappadocia-tours/`}>{t.nav.cappadociaTours}</a></li>
-          <li><a href={`/${lang}/activities/`}>{t.nav.activities}</a></li>
-          <li><a href={`/${lang}/private-tours/`}>{t.nav.privateTours}</a></li>
-          <li><a href={`/${lang}/transfers/`}>{t.nav.transfers}</a></li>
-          <li></li>
-        </ul>
-      </nav>
-
-      <!-- DİL SEÇENEKLERİ MENÜSÜ -->
-      <div class="header-right">
-        <div class="lang-switcher" id="langSwitcher">
-          <button
-            class="lang-btn"
-            id="langButton"
-            type="button"
-            aria-label="Select language"
-            aria-expanded="false"
-          >
-            <span class="lang-flag">{currentFlag}</span>
-            <span class="lang-code">{currentCode}</span>
-            <span class="arrow">▾</span>
-          </button>
-
-          <div class="lang-dropdown" id="langDropdown">
-            <a href="/en/" data-lang-url="/en/" class:list={["lang-item", { active: lang === "en" }]}>
-              <span class="flag">🇬🇧</span>
-              <span>English</span>
-            </a>
-
-            <a href="/tr/" data-lang-url="/tr/" class:list={["lang-item", { active: lang === "tr" }]}>
-              <span class="flag">🇹🇷</span>
-              <span>Türkçe</span>
-            </a>
-
-            <a href="/es/" data-lang-url="/es/" class:list={["lang-item", { active: lang === "es" }]}>
-              <span class="flag">🇪🇸</span>
-              <span>Español</span>
-            </a>
-          </div>
-        </div>
-
-
-        <!-- MOBİL MENÜ BUTONU (HAMBURGER) -->
-        <button class="mobile-menu-toggle" type="button" aria-label="Toggle Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+  <!-- SHARED HEADER -->
+  <SiteHeader lang={lang} />
 
   <!-- HERO VİDEO BÖLÜMÜ -->
   <section class="tbc-hero-form">
@@ -913,161 +837,7 @@ const homepageReviews = [
   </section>
 
   <!-- WHATSAPP CTA BANNER -->
-  <section class="footer-cta-banner">
-    <div class="container cta-flex">
-      <div class="cta-text">
-        <h2>{t.cta.title}</h2>
-        <p>{t.cta.text}</p>
-      </div>
-      <a href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer" class="cta-btn">
-        <img
-          src="/images/icons/whatsapp-logo.webp"
-          alt=""
-          class="cta-whatsapp-icon"
-          width="20"
-          height="20"
-          aria-hidden="true" loading="lazy"
-        />
-        <span>{t.cta.button}</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-top-row">
-      <div class="footer-brand-box">
-        <div class="brand-header">
-          <div class="footer-logo-wrapper">
-            <img 
-              src="/images/logo.png" 
-              alt="CappadociaGo" 
-              class="footer-logo-img transparent-logo" width="400" height="600" loading="lazy" decoding="async"/>
-          </div>
-        </div>
-        
-        <div class="contact-cards">
-          <div class="contact-card-item">
-            <div class="icon-circle icon-clean"><img src="/images/icons/telefon-logo.webp" alt="" class="contact-icon-img" width="24" height="24" aria-hidden="true" loading="lazy" /></div>
-            <div class="card-info">
-              <span class="card-label">{t.footer.phone}</span>
-              <a href="tel:+905401015050" class="card-value">+90 540 101 50 50</a>
-            </div>
-          </div>
-
-          <div class="contact-card-item">
-            <div class="icon-circle icon-clean">
-              <img
-                src="/images/icons/whatsapp-logo.webp"
-                alt=""
-                class="contact-whatsapp-icon"
-                width="24"
-                height="24"
-                aria-hidden="true" loading="lazy"
-              />
-            </div>
-            <div class="card-info">
-              <span class="card-label">{t.contact.whatsapp}</span>
-              <a href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer" class="card-value">+90 540 101 50 50</a>
-            </div>
-          </div>
-
-          <div class="contact-card-item">
-            <div class="icon-circle icon-clean"><img src="/images/icons/mail-logo.webp" alt="" class="contact-icon-img" width="24" height="24" aria-hidden="true" loading="lazy" /></div>
-            <div class="card-info">
-              <span class="card-label">{t.footer.mail}</span>
-              <a href="mailto:info@kapheratravel.com" class="card-value">info@kapheratravel.com</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-gallery-box">
-        <div class="mini-gallery">
-          {footerTourImages.map((src, index) => <img src={src} alt={`${seo.introTitle} - ${index + 1}`} loading="lazy" decoding="async" width="800" height="533"/>)}
-        </div>
-      </div>
-    </div>
-
-    <div class="container footer-middle-row">
-      <div class="footer-col">
-        <h4>CappadociaGo</h4>
-        <ul>
-          <li><a href={`/${lang}/`}>{t.footer.nav.home}</a></li>
-          <li><a href={`/${lang}/about-us/`}>{t.footer.nav.about}</a></li>
-          <li><a href={`/${lang}/#tours`}>{t.footer.nav.categories}</a></li>
-          <li><a href={`/${lang}/#blogs`}>{t.footer.nav.blogs}</a></li>
-          <li><a href={`/${lang}/contact/`}>{t.footer.nav.contact}</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>{t.footer.informationTitle}</h4>
-        <ul>
-          <li><a href={`/${lang}/balloon-tours/`}>{lang === "tr" ? "Balon Turları" : lang === "es" ? "Tours en Globo" : "Balloon Tours"}</a></li>
-          <li><a href={`/${lang}/cancellation-refund-policy/`}>{t.footer.information.cancellation}</a></li>
-          <li><a href={`/${lang}/distance-sales-agreement/`}>{t.footer.information.distanceSales}</a></li>
-          <li><a href={`/${lang}/kvkk-clarification-text/`}>{t.footer.information.kvk}</a></li>
-          <li><a href={`/${lang}/terms-and-conditions/`}>{t.footer.information.terms}</a></li>
-          <li><a href={`/${lang}/privacy-policy/`}>{t.footer.information.privacy}</a></li>
-          <li><a href={`/${lang}/faq/`}>{lang === "tr" ? "Sıkça Sorulan Sorular" : lang === "es" ? "Preguntas Frecuentes" : "FAQ"}</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-info-col">
-        <h4>{t.footer.addressTitle}</h4>
-
-        <div class="footer-info-item">
-          <span class="footer-info-symbol">📍</span>
-          <span>Cappadocia, Nevşehir, Türkiye</span>
-        </div>
-
-        <div class="footer-info-item">
-          <img src="/images/icons/telefon-logo.webp" alt="" class="footer-info-icon" width="18" height="18" aria-hidden="true" loading="lazy" />
-          <a href="tel:+905401015050">{t.footer.phone}: +90 540 101 50 50</a>
-        </div>
-
-        <div class="footer-info-item">
-          <img src="/images/icons/mail-logo.webp" alt="" class="footer-info-icon" width="18" height="18" aria-hidden="true" loading="lazy" />
-          <a href="mailto:info@kapheratravel.com">{t.footer.mail}: info@kapheratravel.com</a>
-        </div>
-
-        <div class="footer-info-item tursab-text">
-          <span class="footer-info-symbol">🛡️</span>
-          <span>TÜRSAB No: 18577</span>
-        </div>
-      </div>
-
-      <div class="footer-col footer-connect-col">
-        <h4>{lang === "tr" ? "Bizi Takip Edin" : lang === "es" ? "Síguenos" : "Stay Connected"}</h4>
-        <p>
-          {lang === "tr"
-            ? "Kapadokya'dan güncel turlar, uçuş bilgileri ve hızlı destek için sosyal medya ve WhatsApp üzerinden bize ulaşın."
-            : lang === "es"
-              ? "Síguenos para conocer tours, información de vuelos y recibir asistencia rápida por redes sociales y WhatsApp."
-              : "Follow our Cappadocia updates, tour highlights and get fast support through social media and WhatsApp."}
-        </p>
-        <div class="footer-social-stack">
-          <a href="https://www.instagram.com/cappadociago/" target="_blank" rel="noopener noreferrer" class="footer-social-card">
-            <img src="/images/icons/instagram-logo.webp" alt="Instagram" width="22" height="22" loading="lazy" />
-            <span><strong>Instagram</strong><small>@cappadociago</small></span>
-          </a>
-          <a href="https://www.facebook.com/share/19A14kRwHz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="footer-social-card">
-            <img src="/images/icons/facebook-logo.webp" alt="Facebook" width="22" height="22" loading="lazy" />
-            <span><strong>Facebook</strong><small>CappadociaGo</small></span>
-          </a>
-          <a href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer" class="footer-social-card footer-social-whatsapp">
-            <img src="/images/icons/whatsapp-logo.webp" alt="WhatsApp" width="22" height="22" loading="lazy" />
-            <span><strong>WhatsApp</strong><small>+90 540 101 50 50</small></span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>{t.footer.copyright}</p>
-    </div>
-  </footer>
+  <TourFooter lang={lang} />
 
   <!-- İNTERAKTİF JS KODLARI -->
   <script is:inline>
@@ -9831,4 +9601,10 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
     font-size:29px!important;
   }
 }
+</style>
+
+<style is:global>
+/* Shared navigation language for Most Popular filters */
+.category-tabs-section{background:transparent!important;border:0!important;padding:18px 0 8px!important}.category-tabs-section .container{display:flex!important;justify-content:center!important}.category-tabs{display:flex!important;gap:8px!important;justify-content:center!important;padding:2px 8px 8px!important}.tab-item{min-height:42px!important;padding:0 17px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border:1px solid #c9dbea!important;border-radius:999px!important;background:#f8fbfe!important;color:#062d63!important;font-family:'Plus Jakarta Sans',Arial,sans-serif!important;font-size:12px!important;font-weight:800!important;box-shadow:none!important;transition:.18s ease!important}.tab-item:hover,.tab-item.active{background:#075aa6!important;border-color:#075aa6!important;color:#fff!important}.tours-section{background:transparent!important}
+@media(max-width:700px){.category-tabs-section{padding-top:10px!important}.category-tabs{justify-content:flex-start!important;overflow-x:auto!important;scrollbar-width:none!important;padding:2px 10px 8px!important}.category-tabs::-webkit-scrollbar{display:none!important}.tab-item{min-height:40px!important;padding:0 14px!important;font-size:11.5px!important}}
 </style>

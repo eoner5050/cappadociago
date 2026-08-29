@@ -2,6 +2,7 @@
 import SeoHead from '../../../components/SeoHead.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import TourPremiumTheme from '../../../components/TourPremiumTheme.astro';
+import TourFooter from '../../../components/TourFooter.astro';
 import FloatingAssistant from "../../../components/FloatingAssistant.astro";
 import { getTourGallery } from '../../../utils/tourGallery';
 // src/pages/tours/goreme-comfort-hot-air-balloon-tour.astro
@@ -630,66 +631,7 @@ const galleryPhotoWord = 'fotoğraf';
   </section>
 
   <!-- FOOTER -->
-  <footer class="tbc-site-footer tbc-footer-white">
-    <div class="tbc-footer-container">
-      <div class="tbc-footer-col-left">
-        <img src="/images/logo.png" alt="CappadociaGo" class="tbc-footer-logo-big" loading="lazy" width="600" height="200" />
-      </div>
-
-      <div class="tbc-footer-col-right">
-        <div class="tbc-footer-contacts">
-          <div class="tbc-f-contact-item">
-            <div class="tbc-f-icon tbc-f-icon-clean">
-              <img src="/images/icons/telefon-logo.webp" alt="" class="tbc-footer-contact-icon" width="26" height="26" aria-hidden="true" loading="lazy" />
-            </div>
-            <div>
-              <span class="tbc-f-label">Telefon</span>
-              <a href="tel:+905401015050">+90 540 101 50 50</a>
-            </div>
-          </div>
-
-          <div class="tbc-f-contact-item">
-            <div class="tbc-f-icon tbc-f-icon-clean">
-              <img src="/images/icons/whatsapp-logo.webp" alt="" class="tbc-footer-contact-icon" width="26" height="26" aria-hidden="true" loading="lazy" />
-            </div>
-            <div>
-              <span class="tbc-f-label">WhatsApp</span>
-              <a href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer">+90 540 101 50 50</a>
-            </div>
-          </div>
-
-          <div class="tbc-f-contact-item tbc-f-email">
-            <div class="tbc-f-icon tbc-f-icon-clean">
-              <img src="/images/icons/mail-logo.webp" alt="" class="tbc-footer-contact-icon" width="26" height="26" aria-hidden="true" loading="lazy" />
-            </div>
-            <div>
-              <span class="tbc-f-label">E-Posta</span>
-              <a href="mailto:info@kapheratravel.com">info@kapheratravel.com</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="tbc-footer-gallery">
-          <img src="/images/tours/goreme-standart-hot-air-balloon-tour (2).webp" alt="Göreme Standard Balloon Tour" loading="lazy" width="800" height="600" />
-          <img src="/images/tours/goreme-comfort-hot-air-balloon-tour (2).webp" alt="Göreme Comfort Balloon Tour" loading="lazy" width="800" height="600" />
-          <img src="/images/tours/ihlara-valley-balloons-tour (1).webp" alt="Ihlara Valley Balloon Tour" loading="lazy" width="800" height="600" />
-          <img src="/images/tours/soganli-valley-balloon-tour (1).webp" alt="Soğanlı Valley Balloon Tour" loading="lazy" width="800" height="600" />
-        </div>
-
-        <div class="tbc-footer-social-inline">
-          <a href="https://www.instagram.com/cappadociago/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <img src="/images/icons/instagram-logo.webp" alt="Instagram" width="26" height="26" loading="lazy" />
-            <span>@cappadociago</span>
-          </a>
-
-          <a href="https://www.facebook.com/share/19A14kRwHz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <img src="/images/icons/facebook-logo.webp" alt="Facebook" width="26" height="26" loading="lazy" />
-            <span>Facebook</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <TourFooter lang={pageLang} />
 
 
 <style is:global>
@@ -1794,3 +1736,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <link rel="stylesheet" href="/cappadociago-brand-v2.css" />
 
 <link rel="stylesheet" href="/tour-reference-layout.css" />
+<!-- FINAL GLOBAL TOUR BACKGROUND -->
+<style is:global>
+html,body{background:radial-gradient(circle at 12% 3%,rgba(217,165,31,.10),transparent 24%),radial-gradient(circle at 88% 18%,rgba(7,90,166,.10),transparent 28%),linear-gradient(180deg,#eef5fa 0%,#e8f0f6 52%,#f3eee5 100%)!important;background-attachment:fixed!important;color:#062d63!important}.tbc-page,.page,.tour-page,.tour-detail-page,main{background:transparent!important}
+</style>
