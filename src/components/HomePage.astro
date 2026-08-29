@@ -488,7 +488,7 @@ const homepageReviews = [
 
   <!-- HERO VİDEO BÖLÜMÜ -->
   <section class="tbc-hero-form">
-    <section class="tbc-video-hero">
+    <section class="tbc-video-hero" id="cgo-ref-hero-v4">
 
       <!-- Hero Görseli: Vercel üzerinden yerel olarak servis edilir -->
       <picture class="tbc-mobile-hero">
@@ -505,7 +505,7 @@ const homepageReviews = [
 
       <div class="tbc-video-overlay"></div>
 
-      <div class="tbc-video-content">
+      <div class="tbc-video-content" id="cgo-ref-content-v4">
         <span class="tbc-video-kicker">
           CappadociaGo
         </span>
@@ -529,7 +529,7 @@ const homepageReviews = [
           </a>
         </div>
 
-        <div class="tbc-hero-trust-points cgo-reference-trust" aria-label="Why choose CappadociaGo">
+        <div class="tbc-hero-trust-points cgo-reference-trust" id="cgo-ref-trust-v4" aria-label="Why choose CappadociaGo">
           <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">✹</span><span>Premium Experiences</span></div>
           <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">●</span><span>24/7 Customer Care</span></div>
           <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">★</span><span>Top Rated</span></div>
@@ -8602,5 +8602,94 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .cgo-reference-trust{grid-template-columns:1fr 1fr!important;gap:11px 9px!important;}
   .cgo-reference-trust .tbc-trust-point{font-size:10px!important;gap:6px!important;}
   .booking-callout{bottom:10px!important;}
+}
+</style>
+
+
+<style is:global>
+/* =========================================================
+   CGO REFERENCE HERO V4 — isolated final rules.
+   Uses unique IDs so legacy HomePage visual overrides cannot hide/reposition it.
+   ========================================================= */
+:root{
+  --cgo-ref-navy:#0a1d36;
+  --cgo-ref-yellow:#ffcc00;
+  --cgo-ref-blue:#1b63b7;
+}
+
+/* Header proportions: compact white reference header */
+.site-header{height:86px!important;background:#fff!important;border-bottom:1px solid #eef1f5!important;box-shadow:none!important;}
+.site-header .header-container{height:86px!important;width:min(1400px,calc(100% - 48px))!important;margin:0 auto!important;padding:0!important;display:grid!important;grid-template-columns:auto 1fr auto!important;align-items:center!important;gap:28px!important;}
+.site-header .logo{display:flex!important;align-items:center!important;gap:16px!important;min-width:0!important;}
+.site-header .logo-home img,.site-header .logo img{width:auto!important;height:58px!important;max-width:154px!important;object-fit:contain!important;}
+.header-phone-pill{height:38px!important;min-height:38px!important;border:1px solid #dce4ee!important;border-radius:999px!important;background:#fff!important;padding:0 14px!important;gap:9px!important;box-shadow:0 5px 14px rgba(10,29,54,.06)!important;color:var(--cgo-ref-navy)!important;font-size:11px!important;font-weight:800!important;white-space:nowrap!important;}
+.header-phone-pill img{width:18px!important;height:18px!important;min-width:18px!important;max-width:18px!important;flex:0 0 18px!important;object-fit:contain!important;}
+.main-nav{justify-self:center!important;min-width:0!important;}
+.main-nav ul{gap:27px!important;align-items:center!important;}
+.main-nav a{font-family:'Plus Jakarta Sans','Inter','Segoe UI',Arial,sans-serif!important;font-size:12px!important;font-weight:800!important;letter-spacing:-.02em!important;color:var(--cgo-ref-navy)!important;white-space:nowrap!important;}
+.lang-btn{height:40px!important;min-width:78px!important;border:1px solid #d7e0eb!important;border-radius:999px!important;background:#fff!important;color:var(--cgo-ref-navy)!important;box-shadow:0 7px 18px rgba(10,29,54,.08)!important;font-size:10.5px!important;font-weight:800!important;}
+.lang-btn .arrow{color:var(--cgo-ref-yellow)!important;}
+
+/* Hero itself */
+#cgo-ref-hero-v4{position:relative!important;height:720px!important;min-height:720px!important;overflow:visible!important;background:#18324d!important;}
+#cgo-ref-hero-v4 .tbc-mobile-hero{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;}
+#cgo-ref-hero-v4 .tbc-mobile-hero img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 44%!important;filter:none!important;}
+#cgo-ref-hero-v4 .tbc-video-overlay{position:absolute!important;inset:0!important;z-index:1!important;background:linear-gradient(90deg,rgba(10,29,54,.78) 0%,rgba(10,29,54,.62) 44%,rgba(10,29,54,.37) 72%,rgba(10,29,54,.30) 100%)!important;}
+#cgo-ref-hero-v4:after{content:none!important;display:none!important;}
+
+/* Reference content block — deliberately left aligned */
+#cgo-ref-content-v4{position:absolute!important;z-index:4!important;top:48px!important;left:max(80px,calc((100vw - 1400px)/2))!important;right:auto!important;bottom:auto!important;transform:none!important;width:680px!important;max-width:calc(100% - 160px)!important;height:auto!important;padding:0!important;margin:0!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;text-align:left!important;}
+#cgo-ref-content-v4 .tbc-video-kicker{display:inline-flex!important;align-items:center!important;justify-content:center!important;margin:0 0 15px!important;padding:6px 13px!important;border:1px solid var(--cgo-ref-yellow)!important;border-radius:999px!important;background:rgba(10,29,54,.32)!important;color:var(--cgo-ref-yellow)!important;font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;font-size:10px!important;line-height:1!important;font-weight:900!important;letter-spacing:.04em!important;text-transform:uppercase!important;}
+#cgo-ref-content-v4 .tbc-video-title{display:block!important;width:650px!important;max-width:100%!important;margin:0 0 18px!important;padding:0!important;font-family:'Plus Jakarta Sans','Inter','Segoe UI',Arial,sans-serif!important;font-size:49px!important;line-height:1.06!important;font-weight:900!important;letter-spacing:-.045em!important;text-align:left!important;color:#fff!important;text-shadow:0 2px 12px rgba(0,0,0,.20)!important;}
+#cgo-ref-content-v4 .tbc-hero-divider{display:none!important;}
+#cgo-ref-content-v4 .tbc-video-text{display:block!important;width:620px!important;max-width:100%!important;margin:0 0 21px!important;padding:0!important;font-family:'Plus Jakarta Sans','Inter','Segoe UI',Arial,sans-serif!important;font-size:13.5px!important;line-height:1.58!important;font-weight:600!important;letter-spacing:-.012em!important;text-align:left!important;color:rgba(255,255,255,.93)!important;}
+#cgo-ref-content-v4 .tbc-video-actions{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:11px!important;margin:0 0 22px!important;padding:0!important;}
+#cgo-ref-content-v4 .tbc-video-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:43px!important;padding:0 20px!important;border-radius:999px!important;font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;font-size:11.5px!important;font-weight:900!important;letter-spacing:-.02em!important;text-decoration:none!important;box-shadow:none!important;}
+#cgo-ref-content-v4 .tbc-video-btn-primary{background:var(--cgo-ref-yellow)!important;border:1px solid var(--cgo-ref-yellow)!important;color:var(--cgo-ref-navy)!important;}
+#cgo-ref-content-v4 .tbc-video-btn-secondary{background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.40)!important;color:#fff!important;}
+
+/* The requested four reference trust points. Never hidden. */
+#cgo-ref-trust-v4{position:relative!important;z-index:20!important;display:flex!important;visibility:visible!important;opacity:1!important;flex-flow:row wrap!important;align-items:center!important;justify-content:flex-start!important;width:760px!important;max-width:100%!important;min-height:24px!important;gap:10px 28px!important;margin:0!important;padding:0!important;transform:none!important;overflow:visible!important;}
+#cgo-ref-trust-v4 .tbc-trust-point{display:inline-flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:flex-start!important;gap:7px!important;margin:0!important;padding:0!important;color:#fff!important;font-family:'Plus Jakarta Sans','Inter','Segoe UI',Arial,sans-serif!important;font-size:11px!important;line-height:1.2!important;font-weight:800!important;white-space:nowrap!important;text-shadow:none!important;}
+#cgo-ref-trust-v4 .tbc-trust-icon{display:inline-flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:center!important;width:14px!important;height:14px!important;flex:0 0 14px!important;color:#fff!important;font-size:12px!important;line-height:1!important;}
+
+/* Booking dock remains functional and clear of trust row */
+#cgo-ref-hero-v4 + .booking-callout,
+.tbc-hero-form>.booking-callout{z-index:9!important;bottom:16px!important;width:min(1100px,calc(100% - 48px))!important;}
+.booking-callout .booking-section-heading{font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;font-size:clamp(30px,2.9vw,43px)!important;line-height:1.05!important;font-weight:900!important;letter-spacing:-.045em!important;text-shadow:none!important;margin-bottom:12px!important;}
+
+/* True hamburger behavior */
+@media(max-width:980px){
+  .site-header{height:72px!important;}
+  .site-header .header-container{height:72px!important;width:calc(100% - 26px)!important;grid-template-columns:auto 1fr auto!important;gap:10px!important;}
+  .site-header .logo-home img,.site-header .logo img{height:48px!important;max-width:120px!important;}
+  .header-phone-pill{width:34px!important;height:34px!important;min-width:34px!important;padding:0!important;justify-content:center!important;}
+  .header-phone-pill span{display:none!important;}
+  .header-phone-pill img{width:16px!important;height:16px!important;min-width:16px!important;max-width:16px!important;flex-basis:16px!important;}
+  .main-nav{display:none!important;}
+  .header-right{justify-self:end!important;display:flex!important;align-items:center!important;gap:8px!important;}
+  .lang-btn{height:34px!important;min-width:66px!important;padding:0 10px!important;font-size:9.5px!important;}
+  .mobile-menu-toggle{display:flex!important;width:38px!important;height:38px!important;border:1px solid #dce4ee!important;border-radius:50%!important;background:#fff!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:4px!important;padding:0!important;box-shadow:0 5px 14px rgba(10,29,54,.06)!important;}
+  .mobile-menu-toggle span{display:block!important;width:17px!important;height:2px!important;border-radius:2px!important;background:var(--cgo-ref-navy)!important;}
+
+  #cgo-ref-hero-v4{height:850px!important;min-height:850px!important;}
+  #cgo-ref-content-v4{top:38px!important;left:24px!important;right:24px!important;width:auto!important;max-width:none!important;}
+  #cgo-ref-content-v4 .tbc-video-title{font-size:clamp(34px,6vw,43px)!important;line-height:1.07!important;}
+  #cgo-ref-content-v4 .tbc-video-text{font-size:12.5px!important;line-height:1.55!important;}
+  #cgo-ref-trust-v4{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px 12px!important;width:min(560px,100%)!important;}
+  #cgo-ref-trust-v4 .tbc-trust-point{font-size:10.5px!important;white-space:normal!important;}
+  .tbc-hero-form>.booking-callout{width:calc(100% - 18px)!important;bottom:10px!important;}
+}
+@media(max-width:600px){
+  #cgo-ref-hero-v4{height:900px!important;min-height:900px!important;}
+  #cgo-ref-content-v4{top:28px!important;left:18px!important;right:18px!important;}
+  #cgo-ref-content-v4 .tbc-video-kicker{font-size:9px!important;padding:5px 10px!important;margin-bottom:11px!important;}
+  #cgo-ref-content-v4 .tbc-video-title{font-size:32px!important;line-height:1.07!important;margin-bottom:14px!important;}
+  #cgo-ref-content-v4 .tbc-video-text{font-size:12px!important;margin-bottom:17px!important;}
+  #cgo-ref-content-v4 .tbc-video-actions{margin-bottom:17px!important;}
+  #cgo-ref-content-v4 .tbc-video-btn{min-height:40px!important;padding:0 14px!important;font-size:10px!important;}
+  #cgo-ref-trust-v4{grid-template-columns:1fr 1fr!important;gap:9px 8px!important;}
+  #cgo-ref-trust-v4 .tbc-trust-point{font-size:9.5px!important;gap:5px!important;}
+  .booking-callout .booking-section-heading{font-size:25px!important;line-height:1.08!important;}
 }
 </style>
