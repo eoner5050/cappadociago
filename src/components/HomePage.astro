@@ -4558,3 +4558,80 @@ body{background:#fff!important}
   .booking-callout .tbc-booking-wrap{width:100%!important;}
 }
 </style>
+
+<style is:global>
+/* PREMIUM FINISH — CappadociaGo blue + gold hero / booking treatment */
+.tbc-video-hero::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(180deg,rgba(5,39,75,.34) 0%,rgba(7,55,100,.27) 46%,rgba(4,34,67,.42) 100%)!important;
+}
+.tbc-video-content{z-index:4!important;}
+
+/* Premium booking heading: real brand palette, calm glass surface. */
+.booking-callout .booking-section-heading{
+  display:flex!important;
+  align-items:baseline!important;
+  justify-content:center!important;
+  flex-wrap:wrap!important;
+  gap:0!important;
+  width:max-content!important;
+  max-width:calc(100% - 28px)!important;
+  margin:0 auto 14px!important;
+  padding:12px 24px 13px!important;
+  border-radius:17px!important;
+  border:1px solid rgba(18,91,154,.16)!important;
+  border-top:2px solid rgba(213,155,17,.72)!important;
+  background:rgba(255,255,255,.92)!important;
+  -webkit-backdrop-filter:blur(12px)!important;
+  backdrop-filter:blur(12px)!important;
+  box-shadow:0 14px 34px rgba(7,42,79,.16)!important;
+  color:#0b3765!important;
+  text-shadow:none!important;
+  font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
+  font-size:clamp(27px,2.25vw,36px)!important;
+  line-height:1.08!important;
+  font-weight:600!important;
+  letter-spacing:-.027em!important;
+}
+.booking-callout .booking-section-heading > span{
+  color:#0b3765!important;
+  font-weight:600!important;
+}
+.booking-callout .booking-brand-blue{
+  color:#0868bd!important;
+  font-weight:700!important;
+}
+.booking-callout .booking-brand-gold{
+  color:#d79a08!important;
+  font-weight:700!important;
+}
+
+/* Tie the booking controls visually to the heading without changing functionality. */
+.booking-callout .tbc-booking-box{
+  border:1px solid rgba(14,83,145,.14)!important;
+  border-bottom:3px solid rgba(213,155,17,.62)!important;
+  background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(247,251,255,.97))!important;
+  box-shadow:0 18px 42px rgba(7,42,79,.14)!important;
+}
+.booking-callout .tbc-select-btn,
+.booking-callout .dates-custom-box{
+  border-color:rgba(12,83,148,.12)!important;
+}
+
+@media(max-width:680px){
+  .booking-callout .booking-section-heading{
+    width:calc(100% - 12px)!important;
+    max-width:none!important;
+    padding:10px 14px 11px!important;
+    border-radius:14px!important;
+    font-size:22px!important;
+    line-height:1.1!important;
+  }
+}
+</style>

@@ -1,0 +1,6 @@
+CappadociaGo premium polish
+- Hero overlay changed to a restrained CappadociaGo navy/blue veil.
+- Booking heading restyled on a subtle glass surface.
+- "Plan Your Flight & Tour with" uses deep logo navy.
+- "Cappadocia" uses logo blue and "Go" uses logo gold.
+- Booking controls keep their existing functionality and selectors.
