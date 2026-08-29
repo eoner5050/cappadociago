@@ -137,3 +137,36 @@ const routeFor = (targetLang) => detailSlug
   }
   @media(max-width:380px){.cg-tour-header__inner{width:calc(100% - 14px)}.cg-tour-header__logo img{height:47px;max-width:128px}.cg-tour-header__actions{gap:6px}.cg-tour-header__language-btn{min-width:56px;padding:0 8px}}
 </style>
+
+<style is:global>
+/* FINAL QA — unified compact mobile dropdown, flush with header */
+@media(max-width:1120px){
+  .cg-tour-header{overflow:visible!important;}
+  .cg-tour-header__inner{position:relative!important;z-index:3!important;}
+  .cg-tour-header__mobile{
+    top:calc(100% - 1px)!important;
+    margin:0!important;
+    border-top:1px solid #e8eef4!important;
+    border-radius:0 0 18px 18px!important;
+    padding:8px 12px 12px!important;
+    background:#fff!important;
+    box-shadow:0 18px 32px rgba(6,45,99,.14)!important;
+  }
+  .cg-tour-header__mobile nav{gap:6px!important;margin:0 auto!important;}
+  .cg-tour-header__mobile nav a{
+    margin:0!important;
+    min-height:42px!important;
+    border-radius:999px!important;
+    background:#f8fbfe!important;
+    border:1px solid #c9dbea!important;
+    color:#062d63!important;
+  }
+  .cg-tour-header__mobile-phone{margin-top:6px!important;}
+}
+@media(max-width:680px){
+  .cg-tour-header__mobile{padding:6px 10px 10px!important;}
+  .cg-tour-header__mobile nav{grid-template-columns:1fr!important;gap:5px!important;}
+  .cg-tour-header__mobile nav a{min-height:40px!important;}
+  .cg-tour-header__mobile-phone{min-height:40px!important;margin-top:5px!important;}
+}
+</style>

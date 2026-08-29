@@ -1,0 +1,7 @@
+FINAL QA 2026-08-30
+- Fixed build-blocking TourFooter getFooterGallery export mismatch.
+- Removed the mobile homepage artificial blank area by moving the booking block into normal mobile document flow.
+- Slider now starts immediately after the booking/calendar block on mobile.
+- Mobile shared hamburger dropdown is flush with the header and uses compact spacing.
+- Desktop hero/booking positioning remains unchanged by the new mobile-only override.
+- Header/footer common components remain shared across tour detail templates.

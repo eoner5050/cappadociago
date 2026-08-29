@@ -9608,3 +9608,112 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
 .category-tabs-section{background:transparent!important;border:0!important;padding:18px 0 8px!important}.category-tabs-section .container{display:flex!important;justify-content:center!important}.category-tabs{display:flex!important;gap:8px!important;justify-content:center!important;padding:2px 8px 8px!important}.tab-item{min-height:42px!important;padding:0 17px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border:1px solid #c9dbea!important;border-radius:999px!important;background:#f8fbfe!important;color:#062d63!important;font-family:'Plus Jakarta Sans',Arial,sans-serif!important;font-size:12px!important;font-weight:800!important;box-shadow:none!important;transition:.18s ease!important}.tab-item:hover,.tab-item.active{background:#075aa6!important;border-color:#075aa6!important;color:#fff!important}.tours-section{background:transparent!important}
 @media(max-width:700px){.category-tabs-section{padding-top:10px!important}.category-tabs{justify-content:flex-start!important;overflow-x:auto!important;scrollbar-width:none!important;padding:2px 10px 8px!important}.category-tabs::-webkit-scrollbar{display:none!important}.tab-item{min-height:40px!important;padding:0 14px!important;font-size:11.5px!important}}
 </style>
+
+<style is:global>
+/* =============================================================
+   FINAL QA 2026-08-30 — MOBILE FLOW / WHITE-GAP ELIMINATION
+   Keep desktop exactly as designed; make mobile hero + booking
+   participate in normal document flow so no artificial blank area
+   can remain beneath the calendar/booking block.
+   ============================================================= */
+@media (max-width:760px){
+  body{overflow-x:hidden!important;}
+  .tbc-hero-form{
+    display:flex!important;
+    flex-direction:column!important;
+    width:100%!important;
+    min-height:0!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    background:#f7f9fc!important;
+    overflow:visible!important;
+  }
+  #cgo-ref-hero-v4,
+  .tbc-video-hero{
+    position:relative!important;
+    width:100%!important;
+    height:720px!important;
+    min-height:720px!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+  #cgo-ref-content-v4{
+    top:20px!important;
+    left:14px!important;
+    right:14px!important;
+    width:auto!important;
+    max-width:none!important;
+    padding:0!important;
+    margin:0 auto!important;
+  }
+  #cgo-ref-content-v4 .tbc-video-title{
+    margin-bottom:10px!important;
+  }
+  #cgo-ref-content-v4 .tbc-video-text{
+    margin-bottom:12px!important;
+  }
+  #cgo-ref-content-v4 .tbc-video-actions{
+    margin-bottom:12px!important;
+  }
+  #cgo-ref-trust-v4{
+    margin-bottom:0!important;
+  }
+  .tbc-hero-form > .booking-callout{
+    position:relative!important;
+    inset:auto!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    top:auto!important;
+    transform:none!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:-150px auto 0!important;
+    padding:0 8px 8px!important;
+    z-index:15!important;
+    box-sizing:border-box!important;
+  }
+  .booking-callout .booking-section-heading{
+    margin:0 auto 8px!important;
+  }
+  .booking-callout .tbc-booking-wrap,
+  .booking-callout .tbc-booking-box{
+    margin-bottom:0!important;
+  }
+  .infinite-slider-section{
+    margin:0!important;
+    padding:8px 0 14px!important;
+    min-height:0!important;
+    background:#f7f9fc!important;
+  }
+  .infinite-slider-section .container,
+  .infinite-slider-section .slider-wrapper,
+  .infinite-slider-section .infinite-track-container{
+    margin-top:0!important;
+    padding-top:0!important;
+  }
+}
+@media (max-width:430px){
+  #cgo-ref-hero-v4,
+  .tbc-video-hero{
+    height:700px!important;
+    min-height:700px!important;
+  }
+  .tbc-hero-form > .booking-callout{
+    margin-top:-132px!important;
+  }
+}
+@media (max-width:360px){
+  #cgo-ref-hero-v4,
+  .tbc-video-hero{
+    height:690px!important;
+    min-height:690px!important;
+  }
+  .tbc-hero-form > .booking-callout{
+    margin-top:-120px!important;
+    padding-inline:6px!important;
+  }
+}
+</style>
