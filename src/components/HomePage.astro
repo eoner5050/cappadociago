@@ -415,20 +415,20 @@ const homepageReviews = [
         </a>
 
         <a
-          href="https://www.instagram.com/cappadociago/"
-          class="header-social-pill"
+          href="https://wa.me/905401015050"
+          class="header-social-pill header-phone-pill"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Instagram @cappadociago"
+          aria-label="WhatsApp +90 540 101 50 50"
         >
           <img
-            src="/images/icons/instagram-logo.webp"
-            alt=""
+            src="/images/icons/whatsapp-logo.webp"
+            alt="WhatsApp"
             width="22"
             height="22"
-            aria-hidden="true" loading="lazy"
+            loading="lazy"
           />
-          <span>@cappadociago</span>
+          <span>+90 540 101 50 50</span>
         </a>
       </div>
       <nav class="main-nav">
@@ -475,10 +475,6 @@ const homepageReviews = [
           </div>
         </div>
 
-        <a class="header-whatsapp-link" href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +90 540 101 50 50">
-          <img src="/images/icons/whatsapp-logo.webp" alt="" width="22" height="22" aria-hidden="true" loading="lazy" />
-          <span>WhatsApp</span>
-        </a>
 
         <!-- MOBİL MENÜ BUTONU (HAMBURGER) -->
         <button class="mobile-menu-toggle" type="button" aria-label="Toggle Menu">
@@ -1847,6 +1843,64 @@ const homepageReviews = [
   .external-form-title{font-size:25px!important;line-height:1.13!important;}
   .tbc-booking-wrap{bottom:-224px!important;width:calc(100% - 16px)!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 
@@ -1872,6 +1926,64 @@ const homepageReviews = [
     .cg-hs-select-tour{left:21.4%;top:87.4%;width:15.8%;height:9.0%}
     .cg-hs-search{left:69.9%;top:87.5%;width:9.2%;height:8.8%}
   }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -2135,6 +2247,64 @@ html,body{font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;}
   .tbc-video-title{font-size:33px!important;}
   .booking-callout .booking-section-heading{font-size:24px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
@@ -3884,6 +4054,64 @@ html,body{font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;}
     .cg-experience-dock{grid-template-columns:repeat(3,1fr);border-radius:15px 15px 0 0;width:calc(100% - 16px)}.cg-dock-item{min-height:55px;font-size:8px}.cg-dock-icon{font-size:15px}
     .tbc-booking-wrap{bottom:-220px!important;width:calc(100% - 18px)!important}.tbc-booking-grid{grid-template-columns:1fr!important}.tbc-booking-box{border-radius:15px!important;padding:12px!important}.infinite-slider-section{padding-top:275px!important}
   }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 <style is:global>
 /* CappadociaGo 2026 brand integration */
@@ -3904,6 +4132,64 @@ body{background:var(--cg-bg)!important;color:#0b1d36!important}
 .category-tabs-section{background:#fff!important;border-color:#e2eaf2!important}.tab-item{color:#60728a!important}.tab-item.active,.tab-item:hover{background:var(--cg-blue)!important;color:#fff!important;border-color:var(--cg-blue)!important}.slider-arrow{background:#fff!important;color:var(--cg-blue)!important;border-color:#cbddea!important}.cat-card{border-radius:18px!important;border:1px solid #dbe6ef!important}.cat-overlay{background:linear-gradient(0deg,rgba(4,31,73,.78),transparent 75%)!important}.cat-overlay h3{color:#fff!important}
 @media(max-width:980px){.tours-grid{grid-template-columns:1fr!important}.tour-card-style2{grid-template-columns:42% 58%!important}}
 @media(max-width:620px){.site-header .header-container{height:76px!important}.site-header .logo img{height:60px!important}.tour-card-style2{grid-template-columns:1fr!important}.card-img-box{min-height:205px!important;height:205px!important}.card-body-box{padding:16px!important}.card-title-text{font-size:18px!important}.tours-grid{gap:14px!important}}
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -3940,6 +4226,64 @@ body{background:var(--cg-bg)!important;color:#0b1d36!important}
 .starting-text{font-size:9px!important;letter-spacing:.06em!important;}
 @media(max-width:1120px){.tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
 @media(max-width:720px){.site-header .header-container{height:76px!important;padding:0 16px!important}.site-header .logo img{height:56px!important}.tours-grid{grid-template-columns:1fr!important}.tour-card-style2{min-height:230px!important}.main-nav{display:none!important;}}
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -3951,6 +4295,64 @@ body{background:var(--cg-bg)!important;color:#0b1d36!important}
 .tours-section{background:#fbfcfe!important;padding:64px 0 78px!important}.tours-section .container{max-width:1320px!important}.section-title{font-family:'Fraunces',Georgia,serif!important;color:#0b2d64!important;font-size:38px!important;font-weight:600!important;text-align:center!important;margin-bottom:28px!important}.tours-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important}.premium-compare-card{position:relative!important;display:flex!important;flex-direction:column!important;min-height:355px!important;padding:20px 18px 16px!important;background:#fff!important;border:1px solid #dce5ee!important;border-radius:19px!important;box-shadow:0 12px 34px rgba(6,42,91,.055)!important;overflow:hidden!important;transition:.22s ease!important}.premium-compare-card:hover{transform:translateY(-4px)!important;border-color:#bfd2e3!important;box-shadow:0 18px 40px rgba(6,42,91,.11)!important}.card-stretched-link{position:absolute!important;inset:0!important;z-index:6!important}.compare-card-head{display:grid!important;grid-template-columns:64px minmax(0,1fr) 56px!important;gap:12px!important;align-items:start!important}.compare-thumb{width:64px!important;height:64px!important;border-radius:14px!important;overflow:hidden!important;box-shadow:0 8px 20px rgba(4,28,62,.12)!important}.compare-thumb img{width:100%!important;height:100%!important;object-fit:cover!important}.compare-selection{display:block!important;font-family:'Plus Jakarta Sans',sans-serif!important;color:#6580c5!important;font-size:8px!important;font-weight:800!important;letter-spacing:.05em!important;text-transform:uppercase!important;margin:1px 0 4px!important}.premium-compare-card .card-title-text{font-family:'Fraunces',Georgia,serif!important;color:#123f8c!important;font-size:22px!important;line-height:1.02!important;letter-spacing:-.035em!important;font-weight:650!important;margin:0!important}.compare-rating{display:grid!important;grid-template-columns:18px 1fr!important;grid-template-rows:auto auto!important;align-items:center!important;justify-items:end!important;color:#17243a!important}.rating-star{grid-row:1/3!important;color:#f2aa08!important;font-size:25px!important;line-height:1!important}.compare-rating strong{font-size:13px!important;line-height:1!important}.compare-rating small{font-size:7px!important;color:#8996a8!important;font-weight:700!important}.compare-summary{font-size:11px!important;line-height:1.65!important;color:#1f3654!important;margin:24px 0 12px!important;padding-bottom:12px!important;border-bottom:1px solid #e7edf3!important}.compare-features{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px 16px!important;font-size:9px!important;font-weight:700!important;color:#1c3456!important;padding:2px 0 14px!important}.compare-features span{display:flex!important;align-items:center!important;gap:7px!important}.compare-features b{width:24px!important;height:24px!important;border-radius:50%!important;background:#f0f4ff!important;color:#375ec4!important;display:grid!important;place-items:center!important;font-size:10px!important}.compare-card-bottom{margin-top:auto!important;border-top:1px solid #e7edf3!important;padding-top:13px!important;display:flex!important;justify-content:space-between!important;align-items:flex-end!important;gap:12px!important}.compare-tags{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:5px!important}.discount-tag,.status-tag{font-size:8px!important;padding:5px 8px!important;border-radius:999px!important}.compare-price{display:grid!important;grid-template-columns:auto auto!important;grid-template-rows:auto auto!important;align-items:end!important;justify-items:end!important;column-gap:7px!important}.compare-price .starting-text{grid-column:1/3!important;color:#97a3b4!important;font-size:8px!important;font-weight:800!important}.compare-price .old-price{font-size:10px!important;color:#a9b0ba!important;text-decoration:line-through!important}.compare-price .current-price{font-family:'Fraunces',Georgia,serif!important;color:#23469c!important;font-size:26px!important;line-height:1!important;font-weight:650!important}.category-tabs-section{background:#fff!important}.infinite-slider-section{background:#fff!important}
 @media(max-width:1000px){.site-header .header-container{grid-template-columns:auto 1fr auto!important}.main-nav{display:none!important}.tours-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.tbc-video-title{font-size:54px!important}}
 @media(max-width:680px){.site-header .header-container{height:76px!important;padding:0 16px!important}.site-header .logo img{height:54px!important}.header-instagram{display:none!important}.tours-grid{grid-template-columns:1fr!important}.tbc-video-hero{min-height:445px!important}.tbc-video-content{padding:56px 18px!important}.tbc-video-title{font-size:42px!important}.tbc-video-text{font-size:13px!important}.premium-compare-card{min-height:335px!important}.premium-compare-card .card-title-text{font-size:20px!important}}
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -4119,6 +4521,64 @@ body{background:var(--cg-bg)!important;color:#0b1d36!important}
 @media(max-width:680px){
  .site-header .header-container{height:72px!important;padding:0 14px!important}.site-header .logo img{height:50px!important}.tbc-video-hero{min-height:455px!important}.tbc-video-content{padding:50px 18px 72px!important}.tbc-video-title{font-size:38px!important;line-height:1.06!important}.tbc-video-text{font-size:12.5px!important}.cg-experience-dock{width:calc(100% - 12px)!important}.tbc-booking-box{padding:10px!important}.tbc-booking-wrap{width:calc(100% - 16px)!important;bottom:-220px!important}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 
@@ -4291,6 +4751,64 @@ body{background:var(--cg-bg)!important;color:#0b1d36!important}
   .site-header .header-container{height:70px!important;width:calc(100% - 22px)!important}.site-header .logo-home img,.site-header .logo img{height:49px!important}
   .tbc-video-hero{min-height:450px!important}.tbc-video-content{padding:54px 18px 70px!important}.tbc-video-title{font-size:36px!important;line-height:1.06!important}.tbc-video-text{font-size:12.5px!important}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -4354,6 +4872,64 @@ body{background:#fff!important}
   .premium-compare-card .card-title-text{font-size:14px!important}
   .premium-compare-card .card-thumb{width:48px!important;height:48px!important;flex-basis:48px!important}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -4374,6 +4950,64 @@ body{background:#fff!important}
   .tours-section{padding-top:10px!important}
   .tours-section .section-title{font-size:27px!important;margin-bottom:18px!important}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <link rel="stylesheet" href="/cappadociago-brand-v2.css" />
@@ -4412,6 +5046,64 @@ body{background:#fff!important}
   .tbc-mobile-hero img{object-position:center center!important}
   .tbc-video-overlay{background:linear-gradient(180deg,rgba(7,35,67,.40),rgba(7,35,67,.26))!important}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -4734,6 +5426,64 @@ body{background:#fff!important}
     line-height:1.16!important;
   }
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -4765,6 +5515,64 @@ body{background:#fff!important}
 .tbc-booking-box{box-shadow:0 18px 42px rgba(10,50,88,.14)!important}
 @media(max-width:1000px){.site-header .header-logo-whatsapp span{display:none!important}.header-logo-whatsapp{width:38px!important;padding:0!important;justify-content:center!important}.tbc-video-hero{min-height:690px!important;height:690px!important}.tbc-video-content{top:42%!important;width:min(760px,calc(100% - 32px))!important}.tbc-video-title{font-size:clamp(39px,6vw,52px)!important}.tbc-booking-wrap{bottom:-170px!important}}
 @media(max-width:680px){.tbc-video-hero{min-height:710px!important;height:710px!important}.tbc-video-content{top:38%!important;width:calc(100% - 28px)!important}.tbc-video-title{font-size:35px!important;line-height:1.06!important}.tbc-video-text{font-size:12.5px!important}.tbc-hero-trust-points{flex-wrap:wrap!important;gap:8px 12px!important}.external-form-title{font-size:25px!important;line-height:1.13!important}.tbc-booking-wrap{bottom:-224px!important;width:calc(100% - 16px)!important}}
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 
@@ -4834,6 +5642,64 @@ body{background:#fff!important}
   .booking-section-heading{bottom:-20px!important;width:calc(100% - 18px)!important;white-space:normal!important;font-size:24px!important;}
   .tbc-booking-wrap{bottom:-245px!important;width:calc(100% - 16px)!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -4904,6 +5770,64 @@ body{background:#fff!important}
   .booking-section-heading{bottom:-27px!important;font-size:21px!important;line-height:1.14!important;}
   .tbc-booking-wrap{bottom:-250px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -4953,6 +5877,64 @@ body{background:#fff!important}
   .tbc-booking-wrap{width:calc(100% - 16px)!important;margin-bottom:18px!important;}
   .tbc-video-title{font-size:30px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -5009,6 +5991,64 @@ body{background:#fff!important}
   .booking-callout .booking-section-heading{font-size:25px!important;line-height:1.08!important;width:calc(100% - 12px)!important;margin-bottom:10px!important;}
   .booking-callout .tbc-booking-wrap{width:100%!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -5251,6 +6291,64 @@ body{background:#fff!important}
   }
   .booking-callout .tbc-booking-box{border-radius:20px!important;padding:12px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 
@@ -5359,6 +6457,64 @@ body{background:#fff!important}
   .booking-callout .booking-section-heading{font-size:25px!important;}
   .tbc-date-day,.tbc-date-blank{min-height:35px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -5449,6 +6605,64 @@ body>.tbc-date-popover.is-open{
   body>.tbc-date-popover .tbc-date-month:nth-child(2){display:none!important;}
   body>.tbc-date-popover .tbc-date-title{font-size:15px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -5648,6 +6862,64 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   .booking-callout{margin-top:-178px!important;}
   .booking-callout .booking-section-heading{font-size:27px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -5952,6 +7224,64 @@ body>.site-header{
   .tbc-video-hero{min-height:880px!important;}
   .booking-callout{margin-top:-90px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -6070,6 +7400,64 @@ body>.site-header{
   .tbc-gallery-grid{grid-template-columns:repeat(3,1fr)!important;gap:8px!important;}
   .tbc-gallery-item{border-radius:10px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 <style is:global>
@@ -6101,6 +7489,64 @@ body>.site-header{
   .infinite-slider-section .cat-card{width:190px!important;flex:0 0 190px!important;}
   .infinite-slider-section .cat-card img{height:128px!important;}
 }
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
+}
+
 </style>
 
 
@@ -6344,6 +7790,64 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
     margin-bottom:12px !important;
     text-align:center !important;
   }
+}
+
+
+
+/* =========================================================
+   2026-08-29 — HEADER PHONE + COMPACT HERO TITLE + BRAND LANG
+   ========================================================= */
+.header-phone-pill{
+  min-width:178px!important;
+  height:42px!important;
+  padding:0 16px!important;
+  gap:10px!important;
+  border:1px solid rgba(10,99,181,.18)!important;
+  background:#fff!important;
+  color:#0a3f78!important;
+  box-shadow:0 6px 18px rgba(10,63,120,.08)!important;
+}
+.header-phone-pill img{width:21px!important;height:21px!important;flex:0 0 21px!important}
+.header-phone-pill span{font-size:12px!important;font-weight:850!important;letter-spacing:.01em!important;white-space:nowrap!important}
+
+/* Title is intentionally smaller so the kicker is fully visible and the hero breathes. */
+.tbc-video-title{
+  font-size:48px!important;
+  line-height:1.045!important;
+  max-width:570px!important;
+  width:min(570px,45vw)!important;
+  margin-top:0!important;
+}
+.tbc-video-kicker{margin-top:0!important;position:relative!important;z-index:4!important}
+
+/* Language control uses CappadociaGo logo blue + gold. */
+.lang-btn{
+  background:linear-gradient(135deg,#0a63b5 0%,#074a8a 100%)!important;
+  color:#fff!important;
+  border:1.5px solid #d89c08!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:#fff!important}
+.lang-btn .arrow{color:#f4bd32!important}
+.lang-btn:hover{background:linear-gradient(135deg,#0b6fc9 0%,#075395 100%)!important}
+.lang-dropdown{border:1px solid rgba(216,156,8,.35)!important}
+.lang-item.active{background:rgba(10,99,181,.08)!important;color:#0a63b5!important}
+
+@media (max-width:1180px){
+  .tbc-video-title{font-size:44px!important;max-width:540px!important;width:min(540px,52vw)!important}
+  .header-phone-pill{min-width:165px!important;padding:0 13px!important}
+  .header-phone-pill span{font-size:11px!important}
+}
+@media (max-width:980px){
+  .header-phone-pill{display:flex!important;min-width:auto!important;width:42px!important;height:42px!important;padding:0!important;justify-content:center!important;border-radius:50%!important}
+  .header-phone-pill span{display:none!important}
+  .tbc-video-title{font-size:40px!important;max-width:560px!important;width:min(560px,72vw)!important}
+}
+@media (max-width:700px){
+  .header-phone-pill{width:38px!important;height:38px!important}
+  .header-phone-pill img{width:20px!important;height:20px!important}
+  .tbc-video-title{font-size:33px!important;line-height:1.06!important;width:100%!important;max-width:100%!important}
+  .lang-btn{height:36px!important;padding:0 10px!important}
 }
 
 </style>
