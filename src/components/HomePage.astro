@@ -423,12 +423,14 @@ const homepageReviews = [
 
       <div class="tbc-video-content">
         <span class="tbc-video-kicker">
-          <span class="tbc-kicker-blue">Cappadocia</span><span class="tbc-kicker-gold">Go</span>
+          CappadociaGo
         </span>
 
         <h1 class="tbc-video-title">
-          {lang === "tr" ? (<>Gün Doğumu <span class="tbc-title-accent">Balon Turları</span> ve Unutulmaz Kapadokya Maceraları</>) : lang === "es" ? (<><span class="tbc-title-accent">Globos al Amanecer</span> y Aventuras Inolvidables en Capadocia</>) : (<>Sunrise Hot Air <span class="tbc-title-accent">Balloon Tours</span> & Unforgettable Cappadocia Adventures</>)}
+          {lang === "tr" ? "Gün Doğumu Balon Turları ve Unutulmaz Kapadokya Maceraları" : lang === "es" ? "Globos al Amanecer y Aventuras Inolvidables en Capadocia" : "Sunrise Hot Air Balloon Tours & Unforgettable Cappadocia Adventures"}
         </h1>
+
+        <span class="tbc-hero-divider" aria-hidden="true"></span>
 
         <p class="tbc-video-text">
           {lang === "tr" ? "Kapadokya’nın büyüsünü CappadociaGo ile yaşayın. Göreme’de günlük sıcak hava balonu uçuşları, Red & Green turlar, ATV ve Jeep safarileri, at turları ve sorunsuz havalimanı transferleri sunuyoruz. Kapadokya deneyiminizi güvenle planlayın." : lang === "es" ? "Vive la magia de Capadocia con CappadociaGo. Ofrecemos vuelos diarios en globo en Göreme, tours Red & Green, ATV y Jeep Safari, paseos a caballo y traslados al aeropuerto con asistencia local." : "Experience the magic of Cappadocia with CappadociaGo. We offer daily hot air balloon flights in Göreme, guided Red & Green Tours, ATV and Jeep safaris, horse riding and hassle-free airport transfers. Plan your Cappadocia adventure with trusted local support."}
@@ -4574,44 +4576,43 @@ body{background:#fff!important}
 }
 .tbc-video-content{z-index:4!important;}
 
-/* Hero copy — brand navy + gold, sampled directly from the CappadociaGo logo. */
+/* Hero copy — restyled to match the reference layout, using CappadociaGo's own navy + gold. */
 .tbc-video-kicker{
   display:inline-flex!important;
   align-items:center!important;
-  gap:0!important;
-  margin:0 0 20px!important;
-  padding:9px 22px!important;
+  margin:0 0 22px!important;
+  padding:9px 24px!important;
   border-radius:999px!important;
-  border:1px solid rgba(255,255,255,.95)!important;
-  border-top:2px solid #c98a1f!important;
-  background:rgba(255,255,255,.94)!important;
-  -webkit-backdrop-filter:blur(10px)!important;
-  backdrop-filter:blur(10px)!important;
+  border:1px solid rgba(255,255,255,.55)!important;
+  background:rgba(10,30,58,.38)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+  backdrop-filter:blur(8px)!important;
+  color:#ffffff!important;
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  font-size:13px!important;
+  font-size:12px!important;
   font-weight:800!important;
-  letter-spacing:.01em!important;
-  text-transform:none!important;
+  letter-spacing:.12em!important;
+  text-transform:uppercase!important;
   text-shadow:none!important;
-  box-shadow:0 10px 26px rgba(4,20,45,.28)!important;
+  box-shadow:0 8px 22px rgba(4,20,45,.22)!important;
 }
-.tbc-kicker-blue{color:#0a3d8a!important;font-weight:800!important;}
-.tbc-kicker-gold{color:#c98a1f!important;font-weight:800!important;}
 .tbc-video-title{
   color:#ffffff!important;
   font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
   font-weight:600!important;
   text-shadow:0 4px 26px rgba(4,17,40,.45)!important;
 }
-.tbc-title-accent{
-  background:linear-gradient(135deg,#f3cd7e 0%,#e9b545 45%,#c98a1f 100%)!important;
-  -webkit-background-clip:text!important;
-  background-clip:text!important;
-  -webkit-text-fill-color:transparent!important;
-  color:#e9b545!important;
+.tbc-title-accent{color:#ffffff!important;background:none!important;-webkit-text-fill-color:currentColor!important;}
+.tbc-hero-divider{
+  display:block!important;
+  width:64px!important;
+  height:2px!important;
+  margin:18px auto 20px!important;
+  background:linear-gradient(90deg,rgba(233,181,69,0),#e9b545,rgba(233,181,69,0))!important;
+  border-radius:2px!important;
 }
 .tbc-video-text{
-  color:rgba(255,255,255,.92)!important;
+  color:rgba(255,255,255,.85)!important;
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
   text-shadow:0 2px 14px rgba(4,17,40,.3)!important;
 }
@@ -4622,78 +4623,87 @@ body{background:#fff!important}
   transition:transform .2s ease,box-shadow .2s ease,background .2s ease!important;
 }
 .tbc-video-btn-primary{
-  background:linear-gradient(135deg,#f3cd7e 0%,#e9b545 45%,#c98a1f 100%)!important;
-  color:#0a1f42!important;
-  border:1px solid rgba(233,181,69,.9)!important;
-  box-shadow:0 12px 28px rgba(147,98,15,.35)!important;
+  background:#1f6fd4!important;
+  color:#ffffff!important;
+  border:1px solid #1f6fd4!important;
+  box-shadow:0 12px 26px rgba(15,50,110,.35)!important;
 }
 .tbc-video-btn-primary:hover{
   transform:translateY(-2px)!important;
-  box-shadow:0 16px 34px rgba(147,98,15,.45)!important;
+  box-shadow:0 16px 32px rgba(15,50,110,.45)!important;
+  background:#2f7ee0!important;
 }
 .tbc-video-btn-secondary{
-  background:rgba(255,255,255,.08)!important;
+  background:rgba(255,255,255,.06)!important;
   color:#ffffff!important;
   border:1px solid rgba(255,255,255,.55)!important;
   -webkit-backdrop-filter:blur(8px)!important;
   backdrop-filter:blur(8px)!important;
 }
 .tbc-video-btn-secondary:hover{
-  background:rgba(255,255,255,.16)!important;
+  background:rgba(255,255,255,.14)!important;
   border-color:#ffffff!important;
   transform:translateY(-2px)!important;
 }
+.tbc-hero-trust-points{
+  flex-wrap:nowrap!important;
+}
 .tbc-trust-point{
-  color:rgba(255,255,255,.95)!important;
+  color:rgba(255,255,255,.92)!important;
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  white-space:nowrap!important;
 }
 .tbc-trust-icon{color:#e9b545!important;}
 
 /* Rating badges removed per request — keep hidden everywhere. */
 .tbc-partner-reviews{display:none!important;}
 
+@media(max-width:1000px){
+  .tbc-hero-trust-points{flex-wrap:wrap!important;}
+  .tbc-trust-point{white-space:normal!important;}
+}
 @media(max-width:680px){
-  .tbc-video-kicker{padding:7px 17px!important;font-size:11px!important;}
+  .tbc-video-kicker{padding:7px 18px!important;font-size:10.5px!important;letter-spacing:.09em!important;}
+  .tbc-hero-divider{margin:14px auto 16px!important;}
 }
 
-/* Premium booking heading: real brand palette, calm glass surface. */
+/* Booking heading — text directly on the image, like the reference "Ready to float..." line. */
 .booking-callout .booking-section-heading{
   display:flex!important;
   align-items:baseline!important;
   justify-content:center!important;
   flex-wrap:wrap!important;
   gap:0 .28em!important;
-  width:max-content!important;
+  width:100%!important;
   max-width:calc(100% - 28px)!important;
-  margin:0 auto 14px!important;
-  padding:13px 26px 14px!important;
-  border-radius:17px!important;
-  border:1px solid rgba(18,91,154,.16)!important;
-  border-top:2px solid rgba(213,155,17,.72)!important;
-  background:rgba(255,255,255,.92)!important;
-  -webkit-backdrop-filter:blur(12px)!important;
-  backdrop-filter:blur(12px)!important;
-  box-shadow:0 14px 34px rgba(7,42,79,.16)!important;
-  color:#0b3765!important;
-  text-shadow:none!important;
+  margin:0 auto 16px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  box-shadow:none!important;
+  color:#ffffff!important;
+  text-shadow:0 3px 20px rgba(3,16,38,.55)!important;
   font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
-  font-size:clamp(27px,2.25vw,36px)!important;
-  line-height:1.08!important;
-  font-weight:500!important;
+  font-size:clamp(28px,2.6vw,42px)!important;
+  line-height:1.1!important;
+  font-weight:600!important;
   letter-spacing:-.02em!important;
 }
 .booking-callout .booking-section-heading > span{
-  color:#0b3765!important;
-  font-weight:500!important;
+  color:#ffffff!important;
+  font-weight:600!important;
   font-style:normal!important;
 }
 .booking-callout .booking-brand-blue{
-  color:#0a3d8a!important;
+  color:#7db4f2!important;
   font-weight:700!important;
   font-style:italic!important;
 }
 .booking-callout .booking-brand-gold{
-  color:#c98a1f!important;
+  color:#f0c35f!important;
   font-weight:700!important;
   font-style:italic!important;
 }
@@ -4714,10 +4724,8 @@ body{background:#fff!important}
   .booking-callout .booking-section-heading{
     width:calc(100% - 12px)!important;
     max-width:none!important;
-    padding:10px 14px 11px!important;
-    border-radius:14px!important;
-    font-size:22px!important;
-    line-height:1.1!important;
+    font-size:24px!important;
+    line-height:1.15!important;
   }
 }
 </style>
