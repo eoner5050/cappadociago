@@ -9655,3 +9655,180 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   }
   @media (prefers-reduced-motion: reduce) { .dc-partner-track { animation: none !important; } }
 </style>
+
+<style is:global>
+/* =============================================================
+   FINAL 2026-08-29 — SLOGAN VISIBILITY + MOBILE GAP + MENU POLISH
+   Keeps the existing script font while improving contrast/size.
+   ============================================================= */
+:root{
+  --cgo-final-navy:#073763;
+  --cgo-final-blue:#0A63B5;
+  --cgo-final-gold:#C88716;
+}
+
+/* Plan Your Flight: same script character, larger and darker navy */
+.booking-callout .booking-section-heading,
+.booking-callout .booking-section-heading > span,
+.booking-callout .booking-brand-blue,
+.booking-callout .booking-brand-gold{
+  font-family:'Dancing Script','Segoe Script','Brush Script MT','Lucida Handwriting',cursive!important;
+  font-style:normal!important;
+  font-weight:700!important;
+  letter-spacing:-.025em!important;
+  text-shadow:none!important;
+  filter:none!important;
+}
+.booking-callout .booking-section-heading{
+  font-size:clamp(44px,4vw,66px)!important;
+  line-height:1!important;
+  margin-bottom:10px!important;
+  color:var(--cgo-final-navy)!important;
+  -webkit-text-fill-color:var(--cgo-final-navy)!important;
+}
+.booking-callout .booking-section-heading > span,
+.booking-callout .booking-brand-blue{
+  color:var(--cgo-final-navy)!important;
+  -webkit-text-fill-color:var(--cgo-final-navy)!important;
+}
+.booking-callout .booking-brand-gold{
+  color:var(--cgo-final-gold)!important;
+  -webkit-text-fill-color:var(--cgo-final-gold)!important;
+  margin-left:.035em!important;
+}
+
+/* Remove the inherited legacy spacer below the booking/calendar area. */
+.infinite-slider-section{
+  margin-top:0!important;
+  padding-top:18px!important;
+  padding-bottom:22px!important;
+}
+
+@media (max-width:760px){
+  /* More compact mobile hero footprint: booking + next content connect cleanly. */
+  #cgo-ref-hero-v4,
+  .tbc-video-hero{
+    min-height:820px!important;
+    height:820px!important;
+  }
+  .tbc-video-content{
+    padding-bottom:330px!important;
+  }
+  .tbc-hero-form{
+    margin-bottom:0!important;
+    padding-bottom:0!important;
+    background:transparent!important;
+  }
+  .tbc-hero-form > .booking-callout{
+    bottom:10px!important;
+  }
+  .booking-callout .booking-section-heading{
+    width:100%!important;
+    max-width:390px!important;
+    padding:0 5px!important;
+    margin:0 auto 8px!important;
+    font-size:clamp(32px,9.2vw,42px)!important;
+    line-height:.98!important;
+    text-align:center!important;
+    white-space:normal!important;
+    text-wrap:balance!important;
+  }
+  .infinite-slider-section{
+    margin-top:0!important;
+    padding-top:10px!important;
+    padding-bottom:18px!important;
+    background:#fff!important;
+  }
+
+  /* Mobile header: no visual gap between header and dropdown. */
+  .site-header{
+    overflow:visible!important;
+  }
+  .site-header .header-container{
+    position:relative!important;
+  }
+  .mobile-menu-toggle{
+    display:flex!important;
+    width:38px!important;
+    min-width:38px!important;
+    height:38px!important;
+    min-height:38px!important;
+    margin:0!important;
+    padding:0!important;
+    border:1px solid var(--cgo-final-blue)!important;
+    border-radius:50%!important;
+    background:var(--cgo-final-blue)!important;
+    box-shadow:none!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+    gap:4px!important;
+  }
+  .mobile-menu-toggle span{
+    width:17px!important;
+    height:2px!important;
+    min-height:2px!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:999px!important;
+    background:#fff!important;
+  }
+  .main-nav{
+    top:100%!important;
+    right:0!important;
+    left:0!important;
+    width:100%!important;
+    margin:0!important;
+    padding:6px 10px 10px!important;
+    border:0!important;
+    border-top:1px solid rgba(10,99,181,.12)!important;
+    border-radius:0 0 16px 16px!important;
+    background:#fff!important;
+    box-shadow:0 16px 28px rgba(7,55,99,.13)!important;
+  }
+  .main-nav ul{
+    margin:0!important;
+    padding:0!important;
+    gap:0!important;
+  }
+  .main-nav li{
+    margin:0!important;
+    padding:0!important;
+  }
+  .main-nav a{
+    min-height:42px!important;
+    margin:0!important;
+    padding:0 12px!important;
+    border-bottom:1px solid rgba(7,55,99,.07)!important;
+    border-radius:0!important;
+    color:var(--cgo-final-navy)!important;
+  }
+  .main-nav li:last-child a{border-bottom:0!important;}
+}
+
+@media (max-width:390px){
+  #cgo-ref-hero-v4,
+  .tbc-video-hero{
+    min-height:800px!important;
+    height:800px!important;
+  }
+  .tbc-video-content{padding-bottom:318px!important;}
+  .booking-callout .booking-section-heading{
+    max-width:350px!important;
+    font-size:clamp(30px,9vw,36px)!important;
+  }
+  .infinite-slider-section{padding-top:8px!important;}
+}
+
+@media (max-width:340px){
+  #cgo-ref-hero-v4,
+  .tbc-video-hero{
+    min-height:790px!important;
+    height:790px!important;
+  }
+  .booking-callout .booking-section-heading{
+    max-width:315px!important;
+    font-size:29px!important;
+  }
+}
+</style>
