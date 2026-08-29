@@ -306,14 +306,14 @@ const homepageReviews = [
 
   <!-- Google Fonts: render-blocking olmadan yükle; ilk boyamada sistem fontu kullanılır. -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Alex+Brush&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
     media="print"
     onload="this.media='all'"
   />
   <noscript>
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Alex+Brush&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
   </noscript>
@@ -4571,92 +4571,106 @@ body{background:#fff!important}
   z-index:1!important;
   pointer-events:none!important;
   background:
-    linear-gradient(180deg,rgba(74,42,10,.22) 0%,rgba(60,32,8,.30) 45%,rgba(38,20,6,.62) 100%)!important;
+    linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.3) 50%,rgba(0,0,0,.8) 100%)!important;
 }
 .tbc-video-content{z-index:4!important;}
 .tbc-video-kicker{display:none!important;}
 
-/* Hero copy — vivid brand blue + gold, resampled from the logo's balloon stripe (not the dark shadow tones). */
-.tbc-video-kicker{
-  display:inline-flex!important;
-  align-items:center!important;
-  margin:0 0 22px!important;
-  padding:9px 26px!important;
-  border-radius:999px!important;
-  border:2px solid #f0b93e!important;
-  background:linear-gradient(135deg,#0d7ad1 0%,#0a5bb0 100%)!important;
+/* Header — transparent overlay sitting directly on the hero, per the supplied reference code. */
+.site-header{
+  position:absolute!important;
+  top:0!important;
+  left:0!important;
+  right:0!important;
+  z-index:50!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.site-header .logo img{filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))!important;}
+.site-header .header-logo-whatsapp{
+  background:rgba(0,0,0,.4)!important;
+  -webkit-backdrop-filter:blur(10px)!important;
+  backdrop-filter:blur(10px)!important;
+  border:1px solid rgba(255,255,255,.2)!important;
   color:#ffffff!important;
-  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  font-size:12px!important;
-  font-weight:800!important;
-  letter-spacing:.12em!important;
-  text-transform:uppercase!important;
-  text-shadow:none!important;
-  box-shadow:0 10px 24px rgba(6,40,80,.35)!important;
 }
+.site-header .header-logo-whatsapp span{color:#ffffff!important;}
+.main-nav a{
+  color:#e5e5e5!important;
+  text-shadow:0 1px 4px rgba(0,0,0,.4)!important;
+}
+.main-nav a:hover{color:#ffffff!important;}
+@media(max-width:1000px){
+  .main-nav.is-open a{
+    color:#0a2244!important;
+    text-shadow:none!important;
+  }
+}
+.header-right .lang-btn{
+  background:rgba(0,0,0,.4)!important;
+  -webkit-backdrop-filter:blur(10px)!important;
+  backdrop-filter:blur(10px)!important;
+  border:1px solid rgba(255,255,255,.2)!important;
+  color:#ffffff!important;
+}
+.header-right .lang-code,
+.header-right .arrow{color:#ffffff!important;}
+.mobile-menu-toggle span{background:#ffffff!important;}
+@media(max-width:1000px){
+  .site-header{position:absolute!important;}
+}
+
+/* Hero copy — exact translation of the supplied reference code. */
+.tbc-video-kicker{display:none!important;}
 .tbc-video-title{
-  background:linear-gradient(180deg,#fff8e4 0%,#f5cd6a 30%,#d69a2e 55%,#f3cd7e 78%,#e8b552 100%)!important;
-  -webkit-background-clip:text!important;
-  background-clip:text!important;
-  -webkit-text-fill-color:transparent!important;
-  color:#f0c25a!important;
-  font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
-  font-weight:600!important;
-  text-shadow:
-    0 1px 0 rgba(255,255,255,.55),
-    0 4px 3px rgba(110,64,8,.45),
-    0 10px 26px rgba(30,14,2,.55),
-    0 0 34px rgba(240,194,90,.28)!important;
+  color:#fef08a!important;
+  font-family:'Playfair Display',Georgia,'Times New Roman',serif!important;
+  font-weight:700!important;
+  font-style:normal!important;
+  background:none!important;
+  -webkit-text-fill-color:#fef08a!important;
+  text-shadow:0 4px 14px rgba(0,0,0,.5)!important;
 }
-.tbc-title-accent{color:inherit!important;background:inherit!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;}
-.tbc-hero-divider{
-  display:block!important;
-  width:64px!important;
-  height:3px!important;
-  margin:18px auto 20px!important;
-  background:linear-gradient(90deg,rgba(240,185,62,0),#f0c25a,rgba(240,185,62,0))!important;
-  border-radius:2px!important;
-}
+.tbc-title-accent{color:inherit!important;background:none!important;-webkit-text-fill-color:inherit!important;}
+.tbc-hero-divider{display:none!important;}
 .tbc-video-text{
-  color:rgba(255,247,230,.9)!important;
+  color:#e5e5e5!important;
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  text-shadow:0 2px 14px rgba(30,14,2,.4)!important;
+  font-weight:300!important;
+  text-shadow:0 1px 6px rgba(0,0,0,.35)!important;
 }
 .tbc-video-btn{
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  font-weight:800!important;
+  font-weight:600!important;
   letter-spacing:.01em!important;
   transition:transform .2s ease,box-shadow .2s ease,background .2s ease!important;
 }
 .tbc-video-btn-primary{
-  background:linear-gradient(180deg,#4ab3f7 0%,#0d7ad1 42%,#0a4f96 100%)!important;
+  background:#1e40af!important;
   color:#ffffff!important;
-  border:1px solid #1c8fe0!important;
-  box-shadow:inset 0 14px 14px -8px rgba(255,255,255,.65),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -6px 10px rgba(4,30,60,.35),0 12px 26px rgba(6,40,80,.45)!important;
+  border:1px solid #1e40af!important;
+  box-shadow:0 15px 25px -5px rgba(30,64,175,.4)!important;
 }
 .tbc-video-btn-primary:hover{
   transform:translateY(-2px)!important;
-  box-shadow:inset 0 14px 14px -8px rgba(255,255,255,.7),inset 0 1px 0 rgba(255,255,255,.7),inset 0 -6px 10px rgba(4,30,60,.35),0 16px 32px rgba(6,40,80,.55)!important;
-  background:linear-gradient(180deg,#63c1ff 0%,#1489e0 42%,#0d5aa8 100%)!important;
+  background:#1d4ed8!important;
 }
 .tbc-video-btn-secondary{
-  background:linear-gradient(180deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,.04) 100%)!important;
-  color:#f3d78e!important;
-  border:1px solid rgba(240,194,90,.65)!important;
-  box-shadow:inset 0 14px 14px -8px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.25),0 10px 22px rgba(30,14,2,.35)!important;
+  background:rgba(255,255,255,.1)!important;
+  color:#ffffff!important;
+  border:1px solid rgba(255,255,255,.3)!important;
   -webkit-backdrop-filter:blur(8px)!important;
   backdrop-filter:blur(8px)!important;
 }
 .tbc-video-btn-secondary:hover{
-  background:linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.06) 100%)!important;
-  border-color:#f3d78e!important;
-  transform:translateY(-2px)!important;
+  background:rgba(255,255,255,.2)!important;
 }
 .tbc-hero-trust-points{
   flex-wrap:nowrap!important;
 }
 .tbc-trust-point{
-  color:rgba(255,247,230,.92)!important;
+  color:rgba(229,229,229,.92)!important;
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
   white-space:nowrap!important;
 }
@@ -4681,10 +4695,10 @@ body{background:#fff!important}
   align-items:baseline!important;
   justify-content:center!important;
   flex-wrap:wrap!important;
-  gap:0 .18em!important;
+  gap:0 .3em!important;
   width:100%!important;
   max-width:calc(100% - 28px)!important;
-  margin:14px auto 20px!important;
+  margin:14px auto 24px!important;
   padding:0!important;
   border:0!important;
   border-radius:0!important;
@@ -4692,119 +4706,99 @@ body{background:#fff!important}
   -webkit-backdrop-filter:none!important;
   backdrop-filter:none!important;
   box-shadow:none!important;
-  color:#f0c25a!important;
-  text-shadow:0 2px 1px rgba(255,255,255,.2),0 6px 18px rgba(30,14,2,.5)!important;
-  font-family:'Alex Brush','Brush Script MT',cursive!important;
-  font-size:clamp(36px,3.6vw,58px)!important;
-  line-height:1.15!important;
+  color:#f5f5f5!important;
+  text-shadow:0 4px 8px rgba(0,0,0,.35)!important;
+  font-family:'Playfair Display',Georgia,'Times New Roman',serif!important;
+  font-size:clamp(24px,3vw,36px)!important;
+  line-height:1.2!important;
   font-weight:400!important;
-  font-style:normal!important;
+  font-style:italic!important;
   letter-spacing:0!important;
 }
-.booking-callout .booking-section-heading::before,
-.booking-callout .booking-section-heading::after{
-  content:"✦"!important;
-  position:absolute!important;
-  color:#fff6d9!important;
-  text-shadow:0 0 12px rgba(255,220,140,.9),0 0 22px rgba(255,200,100,.6)!important;
-  pointer-events:none!important;
-  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-}
-.booking-callout .booking-section-heading::before{top:-4px!important;left:12%!important;font-size:15px!important;}
-.booking-callout .booking-section-heading::after{bottom:2px!important;right:9%!important;font-size:11px!important;}
 .booking-callout .booking-section-heading > span{
-  background:linear-gradient(180deg,#fdf1cf 0%,#f0c25a 40%,#d69a2e 75%,#f3cd7e 100%)!important;
-  -webkit-background-clip:text!important;
-  background-clip:text!important;
-  -webkit-text-fill-color:transparent!important;
-  color:#f0c25a!important;
+  background:none!important;
+  -webkit-text-fill-color:#f5f5f5!important;
+  color:#f5f5f5!important;
   font-weight:400!important;
-  font-style:normal!important;
+  font-style:italic!important;
 }
 .booking-callout .booking-brand-blue{
-  background:linear-gradient(180deg,#8fd0ff 0%,#2ba0f0 45%,#0a5bb0 100%)!important;
-  -webkit-background-clip:text!important;
-  background-clip:text!important;
-  -webkit-text-fill-color:transparent!important;
-  color:#2ba0f0!important;
-  font-weight:400!important;
+  background:none!important;
+  -webkit-text-fill-color:#3b82f6!important;
+  color:#3b82f6!important;
+  font-weight:700!important;
   font-style:normal!important;
 }
 .booking-callout .booking-brand-gold{
-  background:linear-gradient(180deg,#fdf1cf 0%,#f0c25a 45%,#d69a2e 100%)!important;
-  -webkit-background-clip:text!important;
-  background-clip:text!important;
-  -webkit-text-fill-color:transparent!important;
-  color:#f0c25a!important;
-  font-weight:400!important;
+  background:none!important;
+  -webkit-text-fill-color:#fef08a!important;
+  color:#fef08a!important;
+  font-weight:700!important;
   font-style:normal!important;
 }
 
-/* Search bar — bronze/copper glass pill (matches the reference), cream text, glossy blue search button. */
+/* Search bar — bronze glass container with individual dark-glass field boxes, per the reference code. */
 .booking-callout .tbc-booking-box{
-  border:1px solid rgba(240,194,90,.4)!important;
-  border-radius:999px!important;
-  padding:8px!important;
-  background:linear-gradient(135deg,#7a4a26 0%,#4e2e16 45%,#2c1a0d 100%)!important;
-  box-shadow:inset 0 1px 0 rgba(255,214,150,.25),0 20px 44px rgba(20,10,3,.5)!important;
+  border:1px solid rgba(212,175,55,.4)!important;
+  border-radius:16px!important;
+  padding:16px!important;
+  background:linear-gradient(90deg,rgba(90,56,37,.9) 0%,rgba(122,73,49,.9) 50%,rgba(74,46,30,.9) 100%)!important;
+  -webkit-backdrop-filter:blur(20px)!important;
+  backdrop-filter:blur(20px)!important;
+  box-shadow:0 25px 50px -12px rgba(0,0,0,.9)!important;
 }
+.booking-callout .tbc-booking-grid{gap:16px!important;}
 .booking-callout .tbc-field-wrap{
   position:relative!important;
 }
-.booking-callout .tbc-field-wrap:not(:first-child)::before{
-  content:""!important;
-  position:absolute!important;
-  left:0!important;
-  top:50%!important;
-  transform:translateY(-50%)!important;
-  width:1px!important;
-  height:60%!important;
-  background:rgba(240,194,90,.28)!important;
-}
 .booking-callout .tbc-select-btn,
 .booking-callout .dates-custom-box{
-  background:transparent!important;
-  border:0!important;
+  background:rgba(0,0,0,.2)!important;
+  border:1px solid rgba(255,255,255,.1)!important;
+  border-radius:12px!important;
   box-shadow:none!important;
 }
 .booking-callout .tbc-select-btn{
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  font-weight:700!important;
-  color:#f7e6c4!important;
+  font-weight:500!important;
+  font-size:14px!important;
+  color:#ffffff!important;
 }
-.booking-callout .tbc-placeholder{color:#f7e6c4!important;font-weight:700!important;}
-.booking-callout .tbc-arrow{color:#f0c25a!important;}
+.booking-callout .tbc-placeholder{color:#ffffff!important;font-weight:500!important;}
+.booking-callout .tbc-arrow{color:#d4af37!important;}
 .booking-callout .dates-top-label{
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  color:#f0c25a!important;
-  font-weight:700!important;
-  opacity:.9!important;
+  color:#d4af37!important;
+  font-weight:600!important;
+  font-size:10px!important;
+  text-transform:uppercase!important;
+  letter-spacing:.05em!important;
+  opacity:1!important;
 }
-.booking-callout .dates-inputs-row{color:#f7e6c4!important;}
-.booking-callout .d-m{color:#f7e6c4!important;font-weight:700!important;}
-.booking-callout .d-d{color:#ffffff!important;font-weight:800!important;}
-.booking-callout .d-a{color:#f0c25a!important;}
-.booking-callout .date-divider{color:rgba(247,230,196,.55)!important;}
+.booking-callout .dates-inputs-row{color:#ffffff!important;font-weight:500!important;}
+.booking-callout .d-m{color:#ffffff!important;font-weight:500!important;}
+.booking-callout .d-d{color:#ffffff!important;font-weight:500!important;}
+.booking-callout .d-a{color:#d4af37!important;}
+.booking-callout .date-divider{color:#d4af37!important;}
 .booking-callout .tbc-submit{
-  background:linear-gradient(180deg,#4ab3f7 0%,#0d7ad1 42%,#0a4f96 100%)!important;
+  background:linear-gradient(90deg,#1e40af 0%,#3b82f6 100%)!important;
   color:#ffffff!important;
-  border:1px solid #1c8fe0!important;
-  border-radius:999px!important;
+  border:1px solid rgba(96,165,250,.3)!important;
+  border-radius:12px!important;
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  font-weight:800!important;
-  letter-spacing:.06em!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 10px 22px rgba(6,40,80,.4)!important;
+  font-weight:600!important;
+  letter-spacing:.02em!important;
+  box-shadow:0 10px 15px -3px rgba(30,58,138,.5)!important;
 }
-.booking-callout .tbc-submit:hover{background:linear-gradient(180deg,#63c1ff 0%,#1489e0 42%,#0d5aa8 100%)!important;}
+.booking-callout .tbc-submit:hover{background:linear-gradient(90deg,#1d4ed8 0%,#2563eb 100%)!important;}
 
 @media(max-width:680px){
   .booking-callout .booking-section-heading{
     width:calc(100% - 12px)!important;
     max-width:none!important;
-    font-size:24px!important;
-    line-height:1.15!important;
+    font-size:22px!important;
+    line-height:1.2!important;
   }
-  .booking-callout .tbc-booking-box{border-radius:26px!important;}
-  .booking-callout .tbc-field-wrap:not(:first-child)::before{display:none!important;}
+  .booking-callout .tbc-booking-box{border-radius:20px!important;padding:12px!important;}
 }
 </style>
