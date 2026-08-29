@@ -5389,7 +5389,15 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   width:min(1380px,calc(100% - 32px))!important;
   height:92px!important;
   max-width:none!important;
+  display:grid!important;
+  grid-template-columns:auto 1fr auto!important;
+  align-items:center!important;
+  gap:18px!important;
 }
+.site-header .logo{min-width:0!important;flex-shrink:0!important;}
+.main-nav{justify-self:center!important;min-width:0!important;}
+.main-nav ul{display:flex!important;align-items:center!important;gap:16px!important;flex-wrap:nowrap!important;}
+.header-right{justify-self:end!important;flex-shrink:0!important;}
 .site-header .logo img{
   height:82px!important;
   max-width:184px!important;
@@ -5405,11 +5413,10 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   color:#0a2b4a!important;
 }
 .site-header .header-logo-whatsapp span{color:#0a2b4a!important;}
-.main-nav ul{gap:14px!important;}
 .main-nav a{
   color:#0a2b4a!important;
   font-weight:800!important;
-  font-size:12.5px!important;
+  font-size:12px!important;
   letter-spacing:-.01em!important;
   text-shadow:none!important;
   padding:34px 0!important;
@@ -5503,7 +5510,7 @@ body>.site-header{
   margin:0 0 16px!important;
   max-width:720px!important;
   font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
-  font-size:clamp(33px,4vw,45px)!important;
+  font-size:clamp(28px,3.4vw,38px)!important;
   line-height:1.1!important;
   font-weight:800!important;
   color:#ffffff!important;

@@ -2,9 +2,9 @@ export const en = {
   language: { code: "EN", name: "English" },
   nav: {
     balloonTours: "Hot Air Balloon Cappadocia",
-    cappadociaTours: "Cappadocia Tours & Attractions",
-    activities: "Cappadocia Activities",
-    privateTours: "Private Cappadocia Tours",
+    cappadociaTours: "Cappadocia Tours",
+    activities: "Activities",
+    privateTours: "Private Tours",
     transfers: "Cappadocia Transfers",
   },
   hero: {

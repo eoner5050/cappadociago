@@ -2,10 +2,10 @@ export const es = {
   language: { code: "ES", name: "Español" },
   nav: {
     balloonTours: "Globo Aerostático Capadocia",
-    cappadociaTours: "Tours y Atracciones de Capadocia",
-    activities: "Actividades en Capadocia",
-    privateTours: "Tours Privados en Capadocia",
-    transfers: "Traslados en Capadocia",
+    cappadociaTours: "Tours Capadocia",
+    activities: "Actividades",
+    privateTours: "Tours Privados",
+    transfers: "Traslados Capadocia",
   },
   hero: {
     badge: "CAPPADOCIAGO",
