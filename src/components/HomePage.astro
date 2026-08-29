@@ -494,10 +494,10 @@ const homepageReviews = [
       <!-- Hero Görseli: Vercel üzerinden yerel olarak servis edilir -->
       <picture class="tbc-mobile-hero">
         <img
-          src="/images/hero-cappadociaGo.webp"
+          src="/images/hero-cappadociago-2.webp"
           alt={seo.heroAlt}
           width="800"
-          height="520"
+          height="533"
           loading="eager"
           fetchpriority="high"
           decoding="async"
@@ -5504,13 +5504,29 @@ body>.site-header{
   box-shadow:none!important;
   z-index:3!important;
 }
+/* Bulletproof: beat any legacy rule regardless of specificity/order. */
+body section.tbc-video-hero .tbc-video-content span.tbc-video-kicker{
+  display:inline-block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  clip:auto!important;
+  clip-path:none!important;
+  overflow:visible!important;
+  position:relative!important;
+  transform:none!important;
+}
+body .tbc-hero-form,
+body .tbc-video-hero,
+body .tbc-video-content{
+  overflow:visible!important;
+}
 
 /* ---- Title ---- */
 .tbc-video-title{
   margin:0 0 16px!important;
   max-width:720px!important;
   font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
-  font-size:clamp(28px,3.4vw,38px)!important;
+  font-size:clamp(25px,3vw,34px)!important;
   line-height:1.1!important;
   font-weight:800!important;
   color:#ffffff!important;
@@ -5620,29 +5636,32 @@ body>.site-header{
 .booking-callout .tbc-select-btn,
 .booking-callout .dates-custom-box{
   background:#ffffff!important;border:0!important;box-shadow:none!important;
-  min-height:50px!important;border-radius:999px!important;
+  min-height:58px!important;border-radius:999px!important;
 }
 .booking-callout .tbc-select-btn{
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  font-size:13px!important;font-weight:800!important;color:#0a2b4a!important;
+  font-size:15px!important;font-weight:800!important;color:#0a2b4a!important;
+  padding:0 22px!important;
 }
 .booking-callout .tbc-placeholder{color:#0a2b4a!important;font-weight:800!important;}
 .booking-callout .tbc-arrow{color:#0a2b4a!important;}
+.booking-callout .dates-custom-box{padding:6px 22px!important;}
 .booking-callout .dates-top-label{
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  font-size:9.5px!important;font-weight:900!important;color:#0a2b4a!important;
-  text-transform:uppercase!important;opacity:1!important;
+  font-size:10.5px!important;font-weight:900!important;color:#0a2b4a!important;
+  text-transform:uppercase!important;opacity:1!important;letter-spacing:.06em!important;
 }
-.booking-callout .dates-inputs-row{color:#0a2b4a!important;}
-.booking-callout .d-m,.booking-callout .d-d{color:#0a2b4a!important;font-weight:800!important;}
+.booking-callout .dates-inputs-row{color:#0a2b4a!important;font-size:16px!important;}
+.booking-callout .d-m,.booking-callout .d-d{color:#0a2b4a!important;font-weight:800!important;font-size:16px!important;}
 .booking-callout .d-a{color:#0a2b4a!important;font-weight:900!important;}
 .booking-callout .date-divider{color:#c98a1f!important;font-weight:900!important;}
 .booking-callout .tbc-submit{
-  min-height:50px!important;border-radius:999px!important;border:0!important;
+  min-height:58px!important;border-radius:999px!important;border:0!important;
   background:linear-gradient(135deg,#1861c4,#0a3d8a)!important;
   color:#ffffff!important;
   font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
-  font-size:13.5px!important;font-weight:900!important;letter-spacing:.5px!important;
+  font-size:15px!important;font-weight:900!important;letter-spacing:.5px!important;
+  padding:0 30px!important;
   box-shadow:0 8px 20px rgba(10,61,138,.35)!important;
 }
 .booking-callout .tbc-submit:hover{transform:translateY(-2px)!important;box-shadow:0 12px 26px rgba(10,61,138,.45)!important;}
