@@ -55,3 +55,78 @@
 <style is:global>
 html{background:#eaf1f6!important}body{background:radial-gradient(circle at 12% 3%,rgba(217,165,31,.10),transparent 24%),radial-gradient(circle at 88% 18%,rgba(7,90,166,.10),transparent 28%),linear-gradient(180deg,#eef5fa 0%,#e8f0f6 52%,#f3eee5 100%)!important;background-attachment:fixed!important}.page,.tbc-page,.tour-page,.tour-detail-page{background:transparent!important}.card,.tbc-tour-card,.booking,.tbc-booking-card,.gallery,.tbc-photo-grid-wrapper{background:rgba(255,255,255,.94)!important;backdrop-filter:blur(8px)}
 </style>
+
+
+<style is:global>
+/* 2026-08-30 FINAL TOUR SYSTEM — all tour pages visually follow Standard Balloon */
+:root{
+  --cg-final-navy:#062d63; --cg-final-blue:#075aa6; --cg-final-gold:#d9a51f;
+  --cg-final-ink:#263f59; --cg-final-muted:#64778b; --cg-final-line:#d5e0e9;
+  --cg-final-bg1:#e9e2d7; --cg-final-bg2:#eef3f6; --cg-final-bg3:#dfe9f1;
+}
+html,body{background:#e9e2d7!important;}
+body{
+  background:
+    radial-gradient(circle at 9% 4%,rgba(217,165,31,.16),transparent 24%),
+    radial-gradient(circle at 92% 16%,rgba(7,90,166,.13),transparent 28%),
+    linear-gradient(135deg,var(--cg-final-bg1) 0%,var(--cg-final-bg2) 46%,var(--cg-final-bg3) 100%)!important;
+  background-attachment:fixed!important;
+}
+.page,.tbc-tour-page,.tour-page,.tour-detail-page,main{background:transparent!important;}
+.page,.tbc-tour-page{padding-top:22px!important;padding-bottom:64px!important;}
+.container,.tbc-tour-container{max-width:1180px!important;margin-inline:auto!important;}
+.hero,.tbc-tour-hero{
+  background:linear-gradient(120deg,#123b63 0%,#0d3158 58%,#092648 100%)!important;
+  border:1px solid rgba(255,255,255,.10)!important;border-radius:24px!important;
+  box-shadow:0 16px 38px rgba(8,44,80,.16)!important;color:#fff!important;
+}
+.hero h1,.tbc-tour-title{font-family:'Fraunces',Georgia,serif!important;color:#fff!important;text-shadow:none!important;}
+.hero>p,.tbc-tour-desc{color:rgba(255,255,255,.82)!important;}
+.gallery,.tbc-photo-grid-wrapper,.card,.tbc-tour-card,.booking,.tbc-booking-card{
+  background:#fff!important;border:1px solid var(--cg-final-line)!important;
+  box-shadow:0 12px 30px rgba(9,47,86,.07)!important;
+}
+.content h2,.tbc-tour-section h2{font-family:'Fraunces',Georgia,serif!important;color:var(--cg-final-navy)!important;}
+.content p,.tbc-tour-section p{color:#50647a!important;}
+/* Keep every tour description visible on mobile and desktop. */
+.content,.tbc-tour-main-card,.tbc-tour-main,.tbc-tour-section{visibility:visible!important;opacity:1!important;}
+.content p,.tbc-tour-section p,.checks,.tbc-tour-checks{display:revert!important;max-height:none!important;overflow:visible!important;}
+/* Make both reservation systems visually consistent. */
+.booking,.tbc-booking-card{border-top:4px solid var(--cg-final-blue)!important;overflow:visible!important;}
+.booking input,.booking select,.booking textarea,.tbc-booking-group input,.tbc-booking-group select,.tbc-booking-group textarea{
+  background:#f8fbfd!important;border:1px solid #cbdbe8!important;color:var(--cg-final-navy)!important;
+}
+.submit,.tbc-booking-submit{background:linear-gradient(135deg,var(--cg-final-blue),#0b76c7)!important;color:#fff!important;}
+/* Calendar: desktop dropdown, mobile modal so it can never disappear behind content. */
+.calendar,.tbc-custom-calendar{z-index:2147481000!important;}
+@media(max-width:900px){
+  .grid,.tbc-tour-grid{grid-template-columns:1fr!important;}
+  .side,.tbc-tour-side{position:static!important;}
+  .content,.tbc-tour-main-card{display:block!important;width:100%!important;}
+  .content>section,.tbc-tour-section{display:block!important;}
+}
+@media(max-width:640px){
+  .page,.tbc-tour-page{padding:14px 10px 42px!important;}
+  .hero,.tbc-tour-hero{padding:22px 17px!important;border-radius:18px!important;}
+  .hero h1,.tbc-tour-title{font-size:29px!important;line-height:1.06!important;}
+  .hero>p,.tbc-tour-desc{font-size:12px!important;line-height:1.68!important;}
+  .content>section,.tbc-tour-section{padding:19px 17px!important;}
+  .content h2,.tbc-tour-section h2{font-size:20px!important;}
+  .content p,.tbc-tour-section p{font-size:12px!important;line-height:1.78!important;}
+  .calendar.open,.tbc-custom-calendar.is-open{
+    position:fixed!important;left:50%!important;right:auto!important;top:50%!important;
+    transform:translate(-50%,-50%)!important;width:min(360px,calc(100vw - 20px))!important;
+    max-width:calc(100vw - 20px)!important;max-height:calc(100vh - 24px)!important;
+    overflow:auto!important;margin:0!important;padding:14px!important;border-radius:18px!important;
+    background:#fff!important;border:1px solid #bfd1df!important;border-top:4px solid var(--cg-final-gold)!important;
+    box-shadow:0 28px 80px rgba(3,22,42,.38)!important;color:var(--cg-final-navy)!important;
+  }
+  .tbc-custom-calendar.is-open .tbc-cal-title{color:var(--cg-final-navy)!important;}
+  .tbc-custom-calendar.is-open .tbc-cal-nav{background:#eaf4fb!important;color:var(--cg-final-blue)!important;}
+  .tbc-custom-calendar.is-open .tbc-calendar-weekdays span{color:#60758a!important;}
+  .tbc-custom-calendar.is-open .tbc-cal-day{background:#f6fafc!important;color:var(--cg-final-navy)!important;border:1px solid #dce8f0!important;}
+  .tbc-custom-calendar.is-open .tbc-cal-day.is-selected{background:var(--cg-final-blue)!important;color:#fff!important;}
+  .tbc-custom-calendar.is-open .tbc-calendar-note{color:#60758a!important;border-color:#dde7ef!important;}
+  .calendar.open .day{min-height:50px!important;}
+}
+</style>

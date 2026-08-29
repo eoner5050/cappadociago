@@ -1,0 +1,7 @@
+Final tour-page unification update:
+- All tour detail pages use the shared CappadociaGo premium background/theme.
+- Shared mobile navigation restored with the "Hot Air Balloon Cappadocia"-first menu.
+- Mobile tour content is explicitly kept visible and readable.
+- Both reservation calendar implementations are forced into an on-screen mobile modal when opened.
+- WhatsApp assistant colors changed to CappadociaGo blue/navy with gold accent.
+- Existing reservation logic, product availability and Supabase integration were preserved.

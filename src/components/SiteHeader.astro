@@ -1,9 +1,9 @@
 ---
 const { lang = 'en', active = '', detailSlug = '', section = '' } = Astro.props;
 const copy = {
-  en: { balloon:'Balloon Tours', cappadocia:'Cappadocia Tours', activities:'Activities', private:'Private Tours', transfers:'Transfers', menu:'Menu' },
-  tr: { balloon:'Balon Turları', cappadocia:'Kapadokya Turları', activities:'Aktiviteler', private:'Özel Turlar', transfers:'Transferler', menu:'Menü' },
-  es: { balloon:'Tours en Globo', cappadocia:'Tours por Capadocia', activities:'Actividades', private:'Tours Privados', transfers:'Traslados', menu:'Menú' },
+  en: { balloon:'Hot Air Balloon Cappadocia', cappadocia:'Cappadocia Tours', activities:'Activities', private:'Private Tours', transfers:'Cappadocia Transfers', menu:'Menu' },
+  tr: { balloon:'Kapadokya Sıcak Hava Balonu', cappadocia:'Kapadokya Turları', activities:'Aktiviteler', private:'Özel Turlar', transfers:'Kapadokya Transferleri', menu:'Menü' },
+  es: { balloon:'Globo Aerostático Capadocia', cappadocia:'Tours por Capadocia', activities:'Actividades', private:'Tours Privados', transfers:'Traslados en Capadocia', menu:'Menú' },
 };
 const c = copy[lang] || copy.en;
 const code = lang.toUpperCase();
@@ -168,5 +168,40 @@ const routeFor = (targetLang) => detailSlug
   .cg-tour-header__mobile nav{grid-template-columns:1fr!important;gap:5px!important;}
   .cg-tour-header__mobile nav a{min-height:40px!important;}
   .cg-tour-header__mobile-phone{min-height:40px!important;margin-top:5px!important;}
+}
+</style>
+
+
+<style is:global>
+/* 2026-08-30 FINAL UNIFIED MOBILE NAV — same on every page */
+@media(max-width:1120px){
+  .cg-tour-header{overflow:visible!important;background:#fff!important;}
+  .cg-tour-header__mobile{
+    display:none!important; position:absolute!important; left:0!important; right:0!important;
+    top:100%!important; margin:0!important; padding:0!important;
+    background:#071a2f!important; border:0!important; border-top:3px solid #d9a51f!important;
+    border-radius:0 0 18px 18px!important; box-shadow:0 22px 42px rgba(3,22,42,.28)!important;
+    overflow:hidden!important;
+  }
+  .cg-tour-header.menu-open .cg-tour-header__mobile{display:block!important;}
+  .cg-tour-header__mobile nav{max-width:none!important;margin:0!important;display:block!important;}
+  .cg-tour-header__mobile nav a{
+    min-height:50px!important; margin:0!important; padding:0 20px!important;
+    display:flex!important;align-items:center!important;justify-content:flex-start!important;
+    border:0!important;border-bottom:1px solid rgba(255,255,255,.09)!important;border-radius:0!important;
+    background:transparent!important;color:#fff!important;text-align:left!important;
+    font-size:13px!important;font-weight:800!important;letter-spacing:-.01em!important;
+  }
+  .cg-tour-header__mobile nav a:first-child{color:#f3c64e!important;}
+  .cg-tour-header__mobile nav a:hover,.cg-tour-header__mobile nav a:focus{background:rgba(255,255,255,.07)!important;color:#f3c64e!important;}
+  .cg-tour-header__mobile-phone{
+    max-width:none!important;margin:0!important;min-height:52px!important;border:0!important;border-radius:0!important;
+    background:#075aa6!important;color:#fff!important;font-size:12.5px!important;font-weight:900!important;
+  }
+  .cg-tour-header__mobile-phone img{width:18px!important;height:18px!important;}
+}
+@media(max-width:680px){
+  .cg-tour-header__mobile nav a{min-height:48px!important;padding:0 16px!important;font-size:12.5px!important;}
+  .cg-tour-header__mobile-phone{min-height:50px!important;}
 }
 </style>
