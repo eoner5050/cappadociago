@@ -1300,7 +1300,7 @@ CODE: const description = isTr ? "Kapadokya balon turları, fiyatlar, günlük t
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\en\tours\atv-tour-with-goreme-valleys.astro
 LINE: 7
-CODE: image:"/images/tours/ATV-Tour-With-Goreme-Valleys.webp", rating:"4.70", reviewCount:32, duration:"120 Minutes", price:"30 \u20ac",
+CODE: image:"/images/tours/ATV-Tour-With-Goreme-Valleys (2).webp", rating:"4.70", reviewCount:32, duration:"120 Minutes", price:"30 \u20ac",
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\en\tours\balloons-watching-tour-cappadocia.astro
 LINE: 14
@@ -1320,7 +1320,7 @@ CODE: "Live daily availability",
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\en\tours\blue-tour-cappadocia.astro
 LINE: 7
-CODE: image:"/images/tours/Blue-Tour-Cappadocia.webp", rating:"4.90", reviewCount:32, duration:"Full Day", price:"",
+CODE: image:"/images/tours/Blue-Tour-Cappadocia (1).webp", rating:"4.90", reviewCount:32, duration:"Full Day", price:"",
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\en\tours\blue-tour-cappadocia.astro
 LINE: 9
@@ -2764,7 +2764,7 @@ CODE: const items=[{q:"When do hot air balloons fly in Cappadocia?",a:["Hot air 
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\es\tours\atv-tour-with-goreme-valleys.astro
 LINE: 7
-CODE: image:"/images/tours/ATV-Tour-With-Goreme-Valleys.webp", rating:"4.70", reviewCount:32, duration:"120 Minutos", price:"30 \u20ac",
+CODE: image:"/images/tours/ATV-Tour-With-Goreme-Valleys (2).webp", rating:"4.70", reviewCount:32, duration:"120 Minutos", price:"30 \u20ac",
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\es\tours\balloons-watching-tour-cappadocia.astro
 LINE: 14
@@ -2772,7 +2772,7 @@ CODE: "price": "35 €",
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\es\tours\blue-tour-cappadocia.astro
 LINE: 7
-CODE: image:"/images/tours/Blue-Tour-Cappadocia.webp", rating:"4.90", reviewCount:32, duration:"Día Completo", price:"",
+CODE: image:"/images/tours/Blue-Tour-Cappadocia (1).webp", rating:"4.90", reviewCount:32, duration:"Día Completo", price:"",
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\es\tours\cappadocia-classic-car-tour.astro
 LINE: 14
@@ -4052,7 +4052,7 @@ CODE: const description = isTr ? "Kapadokya balon turları, fiyatlar, günlük t
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\tr\tours\atv-tour-with-goreme-valleys.astro
 LINE: 7
-CODE: image:"/images/tours/ATV-Tour-With-Goreme-Valleys.webp", rating:"4.70", reviewCount:32, duration:"120 Dakika", price:"30 \u20ac",
+CODE: image:"/images/tours/ATV-Tour-With-Goreme-Valleys (2).webp", rating:"4.70", reviewCount:32, duration:"120 Dakika", price:"30 \u20ac",
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\tr\tours\balloons-watching-tour-cappadocia.astro
 LINE: 14
@@ -4060,7 +4060,7 @@ CODE: "price": "35 €",
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\tr\tours\blue-tour-cappadocia.astro
 LINE: 7
-CODE: image:"/images/tours/Blue-Tour-Cappadocia.webp", rating:"4.90", reviewCount:32, duration:"Tam Gün", price:"",
+CODE: image:"/images/tours/Blue-Tour-Cappadocia (1).webp", rating:"4.90", reviewCount:32, duration:"Tam Gün", price:"",
 ----------------------------------------
 FILE: C:\Users\vahit\OneDrive\Masaüstü\cappadociago site\src\pages\tr\tours\cappadocia-classic-car-tour.astro
 LINE: 14

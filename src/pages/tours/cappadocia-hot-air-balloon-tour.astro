@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
 
 const tour = {
   title: 'Göreme Balloon Tour (Standard Flight)',
@@ -57,26 +58,7 @@ const tour = {
 ---
 <Layout title={`${tour.title} | CappadociaGo`} description={tour.heroDesc}>
 
-<nav>
-  <div class="wrap">
-    <a href="/" class="logo-mark"><img src="/images/logo.png" alt="CappadociaGo" /></a>
-    <ul class="nav-menu">
-      <li><a href="/#tours">Balloon Tours</a></li>
-      <li><a href="/#tours">Daily Tours</a></li>
-      <li><a href="/#tours">Activities</a></li>
-      <li><a href="/#tours">Private Tours</a></li>
-      <li><a href="/#tours">Transfers</a></li>
-    </ul>
-    <div class="nav-right">
-      <div class="lang-sel">
-        <span class="flag-icon">🇬🇧</span>
-        <span class="lang-text">English</span>
-        <svg class="chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <a class="wa-btn" href="https://wa.me/905401015050" target="_blank" rel="noopener">💬 WhatsApp</a>
-    </div>
-  </div>
-</nav>
+<SiteHeader lang="en" detailSlug="goreme-standart-hot-air-balloon-tour" section="tours" />
 
 <main class="tour-page">
 
@@ -100,12 +82,12 @@ const tour = {
   <div class="wrap">
 
     <div class="tour-gallery">
-      <div class="gallery-main" style="background-image:url('/images/hero-balloon.webp');background-position:center 35%;"></div>
+      <div class="gallery-main" style="background-image:url('/images/tours/goreme-standart-hot-air-balloon-tour (2).webp');background-position:center 35%;"></div>
       <div class="gallery-side">
-        <div class="gallery-tile photo" style="background-image:url('/images/hero-balloon.webp');background-position:75% 20%;background-size:220%;">
+        <div class="gallery-tile photo" style="background-image:url('/images/tours/goreme-standart-hot-air-balloon-tour (2).webp');background-position:75% 20%;background-size:220%;">
           <span class="tile-duotone gold"></span>
         </div>
-        <div class="gallery-tile photo" style="background-image:url('/images/hero-balloon.webp');background-position:10% 55%;background-size:260%;">
+        <div class="gallery-tile photo" style="background-image:url('/images/tours/goreme-standart-hot-air-balloon-tour (2).webp');background-position:10% 55%;background-size:260%;">
           <span class="tile-duotone teal"></span>
         </div>
         <div class="gallery-tile art">
@@ -114,7 +96,7 @@ const tour = {
             <defs><linearGradient id="chimGrad" x1="0" y1="0" x2="100" y2="100"><stop offset="0" stop-color="#3E7FE0"/><stop offset="1" stop-color="#123F8C"/></linearGradient></defs>
           </svg>
         </div>
-        <div class="gallery-tile photo" style="background-image:url('/images/hero-balloon.webp');background-position:90% 80%;background-size:200%;">
+        <div class="gallery-tile photo" style="background-image:url('/images/tours/goreme-standart-hot-air-balloon-tour (2).webp');background-position:90% 80%;background-size:200%;">
           <span class="tile-duotone plum"></span>
           <span class="tile-more">+12</span>
         </div>
@@ -256,7 +238,7 @@ const tour = {
       </div>
 
       <div class="strip-gallery">
-        <div class="strip-thumb" style="background-image:url('/images/hero-balloon.webp');"></div>
+        <div class="strip-thumb" style="background-image:url('/images/tours/goreme-standart-hot-air-balloon-tour (2).webp');"></div>
         <div class="strip-thumb" style="background:linear-gradient(135deg,#123F8C,#3E7FE0);"></div>
         <div class="strip-thumb" style="background:linear-gradient(135deg,#0A1B3E,#3E7FE0);"></div>
         <div class="strip-thumb" style="background:linear-gradient(135deg,#6B4A12,#C9962F);"></div>
@@ -330,7 +312,7 @@ const tour = {
     position:relative;padding:40px 0 76px;margin-bottom:-46px;overflow:hidden;
     background-image:
       linear-gradient(180deg, rgba(8,20,22,0.55) 0%, rgba(8,25,26,0.88) 60%, rgba(6,20,21,0.96) 100%),
-      url('/images/hero-balloon.webp');
+      url('/images/tours/goreme-standart-hot-air-balloon-tour (2).webp');
     background-size:cover;background-position:center 32%;
   }
   .breadcrumb{font-size:12.5px;color:#B9C3DC;margin-bottom:26px;}

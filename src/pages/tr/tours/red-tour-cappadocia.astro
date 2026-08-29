@@ -1,5 +1,6 @@
 ---
 import SeoHead from '../../../components/SeoHead.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
 import FloatingAssistant from "../../../components/FloatingAssistant.astro";
 import { getTourGallery } from '../../../utils/tourGallery';
 // src/pages/tours/goreme-comfort-hot-air-balloon-tour.astro
@@ -25,7 +26,7 @@ const tour = {
   safetyText: 'Tur profesyonel lisanslı rehberler, deneyimli sürücüler ve konforlu araçlarla organize edilir. Operasyon ekibimiz gün boyunca hizmeti takip eder.'
 };
 const pageLang = 'tr';
-const galleryImages = getTourGallery({ slug: 'red-tour-cappadocia', title: tour.title, preferred: ['/images/tours/Red-Tour-Cappadocia.webp'], max: 6 });
+const galleryImages = getTourGallery({ slug: 'red-tour-cappadocia', title: tour.title, preferred: ['/images/tours/red-tour-cappadocia (2).webp'], max: 6 });
 const galleryPhotoWord = 'fotoğraf';
 ---
 
@@ -42,84 +43,7 @@ const galleryPhotoWord = 'fotoğraf';
 <body>
 
   <!-- HEADER / NAVBAR - ANA SAYFA İLE AYNI TASARIM -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="logo">
-        <a href="/tr/" class="logo-home" aria-label="CappadociaGo Home" title="CappadociaGo - Ana Sayfa">
-          <img src="/images/logo.png" alt="CappadociaGo" loading="lazy" width="600" height="200" />
-        </a>
-
-        <a
-          href="https://www.instagram.com/cappadociago/"
-          class="header-instagram"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="CappadociaGo on Instagram"
-        >
-          <img
-            src="/images/icons/instagram-logo.webp"
-            alt=""
-            class="header-instagram-icon"
-            width="23"
-            height="23"
-            aria-hidden="true" loading="lazy"
-          />
-          <span>@cappadociago</span>
-        </a>
-      </div>
-
-      <nav class="main-nav" id="mainNav">
-        <ul>
-          <li><a href="/tr/">Balon Turları</a></li>
-          <li><a href="/tr/">Kapadokya Turları</a></li>
-          <li><a href="/tr/">Aktiviteler</a></li>
-          <li><a href="/tr/">Özel Turlar</a></li>
-          <li><a href="/tr/transfers/">Transferler</a></li>
-          <li></li>
-        </ul>
-      </nav>
-
-      <div class="header-right">
-        <div class="lang-switcher" id="langSwitcher">
-          <button
-            class="lang-btn"
-            id="langButton"
-            type="button"
-            aria-label="Select language"
-            aria-expanded="false"
-          >
-            <span class="lang-flag">🇹🇷</span>
-            <span class="lang-code">TR</span>
-            <span class="arrow">▾</span>
-          </button>
-
-          <div class="lang-dropdown" id="langDropdown">
-            <a href="/en/tours/red-tour-cappadocia" class="lang-item"><span class="flag">🇬🇧</span><span>English</span></a>
-            <a href="/tr/tours/red-tour-cappadocia" class="lang-item active"><span class="flag">🇹🇷</span><span>Türkçe</span></a>
-            <a href="/es/tours/red-tour-cappadocia" class="lang-item"><span class="flag">🇪🇸</span><span>Español</span></a>
-          </div>
-        </div>
-
-        <a href="https://wa.me/905401015050" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-          <img
-            src="/images/icons/whatsapp-logo.webp"
-            alt=""
-            class="whatsapp-btn-icon"
-            width="18"
-            height="18"
-            aria-hidden="true" loading="lazy"
-          />
-          <span>WhatsApp</span>
-        </a>
-
-        <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Toggle Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+  <SiteHeader lang={pageLang} detailSlug="red-tour-cappadocia" section="tours" />
 
   <section class="tbc-tour-page">
     <div class="tbc-tour-container">
@@ -746,7 +670,7 @@ const galleryPhotoWord = 'fotoğraf';
         <div class="tbc-footer-gallery">
           <img src="/images/tours/goreme-standart-hot-air-balloon-tour (2).webp" alt="Göreme Standard Balloon Tour" loading="lazy" width="800" height="600" />
           <img src="/images/tours/goreme-comfort-hot-air-balloon-tour (2).webp" alt="Göreme Comfort Balloon Tour" loading="lazy" width="800" height="600" />
-          <img src="/images/tours/Ihlara-Valley-Balloons-Tour.webp" alt="Ihlara Valley Balloon Tour" loading="lazy" width="800" height="600" />
+          <img src="/images/tours/ihlara-valley-balloons-tour (1).webp" alt="Ihlara Valley Balloon Tour" loading="lazy" width="800" height="600" />
           <img src="/images/tours/soganli-valley-balloon-tour (1).webp" alt="Soğanlı Valley Balloon Tour" loading="lazy" width="800" height="600" />
         </div>
 

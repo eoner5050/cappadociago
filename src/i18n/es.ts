@@ -91,7 +91,7 @@ export const es = {
     {
       category: "balloon",
       href: "/tours/goreme-standart-hot-air-balloon-tour",
-      image: "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp",
+      image: "/images/tours/goreme-standart-hot-air-balloon-tour (2).webp",
       rating: "4.80",
       duration: "Vuelo de 1 Hora",
       title: "Tour Estándar en Globo Aerostático por Göreme",
@@ -105,7 +105,7 @@ export const es = {
     {
       category: "balloon",
       href: "/tours/goreme-comfort-hot-air-balloon-tour",
-      image: "/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp",
+      image: "/images/tours/goreme-comfort-hot-air-balloon-tour (2).webp",
       rating: "4.90",
       duration: "Vuelo de 1 Hora",
       title: "Tour Comfort en Globo Aerostático por Göreme",
@@ -119,7 +119,7 @@ export const es = {
     {
       category: "daily",
       href: "/es/tours/red-tour-cappadocia",
-      image: "/images/tours/Red-Tour-Cappadocia.webp",
+      image: "/images/tours/red-tour-cappadocia (2).webp",
       rating: "4.97",
       duration: "Día Completo",
       title: "Tour Rojo de Capadocia",
@@ -133,7 +133,7 @@ export const es = {
     {
       category: "daily",
       href: "/es/tours/green-tour-cappadocia",
-      image: "/images/tours/tbc-green-tour-cappadocia.webp",
+      image: "/images/tours/green-tour-cappadocia (2).webp",
       rating: "4.90",
       duration: "Día Completo",
       title: "Tour Verde de Capadocia",
@@ -147,7 +147,7 @@ export const es = {
     {
       category: "activities",
       href: "/es/tours/cappadocia-pottery-making-experience",
-      image: "/images/tours/tbc-cappadocia-pottery-making-experience.webp",
+      image: "/images/tours/cappadocia-pottery-making-experience (2).webp",
       rating: "4.60",
       duration: "2 Horas",
       title: "Experiencia de Cerámica en Capadocia",
@@ -161,7 +161,7 @@ export const es = {
     {
       category: "activities",
       href: "/es/tours/cappadocia-classic-car-tour",
-      image: "/images/tours/Cappadocia-Classic-Car-Tour.webp",
+      image: "/images/tours/cappadocia-classic-car-tour (2).webp",
       rating: "4.56",
       duration: "2 Horas",
       title: "Tour en Coche Clásico por Capadocia",
@@ -175,7 +175,7 @@ export const es = {
     {
       category: "activities",
       href: "/es/tours/photo-shoot-flying-dress-experience",
-      image: "/images/tours/Photo-Shoot-and-Flying-Dress-Experience.webp",
+      image: "/images/tours/Photo Shoot & Flying Dress Experience (2).webp",
       rating: "4.78",
       duration: "2 Horas",
       title: "Sesión de Fotos y Experiencia con Vestido Volador",
@@ -189,7 +189,7 @@ export const es = {
     {
       category: "activities",
       href: "/es/tours/jeep-safari-cappadocia",
-      image: "/images/tours/Jeep-Safari-Cappadocia.webp",
+      image: "/images/tours/jeep-safari-cappadocia (2).webp",
       rating: "4.90",
       duration: "2 Horas",
       title: "Safari en Jeep por Capadocia",
@@ -203,7 +203,7 @@ export const es = {
     {
       category: "balloon",
       href: "/es/tours/ihlara-valley-balloons-tour",
-      image: "/images/tours/Ihlara-Valley-Balloons-Tour.webp",
+      image: "/images/tours/ihlara-valley-balloons-tour (1).webp",
       rating: "4.89",
       duration: "Vuelo de 1 Hora",
       title: "Tour en Globo por el Valle de Ihlara",
@@ -259,7 +259,7 @@ export const es = {
     {
       category: "activities",
       href: "/es/tours/atv-tour-with-goreme-valleys",
-      image: "/images/tours/ATV-Tour-With-Goreme-Valleys.webp",
+      image: "/images/tours/ATV-Tour-With-Goreme-Valleys (2).webp",
       rating: "4.70",
       duration: "2 Horas",
       title: "Tour en ATV por los Valles de Göreme",
@@ -273,7 +273,7 @@ export const es = {
     {
       category: "activities",
       href: "/es/tours/turkish-night-with-cave-dinner-cappadocia",
-      image: "/images/tours/tbc-turkish-night-with-cave-dinner-cappadocia.webp",
+      image: "/images/tours/turkish-night-with-cave-dinner-cappadocia (1).webp",
       rating: "4.96",
       duration: "3 Horas",
       title: "Noche Turca con Cena en Cueva en Capadocia",
@@ -287,7 +287,7 @@ export const es = {
     {
       category: "activities",
       href: "/es/tours/balloons-watching-tour-cappadocia",
-      image: "/images/tours/tbc-balloons-watching-tour-cappadocia.webp",
+      image: "/images/tours/balloons-watching-tour-cappadocia (2).webp",
       rating: "4.89",
       duration: "2 Horas",
       title: "Tour de Observación de Globos en Capadocia",
@@ -301,7 +301,7 @@ export const es = {
     {
       category: "balloon",
       href: "/es/tours/pamukkale-balloons-tour",
-      image: "/images/tours/Pamukkale-Balloons-Tour.webp",
+      image: "/images/tours/pamukkale-balloons-tour (1).webp",
       rating: "4.95",
       duration: "Vuelo de 1 Hora",
       title: "Tour en Globo por Pamukkale",
@@ -315,7 +315,7 @@ export const es = {
     {
       category: "balloon",
       href: "/es/tours/soganli-valley-balloon-tour",
-      image: "/images/tours/tbc-soganli-valley-balloon-tour.webp",
+      image: "/images/tours/soganli-valley-balloon-tour (1).webp",
       rating: "4.87",
       duration: "Vuelo de 1 Hora",
       title: "Tour en Globo por el Valle de Soğanlı",
@@ -329,7 +329,7 @@ export const es = {
     {
       category: "activities",
       href: "/es/tours/sunrise-sunset-horse-riding-cappadocia",
-      image: "/images/tours/Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp",
+      image: "/images/tours/sunrise-sunset-horse-riding-cappadocia (1).webp",
       rating: "4.80",
       duration: "2 Horas",
       title: "Paseo a Caballo al Amanecer o Atardecer en Capadocia",
@@ -343,7 +343,7 @@ export const es = {
     {
       category: "activities",
       href: "/es/tours/cappadocia-sunset-camel-riding-tour",
-      image: "/images/tours/Cappadocia-Sunset-Camel-Riding-Tour.webp",
+      image: "/images/tours/cappadocia-sunset-camel-riding-tour (1).webp",
       rating: "4.50",
       duration: "1,5 Horas",
       title: "Paseo en Camello al Atardecer en Capadocia",
@@ -357,7 +357,7 @@ export const es = {
     {
       category: "daily",
       href: "/es/tours/blue-tour-cappadocia",
-      image: "/images/tours/Blue-Tour-Cappadocia.webp",
+      image: "/images/tours/Blue-Tour-Cappadocia (1).webp",
       rating: "4.84",
       duration: "Día Completo",
       title: "Blue Tour Cappadocia (Discover Hidden Valleys)",
@@ -371,7 +371,7 @@ export const es = {
     {
       category: "private",
       href: "/es/tours/private-red-tour-cappadocia",
-      image: "/images/tours/Private-Red-Tour-Cappadocia.webp",
+      image: "/images/tours/red-tour-cappadocia (4).webp",
       rating: "4.80",
       duration: "1 Día",
       title: "Tour Rojo Privado de Capadocia",
@@ -385,7 +385,7 @@ export const es = {
     {
       category: "private",
       href: "/es/tours/private-green-tour-cappadocia",
-      image: "/images/tours/Private-Green-Tour-Cappadocia.webp",
+      image: "/images/tours/green-tour-cappadocia (4).webp",
       rating: "4.88",
       duration: "1 Día",
       title: "Tour Verde Privado de Capadocia",
@@ -399,7 +399,7 @@ export const es = {
     {
       category: "private",
       href: "/es/tours/cappadocia-mix-tour",
-      image: "/images/tours/Private-Tour-and-Mix-Tour.webp",
+      image: "/images/tours/cappadocia-tour.webp",
       rating: "4.95",
       duration: "Flexible",
       title: "Cappadocia Mix Tour",
@@ -413,7 +413,7 @@ export const es = {
     {
       category: "private",
       href: "/es/tours/cappadocia-custom-package-tour",
-      image: "/images/tours/Cappadocia-Package-Tour.webp",
+      image: "/images/tours/cappadocia-package-tours.webp",
       rating: "NEW",
       duration: "Flexible",
       title: "Paquete Personalizado de Capadocia",

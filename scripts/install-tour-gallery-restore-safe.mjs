@@ -35,25 +35,25 @@ const caseAliases=[
   ['goreme-comfort-hot-air-balloon-tour.webp','Goreme-Comfort-Hot-Air-Balloon-Tour.webp'],
   ['green-tour-cappadocia.webp','Green-Tour-Cappadocia.webp'],
   ['cappadocia-pottery-making-experience.webp','Cappadocia-Pottery-Making-Experience.webp'],
-  ['turkish-night-with-cave-dinner-cappadocia.webp','Turkish-Night-With-Cave-Dinner-Cappadocia.webp'],
-  ['balloons-watching-tour-cappadocia.webp','Balloons-Watching-Tour-Cappadocia.webp'],
-  ['soganli-valley-balloon-tour.webp','Soganli-Valley-Balloon-Tour.webp'],
+  ['turkish-night-with-cave-dinner-cappadocia.webp','turkish-night-with-cave-dinner-cappadocia (1).webp'],
+  ['balloons-watching-tour-cappadocia (2).webp','Balloons-Watching-Tour-Cappadocia.webp'],
+  ['soganli-valley-balloon-tour.webp','soganli-valley-balloon-tour (1).webp'],
 ];
 for(const [src,dst] of caseAliases) results.push(copyAlias(src,dst,'case-safe alias'));
 
 // 2) SAFE semantic aliases for known card/fallback names.
 // These aliases DO NOT alter gallery family files. The 6-photo sets remain untouched.
 const semanticAliases=[
-  ['Photo Shoot & Flying Dress Experience.webp','Photo-Shoot-and-Flying-Dress-Experience.webp','photo-shoot card/fallback alias'],
-  ['sunrise-sunset-horse-riding-cappadocia.webp','Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp','horse-riding card/fallback alias'],
-  ['Blue-Tour-Cappadocia.webp','Blue-Tour-Cappadocia-Discover-Hidden-Valleys.webp','blue-tour card/fallback alias'],
-  ['Private-Mix-Cappadocia-Tour.webp','Private-Cappadocia-Mix-Tour.webp','private-mix card/fallback alias'],
+  ['Photo Shoot & Flying Dress Experience.webp','Photo Shoot & Flying Dress Experience (2).webp','photo-shoot card/fallback alias'],
+  ['sunrise-sunset-horse-riding-cappadocia.webp','sunrise-sunset-horse-riding-cappadocia (1).webp','horse-riding card/fallback alias'],
+  ['Blue-Tour-Cappadocia (1).webp','Blue-Tour-Cappadocia-Discover-Hidden-Valleys.webp','blue-tour card/fallback alias'],
+  ['Private-Mix-Cappadocia-Tour.webp','Private-Mix-Cappadocia-Tour.webp','private-mix card/fallback alias'],
 ];
 for(const [src,dst,reason] of semanticAliases) results.push(copyAlias(src,dst,reason));
 
 // Pamukkale has only numbered gallery files. Create only the expected fallback/card alias from (1).
 // The numbered (1)-(6) gallery set is NOT changed.
-results.push(copyAlias('pamukkale-balloons-tour (1).webp','Pamukkale-Balloons-Tour.webp','pamukkale card/fallback alias; gallery (1)-(6) preserved'));
+results.push(copyAlias('pamukkale-balloons-tour (1).webp','pamukkale-balloons-tour (1).webp','pamukkale card/fallback alias; gallery (1)-(6) preserved'));
 
 // Verify families expected to keep their own photo sets.
 const familyRules=[

@@ -4,16 +4,16 @@ import { getSiteGallery, getTourGallery } from '../utils/tourGallery';
 const { t, lang } = Astro.props;
 const footerTourImages = getSiteGallery(4);
 const sliderTourImages = {
-  standard: getTourGallery({slug:'goreme-standart-hot-air-balloon-tour',title:'Göreme Standart Hot Air Balloon Tour',max:3})[1] || '/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp',
-  comfort: getTourGallery({slug:'goreme-comfort-hot-air-balloon-tour',title:'Göreme Comfort Hot Air Balloon Tour',max:3})[1] || '/images/tours/tbc-goreme-comfort-hot-air-balloon-tour.webp',
-  red: getTourGallery({slug:'red-tour-cappadocia',title:'Red Tour Cappadocia',max:3})[1] || '/images/tours/Red-Tour-Cappadocia.webp',
-  green: getTourGallery({slug:'green-tour-cappadocia',title:'Green Tour Cappadocia',max:3})[1] || '/images/tours/tbc-green-tour-cappadocia.webp',
-  jeep: getTourGallery({slug:'jeep-safari-cappadocia',title:'Jeep Safari Cappadocia',max:3})[1] || '/images/tours/Jeep-Safari-Cappadocia.webp',
-  atv: getTourGallery({slug:'atv-tour-with-goreme-valleys',title:'Sunset ATV Tour Cappadocia',max:3})[1] || '/images/tours/ATV-Tour-With-Goreme-Valleys.webp',
-  horse: getTourGallery({slug:'sunrise-sunset-horse-riding-cappadocia',title:'Sunrise or Sunset Horse Riding Cappadocia',max:3})[1] || '/images/tours/Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp',
-  mix: getTourGallery({slug:'cappadocia-mix-tour',title:'Cappadocia Mix Tour',max:3})[1] || '/images/tours/Private-Tour-and-Mix-Tour.webp',
-  privateRed: getTourGallery({slug:'private-red-tour-cappadocia',title:'Private Red Tour Cappadocia',max:3})[1] || '/images/tours/Private-Red-Tour-Cappadocia.webp',
-  privateGreen: getTourGallery({slug:'private-green-tour-cappadocia',title:'Private Green Tour Cappadocia',max:3})[1] || '/images/tours/Private-Green-Tour-Cappadocia.webp'
+  standard: getTourGallery({slug:'goreme-standart-hot-air-balloon-tour',title:'Göreme Standart Hot Air Balloon Tour',max:3})[1] || '/images/tours/goreme-standart-hot-air-balloon-tour (2).webp',
+  comfort: getTourGallery({slug:'goreme-comfort-hot-air-balloon-tour',title:'Göreme Comfort Hot Air Balloon Tour',max:3})[1] || '/images/tours/goreme-comfort-hot-air-balloon-tour (2).webp',
+  red: getTourGallery({slug:'red-tour-cappadocia',title:'Red Tour Cappadocia',max:3})[1] || '/images/tours/red-tour-cappadocia (2).webp',
+  green: getTourGallery({slug:'green-tour-cappadocia',title:'Green Tour Cappadocia',max:3})[1] || '/images/tours/green-tour-cappadocia (2).webp',
+  jeep: getTourGallery({slug:'jeep-safari-cappadocia',title:'Jeep Safari Cappadocia',max:3})[1] || '/images/tours/jeep-safari-cappadocia (2).webp',
+  atv: getTourGallery({slug:'atv-tour-with-goreme-valleys',title:'Sunset ATV Tour Cappadocia',max:3})[1] || '/images/tours/ATV-Tour-With-Goreme-Valleys (2).webp',
+  horse: getTourGallery({slug:'sunrise-sunset-horse-riding-cappadocia',title:'Sunrise or Sunset Horse Riding Cappadocia',max:3})[1] || '/images/tours/sunrise-sunset-horse-riding-cappadocia (1).webp',
+  mix: getTourGallery({slug:'cappadocia-mix-tour',title:'Cappadocia Mix Tour',max:3})[1] || '/images/tours/cappadocia-tour.webp',
+  privateRed: getTourGallery({slug:'private-red-tour-cappadocia',title:'Private Red Tour Cappadocia',max:3})[1] || '/images/tours/red-tour-cappadocia (4).webp',
+  privateGreen: getTourGallery({slug:'private-green-tour-cappadocia',title:'Private Green Tour Cappadocia',max:3})[1] || '/images/tours/green-tour-cappadocia (4).webp'
 };
 
 const currentFlag = lang === "tr" ? "🇹🇷" : lang === "es" ? "🇪🇸" : "🇬🇧";
@@ -195,7 +195,7 @@ const galleryContent = {
 const gallery = galleryContent[lang] || galleryContent.en;
 const galleryImages = getSiteGallery(12);
 
-const socialImage = `${siteOrigin}/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp`;
+const socialImage = `${siteOrigin}/images/tours/goreme-standart-hot-air-balloon-tour (2).webp`;
 
 function resolveTourCardImage(tour) {
   const href = String(tour?.href || "");
@@ -205,7 +205,7 @@ function resolveTourCardImage(tour) {
     title: String(tour?.title || ""),
     preferred: [tour?.image].filter(Boolean),
     max: 1
-  })[0] || tour?.image || getSiteGallery(1)[0] || "/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp";
+  })[0] || tour?.image || getSiteGallery(1)[0] || "/images/tours/goreme-standart-hot-air-balloon-tour (2).webp";
 }
 
 function resolveProductSlug(tour) {

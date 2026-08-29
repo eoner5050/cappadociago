@@ -31,13 +31,13 @@
     {
       "ok": true,
       "src": "turkish-night-with-cave-dinner-cappadocia.webp",
-      "dst": "Turkish-Night-With-Cave-Dinner-Cappadocia.webp",
+      "dst": "turkish-night-with-cave-dinner-cappadocia (1).webp",
       "reason": "case-safe alias",
       "skipped": "already-exists"
     },
     {
       "ok": true,
-      "src": "balloons-watching-tour-cappadocia.webp",
+      "src": "balloons-watching-tour-cappadocia (2).webp",
       "dst": "Balloons-Watching-Tour-Cappadocia.webp",
       "reason": "case-safe alias",
       "skipped": "already-exists"
@@ -45,27 +45,27 @@
     {
       "ok": true,
       "src": "soganli-valley-balloon-tour.webp",
-      "dst": "Soganli-Valley-Balloon-Tour.webp",
+      "dst": "soganli-valley-balloon-tour (1).webp",
       "reason": "case-safe alias",
       "skipped": "already-exists"
     },
     {
       "ok": true,
       "src": "Photo Shoot & Flying Dress Experience.webp",
-      "dst": "Photo-Shoot-and-Flying-Dress-Experience.webp",
+      "dst": "Photo Shoot & Flying Dress Experience (2).webp",
       "reason": "photo-shoot card/fallback alias",
       "created": true
     },
     {
       "ok": true,
       "src": "sunrise-sunset-horse-riding-cappadocia.webp",
-      "dst": "Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp",
+      "dst": "sunrise-sunset-horse-riding-cappadocia (1).webp",
       "reason": "horse-riding card/fallback alias",
       "created": true
     },
     {
       "ok": true,
-      "src": "Blue-Tour-Cappadocia.webp",
+      "src": "Blue-Tour-Cappadocia (1).webp",
       "dst": "Blue-Tour-Cappadocia-Discover-Hidden-Valleys.webp",
       "reason": "blue-tour card/fallback alias",
       "created": true
@@ -73,14 +73,14 @@
     {
       "ok": true,
       "src": "Private-Mix-Cappadocia-Tour.webp",
-      "dst": "Private-Cappadocia-Mix-Tour.webp",
+      "dst": "Private-Mix-Cappadocia-Tour.webp",
       "reason": "private-mix card/fallback alias",
       "created": true
     },
     {
       "ok": true,
       "src": "pamukkale-balloons-tour (1).webp",
-      "dst": "Pamukkale-Balloons-Tour.webp",
+      "dst": "pamukkale-balloons-tour (1).webp",
       "reason": "pamukkale card/fallback alias; gallery (1)-(6) preserved",
       "created": true
     }
@@ -172,7 +172,7 @@
         "balloons-watching-tour-cappadocia (6).webp"
       ],
       "extra": [
-        "balloons-watching-tour-cappadocia.webp"
+        "balloons-watching-tour-cappadocia (2).webp"
       ]
     },
     {
@@ -200,7 +200,7 @@
         "pamukkale-balloons-tour (6).webp"
       ],
       "extra": [
-        "Pamukkale-Balloons-Tour.webp"
+        "pamukkale-balloons-tour (1).webp"
       ]
     },
     {

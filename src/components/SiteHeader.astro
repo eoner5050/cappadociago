@@ -1,78 +1,118 @@
 ---
-import FloatingAssistant from './FloatingAssistant.astro';
-const { lang = 'en', active = '' } = Astro.props;
+const { lang = 'en', active = '', detailSlug = '', section = '' } = Astro.props;
 const copy = {
-  en: { balloon:'Balloon Tours', cappadocia:'Cappadocia Tours', activities:'Activities', private:'Private Tours', transfers:'Transfers' },
-  tr: { balloon:'Balon Turları', cappadocia:'Kapadokya Turları', activities:'Aktiviteler', private:'Özel Turlar', transfers:'Transferler' },
-  es: { balloon:'Tours en Globo', cappadocia:'Tours por Capadocia', activities:'Actividades', private:'Tours Privados', transfers:'Traslados' },
+  en: { balloon:'Balloon Tours', cappadocia:'Cappadocia Tours', activities:'Activities', private:'Private Tours', transfers:'Transfers', menu:'Menu' },
+  tr: { balloon:'Balon Turları', cappadocia:'Kapadokya Turları', activities:'Aktiviteler', private:'Özel Turlar', transfers:'Transferler', menu:'Menü' },
+  es: { balloon:'Tours en Globo', cappadocia:'Tours por Capadocia', activities:'Actividades', private:'Tours Privados', transfers:'Traslados', menu:'Menú' },
 };
 const c = copy[lang] || copy.en;
-const flag = lang === 'tr' ? '🇹🇷' : lang === 'es' ? '🇪🇸' : '🇬🇧';
 const code = lang.toUpperCase();
-const routeFor = (targetLang) => active === 'balloon'
-    ? `/${targetLang}/balloon-tours/`
-    : active === 'cappadocia'
-      ? `/${targetLang}/cappadocia-tours/`
-      : active === 'private'
-        ? `/${targetLang}/private-tours/`
-        : active === 'transfers'
-          ? `/${targetLang}/transfers/`
-          : active === 'activities'
-            ? `/${targetLang}/activities/`
-            : `/${targetLang}/`;
+const resolvedSection = section || (/transfer/i.test(detailSlug) ? 'transfers' : 'tours');
+const routeFor = (targetLang) => detailSlug
+  ? `/${targetLang}/${resolvedSection}/${detailSlug}/`
+  : active === 'balloon' ? `/${targetLang}/balloon-tours/`
+  : active === 'cappadocia' ? `/${targetLang}/cappadocia-tours/`
+  : active === 'private' ? `/${targetLang}/private-tours/`
+  : active === 'transfers' ? `/${targetLang}/transfers/`
+  : active === 'activities' ? `/${targetLang}/activities/`
+  : `/${targetLang}/`;
 ---
-<header class="tbc-sh">
-  <div class="tbc-sh-inner">
-    <div class="tbc-sh-brand">
-      <a href={`/${lang}/`} class="tbc-sh-logo"><img src="/images/logo.png" alt="CappadociaGo" loading="lazy" width="600" height="200" /></a>
-      <a class="tbc-sh-instagram" href="https://www.instagram.com/cappadociago/" target="_blank" rel="noopener noreferrer">
-        <img src="/images/icons/instagram-logo.webp" alt="" loading="lazy" width="24" height="24" />
-        <span>@cappadociago</span>
+<header class="cg-tour-header" data-cg-tour-header>
+  <div class="cg-tour-header__inner">
+    <div class="cg-tour-header__brand">
+      <a href={`/${lang}/`} class="cg-tour-header__logo" aria-label="CappadociaGo home">
+        <img src="/images/logo.png" alt="CappadociaGo" width="600" height="200" />
+      </a>
+      <a class="cg-tour-header__phone" href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +90 540 101 50 50">
+        <img src="/images/icons/whatsapp-logo.webp" alt="" width="20" height="20" />
+        <span>+90 540 101 50 50</span>
       </a>
     </div>
-    <nav class="tbc-sh-nav" aria-label="Main navigation">
+
+    <nav class="cg-tour-header__nav" aria-label="Main navigation">
       <a class={active==='balloon'?'active':''} href={`/${lang}/balloon-tours/`}>{c.balloon}</a>
       <a class={active==='cappadocia'?'active':''} href={`/${lang}/cappadocia-tours/`}>{c.cappadocia}</a>
       <a class={active==='activities'?'active':''} href={`/${lang}/activities/`}>{c.activities}</a>
       <a class={active==='private'?'active':''} href={`/${lang}/private-tours/`}>{c.private}</a>
       <a class={active==='transfers'?'active':''} href={`/${lang}/transfers/`}>{c.transfers}</a>
-      
     </nav>
-    <div class="tbc-sh-actions">
-      <div class="tbc-sh-language">
-        <button type="button" class="tbc-sh-language-btn" aria-haspopup="true">{flag} {code} <span>⌄</span></button>
-        <div class="tbc-sh-language-menu">
-          <a href={routeFor('en')}>🇬🇧 English</a>
-          <a href={routeFor('tr')}>🇹🇷 Türkçe</a>
-          <a href={routeFor('es')}>🇪🇸 Español</a>
+
+    <div class="cg-tour-header__actions">
+      <div class="cg-tour-header__language">
+        <button type="button" class="cg-tour-header__language-btn" aria-haspopup="true" aria-expanded="false">
+          <span>{code}</span><i>⌄</i>
+        </button>
+        <div class="cg-tour-header__language-menu" role="menu">
+          <a href={routeFor('en')}>EN · English</a>
+          <a href={routeFor('tr')}>TR · Türkçe</a>
+          <a href={routeFor('es')}>ES · Español</a>
         </div>
       </div>
-      <a class="tbc-sh-whatsapp" href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer"><img src="/images/icons/whatsapp-logo.webp" alt="" loading="lazy" width="24" height="24" /> WhatsApp</a>
+      <button class="cg-tour-header__burger" type="button" aria-label={c.menu} aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
+
+  <div class="cg-tour-header__mobile" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href={`/${lang}/balloon-tours/`}>{c.balloon}</a>
+      <a href={`/${lang}/cappadocia-tours/`}>{c.cappadocia}</a>
+      <a href={`/${lang}/activities/`}>{c.activities}</a>
+      <a href={`/${lang}/private-tours/`}>{c.private}</a>
+      <a href={`/${lang}/transfers/`}>{c.transfers}</a>
+    </nav>
+    <a class="cg-tour-header__mobile-phone" href="https://wa.me/905401015050" target="_blank" rel="noopener noreferrer">
+      <img src="/images/icons/whatsapp-logo.webp" alt="" width="20" height="20" />
+      +90 540 101 50 50
+    </a>
+  </div>
 </header>
-<FloatingAssistant lang={lang} />
 <script is:inline>
-  document.querySelectorAll('.tbc-sh-language').forEach((wrap) => {
-    const btn = wrap.querySelector('.tbc-sh-language-btn');
-    const menu = wrap.querySelector('.tbc-sh-language-menu');
-    btn?.addEventListener('click', (e) => { e.stopPropagation(); menu?.classList.toggle('open'); });
-    document.addEventListener('click', () => menu?.classList.remove('open'));
+  document.querySelectorAll('[data-cg-tour-header]').forEach((header) => {
+    const burger = header.querySelector('.cg-tour-header__burger');
+    const mobile = header.querySelector('.cg-tour-header__mobile');
+    const langWrap = header.querySelector('.cg-tour-header__language');
+    const langBtn = header.querySelector('.cg-tour-header__language-btn');
+    const langMenu = header.querySelector('.cg-tour-header__language-menu');
+    const setMenu = (open) => {
+      header.classList.toggle('menu-open', open);
+      burger?.setAttribute('aria-expanded', String(open));
+      mobile?.setAttribute('aria-hidden', String(!open));
+    };
+    burger?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      setMenu(!header.classList.contains('menu-open'));
+      langWrap?.classList.remove('open');
+      langBtn?.setAttribute('aria-expanded','false');
+    });
+    langBtn?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const open = !langWrap?.classList.contains('open');
+      langWrap?.classList.toggle('open', open);
+      langBtn.setAttribute('aria-expanded', String(open));
+      setMenu(false);
+    });
+    mobile?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', (event) => {
+      if (!header.contains(event.target)) {
+        setMenu(false);
+        langWrap?.classList.remove('open');
+        langBtn?.setAttribute('aria-expanded','false');
+      }
+    });
   });
 </script>
 <style is:global>
-  .tbc-sh{width:100%;background:#fff;border-bottom:1px solid #e6ebf2;position:sticky;top:0;z-index:1200;box-shadow:0 4px 18px rgba(15,23,42,.035)}
-  .tbc-sh-inner{width:min(1380px,calc(100% - 32px));height:96px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .tbc-sh-brand,.tbc-sh-actions,.tbc-sh-instagram,.tbc-sh-whatsapp{display:flex;align-items:center}
-  .tbc-sh-logo img{height:78px;width:auto;display:block}.tbc-sh-instagram{gap:7px;margin-left:12px;padding:8px 12px;border:1px solid #dfe6ef;border-radius:999px;text-decoration:none;color:#35445a;font-size:11px;font-weight:800}.tbc-sh-instagram img,.tbc-sh-whatsapp img{width:19px;height:19px;object-fit:contain}
-  .tbc-sh-nav{display:flex;align-items:center;gap:24px}.tbc-sh-nav a{position:relative;text-decoration:none;color:#0a1526;font-size:13px;font-weight:800;white-space:nowrap;padding:37px 0 34px}.tbc-sh-nav a.active{color:#b88600}.tbc-sh-nav a.active:after{content:"";position:absolute;left:0;right:0;bottom:22px;height:2px;background:#e5ad00;border-radius:9px}
-  .tbc-sh-actions{gap:14px}.tbc-sh-language{position:relative}.tbc-sh-language-btn{border:1px solid #d7e0ea;background:#f8fafc;border-radius:999px;padding:9px 13px;color:#0a1526;font-size:12px;font-weight:900;cursor:pointer}.tbc-sh-language-menu{display:none;position:absolute;right:0;top:44px;min-width:155px;padding:6px;background:#fff;border:1px solid #e2e8f0;border-radius:13px;box-shadow:0 16px 35px rgba(15,23,42,.16)}.tbc-sh-language-menu.open{display:grid}.tbc-sh-language-menu a{padding:9px 10px;color:#0a1526;text-decoration:none;font-size:12px;font-weight:700;border-radius:8px}.tbc-sh-language-menu a:hover{background:#f5f7fb}
-  .tbc-sh-whatsapp{gap:7px;text-decoration:none;color:#0a1526;font-size:13px;font-weight:900;white-space:nowrap}
-  @media(max-width:1050px){.tbc-sh-nav{display:none}}@media(max-width:680px){.tbc-sh-inner{height:78px}.tbc-sh-logo img{height:62px}.tbc-sh-instagram{display:none}.tbc-sh-whatsapp{font-size:0}.tbc-sh-whatsapp img{width:24px;height:24px}}
-</style>
-<style is:global>
-:root{--cg-blue:#075aa6;--cg-blue-deep:#062d63;--cg-navy:#071d49;--cg-gold:#c89112;--cg-sky:#eaf5ff}
-.tbc-sh{background:#fff!important;border-top:3px solid var(--cg-gold)!important;border-bottom:1px solid #dbe6ef!important;box-shadow:0 8px 25px rgba(7,45,99,.07)!important}
-.tbc-sh-inner{height:90px!important}.tbc-sh-logo img{height:72px!important;filter:none!important;opacity:1!important}.tbc-sh-nav a{color:var(--cg-navy)!important}.tbc-sh-nav a:hover,.tbc-sh-nav a.active{color:var(--cg-blue)!important}.tbc-sh-nav a.active:after{background:linear-gradient(90deg,var(--cg-blue),var(--cg-gold))!important}.tbc-sh-instagram,.tbc-sh-language-btn,.tbc-sh-whatsapp{background:#fff!important;border:1px solid #cfdeea!important;color:var(--cg-navy)!important}.tbc-sh-language-btn{background:#f7fbff!important}.tbc-sh-whatsapp{padding:9px 13px!important;border-radius:999px!important}.tbc-sh-whatsapp:hover{background:#effcf5!important;border-color:#9dd9bb!important}
-@media(max-width:680px){.tbc-sh-inner{height:76px!important}.tbc-sh-logo img{height:60px!important}}
+  :root{--cg-head-blue:#075aa6;--cg-head-navy:#062d63;--cg-head-gold:#d19a18}
+  .cg-tour-header{position:sticky;top:0;z-index:1400;width:100%;background:#fff;border-top:2px solid rgba(209,154,24,.35);border-bottom:1px solid #e7edf3;box-shadow:0 5px 20px rgba(6,45,99,.055);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+  .cg-tour-header__inner{width:min(1380px,calc(100% - 40px));height:88px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .cg-tour-header__brand,.cg-tour-header__actions{display:flex;align-items:center;min-width:0}.cg-tour-header__brand{gap:14px}.cg-tour-header__logo img{display:block;width:auto;height:68px;object-fit:contain}.cg-tour-header__phone{height:40px;padding:0 14px;display:inline-flex;align-items:center;gap:9px;border:1px solid #d8e4ed;border-radius:999px;background:#fff;color:var(--cg-head-navy);font-size:11px;font-weight:800;text-decoration:none;white-space:nowrap}.cg-tour-header__phone img{width:19px;height:19px;object-fit:contain}
+  .cg-tour-header__nav{display:flex;align-items:center;justify-content:center;gap:25px;min-width:0}.cg-tour-header__nav a{position:relative;padding:34px 0 31px;color:#081d3c;font-size:12.5px;font-weight:800;text-decoration:none;white-space:nowrap}.cg-tour-header__nav a:hover,.cg-tour-header__nav a.active{color:var(--cg-head-blue)}.cg-tour-header__nav a.active:after{content:'';position:absolute;left:0;right:0;bottom:22px;height:2px;border-radius:9px;background:var(--cg-head-gold)}
+  .cg-tour-header__actions{gap:10px}.cg-tour-header__language{position:relative}.cg-tour-header__language-btn{height:40px;min-width:76px;padding:0 15px;border:1px solid #064985;border-radius:999px;background:var(--cg-head-blue);color:#fff;font:800 11px/1 'Plus Jakarta Sans',Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 5px 14px rgba(7,90,166,.18)}.cg-tour-header__language-btn i{font-style:normal;color:#f3bf39;font-size:13px}.cg-tour-header__language-menu{display:none;position:absolute;right:0;top:47px;min-width:174px;padding:7px;background:#071a2f;border:1px solid rgba(209,154,24,.35);border-radius:14px;box-shadow:0 18px 40px rgba(4,23,43,.2)}.cg-tour-header__language.open .cg-tour-header__language-menu{display:grid}.cg-tour-header__language-menu a{padding:10px 11px;border-radius:9px;color:#fff;font-size:11px;font-weight:700;text-decoration:none}.cg-tour-header__language-menu a:hover{background:rgba(255,255,255,.09);color:#ffd46d}
+  .cg-tour-header__burger{display:none;width:42px;height:42px;padding:0;border:0;border-radius:50%;background:var(--cg-head-blue);align-items:center;justify-content:center;flex-direction:column;gap:4px;box-shadow:0 5px 14px rgba(7,90,166,.18);cursor:pointer}.cg-tour-header__burger span{display:block;width:18px;height:2px;border-radius:4px;background:#fff;transition:transform .2s,opacity .2s}.cg-tour-header.menu-open .cg-tour-header__burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}.cg-tour-header.menu-open .cg-tour-header__burger span:nth-child(2){opacity:0}.cg-tour-header.menu-open .cg-tour-header__burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .cg-tour-header__mobile{display:none}
+  @media(max-width:1120px){.cg-tour-header__nav{display:none}.cg-tour-header__burger{display:flex}.cg-tour-header__mobile{display:none;position:absolute;left:14px;right:14px;top:calc(100% + 8px);padding:12px;background:#fff;border:1px solid #dae5ee;border-radius:18px;box-shadow:0 18px 45px rgba(6,45,99,.18)}.cg-tour-header.menu-open .cg-tour-header__mobile{display:block}.cg-tour-header__mobile nav{display:grid}.cg-tour-header__mobile nav a{padding:13px 14px;border-bottom:1px solid #edf2f6;color:var(--cg-head-navy);font-size:13px;font-weight:800;text-decoration:none}.cg-tour-header__mobile nav a:last-child{border-bottom:0}.cg-tour-header__mobile-phone{margin-top:10px;min-height:44px;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:12px;background:#f0fbf5;color:#146b40;font-size:12px;font-weight:800;text-decoration:none}.cg-tour-header__mobile-phone img{width:19px;height:19px}}
+  @media(max-width:680px){.cg-tour-header__inner{width:calc(100% - 22px);height:72px;gap:8px}.cg-tour-header__brand{gap:8px}.cg-tour-header__logo img{height:54px;max-width:145px}.cg-tour-header__phone{width:38px;height:38px;padding:0;justify-content:center}.cg-tour-header__phone span{display:none}.cg-tour-header__phone img{width:19px;height:19px}.cg-tour-header__language-btn{min-width:62px;height:38px;padding:0 11px;font-size:10px}.cg-tour-header__burger{width:38px;height:38px}.cg-tour-header__mobile{left:10px;right:10px;top:calc(100% + 6px)}}
+  @media(max-width:360px){.cg-tour-header__logo img{height:49px;max-width:130px}.cg-tour-header__inner{width:calc(100% - 16px)}.cg-tour-header__actions{gap:6px}.cg-tour-header__language-btn{min-width:56px;padding:0 8px}.cg-tour-header__phone{width:36px;height:36px}.cg-tour-header__burger{width:36px;height:36px}}
 </style>

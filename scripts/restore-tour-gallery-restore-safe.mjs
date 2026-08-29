@@ -9,14 +9,14 @@ const aliases=[
 'Goreme-Comfort-Hot-Air-Balloon-Tour.webp',
 'Green-Tour-Cappadocia.webp',
 'Cappadocia-Pottery-Making-Experience.webp',
-'Turkish-Night-With-Cave-Dinner-Cappadocia.webp',
+'turkish-night-with-cave-dinner-cappadocia (1).webp',
 'Balloons-Watching-Tour-Cappadocia.webp',
-'Soganli-Valley-Balloon-Tour.webp',
-'Photo-Shoot-and-Flying-Dress-Experience.webp',
-'Sunrise-or-Sunset-Horse-Riding-Cappadocia.webp',
+'soganli-valley-balloon-tour (1).webp',
+'Photo Shoot & Flying Dress Experience (2).webp',
+'sunrise-sunset-horse-riding-cappadocia (1).webp',
 'Blue-Tour-Cappadocia-Discover-Hidden-Valleys.webp',
-'Private-Cappadocia-Mix-Tour.webp',
-'Pamukkale-Balloons-Tour.webp'
+'Private-Mix-Cappadocia-Tour.webp',
+'pamukkale-balloons-tour (1).webp'
 ];
 
 let n=0;

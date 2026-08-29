@@ -95,7 +95,7 @@ const targeted = new Map([
   ['Photo-Shoot-Flying-Dress-Experience.webp','Photo Shoot & Flying Dress Experience.webp'],
   ['Photo-Shoot-&-Flying-Dress-Experience.webp','Photo Shoot & Flying Dress Experience.webp'],
   ['photo-shoot-flying-dress-experience.webp','Photo Shoot & Flying Dress Experience.webp'],
-  ['Pamukkale-Balloons-Tour.webp','pamukkale-balloons-tour (1).webp'],
+  ['pamukkale-balloons-tour (1).webp','pamukkale-balloons-tour (1).webp'],
   ['pamukkale-balloons-tour.webp','pamukkale-balloons-tour (1).webp'],
   ['Sunrise-Sunset-Horse-Riding-Cappadocia.webp','sunrise-sunset-horse-riding-cappadocia.webp'],
   ['sunrise-or-sunset-horse-riding-cappadocia.webp','sunrise-sunset-horse-riding-cappadocia.webp']
