@@ -6255,5 +6255,96 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .tbc-date-popover{position:fixed!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:calc(100vw - 22px)!important;max-width:520px!important;max-height:calc(100svh - 28px)!important;overflow:auto!important}.tbc-date-months{grid-template-columns:1fr!important}.tbc-date-month:nth-child(n+2){display:none!important}
 }
 @media (max-width:390px){.tbc-video-title{font-size:35px!important}.booking-callout .booking-section-heading{font-size:27px!important}}
+
+/* =========================================================
+   2026-08-29 — HERO/BOOKING OVERLAP + BRAND SCRIPT FIX
+   Final override: keep all existing functionality, only
+   correct visual spacing and the booking headline treatment.
+   ========================================================= */
+@media (min-width: 981px){
+  .tbc-video-hero{
+    height: 780px !important;
+    min-height: 780px !important;
+  }
+  .tbc-video-content{
+    padding-bottom: 255px !important;
+  }
+  .tbc-partner-reviews{
+    margin-bottom: 12px !important;
+  }
+  .tbc-hero-trust-points{
+    margin-bottom: 0 !important;
+  }
+  .booking-callout{
+    bottom: 20px !important;
+  }
+  .booking-callout .booking-section-heading{
+    display:flex !important;
+    align-items:baseline !important;
+    justify-content:center !important;
+    flex-wrap:nowrap !important;
+    gap:0 !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:0 auto 18px !important;
+    padding:0 12px !important;
+    white-space:nowrap !important;
+    font-family:"Segoe Script","Brush Script MT","Lucida Handwriting",cursive !important;
+    font-size:clamp(42px,3.4vw,58px) !important;
+    line-height:1.06 !important;
+    font-style:normal !important;
+    font-weight:600 !important;
+    letter-spacing:-.045em !important;
+    color:#ffffff !important;
+    text-shadow:0 4px 14px rgba(0,0,0,.42) !important;
+  }
+  .booking-callout .booking-section-heading > span{
+    color:#ffffff !important;
+    -webkit-text-fill-color:#ffffff !important;
+    font:inherit !important;
+    font-style:normal !important;
+  }
+  .booking-callout .booking-brand-blue{
+    color:#f6c515 !important;
+    -webkit-text-fill-color:#f6c515 !important;
+    font:inherit !important;
+    font-weight:700 !important;
+  }
+  .booking-callout .booking-brand-gold{
+    color:#0a63b5 !important;
+    -webkit-text-fill-color:#0a63b5 !important;
+    font:inherit !important;
+    font-weight:700 !important;
+    margin-left:.08em !important;
+    text-shadow:0 3px 12px rgba(0,0,0,.34) !important;
+  }
+}
+
+@media (max-width: 980px){
+  .booking-callout .booking-section-heading{
+    display:flex !important;
+    align-items:baseline !important;
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+    gap:0 !important;
+    font-family:"Segoe Script","Brush Script MT","Lucida Handwriting",cursive !important;
+    font-style:normal !important;
+    font-weight:600 !important;
+    letter-spacing:-.035em !important;
+  }
+  .booking-callout .booking-section-heading > span{font:inherit !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+  .booking-callout .booking-brand-blue{font:inherit !important;color:#f6c515 !important;-webkit-text-fill-color:#f6c515 !important;font-weight:700 !important;}
+  .booking-callout .booking-brand-gold{font:inherit !important;color:#0a63b5 !important;-webkit-text-fill-color:#0a63b5 !important;font-weight:700 !important;margin-left:.08em !important;}
+}
+
+@media (max-width: 700px){
+  .booking-callout .booking-section-heading{
+    font-size:clamp(27px,8.6vw,38px) !important;
+    line-height:1.08 !important;
+    margin-bottom:12px !important;
+    text-align:center !important;
+  }
+}
+
 </style>
 
