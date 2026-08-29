@@ -1,6 +1,7 @@
 ---
 import SeoHead from '../../../components/SeoHead.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
+import TourPremiumTheme from '../../../components/TourPremiumTheme.astro';
 import FloatingAssistant from "../../../components/FloatingAssistant.astro";
 import { getTourGallery } from '../../../utils/tourGallery';
 // src/pages/tours/goreme-comfort-hot-air-balloon-tour.astro
@@ -43,6 +44,7 @@ const galleryPhotoWord = 'photos';
 <body>
 
   <!-- HEADER / NAVBAR - ANA SAYFA İLE AYNI TASARIM -->
+  <TourPremiumTheme />
   <SiteHeader lang={pageLang} detailSlug="red-tour-cappadocia" section="tours" />
 
   <section class="tbc-tour-page">

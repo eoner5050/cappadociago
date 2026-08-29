@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
+import TourPremiumTheme from '../../components/TourPremiumTheme.astro';
 
 const tour = {
   title: 'Göreme Balloon Tour (Standard Flight)',
@@ -58,7 +59,8 @@ const tour = {
 ---
 <Layout title={`${tour.title} | CappadociaGo`} description={tour.heroDesc}>
 
-<SiteHeader lang="en" detailSlug="goreme-standart-hot-air-balloon-tour" section="tours" />
+<TourPremiumTheme />
+  <SiteHeader lang="en" detailSlug="goreme-standart-hot-air-balloon-tour" section="tours" />
 
 <main class="tour-page">
 

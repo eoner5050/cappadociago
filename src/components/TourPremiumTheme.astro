@@ -1,0 +1,53 @@
+<style is:global>
+  :root{
+    --tour-bg:#eaf1f7;
+    --tour-bg-2:#dde8f2;
+    --tour-card:#ffffff;
+    --tour-navy:#062d63;
+    --tour-blue:#075aa6;
+    --tour-blue-bright:#1286d5;
+    --tour-gold:#d19a18;
+    --tour-gold-soft:#f6e8ba;
+    --tour-text:#2a415c;
+    --tour-muted:#6d7f93;
+    --tour-line:#cad9e7;
+  }
+  body{background:linear-gradient(145deg,var(--tour-bg) 0%,#f1f6fa 45%,var(--tour-bg-2) 100%)!important;color:var(--tour-text)!important;font-family:'Plus Jakarta Sans',Arial,sans-serif!important}
+  .page,.tbc-tour-page{background:
+    radial-gradient(circle at 8% 7%,rgba(209,154,24,.12),transparent 26%),
+    radial-gradient(circle at 92% 18%,rgba(7,90,166,.11),transparent 28%),
+    linear-gradient(145deg,#e8f0f7 0%,#f4f7fa 47%,#dfeaf3 100%)!important;
+    min-height:100vh!important;
+  }
+  .container,.tbc-tour-container{max-width:1200px!important}
+  .hero,.tbc-tour-hero{background:linear-gradient(135deg,#062d63 0%,#075aa6 72%,#0b75bd 100%)!important;border:1px solid rgba(255,255,255,.14)!important;border-radius:26px!important;box-shadow:0 22px 55px rgba(6,45,99,.18)!important;padding:28px 30px!important;color:#fff!important;overflow:hidden!important;position:relative!important}
+  .hero:after,.tbc-tour-hero:after{content:'';position:absolute;right:-70px;top:-90px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(240,212,138,.28),rgba(240,212,138,0) 70%);pointer-events:none}
+  .hero h1,.tbc-tour-title{font-family:'Fraunces',serif!important;color:#fff!important;font-weight:650!important;letter-spacing:-.035em!important;text-shadow:none!important}
+  .hero>p,.tbc-tour-desc{color:#eaf4ff!important;line-height:1.72!important}
+  .kicker,.tbc-tour-kicker{background:rgba(240,212,138,.14)!important;border:1px solid rgba(240,212,138,.6)!important;color:#f7d770!important;border-radius:999px!important;font-weight:900!important;letter-spacing:.12em!important}
+  .hero-badges,.tbc-hero-badges-bar{border-top:1px solid rgba(255,255,255,.17)!important}
+  .hero-badges>span,.hero-badges>a,.tbc-badge-item{background:rgba(255,255,255,.10)!important;border:1px solid rgba(255,255,255,.20)!important;color:#fff!important;backdrop-filter:blur(8px)}
+  .hero-stars,.tbc-stars{color:#f4c64c!important}
+  .gallery,.tbc-photo-grid-wrapper{background:#f9fcff!important;border:1px solid var(--tour-line)!important;border-radius:24px!important;padding:9px!important;box-shadow:0 18px 44px rgba(6,45,99,.10)!important}
+  .gallery button,.tbc-main-photo,.tbc-side-photo-item{border-radius:16px!important;overflow:hidden!important}
+  .gallery img,.tbc-photo-grid-wrapper img{transition:transform .45s ease!important}.gallery button:hover img,.tbc-photo-grid-wrapper button:hover img{transform:scale(1.025)!important}
+  .card,.tbc-tour-card{background:rgba(255,255,255,.96)!important;border:1px solid var(--tour-line)!important;border-radius:24px!important;box-shadow:0 18px 42px rgba(6,45,99,.085)!important}
+  .content>section,.tbc-tour-section{border-color:#e1eaf2!important}
+  .content h2,.tbc-tour-section h2{font-family:'Fraunces',serif!important;color:var(--tour-navy)!important;font-weight:650!important;letter-spacing:-.02em!important}
+  .content p,.tbc-tour-section p{color:#4e647a!important;line-height:1.78!important}
+  .checks i,.tbc-tour-check{background:#e7f3fc!important;color:var(--tour-blue)!important}
+  .price-card,.tbc-price-card{background:linear-gradient(160deg,#061f49 0%,#073d79 76%,#075aa6 100%)!important;color:#fff!important;border:1px solid rgba(240,212,138,.35)!important;box-shadow:0 22px 50px rgba(6,45,99,.22)!important}
+  .price-card h3,.price-card p,.price-card .side-list>div,.tbc-price-card h3,.tbc-price-card p{color:#fff!important}
+  .price,.tbc-price{color:#f3c64e!important;text-shadow:none!important}
+  .price-card .badges span,.tbc-price-card .badges span{background:rgba(255,255,255,.10)!important;border-color:rgba(240,212,138,.35)!important;color:#f7db8f!important}
+  .price-card .phone,.price-card .wa,.tbc-price-card .phone,.tbc-price-card .wa{background:#fff!important;color:var(--tour-navy)!important;border-color:rgba(255,255,255,.7)!important}
+  .booking,.tbc-booking-card{background:#fff!important;border:1px solid var(--tour-line)!important;border-top:4px solid var(--tour-gold)!important;border-radius:24px!important;box-shadow:0 18px 42px rgba(6,45,99,.10)!important}
+  .booking h3,.tbc-booking-card h3{font-family:'Fraunces',serif!important;color:var(--tour-navy)!important}
+  .booking input,.booking select,.booking textarea,.tbc-booking-card input,.tbc-booking-card select,.tbc-booking-card textarea{background:#f7fbff!important;border:1px solid #c9dbe9!important;color:var(--tour-navy)!important;border-radius:13px!important}
+  .submit,.tbc-submit-btn{background:linear-gradient(135deg,var(--tour-gold),#edbc3b)!important;color:#08294f!important;border:0!important;font-weight:900!important;box-shadow:0 10px 24px rgba(209,154,24,.24)!important}
+  .calendar,.tbc-calendar{border:1px solid #cbdce9!important;border-top:4px solid var(--tour-blue)!important;background:#fff!important;box-shadow:0 24px 55px rgba(6,45,99,.18)!important}
+  .day.selected,.tbc-day.selected{background:var(--tour-blue)!important;color:#fff!important;border-color:var(--tour-blue)!important}
+  .breadcrumb,.tbc-breadcrumb{color:#5d7389!important}.breadcrumb a,.tbc-breadcrumb a{color:var(--tour-blue)!important;font-weight:800!important}
+  .unified-footer,.tbc-footer{border-top:4px solid var(--tour-gold)!important}
+  @media(max-width:900px){.hero,.tbc-tour-hero{padding:22px 20px!important;border-radius:20px!important}.gallery,.tbc-photo-grid-wrapper,.card,.tbc-tour-card,.booking,.tbc-booking-card{border-radius:18px!important}}
+</style>

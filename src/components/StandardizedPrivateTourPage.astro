@@ -1,6 +1,7 @@
 ---
 import SeoHead from './SeoHead.astro';
 import SiteHeader from './SiteHeader.astro';
+import TourPremiumTheme from './TourPremiumTheme.astro';
 import { getTourGallery } from '../utils/tourGallery';
 
 const {
@@ -36,6 +37,7 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.me
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
 </head>
 <body>
+<TourPremiumTheme />
 <SiteHeader lang={lang} detailSlug={slug} section={/transfer/i.test(String(slug)) ? 'transfers' : 'tours'} />
 <main class="page"><div class="container">
   <div class="breadcrumb"><a href={`/${lang}/`}>{copy.home}</a><span>›</span><span>{title}</span></div>

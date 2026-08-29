@@ -1,0 +1,8 @@
+CAPPADOCIAGO TOUR PREMIUM V5
+- Unified tour/detail header updated to match supplied CappadociaGo header reference.
+- All tour detail pages inherit the same premium header through SiteHeader.
+- Tour backgrounds redesigned from broken white to premium blue-grey / champagne tinted gradient.
+- Hero, cards, gallery, price panel, booking panel and calendar recolored with CappadociaGo navy/blue/gold system.
+- Standard Balloon: all 9 family images physically replaced with different Cappadocia balloon imagery.
+- Comfort Balloon: all 5 family images physically replaced with different Cappadocia balloon imagery.
+- Existing booking / availability / Supabase logic was not intentionally changed.
