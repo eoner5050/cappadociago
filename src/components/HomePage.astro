@@ -5227,3 +5227,273 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   .booking-callout .booking-section-heading{font-size:27px!important;}
 }
 </style>
+
+<style is:global>
+/* =========================================================
+   REFERENCE-EXACT REBUILD — clean single-pass hero/header/booking
+   Mirrors the supplied clean reference architecture 1:1 (spacing,
+   sizes, structure), re-skinned with CappadociaGo navy + gold.
+   Intentionally the last style block so it wins outright.
+   ========================================================= */
+
+/* ---- Header: solid white, sticky (not transparent-over-hero) ---- */
+.site-header{
+  width:100%!important;
+  background:rgba(255,255,255,.98)!important;
+  border-bottom:1px solid #f4f6fa!important;
+  position:sticky!important;
+  top:0!important;left:0!important;right:0!important;
+  z-index:1000!important;
+  box-shadow:0 4px 18px rgba(20,45,74,.06)!important;
+  -webkit-backdrop-filter:blur(10px)!important;
+  backdrop-filter:blur(10px)!important;
+}
+.site-header .header-container{
+  width:min(1380px,calc(100% - 32px))!important;
+  height:92px!important;
+  max-width:none!important;
+}
+.site-header .logo img{
+  height:82px!important;
+  max-width:184px!important;
+  width:auto!important;
+  filter:none!important;
+  object-fit:contain!important;
+}
+.site-header .header-logo-whatsapp{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  padding:7px 4px!important;
+  color:#0a2b4a!important;
+}
+.site-header .header-logo-whatsapp span{color:#0a2b4a!important;}
+.main-nav a{
+  color:#0a2b4a!important;
+  font-weight:800!important;
+  font-size:13.5px!important;
+  text-shadow:none!important;
+  padding:34px 0!important;
+}
+.main-nav a::after{
+  content:""!important;
+  position:absolute!important;left:0!important;right:0!important;bottom:25px!important;
+  height:2px!important;border-radius:99px!important;
+  background:#c98a1f!important;
+  transform:scaleX(0)!important;transform-origin:center!important;
+  transition:transform .2s ease!important;
+}
+.main-nav a:hover{color:#0d4e94!important;}
+.main-nav a:hover::after{transform:scaleX(1)!important;}
+@media(max-width:1000px){
+  .main-nav.is-open a{color:#0a2b4a!important;text-shadow:none!important;}
+}
+.lang-btn{
+  background:#f4f7fa!important;
+  border:1px solid #d5dde7!important;
+  color:#0a2b4a!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+.mobile-menu-toggle span{background:#0a2b4a!important;}
+
+/* ---- Hero: min-height based (grows safely, never clips content) ---- */
+.tbc-video-hero{
+  position:relative!important;
+  min-height:760px!important;
+  height:auto!important;
+  background:linear-gradient(180deg,#1f3857 0%,#1b2e46 45%,#142840 100%)!important;
+  overflow:visible!important;
+}
+.tbc-video-hero::before{display:none!important;content:none!important;}
+.tbc-video-overlay{
+  display:block!important;
+  position:absolute!important;inset:0!important;z-index:1!important;
+  background:linear-gradient(90deg,rgba(10,30,58,.90) 0%,rgba(10,30,58,.72) 50%,rgba(10,30,58,.50) 100%)!important;
+}
+.tbc-video-content{
+  position:relative!important;z-index:2!important;
+  top:auto!important;left:auto!important;transform:none!important;
+  width:100%!important;max-width:860px!important;
+  margin:0 auto!important;
+  padding:90px 24px 220px!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  text-align:center!important;
+}
+.tbc-video-title::after{
+  content:""!important;display:block!important;
+  width:70px!important;height:3px!important;margin:20px auto 0!important;
+  background:linear-gradient(90deg,rgba(233,181,69,0),#e9b545,rgba(233,181,69,0))!important;
+  opacity:.9!important;
+}
+
+/* ---- Kicker ---- */
+.tbc-video-kicker{
+  display:inline-block!important;
+  margin:0 0 16px!important;
+  padding:7px 16px!important;
+  border-radius:999px!important;
+  background:rgba(233,181,69,.16)!important;
+  border:1px solid rgba(255,255,255,.35)!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:12px!important;font-weight:900!important;
+  letter-spacing:.12em!important;text-transform:uppercase!important;
+  color:#ffffff!important;
+  text-shadow:none!important;
+  box-shadow:none!important;
+}
+
+/* ---- Title ---- */
+.tbc-video-title{
+  margin:0 0 16px!important;
+  max-width:720px!important;
+  font-family:'Playfair Display',Georgia,'Times New Roman',serif!important;
+  font-size:clamp(38px,4.6vw,52px)!important;
+  line-height:1.1!important;
+  font-weight:800!important;
+  color:#ffffff!important;
+  background:none!important;
+  -webkit-text-fill-color:#ffffff!important;
+  letter-spacing:-.5px!important;
+  text-shadow:0 4px 24px rgba(0,0,0,.35)!important;
+}
+.tbc-title-accent{color:inherit!important;background:none!important;-webkit-text-fill-color:inherit!important;}
+
+/* ---- Body text ---- */
+.tbc-video-text{
+  margin:0 0 20px!important;
+  max-width:620px!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:13.5px!important;line-height:1.65!important;
+  color:rgba(255,255,255,.82)!important;
+  text-shadow:none!important;
+}
+
+/* ---- Buttons ---- */
+.tbc-video-actions{gap:12px!important;margin:0 auto 22px!important;justify-content:center!important;}
+.tbc-video-btn{
+  min-height:48px!important;padding:0 26px!important;border-radius:999px!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:14px!important;font-weight:800!important;
+  letter-spacing:0!important;
+  transition:transform .18s ease,box-shadow .18s ease!important;
+}
+.tbc-video-btn-primary{
+  background:linear-gradient(135deg,#1861c4,#0a3d8a)!important;
+  color:#ffffff!important;border:0!important;
+  box-shadow:0 10px 26px rgba(10,61,138,.4)!important;
+}
+.tbc-video-btn-primary:hover{transform:translateY(-2px)!important;box-shadow:0 14px 32px rgba(10,61,138,.5)!important;}
+.tbc-video-btn-secondary{
+  background:rgba(255,255,255,.10)!important;color:#fff!important;
+  border:1px solid rgba(255,255,255,.3)!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+.tbc-video-btn-secondary:hover{background:rgba(255,255,255,.18)!important;transform:translateY(-2px)!important;}
+
+/* ---- Trust points ---- */
+.tbc-partner-reviews{display:none!important;}
+.tbc-hero-trust-points{
+  display:flex!important;align-items:center!important;flex-wrap:wrap!important;
+  gap:12px 28px!important;margin:0!important;color:#fff!important;
+  justify-content:center!important;
+}
+.tbc-trust-point{
+  color:rgba(255,255,255,.96)!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:12px!important;font-weight:800!important;
+  white-space:nowrap!important;
+}
+.tbc-trust-icon{color:#e9b545!important;}
+
+/* ---- Booking heading (their "external-form-title", our "booking-section-heading") ---- */
+.booking-callout .booking-section-heading{
+  width:100%!important;max-width:1120px!important;
+  margin:0 auto 12px!important;
+  padding:0!important;border:0!important;background:none!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;
+  display:flex!important;flex-wrap:wrap!important;justify-content:center!important;align-items:baseline!important;
+  gap:0 .3em!important;
+  font-family:'Playfair Display',Georgia,'Times New Roman',serif!important;
+  font-size:clamp(28px,3.6vw,46px)!important;
+  font-weight:800!important;font-style:normal!important;
+  color:#ffffff!important;
+  text-shadow:0 2px 12px rgba(0,0,0,.6)!important;
+  letter-spacing:-.5px!important;line-height:1.2!important;
+}
+.booking-callout .booking-section-heading>span{
+  color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;
+  font-weight:800!important;font-style:normal!important;background:none!important;
+}
+.booking-callout .booking-brand-blue{
+  color:#f0c25a!important;-webkit-text-fill-color:#f0c25a!important;
+  background:none!important;font-weight:800!important;font-style:normal!important;
+}
+.booking-callout .booking-brand-gold{
+  color:#f0c25a!important;-webkit-text-fill-color:#f0c25a!important;
+  background:none!important;font-weight:800!important;font-style:normal!important;
+}
+
+/* ---- Booking box: gold container (their solid blue, re-skinned gold), white pill fields ---- */
+.booking-callout{margin-top:-195px!important;position:relative!important;z-index:20!important;padding:0 15px!important;}
+.booking-callout .tbc-booking-box{
+  width:100%!important;max-width:1120px!important;margin:0 auto!important;
+  background:linear-gradient(135deg,#e9b545,#c98a1f)!important;
+  border:0!important;border-radius:36px!important;
+  box-shadow:0 15px 40px rgba(0,0,0,.3)!important;
+  padding:7px!important;
+}
+.booking-callout .tbc-booking-grid{
+  grid-template-columns:1.2fr 1.6fr 1.1fr auto!important;
+  gap:5px!important;align-items:center!important;
+}
+.booking-callout .tbc-select-btn,
+.booking-callout .dates-custom-box{
+  background:#ffffff!important;border:0!important;box-shadow:none!important;
+  min-height:50px!important;border-radius:999px!important;
+}
+.booking-callout .tbc-select-btn{
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:13px!important;font-weight:800!important;color:#0a2b4a!important;
+}
+.booking-callout .tbc-placeholder{color:#0a2b4a!important;font-weight:800!important;}
+.booking-callout .tbc-arrow{color:#0a2b4a!important;}
+.booking-callout .dates-top-label{
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:9.5px!important;font-weight:900!important;color:#0a2b4a!important;
+  text-transform:uppercase!important;opacity:1!important;
+}
+.booking-callout .dates-inputs-row{color:#0a2b4a!important;}
+.booking-callout .d-m,.booking-callout .d-d{color:#0a2b4a!important;font-weight:800!important;}
+.booking-callout .d-a{color:#0a2b4a!important;font-weight:900!important;}
+.booking-callout .date-divider{color:#c98a1f!important;font-weight:900!important;}
+.booking-callout .tbc-submit{
+  min-height:50px!important;border-radius:999px!important;border:0!important;
+  background:linear-gradient(135deg,#1861c4,#0a3d8a)!important;
+  color:#ffffff!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:13.5px!important;font-weight:900!important;letter-spacing:.5px!important;
+  box-shadow:0 8px 20px rgba(10,61,138,.35)!important;
+}
+.booking-callout .tbc-submit:hover{transform:translateY(-2px)!important;box-shadow:0 12px 26px rgba(10,61,138,.45)!important;}
+
+/* ---- Mobile (matches reference's 900px breakpoint) ---- */
+@media(max-width:900px){
+  .site-header .header-container{height:78px!important;}
+  .site-header .logo img{height:70px!important;max-width:150px!important;}
+  .tbc-video-hero{min-height:790px!important;}
+  .tbc-video-content{padding:90px 16px 300px!important;}
+  .tbc-video-title{font-size:clamp(30px,7vw,38px)!important;line-height:1.15!important;margin-bottom:10px!important;}
+  .tbc-video-text{font-size:13px!important;margin-bottom:16px!important;}
+  .tbc-hero-trust-points{justify-content:center!important;gap:8px 16px!important;margin-bottom:10px!important;}
+  .tbc-trust-point{font-size:10.5px!important;}
+  .booking-callout{margin-top:-260px!important;}
+  .booking-callout .booking-section-heading{font-size:clamp(26px,7vw,32px)!important;margin-bottom:8px!important;}
+  .booking-callout .tbc-booking-box{border-radius:20px!important;padding:8px!important;}
+  .booking-callout .tbc-booking-grid{grid-template-columns:1fr!important;gap:6px!important;}
+}
+@media(max-width:520px){
+  .tbc-video-hero{min-height:820px!important;}
+  .booking-callout{margin-top:-300px!important;}
+}
+</style>
