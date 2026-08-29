@@ -86,6 +86,91 @@ const heroTrustContent = {
 };
 const heroTrust = heroTrustContent[lang] || heroTrustContent.en;
 
+const processContent = {
+  en: {
+    title: "How Does the Whole Process Work?",
+    steps: [
+      { title: "Book Your Tour", text: "Find your best tour and make your free reservation." },
+      { title: "Confirm & Pay", text: "Pay securely online, or in cash when we pick you up." },
+      { title: "Pick-Up", text: "We pick you up from your hotel for the tour you booked." },
+      { title: "Drop-Off", text: "After the tour, we drop you back off at your hotel." }
+    ]
+  },
+  tr: {
+    title: "Süreç Nasıl İşliyor?",
+    steps: [
+      { title: "Turunuzu Seçin", text: "Size en uygun turu bulun ve ücretsiz ön rezervasyonunuzu yapın." },
+      { title: "Onaylayın & Ödeyin", text: "Güvenle online ödeyin, veya sizi almaya geldiğimizde nakit ödeyin." },
+      { title: "Otelden Alım", text: "Rezervasyon yaptığınız tur için sizi otelinizden alıyoruz." },
+      { title: "Otele Bırakma", text: "Tur sonrasında sizi tekrar otelinize bırakıyoruz." }
+    ]
+  },
+  es: {
+    title: "¿Cómo Funciona Todo el Proceso?",
+    steps: [
+      { title: "Reserva tu Tour", text: "Encuentra el mejor tour para ti y haz tu reserva gratuita." },
+      { title: "Confirma y Paga", text: "Paga en línea de forma segura, o en efectivo al recogerte." },
+      { title: "Recogida", text: "Te recogemos en tu hotel para el tour que reservaste." },
+      { title: "Regreso", text: "Después del tour, te devolvemos a tu hotel." }
+    ]
+  }
+};
+const process = processContent[lang] || processContent.en;
+
+const whyChooseContent = {
+  en: {
+    badge: "WHY CHOOSE US",
+    title: "Why Should You Choose CappadociaGo?",
+    items: [
+      { title: "Impressions to Last a Lifetime", text: "An experience full of emotion, paired with the breathtaking scenery of Cappadocia." },
+      { title: "Modern Vehicles & Balloons", text: "A well-maintained fleet of vehicles and hot air balloons, kept to the highest standard." },
+      { title: "Full Insurance Coverage", text: "You are covered by insurance throughout the entire tour, from start to finish." },
+      { title: "Local Experience", text: "Years of local know-how serving guests from all around the world." },
+      { title: "Certified & Safe", text: "Professional, certified and experienced guides and pilots, plus quality equipment." },
+      { title: "Trusted Quality", text: "Modern equipment ensures your comfort and confidence at every stage of the tour." },
+      { title: "Licensed Tourism Company", text: "We operate as a fully licensed tourism agency in Cappadocia." },
+      { title: "Money-Back Guarantee", text: "If your tour is cancelled due to weather, you get a full refund." }
+    ]
+  },
+  tr: {
+    badge: "NEDEN BİZ",
+    title: "Neden CappadociaGo'yu Seçmelisiniz?",
+    items: [
+      { title: "Ömür Boyu Sürecek İzlenimler", text: "Kapadokya'nın nefes kesen manzarasıyla birleşen, duygu dolu bir deneyim." },
+      { title: "Modern Araçlar & Balonlar", text: "En yüksek standartta tutulan, bakımlı araç ve sıcak hava balonu filosu." },
+      { title: "Tam Sigorta Güvencesi", text: "Tur boyunca baştan sona sigorta güvencesi altındasınız." },
+      { title: "Yerel Deneyim", text: "Dünyanın dört bir yanından misafirlere hizmet veren yıllara dayanan yerel bilgi." },
+      { title: "Sertifikalı & Güvenli", text: "Profesyonel, sertifikalı ve deneyimli rehber ve pilotlar, kaliteli ekipman." },
+      { title: "Güvenilir Kalite", text: "Modern ekipmanlar, turun her aşamasında konforunuzu ve güveninizi sağlar." },
+      { title: "Lisanslı Turizm Şirketi", text: "Kapadokya'da tam lisanslı bir turizm acentesi olarak faaliyet gösteriyoruz." },
+      { title: "Para İade Garantisi", text: "Turunuz hava koşulları nedeniyle iptal edilirse tam iade alırsınız." }
+    ]
+  },
+  es: {
+    badge: "POR QUÉ ELEGIRNOS",
+    title: "¿Por Qué Elegir CappadociaGo?",
+    items: [
+      { title: "Recuerdos para Toda la Vida", text: "Una experiencia llena de emoción junto al impresionante paisaje de Capadocia." },
+      { title: "Vehículos y Globos Modernos", text: "Una flota de vehículos y globos aerostáticos bien mantenida, de máximo estándar." },
+      { title: "Cobertura de Seguro Total", text: "Estás cubierto por un seguro durante todo el tour, de principio a fin." },
+      { title: "Experiencia Local", text: "Años de experiencia local atendiendo a huéspedes de todo el mundo." },
+      { title: "Certificados y Seguros", text: "Guías y pilotos profesionales, certificados y experimentados, con equipo de calidad." },
+      { title: "Calidad de Confianza", text: "Equipos modernos garantizan tu comodidad y confianza en cada etapa del tour." },
+      { title: "Agencia de Turismo Licenciada", text: "Operamos como una agencia de turismo totalmente licenciada en Capadocia." },
+      { title: "Garantía de Devolución", text: "Si tu tour se cancela por mal tiempo, recibes un reembolso completo." }
+    ]
+  }
+};
+const whyChoose = whyChooseContent[lang] || whyChooseContent.en;
+
+const galleryContent = {
+  en: { badge: "GALLERY", title: "Cappadocia in Pictures" },
+  tr: { badge: "GALERİ", title: "Fotoğraflarla Kapadokya" },
+  es: { badge: "GALERÍA", title: "Capadocia en Imágenes" }
+};
+const gallery = galleryContent[lang] || galleryContent.en;
+const galleryImages = getSiteGallery(12);
+
 const socialImage = `${siteOrigin}/images/tours/tbc-goreme-standart-hot-air-balloon-tour.webp`;
 
 function resolveTourCardImage(tour) {
@@ -684,6 +769,40 @@ const homepageReviews = [
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="tbc-process-section" aria-labelledby="tbc-process-title">
+    <div class="container">
+      <h2 class="tbc-process-title" id="tbc-process-title">{process.title}</h2>
+      <div class="tbc-process-grid">
+        {process.steps.map((step, i) => (
+          <div class="tbc-process-card">
+            <span class="tbc-process-num">{String(i + 1).padStart(2, "0")}</span>
+            <h3 class="tbc-process-card-title">{step.title}</h3>
+            <p class="tbc-process-card-text">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="tbc-why-section" aria-labelledby="tbc-why-title">
+    <div class="container">
+      <div class="tbc-why-head">
+        <span class="tbc-why-badge">{whyChoose.badge}</span>
+        <h2 class="tbc-why-title" id="tbc-why-title">{whyChoose.title}</h2>
+      </div>
+      <div class="tbc-why-grid">
+        {whyChoose.items.map((item) => (
+          <div class="tbc-why-card">
+            <h3 class="tbc-why-card-title">{item.title}</h3>
+            <p class="tbc-why-card-text">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
 
 <!-- REVIEWS SECTION: 32 REVIEWS / 4 AT A TIME -->
   <section class="reviews-section tbc-combined-review-section">
@@ -841,6 +960,23 @@ const homepageReviews = [
           <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/thk.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
           <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/assiana.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="tbc-gallery-section" aria-labelledby="tbc-gallery-title">
+    <div class="container">
+      <div class="tbc-gallery-head">
+        <span class="tbc-gallery-badge">{gallery.badge}</span>
+        <h2 class="tbc-gallery-title" id="tbc-gallery-title">{gallery.title}</h2>
+      </div>
+      <div class="tbc-gallery-grid">
+        {galleryImages.map((src, i) => (
+          <div class="tbc-gallery-item">
+            <img src={src} alt={`Cappadocia ${i + 1}`} width="360" height="360" loading="lazy" decoding="async" />
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -5500,5 +5636,123 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
 @media(max-width:520px){
   .tbc-video-hero{min-height:880px!important;}
   .booking-callout{margin-top:-90px!important;}
+}
+</style>
+
+<style is:global>
+/* =========================================================
+   NEW SECTIONS — How it works / Why choose us / Gallery
+   Added to close the content gap vs. the reference site.
+   ========================================================= */
+
+/* ---- How it works ---- */
+.tbc-process-section{padding:64px 0 56px!important;background:#ffffff!important;}
+.tbc-process-title{
+  text-align:center!important;margin:0 0 36px!important;
+  font-family:'Fraunces',Georgia,serif!important;
+  font-size:clamp(26px,3vw,36px)!important;font-weight:700!important;
+  color:#0a2b4a!important;
+}
+.tbc-process-grid{
+  display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:22px!important;
+}
+.tbc-process-card{
+  position:relative!important;
+  padding:28px 22px 24px!important;
+  border-radius:18px!important;
+  background:#f9fafc!important;
+  border:1px solid #edf1f6!important;
+  text-align:left!important;
+  transition:transform .2s ease,box-shadow .2s ease!important;
+}
+.tbc-process-card:hover{transform:translateY(-4px)!important;box-shadow:0 16px 34px rgba(10,43,74,.1)!important;}
+.tbc-process-num{
+  display:inline-block!important;margin-bottom:14px!important;
+  font-family:'Fraunces',Georgia,serif!important;
+  font-size:34px!important;font-weight:700!important;
+  color:#e9b545!important;
+  -webkit-text-stroke:1px rgba(201,138,31,.35)!important;
+}
+.tbc-process-card-title{
+  margin:0 0 8px!important;font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:16px!important;font-weight:800!important;color:#0a2b4a!important;
+}
+.tbc-process-card-text{
+  margin:0!important;font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:13.5px!important;line-height:1.6!important;color:#5c6b7d!important;
+}
+
+/* ---- Why choose us ---- */
+.tbc-why-section{padding:56px 0 64px!important;background:linear-gradient(180deg,#f9fafc 0%,#ffffff 100%)!important;}
+.tbc-why-head{text-align:center!important;margin:0 0 36px!important;}
+.tbc-why-badge{
+  display:inline-block!important;padding:6px 16px!important;border-radius:999px!important;
+  background:rgba(201,138,31,.1)!important;border:1px solid rgba(201,138,31,.3)!important;
+  color:#96650f!important;font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:11px!important;font-weight:800!important;letter-spacing:.12em!important;
+  text-transform:uppercase!important;margin-bottom:14px!important;
+}
+.tbc-why-title{
+  margin:0!important;font-family:'Fraunces',Georgia,serif!important;
+  font-size:clamp(26px,3vw,36px)!important;font-weight:700!important;color:#0a2b4a!important;
+}
+.tbc-why-grid{
+  display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:18px!important;
+}
+.tbc-why-card{
+  padding:26px 20px!important;border-radius:16px!important;
+  background:#ffffff!important;border:1px solid #edf1f6!important;
+  border-top:3px solid #0a3d8a!important;
+  box-shadow:0 8px 22px rgba(10,43,74,.05)!important;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important;
+}
+.tbc-why-card:hover{transform:translateY(-4px)!important;box-shadow:0 16px 34px rgba(10,43,74,.12)!important;border-top-color:#c98a1f!important;}
+.tbc-why-card-title{
+  margin:0 0 8px!important;font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:15px!important;font-weight:800!important;color:#0a2b4a!important;line-height:1.3!important;
+}
+.tbc-why-card-text{
+  margin:0!important;font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:13px!important;line-height:1.6!important;color:#5c6b7d!important;
+}
+
+/* ---- Gallery ---- */
+.tbc-gallery-section{padding:56px 0 64px!important;background:#ffffff!important;}
+.tbc-gallery-head{text-align:center!important;margin:0 0 32px!important;}
+.tbc-gallery-badge{
+  display:inline-block!important;padding:6px 16px!important;border-radius:999px!important;
+  background:rgba(10,61,138,.08)!important;border:1px solid rgba(10,61,138,.22)!important;
+  color:#0a3d8a!important;font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:11px!important;font-weight:800!important;letter-spacing:.12em!important;
+  text-transform:uppercase!important;margin-bottom:14px!important;
+}
+.tbc-gallery-title{
+  margin:0!important;font-family:'Fraunces',Georgia,serif!important;
+  font-size:clamp(26px,3vw,36px)!important;font-weight:700!important;color:#0a2b4a!important;
+}
+.tbc-gallery-grid{
+  display:grid!important;grid-template-columns:repeat(6,1fr)!important;gap:12px!important;
+}
+.tbc-gallery-item{
+  position:relative!important;aspect-ratio:1/1!important;overflow:hidden!important;
+  border-radius:14px!important;
+}
+.tbc-gallery-item img{
+  width:100%!important;height:100%!important;object-fit:cover!important;
+  transition:transform .35s ease!important;display:block!important;
+}
+.tbc-gallery-item:hover img{transform:scale(1.08)!important;}
+
+@media(max-width:1000px){
+  .tbc-process-grid{grid-template-columns:repeat(2,1fr)!important;}
+  .tbc-why-grid{grid-template-columns:repeat(2,1fr)!important;}
+  .tbc-gallery-grid{grid-template-columns:repeat(4,1fr)!important;}
+}
+@media(max-width:680px){
+  .tbc-process-section,.tbc-why-section,.tbc-gallery-section{padding:44px 0!important;}
+  .tbc-process-grid{grid-template-columns:1fr!important;gap:14px!important;}
+  .tbc-why-grid{grid-template-columns:1fr!important;gap:14px!important;}
+  .tbc-gallery-grid{grid-template-columns:repeat(3,1fr)!important;gap:8px!important;}
+  .tbc-gallery-item{border-radius:10px!important;}
 }
 </style>
