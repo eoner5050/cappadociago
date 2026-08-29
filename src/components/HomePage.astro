@@ -1224,13 +1224,35 @@ const homepageReviews = [
       });
     }
 
-    // Mobil Menü Aç/Kapat
+    // Mobil Menü Aç/Kapat — erişilebilir ve kararlı
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
     if (mobileToggle && mainNav) {
-      mobileToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('is-open');
-        mobileToggle.classList.toggle('is-active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      mobileToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const willOpen = !mainNav.classList.contains('is-open');
+        mainNav.classList.toggle('is-open', willOpen);
+        mobileToggle.classList.toggle('is-active', willOpen);
+        mobileToggle.setAttribute('aria-expanded', String(willOpen));
+      });
+
+      mainNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('is-open');
+          mobileToggle.classList.remove('is-active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof Node)) return;
+        if (!mainNav.contains(target) && !mobileToggle.contains(target)) {
+          mainNav.classList.remove('is-open');
+          mobileToggle.classList.remove('is-active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+        }
       });
     }
 
@@ -9438,5 +9460,174 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
     max-width:300px!important;
     font-size:24px!important;
   }
+}
+
+
+/* =============================================================
+   FINAL MOBILE HEADER COLOR + HAMBURGER FIX
+   CappadociaGo logo blue: #0A63B5 / gold accent: #C88716
+   ============================================================= */
+:root{
+  --cgo-logo-blue:#0A63B5;
+  --cgo-logo-blue-dark:#074B8A;
+  --cgo-logo-gold:#C88716;
+}
+
+.site-header{
+  border-bottom:1px solid rgba(200,135,22,.24)!important;
+}
+
+.lang-btn{
+  background:var(--cgo-logo-blue)!important;
+  border-color:var(--cgo-logo-blue)!important;
+  color:#fff!important;
+  box-shadow:0 7px 18px rgba(10,99,181,.20)!important;
+}
+.lang-btn .lang-code,
+.lang-btn .lang-flag{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+}
+.lang-btn .arrow{
+  color:#ffd56a!important;
+  -webkit-text-fill-color:#ffd56a!important;
+}
+.lang-btn:hover,
+.lang-switcher.is-open .lang-btn{
+  background:var(--cgo-logo-blue-dark)!important;
+  border-color:var(--cgo-logo-blue-dark)!important;
+}
+.lang-dropdown{
+  border:1px solid rgba(10,99,181,.22)!important;
+  box-shadow:0 18px 38px rgba(10,45,80,.18)!important;
+}
+.lang-item.active,
+.lang-item:hover{
+  background:rgba(10,99,181,.09)!important;
+  color:var(--cgo-logo-blue)!important;
+}
+
+@media (max-width:980px){
+  .site-header .header-container{
+    grid-template-columns:auto 1fr auto!important;
+    align-items:center!important;
+  }
+  .header-right{
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+  }
+
+  /* Dil butonu doğrudan logo mavisi */
+  .lang-btn{
+    min-width:62px!important;
+    height:38px!important;
+    padding:0 10px!important;
+    border-radius:999px!important;
+    background:var(--cgo-logo-blue)!important;
+    border:1px solid var(--cgo-logo-blue)!important;
+    color:#fff!important;
+  }
+  .lang-btn .lang-flag{display:none!important;}
+  .lang-btn .lang-code{font-size:11px!important;font-weight:900!important;}
+
+  /* Gerçek görünür hamburger: mavi daire + beyaz çizgiler */
+  .mobile-menu-toggle{
+    display:flex!important;
+    width:38px!important;
+    height:38px!important;
+    min-width:38px!important;
+    padding:0!important;
+    border:1px solid var(--cgo-logo-blue)!important;
+    border-radius:50%!important;
+    background:var(--cgo-logo-blue)!important;
+    box-shadow:0 7px 18px rgba(10,99,181,.18)!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+    gap:4px!important;
+    cursor:pointer!important;
+    appearance:none!important;
+  }
+  .mobile-menu-toggle span{
+    display:block!important;
+    width:17px!important;
+    height:2px!important;
+    min-height:2px!important;
+    margin:0!important;
+    padding:0!important;
+    background:#fff!important;
+    border:0!important;
+    border-radius:999px!important;
+    opacity:1!important;
+    visibility:visible!important;
+    transform-origin:center!important;
+    transition:transform .2s ease,opacity .2s ease!important;
+  }
+  .mobile-menu-toggle.is-active{
+    background:var(--cgo-logo-blue-dark)!important;
+    border-color:var(--cgo-logo-blue-dark)!important;
+  }
+  .mobile-menu-toggle.is-active span:nth-child(1){transform:translateY(6px) rotate(45deg)!important;}
+  .mobile-menu-toggle.is-active span:nth-child(2){opacity:0!important;}
+  .mobile-menu-toggle.is-active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)!important;}
+
+  .main-nav{
+    top:calc(100% + 8px)!important;
+    right:0!important;
+    left:auto!important;
+    width:min(330px,calc(100vw - 24px))!important;
+    padding:8px!important;
+    background:#fff!important;
+    border:1px solid rgba(10,99,181,.18)!important;
+    border-radius:16px!important;
+    box-shadow:0 20px 44px rgba(8,40,72,.18)!important;
+  }
+  .main-nav ul{gap:2px!important;}
+  .main-nav a{
+    display:flex!important;
+    min-height:44px!important;
+    align-items:center!important;
+    padding:0 14px!important;
+    border-radius:11px!important;
+    color:#0A2748!important;
+    font-weight:800!important;
+    text-decoration:none!important;
+  }
+  .main-nav a:hover,
+  .main-nav a:focus-visible{
+    background:rgba(10,99,181,.08)!important;
+    color:var(--cgo-logo-blue)!important;
+  }
+}
+
+@media (max-width:420px){
+  .site-header .header-container{
+    width:calc(100% - 18px)!important;
+    height:70px!important;
+    gap:7px!important;
+  }
+  .site-header .logo-home img,
+  .site-header .logo img{
+    height:48px!important;
+    max-width:128px!important;
+  }
+  .header-phone-pill{
+    width:34px!important;
+    height:34px!important;
+    min-width:34px!important;
+    padding:0!important;
+  }
+  .header-phone-pill img{
+    width:17px!important;
+    height:17px!important;
+  }
+  .lang-btn,
+  .mobile-menu-toggle{
+    height:36px!important;
+    min-height:36px!important;
+  }
+  .lang-btn{min-width:58px!important;padding:0 8px!important;}
+  .mobile-menu-toggle{width:36px!important;min-width:36px!important;}
 }
 </style>
