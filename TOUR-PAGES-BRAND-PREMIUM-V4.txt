@@ -1,0 +1,7 @@
+CappadociaGo Tour Detail Brand Premium V4
+- All tour detail pages using /tour-reference-layout.css are redesigned.
+- Logo palette: deep/bright blue + champagne gold + warm ivory.
+- Homepage typography: Fraunces headings, Plus Jakarta Sans interface/body.
+- Warm ivory page canvas, editorial gallery, premium content cards.
+- Dark navy/gold price sidebar; Quick Reservation logic left untouched.
+- Responsive tablet/mobile rules included.
