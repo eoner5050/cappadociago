@@ -9046,3 +9046,136 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   }
 }
 </style>
+
+<style is:global>
+/* ==========================================================
+   2026-08-29 — FINAL BRAND TYPE + HERO READABILITY + MOBILE GAP
+   Requested refinements: logo-like booking title, darker hero title,
+   and compact mobile vertical flow without collisions.
+   ========================================================== */
+
+/* 1) Booking slogan: use the logo's handwritten character and brand colors. */
+.booking-callout .booking-section-heading{
+  font-family:'Dancing Script','Segoe Script','Brush Script MT','Lucida Handwriting',cursive!important;
+  font-weight:700!important;
+  font-style:normal!important;
+  letter-spacing:-.025em!important;
+  text-shadow:none!important;
+  filter:none!important;
+  color:#0a63b5!important;
+  -webkit-text-fill-color:#0a63b5!important;
+}
+.booking-callout .booking-section-heading>span{
+  font:inherit!important;
+  color:#0a63b5!important;
+  -webkit-text-fill-color:#0a63b5!important;
+  text-shadow:none!important;
+}
+.booking-callout .booking-brand-blue{
+  font:inherit!important;
+  font-weight:700!important;
+  color:#0a63b5!important;
+  -webkit-text-fill-color:#0a63b5!important;
+  text-shadow:none!important;
+}
+.booking-callout .booking-brand-gold{
+  font:inherit!important;
+  font-weight:700!important;
+  color:#c88716!important;
+  -webkit-text-fill-color:#c88716!important;
+  margin-left:.06em!important;
+  text-shadow:none!important;
+}
+
+/* 2) Main hero title: eliminate the washed-out white glow over the sun. */
+#cgo-ref-content-v4 .tbc-video-title{
+  color:#123b63!important;
+  -webkit-text-fill-color:#123b63!important;
+  text-shadow:none!important;
+  filter:none!important;
+}
+#cgo-ref-content-v4 .tbc-video-text{
+  color:#173a5e!important;
+  -webkit-text-fill-color:#173a5e!important;
+  text-shadow:none!important;
+}
+
+/* 3) Mobile: remove the artificial dead space and keep all copy centered. */
+@media(max-width:600px){
+  #cgo-ref-hero-v4{
+    height:820px!important;
+    min-height:820px!important;
+    padding-bottom:0!important;
+    overflow:hidden!important;
+  }
+  #cgo-ref-content-v4{
+    position:relative!important;
+    top:auto!important;
+    left:auto!important;
+    right:auto!important;
+    transform:none!important;
+    width:calc(100% - 30px)!important;
+    max-width:500px!important;
+    margin:0 auto!important;
+    padding:18px 0 0!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    text-align:center!important;
+  }
+  #cgo-ref-content-v4 .tbc-video-title{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 auto 14px!important;
+    font-size:clamp(28px,8.2vw,34px)!important;
+    line-height:1.08!important;
+    text-align:center!important;
+    color:#123b63!important;
+    -webkit-text-fill-color:#123b63!important;
+    text-shadow:none!important;
+    text-wrap:balance!important;
+  }
+  #cgo-ref-content-v4 .tbc-video-text{
+    width:100%!important;
+    max-width:460px!important;
+    margin:0 auto 16px!important;
+    text-align:center!important;
+    color:#173a5e!important;
+    -webkit-text-fill-color:#173a5e!important;
+    text-shadow:none!important;
+  }
+  #cgo-ref-content-v4 .tbc-video-actions{
+    justify-content:center!important;
+    margin:0 auto 16px!important;
+  }
+  #cgo-ref-trust-v4{
+    margin:0 auto!important;
+  }
+  .tbc-hero-form>.booking-callout{
+    bottom:10px!important;
+    width:calc(100% - 16px)!important;
+  }
+  .booking-callout .booking-section-heading{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 auto 10px!important;
+    padding:0 4px!important;
+    font-size:clamp(28px,8.4vw,36px)!important;
+    line-height:1.02!important;
+    justify-content:center!important;
+    text-align:center!important;
+    white-space:normal!important;
+    text-wrap:balance!important;
+  }
+}
+
+@media(max-width:380px){
+  #cgo-ref-hero-v4{
+    height:850px!important;
+    min-height:850px!important;
+    padding-bottom:0!important;
+  }
+  #cgo-ref-content-v4{width:calc(100% - 22px)!important;padding-top:14px!important;}
+  #cgo-ref-content-v4 .tbc-video-title{font-size:27px!important;line-height:1.08!important;}
+  .booking-callout .booking-section-heading{font-size:29px!important;line-height:1.02!important;}
+}
+</style>
