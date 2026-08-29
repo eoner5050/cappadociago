@@ -64,6 +64,30 @@ const seoContent = {
 };
 const seo = seoContent[lang] || seoContent.en;
 
+const discoveryPartnerRows = [
+  [
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787439126/discovery-cappadocia/tours/Logo-BeyazTurkuaz-Dalga-e1716071177369_xllk9u.png", "İlyada Spa & Hammam"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787439035/discovery-cappadocia/tours/b92f0fd9e2566324d4ad2ee306686945c0b62f3c_834922ca_yvlpdc.png", "Üniversal Balloons"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787438911/discovery-cappadocia/tours/5908cb31ae949727fc2484db889181c61e83bedd_fd0981b2_gnrj8k.png", "İstanbul Balloons"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787438857/discovery-cappadocia/tours/bd0b963962bab15abb49bac064f1cc9f0855e511_90abe84e_vzycsr.png", "Skyway Balloons"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787438964/discovery-cappadocia/tours/logo_op_rkdmip.webp", "Türkiye Balloons"]
+  ],
+  [
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787439343/discovery-cappadocia/tours/evranos_yn2f4e.png", "Evranos Restourant"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787439437/discovery-cappadocia/tours/503672562_17913013989149232_3717934498666235968_n_v0ugyr.jpg", "TanTan Cappadocia"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787439693/discovery-cappadocia/tours/ChatGPT_Image_23_A%C3%84_u_2026_02_01_01_val7kq.png", "Cappadocia Jeep Safari"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787964326/discovery-cappadocia/tours/logokas_zhkesq.png", "Kapadokya Balloons"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787439207/discovery-cappadocia/tours/golden_horse_e9ibx1.png", "Golden Horse Ranch"]
+  ],
+  [
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787964928/discovery-cappadocia/tours/logo_rhco37.png", "Vigor Cappadocia Hotel"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787439717/discovery-cappadocia/tours/ChatGPT_Image_23_A%C3%84_u_2026_02_01_52_quercy.png", "Cappadocia ATV Tour"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787964386/discovery-cappadocia/tours/atmosfer_i50c6d.png", "Atmosfer Balloons"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787964498/discovery-cappadocia/tours/69ea8eee5de4d_wcuwcg.webp", "Flower Balloons"],
+    ["https://res.cloudinary.com/dvgetqbza/image/upload/v1787964748/discovery-cappadocia/tours/logo-footer_nlgo5f.png", "Rainbow Balloons"]
+  ]
+];
+
 const heroTrustContent = {
   en: {
     prime: "Exclusive Experiences",
@@ -291,25 +315,6 @@ const organizationSchema = {
       "about": { "@id": `${siteOrigin}/#organization` },
       "primaryImageOfPage": { "@type": "ImageObject", "url": socialImage },
       "inLanguage": lang
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${canonicalUrl}#faq`,
-      "mainEntity": faqContent[lang]?.items?.map(([question, answer]) => ({
-        "@type": "Question",
-        "name": question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": answer
-        }
-      })) || faqContent.en.items.map(([question, answer]) => ({
-        "@type": "Question",
-        "name": question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": answer
-        }
-      }))
     }
   ]
 };
@@ -868,80 +873,25 @@ const homepageReviews = [
     </div>
   </section>
 
-  <!-- OUR PARTNERS -->
-  <section class="tbc-premium-partners" aria-labelledby="tbc-partners-title">
-    <div class="tbc-premium-partners-glow tbc-premium-partners-glow-left" aria-hidden="true"></div>
-    <div class="tbc-premium-partners-glow tbc-premium-partners-glow-right" aria-hidden="true"></div>
-
-    <div class="tbc-premium-partners-head">
-      <span class="tbc-premium-partners-badge">
-        <span class="tbc-premium-partners-badge-dot"></span>
-        {t.partners.badge}
-      </span>
-
-      <h2 class="tbc-premium-partners-title" id="tbc-partners-title">
-        {lang === "tr" ? (
-          <>
-            <span>Güvenilir</span>
-            <strong> Global & Yerel </strong>
-            <span>Partnerler</span>
-          </>
-        ) : lang === "es" ? (
-          <>
-            <span>Socios</span>
-            <strong> Globales y Locales </strong>
-            <span>de Confianza</span>
-          </>
-        ) : (
-          <>
-            <span>Trusted</span>
-            <strong> Global & Local </strong>
-            <span>Partners</span>
-          </>
-        )}
-      </h2>
-
-      <p class="tbc-premium-partners-text">{t.partners.text}</p>
+  <!-- OUR PARTNERS — Discovery Cappadocia reference -->
+  <section class="dc-partners" aria-labelledby="dc-partners-title">
+    <div class="dc-partners-head">
+      <h2 id="dc-partners-title">{lang === "tr" ? "İş ortaklarımız" : lang === "es" ? "Nuestros socios" : "Our partners"}</h2>
+      <p>{lang === "tr" ? "Kapadokya genelinde birlikte çalıştığımız güvenilir oteller, işletmeler ve platformlar." : lang === "es" ? "Hoteles, operadores y plataformas de confianza con los que trabajamos en Capadocia." : "Trusted hotels, operators and platforms we work with across Cappadocia."}</p>
     </div>
-
-    <div class="tbc-premium-partners-rows">
-      <div class="tbc-premium-marquee">
-        <div class="tbc-premium-track tbc-premium-track-left">
-          <div class="tbc-premium-card"><img src="/images/partners-premium/air-kapadokya.webp" alt="Air Kapadokya" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/anatolian-balloons.webp" alt="Anatolian Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/flower-balloons.webp" alt="Flower Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/urgup-balloons.webp" alt="Ürgüp Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/atmosfer-balloons.webp" alt="Atmosfer Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/guvercin-balloons.webp" alt="Güvercin Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
-
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/air-kapadokya.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/anatolian-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/flower-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/urgup-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/atmosfer-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/guvercin-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
+    <div class="dc-partner-rows">
+      {discoveryPartnerRows.map((row, rowIndex) => (
+        <div class="dc-partner-viewport">
+          <div class:list={["dc-partner-track", rowIndex === 1 ? "dc-track-right" : "dc-track-left", rowIndex === 2 ? "dc-track-slow" : ""]}>
+            {[...row, ...row].map(([src, name], index) => (
+              <article class="dc-partner-card" aria-hidden={index >= row.length ? "true" : undefined}>
+                <div class="dc-partner-logo"><img src={src} alt={index >= row.length ? "" : name} width="180" height="84" loading="lazy" decoding="async" /></div>
+                <div class="dc-partner-name">{name}</div>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-
-      <div class="tbc-premium-marquee">
-        <div class="tbc-premium-track tbc-premium-track-right">
-          <div class="tbc-premium-card"><img src="/images/partners-premium/istanbul-balloons.webp" alt="Istanbul Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/kapadokya-balloons.webp" alt="Kapadokya Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/sultan-balloons.webp" alt="Sultan Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/turkiye-balloons.webp" alt="Türkiye Balloons" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/universal-balloon.webp" alt="Universal Balloon" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/thk.webp" alt="THK" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card"><img src="/images/partners-premium/assiana.webp" alt="Assiana" width="260" height="120" loading="lazy" decoding="async" /></div>
-
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/istanbul-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/kapadokya-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/sultan-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/turkiye-balloons.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/universal-balloon.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/thk.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-          <div class="tbc-premium-card" aria-hidden="true"><img src="/images/partners-premium/assiana.webp" alt="" width="260" height="120" loading="lazy" decoding="async" /></div>
-        </div>
-      </div>
+      ))}
     </div>
   </section>
 
@@ -957,47 +907,6 @@ const homepageReviews = [
           <div class="tbc-gallery-item">
             <img src={src} alt={`Cappadocia ${i + 1}`} width="360" height="360" loading="lazy" decoding="async" />
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- SEO INTRODUCTION -->
-  <section class="tbc-seo-intro" aria-labelledby="tbc-seo-intro-title">
-    <div class="container">
-      <div class="tbc-seo-intro-card">
-        <span class="tbc-seo-intro-kicker">
-          {lang === "tr" ? "KAPADOKYA REHBERİ" : lang === "es" ? "GUÍA DE CAPADOCIA" : "CAPPADOCIA GUIDE"}
-        </span>
-        <h2 id="tbc-seo-intro-title">{seo.introTitle}</h2>
-        <p class="tbc-seo-intro-lead">{seo.introLead}</p>
-        <p>{seo.introText}</p>
-
-        <div class="tbc-seo-intro-links" aria-label={lang === "tr" ? "Kapadokya bağlantıları" : lang === "es" ? "Enlaces de Capadocia" : "Cappadocia links"}>
-          <a href={`/${lang}/balloon-tours/`}>{seo.balloonLink} <span aria-hidden="true">→</span></a>
-          <a href={`/${lang}/cappadocia-tours/`}>{seo.toursLink} <span aria-hidden="true">→</span></a>
-          
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="tbc-faq-section" id="faq">
-    <div class="container tbc-faq-container">
-      <div class="tbc-faq-head">
-        <span class="tbc-faq-kicker">FAQ</span>
-        <h2>{faq.title}</h2>
-      </div>
-      <div class="tbc-faq-list">
-        {faq.items.map(([question, answer], index) => (
-          <details class="tbc-faq-item" open={index === 0}>
-            <summary>
-              <span class="tbc-faq-chevron">›</span>
-              <span>{question}</span>
-            </summary>
-            <div class="tbc-faq-answer">{answer}</div>
-          </details>
         ))}
       </div>
     </div>
@@ -9668,4 +9577,81 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
     margin-left:.04em!important;
   }
 }
+
+
+  /* Discovery Cappadocia partner section reference */
+  .dc-partners {
+    overflow: hidden;
+    padding: 50px 0 76px;
+    background: #f7f4ee;
+    border-top: 1px solid #ece7df;
+    border-bottom: 1px solid #ece7df;
+  }
+  .dc-partners-head {
+    width: min(1180px, calc(100% - 36px));
+    margin: 0 auto 44px;
+    text-align: center;
+  }
+  .dc-partners-head h2 {
+    margin: 0;
+    color: #17130f;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(36px, 3.15vw, 54px);
+    line-height: 1.04;
+    font-weight: 700;
+    letter-spacing: -.025em;
+  }
+  .dc-partners-head p {
+    margin: 16px auto 0;
+    color: #806d60;
+    font-size: clamp(15px, 1.1vw, 18px);
+    line-height: 1.55;
+  }
+  .dc-partner-rows { display: grid; gap: 18px; }
+  .dc-partner-viewport { overflow: hidden; width: 100%; padding: 1px 0; }
+  .dc-partner-track { display: flex; width: max-content; gap: 18px; padding: 0 9px; will-change: transform; }
+  .dc-partner-card {
+    flex: 0 0 clamp(190px, 11.5vw, 220px);
+    height: 140px;
+    display: grid;
+    grid-template-rows: 92px 1fr;
+    align-items: center;
+    padding: 13px 16px 14px;
+    border: 1px solid #e7e2db;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(32,24,18,.04);
+  }
+  .dc-partner-logo { height: 88px; display: grid; place-items: center; min-width: 0; }
+  .dc-partner-logo img { display: block; width: auto; max-width: 92%; height: auto; max-height: 74px; object-fit: contain; }
+  .dc-partner-name {
+    align-self: end;
+    text-align: center;
+    color: #665f59;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 650;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .dc-track-left { animation: dc-partners-left 38s linear infinite; }
+  .dc-track-right { animation: dc-partners-right 42s linear infinite; }
+  .dc-track-slow { animation-duration: 46s; }
+  .dc-partners:hover .dc-partner-track { animation-play-state: paused; }
+  @keyframes dc-partners-left { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 9px)); } }
+  @keyframes dc-partners-right { from { transform: translateX(calc(-50% - 9px)); } to { transform: translateX(0); } }
+  @media (max-width: 760px) {
+    .dc-partners { padding: 38px 0 52px; }
+    .dc-partners-head { margin-bottom: 28px; }
+    .dc-partners-head h2 { font-size: 34px; }
+    .dc-partners-head p { font-size: 14px; }
+    .dc-partner-rows { gap: 12px; }
+    .dc-partner-track { gap: 12px; padding-inline: 6px; }
+    .dc-partner-card { flex-basis: 178px; height: 124px; grid-template-rows: 78px 1fr; padding: 10px 12px 12px; border-radius: 14px; }
+    .dc-partner-logo { height: 76px; }
+    .dc-partner-logo img { max-height: 62px; }
+    .dc-partner-name { font-size: 12.5px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .dc-partner-track { animation: none !important; } }
 </style>
