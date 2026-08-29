@@ -114,3 +114,9 @@ export function getSiteGallery(max = 8) {
 
   return picked;
 }
+
+
+// Footer gallery uses the same curated site-wide image pool.
+export function getFooterGallery(max = 4) {
+  return getSiteGallery(max);
+}
