@@ -1,11 +1,11 @@
 export const tr = {
   language: { code: "TR", name: "Türkçe" },
   nav: {
-    balloonTours: "Balon Turları",
-    cappadociaTours: "Kapadokya Turları",
-    activities: "Aktiviteler",
-    privateTours: "Özel Turlar",
-    transfers: "Transferler",
+    balloonTours: "Kapadokya Balon Turları",
+    cappadociaTours: "Kapadokya Turları & Geziler",
+    activities: "Kapadokya Aktiviteleri",
+    privateTours: "Özel Kapadokya Turları",
+    transfers: "Kapadokya Transferleri",
   },
   hero: {
     badge: "CAPPADOCIAGO",

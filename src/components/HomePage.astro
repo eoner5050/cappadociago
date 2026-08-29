@@ -5405,12 +5405,15 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   color:#0a2b4a!important;
 }
 .site-header .header-logo-whatsapp span{color:#0a2b4a!important;}
+.main-nav ul{gap:14px!important;}
 .main-nav a{
   color:#0a2b4a!important;
   font-weight:800!important;
-  font-size:13.5px!important;
+  font-size:12.5px!important;
+  letter-spacing:-.01em!important;
   text-shadow:none!important;
   padding:34px 0!important;
+  white-space:nowrap!important;
 }
 .main-nav a::after{
   content:""!important;
@@ -5423,15 +5426,18 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
 .main-nav a:hover{color:#0d4e94!important;}
 .main-nav a:hover::after{transform:scaleX(1)!important;}
 @media(max-width:1000px){
-  .main-nav.is-open a{color:#0a2b4a!important;text-shadow:none!important;}
+  .main-nav.is-open a{color:#0a2b4a!important;text-shadow:none!important;white-space:normal!important;}
 }
 .lang-btn{
-  background:#f4f7fa!important;
-  border:1px solid #d5dde7!important;
-  color:#0a2b4a!important;
-  box-shadow:none!important;
+  background:linear-gradient(135deg,#123a63,#0a2b4a)!important;
+  border:1px solid #0a2b4a!important;
+  color:#ffffff!important;
+  box-shadow:0 6px 16px rgba(10,43,74,.25)!important;
   -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
 }
+.lang-btn .lang-code,
+.lang-btn .arrow{color:#ffffff!important;}
+.lang-btn:hover{background:linear-gradient(135deg,#184a7d,#0d3560)!important;}
 .mobile-menu-toggle span{background:#0a2b4a!important;}
 
 /* ---- Hero: min-height based (grows safely, never clips content) ---- */
@@ -5758,5 +5764,36 @@ body>.tbc-date-popover .tbc-date-day.is-selected,body>.tbc-date-popover .tbc-dat
   .tbc-why-grid{grid-template-columns:1fr!important;gap:14px!important;}
   .tbc-gallery-grid{grid-template-columns:repeat(3,1fr)!important;gap:8px!important;}
   .tbc-gallery-item{border-radius:10px!important;}
+}
+</style>
+
+<style is:global>
+/* ---- Category image slider: stretch edge-to-edge like the reference ---- */
+.infinite-slider-section .container{
+  max-width:none!important;
+  width:100%!important;
+  padding:0 28px!important;
+}
+.infinite-slider-section .slider-wrapper{
+  position:relative!important;
+}
+.infinite-slider-section .infinite-track-container{
+  padding:0 4px!important;
+}
+.infinite-slider-section .cat-card{
+  width:280px!important;flex:0 0 280px!important;
+}
+.infinite-slider-section .cat-card img{
+  width:100%!important;height:186px!important;object-fit:cover!important;
+}
+@media(max-width:1000px){
+  .infinite-slider-section .container{padding:0 16px!important;}
+  .infinite-slider-section .cat-card{width:220px!important;flex:0 0 220px!important;}
+  .infinite-slider-section .cat-card img{height:150px!important;}
+}
+@media(max-width:680px){
+  .infinite-slider-section .container{padding:0 12px!important;}
+  .infinite-slider-section .cat-card{width:190px!important;flex:0 0 190px!important;}
+  .infinite-slider-section .cat-card img{height:128px!important;}
 }
 </style>
