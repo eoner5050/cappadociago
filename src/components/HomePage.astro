@@ -66,22 +66,22 @@ const seo = seoContent[lang] || seoContent.en;
 
 const heroTrustContent = {
   en: {
-    prime: "Prime Experiences",
-    support: "24/7 Live Support",
-    loved: "Highly Loved",
-    best: "Best-in-Class Tours"
+    prime: "Exclusive Experiences",
+    support: "24/7 Customer Care",
+    loved: "Customer Favorites",
+    best: "Top-Quality Tours"
   },
   tr: {
-    prime: "Seçkin Deneyimler",
-    support: "7/24 Canlı Destek",
-    loved: "Çok Sevilen",
-    best: "Sınıfının En İyi Turları"
+    prime: "Ayrıcalıklı Deneyimler",
+    support: "7/24 Müşteri Desteği",
+    loved: "Müşterilerin Favorisi",
+    best: "Üstün Kalite Turlar"
   },
   es: {
-    prime: "Experiencias Premium",
-    support: "Soporte en Vivo 24/7",
-    loved: "Muy Recomendado",
-    best: "Tours de Primera Clase"
+    prime: "Experiencias Exclusivas",
+    support: "Atención al Cliente 24/7",
+    loved: "Favorito de los Clientes",
+    best: "Tours de Alta Calidad"
   }
 };
 const heroTrust = heroTrustContent[lang] || heroTrustContent.en;
@@ -4649,8 +4649,49 @@ body{background:#fff!important}
 }
 .tbc-trust-icon{color:#e9b545!important;}
 
+/* Restore + restyle the TripAdvisor/Google rating badges (were hidden on desktop). */
+.tbc-partner-reviews{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  justify-content:center!important;
+  gap:14px!important;
+  margin:0 0 18px!important;
+}
+.tbc-review-badge{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:9px!important;
+  padding:8px 14px!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.12)!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+  -webkit-backdrop-filter:blur(10px)!important;
+  backdrop-filter:blur(10px)!important;
+}
+.tbc-badge-logo{width:20px!important;height:20px!important;flex:0 0 20px!important;}
+.tbc-badge-info{display:flex!important;flex-direction:column!important;gap:2px!important;}
+.tbc-stars{color:#e9b545!important;font-size:11px!important;letter-spacing:1px!important;line-height:1!important;}
+.tbc-badge-text{
+  color:rgba(255,255,255,.95)!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:11px!important;
+  font-weight:700!important;
+}
+
+/* Nudge the kicker + title block down slightly from the top of the hero. */
+.tbc-video-content{top:47%!important;}
+@media(max-width:1000px){
+  .tbc-video-content{top:45%!important;}
+}
+@media(max-width:680px){
+  .tbc-video-content{top:41%!important;}
+}
+
 @media(max-width:680px){
   .tbc-video-kicker{padding:7px 17px!important;font-size:11px!important;}
+  .tbc-review-badge{padding:7px 11px!important;gap:7px!important;}
+  .tbc-badge-logo{width:17px!important;height:17px!important;flex:0 0 17px!important;}
+  .tbc-badge-text{font-size:10px!important;}
 }
 
 /* Premium booking heading: real brand palette, calm glass surface. */
