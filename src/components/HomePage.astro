@@ -411,8 +411,8 @@ const homepageReviews = [
         <img
           src="/images/hero-cappadociaGo.webp"
           alt={seo.heroAlt}
-          width="799"
-          height="600"
+          width="800"
+          height="520"
           loading="eager"
           fetchpriority="high"
           decoding="async"
@@ -427,7 +427,7 @@ const homepageReviews = [
         </span>
 
         <h1 class="tbc-video-title">
-          {lang === "tr" ? "Gün Doğumu Balon Turları ve Unutulmaz Kapadokya Maceraları" : lang === "es" ? "Globos al Amanecer y Aventuras Inolvidables en Capadocia" : "Sunrise Hot Air Balloon Tours & Unforgettable Cappadocia Adventures"}
+          {lang === "tr" ? (<>Gün Doğumu <span class="tbc-title-accent">Balon Turları</span> ve Unutulmaz Kapadokya Maceraları</>) : lang === "es" ? (<><span class="tbc-title-accent">Globos al Amanecer</span> y Aventuras Inolvidables en Capadocia</>) : (<>Sunrise Hot Air <span class="tbc-title-accent">Balloon Tours</span> & Unforgettable Cappadocia Adventures</>)}
         </h1>
 
         <p class="tbc-video-text">
@@ -4569,9 +4569,97 @@ body{background:#fff!important}
   z-index:1!important;
   pointer-events:none!important;
   background:
-    linear-gradient(180deg,rgba(5,39,75,.34) 0%,rgba(7,55,100,.27) 46%,rgba(4,34,67,.42) 100%)!important;
+    radial-gradient(62% 48% at 50% 102%,rgba(201,138,31,.16) 0%,rgba(201,138,31,0) 72%),
+    linear-gradient(180deg,rgba(6,26,58,.38) 0%,rgba(8,44,84,.27) 45%,rgba(4,19,42,.62) 100%)!important;
 }
 .tbc-video-content{z-index:4!important;}
+
+/* Hero copy — brand navy + gold, sampled directly from the CappadociaGo logo. */
+.tbc-video-kicker{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  margin:0 0 20px!important;
+  padding:9px 20px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(233,181,69,.55)!important;
+  background:rgba(10,36,74,.42)!important;
+  -webkit-backdrop-filter:blur(10px)!important;
+  backdrop-filter:blur(10px)!important;
+  color:#f6d999!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  letter-spacing:.22em!important;
+  text-transform:uppercase!important;
+  text-shadow:none!important;
+  box-shadow:0 8px 24px rgba(4,20,45,.25)!important;
+}
+.tbc-video-kicker::before{
+  content:""!important;
+  width:6px!important;
+  height:6px!important;
+  border-radius:50%!important;
+  background:linear-gradient(135deg,#e9b545,#c98a1f)!important;
+  box-shadow:0 0 0 3px rgba(233,181,69,.25)!important;
+  display:inline-block!important;
+  flex:0 0 auto!important;
+}
+.tbc-video-title{
+  color:#ffffff!important;
+  font-family:'Fraunces',Georgia,'Times New Roman',serif!important;
+  font-weight:600!important;
+  text-shadow:0 4px 26px rgba(4,17,40,.45)!important;
+}
+.tbc-title-accent{
+  background:linear-gradient(135deg,#f3cd7e 0%,#e9b545 45%,#c98a1f 100%)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  color:#e9b545!important;
+}
+.tbc-video-text{
+  color:rgba(255,255,255,.92)!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  text-shadow:0 2px 14px rgba(4,17,40,.3)!important;
+}
+.tbc-video-btn{
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-weight:800!important;
+  letter-spacing:.01em!important;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease!important;
+}
+.tbc-video-btn-primary{
+  background:linear-gradient(135deg,#f3cd7e 0%,#e9b545 45%,#c98a1f 100%)!important;
+  color:#0a1f42!important;
+  border:1px solid rgba(233,181,69,.9)!important;
+  box-shadow:0 12px 28px rgba(147,98,15,.35)!important;
+}
+.tbc-video-btn-primary:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 34px rgba(147,98,15,.45)!important;
+}
+.tbc-video-btn-secondary{
+  background:rgba(255,255,255,.08)!important;
+  color:#ffffff!important;
+  border:1px solid rgba(255,255,255,.55)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+  backdrop-filter:blur(8px)!important;
+}
+.tbc-video-btn-secondary:hover{
+  background:rgba(255,255,255,.16)!important;
+  border-color:#ffffff!important;
+  transform:translateY(-2px)!important;
+}
+.tbc-trust-point{
+  color:rgba(255,255,255,.95)!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+}
+.tbc-trust-icon{color:#e9b545!important;}
+
+@media(max-width:680px){
+  .tbc-video-kicker{padding:7px 16px!important;letter-spacing:.16em!important;font-size:10px!important;}
+}
 
 /* Premium booking heading: real brand palette, calm glass surface. */
 .booking-callout .booking-section-heading{
@@ -4604,11 +4692,11 @@ body{background:#fff!important}
   font-weight:600!important;
 }
 .booking-callout .booking-brand-blue{
-  color:#0868bd!important;
+  color:#0a3d8a!important;
   font-weight:700!important;
 }
 .booking-callout .booking-brand-gold{
-  color:#d79a08!important;
+  color:#c98a1f!important;
   font-weight:700!important;
 }
 
