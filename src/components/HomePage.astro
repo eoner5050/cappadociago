@@ -7916,3 +7916,474 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .booking-callout .booking-section-heading{font-size:25px!important;line-height:1.1!important;}
 }
 </style>
+
+<style is:global>
+/* =========================================================
+   2026-08-29 — FINAL TURKEYBALLOONSCAPPADOCIA REFERENCE MATCH
+   Visual-only final override. Existing content, booking logic,
+   calendar and language JS are preserved.
+   ========================================================= */
+:root{
+  --ref-navy:#07182d;
+  --ref-navy-soft:#17324f;
+  --ref-yellow:#ffd000;
+  --ref-blue:#0a63b5;
+  --ref-line:#d9e2ec;
+}
+
+/* HEADER — same clean proportions / spacing language as reference */
+.site-header{
+  position:relative!important;
+  z-index:1200!important;
+  background:#fff!important;
+  border:0!important;
+  border-top:1px solid #efe8df!important;
+  border-bottom:1px solid #edf0f4!important;
+  box-shadow:none!important;
+}
+.site-header .header-container{
+  width:min(1400px,calc(100% - 44px))!important;
+  max-width:1400px!important;
+  height:94px!important;
+  margin:0 auto!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:26px!important;
+}
+.site-header .logo{
+  display:flex!important;
+  align-items:center!important;
+  flex:0 0 auto!important;
+  gap:14px!important;
+  min-width:0!important;
+}
+.site-header .logo-home{
+  display:flex!important;
+  align-items:center!important;
+  flex:0 0 auto!important;
+}
+.site-header .logo-home img,
+.site-header .logo img{
+  width:auto!important;
+  height:64px!important;
+  max-width:165px!important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+.header-phone-pill,
+.header-social-pill.header-phone-pill{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  min-width:0!important;
+  height:40px!important;
+  padding:0 14px!important;
+  border:1px solid #dce4ec!important;
+  border-radius:999px!important;
+  background:#fff!important;
+  box-shadow:0 4px 13px rgba(7,24,45,.055)!important;
+  color:#12365d!important;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:11px!important;
+  line-height:1!important;
+  font-weight:800!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+}
+.header-phone-pill img,
+.header-social-pill.header-phone-pill img{
+  width:18px!important;
+  height:18px!important;
+  min-width:18px!important;
+  max-width:18px!important;
+  flex:0 0 18px!important;
+  object-fit:contain!important;
+}
+.header-phone-pill span{font:inherit!important;color:inherit!important;white-space:nowrap!important;}
+.main-nav{
+  flex:1 1 auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+}
+.main-nav ul{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:25px!important;
+  margin:0!important;
+  padding:0!important;
+  list-style:none!important;
+}
+.main-nav a{
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:13px!important;
+  line-height:1!important;
+  font-weight:800!important;
+  letter-spacing:-.015em!important;
+  color:var(--ref-navy)!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+}
+.main-nav a:hover{color:var(--ref-blue)!important;}
+.header-right{
+  flex:0 0 auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:11px!important;
+}
+.lang-btn{
+  height:40px!important;
+  min-width:76px!important;
+  padding:0 13px!important;
+  border:1px solid #d6e0ea!important;
+  border-radius:999px!important;
+  background:#fff!important;
+  box-shadow:0 4px 13px rgba(7,24,45,.05)!important;
+  color:var(--ref-navy)!important;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:11px!important;
+  font-weight:800!important;
+}
+.lang-btn .lang-code,.lang-btn .lang-flag{color:var(--ref-navy)!important;}
+.lang-btn .arrow{color:var(--ref-blue)!important;}
+.lang-btn:hover{background:#f7fbff!important;border-color:#b9d0e4!important;}
+.lang-dropdown{
+  top:48px!important;
+  border:1px solid #dce4ec!important;
+  border-radius:14px!important;
+  box-shadow:0 16px 35px rgba(7,24,45,.15)!important;
+  overflow:hidden!important;
+}
+.lang-item{font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;font-weight:700!important;}
+.lang-item.active{background:#eef6fd!important;color:var(--ref-blue)!important;}
+.mobile-menu-toggle{display:none!important;}
+
+/* HERO — left aligned, dark navy veil, bold rounded sans type */
+.tbc-hero-form{position:relative!important;background:#fff!important;overflow:visible!important;padding:0!important;}
+.tbc-video-hero{
+  position:relative!important;
+  height:700px!important;
+  min-height:700px!important;
+  overflow:hidden!important;
+  background:var(--ref-navy-soft)!important;
+}
+.tbc-mobile-hero{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  z-index:0!important;
+}
+.tbc-mobile-hero img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  filter:saturate(.86) contrast(1.03) brightness(.83)!important;
+}
+.tbc-video-overlay{
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:linear-gradient(90deg,rgba(9,31,55,.86) 0%,rgba(15,43,70,.73) 44%,rgba(23,50,72,.50) 100%)!important;
+}
+.tbc-video-content{
+  position:relative!important;
+  z-index:3!important;
+  width:min(1400px,calc(100% - 44px))!important;
+  max-width:1400px!important;
+  height:auto!important;
+  margin:0 auto!important;
+  padding:46px 0 225px!important;
+  transform:none!important;
+  left:auto!important;
+  top:auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  text-align:left!important;
+}
+.tbc-video-kicker{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:28px!important;
+  margin:0 0 15px!important;
+  padding:0 13px!important;
+  border:1.5px solid var(--ref-yellow)!important;
+  border-radius:999px!important;
+  background:rgba(8,29,52,.30)!important;
+  color:var(--ref-yellow)!important;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:10.5px!important;
+  line-height:1!important;
+  font-weight:900!important;
+  letter-spacing:.055em!important;
+  text-transform:uppercase!important;
+  box-shadow:none!important;
+}
+.tbc-video-title{
+  width:620px!important;
+  max-width:52vw!important;
+  margin:0 0 18px!important;
+  color:#fff!important;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:48px!important;
+  line-height:1.08!important;
+  font-weight:900!important;
+  letter-spacing:-.045em!important;
+  text-align:left!important;
+  text-shadow:none!important;
+}
+.tbc-hero-divider{display:none!important;}
+.tbc-video-text{
+  width:590px!important;
+  max-width:50vw!important;
+  margin:0 0 20px!important;
+  color:rgba(255,255,255,.91)!important;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:13.5px!important;
+  line-height:1.58!important;
+  font-weight:600!important;
+  letter-spacing:-.015em!important;
+  text-align:left!important;
+  text-shadow:none!important;
+}
+.tbc-video-actions{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:11px!important;
+  margin:0 0 22px!important;
+}
+.tbc-video-btn{
+  min-height:44px!important;
+  padding:0 20px!important;
+  border-radius:999px!important;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:12px!important;
+  font-weight:900!important;
+  letter-spacing:-.02em!important;
+  box-shadow:none!important;
+}
+.tbc-video-btn-primary{
+  background:var(--ref-yellow)!important;
+  border:1px solid var(--ref-yellow)!important;
+  color:var(--ref-navy)!important;
+}
+.tbc-video-btn-secondary{
+  background:rgba(255,255,255,.07)!important;
+  border:1px solid rgba(255,255,255,.38)!important;
+  color:#fff!important;
+}
+.tbc-video-btn-primary:hover{background:#ffdb32!important;transform:translateY(-1px)!important;}
+.tbc-video-btn-secondary:hover{background:rgba(255,255,255,.14)!important;transform:translateY(-1px)!important;}
+.tbc-partner-reviews{display:none!important;}
+.tbc-hero-trust-points{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  flex-wrap:wrap!important;
+  gap:10px 27px!important;
+  width:760px!important;
+  max-width:65vw!important;
+  margin:0!important;
+  color:#fff!important;
+}
+.tbc-trust-point{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  color:#fff!important;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:11px!important;
+  line-height:1.2!important;
+  font-weight:800!important;
+  white-space:nowrap!important;
+  text-shadow:none!important;
+}
+.tbc-trust-icon{color:#fff!important;font-size:12px!important;line-height:1!important;}
+
+/* Booking dock follows reference placement while keeping CappadociaGo copy. */
+.booking-callout{
+  position:absolute!important;
+  z-index:7!important;
+  left:50%!important;
+  right:auto!important;
+  bottom:18px!important;
+  transform:translateX(-50%)!important;
+  width:min(1100px,calc(100% - 48px))!important;
+  margin:0!important;
+}
+.booking-callout .booking-section-heading{
+  display:flex!important;
+  align-items:baseline!important;
+  justify-content:center!important;
+  flex-wrap:wrap!important;
+  width:100%!important;
+  margin:0 auto 14px!important;
+  padding:0!important;
+  color:#fff!important;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:clamp(34px,3.1vw,48px)!important;
+  line-height:1.04!important;
+  font-style:normal!important;
+  font-weight:900!important;
+  letter-spacing:-.05em!important;
+  text-align:center!important;
+  text-shadow:0 2px 8px rgba(0,0,0,.18)!important;
+}
+.booking-callout .booking-section-heading>span{font:inherit!important;color:#fff!important;-webkit-text-fill-color:#fff!important;}
+.booking-callout .booking-brand-blue{font:inherit!important;color:var(--ref-yellow)!important;-webkit-text-fill-color:var(--ref-yellow)!important;font-weight:900!important;}
+.booking-callout .booking-brand-gold{font:inherit!important;color:#2e91e8!important;-webkit-text-fill-color:#2e91e8!important;font-weight:900!important;margin-left:.08em!important;}
+.booking-callout .tbc-booking-wrap{position:relative!important;inset:auto!important;transform:none!important;width:100%!important;margin:0!important;}
+.booking-callout .tbc-booking-box{
+  padding:5px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:var(--ref-yellow)!important;
+  box-shadow:0 18px 34px rgba(0,0,0,.24)!important;
+}
+.booking-callout .tbc-booking-grid{gap:5px!important;}
+.booking-callout .tbc-select-btn,
+.booking-callout .dates-custom-box{
+  background:#fff!important;
+  border:0!important;
+  border-radius:999px!important;
+  min-height:54px!important;
+  height:54px!important;
+  color:var(--ref-navy)!important;
+  box-shadow:none!important;
+}
+.booking-callout .tbc-submit{
+  min-height:54px!important;
+  height:54px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:var(--ref-navy)!important;
+  color:#fff!important;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  font-size:13px!important;
+  font-weight:900!important;
+}
+.booking-callout .tbc-placeholder,
+.booking-callout .dates-top-label,
+.booking-callout .date-slot{
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif!important;
+  color:var(--ref-navy)!important;
+}
+.booking-callout .tbc-placeholder{font-size:13px!important;font-weight:850!important;}
+.booking-callout .dates-top-label{font-size:8.5px!important;font-weight:900!important;}
+.booking-callout .date-slot{font-size:12px!important;font-weight:850!important;}
+.booking-callout .tbc-arrow{color:var(--ref-navy)!important;}
+
+/* TABLET / MOBILE HEADER + HAMBURGER */
+@media(max-width:1120px){
+  .site-header .header-container{width:calc(100% - 30px)!important;height:82px!important;gap:14px!important;}
+  .site-header .logo-home img,.site-header .logo img{height:57px!important;max-width:145px!important;}
+  .header-phone-pill{height:38px!important;padding:0 11px!important;font-size:10px!important;}
+  .header-phone-pill img{width:17px!important;height:17px!important;min-width:17px!important;max-width:17px!important;flex-basis:17px!important;}
+  .main-nav ul{gap:16px!important;}
+  .main-nav a{font-size:11.5px!important;}
+  .tbc-video-title{font-size:44px!important;width:570px!important;max-width:56vw!important;}
+  .tbc-video-text{width:540px!important;max-width:54vw!important;}
+}
+@media(max-width:980px){
+  .site-header{position:relative!important;}
+  .site-header .header-container{width:calc(100% - 28px)!important;height:76px!important;display:grid!important;grid-template-columns:auto 1fr auto!important;gap:10px!important;}
+  .site-header .logo{gap:9px!important;}
+  .site-header .logo-home img,.site-header .logo img{height:52px!important;max-width:128px!important;}
+  .header-phone-pill{width:34px!important;height:34px!important;padding:0!important;border-radius:50%!important;min-width:34px!important;}
+  .header-phone-pill span{display:none!important;}
+  .header-phone-pill img{width:17px!important;height:17px!important;min-width:17px!important;max-width:17px!important;flex-basis:17px!important;}
+  .header-right{gap:8px!important;}
+  .lang-btn{height:36px!important;min-width:66px!important;padding:0 10px!important;}
+  .mobile-menu-toggle{
+    display:flex!important;
+    width:38px!important;
+    height:38px!important;
+    padding:0!important;
+    border:1px solid #d6e0ea!important;
+    border-radius:50%!important;
+    background:#fff!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+    gap:4px!important;
+    box-shadow:none!important;
+  }
+  .mobile-menu-toggle span{display:block!important;width:15px!important;height:2px!important;background:var(--ref-navy)!important;border-radius:999px!important;transition:.2s ease!important;}
+  .mobile-menu-toggle.is-active span:nth-child(1){transform:translateY(6px) rotate(45deg)!important;}
+  .mobile-menu-toggle.is-active span:nth-child(2){opacity:0!important;}
+  .mobile-menu-toggle.is-active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)!important;}
+  .main-nav{
+    display:none!important;
+    position:absolute!important;
+    z-index:1190!important;
+    top:76px!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    padding:10px 18px 18px!important;
+    background:#fff!important;
+    border-top:1px solid #edf0f4!important;
+    box-shadow:0 18px 30px rgba(7,24,45,.14)!important;
+  }
+  .main-nav.is-open{display:block!important;}
+  .main-nav ul{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;width:100%!important;}
+  .main-nav li{width:100%!important;}
+  .main-nav a{display:flex!important;align-items:center!important;min-height:46px!important;padding:0 6px!important;border-bottom:1px solid #edf1f5!important;font-size:13px!important;font-weight:800!important;}
+  .main-nav li:last-child a{border-bottom:0!important;}
+
+  .tbc-video-hero{height:760px!important;min-height:760px!important;}
+  .tbc-video-content{width:calc(100% - 36px)!important;padding:40px 0 255px!important;}
+  .tbc-video-title{font-size:42px!important;width:590px!important;max-width:72vw!important;}
+  .tbc-video-text{width:560px!important;max-width:70vw!important;}
+  .tbc-hero-trust-points{width:650px!important;max-width:82vw!important;gap:9px 20px!important;}
+  .booking-callout{width:calc(100% - 28px)!important;bottom:16px!important;}
+  .booking-callout .booking-section-heading{font-size:34px!important;margin-bottom:12px!important;}
+}
+@media(max-width:700px){
+  .site-header .header-container{width:calc(100% - 20px)!important;height:70px!important;gap:7px!important;}
+  .site-header .logo-home img,.site-header .logo img{height:48px!important;max-width:116px!important;}
+  .header-phone-pill{width:31px!important;height:31px!important;min-width:31px!important;}
+  .header-phone-pill img{width:16px!important;height:16px!important;min-width:16px!important;max-width:16px!important;flex-basis:16px!important;}
+  .lang-btn{height:34px!important;min-width:61px!important;padding:0 8px!important;font-size:10px!important;}
+  .mobile-menu-toggle{width:34px!important;height:34px!important;}
+  .main-nav{top:70px!important;padding:8px 15px 16px!important;}
+
+  .tbc-video-hero{height:auto!important;min-height:885px!important;}
+  .tbc-mobile-hero img{object-position:56% center!important;}
+  .tbc-video-overlay{background:linear-gradient(180deg,rgba(8,31,54,.84) 0%,rgba(12,40,65,.72) 60%,rgba(10,31,51,.82) 100%)!important;}
+  .tbc-video-content{width:calc(100% - 32px)!important;padding:34px 0 400px!important;align-items:flex-start!important;text-align:left!important;}
+  .tbc-video-kicker{min-height:26px!important;font-size:9.5px!important;padding:0 11px!important;margin-bottom:13px!important;}
+  .tbc-video-title{width:100%!important;max-width:100%!important;font-size:36px!important;line-height:1.08!important;margin-bottom:16px!important;text-align:left!important;}
+  .tbc-video-text{width:100%!important;max-width:100%!important;font-size:12.5px!important;line-height:1.55!important;margin-bottom:18px!important;text-align:left!important;}
+  .tbc-video-actions{gap:9px!important;margin-bottom:18px!important;}
+  .tbc-video-btn{min-height:42px!important;padding:0 16px!important;font-size:10.5px!important;}
+  .tbc-hero-trust-points{width:100%!important;max-width:100%!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px 9px!important;}
+  .tbc-trust-point{font-size:9.5px!important;white-space:normal!important;gap:5px!important;}
+  .booking-callout{width:calc(100% - 18px)!important;bottom:12px!important;}
+  .booking-callout .booking-section-heading{font-size:27px!important;line-height:1.06!important;margin-bottom:10px!important;padding:0 4px!important;}
+  .booking-callout .tbc-booking-box{border-radius:25px!important;padding:5px!important;}
+  .booking-callout .tbc-booking-grid{grid-template-columns:1fr!important;gap:5px!important;}
+  .booking-callout .tbc-select-btn,.booking-callout .dates-custom-box,.booking-callout .tbc-submit{height:50px!important;min-height:50px!important;border-radius:20px!important;}
+  .booking-callout .tbc-placeholder{font-size:13px!important;}
+  .booking-callout .date-slot{font-size:12px!important;}
+  .booking-callout .tbc-submit{font-size:13px!important;}
+}
+@media(max-width:390px){
+  .site-header .logo-home img,.site-header .logo img{height:44px!important;max-width:106px!important;}
+  .tbc-video-title{font-size:32px!important;}
+  .booking-callout .booking-section-heading{font-size:24px!important;}
+}
+</style>

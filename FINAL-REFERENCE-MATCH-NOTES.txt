@@ -1,0 +1,10 @@
+Final reference match (2026-08-29)
+- Header proportions rebuilt to follow turkeyballoonscappadocia.com visual structure.
+- Existing CappadociaGo logo/content/links preserved.
+- WhatsApp phone pill icon reduced to 18px desktop, 16-17px mobile.
+- Language pill changed to clean white/navy/blue reference styling.
+- Hero rebuilt as left-aligned bold sans typography with navy overlay and yellow CTA.
+- Existing hero content preserved.
+- Existing four trust statements preserved.
+- Booking/calendar form functionality and markup preserved; only final visual layer changed.
+- Mobile hamburger is compact circular button and opens a clean full-width dropdown under header.
