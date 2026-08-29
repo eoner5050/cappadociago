@@ -9716,4 +9716,58 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
     padding-inline:6px!important;
   }
 }
+
+
+/* =========================================================
+   FINAL MOBILE FLOW FIX — 2026-08-30
+   Removes the artificial white gap below the booking/calendar area.
+   Mobile booking stays in normal document flow; desktop remains unchanged.
+   ========================================================= */
+@media (max-width:680px){
+  .tbc-video-hero{
+    min-height:0!important;
+    height:auto!important;
+    overflow:visible!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  .tbc-video-hero .tbc-mobile-hero,
+  .tbc-video-hero .tbc-video-overlay{
+    position:absolute!important;
+    inset:0!important;
+  }
+  .tbc-video-content{
+    position:relative!important;
+    inset:auto!important;
+    transform:none!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:84px 18px 28px!important;
+    min-height:0!important;
+  }
+  .tbc-booking-wrap{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    top:auto!important;
+    transform:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0 8px 14px!important;
+    z-index:20!important;
+  }
+  .tbc-booking-box{margin:0!important;}
+  .infinite-slider-section{
+    padding-top:14px!important;
+    margin-top:0!important;
+  }
+  .tours-section{margin-top:0!important;}
+}
+@media (max-width:390px){
+  .tbc-video-content{padding:78px 14px 24px!important;}
+  .tbc-booking-wrap{padding:0 6px 12px!important;}
+  .infinite-slider-section{padding-top:10px!important;}
+}
 </style>

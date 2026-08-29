@@ -1,5 +1,7 @@
 -- CAPPADOCIAGO - MANUEL REZERVASYON DETAYLARI
--- Supabase > SQL Editor içinde SADECE BIR KEZ çalıştırın.
+-- Supabase > SQL Editor içinde çalıştırabilirsiniz; script tekrar çalıştırılabilir.
+
+create extension if not exists pgcrypto;
 
 create table if not exists public.reservations (
   id uuid primary key default gen_random_uuid(),
@@ -26,23 +28,23 @@ drop policy if exists "admins can read reservations" on public.reservations;
 create policy "admins can read reservations"
 on public.reservations for select
 to authenticated
-using (exists (select 1 from public.admin_users a where a.user_id = auth.uid()));
+using (exists (select 1 from public.admin_users a where a.user_id = (select auth.uid())));
 
 drop policy if exists "admins can insert reservations" on public.reservations;
 create policy "admins can insert reservations"
 on public.reservations for insert
 to authenticated
-with check (exists (select 1 from public.admin_users a where a.user_id = auth.uid()));
+with check (exists (select 1 from public.admin_users a where a.user_id = (select auth.uid())));
 
 drop policy if exists "admins can update reservations" on public.reservations;
 create policy "admins can update reservations"
 on public.reservations for update
 to authenticated
-using (exists (select 1 from public.admin_users a where a.user_id = auth.uid()))
-with check (exists (select 1 from public.admin_users a where a.user_id = auth.uid()));
+using (exists (select 1 from public.admin_users a where a.user_id = (select auth.uid())))
+with check (exists (select 1 from public.admin_users a where a.user_id = (select auth.uid())));
 
 drop policy if exists "admins can delete reservations" on public.reservations;
 create policy "admins can delete reservations"
 on public.reservations for delete
 to authenticated
-using (exists (select 1 from public.admin_users a where a.user_id = auth.uid()));
+using (exists (select 1 from public.admin_users a where a.user_id = (select auth.uid())));

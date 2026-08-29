@@ -1,6 +1,8 @@
 -- CAPPADOCIAGO - LIVE BOOKING UPDATE
 -- Existing Supabase project: run this once in SQL Editor.
 
+alter table public.products add column if not exists ask_for_price boolean not null default false;
+
 grant usage on schema public to anon;
 grant select on public.products to anon;
 grant select on public.availability to anon;

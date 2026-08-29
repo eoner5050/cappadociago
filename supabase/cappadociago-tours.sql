@@ -9,7 +9,7 @@ create extension if not exists pgcrypto;
 -- ------------------------------------------------------------
 -- 1) TOURS: language-independent core data
 -- ------------------------------------------------------------
-create table if not exists tours (
+create table if not exists public.tours (
   id uuid primary key default gen_random_uuid(),
   slug text unique not null,                 -- e.g. 'cappadocia-hot-air-balloon-tour'
   category text not null,                    -- balloon | daily | package | activity | transfer | private | safari | sunset
@@ -28,9 +28,9 @@ create table if not exists tours (
 -- ------------------------------------------------------------
 -- 2) TOUR_TRANSLATIONS: everything text-based, per language
 -- ------------------------------------------------------------
-create table if not exists tour_translations (
+create table if not exists public.tour_translations (
   id uuid primary key default gen_random_uuid(),
-  tour_id uuid not null references tours(id) on delete cascade,
+  tour_id uuid not null references public.tours(id) on delete cascade,
   lang text not null check (lang in ('tr', 'en', 'es')),
 
   title text not null,
@@ -65,29 +65,31 @@ create table if not exists tour_translations (
   unique (tour_id, lang)
 );
 
-create index if not exists idx_tour_translations_tour_id on tour_translations(tour_id);
-create index if not exists idx_tour_translations_lang on tour_translations(lang);
-create index if not exists idx_tours_slug on tours(slug);
-create index if not exists idx_tours_category on tours(category);
+create index if not exists idx_tour_translations_tour_id on public.tour_translations(tour_id);
+create index if not exists idx_tour_translations_lang on public.tour_translations(lang);
+create index if not exists idx_tours_slug on public.tours(slug);
+create index if not exists idx_tours_category on public.tours(category);
 
 -- ------------------------------------------------------------
 -- 3) Row Level Security
 -- ------------------------------------------------------------
-alter table tours enable row level security;
-alter table tour_translations enable row level security;
+alter table public.tours enable row level security;
+alter table public.tour_translations enable row level security;
 
 -- Public (anon) visitors can only READ published tours
+drop policy if exists "Public can read published tours" on public.tours;
 create policy "Public can read published tours"
-  on tours for select
+  on public.tours for select to anon
   using (is_published = true);
 
+drop policy if exists "Public can read translations of published tours" on public.tour_translations;
 create policy "Public can read translations of published tours"
-  on tour_translations for select
+  on public.tour_translations for select to anon
   using (
     exists (
-      select 1 from tours
-      where tours.id = tour_translations.tour_id
-      and tours.is_published = true
+      select 1 from public.tours t
+      where t.id = tour_translations.tour_id
+      and t.is_published = true
     )
   );
 
@@ -100,7 +102,7 @@ create policy "Public can read translations of published tours"
 -- ------------------------------------------------------------
 -- 4) Keep updated_at fresh automatically
 -- ------------------------------------------------------------
-create or replace function set_updated_at()
+create or replace function public.cappadociago_set_updated_at()
 returns trigger as $$
 begin
   new.updated_at = now();
@@ -108,7 +110,12 @@ begin
 end;
 $$ language plpgsql;
 
-drop trigger if exists trg_tours_updated_at on tours;
+drop trigger if exists trg_tours_updated_at on public.tours;
 create trigger trg_tours_updated_at
-  before update on tours
-  for each row execute function set_updated_at();
+  before update on public.tours
+  for each row execute function public.cappadociago_set_updated_at();
+
+
+-- Explicit privileges required in addition to RLS policies.
+grant usage on schema public to anon, authenticated;
+grant select on public.tours, public.tour_translations to anon, authenticated;

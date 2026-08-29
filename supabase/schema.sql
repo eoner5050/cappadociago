@@ -9,6 +9,7 @@ create table if not exists public.products (
   default_price numeric(10,2) not null default 0,
   default_capacity integer not null default 0 check (default_capacity >= 0),
   active boolean not null default true,
+  ask_for_price boolean not null default false,
   created_at timestamptz not null default now()
 );
 
@@ -29,6 +30,8 @@ create table if not exists public.admin_users (
   role text not null default 'admin' check (role in ('admin','manager')),
   created_at timestamptz not null default now()
 );
+
+alter table public.products add column if not exists ask_for_price boolean not null default false;
 
 create index if not exists idx_availability_product_date on public.availability(product_id,date);
 create index if not exists idx_products_active_category on public.products(active,category);
@@ -54,6 +57,16 @@ create policy "admins can update products"
 on public.products for update to authenticated
 using (exists (select 1 from public.admin_users a where a.user_id=(select auth.uid())))
 with check (exists (select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+drop policy if exists "admins can insert products" on public.products;
+create policy "admins can insert products"
+on public.products for insert to authenticated
+with check (exists (select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+drop policy if exists "admins can delete products" on public.products;
+create policy "admins can delete products"
+on public.products for delete to authenticated
+using (exists (select 1 from public.admin_users a where a.user_id=(select auth.uid())));
 
 -- Availability: authenticated admins/managers only for MVP.
 drop policy if exists "admins can read availability" on public.availability;

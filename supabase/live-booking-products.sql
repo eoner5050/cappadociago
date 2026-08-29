@@ -1,6 +1,8 @@
 -- Run once in Supabase SQL Editor after uploading this package.
 -- Adds the new products and keeps public calendar data read-only.
 
+alter table public.products add column if not exists ask_for_price boolean not null default false;
+
 grant usage on schema public to anon;
 grant select on public.products to anon;
 grant select on public.availability to anon;

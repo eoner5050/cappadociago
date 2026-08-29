@@ -1,0 +1,10 @@
+CappadociaGo Supabase SQL — recommended order
+
+1) Fresh project: run CAPPADOCIAGO-FULL-SETUP.sql once. It is safe to re-run.
+2) If you use the admin Add Tour API, also run cappadociago-tours.sql. It is now re-runnable.
+3) Do NOT need to run schema.sql/admin-reservations.sql/live-booking-update.sql separately after FULL SETUP. They remain for incremental/legacy installations.
+
+Important fix in this package:
+- products.ask_for_price is created/upgraded because the website/admin code reads and updates it.
+- RLS policies are re-runnable (DROP POLICY IF EXISTS before CREATE).
+- public read grants are explicit; RLS still protects writes.

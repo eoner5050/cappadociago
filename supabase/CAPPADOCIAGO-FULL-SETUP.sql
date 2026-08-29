@@ -9,6 +9,7 @@ create table if not exists public.products (
   default_price numeric(10,2) not null default 0,
   default_capacity integer not null default 0 check (default_capacity >= 0),
   active boolean not null default true,
+  ask_for_price boolean not null default false,
   created_at timestamptz not null default now()
 );
 
@@ -29,6 +30,8 @@ create table if not exists public.admin_users (
   role text not null default 'admin' check (role in ('admin','manager')),
   created_at timestamptz not null default now()
 );
+
+alter table public.products add column if not exists ask_for_price boolean not null default false;
 
 create index if not exists idx_availability_product_date on public.availability(product_id,date);
 create index if not exists idx_products_active_category on public.products(active,category);
@@ -202,3 +205,47 @@ category=excluded.category,
 default_price=excluded.default_price,
 default_capacity=excluded.default_capacity,
 active=true;
+
+-- ============================================================
+-- FINAL SAFETY / IDEMPOTENCY PATCH — 2026-08-30
+-- Safe to run repeatedly after the base setup above.
+-- ============================================================
+
+-- Admins may also insert/delete products when managing the catalog.
+drop policy if exists "admins can insert products" on public.products;
+create policy "admins can insert products"
+on public.products for insert to authenticated
+with check (exists (select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+drop policy if exists "admins can delete products" on public.products;
+create policy "admins can delete products"
+on public.products for delete to authenticated
+using (exists (select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+-- Keep timestamps accurate.
+create or replace function public.cappadociago_touch_updated_at()
+returns trigger
+language plpgsql
+set search_path = public
+as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_availability_updated_at on public.availability;
+create trigger trg_availability_updated_at
+before update on public.availability
+for each row execute function public.cappadociago_touch_updated_at();
+
+drop trigger if exists trg_reservations_updated_at on public.reservations;
+create trigger trg_reservations_updated_at
+before update on public.reservations
+for each row execute function public.cappadociago_touch_updated_at();
+
+-- Explicit privileges. RLS still controls which rows each role can see/change.
+grant usage on schema public to anon, authenticated;
+grant select on public.products, public.availability to anon;
+grant select, insert, update, delete on public.products, public.availability, public.reservations to authenticated;
+grant select on public.admin_users to authenticated;
