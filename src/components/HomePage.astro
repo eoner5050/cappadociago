@@ -529,29 +529,11 @@ const homepageReviews = [
           </a>
         </div>
 
-        <div class="tbc-partner-reviews">
-          <div class="tbc-review-badge" aria-label="TripAdvisor rating">
-            <img src="/images/icons/tripadvisor-logo.webp" alt="TripAdvisor" class="tbc-badge-logo" width="22" height="22" loading="lazy" />
-            <div class="tbc-badge-info">
-              <div class="tbc-stars">★★★★★</div>
-              <span class="tbc-badge-text">{t.trust.tripadvisor}</span>
-            </div>
-          </div>
-
-          <div class="tbc-review-badge" aria-label="Google rating">
-            <img src="/images/icons/google-logo.webp" alt="Google" class="tbc-badge-logo" width="22" height="22" loading="lazy" />
-            <div class="tbc-badge-info">
-              <div class="tbc-stars">★★★★★</div>
-              <span class="tbc-badge-text">{t.trust.google}</span>
-            </div>
-          </div>
-        </div>
-
         <div class="tbc-hero-trust-points" aria-label="Why choose CappadociaGo">
-          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">✹</span><span>{heroTrust.prime}</span></div>
-          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">◉</span><span>{heroTrust.support}</span></div>
-          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">★</span><span>{heroTrust.loved}</span></div>
-          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">✦</span><span>{heroTrust.best}</span></div>
+          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">✦</span><span>Premium Experiences</span></div>
+          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">●</span><span>24/7 Customer Care</span></div>
+          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">★</span><span>Top Rated</span></div>
+          <div class="tbc-trust-point"><span class="tbc-trust-icon" aria-hidden="true">✦</span><span>Best-in-Class Tours</span></div>
         </div>
       </div>
 
@@ -7852,3 +7834,85 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
 
 </style>
 
+
+
+<style is:global>
+/* =========================================================
+   2026-08-29 — HERO SPACING + TRUST STRIP + NO GLOW
+   Final override requested by owner.
+   ========================================================= */
+.tbc-partner-reviews{display:none!important;}
+
+/* Move the entire hero content down and preserve breathing room. */
+.tbc-video-hero{min-height:820px!important;}
+.tbc-video-content{padding-top:150px!important;padding-bottom:255px!important;}
+
+/* Four clean trust messages replacing review badges. */
+.tbc-hero-trust-points{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-wrap:wrap!important;
+  gap:12px 30px!important;
+  margin:4px auto 0!important;
+  color:#fff!important;
+}
+.tbc-trust-point{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+  font-size:12px!important;
+  line-height:1.2!important;
+  font-weight:800!important;
+  color:#fff!important;
+  white-space:nowrap!important;
+  text-shadow:none!important;
+}
+.tbc-trust-icon{color:#e9b545!important;font-size:12px!important;}
+
+/* Remove the glow from the Plan Your Flight heading completely. */
+.booking-callout .booking-section-heading,
+.booking-callout .booking-section-heading>span,
+.booking-callout .booking-brand-blue,
+.booking-callout .booking-brand-gold{
+  text-shadow:none!important;
+  filter:none!important;
+}
+
+/* Keep booking title clean and legible on the photo. */
+.booking-callout .booking-section-heading{
+  color:#fff!important;
+}
+.booking-callout .booking-section-heading>span{color:#fff!important;-webkit-text-fill-color:#fff!important;}
+.booking-callout .booking-brand-blue{color:#e9b545!important;-webkit-text-fill-color:#e9b545!important;}
+.booking-callout .booking-brand-gold{color:#0a63b5!important;-webkit-text-fill-color:#0a63b5!important;}
+
+@media(max-width:900px){
+  .tbc-video-hero{min-height:900px!important;}
+  .tbc-video-content{padding:132px 18px 330px!important;}
+  .tbc-video-title{font-size:clamp(31px,8.3vw,40px)!important;line-height:1.08!important;margin-bottom:14px!important;}
+  .tbc-video-text{font-size:12.5px!important;line-height:1.55!important;margin-bottom:18px!important;}
+  .tbc-video-actions{margin-bottom:20px!important;}
+  .tbc-hero-trust-points{
+    width:min(560px,100%)!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px 12px!important;
+    margin-top:2px!important;
+  }
+  .tbc-trust-point{justify-content:flex-start!important;font-size:10.5px!important;white-space:normal!important;}
+  .booking-callout{margin-top:-100px!important;}
+}
+@media(max-width:520px){
+  .tbc-video-hero{min-height:920px!important;}
+  .tbc-video-content{padding:128px 15px 350px!important;}
+  .tbc-video-title{font-size:32px!important;line-height:1.08!important;}
+  .tbc-video-text{font-size:12px!important;}
+  .tbc-video-actions .tbc-video-btn{font-size:10.5px!important;min-height:46px!important;}
+  .tbc-hero-trust-points{grid-template-columns:1fr 1fr!important;gap:9px 8px!important;}
+  .tbc-trust-point{font-size:9.8px!important;gap:5px!important;}
+  .booking-callout{margin-top:-104px!important;}
+  .booking-callout .booking-section-heading{font-size:25px!important;line-height:1.1!important;}
+}
+</style>
