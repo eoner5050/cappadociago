@@ -514,7 +514,7 @@ const homepageReviews = [
                   <div class="tbc-options">
                     
                     <!-- Balloons Tours -->
-                    <div class="tbc-opt-group-title">{t.categories.balloonTours}</div>
+                    <div class="tbc-opt-group-title">{lang === "tr" ? "Kapadokya Sıcak Hava Balonu" : lang === "es" ? "Globo Aerostático Capadocia" : "Hot Air Balloon Cappadocia"}</div>
                     <div class="tbc-option" data-value="Göreme Comfort Hot Air Balloon Tour">Göreme Comfort Hot Air Balloon Tour</div>
                     <div class="tbc-option" data-value="Göreme Standart Hot Air Balloon Tour">Göreme Standart Hot Air Balloon Tour</div>
                     <div class="tbc-option" data-value="Ihlara Valley Balloons Tour">Ihlara Valley Balloons Tour</div>
@@ -522,26 +522,26 @@ const homepageReviews = [
                     <div class="tbc-option" data-value="Soğanlı Valley Balloon Tour">Soğanlı Valley Balloon Tour</div>
 
                     <!-- Daily Tours -->
-                    <div class="tbc-opt-group-title">{t.categories.dailyTours}</div>
+                    <div class="tbc-opt-group-title">{lang === "tr" ? "Kapadokya Turları" : lang === "es" ? "Tours por Capadocia" : "Cappadocia Tours"}</div>
                     <div class="tbc-option" data-value="Cappadocia Custom Package Tour">Cappadocia Custom Package Tour</div>
                     <div class="tbc-option" data-value="Blue Tour Cappadocia">Blue Tour Cappadocia</div>
                     <div class="tbc-option" data-value="Red Tour Cappadocia">Red Tour Cappadocia</div>
                     <div class="tbc-option" data-value="Green Tour Cappadocia">Green Tour Cappadocia</div>
 
                     <!-- Private Tours -->
-                    <div class="tbc-opt-group-title">{t.categories.privateTours}</div>
+                    <div class="tbc-opt-group-title">{lang === "tr" ? "Özel Turlar" : lang === "es" ? "Tours Privados" : "Private Tours"}</div>
                     <div class="tbc-option" data-value="Private Red Tour Cappadocia">Private Red Tour Cappadocia</div>
                     <div class="tbc-option" data-value="Private Green Tour Cappadocia">Private Green Tour Cappadocia</div>
                     <div class="tbc-option" data-value="Cappadocia Mix Tour">Cappadocia Mix Tour</div>
 
                     <!-- Transfers -->
-                    <div class="tbc-opt-group-title">{t.categories.transfers}</div>
+                    <div class="tbc-opt-group-title">{lang === "tr" ? "Kapadokya Transferleri" : lang === "es" ? "Traslados en Capadocia" : "Cappadocia Transfers"}</div>
                     <div class="tbc-option" data-value="Kayseri Airport (ASR) Shuttle Transfer">Kayseri Airport (ASR) Shuttle Transfer</div>
                     <div class="tbc-option" data-value="Nevşehir Airport (NAV) Shuttle Transfer">Nevşehir Airport (NAV) Shuttle Transfer</div>
                     <div class="tbc-option" data-value="Private VIP Airport Transfer Cappadocia">Private VIP Airport Transfer Cappadocia</div>
 
                     <!-- Activites -->
-                    <div class="tbc-opt-group-title">{t.categories.activities}</div>
+                    <div class="tbc-opt-group-title">{lang === "tr" ? "Aktiviteler" : lang === "es" ? "Actividades" : "Activities"}</div>
                     <div class="tbc-option" data-value="ATV Tour With Göreme Valleys">ATV Tour With Göreme Valleys</div>
                     <div class="tbc-option" data-value="Jeep Safari Cappadocia">Jeep Safari Cappadocia</div>
                     <div class="tbc-option" data-value="Sunrise or Sunset Horse Riding Cappadocia">Sunrise or Sunset Horse Riding Cappadocia</div>
@@ -11819,5 +11819,136 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .booking-callout .date-slot .d-m,
   .booking-callout .date-slot .d-d{font-size:12px!important;}
   .booking-callout .tbc-submit{font-size:13px!important;}
+}
+</style>
+
+
+<style is:global>
+/* 2026-08-30 FINAL COMPACT BOOKING PASS — colors and behavior preserved */
+@media (max-width:700px){
+  .tbc-hero-form > .booking-callout,
+  .booking-callout{
+    width:calc(100% - 42px)!important;
+    max-width:318px!important;
+    margin:0 auto 6px!important;
+  }
+  .booking-callout .tbc-booking-box{
+    padding:5px!important;
+    border-radius:21px!important;
+    background:#FFD400!important;
+    box-shadow:0 6px 14px rgba(7,31,58,.14)!important;
+  }
+  .booking-callout .tbc-booking-grid{gap:4px!important;}
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-field-wrap.dates-custom-box,
+  .booking-callout .tbc-select-btn{
+    height:39px!important;
+    min-height:39px!important;
+    border-radius:18px!important;
+  }
+  .booking-callout .tbc-select-btn{
+    padding:0 13px!important;
+    font-size:10px!important;
+    font-weight:800!important;
+    letter-spacing:-.01em!important;
+  }
+  .booking-callout .tbc-placeholder{font-size:10px!important;font-weight:800!important;}
+  .booking-callout .tbc-arrow{font-size:11px!important;}
+  .booking-callout .dates-custom-box{
+    height:43px!important;
+    min-height:43px!important;
+    padding:5px 13px!important;
+  }
+  .booking-callout .dates-top-label,
+  .booking-callout .tbc-date-label{
+    font-size:6.6px!important;
+    line-height:1!important;
+    margin:0 0 2px!important;
+  }
+  .booking-callout .dates-inputs-row{gap:6px!important;}
+  .booking-callout .date-slot{gap:2px!important;}
+  .booking-callout .date-slot .d-m,
+  .booking-callout .date-slot .d-d,
+  .booking-callout .tbc-date-value{font-size:10.5px!important;font-weight:900!important;}
+  .booking-callout .date-slot .d-a{font-size:7.5px!important;}
+  .booking-callout .date-divider{font-size:9px!important;}
+  .booking-callout .tbc-field-wrap:last-child,
+  .booking-callout .tbc-submit{
+    height:39px!important;
+    min-height:39px!important;
+    border-radius:18px!important;
+  }
+  .booking-callout .tbc-submit{font-size:12px!important;font-weight:900!important;}
+
+  /* Tour dropdown: same section labels as hamburger menu, every tour title fully readable. */
+  .booking-callout .tbc-custom-select{position:relative!important;}
+  .booking-callout .tbc-options{
+    top:calc(100% + 4px)!important;
+    left:0!important;
+    right:auto!important;
+    width:100%!important;
+    min-width:100%!important;
+    max-width:100%!important;
+    max-height:min(52vh,330px)!important;
+    padding:5px!important;
+    border-radius:15px!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    z-index:100500!important;
+    box-sizing:border-box!important;
+  }
+  .booking-callout .tbc-opt-group-title{
+    padding:7px 9px 5px!important;
+    margin:0!important;
+    font-size:7.5px!important;
+    line-height:1.15!important;
+    font-weight:900!important;
+    letter-spacing:.02em!important;
+    white-space:normal!important;
+  }
+  .booking-callout .tbc-option{
+    min-height:34px!important;
+    height:auto!important;
+    padding:8px 9px!important;
+    font-size:9.4px!important;
+    line-height:1.25!important;
+    font-weight:750!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    word-break:normal!important;
+  }
+
+  /* Compact date popover too; keeps all dates visible without changing behavior. */
+  .booking-callout .tbc-date-popover{
+    width:min(300px,calc(100vw - 30px))!important;
+    max-width:300px!important;
+    max-height:72vh!important;
+    overflow:auto!important;
+    padding:10px!important;
+    border-radius:16px!important;
+    z-index:100600!important;
+  }
+  .booking-callout .tbc-date-head{margin-bottom:6px!important;}
+  .booking-callout .tbc-date-title{font-size:11px!important;}
+  .booking-callout .tbc-date-nav{width:28px!important;height:28px!important;font-size:16px!important;}
+  .booking-callout .tbc-date-months{gap:7px!important;}
+  .booking-callout .tbc-date-month-title{font-size:10px!important;margin-bottom:5px!important;}
+  .booking-callout .tbc-date-weekdays{font-size:6.5px!important;}
+  .booking-callout .tbc-date-day{min-height:29px!important;height:29px!important;font-size:8.5px!important;border-radius:8px!important;}
+  .booking-callout .tbc-date-help{font-size:7px!important;padding-top:7px!important;}
+}
+@media (max-width:380px){
+  .tbc-hero-form > .booking-callout,
+  .booking-callout{width:calc(100% - 52px)!important;max-width:292px!important;}
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-field-wrap.dates-custom-box,
+  .booking-callout .tbc-select-btn{height:37px!important;min-height:37px!important;}
+  .booking-callout .dates-custom-box{height:41px!important;min-height:41px!important;}
+  .booking-callout .tbc-field-wrap:last-child,
+  .booking-callout .tbc-submit{height:37px!important;min-height:37px!important;}
+  .booking-callout .tbc-select-btn,.booking-callout .tbc-placeholder{font-size:9.5px!important;}
+  .booking-callout .date-slot .d-m,.booking-callout .date-slot .d-d{font-size:10px!important;}
+  .booking-callout .tbc-submit{font-size:11.5px!important;}
 }
 </style>
