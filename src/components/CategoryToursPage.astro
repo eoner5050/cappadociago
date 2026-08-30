@@ -114,7 +114,7 @@ const cards = t.tourCards.filter((card) => {
     </div>
   </div>
 </section>
-<main class="cat-section"><div class="cat-container"><div class="cat-list-head"><div><small>CAPPADOCIAGO COLLECTION</small><h2>{heading}</h2></div><p>{cards.length} {lang==='tr'?'deneyim':lang==='es'?'experiencias':'experiences'}</p></div><div class="cat-grid" id="categoryToursGrid" data-supabase-url={categorySupabaseUrl} data-supabase-key={categorySupabaseKey}>
+<main class="cat-section"><div class="cat-container"><div class="cat-list-head"><div><small>CAPPADOCIAGO COLLECTION</small><h2>{heading}</h2></div><p>{cards.length} {lang==='tr'?'deneyim':lang==='es'?'experiencias':'experiences'}</p></div><div class="cat-grid" id="categoryToursGrid" data-category={category} data-lang={lang} data-supabase-url={categorySupabaseUrl} data-supabase-key={categorySupabaseKey}>
 {cards.map((tour) => (
   <article class="cat-card" data-product-href={tour.href} data-product-slug={slugOf(tour)} data-product-name={tour.title}>
     <a class="cat-cover" href={hrefFor(tour)} aria-label={tour.title}></a>
@@ -155,6 +155,34 @@ const cards = t.tourCards.filter((card) => {
     const pageLang=document.documentElement.lang||'en', ask=pageLang==='tr'?'Fiyat Sorunuz':pageLang==='es'?'Consultar Precio':'Ask For Price';
     for(const card of cards){const product=bySlug.get(String(card.dataset.productSlug||'').trim().toLowerCase())||byName.get(norm(card.dataset.productName||''));if(!product)continue;const cur=card.querySelector('[data-cat-current-price]'),old=card.querySelector('[data-cat-old-price]');if(!cur||!old)continue;if(product.ask_for_price){cur.textContent=ask;old.textContent='';old.style.display='none';continue}const min=Number(minById.get(String(product.id))||0)||Number(product.default_price||0);if(!(min>0))continue;cur.textContent=`${Math.round(min)} €`;old.textContent=`${Math.round(min*1.20)} €`;old.style.display='';}
   }).catch(e=>console.error('Category live prices failed',e));
+})();
+</script>
+
+<script>
+(() => {
+  const grid=document.getElementById('categoryToursGrid');
+  if(!grid) return;
+  const base=grid.dataset.supabaseUrl||'', key=grid.dataset.supabaseKey||'', lang=grid.dataset.lang||'en', pageCategory=grid.dataset.category||'cappadocia';
+  if(!base||!key) return;
+  const headers={apikey:key,Authorization:`Bearer ${key}`};
+  const allowed={balloon:['balloon'],cappadocia:['daily','package'],private:['private'],transfers:['transfer'],activities:['activity','safari','sunset']}[pageCategory]||[];
+  const existing=new Set([...grid.querySelectorAll('[data-product-slug]')].map(x=>String(x.dataset.productSlug||'').toLowerCase()));
+  Promise.all([
+    fetch(`${base}/rest/v1/tours?is_published=eq.true&select=id,slug,category,price,old_price,duration_minutes,rating,hero_image&order=created_at.desc`,{headers,cache:'no-store'}).then(r=>r.ok?r.json():[]),
+    fetch(`${base}/rest/v1/tour_translations?lang=eq.${lang}&select=tour_id,title,duration_label,hero_desc`,{headers,cache:'no-store'}).then(r=>r.ok?r.json():[])
+  ]).then(([tours,translations])=>{
+    const trById=new Map(translations.map(t=>[String(t.tour_id),t]));
+    for(const t of tours){
+      if(!allowed.includes(String(t.category||''))||existing.has(String(t.slug||'').toLowerCase())) continue;
+      const tr=trById.get(String(t.id)); if(!tr?.title) continue;
+      const href=t.category==='transfer'?`/${lang}/transfers/${t.slug}`:`/${lang}/tours/${t.slug}`;
+      const card=document.createElement('article'); card.className='cat-card'; card.dataset.productSlug=t.slug; card.dataset.productName=tr.title;
+      const duration=tr.duration_label||(t.duration_minutes?`${t.duration_minutes} min`:'Flexible');
+      card.innerHTML=`<a class="cat-cover" href="${href}" aria-label="${esc(tr.title)}"></a><div class="cat-img"><img src="${esc(t.hero_image||'/images/hero-cappadociaGo.webp')}" alt="${esc(tr.title)}" loading="lazy"/><b>${Number(t.rating||4.9).toFixed(1)} ★</b></div><div class="cat-body"><small>${esc(duration)}</small><h2>${esc(tr.title)}</h2><em>${lang==='tr'?'Yeni tur':lang==='es'?'Nuevo tour':'New tour'}</em><div class="cat-price"><span>${lang==='tr'?'Başlangıç Fiyatı':lang==='es'?'Precio Desde':'Starting Price'}</span><div><del data-cat-old-price>${t.old_price?`${Math.round(Number(t.old_price))} €`:''}</del><strong data-cat-current-price>${Math.round(Number(t.price||0))} €</strong></div></div></div>`;
+      grid.appendChild(card); existing.add(String(t.slug).toLowerCase());
+    }
+  }).catch(()=>{});
+  function esc(v=''){return String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]||c))}
 })();
 </script>
 

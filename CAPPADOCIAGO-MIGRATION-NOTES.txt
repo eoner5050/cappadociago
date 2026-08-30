@@ -1,7 +1,7 @@
 CAPPADOCIAGO - CURRENT MIGRATION NOTES
 
 - CappadociaGo visual design remains the base design.
-- Turkey Balloons Cappadocia tour/admin/reservation functionality has been migrated.
+- Legacy tour/admin/reservation functionality has been migrated into CappadociaGo.
 - Flight Status feature has been completely removed (pages, APIs, forecast components and navigation links).
 - SEO Dashboard / SEO Management admin feature has been removed for now. Basic page metadata and sitemap support remain in place so normal pages do not lose technical essentials.
 - Company/About/Contact/Legal identity aligned to DiscoveryCappadocia.com:

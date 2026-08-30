@@ -9,7 +9,7 @@ const {
   lang = 'en', slug, title, heroDesc, overviewTitle, overviewParagraphs = [], priceTitle, priceText,
   included = [], importantTitle = 'Important Information', important = [], detailsTitle = 'Tour Details', details = [],
   extraSections = [], duration = 'Full Day', rating = '', mainImage, galleryImages = [], priceMode = 'perPerson',
-  sidebarBadges = [], sideHighlights = [], reviewCount = 0
+  sidebarBadges = [], sideHighlights = [], reviewCount = 0, seoTitle = '', seoDescription = ''
 } = Astro.props;
 const copy = {
   en:{home:'Home',balloon:'Balloon Tours',tours:'Cappadocia Tours',activities:'Activities',private:'Private Tours',transfers:'Transfers',price:'Tour Price, starting from',perPerson:'per person',group:'per group',ask:'Ask for Price',contact:'Contact via WhatsApp',form:'Quick Reservation Form',formDesc:'Leave your details and our team will contact you as soon as possible.',name:'Full Name',phone:'Phone Number',date:'Date',people:'Number of People',selectDate:'Select Date',selectPeople:'Select People',children:'Children are included in this number of people.',message:'Your Message',messagePh:'You can write your additional note.',send:'Send Reservation Request',unit:'Price per person',groupPrice:'Group price',total:'Total price',left:'left',closed:'Closed',sold:'Sold out',loading:'Loading availability...',availability:'Availability',request:'New Reservation Request',alert:'Please complete name, phone, date and number of people before sending.',duration:'Tour Duration',instant:'Instant Confirmation!'},
@@ -32,7 +32,7 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.me
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <SeoHead title={`${title} | CappadociaGo`} description={heroDesc || overviewParagraphs[0] || title} lang={lang} />
+  <SeoHead title={seoTitle || `${title} | CappadociaGo`} description={seoDescription || heroDesc || overviewParagraphs[0] || title} lang={lang} />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>

@@ -1,0 +1,9 @@
+---
+import DatabaseTourPage from '../../../components/DatabaseTourPage.astro';
+import { getPublishedTour } from '../../../lib/databaseTours';
+export const prerender = false;
+const { slug = '' } = Astro.params;
+const result = await getPublishedTour(slug, 'tr');
+if (!result) return Astro.redirect('/tr/transfers/');
+---
+<DatabaseTourPage lang="tr" tour={result.tour} translation={result.translation} />

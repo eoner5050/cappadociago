@@ -1,0 +1,40 @@
+---
+import StandardizedPrivateTourPage from './StandardizedPrivateTourPage.astro';
+const { lang='en', tour, translation } = Astro.props;
+const extras:any[] = [];
+if ((translation.not_included||[]).length) extras.push({ title: lang==='tr'?'Fiyata Dahil Olmayanlar':lang==='es'?'No Incluido':'What’s Not Included', items:translation.not_included });
+if ((translation.itinerary||[]).length) extras.push({ title: lang==='tr'?'Tur Programı':lang==='es'?'Itinerario':'Itinerary', items:translation.itinerary });
+if (translation.pickup_info) extras.push({ title: lang==='tr'?'Otelden Alış':lang==='es'?'Recogida':'Hotel Pickup', paragraphs:[translation.pickup_info] });
+if (translation.meeting_point) extras.push({ title: lang==='tr'?'Buluşma Noktası':lang==='es'?'Punto de Encuentro':'Meeting Point', paragraphs:[translation.meeting_point] });
+if (translation.after_flight_text) extras.push({ title:translation.after_flight_title || (lang==='tr'?'Tur Sonrası':lang==='es'?'Después del Tour':'After the Tour'), paragraphs:[translation.after_flight_text] });
+if (translation.refund_text) extras.push({ title:translation.refund_title || (lang==='tr'?'İade Politikası':lang==='es'?'Reembolso':'Refund Policy'), paragraphs:[translation.refund_text] });
+if (translation.advance_text) extras.push({ title:translation.advance_title || (lang==='tr'?'Rezervasyon':lang==='es'?'Reserva':'Booking'), paragraphs:[translation.advance_text] });
+if (translation.safety_text) extras.push({ title:translation.safety_title || (lang==='tr'?'Güvenlik':lang==='es'?'Seguridad':'Safety'), paragraphs:[translation.safety_text] });
+const duration = translation.duration_label || (tour.duration_minutes ? `${tour.duration_minutes} ${lang==='tr'?'Dakika':lang==='es'?'Minutos':'Minutes'}` : 'Flexible');
+---
+<StandardizedPrivateTourPage
+  lang={lang}
+  slug={tour.slug}
+  title={translation.title}
+  heroDesc={translation.hero_desc || ''}
+  overviewTitle={translation.overview_title || (lang==='tr'?'Tur Hakkında':lang==='es'?'Descripción':'Tour Overview')}
+  overviewParagraphs={translation.overview_paragraphs || []}
+  priceTitle={translation.price_title || (lang==='tr'?'Tur Fiyatı':lang==='es'?'Precio':'Tour Price')}
+  priceText={translation.price_text || (tour.ask_for_price ? (lang==='tr'?'Fiyat için bizimle iletişime geçin.':lang==='es'?'Contáctanos para consultar el precio.':'Contact us for the current price.') : `${tour.price || 0} €`)}
+  included={translation.whats_included || []}
+  importantTitle={lang==='tr'?'Öne Çıkanlar':lang==='es'?'Aspectos Destacados':'Highlights'}
+  important={(translation.highlights?.length ? translation.highlights : translation.important_info) || []}
+  detailsTitle={translation.flight_details_title || (lang==='tr'?'Tur Detayları':lang==='es'?'Detalles del Tour':'Tour Details')}
+  details={translation.flight_details_paragraphs || []}
+  extraSections={extras}
+  duration={duration}
+  rating={tour.rating ? String(tour.rating) : ''}
+  reviewCount={tour.reviews_count || 0}
+  mainImage={tour.hero_image || ''}
+  galleryImages={tour.gallery_images || []}
+  priceMode={tour.price_mode || 'perPerson'}
+  sidebarBadges={(translation.highlights || []).slice(0,4)}
+  sideHighlights={(translation.important_info || []).slice(0,5)}
+  seoTitle={translation.seo_title || ''}
+  seoDescription={translation.seo_description || ''}
+/>

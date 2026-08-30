@@ -1,0 +1,227 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+---
+<Layout title="Tour Management | CappadociaGo Admin">
+  <main class="tour-admin" data-supabase-url={supabaseUrl} data-supabase-key={supabaseKey}>
+    <section id="tourAdminGate" class="gate-card">
+      <div class="brand-chip">CAPPADOCIAGO ADMIN</div>
+      <h1>Tur Yönetimi</h1>
+      <p>Yeni tur ekleyin, fotoğrafları yükleyin, içerikleri TR / EN / ES olarak hazırlayın ve hazır olduğunda yayına alın.</p>
+      <div id="gateMessage" class="notice">Yönetici oturumu kontrol ediliyor…</div>
+      <a href="/admin/" class="btn secondary">Yönetim Paneline Dön</a>
+    </section>
+
+    <section id="tourAdminApp" class="admin-shell hidden">
+      <header class="admin-topbar">
+        <div>
+          <span class="eyebrow">CAPPADOCIAGO</span>
+          <h1>Tur İçerik Paneli</h1>
+          <p>Mevcut tur sayfalarımızdaki yapıyı baz alan içerik alanları.</p>
+        </div>
+        <div class="top-actions">
+          <a class="btn secondary" href="/admin/">Fiyat & Kontenjan</a>
+          <button class="btn secondary" id="newTourBtn" type="button">+ Yeni Tur</button>
+          <button class="btn danger" id="logoutTourBtn" type="button">Çıkış</button>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="tour-list-panel">
+          <div class="list-head"><strong>Turlar</strong><span id="tourCount">0</span></div>
+          <input id="tourSearch" class="search" type="search" placeholder="Tur ara…" />
+          <div id="tourList" class="tour-list"><div class="loading">Yükleniyor…</div></div>
+        </aside>
+
+        <section class="editor-panel">
+          <form id="tourEditor">
+            <input type="hidden" id="tourId" />
+            <div class="editor-head">
+              <div><span id="editorState" class="status draft">YENİ TUR</span><h2 id="editorTitle">Yeni Tur Oluştur</h2></div>
+              <div class="editor-actions">
+                <button type="button" class="btn danger ghost-danger hidden" id="deleteTourBtn">Sil</button>
+                <button type="button" class="btn secondary" id="saveDraftBtn">Taslak Kaydet</button>
+                <button type="submit" class="btn primary" id="publishBtn">Kaydet & Yayınla</button>
+              </div>
+            </div>
+            <div id="formMessage" class="form-message"></div>
+
+            <section class="card">
+              <div class="section-title"><div><span>01</span><h3>Temel Bilgiler</h3></div><p>URL, kategori, fiyat ve rezervasyon ayarları.</p></div>
+              <div class="grid cols-3">
+                <label>Slug / URL <input id="slug" required placeholder="jeep-safari-cappadocia" /></label>
+                <label>Kategori
+                  <select id="category" required>
+                    <option value="balloon">Hot Air Balloon Cappadocia</option>
+                    <option value="daily">Cappadocia Tours</option>
+                    <option value="activity">Activities</option>
+                    <option value="private">Private Tours</option>
+                    <option value="transfer">Cappadocia Transfers</option>
+                    <option value="safari">Safari Tours</option>
+                    <option value="sunset">Sunset Tours</option>
+                    <option value="package">Package Tours</option>
+                  </select>
+                </label>
+                <label>Süre (dakika) <input id="durationMinutes" type="number" min="0" placeholder="120" /></label>
+                <label>Fiyat (€) <input id="price" type="number" min="0" step="0.01" value="0" /></label>
+                <label>Eski Fiyat (€) <input id="oldPrice" type="number" min="0" step="0.01" /></label>
+                <label>Kontenjan <input id="defaultCapacity" type="number" min="1" value="20" /></label>
+                <label>Puan <input id="rating" type="number" min="0" max="5" step="0.1" value="4.9" /></label>
+                <label>Yorum Sayısı <input id="reviewsCount" type="number" min="0" value="0" /></label>
+                <label>Fiyat Tipi
+                  <select id="priceMode"><option value="perPerson">Kişi Başı</option><option value="perGroup">Grup Fiyatı</option></select>
+                </label>
+              </div>
+              <div class="switch-row">
+                <label class="switch"><input id="askForPrice" type="checkbox" /><span></span> Fiyat Sorunuz modu</label>
+                <label class="switch"><input id="isPublished" type="checkbox" /><span></span> Yayında</label>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="section-title"><div><span>02</span><h3>Fotoğraflar</h3></div><p>Kapak fotoğrafı ve galeri. JPG, PNG veya WEBP; en fazla 12 MB.</p></div>
+              <div class="image-grid">
+                <div class="upload-box">
+                  <strong>Kapak Fotoğrafı</strong>
+                  <div id="heroPreview" class="hero-preview empty"><span>Kapak fotoğrafı yok</span></div>
+                  <input id="heroImage" type="hidden" />
+                  <label class="upload-btn">Fotoğraf Yükle<input id="heroFile" type="file" accept="image/*" hidden /></label>
+                </div>
+                <div class="upload-box">
+                  <strong>Galeri Fotoğrafları</strong>
+                  <div id="galleryPreview" class="gallery-preview"></div>
+                  <label class="upload-btn">Galeriye Ekle<input id="galleryFiles" type="file" accept="image/*" multiple hidden /></label>
+                  <small>Fotoğrafları sürükleyip sıralamak yerine, kaldırıp tekrar ekleyerek sıralayabilirsiniz.</small>
+                </div>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="section-title"><div><span>03</span><h3>Tur İçeriği</h3></div><p>Türkçe, İngilizce ve İspanyolca içerikleri ayrı sekmelerde düzenleyin.</p></div>
+              <div class="lang-tabs" role="tablist">
+                <button type="button" class="lang-tab active" data-lang="tr">🇹🇷 Türkçe</button>
+                <button type="button" class="lang-tab" data-lang="en">🇬🇧 English</button>
+                <button type="button" class="lang-tab" data-lang="es">🇪🇸 Español</button>
+              </div>
+              {['tr','en','es'].map((lang) => (
+                <div class:list={["lang-panel", lang !== 'tr' && 'hidden']} data-panel={lang}>
+                  <div class="grid cols-2">
+                    <label>Tur Başlığı <input data-field="title" data-lang={lang} placeholder="Cappadocia Jeep Safari" /></label>
+                    <label>Üst Etiket / Kicker <input data-field="kicker" data-lang={lang} value="CAPPADOCIAGO" /></label>
+                    <label>Süre Yazısı <input data-field="duration_label" data-lang={lang} placeholder="2 Hours" /></label>
+                    <label>İçerik Başlığı <input data-field="overview_title" data-lang={lang} placeholder="Tour Overview" /></label>
+                  </div>
+                  <label>Kısa Hero Açıklaması <textarea data-field="hero_desc" data-lang={lang} rows="3" placeholder="Tur kartında ve sayfanın üst bölümünde görünen kısa açıklama"></textarea></label>
+                  <label>Genel Açıklama <span class="hint">Her paragrafı yeni satırdan yazın.</span><textarea data-field="overview_paragraphs" data-array data-lang={lang} rows="6"></textarea></label>
+                  <div class="grid cols-2">
+                    <label>Öne Çıkanlar <span class="hint">Her madde yeni satır.</span><textarea data-field="highlights" data-array data-lang={lang} rows="6"></textarea></label>
+                    <label>Fiyata Dahil Olanlar <span class="hint">Her madde yeni satır.</span><textarea data-field="whats_included" data-array data-lang={lang} rows="6"></textarea></label>
+                    <label>Fiyata Dahil Olmayanlar <span class="hint">Her madde yeni satır.</span><textarea data-field="not_included" data-array data-lang={lang} rows="5"></textarea></label>
+                    <label>Önemli Bilgiler <span class="hint">Her madde yeni satır.</span><textarea data-field="important_info" data-array data-lang={lang} rows="5"></textarea></label>
+                  </div>
+                  <label>Tur Programı / Itinerary <span class="hint">Durakları veya adımları sırayla yeni satıra yazın.</span><textarea data-field="itinerary" data-array data-lang={lang} rows="7"></textarea></label>
+                  <div class="grid cols-2">
+                    <label>Tur Detayları Başlığı <input data-field="flight_details_title" data-lang={lang} placeholder="Tour Details" /></label>
+                    <label>Fiyat Bölümü Başlığı <input data-field="price_title" data-lang={lang} placeholder="Tour Price" /></label>
+                  </div>
+                  <label>Tur Detayları <span class="hint">Her paragraf yeni satır.</span><textarea data-field="flight_details_paragraphs" data-array data-lang={lang} rows="5"></textarea></label>
+                  <label>Fiyat Açıklaması <textarea data-field="price_text" data-lang={lang} rows="3"></textarea></label>
+                  <div class="grid cols-2">
+                    <label>Pickup / Otelden Alış Bilgisi <textarea data-field="pickup_info" data-lang={lang} rows="3"></textarea></label>
+                    <label>Buluşma Noktası <textarea data-field="meeting_point" data-lang={lang} rows="3"></textarea></label>
+                  </div>
+                  <details>
+                    <summary>Ek İçerikler</summary>
+                    <div class="grid cols-2 details-grid">
+                      <label>Tur Sonrası Başlık <input data-field="after_flight_title" data-lang={lang} /></label>
+                      <label>İade Garantisi Başlık <input data-field="refund_title" data-lang={lang} /></label>
+                      <label>Tur Sonrası Metin <textarea data-field="after_flight_text" data-lang={lang} rows="3"></textarea></label>
+                      <label>İade Garantisi Metin <textarea data-field="refund_text" data-lang={lang} rows="3"></textarea></label>
+                      <label>Erken Rezervasyon Başlık <input data-field="advance_title" data-lang={lang} /></label>
+                      <label>Güvenlik Başlık <input data-field="safety_title" data-lang={lang} /></label>
+                      <label>Erken Rezervasyon Metin <textarea data-field="advance_text" data-lang={lang} rows="3"></textarea></label>
+                      <label>Güvenlik Metin <textarea data-field="safety_text" data-lang={lang} rows="3"></textarea></label>
+                    </div>
+                  </details>
+                  <details>
+                    <summary>SEO</summary>
+                    <div class="details-grid">
+                      <label>SEO Başlığı <input data-field="seo_title" data-lang={lang} maxlength="70" /></label>
+                      <label>Meta Açıklaması <textarea data-field="seo_description" data-lang={lang} rows="3" maxlength="180"></textarea></label>
+                    </div>
+                  </details>
+                </div>
+              ))}
+            </section>
+
+            <div class="bottom-actions">
+              <span id="autosaveNote">Değişiklikler yalnızca Kaydet butonuna basınca sunucuya gönderilir.</span>
+              <div><button type="button" class="btn secondary" id="saveDraftBottom">Taslak Kaydet</button><button type="submit" class="btn primary">Kaydet & Yayınla</button></div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  :global(body){background:linear-gradient(180deg,#edf4f9,#f7f2e8);font-family:'Plus Jakarta Sans',Inter,Arial,sans-serif;color:#062d63}
+  .tour-admin{min-height:100vh;padding:26px}.hidden{display:none!important}.gate-card{width:min(620px,calc(100% - 24px));margin:70px auto;padding:36px;border:1px solid #dce7ef;border-radius:24px;background:#fff;box-shadow:0 20px 60px rgba(6,45,99,.08)}.brand-chip,.eyebrow{display:inline-flex;padding:6px 10px;border-radius:999px;background:#fff5ce;color:#8b6500;font-size:9px;font-weight:900;letter-spacing:.12em}.gate-card h1,.admin-topbar h1{margin:10px 0 6px;font-size:32px;letter-spacing:-.04em}.gate-card p,.admin-topbar p{color:#71839a;line-height:1.65}.notice{padding:12px 14px;border-radius:12px;background:#f6f9fc;margin:18px 0;color:#50647a;font-size:13px}.admin-shell{max-width:1540px;margin:auto}.admin-topbar{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:20px;padding:22px 24px;background:#fff;border:1px solid #dce7ef;border-radius:22px}.top-actions,.editor-actions,.bottom-actions>div{display:flex;gap:9px;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:11px 17px;font-weight:800;font-size:12px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.btn.primary{background:#075aa6;color:#fff}.btn.secondary{background:#fff;border:1px solid #d5e2ec;color:#062d63}.btn.danger{background:#fff0f0;color:#a83030}.ghost-danger{border:1px solid #f0c7c7!important}.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:18px}.tour-list-panel,.editor-panel{background:#fff;border:1px solid #dce7ef;border-radius:22px;box-shadow:0 12px 34px rgba(6,45,99,.05)}.tour-list-panel{padding:16px;height:max-content;position:sticky;top:18px}.list-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.list-head span{background:#eef6fc;color:#075aa6;border-radius:999px;padding:4px 8px;font-size:10px}.search{width:100%;padding:10px 12px;border:1px solid #d7e4ee;border-radius:11px;margin-bottom:10px}.tour-list{display:grid;gap:7px;max-height:70vh;overflow:auto}.tour-row{border:1px solid #e3ebf2;border-radius:12px;padding:10px;background:#fff;cursor:pointer;text-align:left}.tour-row:hover,.tour-row.active{border-color:#075aa6;background:#f2f8fd}.tour-row strong{display:block;font-size:11px;line-height:1.35}.tour-row small{display:flex;justify-content:space-between;margin-top:5px;color:#8291a1;font-size:9px}.pub-dot{color:#15965a}.draft-dot{color:#c18a13}.editor-panel{padding:20px}.editor-head{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:4px 4px 18px;border-bottom:1px solid #e8eef3;margin-bottom:18px}.editor-head h2{margin:6px 0 0;font-size:24px}.status{display:inline-flex;padding:5px 9px;border-radius:999px;font-size:8px;font-weight:900;letter-spacing:.08em}.status.draft{background:#fff4d9;color:#8a640e}.status.live{background:#e9f9f0;color:#147344}.form-message{min-height:24px;margin-bottom:5px;font-size:12px;font-weight:700}.form-message.ok{color:#168354}.form-message.err{color:#b43131}.card{border:1px solid #e0e9f0;border-radius:18px;padding:20px;margin:14px 0;background:#fff}.section-title{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:18px}.section-title>div{display:flex;align-items:center;gap:9px}.section-title span{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:#062d63;color:#fff;font-size:9px;font-weight:900}.section-title h3{margin:0;font-size:17px}.section-title p{margin:0;color:#8795a4;font-size:10px}.grid{display:grid;gap:12px}.cols-3{grid-template-columns:repeat(3,1fr)}.cols-2{grid-template-columns:repeat(2,1fr)}label{display:flex;flex-direction:column;gap:6px;color:#516579;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.045em}input,select,textarea{width:100%;box-sizing:border-box;border:1px solid #d5e2ec;border-radius:10px;background:#fbfdff;color:#0a2748;padding:10px 11px;font:500 12px/1.45 'Plus Jakarta Sans',sans-serif;text-transform:none;letter-spacing:0}textarea{resize:vertical}input:focus,select:focus,textarea:focus{outline:0;border-color:#075aa6;box-shadow:0 0 0 3px rgba(7,90,166,.08)}.hint{font-size:9px;text-transform:none;font-weight:500;color:#99a5b0}.switch-row{display:flex;gap:24px;margin-top:16px}.switch{flex-direction:row;align-items:center;text-transform:none;font-size:11px}.switch input{width:16px;height:16px}.image-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:18px}.upload-box{border:1px dashed #cbdbe6;border-radius:15px;padding:14px;background:#fbfdff}.upload-box>strong{font-size:11px}.hero-preview{height:190px;border-radius:12px;background:#eef3f7;margin:10px 0;overflow:hidden;display:grid;place-items:center;color:#8b99a8;font-size:10px}.hero-preview img{width:100%;height:100%;object-fit:cover}.gallery-preview{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;min-height:90px;margin:10px 0}.gallery-item{position:relative;height:88px;border-radius:10px;overflow:hidden;background:#edf2f6}.gallery-item img{width:100%;height:100%;object-fit:cover}.gallery-item button{position:absolute;right:4px;top:4px;width:23px;height:23px;border:0;border-radius:50%;background:#fff;color:#a22;cursor:pointer}.upload-btn{display:inline-flex!important;width:auto!important;align-items:center;justify-content:center;background:#062d63;color:#fff!important;padding:9px 13px;border-radius:999px;cursor:pointer;text-transform:none!important}.upload-box small{display:block;margin-top:8px;color:#95a1ad;font-size:9px}.lang-tabs{display:flex;gap:7px;border-bottom:1px solid #e3ebf1;margin-bottom:18px}.lang-tab{border:0;background:transparent;padding:10px 13px;border-bottom:3px solid transparent;color:#718397;font-weight:800;cursor:pointer}.lang-tab.active{color:#075aa6;border-bottom-color:#d9a51f}.lang-panel>label{margin:12px 0}.lang-panel .grid{margin:12px 0}details{border:1px solid #e5ecf2;border-radius:12px;margin-top:12px;overflow:hidden}summary{cursor:pointer;padding:12px 14px;font-size:11px;font-weight:800;background:#f8fbfd}.details-grid{padding:14px}.bottom-actions{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:18px 4px 6px}.bottom-actions span{font-size:9px;color:#8a98a6}
+  @media(max-width:1100px){.layout{grid-template-columns:1fr}.tour-list-panel{position:static}.tour-list{grid-template-columns:repeat(3,1fr);max-height:none}.cols-3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:700px){.tour-admin{padding:10px}.admin-topbar,.editor-head,.section-title,.bottom-actions{align-items:flex-start;flex-direction:column}.editor-panel{padding:10px}.card{padding:14px}.cols-3,.cols-2,.image-grid{grid-template-columns:1fr}.tour-list{grid-template-columns:1fr 1fr}.gallery-preview{grid-template-columns:repeat(3,1fr)}.editor-actions,.top-actions{width:100%}.editor-actions .btn,.top-actions .btn{flex:1}.switch-row{flex-direction:column;gap:8px}}
+</style>
+
+<script>
+  import { createClient } from '@supabase/supabase-js';
+  const root = document.querySelector('.tour-admin') as HTMLElement;
+  const supabase = createClient(root.dataset.supabaseUrl || '', root.dataset.supabaseKey || '');
+  const gate = document.getElementById('tourAdminGate')!;
+  const app = document.getElementById('tourAdminApp')!;
+  const gateMessage = document.getElementById('gateMessage')!;
+  const listEl = document.getElementById('tourList')!;
+  const form = document.getElementById('tourEditor') as HTMLFormElement;
+  const msg = document.getElementById('formMessage')!;
+  let sessionToken = '';
+  let tours:any[] = [];
+  let current:any = null;
+  let gallery:string[] = [];
+
+  const $ = (id:string) => document.getElementById(id) as HTMLInputElement;
+  const lines = (s:string) => s.split('\n').map(x=>x.trim()).filter(Boolean);
+  const authHeaders = () => ({ Authorization:`Bearer ${sessionToken}` });
+  const setMsg=(text:string,type='')=>{msg.textContent=text;msg.className='form-message '+type};
+
+  async function boot(){
+    const {data:{session}}=await supabase.auth.getSession();
+    if(!session){gateMessage.textContent='Yönetici oturumu bulunamadı. Önce ana yönetim panelinden giriş yapın.';return}
+    const {data:adminRow}=await supabase.from('admin_users').select('user_id').eq('user_id',session.user.id).maybeSingle();
+    if(!adminRow){gateMessage.textContent='Bu hesap yönetici olarak yetkilendirilmemiş.';return}
+    sessionToken=session.access_token; gate.classList.add('hidden'); app.classList.remove('hidden'); await loadTours(); resetForm();
+  }
+  async function loadTours(){
+    const res=await fetch('/api/admin/tours',{headers:authHeaders()}); const data=await res.json(); if(!res.ok) throw new Error(data.error||'Turlar yüklenemedi');
+    tours=data.tours||[]; renderList();
+  }
+  function renderList(filter=''){
+    const q=filter.toLowerCase(); const rows=tours.filter(t=>!q||String(t.slug).toLowerCase().includes(q)||Object.values(t.translations||{}).some((x:any)=>String(x?.title||'').toLowerCase().includes(q)));
+    document.getElementById('tourCount')!.textContent=String(rows.length);
+    listEl.innerHTML=rows.length?rows.map(t=>`<button type="button" class="tour-row ${current?.id===t.id?'active':''}" data-id="${t.id}"><strong>${escapeHtml(t.translations?.tr?.title||t.translations?.en?.title||t.slug)}</strong><small><span>${escapeHtml(t.category)}</span><span class="${t.is_published?'pub-dot':'draft-dot'}">${t.is_published?'● Yayında':'● Taslak'}</span></small></button>`).join(''):'<div class="loading">Tur bulunamadı.</div>';
+    listEl.querySelectorAll<HTMLButtonElement>('.tour-row').forEach(b=>b.addEventListener('click',()=>editTour(b.dataset.id!)));
+  }
+  const escapeHtml=(s:any)=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]||c));
+  function resetForm(){current=null;form.reset();$('tourId').value='';$('price').value='0';$('rating').value='4.9';$('defaultCapacity').value='20';gallery=[];$('heroImage').value='';document.getElementById('editorTitle')!.textContent='Yeni Tur Oluştur';document.getElementById('editorState')!.textContent='YENİ TUR';document.getElementById('editorState')!.className='status draft';document.getElementById('deleteTourBtn')!.classList.add('hidden');document.querySelectorAll<HTMLInputElement>('[data-field="kicker"]').forEach(x=>x.value='CAPPADOCIAGO');renderImages();renderList();setMsg('');}
+  function editTour(id:string){const t=tours.find(x=>x.id===id);if(!t)return;current=t;$('tourId').value=t.id;$('slug').value=t.slug||'';$('category').value=t.category||'daily';$('durationMinutes').value=t.duration_minutes??'';$('price').value=t.price??0;$('oldPrice').value=t.old_price??'';$('defaultCapacity').value=t.default_capacity??20;$('rating').value=t.rating??4.9;$('reviewsCount').value=t.reviews_count??0;$('priceMode').value=t.price_mode||'perPerson';$('askForPrice').checked=!!t.ask_for_price;$('isPublished').checked=!!t.is_published;$('heroImage').value=t.hero_image||'';gallery=[...(t.gallery_images||[])]; for(const lang of ['tr','en','es']){const tr=t.translations?.[lang]||{};document.querySelectorAll<HTMLInputElement|HTMLTextAreaElement>(`[data-lang="${lang}"][data-field]`).forEach(el=>{const key=el.dataset.field!;const val=tr[key];el.value=Array.isArray(val)?val.join('\n'):(val??'')})}document.getElementById('editorTitle')!.textContent=t.translations?.tr?.title||t.translations?.en?.title||t.slug;document.getElementById('editorState')!.textContent=t.is_published?'YAYINDA':'TASLAK';document.getElementById('editorState')!.className='status '+(t.is_published?'live':'draft');document.getElementById('deleteTourBtn')!.classList.remove('hidden');renderImages();renderList();window.scrollTo({top:0,behavior:'smooth'});}
+  function renderImages(){const hero=$('heroImage').value;const hp=document.getElementById('heroPreview')!;hp.innerHTML=hero?`<img src="${escapeHtml(hero)}" alt="Kapak"/>`:'<span>Kapak fotoğrafı yok</span>';hp.classList.toggle('empty',!hero);const gp=document.getElementById('galleryPreview')!;gp.innerHTML=gallery.map((url,i)=>`<div class="gallery-item"><img src="${escapeHtml(url)}" alt="Galeri ${i+1}"/><button type="button" data-remove="${i}">×</button></div>`).join('');gp.querySelectorAll<HTMLButtonElement>('[data-remove]').forEach(b=>b.addEventListener('click',()=>{gallery.splice(Number(b.dataset.remove),1);renderImages()}));}
+  async function upload(file:File){const fd=new FormData();fd.append('file',file);fd.append('slug',$('slug').value||'tour');const res=await fetch('/api/admin/upload-tour-image',{method:'POST',headers:authHeaders(),body:fd});const data=await res.json();if(!res.ok)throw new Error(data.error||'Fotoğraf yüklenemedi');return data.url as string}
+  $('heroFile').addEventListener('change',async(e:any)=>{const f=e.target.files?.[0];if(!f)return;try{setMsg('Kapak fotoğrafı yükleniyor…');$('heroImage').value=await upload(f);renderImages();setMsg('Kapak fotoğrafı yüklendi.','ok')}catch(err:any){setMsg(err.message,'err')}e.target.value=''});
+  $('galleryFiles').addEventListener('change',async(e:any)=>{const files=[...(e.target.files||[])] as File[];if(!files.length)return;try{setMsg(`${files.length} fotoğraf yükleniyor…`);for(const f of files)gallery.push(await upload(f));renderImages();setMsg('Galeri fotoğrafları yüklendi.','ok')}catch(err:any){setMsg(err.message,'err')}e.target.value=''});
+  document.querySelectorAll<HTMLButtonElement>('.lang-tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.lang-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.lang-panel').forEach(x=>x.classList.add('hidden'));document.querySelector(`[data-panel="${b.dataset.lang}"]`)?.classList.remove('hidden')}));
+  function collect(publish:boolean){const translations:any={};for(const lang of ['tr','en','es']){translations[lang]={};document.querySelectorAll<HTMLInputElement|HTMLTextAreaElement>(`[data-lang="${lang}"][data-field]`).forEach(el=>{translations[lang][el.dataset.field!]=el.hasAttribute('data-array')?lines(el.value):el.value.trim()})}return{id:$('tourId').value||null,slug:$('slug').value,category:$('category').value,price:Number($('price').value||0),old_price:$('oldPrice').value?Number($('oldPrice').value):null,duration_minutes:$('durationMinutes').value?Number($('durationMinutes').value):null,default_capacity:Number($('defaultCapacity').value||20),rating:Number($('rating').value||4.9),reviews_count:Number($('reviewsCount').value||0),price_mode:$('priceMode').value,ask_for_price:$('askForPrice').checked,is_published:publish,hero_image:$('heroImage').value,gallery_images:gallery,translations}}
+  async function save(publish:boolean){try{setMsg(publish?'Tur yayınlanıyor…':'Taslak kaydediliyor…');const res=await fetch('/api/admin/tours',{method:'POST',headers:{...authHeaders(),'Content-Type':'application/json'},body:JSON.stringify(collect(publish))});const data=await res.json();if(!res.ok)throw new Error(data.error||'Kaydetme başarısız');setMsg(publish?'Tur başarıyla yayınlandı.':'Taslak kaydedildi.','ok');await loadTours();editTour(data.tour.id)}catch(err:any){setMsg(err.message,'err')}}
+  form.addEventListener('submit',e=>{e.preventDefault();save(true)});document.getElementById('saveDraftBtn')!.addEventListener('click',()=>save(false));document.getElementById('saveDraftBottom')!.addEventListener('click',()=>save(false));document.getElementById('newTourBtn')!.addEventListener('click',resetForm);document.getElementById('tourSearch')!.addEventListener('input',(e:any)=>renderList(e.target.value));
+  document.getElementById('deleteTourBtn')!.addEventListener('click',async()=>{if(!current||!confirm('Bu turu silmek istediğinize emin misiniz?'))return;const res=await fetch(`/api/admin/tours?id=${encodeURIComponent(current.id)}`,{method:'DELETE',headers:authHeaders()});const data=await res.json();if(!res.ok)return setMsg(data.error||'Silinemedi','err');await loadTours();resetForm();setMsg('Tur silindi.','ok')});
+  document.getElementById('logoutTourBtn')!.addEventListener('click',async()=>{await supabase.auth.signOut();location.href='/admin/'});
+  boot().catch((e)=>{gateMessage.textContent=e.message||String(e)});
+</script>

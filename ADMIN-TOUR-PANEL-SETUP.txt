@@ -1,0 +1,28 @@
+CAPPADOCIAGO — TUR İÇERİK PANELİ
+================================
+
+1) Supabase Dashboard > SQL Editor bölümünde şu dosyayı bir kez çalıştırın:
+   supabase/cappadociago-tours.sql
+
+   Bu dosya:
+   - tours / tour_translations tablolarını hazırlar,
+   - panel için yeni içerik kolonlarını ekler,
+   - tour-images isimli public Storage bucket oluşturur,
+   - yayınlanan turların public okunmasına izin verir.
+
+2) Vercel / .env değişkenleri:
+   PUBLIC_SUPABASE_URL
+   PUBLIC_SUPABASE_ANON_KEY veya PUBLIC_SUPABASE_PUBLISHABLE_KEY
+   SUPABASE_SERVICE_ROLE_KEY   (yalnızca server-side; PUBLIC_ öneki KULLANMAYIN)
+
+3) Yönetici hesabı admin_users tablosunda kayıtlı olmalı.
+
+4) Panel adresleri:
+   /admin/        -> fiyat, kontenjan, rezervasyon
+   /admin/tours   -> tur ekleme / içerik / fotoğraf / yayınlama
+
+5) Yeni tur yayınlandığında:
+   - tours ve tour_translations tablolarına yazılır,
+   - products tablosu fiyat/kontenjan için otomatik senkronlanır,
+   - sayfa /en/tours/SLUG, /tr/tours/SLUG, /es/tours/SLUG üzerinden canlı açılır,
+   - transfer kategorisi için /LANG/transfers/SLUG da desteklenir.

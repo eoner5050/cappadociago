@@ -241,7 +241,7 @@ body{font-family:'Plus Jakarta Sans',Inter,Arial,sans-serif!important}
 .page>.container>.grid>.main-col{grid-column:1!important;grid-row:4!important;margin-top:16px!important}
 .page>.container>.grid>.side{grid-column:2!important;grid-row:3 / span 2!important;position:sticky!important;top:100px!important;margin:0!important}
 
-/* bespoke balloon/private pages using tbc classes */
+/* bespoke balloon/private tour page compatibility classes */
 .tbc-tour-container{display:grid!important;grid-template-columns:minmax(0,1.72fr) minmax(285px,.72fr)!important;column-gap:22px!important;align-items:start!important}
 .tbc-tour-container>.tbc-breadcrumb,.tbc-tour-container>.tbc-tour-hero{grid-column:1/-1!important}
 .tbc-tour-container>.tbc-photo-grid-wrapper{grid-column:1!important;grid-row:3!important;margin:0!important}

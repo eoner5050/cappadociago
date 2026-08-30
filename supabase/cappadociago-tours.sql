@@ -119,3 +119,40 @@ create trigger trg_tours_updated_at
 -- Explicit privileges required in addition to RLS policies.
 grant usage on schema public to anon, authenticated;
 grant select on public.tours, public.tour_translations to anon, authenticated;
+
+-- ============================================================
+-- 2026-08-30 — CappadociaGo Tour Content Panel extensions
+-- Safe to run more than once.
+-- ============================================================
+alter table public.tours add column if not exists price_mode text not null default 'perPerson';
+alter table public.tours add column if not exists ask_for_price boolean not null default false;
+alter table public.tours add column if not exists default_capacity integer not null default 20;
+
+alter table public.tour_translations add column if not exists not_included text[] default '{}';
+alter table public.tour_translations add column if not exists highlights text[] default '{}';
+alter table public.tour_translations add column if not exists itinerary text[] default '{}';
+alter table public.tour_translations add column if not exists pickup_info text;
+alter table public.tour_translations add column if not exists meeting_point text;
+alter table public.tour_translations add column if not exists seo_title text;
+alter table public.tour_translations add column if not exists seo_description text;
+
+-- Public image bucket used by the admin tour editor.
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values (
+  'tour-images',
+  'tour-images',
+  true,
+  12582912,
+  array['image/jpeg','image/png','image/webp','image/avif']
+)
+on conflict (id) do update set
+  public = excluded.public,
+  file_size_limit = excluded.file_size_limit,
+  allowed_mime_types = excluded.allowed_mime_types;
+
+-- Public can read published tour images. Upload/delete operations are done
+-- only by server-side service role through /api/admin/upload-tour-image.
+drop policy if exists "Public can view tour images" on storage.objects;
+create policy "Public can view tour images"
+on storage.objects for select to public
+using (bucket_id = 'tour-images');
