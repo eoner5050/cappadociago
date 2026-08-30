@@ -1,0 +1,117 @@
+/* CAPPADOCIAGO FINAL MOBILE TOUR CONTENT + PHONE FIX
+   Loaded last on tour detail pages. Keeps desktop design intact. */
+
+@media (max-width: 760px){
+  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+
+  /* Force every tour detail to use a real one-column mobile flow. */
+  .tbc-tour-page,.page,.tour-page,.tour-detail-page,main{
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    overflow:visible!important;
+  }
+  .tbc-tour-container,.container,.wrap{
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    margin-inline:auto!important;padding-inline:0!important;
+  }
+  .tbc-tour-grid,.grid,.tour-layout{
+    display:flex!important;flex-direction:column!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    gap:12px!important;
+  }
+  .tbc-tour-main,.main-col,.tbc-tour-main-card,.card.content,.content,.tour-content{
+    order:1!important;display:block!important;position:static!important;float:none!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    flex:0 0 100%!important;overflow:visible!important;
+    margin:0!important;left:auto!important;right:auto!important;transform:none!important;
+  }
+  .tbc-tour-side,.side,.tour-sidebar{
+    order:2!important;position:static!important;float:none!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    flex:0 0 100%!important;margin:0!important;left:auto!important;right:auto!important;
+  }
+
+  /* Make content sections impossible to collapse into a 1-character column. */
+  .tbc-tour-section,.content>section,.content section,.content-block,
+  .tbc-tour-section>* , .content>section>* , .content section>* , .content-block>*{
+    max-width:100%!important;min-width:0!important;
+    writing-mode:horizontal-tb!important;text-orientation:mixed!important;
+  }
+  .tbc-tour-section,.content>section,.content section,.content-block{
+    display:block!important;visibility:visible!important;opacity:1!important;
+    width:100%!important;float:none!important;clear:both!important;
+    position:relative!important;left:auto!important;right:auto!important;
+    transform:none!important;overflow:visible!important;max-height:none!important;
+    padding:15px 14px!important;margin:0!important;
+  }
+  .tbc-tour-section h1,.tbc-tour-section h2,.tbc-tour-section h3,
+  .content h1,.content h2,.content h3,.content-block h1,.content-block h2,.content-block h3{
+    display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;
+    white-space:normal!important;word-break:normal!important;overflow-wrap:break-word!important;
+    writing-mode:horizontal-tb!important;text-orientation:mixed!important;
+    letter-spacing:-.02em!important;
+  }
+  .tbc-tour-section h2,.content h2,.content-block h2{
+    font-size:17px!important;line-height:1.28!important;margin:0 0 9px!important;
+  }
+  .tbc-tour-section p,.content p,.content-block p,
+  .tbc-tour-section li,.content li,.content-block li,
+  .checks>div,.tbc-tour-list-item,.check-item{
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    white-space:normal!important;word-break:normal!important;overflow-wrap:break-word!important;
+    writing-mode:horizontal-tb!important;text-orientation:mixed!important;
+    font-size:11.5px!important;line-height:1.68!important;
+  }
+  .checks,.tbc-tour-list,.check-grid{
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    display:grid!important;grid-template-columns:1fr!important;gap:7px!important;
+  }
+
+  /* Quick Reservation phone field: reserve a fixed country-code lane and a true number lane. */
+  .tbc-phone-group,.booking label:has(.iti),.reservation-form label:has(.iti),.lbc-form-card label:has(.iti){
+    width:100%!important;max-width:100%!important;min-width:0!important;
+  }
+  .tbc-phone-group .iti,.booking .iti,.reservation-form .iti,.lbc-form-card .iti,.iti{
+    position:relative!important;display:block!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    overflow:visible!important;
+  }
+  .tbc-phone-group .iti__country-container,.booking .iti__country-container,
+  .reservation-form .iti__country-container,.lbc-form-card .iti__country-container,.iti__country-container{
+    position:absolute!important;left:0!important;top:0!important;bottom:0!important;
+    width:92px!important;max-width:92px!important;min-width:92px!important;
+    z-index:3!important;
+  }
+  .tbc-phone-group .iti__selected-country,.booking .iti__selected-country,
+  .reservation-form .iti__selected-country,.lbc-form-card .iti__selected-country,.iti__selected-country{
+    width:92px!important;max-width:92px!important;min-width:92px!important;
+    padding:0 9px!important;display:flex!important;align-items:center!important;gap:5px!important;
+    border-right:1px solid #cbdceb!important;border-radius:11px 0 0 11px!important;
+    background:#f7fbfe!important;box-sizing:border-box!important;
+  }
+  .iti__selected-country-primary{display:flex!important;align-items:center!important;gap:4px!important;padding:0!important;min-width:0!important}
+  .iti__selected-dial-code{font-size:12px!important;line-height:1!important;font-weight:800!important;white-space:nowrap!important;color:#0a315c!important;margin-left:2px!important}
+  .tbc-phone-group .iti__tel-input,.booking .iti__tel-input,
+  .reservation-form .iti__tel-input,.lbc-form-card .iti__tel-input,.iti__tel-input{
+    display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;
+    box-sizing:border-box!important;padding-left:104px!important;padding-right:12px!important;
+    text-indent:0!important;font-size:13px!important;line-height:1.2!important;
+  }
+  .iti__country-list{z-index:2147483646!important;max-width:calc(100vw - 24px)!important}
+
+  /* Plain phone inputs on dynamic/admin-created tour pages remain normal width. */
+  input[type="tel"]{max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+}
+
+@media (max-width: 380px){
+  .tbc-tour-section,.content>section,.content section,.content-block{padding:13px 11px!important}
+  .tbc-tour-section h2,.content h2,.content-block h2{font-size:16px!important}
+  .tbc-tour-section p,.content p,.content-block p,.tbc-tour-section li,.content li,.content-block li{font-size:11px!important}
+  .tbc-phone-group .iti__country-container,.booking .iti__country-container,
+  .reservation-form .iti__country-container,.lbc-form-card .iti__country-container,.iti__country-container,
+  .tbc-phone-group .iti__selected-country,.booking .iti__selected-country,
+  .reservation-form .iti__selected-country,.lbc-form-card .iti__selected-country,.iti__selected-country{
+    width:88px!important;max-width:88px!important;min-width:88px!important;
+  }
+  .tbc-phone-group .iti__tel-input,.booking .iti__tel-input,
+  .reservation-form .iti__tel-input,.lbc-form-card .iti__tel-input,.iti__tel-input{padding-left:98px!important;font-size:12.5px!important}
+}

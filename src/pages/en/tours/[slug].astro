@@ -7,3 +7,6 @@ const result = await getPublishedTour(slug, 'en');
 if (!result) return Astro.redirect('/en/cappadocia-tours/');
 ---
 <DatabaseTourPage lang="en" tour={result.tour} translation={result.translation} />
+
+<!-- CG_FINAL_MOBILE_TOUR_CONTENT_PHONE -->
+<link rel="stylesheet" href="/tour-mobile-critical-v3.css" />
