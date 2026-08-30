@@ -1,5 +1,5 @@
 Final reference match (2026-08-29)
-- Header proportions rebuilt to follow turkeyballoonscappadocia.com visual structure.
+- Header proportions rebuilt for the CappadociaGo visual system.
 - Existing CappadociaGo logo/content/links preserved.
 - WhatsApp phone pill icon reduced to 18px desktop, 16-17px mobile.
 - Language pill changed to clean white/navy/blue reference styling.

@@ -220,11 +220,11 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.me
     const {data:adminRow,error:adminError}=await supabase.from('admin_users').select('user_id').eq('user_id',session.user.id).maybeSingle();
     if(adminError){gateMessage.textContent='Yönetici yetkisi kontrol edilemedi: '+adminError.message;return}
     if(!adminRow){gateMessage.textContent='Bu hesap yönetici olarak yetkilendirilmemiş. Supabase admin_users tablosuna bu kullanıcının user_id değerini ekleyin.';return}
-    sessionToken=session.access_token; gate.classList.add('hidden'); app.classList.remove('hidden'); await loadTours(); resetForm();
+    sessionToken=session.access_token; gate.classList.add('hidden'); app.classList.remove('hidden'); await loadTours(); resetForm(); if(new URLSearchParams(location.search).get('new')==='1'){ resetForm(); document.getElementById('editorTitle')?.scrollIntoView({behavior:'smooth',block:'start'}); }
   }
   async function loadTours(){
     const res=await fetch('/api/admin/tours',{headers:authHeaders()}); const data=await res.json(); if(!res.ok) throw new Error(data.error||'Turlar yüklenemedi');
-    tours=data.tours||[]; renderList();
+    tours=data.tours||[]; renderList(); if(data.dbWarning){setMsg('Mevcut turlar yüklendi. Revizyon kaydı için Supabase tur tablolarını kurun: '+data.dbWarning,'info');}
   }
   function renderList(filter=''){
     const q=filter.toLowerCase(); const rows=tours.filter(t=>!q||String(t.slug).toLowerCase().includes(q)||Object.values(t.translations||{}).some((x:any)=>String(x?.title||'').toLowerCase().includes(q)));

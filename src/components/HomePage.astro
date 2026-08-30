@@ -23,6 +23,10 @@ const currentCode = lang === "tr" ? "TR" : lang === "es" ? "ES" : "EN";
 const homeUrl = `/${lang}/`;
 const homepageSupabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || "";
 const homepageSupabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY || "";
+const comparePrice25 = (value) => {
+  const n = Number(String(value ?? '').replace(',', '.').match(/([0-9]+(?:\.[0-9]+)?)/)?.[1] || 0);
+  return n > 0 ? `${Math.round(n * 1.25)} €` : '';
+};
 
 const siteOrigin = "https://cappadociago.com";
 const canonicalUrl = `${siteOrigin}/${lang}/`;
@@ -557,22 +561,15 @@ const homepageReviews = [
               </div>
 
               <!-- 2. TARİH SEKMESİ -->
-              <div class="tbc-field-wrap dates-custom-box" id="tbcDateField">
-                <span class="dates-top-label">{t.booking.accommodationDates}</span>
-                <div class="dates-inputs-row">
-                  <button class="date-slot" type="button" data-date-target="start" aria-label="Select start date">
-                    <span class="d-m" id="startMonth">Aug</span>
-                    <span class="d-d" id="startDay">15</span>
-                    <span class="d-a" aria-hidden="true">⌄</span>
-                  </button>
-                  <span class="date-divider" aria-hidden="true">→</span>
-                  <button class="date-slot" type="button" data-date-target="end" aria-label="Select end date">
-                    <span class="d-m" id="endMonth">Aug</span>
-                    <span class="d-d" id="endDay">16</span>
+              <div class="tbc-field-wrap dates-custom-box single-tour-date" id="tbcDateField">
+                <div class="dates-inputs-row single-date-row">
+                  <button class="date-slot single-date-slot" type="button" data-date-target="start" aria-label={lang === "tr" ? "Tur tarihi seçin" : lang === "es" ? "Seleccionar fecha del tour" : "Select tour date"}>
+                    <span class="single-date-label">{lang === "tr" ? "Tur Tarihi Seç" : lang === "es" ? "Seleccionar Fecha" : "Select Tour Date"}</span>
+                    <span class="single-date-value"><span class="d-d" id="startDay">30</span> <span class="d-m" id="startMonth">Aug</span></span>
                     <span class="d-a" aria-hidden="true">⌄</span>
                   </button>
                 </div>
-                <input type="hidden" id="startDateInput" name="Start Date" required />
+                <input type="hidden" id="startDateInput" name="Tour Date" required />
                 <input type="hidden" id="endDateInput" name="End Date" />
                 <div class="tbc-date-popover" id="tbcDatePopover" aria-hidden="true">
                   <div class="tbc-date-head">
@@ -582,7 +579,7 @@ const homepageReviews = [
                   </div>
                   <div class="tbc-date-months" id="tbcDateMonths"></div>
                   <div class="tbc-date-help">
-                    {lang === "tr" ? "Başlangıç ve bitiş tarihini seçin" : lang === "es" ? "Seleccione la fecha de inicio y fin" : "Select start and end dates"}
+                    {lang === "tr" ? "Tur tarihinizi seçin" : lang === "es" ? "Seleccione la fecha de su tour" : "Select your tour date"}
                   </div>
                 </div>
               </div>
@@ -694,7 +691,7 @@ const homepageReviews = [
               <div class="home-tour-meta">{tour.duration} · Instant confirmation · Hotel pickup</div>
               <div class="home-tour-footer">
                 <div class="home-tour-tags">{tour.status && <span>{tour.status}</span>}</div>
-                <div class="home-tour-price" data-price-wrap><small>FROM</small><del data-old-price>{tour.oldPrice}</del><strong data-current-price>{tour.currentPrice}</strong><em>per person</em></div>
+                <div class="home-tour-price" data-price-wrap><small>FROM</small><del data-old-price>{comparePrice25(tour.currentPrice)}</del><strong data-current-price>{tour.currentPrice}</strong><em>per person</em></div>
               </div>
             </div>
           </article>
@@ -1011,8 +1008,6 @@ const homepageReviews = [
       const endInput = document.getElementById('endDateInput');
       const startMonth = document.getElementById('startMonth');
       const startDay = document.getElementById('startDay');
-      const endMonth = document.getElementById('endMonth');
-      const endDay = document.getElementById('endDay');
       const datePopover = document.getElementById('tbcDatePopover');
       const dateMonths = document.getElementById('tbcDateMonths');
       const dateTitle = document.getElementById('tbcDateTitle');
@@ -1033,16 +1028,12 @@ const homepageReviews = [
       };
       const dayOnly = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
-      let activeDateTarget = 'start';
       let calendarCursor = new Date();
       calendarCursor.setDate(1);
 
       const today = dayOnly(new Date());
-      const tomorrow = new Date(today);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-
       if (startInput && !startInput.value) startInput.value = dateKey(today);
-      if (endInput && !endInput.value) endInput.value = dateKey(tomorrow);
+      if (endInput && !endInput.value) endInput.value = startInput?.value || dateKey(today);
 
       const paintDateLabels = () => {
         if (startInput?.value) {
@@ -1050,14 +1041,7 @@ const homepageReviews = [
           startMonth.textContent = monthNames[d.getMonth()];
           startDay.textContent = d.getDate();
         }
-        if (endInput?.value) {
-          const d = fromKey(endInput.value);
-          endMonth.textContent = monthNames[d.getMonth()];
-          endDay.textContent = d.getDate();
-        }
       };
-
-      const isBetween = (date, start, end) => date > start && date < end;
 
       const renderMonth = (year, month) => {
         const monthWrap = document.createElement('div');
@@ -1079,7 +1063,6 @@ const homepageReviews = [
         }
 
         const selectedStart = startInput?.value ? fromKey(startInput.value) : null;
-        const selectedEnd = endInput?.value ? fromKey(endInput.value) : null;
 
         for (let day = 1; day <= last.getDate(); day++) {
           const current = new Date(year, month, day);
@@ -1092,36 +1075,15 @@ const homepageReviews = [
           if (current < today) btn.disabled = true;
           if (dateKey(current) === dateKey(today)) btn.classList.add('is-today');
           if (selectedStart && dateKey(current) === dateKey(selectedStart)) btn.classList.add('is-selected');
-          if (selectedEnd && dateKey(current) === dateKey(selectedEnd)) btn.classList.add('is-selected');
-          if (selectedStart && selectedEnd && isBetween(current, selectedStart, selectedEnd)) btn.classList.add('is-range');
 
           btn.addEventListener('click', () => {
-            if (!startInput || !endInput) return;
-            const selected = fromKey(btn.dataset.date);
-            if (activeDateTarget === 'start') {
-              startInput.value = btn.dataset.date;
-              const currentEnd = endInput.value ? fromKey(endInput.value) : null;
-              if (!currentEnd || currentEnd <= selected) {
-                const nextDay = new Date(selected);
-                nextDay.setDate(nextDay.getDate() + 1);
-                endInput.value = dateKey(nextDay);
-              }
-              activeDateTarget = 'end';
-            } else {
-              const start = startInput.value ? fromKey(startInput.value) : today;
-              if (selected <= start) {
-                startInput.value = btn.dataset.date;
-                const nextDay = new Date(selected);
-                nextDay.setDate(nextDay.getDate() + 1);
-                endInput.value = dateKey(nextDay);
-              } else {
-                endInput.value = btn.dataset.date;
-              }
-              activeDateTarget = 'start';
-              closeDatePopover();
-            }
+            if (!startInput) return;
+            startInput.value = btn.dataset.date;
+            // Keep endDate synchronized for any legacy code, but the UI uses one tour date only.
+            if (endInput) endInput.value = btn.dataset.date;
             paintDateLabels();
             renderCalendar();
+            closeDatePopover();
           });
 
           grid.appendChild(btn);
@@ -1143,10 +1105,9 @@ const homepageReviews = [
         if (!singleMonth) dateMonths.appendChild(renderMonth(second.getFullYear(), second.getMonth()));
       };
 
-      const openDatePopover = (target = 'start') => {
+      const openDatePopover = () => {
         if (!datePopover) return;
-        activeDateTarget = target;
-        const sourceValue = target === 'end' ? endInput?.value : startInput?.value;
+        const sourceValue = startInput?.value;
         if (sourceValue) {
           const d = fromKey(sourceValue);
           calendarCursor = new Date(d.getFullYear(), d.getMonth(), 1);
@@ -1167,7 +1128,7 @@ const homepageReviews = [
           event.preventDefault();
           event.stopPropagation();
           closeAllSelects();
-          openDatePopover(slot.getAttribute('data-date-target') || 'start');
+          openDatePopover();
         });
       });
 
@@ -1312,27 +1273,32 @@ const homepageReviews = [
 
     const base = grid.dataset.supabaseUrl || '';
     const key = grid.dataset.supabaseKey || '';
-    if (!base || !key) return;
-
     const cards = [...grid.querySelectorAll('.home-tour-card[data-product-slug]')];
     if (!cards.length) return;
 
-    const headers = {
-      apikey: key,
-      Authorization: `Bearer ${key}`
+    const money = (n) => `${Math.round(Number(n))} €`;
+    const numericPrice = (text) => {
+      const match = String(text || '').replace(',', '.').match(/([0-9]+(?:\.[0-9]+)?)/);
+      return match ? Number(match[1]) : 0;
     };
 
-    const today = new Date();
-    const todayKey =
-      `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+    // Always show the base/default price on homepage cards.
+    // The crossed-out comparison price is exactly 25% higher.
+    for (const card of cards) {
+      const currentEl = card.querySelector('[data-current-price]');
+      const oldEl = card.querySelector('[data-old-price]');
+      if (!currentEl || !oldEl) continue;
+      const fallback = numericPrice(currentEl.textContent);
+      if (fallback > 0) {
+        currentEl.textContent = money(fallback);
+        oldEl.textContent = money(fallback * 1.25);
+        oldEl.style.display = '';
+        oldEl.style.textDecoration = 'line-through';
+      }
+    }
 
-    const lang = document.documentElement.lang || 'en';
-    const askText =
-      lang === 'tr' ? 'Fiyat Sorunuz' :
-      lang === 'es' ? 'Consultar Precio' :
-      'Ask For Price';
-
-    const money = (n) => `${Math.round(Number(n))} €`;
+    if (!base || !key) return;
+    const headers = { apikey: key, Authorization: `Bearer ${key}` };
 
     for (const card of cards) {
       const slug = String(card.dataset.productSlug || '').trim();
@@ -1354,57 +1320,20 @@ const homepageReviews = [
         const products = await productRes.json();
         if (!Array.isArray(products) || !products.length) continue;
 
-        // Ask-for-price only wins when every active row for this slug is ask-for-price.
-        const allAsk = products.every(p => p.ask_for_price === true);
-        if (allAsk) {
-          currentEl.textContent = askText;
-          currentEl.classList.add('is-ask-price');
-          oldEl.textContent = '';
-          oldEl.style.display = 'none';
-          continue;
-        }
+        // Homepage intentionally ignores date-specific availability pricing.
+        // It always shows the lowest positive default_price for the product slug.
+        const defaults = products
+          .map(p => Number(p.default_price || 0))
+          .filter(v => v > 0);
+        if (!defaults.length) continue;
 
-        const ids = products.map(p => String(p.id || '')).filter(Boolean);
-        let validPrices = [];
-
-        // Query each matched product's future availability.
-        // We deliberately aggregate across duplicate/legacy product rows.
-        for (const id of ids) {
-          const avRes = await fetch(
-            `${base}/rest/v1/availability?product_id=eq.${encodeURIComponent(id)}&date=gte.${todayKey}&status=eq.available&select=price,capacity,booked&limit=1000`,
-            { headers, cache: 'no-store' }
-          );
-          if (!avRes.ok) continue;
-
-          const rows = await avRes.json();
-          for (const row of rows || []) {
-            const price = Number(row.price || 0);
-            const capacity = Number(row.capacity || 0);
-            const booked = Number(row.booked || 0);
-            if (price > 0 && capacity - booked > 0) validPrices.push(price);
-          }
-        }
-
-        // Future availability is the primary source.
-        // Only if there is no valid future price do we fall back to the lowest
-        // positive default_price among active rows for that slug.
-        let livePrice = validPrices.length ? Math.min(...validPrices) : 0;
-
-        if (!(livePrice > 0)) {
-          const defaults = products
-            .map(p => Number(p.default_price || 0))
-            .filter(v => v > 0);
-          if (defaults.length) livePrice = Math.min(...defaults);
-        }
-
-        if (!(livePrice > 0)) continue;
-
+        const defaultPrice = Math.min(...defaults);
         currentEl.classList.remove('is-ask-price');
-        currentEl.textContent = money(livePrice);
-        oldEl.textContent = money(livePrice * 1.20);
+        currentEl.textContent = money(defaultPrice);
+        oldEl.textContent = money(defaultPrice * 1.25);
         oldEl.style.display = '';
         oldEl.style.textDecoration = 'line-through';
-        card.dataset.livePriceMode = 'price';
+        card.dataset.livePriceMode = 'default-price';
       } catch (err) {
         console.error('Homepage price error:', slug, err);
       }
@@ -1696,7 +1625,7 @@ const homepageReviews = [
 </style>
 
 <style is:global>
-/* ==========================================================================\n   TURKEY BALLOONS REFERENCE PASS — 2026-08-29\n   Layout only. Keeps CappadociaGo copy, booking/calendar logic and URLs intact.\n   ========================================================================== */
+/* ==========================================================================\n   CAPPADOCIAGO REFERENCE PASS — 2026-08-29\n   Layout only. Keeps CappadociaGo copy, booking/calendar logic and URLs intact.\n   ========================================================================== */
 :root{
   --cg-ref-navy:#07182d;
   --cg-ref-navy-2:#0d2744;
@@ -7260,7 +7189,7 @@ body>.site-header{
 
 
 <style is:global>
-/* ==========================================================================\n   FINAL REFERENCE MATCH — TurkeyBalloons-style composition\n   2026-08-29. This block intentionally comes last and overrides legacy passes.\n   ========================================================================== */
+/* ==========================================================================\n   FINAL CAPPADOCIAGO REFERENCE COMPOSITION\n   2026-08-29. This block intentionally comes last and overrides legacy passes.\n   ========================================================================== */
 :root{
   --ref-yellow:#ffd000;
   --ref-navy:#06162c;
@@ -7646,7 +7575,7 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
 
 <style is:global>
 /* =========================================================
-   2026-08-29 — FINAL TURKEYBALLOONSCAPPADOCIA REFERENCE MATCH
+   2026-08-29 — FINAL CAPPADOCIAGO HERO REFERENCE MATCH
    Visual-only final override. Existing content, booking logic,
    calendar and language JS are preserved.
    ========================================================= */
@@ -12219,5 +12148,655 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .booking-callout .dates-top-label{font-size:5.3px!important;}
   .booking-callout .date-slot .d-m,.booking-callout .date-slot .d-d{font-size:9.4px!important;}
   .booking-callout .tbc-submit{font-size:10.2px!important;}
+}
+</style>
+
+<style is:global>
+/* FINAL MOBILE BOOKING COLLISION + TOUR MENU REFERENCE FIX — 2026-08-30 */
+@media (max-width:700px){
+  .booking-callout,
+  .tbc-hero-form > .booking-callout{
+    width:calc(100% - 30px)!important;
+    max-width:340px!important;
+    overflow:visible!important;
+  }
+  .booking-callout .tbc-booking-box{
+    padding:5px!important;
+    border:0!important;
+    border-radius:20px!important;
+    background:#FFD400!important;
+    overflow:visible!important;
+    box-shadow:0 10px 24px rgba(8,24,49,.16)!important;
+  }
+  .booking-callout .tbc-booking-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:0!important;
+    overflow:visible!important;
+  }
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-field-wrap.dates-custom-box,
+  .booking-callout .tbc-select-btn{
+    width:100%!important;
+    box-sizing:border-box!important;
+  }
+  .booking-callout .tbc-field-wrap{
+    height:36px!important;
+    min-height:36px!important;
+    margin:0!important;
+    border:0!important;
+    border-bottom:1px solid rgba(23,40,153,.24)!important;
+    border-radius:0!important;
+    background:#FFD400!important;
+    overflow:visible!important;
+  }
+  .booking-callout .tbc-field-wrap:first-child{
+    border-radius:16px 16px 0 0!important;
+  }
+  .booking-callout .tbc-select-btn{
+    height:36px!important;
+    min-height:36px!important;
+    padding:0 13px!important;
+    border:0!important;
+    border-radius:0!important;
+    background:#FFD400!important;
+    color:#172899!important;
+    box-shadow:none!important;
+    font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+  }
+  .booking-callout .tbc-placeholder{
+    font-size:9.6px!important;
+    line-height:1!important;
+    font-weight:800!important;
+    color:#172899!important;
+  }
+  .booking-callout .tbc-arrow{
+    font-size:10px!important;
+    color:#172899!important;
+  }
+  .booking-callout .dates-custom-box{
+    height:44px!important;
+    min-height:44px!important;
+    padding:5px 13px 4px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    gap:3px!important;
+    border-radius:0!important;
+    background:#FFD400!important;
+    overflow:visible!important;
+  }
+  .booking-callout .dates-top-label,
+  .booking-callout .tbc-date-label{
+    position:static!important;
+    display:block!important;
+    margin:0!important;
+    padding:0!important;
+    font-size:5.7px!important;
+    line-height:1.05!important;
+    font-weight:900!important;
+    letter-spacing:-.01em!important;
+    color:#172899!important;
+    white-space:nowrap!important;
+  }
+  .booking-callout .dates-inputs-row{
+    display:flex!important;
+    align-items:center!important;
+    gap:7px!important;
+    min-height:15px!important;
+    margin:0!important;
+  }
+  .booking-callout .date-slot{
+    display:inline-flex!important;
+    align-items:center!important;
+    gap:2px!important;
+    height:16px!important;
+    min-height:16px!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    background:transparent!important;
+    color:#172899!important;
+  }
+  .booking-callout .date-slot .d-m,
+  .booking-callout .date-slot .d-d{
+    font-size:10.3px!important;
+    line-height:1!important;
+    font-weight:900!important;
+    color:#172899!important;
+  }
+  .booking-callout .date-slot .d-a,
+  .booking-callout .date-divider{
+    font-size:7.5px!important;
+    line-height:1!important;
+    color:#172899!important;
+    font-weight:900!important;
+  }
+  .booking-callout .tbc-field-wrap:last-child{
+    height:37px!important;
+    min-height:37px!important;
+    border:0!important;
+    border-radius:0 0 16px 16px!important;
+    overflow:hidden!important;
+  }
+  .booking-callout .tbc-submit{
+    width:100%!important;
+    height:37px!important;
+    min-height:37px!important;
+    margin:0!important;
+    padding:0 12px!important;
+    border:0!important;
+    border-radius:0 0 16px 16px!important;
+    background:#202B98!important;
+    color:#fff!important;
+    font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+    font-size:10.6px!important;
+    line-height:1!important;
+    font-weight:900!important;
+    box-shadow:none!important;
+  }
+
+  /* Tour list opens as a clean floating panel outside the yellow booking box. */
+  .booking-callout .tbc-custom-select[data-target="tourType"]{
+    position:relative!important;
+    overflow:visible!important;
+  }
+  .booking-callout .tbc-custom-select[data-target="tourType"] .tbc-options{
+    position:fixed!important;
+    top:var(--tour-menu-top,140px)!important;
+    left:50%!important;
+    right:auto!important;
+    transform:translateX(-50%)!important;
+    width:min(360px,calc(100vw - 24px))!important;
+    min-width:0!important;
+    max-width:360px!important;
+    max-height:min(58vh,430px)!important;
+    margin:0!important;
+    padding:7px!important;
+    border:1px solid rgba(23,40,153,.14)!important;
+    border-radius:17px!important;
+    background:#fff!important;
+    box-shadow:0 16px 36px rgba(7,31,58,.22)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    overscroll-behavior:contain!important;
+    z-index:2147483000!important;
+  }
+  .booking-callout .tbc-custom-select[data-target="tourType"] .tbc-opt-group-title{
+    margin:0!important;
+    padding:9px 10px 6px!important;
+    border-bottom:1px solid #e7ebf1!important;
+    color:#B77A00!important;
+    font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+    font-size:8.4px!important;
+    line-height:1.15!important;
+    font-weight:900!important;
+    letter-spacing:.055em!important;
+    text-transform:uppercase!important;
+    white-space:normal!important;
+  }
+  .booking-callout .tbc-custom-select[data-target="tourType"] .tbc-option{
+    display:flex!important;
+    align-items:center!important;
+    width:100%!important;
+    min-height:38px!important;
+    height:auto!important;
+    margin:0!important;
+    padding:9px 10px!important;
+    border-radius:9px!important;
+    color:#0B1E35!important;
+    font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+    font-size:10.4px!important;
+    line-height:1.25!important;
+    font-weight:750!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+  }
+  .booking-callout .tbc-custom-select[data-target="tourType"] .tbc-option:hover{
+    background:#FFF7CC!important;
+    color:#172899!important;
+  }
+}
+
+@media (max-width:380px){
+  .booking-callout,
+  .tbc-hero-form > .booking-callout{width:calc(100% - 26px)!important;max-width:318px!important;}
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-select-btn{height:34px!important;min-height:34px!important;}
+  .booking-callout .dates-custom-box{height:42px!important;min-height:42px!important;}
+  .booking-callout .tbc-placeholder{font-size:9.1px!important;}
+  .booking-callout .dates-top-label{font-size:5.3px!important;}
+  .booking-callout .date-slot .d-m,
+  .booking-callout .date-slot .d-d{font-size:9.8px!important;}
+  .booking-callout .tbc-field-wrap:last-child,
+  .booking-callout .tbc-submit{height:35px!important;min-height:35px!important;}
+  .booking-callout .tbc-submit{font-size:10.2px!important;}
+}
+</style>
+
+<script is:inline>
+(() => {
+  const root = document.querySelector('.booking-callout');
+  if (!root || root.dataset.mobileTourMenuPositioning === '1') return;
+  root.dataset.mobileTourMenuPositioning = '1';
+  const select = root.querySelector('.tbc-custom-select[data-target="tourType"]');
+  const button = select?.querySelector('.tbc-select-btn');
+  if (!select || !button) return;
+
+  const positionMenu = () => {
+    if (window.innerWidth > 700 || !select.classList.contains('active')) return;
+    const r = button.getBoundingClientRect();
+    const top = Math.min(window.innerHeight - 180, Math.max(8, r.bottom + 6));
+    select.style.setProperty('--tour-menu-top', `${top}px`);
+  };
+
+  button.addEventListener('click', () => requestAnimationFrame(positionMenu));
+  window.addEventListener('resize', positionMenu, { passive: true });
+  window.addEventListener('scroll', positionMenu, { passive: true });
+})();
+</script>
+
+<style is:global>
+/* FINAL BOOKING CONTROL FIX — compact mobile calendar + reliable floating dropdowns */
+@media (max-width:700px){
+  .booking-callout .tbc-booking-box{
+    padding:4px!important;
+    border-radius:17px!important;
+  }
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-select-btn{
+    height:34px!important;
+    min-height:34px!important;
+  }
+  .booking-callout .dates-custom-box{
+    height:40px!important;
+    min-height:40px!important;
+    padding:4px 11px 3px!important;
+  }
+  .booking-callout .tbc-placeholder{font-size:9.2px!important;font-weight:800!important;}
+  .booking-callout .tbc-arrow{font-size:9px!important;}
+  .booking-callout .dates-top-label{font-size:5.3px!important;line-height:1!important;}
+  .booking-callout .date-slot .d-m,
+  .booking-callout .date-slot .d-d{font-size:9.5px!important;}
+  .booking-callout .date-divider,
+  .booking-callout .date-slot .d-a{font-size:7px!important;}
+  .booking-callout .tbc-field-wrap:last-child,
+  .booking-callout .tbc-submit{height:34px!important;min-height:34px!important;}
+  .booking-callout .tbc-submit{font-size:10px!important;}
+
+  /* The calendar is portaled to <body>, so style the actual body child. */
+  body>.tbc-date-popover{
+    position:fixed!important;
+    left:50%!important;
+    top:50%!important;
+    right:auto!important;
+    bottom:auto!important;
+    transform:translate(-50%,-50%)!important;
+    width:min(300px,calc(100vw - 28px))!important;
+    max-width:300px!important;
+    max-height:min(72vh,430px)!important;
+    padding:8px!important;
+    border:1px solid rgba(23,40,153,.16)!important;
+    border-radius:16px!important;
+    background:#fff!important;
+    box-shadow:0 18px 44px rgba(7,31,58,.24)!important;
+    overflow:auto!important;
+    z-index:2147483001!important;
+  }
+  body>.tbc-date-popover .tbc-date-head{
+    grid-template-columns:30px minmax(0,1fr) 30px!important;
+    gap:6px!important;
+    margin-bottom:6px!important;
+  }
+  body>.tbc-date-popover .tbc-date-nav{
+    width:28px!important;height:28px!important;min-width:28px!important;
+    border-radius:50%!important;font-size:16px!important;
+  }
+  body>.tbc-date-popover .tbc-date-title{
+    font-size:12px!important;line-height:1.1!important;font-weight:900!important;
+  }
+  body>.tbc-date-popover .tbc-date-months{display:block!important;grid-template-columns:1fr!important;gap:0!important;}
+  body>.tbc-date-popover .tbc-date-month:nth-child(n+2){display:none!important;}
+  body>.tbc-date-popover .tbc-date-month{padding:3px!important;}
+  body>.tbc-date-popover .tbc-date-month-title{font-size:11px!important;margin:0 0 6px!important;}
+  body>.tbc-date-popover .tbc-date-weekdays,
+  body>.tbc-date-popover .tbc-date-grid{gap:3px!important;}
+  body>.tbc-date-popover .tbc-date-weekdays span{font-size:7px!important;padding:2px 0!important;}
+  body>.tbc-date-popover .tbc-date-day,
+  body>.tbc-date-popover .tbc-date-blank{
+    min-height:30px!important;height:30px!important;aspect-ratio:auto!important;
+  }
+  body>.tbc-date-popover .tbc-date-day{
+    border-radius:7px!important;font-size:8.5px!important;
+  }
+  body>.tbc-date-popover .tbc-date-help{
+    margin-top:7px!important;padding-top:6px!important;font-size:7px!important;
+  }
+}
+
+/* Dropdown menus are portaled to body so they can never be clipped by hero/slider. */
+body>.tbc-options.tbc-portal-options{
+  position:fixed!important;
+  display:none;
+  box-sizing:border-box!important;
+  margin:0!important;
+  padding:6px!important;
+  border:1px solid rgba(23,40,153,.15)!important;
+  border-radius:15px!important;
+  background:#fff!important;
+  box-shadow:0 18px 42px rgba(7,31,58,.24)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain!important;
+  z-index:2147483002!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+}
+body>.tbc-options.tbc-portal-options.is-open{display:block!important;}
+body>.tbc-options.tbc-portal-options .tbc-opt-group-title{
+  margin:0!important;
+  padding:8px 9px 5px!important;
+  border-bottom:1px solid #e7ebf1!important;
+  color:#B77A00!important;
+  font-size:8px!important;
+  line-height:1.15!important;
+  font-weight:900!important;
+  letter-spacing:.05em!important;
+  text-transform:uppercase!important;
+  white-space:normal!important;
+}
+body>.tbc-options.tbc-portal-options .tbc-option{
+  display:flex!important;
+  align-items:center!important;
+  width:100%!important;
+  min-height:34px!important;
+  height:auto!important;
+  margin:0!important;
+  padding:7px 9px!important;
+  border-radius:8px!important;
+  color:#0B1E35!important;
+  font-size:9.5px!important;
+  line-height:1.25!important;
+  font-weight:750!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  cursor:pointer!important;
+}
+body>.tbc-options.tbc-portal-options .tbc-option:hover,
+body>.tbc-options.tbc-portal-options .tbc-option:focus{
+  background:#FFF7CC!important;
+  color:#172899!important;
+}
+@media (min-width:701px){
+  body>.tbc-options.tbc-portal-options{font-size:12px!important;}
+  body>.tbc-options.tbc-portal-options .tbc-option{min-height:38px!important;font-size:11px!important;}
+  body>.tbc-options.tbc-portal-options .tbc-opt-group-title{font-size:9px!important;}
+}
+</style>
+
+<script is:inline>
+(() => {
+  const bookingRoot = document.querySelector('.tbc-hero-form');
+  if (!bookingRoot || bookingRoot.dataset.portalSelectsReady === '1') return;
+  bookingRoot.dataset.portalSelectsReady = '1';
+
+  const selects = [...bookingRoot.querySelectorAll('.tbc-custom-select')];
+  const portals = [];
+
+  const hideAll = (except = null) => {
+    portals.forEach(({ select, panel }) => {
+      if (select === except) return;
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+    });
+  };
+
+  const placePanel = (select, button, panel) => {
+    const rect = button.getBoundingClientRect();
+    const isTour = select.getAttribute('data-target') === 'tourType';
+    const mobile = window.innerWidth <= 700;
+    const wantedWidth = mobile
+      ? Math.min(isTour ? 350 : 280, window.innerWidth - 20)
+      : Math.min(isTour ? 430 : 300, Math.max(rect.width, isTour ? 360 : 220));
+    const left = Math.min(
+      Math.max(10, rect.left + rect.width / 2 - wantedWidth / 2),
+      window.innerWidth - wantedWidth - 10
+    );
+
+    const below = window.innerHeight - rect.bottom - 10;
+    const above = rect.top - 10;
+    const desiredHeight = isTour ? (mobile ? 360 : 420) : (mobile ? 220 : 260);
+    const openAbove = below < 170 && above > below;
+    const maxHeight = Math.max(140, Math.min(desiredHeight, openAbove ? above : below));
+
+    panel.style.width = `${wantedWidth}px`;
+    panel.style.maxHeight = `${maxHeight}px`;
+    panel.style.left = `${left}px`;
+    panel.style.right = 'auto';
+    panel.style.transform = 'none';
+    if (openAbove) {
+      panel.style.top = 'auto';
+      panel.style.bottom = `${Math.max(8, window.innerHeight - rect.top + 6)}px`;
+    } else {
+      panel.style.bottom = 'auto';
+      panel.style.top = `${Math.max(8, rect.bottom + 6)}px`;
+    }
+  };
+
+  selects.forEach((select) => {
+    const button = select.querySelector('.tbc-select-btn');
+    const panel = select.querySelector('.tbc-options');
+    if (!button || !panel) return;
+
+    panel.classList.add('tbc-portal-options');
+    panel.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(panel);
+    portals.push({ select, button, panel });
+
+    button.addEventListener('click', () => {
+      requestAnimationFrame(() => {
+        const shouldOpen = select.classList.contains('active');
+        hideAll(select);
+        if (shouldOpen) {
+          placePanel(select, button, panel);
+          panel.classList.add('is-open');
+          panel.setAttribute('aria-hidden', 'false');
+        } else {
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+        }
+      });
+    });
+
+    panel.querySelectorAll('.tbc-option').forEach((option) => {
+      option.addEventListener('click', () => {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+      });
+    });
+  });
+
+  const reposition = () => {
+    portals.forEach(({ select, button, panel }) => {
+      if (panel.classList.contains('is-open')) placePanel(select, button, panel);
+    });
+  };
+  window.addEventListener('resize', reposition, { passive: true });
+  window.addEventListener('scroll', reposition, { passive: true });
+
+  document.querySelectorAll('[data-date-target]').forEach((slot) => {
+    slot.addEventListener('click', () => hideAll(), { passive: true });
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    const insideSelectButton = selects.some((select) => select.contains(target));
+    const insidePortal = portals.some(({ panel }) => panel.contains(target));
+    if (!insideSelectButton && !insidePortal) hideAll();
+  });
+})();
+</script>
+
+<style is:global>
+/* FINAL: single-date booking field. Keeps the existing yellow/navy visual system. */
+.booking-callout .single-tour-date .single-date-row{
+  display:flex!important;align-items:center!important;width:100%!important;gap:0!important;
+}
+.booking-callout .single-tour-date .single-date-slot{
+  width:auto!important;max-width:100%!important;display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;gap:4px!important;
+}
+.booking-callout .single-tour-date .date-divider{display:none!important;}
+.booking-callout .single-tour-date .dates-top-label{white-space:nowrap!important;}
+@media(max-width:720px){
+  .booking-callout .single-tour-date .single-date-slot{min-width:88px!important;}
+}
+</style>
+
+<style is:global>
+/* FINAL alignment polish: keep all booking chevrons at the far right edge. */
+.booking-callout .tbc-select-btn{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  width:100%!important;
+  min-width:0!important;
+  padding-right:34px!important;
+}
+.booking-callout .tbc-select-btn .tbc-placeholder{
+  min-width:0!important;
+  text-align:left!important;
+}
+.booking-callout .tbc-select-btn .tbc-arrow{
+  position:absolute!important;
+  right:14px!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  margin:0!important;
+  line-height:1!important;
+}
+.booking-callout .single-tour-date .single-date-row{
+  width:100%!important;
+}
+.booking-callout .single-tour-date .single-date-slot{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  padding-right:34px!important;
+  text-align:left!important;
+}
+.booking-callout .single-tour-date .single-date-slot .d-a{
+  position:absolute!important;
+  right:14px!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  margin:0!important;
+  line-height:1!important;
+}
+@media(max-width:720px){
+  .booking-callout .tbc-select-btn,
+  .booking-callout .single-tour-date .single-date-slot{
+    padding-right:30px!important;
+  }
+  .booking-callout .tbc-select-btn .tbc-arrow,
+  .booking-callout .single-tour-date .single-date-slot .d-a{
+    right:11px!important;
+  }
+}
+</style>
+
+<style is:global>
+/* FINAL booking date alignment: date field mirrors Select Tour / Select Person exactly. */
+.booking-callout .single-tour-date{
+  display:flex!important;
+  align-items:stretch!important;
+}
+.booking-callout .single-tour-date .single-date-row{
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+}
+.booking-callout .single-tour-date .single-date-slot{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto 18px!important;
+  align-items:center!important;
+  column-gap:8px!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:0 14px!important;
+  border:0!important;
+  background:transparent!important;
+  color:inherit!important;
+  text-align:left!important;
+}
+.booking-callout .single-tour-date .single-date-label{
+  min-width:0!important;
+  font:inherit!important;
+  font-size:inherit!important;
+  font-weight:inherit!important;
+  line-height:1.1!important;
+  color:inherit!important;
+  white-space:nowrap!important;
+}
+.booking-callout .single-tour-date .single-date-value{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:4px!important;
+  font:inherit!important;
+  font-size:inherit!important;
+  font-weight:800!important;
+  line-height:1!important;
+  color:inherit!important;
+  white-space:nowrap!important;
+  justify-self:end!important;
+}
+.booking-callout .single-tour-date .single-date-value .d-d,
+.booking-callout .single-tour-date .single-date-value .d-m{
+  font:inherit!important;
+  font-size:inherit!important;
+  font-weight:inherit!important;
+  line-height:inherit!important;
+  color:inherit!important;
+  text-transform:none!important;
+}
+.booking-callout .single-tour-date .single-date-slot .d-a{
+  position:static!important;
+  transform:none!important;
+  width:18px!important;
+  height:18px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  justify-self:end!important;
+  margin:0!important;
+  font-family:Arial,sans-serif!important;
+  font-size:16px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  color:inherit!important;
+}
+.booking-callout .single-tour-date .dates-top-label{display:none!important;}
+
+@media(max-width:720px){
+  .booking-callout .single-tour-date .single-date-slot{
+    grid-template-columns:minmax(0,1fr) auto 16px!important;
+    column-gap:6px!important;
+    padding:0 12px!important;
+  }
+  .booking-callout .single-tour-date .single-date-label,
+  .booking-callout .single-tour-date .single-date-value{
+    font-size:inherit!important;
+  }
+  .booking-callout .single-tour-date .single-date-slot .d-a{
+    width:16px!important;
+    height:16px!important;
+    font-size:15px!important;
+  }
 }
 </style>

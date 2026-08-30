@@ -21,7 +21,7 @@ const title = "CappadociaGo — Admin";
     .shell{min-height:100vh;display:grid;grid-template-columns:210px minmax(0,1fr)}
     aside{background:#fff;border-right:1px solid var(--line);padding:24px 15px;position:sticky;top:0;height:100vh}
     .brand{font-size:14px;font-weight:800;letter-spacing:.04em;color:var(--ink);line-height:1.25;margin:2px 8px 28px}.brand small{display:block;color:var(--brand-dark);font-size:9px;letter-spacing:.13em;margin-top:5px;font-weight:800}
-    .nav{display:grid;gap:5px}.nav button{width:100%;text-align:left;border:0;background:transparent;color:#59707d;padding:10px 11px;border-radius:10px;font-size:12px;font-weight:650;transition:.15s ease}.nav button:hover{background:#f3f8f8;color:var(--ink)}.nav button.active{background:var(--soft);color:#248c88;box-shadow:inset 3px 0 var(--brand)}
+    .nav{display:grid;gap:5px}.nav button,.nav a{width:100%;text-align:left;border:0;background:transparent;color:#59707d;padding:10px 11px;border-radius:10px;font-size:12px;font-weight:650;transition:.15s ease}.nav button:hover,.nav a:hover{background:#f3f8f8;color:var(--ink)}.nav button.active,.nav a.active{background:var(--soft);color:#248c88;box-shadow:inset 3px 0 var(--brand)}
     main{padding:24px 26px 36px;min-width:0}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.topbar h1{margin:0;font-size:21px;line-height:1.2;font-weight:700;letter-spacing:-.015em}.userbar{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px}
     .btn{border:1px solid transparent;border-radius:9px;padding:9px 12px;font-size:11px;font-weight:650;line-height:1;min-height:34px}.btn.primary{background:var(--brand);color:#103b3a}.btn.primary:hover{background:#49bbb5}.btn.dark{background:var(--ink);color:#fff}.btn.ghost{background:#fff;border-color:var(--line);color:var(--ink)}.btn.ghost:hover{background:#f8fbfc}.btn.danger{background:#fff5f5;color:#a63b3b;border-color:#f0d3d3}
     .panel,.reservation-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:15px;margin-bottom:14px}
@@ -38,8 +38,11 @@ const title = "CappadociaGo — Admin";
     .reservation-list{display:grid;gap:7px;max-height:690px;overflow:auto;padding-right:2px}.reservation-item{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}.reservation-item-head{display:flex;justify-content:space-between;gap:10px;align-items:start;border-bottom:1px solid #edf2f4;padding-bottom:7px;margin-bottom:7px}.reservation-item h3{margin:0;font-size:11px;font-weight:700}.reservation-item small{font-size:9px;color:#6f838e}.reservation-date{font-size:8px;font-weight:700;color:#267f7b;background:var(--soft);padding:4px 6px;border-radius:999px;white-space:nowrap}.reservation-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 10px;font-size:9px;color:#5a6e79}.reservation-note{margin-top:6px;padding:7px;background:#f6fafb;border-radius:7px;font-size:9px;line-height:1.4}.reservation-item-actions{display:flex;justify-content:flex-end;margin-top:7px}.empty-state{padding:24px 12px;text-align:center;border:1px dashed #d6e3e7;border-radius:10px;color:var(--muted);font-size:10px;background:#fbfdfd}
     .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#f7fafb,#eef8f7)}.login-card{width:min(380px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:0 18px 50px rgba(31,72,90,.09)}.login-card h1{margin:0 0 5px;font-size:19px}.login-card p{color:var(--muted);font-size:10px}.field{margin:12px 0}.field label{display:block;font-size:9px;font-weight:700;margin-bottom:5px}.field input,.field select{width:100%;padding:9px;border:1px solid var(--line);border-radius:9px;font-size:11px}.notice{padding:9px 10px;border-radius:8px;background:#fff8e8;color:#896317;font-size:10px;margin-bottom:11px}.hidden{display:none!important}
     dialog{width:min(500px,calc(100% - 30px));border:0;border-radius:15px;padding:0;box-shadow:0 25px 70px rgba(0,0,0,.18)}dialog::backdrop{background:rgba(19,42,55,.32)}.dialog-body{padding:19px}.dialog-body h3{margin:0 0 14px;font-size:15px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-grid .full{grid-column:1/-1}.actions{display:flex;justify-content:flex-end;gap:7px;margin-top:14px}
+    .nav a{text-decoration:none}
+
+    .tour-admin-cta{display:flex;align-items:center;justify-content:space-between;gap:16px;border-left:4px solid var(--accent);background:linear-gradient(135deg,#fff,#f3fbfb)}.tour-admin-cta strong{font-size:14px}.tour-admin-cta p{margin:4px 0 0;color:var(--muted);font-size:10px;line-height:1.5}.tour-admin-cta-actions{display:flex;gap:7px;flex-wrap:wrap}.tour-admin-cta a{text-decoration:none}
     @media(max-width:1180px){.products{grid-template-columns:repeat(2,1fr)}.calendar{grid-template-columns:repeat(7,minmax(110px,1fr))}.reservation-filterbar{grid-template-columns:1fr 1fr}.filter-actions{align-self:end}}
-    @media(max-width:900px){.shell{grid-template-columns:1fr}aside{height:auto;position:static;border-right:0;border-bottom:1px solid var(--line);padding:11px 14px}.brand{margin:0 0 10px}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;width:auto}.reservation-layout{grid-template-columns:1fr}main{padding:16px}.toolbar #productSelect{min-width:210px}.month-nav{margin-left:0}.calendar{grid-template-columns:repeat(7,minmax(105px,1fr))}}
+    @media(max-width:900px){.tour-admin-cta{align-items:flex-start;flex-direction:column}.tour-admin-cta-actions{width:100%}.tour-admin-cta-actions .btn{flex:1;text-align:center}.shell{grid-template-columns:1fr}aside{height:auto;position:static;border-right:0;border-bottom:1px solid var(--line);padding:11px 14px}.brand{margin:0 0 10px}.nav{display:flex;overflow:auto}.nav button,.nav a{white-space:nowrap;width:auto}.reservation-layout{grid-template-columns:1fr}main{padding:16px}.toolbar #productSelect{min-width:210px}.month-nav{margin-left:0}.calendar{grid-template-columns:repeat(7,minmax(105px,1fr))}}
     @media(max-width:600px){html{font-size:13px}.topbar{align-items:flex-start}.userbar{flex-direction:column;align-items:flex-end}.reservation-form-grid,.reservation-filterbar{grid-template-columns:1fr}.products{grid-template-columns:1fr}.panel{padding:10px}.calendar{grid-template-columns:repeat(7,minmax(98px,1fr))}}
   </style>
 </head>
@@ -64,15 +67,20 @@ const title = "CappadociaGo — Admin";
         <button class="active" data-tab="calendar">📅 Takvim</button>
         <button data-tab="products">🎈 Ürünler</button>
         <button data-tab="reservations">🧾 Rezervasyon Detayları</button>
+        <a class="tour-manager-link" href="/admin/tours">🗺️ Tur İçerik Paneli</a>
 </div>
     </aside>
     <main>
       <div class="topbar">
         <div><h1 id="pageTitle">Fiyat & Kontenjan Takvimi</h1></div>
-        <div class="userbar"><span id="adminEmail"></span><button id="logoutBtn" class="btn ghost">Çıkış</button></div>
+        <div class="userbar"><a href="/admin/tours" class="btn primary">+ Tur Ekle / Revize Et</a><span id="adminEmail"></span><button id="logoutBtn" class="btn ghost">Çıkış</button></div>
       </div>
 
       <section id="calendarTab">
+        <div class="panel tour-admin-cta">
+          <div><strong>Tur İçerik Yönetimi</strong><p>Yeni tur ekleyin veya mevcut CappadociaGo turlarını açıp fotoğraf, fiyat ve açıklamalarını revize edin.</p></div>
+          <div class="tour-admin-cta-actions"><a class="btn primary" href="/admin/tours?new=1">+ Yeni Tur Ekle</a><a class="btn dark" href="/admin/tours">Mevcut Turları Revize Et</a></div>
+        </div>
         <div class="panel">
           <div class="toolbar">
             <select id="productSelect"></select>
@@ -164,6 +172,8 @@ const title = "CappadociaGo — Admin";
     </div>
   </dialog>
 
-  <script src="/src/scripts/admin.ts"></script>
+  <script>
+  import "../../scripts/admin.ts";
+</script>
 </body>
 </html>

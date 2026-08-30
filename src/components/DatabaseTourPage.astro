@@ -1,4 +1,5 @@
 ---
+import TourMobileGuard from './TourMobileGuard.astro';
 import StandardizedPrivateTourPage from './StandardizedPrivateTourPage.astro';
 const { lang='en', tour, translation } = Astro.props;
 const extras:any[] = [];
@@ -38,3 +39,5 @@ const duration = translation.duration_label || (tour.duration_minutes ? `${tour.
   seoTitle={translation.seo_title || ''}
   seoDescription={translation.seo_description || ''}
 />
+
+<TourMobileGuard />

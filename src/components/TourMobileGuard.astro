@@ -1,0 +1,92 @@
+<style is:global>
+/* CAPPADOCIAGO — authoritative tour mobile layout guard.
+   This component is intentionally rendered LAST on tour detail pages. */
+@media (max-width: 900px){
+  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+
+  body .page,body .tbc-tour-page,body .tour-page,body .tour-detail-page,
+  body .container,body .tbc-tour-container,body .wrap{
+    box-sizing:border-box!important;min-width:0!important;max-width:100%!important;
+  }
+  body .container,body .tbc-tour-container,body .wrap{
+    width:calc(100% - 20px)!important;margin-left:auto!important;margin-right:auto!important;
+  }
+
+  /* Never allow the content/sidebar grid to stay two-column on a phone/tablet. */
+  body .grid,body .tbc-tour-grid,body .tour-layout{
+    display:flex!important;flex-direction:column!important;grid-template-columns:none!important;
+    align-items:stretch!important;width:100%!important;max-width:100%!important;min-width:0!important;
+    gap:14px!important;
+  }
+  body .main-col,body .tbc-tour-main,body .tour-content,
+  body .tbc-tour-main-card,body .card.content,body .content{
+    order:1!important;display:block!important;position:static!important;float:none!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;flex:0 0 auto!important;
+    margin-left:0!important;margin-right:0!important;left:auto!important;right:auto!important;
+    transform:none!important;overflow:visible!important;column-count:auto!important;columns:auto!important;
+  }
+  body .side,body .tbc-tour-side,body .tour-sidebar{
+    order:2!important;display:flex!important;flex-direction:column!important;position:static!important;float:none!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;flex:0 0 auto!important;
+    margin:0!important;left:auto!important;right:auto!important;transform:none!important;
+  }
+
+  /* Content sections must remain real full-width blocks. */
+  body .content>section,body .content section,body .tbc-tour-section,body .content-block{
+    display:block!important;visibility:visible!important;opacity:1!important;
+    position:relative!important;float:none!important;clear:both!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    height:auto!important;min-height:0!important;max-height:none!important;
+    overflow:visible!important;transform:none!important;clip:auto!important;clip-path:none!important;
+    writing-mode:horizontal-tb!important;text-orientation:mixed!important;
+  }
+  body .content>section>*,body .content section>*,body .tbc-tour-section>*,body .content-block>*{
+    min-width:0!important;max-width:100%!important;writing-mode:horizontal-tb!important;text-orientation:mixed!important;
+  }
+
+  body .content h1,body .content h2,body .content h3,
+  body .tbc-tour-section h1,body .tbc-tour-section h2,body .tbc-tour-section h3,
+  body .content-block h1,body .content-block h2,body .content-block h3{
+    display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;
+    white-space:normal!important;word-break:normal!important;overflow-wrap:break-word!important;hyphens:none!important;
+    writing-mode:horizontal-tb!important;text-orientation:mixed!important;
+  }
+  body .content p,body .content li,
+  body .tbc-tour-section p,body .tbc-tour-section li,
+  body .content-block p,body .content-block li,
+  body .tbc-tour-list-item,body .tbc-tour-list-item span,body .checks>div,body .check-item{
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    white-space:normal!important;word-break:normal!important;overflow-wrap:break-word!important;hyphens:none!important;
+    writing-mode:horizontal-tb!important;text-orientation:mixed!important;
+  }
+  body .content h2,body .tbc-tour-section h2,body .content-block h2{font-size:18px!important;line-height:1.28!important;margin:0 0 10px!important}
+  body .content p,body .tbc-tour-section p,body .content-block p{font-size:12.5px!important;line-height:1.72!important;margin:0 0 11px!important}
+  body .content li,body .tbc-tour-section li,body .content-block li,body .tbc-tour-list-item,body .checks>div{font-size:12px!important;line-height:1.62!important}
+
+  body .checks,body .tbc-tour-list,body .check-grid{
+    display:grid!important;grid-template-columns:1fr!important;width:100%!important;max-width:100%!important;min-width:0!important;gap:8px!important;
+  }
+  body .tbc-tour-list-item,body .checks>div,body .check-item{display:flex!important;align-items:flex-start!important;gap:8px!important}
+  body .tbc-tour-check,body .checks i{flex:0 0 18px!important}
+
+  /* Quick Reservation phone: country code and phone number get separate lanes. */
+  body .iti{display:block!important;position:relative!important;width:100%!important;max-width:100%!important;min-width:0!important;overflow:visible!important}
+  body .iti__country-container{position:absolute!important;left:0!important;top:0!important;bottom:0!important;width:88px!important;min-width:88px!important;max-width:88px!important;z-index:5!important}
+  body .iti__selected-country{width:88px!important;min-width:88px!important;max-width:88px!important;padding:0 8px!important;display:flex!important;align-items:center!important;gap:4px!important;background:#f3f8fc!important;border-right:1px solid #cbdbe8!important;border-radius:11px 0 0 11px!important}
+  body .iti__selected-country-primary{display:flex!important;align-items:center!important;gap:4px!important;min-width:0!important;padding:0!important}
+  body .iti__selected-dial-code{display:inline-block!important;font-size:11px!important;line-height:1!important;font-weight:800!important;white-space:nowrap!important;color:#062d63!important;margin:0!important}
+  body .iti input[type=tel],body input.iti__tel-input,body .iti__tel-input{
+    display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;
+    padding-left:100px!important;padding-right:11px!important;text-indent:0!important;font-size:12.5px!important;
+  }
+  body .iti__country-list{z-index:2147483646!important;max-width:calc(100vw - 24px)!important}
+}
+
+@media (max-width: 390px){
+  body .container,body .tbc-tour-container,body .wrap{width:calc(100% - 16px)!important}
+  body .content h2,body .tbc-tour-section h2,body .content-block h2{font-size:17px!important}
+  body .content p,body .tbc-tour-section p,body .content-block p{font-size:12px!important}
+  body .iti__country-container,body .iti__selected-country{width:84px!important;min-width:84px!important;max-width:84px!important}
+  body .iti input[type=tel],body input.iti__tel-input,body .iti__tel-input{padding-left:95px!important;font-size:12px!important}
+}
+</style>

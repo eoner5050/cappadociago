@@ -249,3 +249,80 @@ grant usage on schema public to anon, authenticated;
 grant select on public.products, public.availability to anon;
 grant select, insert, update, delete on public.products, public.availability, public.reservations to authenticated;
 grant select on public.admin_users to authenticated;
+
+-- ============================================================
+-- CappadociaGo Tour Content Panel (admin/tours)
+-- ============================================================
+create table if not exists public.tours (
+  id uuid primary key default gen_random_uuid(),
+  slug text unique not null,
+  category text not null,
+  price numeric not null default 0,
+  old_price numeric,
+  duration_minutes integer,
+  rating numeric default 4.9,
+  reviews_count integer default 0,
+  hero_image text,
+  gallery_images text[] default '{}',
+  is_published boolean default false,
+  price_mode text not null default 'perPerson',
+  ask_for_price boolean not null default false,
+  default_capacity integer not null default 20,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+create table if not exists public.tour_translations (
+  id uuid primary key default gen_random_uuid(),
+  tour_id uuid not null references public.tours(id) on delete cascade,
+  lang text not null check (lang in ('tr','en','es')),
+  title text not null,
+  kicker text,
+  duration_label text,
+  hero_desc text,
+  overview_title text,
+  overview_paragraphs text[] default '{}',
+  price_title text,
+  price_text text,
+  whats_included text[] default '{}',
+  not_included text[] default '{}',
+  highlights text[] default '{}',
+  important_info text[] default '{}',
+  itinerary text[] default '{}',
+  flight_details_title text,
+  flight_details_paragraphs text[] default '{}',
+  pickup_info text,
+  meeting_point text,
+  after_flight_title text,
+  after_flight_text text,
+  refund_title text,
+  refund_text text,
+  advance_title text,
+  advance_text text,
+  safety_title text,
+  safety_text text,
+  seo_title text,
+  seo_description text,
+  unique(tour_id,lang)
+);
+alter table public.tours add column if not exists price_mode text not null default 'perPerson';
+alter table public.tours add column if not exists ask_for_price boolean not null default false;
+alter table public.tours add column if not exists default_capacity integer not null default 20;
+alter table public.tour_translations add column if not exists not_included text[] default '{}';
+alter table public.tour_translations add column if not exists highlights text[] default '{}';
+alter table public.tour_translations add column if not exists itinerary text[] default '{}';
+alter table public.tour_translations add column if not exists pickup_info text;
+alter table public.tour_translations add column if not exists meeting_point text;
+alter table public.tour_translations add column if not exists seo_title text;
+alter table public.tour_translations add column if not exists seo_description text;
+alter table public.tours enable row level security;
+alter table public.tour_translations enable row level security;
+drop policy if exists "Public can read published tours" on public.tours;
+create policy "Public can read published tours" on public.tours for select to anon using (is_published=true);
+drop policy if exists "Public can read translations of published tours" on public.tour_translations;
+create policy "Public can read translations of published tours" on public.tour_translations for select to anon using (exists(select 1 from public.tours t where t.id=tour_translations.tour_id and t.is_published=true));
+grant select on public.tours, public.tour_translations to anon, authenticated;
+insert into storage.buckets (id,name,public,file_size_limit,allowed_mime_types)
+values ('tour-images','tour-images',true,12582912,array['image/jpeg','image/png','image/webp','image/avif'])
+on conflict (id) do update set public=excluded.public,file_size_limit=excluded.file_size_limit,allowed_mime_types=excluded.allowed_mime_types;
+drop policy if exists "Public can view tour images" on storage.objects;
+create policy "Public can view tour images" on storage.objects for select to public using (bucket_id='tour-images');

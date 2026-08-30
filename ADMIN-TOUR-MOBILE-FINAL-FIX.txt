@@ -1,0 +1,14 @@
+CAPPADOCIAGO FINAL ADMIN + MOBILE TOUR FIX
+
+1) /admin/ now has a prominent "+ Tur Ekle / Revize Et" button and two visible actions:
+   - + Yeni Tur Ekle -> /admin/tours?new=1
+   - Mevcut Turları Revize Et -> /admin/tours
+2) /admin/tours always lists the built-in CappadociaGo catalog even if editable Supabase tour tables are not ready.
+3) Existing tours remain editable/revisable when Supabase tours + tour_translations tables are installed.
+4) All 69 language tour routes use the authoritative mobile content guard:
+   - 39 via ActivityDetailPage -> StandardizedPrivateTourPage
+   - 12 directly via StandardizedPrivateTourPage
+   - 3 via DatabaseTourPage
+   - 15 full HTML legacy/special pages now have valid closing BODY/HTML and the guard rendered LAST.
+5) The guard forces content to a true one-column full-width mobile flow and prevents headings/paragraphs from collapsing into one-letter vertical columns.
+6) The Quick Reservation phone control uses separate country-code and number lanes on mobile.

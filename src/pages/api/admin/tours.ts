@@ -39,18 +39,26 @@ const cleanTranslation = (t: any) => ({
 export const GET: APIRoute = async ({ request }) => {
   try {
     const { admin } = await requireAdmin(request);
-    const { data: tours, error } = await admin.from('tours').select('*').order('created_at', { ascending: false });
-    if (error) throw error;
-    const ids = (tours || []).map((x:any)=>x.id);
+    // Existing static CappadociaGo tours must remain visible in the admin even
+    // when the optional editable-tour tables have not been installed yet.
+    let tours:any[] = [];
     let translations:any[] = [];
-    if (ids.length) {
-      const res = await admin.from('tour_translations').select('*').in('tour_id', ids);
-      if (res.error) throw res.error;
-      translations = res.data || [];
+    let dbWarning = '';
+    const tourRes = await admin.from('tours').select('*').order('created_at', { ascending: false });
+    if (tourRes.error) {
+      dbWarning = `Editable tour tables are not ready: ${tourRes.error.message}`;
+    } else {
+      tours = tourRes.data || [];
+      const ids = tours.map((x:any)=>x.id);
+      if (ids.length) {
+        const trRes = await admin.from('tour_translations').select('*').in('tour_id', ids);
+        if (trRes.error) dbWarning = `Tour translations could not be loaded: ${trRes.error.message}`;
+        else translations = trRes.data || [];
+      }
     }
     const catalog = existingTourCatalog as readonly any[];
     const catalogBySlug = new Map(catalog.map((x:any)=>[x.slug,x]));
-    const dbRows = (tours || []).map((tour:any)=>({
+    const dbRows = tours.map((tour:any)=>({
       ...tour,
       source: 'database',
       origin: catalogBySlug.has(tour.slug) ? 'site' : 'admin',
@@ -69,7 +77,7 @@ export const GET: APIRoute = async ({ request }) => {
         updated_at: null,
       }));
     const rows = [...dbRows, ...siteRows].sort((a:any,b:any)=>String(a.slug).localeCompare(String(b.slug)));
-    return new Response(JSON.stringify({ tours: rows, siteTourCount: catalog.length }), { headers: { 'Content-Type':'application/json' } });
+    return new Response(JSON.stringify({ tours: rows, siteTourCount: catalog.length, dbWarning }), { headers: { 'Content-Type':'application/json' } });
   } catch (err) { return adminErrorResponse(err); }
 };
 
