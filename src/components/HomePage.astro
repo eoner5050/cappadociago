@@ -558,11 +558,10 @@ const homepageReviews = [
 
               <!-- 2. TARİH SEKMESİ -->
               <div class="tbc-field-wrap dates-custom-box single-tour-date" id="tbcDateField">
-                <span class="dates-top-label">{lang === "tr" ? "Tur Tarihi Seçin" : lang === "es" ? "Seleccionar fecha del tour" : "Select Tour Date"}</span>
                 <div class="dates-inputs-row single-date-row">
                   <button class="date-slot single-date-slot" type="button" data-date-target="start" aria-label={lang === "tr" ? "Tur tarihi seçin" : lang === "es" ? "Seleccionar fecha del tour" : "Select tour date"}>
-                    <span class="d-m" id="startMonth">Aug</span>
-                    <span class="d-d" id="startDay">30</span>
+                    <span class="single-date-label">{lang === "tr" ? "Tur Tarihi Seç" : lang === "es" ? "Seleccionar Fecha" : "Select Tour Date"}</span>
+                    <span class="single-date-value"><span class="d-d" id="startDay">30</span> <span class="d-m" id="startMonth">Aug</span></span>
                     <span class="d-a" aria-hidden="true">⌄</span>
                   </button>
                 </div>
@@ -12734,6 +12733,98 @@ body>.tbc-options.tbc-portal-options .tbc-option:focus{
   .booking-callout .tbc-select-btn .tbc-arrow,
   .booking-callout .single-tour-date .single-date-slot .d-a{
     right:11px!important;
+  }
+}
+</style>
+
+<style is:global>
+/* FINAL booking date alignment: date field mirrors Select Tour / Select Person exactly. */
+.booking-callout .single-tour-date{
+  display:flex!important;
+  align-items:stretch!important;
+}
+.booking-callout .single-tour-date .single-date-row{
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+}
+.booking-callout .single-tour-date .single-date-slot{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto 18px!important;
+  align-items:center!important;
+  column-gap:8px!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:0 14px!important;
+  border:0!important;
+  background:transparent!important;
+  color:inherit!important;
+  text-align:left!important;
+}
+.booking-callout .single-tour-date .single-date-label{
+  min-width:0!important;
+  font:inherit!important;
+  font-size:inherit!important;
+  font-weight:inherit!important;
+  line-height:1.1!important;
+  color:inherit!important;
+  white-space:nowrap!important;
+}
+.booking-callout .single-tour-date .single-date-value{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:4px!important;
+  font:inherit!important;
+  font-size:inherit!important;
+  font-weight:800!important;
+  line-height:1!important;
+  color:inherit!important;
+  white-space:nowrap!important;
+  justify-self:end!important;
+}
+.booking-callout .single-tour-date .single-date-value .d-d,
+.booking-callout .single-tour-date .single-date-value .d-m{
+  font:inherit!important;
+  font-size:inherit!important;
+  font-weight:inherit!important;
+  line-height:inherit!important;
+  color:inherit!important;
+  text-transform:none!important;
+}
+.booking-callout .single-tour-date .single-date-slot .d-a{
+  position:static!important;
+  transform:none!important;
+  width:18px!important;
+  height:18px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  justify-self:end!important;
+  margin:0!important;
+  font-family:Arial,sans-serif!important;
+  font-size:16px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  color:inherit!important;
+}
+.booking-callout .single-tour-date .dates-top-label{display:none!important;}
+
+@media(max-width:720px){
+  .booking-callout .single-tour-date .single-date-slot{
+    grid-template-columns:minmax(0,1fr) auto 16px!important;
+    column-gap:6px!important;
+    padding:0 12px!important;
+  }
+  .booking-callout .single-tour-date .single-date-label,
+  .booking-callout .single-tour-date .single-date-value{
+    font-size:inherit!important;
+  }
+  .booking-callout .single-tour-date .single-date-slot .d-a{
+    width:16px!important;
+    height:16px!important;
+    font-size:15px!important;
   }
 }
 </style>
