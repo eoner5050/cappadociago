@@ -12682,3 +12682,58 @@ body>.tbc-options.tbc-portal-options .tbc-option:focus{
   .booking-callout .single-tour-date .single-date-slot{min-width:88px!important;}
 }
 </style>
+
+<style is:global>
+/* FINAL alignment polish: keep all booking chevrons at the far right edge. */
+.booking-callout .tbc-select-btn{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  width:100%!important;
+  min-width:0!important;
+  padding-right:34px!important;
+}
+.booking-callout .tbc-select-btn .tbc-placeholder{
+  min-width:0!important;
+  text-align:left!important;
+}
+.booking-callout .tbc-select-btn .tbc-arrow{
+  position:absolute!important;
+  right:14px!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  margin:0!important;
+  line-height:1!important;
+}
+.booking-callout .single-tour-date .single-date-row{
+  width:100%!important;
+}
+.booking-callout .single-tour-date .single-date-slot{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  padding-right:34px!important;
+  text-align:left!important;
+}
+.booking-callout .single-tour-date .single-date-slot .d-a{
+  position:absolute!important;
+  right:14px!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  margin:0!important;
+  line-height:1!important;
+}
+@media(max-width:720px){
+  .booking-callout .tbc-select-btn,
+  .booking-callout .single-tour-date .single-date-slot{
+    padding-right:30px!important;
+  }
+  .booking-callout .tbc-select-btn .tbc-arrow,
+  .booking-callout .single-tour-date .single-date-slot .d-a{
+    right:11px!important;
+  }
+}
+</style>
