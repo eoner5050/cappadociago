@@ -12467,3 +12467,245 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   window.addEventListener('scroll', positionMenu, { passive: true });
 })();
 </script>
+
+<style is:global>
+/* FINAL BOOKING CONTROL FIX — compact mobile calendar + reliable floating dropdowns */
+@media (max-width:700px){
+  .booking-callout .tbc-booking-box{
+    padding:4px!important;
+    border-radius:17px!important;
+  }
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-select-btn{
+    height:34px!important;
+    min-height:34px!important;
+  }
+  .booking-callout .dates-custom-box{
+    height:40px!important;
+    min-height:40px!important;
+    padding:4px 11px 3px!important;
+  }
+  .booking-callout .tbc-placeholder{font-size:9.2px!important;font-weight:800!important;}
+  .booking-callout .tbc-arrow{font-size:9px!important;}
+  .booking-callout .dates-top-label{font-size:5.3px!important;line-height:1!important;}
+  .booking-callout .date-slot .d-m,
+  .booking-callout .date-slot .d-d{font-size:9.5px!important;}
+  .booking-callout .date-divider,
+  .booking-callout .date-slot .d-a{font-size:7px!important;}
+  .booking-callout .tbc-field-wrap:last-child,
+  .booking-callout .tbc-submit{height:34px!important;min-height:34px!important;}
+  .booking-callout .tbc-submit{font-size:10px!important;}
+
+  /* The calendar is portaled to <body>, so style the actual body child. */
+  body>.tbc-date-popover{
+    position:fixed!important;
+    left:50%!important;
+    top:50%!important;
+    right:auto!important;
+    bottom:auto!important;
+    transform:translate(-50%,-50%)!important;
+    width:min(300px,calc(100vw - 28px))!important;
+    max-width:300px!important;
+    max-height:min(72vh,430px)!important;
+    padding:8px!important;
+    border:1px solid rgba(23,40,153,.16)!important;
+    border-radius:16px!important;
+    background:#fff!important;
+    box-shadow:0 18px 44px rgba(7,31,58,.24)!important;
+    overflow:auto!important;
+    z-index:2147483001!important;
+  }
+  body>.tbc-date-popover .tbc-date-head{
+    grid-template-columns:30px minmax(0,1fr) 30px!important;
+    gap:6px!important;
+    margin-bottom:6px!important;
+  }
+  body>.tbc-date-popover .tbc-date-nav{
+    width:28px!important;height:28px!important;min-width:28px!important;
+    border-radius:50%!important;font-size:16px!important;
+  }
+  body>.tbc-date-popover .tbc-date-title{
+    font-size:12px!important;line-height:1.1!important;font-weight:900!important;
+  }
+  body>.tbc-date-popover .tbc-date-months{display:block!important;grid-template-columns:1fr!important;gap:0!important;}
+  body>.tbc-date-popover .tbc-date-month:nth-child(n+2){display:none!important;}
+  body>.tbc-date-popover .tbc-date-month{padding:3px!important;}
+  body>.tbc-date-popover .tbc-date-month-title{font-size:11px!important;margin:0 0 6px!important;}
+  body>.tbc-date-popover .tbc-date-weekdays,
+  body>.tbc-date-popover .tbc-date-grid{gap:3px!important;}
+  body>.tbc-date-popover .tbc-date-weekdays span{font-size:7px!important;padding:2px 0!important;}
+  body>.tbc-date-popover .tbc-date-day,
+  body>.tbc-date-popover .tbc-date-blank{
+    min-height:30px!important;height:30px!important;aspect-ratio:auto!important;
+  }
+  body>.tbc-date-popover .tbc-date-day{
+    border-radius:7px!important;font-size:8.5px!important;
+  }
+  body>.tbc-date-popover .tbc-date-help{
+    margin-top:7px!important;padding-top:6px!important;font-size:7px!important;
+  }
+}
+
+/* Dropdown menus are portaled to body so they can never be clipped by hero/slider. */
+body>.tbc-options.tbc-portal-options{
+  position:fixed!important;
+  display:none;
+  box-sizing:border-box!important;
+  margin:0!important;
+  padding:6px!important;
+  border:1px solid rgba(23,40,153,.15)!important;
+  border-radius:15px!important;
+  background:#fff!important;
+  box-shadow:0 18px 42px rgba(7,31,58,.24)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain!important;
+  z-index:2147483002!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+}
+body>.tbc-options.tbc-portal-options.is-open{display:block!important;}
+body>.tbc-options.tbc-portal-options .tbc-opt-group-title{
+  margin:0!important;
+  padding:8px 9px 5px!important;
+  border-bottom:1px solid #e7ebf1!important;
+  color:#B77A00!important;
+  font-size:8px!important;
+  line-height:1.15!important;
+  font-weight:900!important;
+  letter-spacing:.05em!important;
+  text-transform:uppercase!important;
+  white-space:normal!important;
+}
+body>.tbc-options.tbc-portal-options .tbc-option{
+  display:flex!important;
+  align-items:center!important;
+  width:100%!important;
+  min-height:34px!important;
+  height:auto!important;
+  margin:0!important;
+  padding:7px 9px!important;
+  border-radius:8px!important;
+  color:#0B1E35!important;
+  font-size:9.5px!important;
+  line-height:1.25!important;
+  font-weight:750!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  cursor:pointer!important;
+}
+body>.tbc-options.tbc-portal-options .tbc-option:hover,
+body>.tbc-options.tbc-portal-options .tbc-option:focus{
+  background:#FFF7CC!important;
+  color:#172899!important;
+}
+@media (min-width:701px){
+  body>.tbc-options.tbc-portal-options{font-size:12px!important;}
+  body>.tbc-options.tbc-portal-options .tbc-option{min-height:38px!important;font-size:11px!important;}
+  body>.tbc-options.tbc-portal-options .tbc-opt-group-title{font-size:9px!important;}
+}
+</style>
+
+<script is:inline>
+(() => {
+  const bookingRoot = document.querySelector('.tbc-hero-form');
+  if (!bookingRoot || bookingRoot.dataset.portalSelectsReady === '1') return;
+  bookingRoot.dataset.portalSelectsReady = '1';
+
+  const selects = [...bookingRoot.querySelectorAll('.tbc-custom-select')];
+  const portals = [];
+
+  const hideAll = (except = null) => {
+    portals.forEach(({ select, panel }) => {
+      if (select === except) return;
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+    });
+  };
+
+  const placePanel = (select, button, panel) => {
+    const rect = button.getBoundingClientRect();
+    const isTour = select.getAttribute('data-target') === 'tourType';
+    const mobile = window.innerWidth <= 700;
+    const wantedWidth = mobile
+      ? Math.min(isTour ? 350 : 280, window.innerWidth - 20)
+      : Math.min(isTour ? 430 : 300, Math.max(rect.width, isTour ? 360 : 220));
+    const left = Math.min(
+      Math.max(10, rect.left + rect.width / 2 - wantedWidth / 2),
+      window.innerWidth - wantedWidth - 10
+    );
+
+    const below = window.innerHeight - rect.bottom - 10;
+    const above = rect.top - 10;
+    const desiredHeight = isTour ? (mobile ? 360 : 420) : (mobile ? 220 : 260);
+    const openAbove = below < 170 && above > below;
+    const maxHeight = Math.max(140, Math.min(desiredHeight, openAbove ? above : below));
+
+    panel.style.width = `${wantedWidth}px`;
+    panel.style.maxHeight = `${maxHeight}px`;
+    panel.style.left = `${left}px`;
+    panel.style.right = 'auto';
+    panel.style.transform = 'none';
+    if (openAbove) {
+      panel.style.top = 'auto';
+      panel.style.bottom = `${Math.max(8, window.innerHeight - rect.top + 6)}px`;
+    } else {
+      panel.style.bottom = 'auto';
+      panel.style.top = `${Math.max(8, rect.bottom + 6)}px`;
+    }
+  };
+
+  selects.forEach((select) => {
+    const button = select.querySelector('.tbc-select-btn');
+    const panel = select.querySelector('.tbc-options');
+    if (!button || !panel) return;
+
+    panel.classList.add('tbc-portal-options');
+    panel.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(panel);
+    portals.push({ select, button, panel });
+
+    button.addEventListener('click', () => {
+      requestAnimationFrame(() => {
+        const shouldOpen = select.classList.contains('active');
+        hideAll(select);
+        if (shouldOpen) {
+          placePanel(select, button, panel);
+          panel.classList.add('is-open');
+          panel.setAttribute('aria-hidden', 'false');
+        } else {
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+        }
+      });
+    });
+
+    panel.querySelectorAll('.tbc-option').forEach((option) => {
+      option.addEventListener('click', () => {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+      });
+    });
+  });
+
+  const reposition = () => {
+    portals.forEach(({ select, button, panel }) => {
+      if (panel.classList.contains('is-open')) placePanel(select, button, panel);
+    });
+  };
+  window.addEventListener('resize', reposition, { passive: true });
+  window.addEventListener('scroll', reposition, { passive: true });
+
+  document.querySelectorAll('[data-date-target]').forEach((slot) => {
+    slot.addEventListener('click', () => hideAll(), { passive: true });
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    const insideSelectButton = selects.some((select) => select.contains(target));
+    const insidePortal = portals.some(({ panel }) => panel.contains(target));
+    if (!insideSelectButton && !insidePortal) hideAll();
+  });
+})();
+</script>
