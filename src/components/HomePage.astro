@@ -557,22 +557,16 @@ const homepageReviews = [
               </div>
 
               <!-- 2. TARİH SEKMESİ -->
-              <div class="tbc-field-wrap dates-custom-box" id="tbcDateField">
-                <span class="dates-top-label">{t.booking.accommodationDates}</span>
-                <div class="dates-inputs-row">
-                  <button class="date-slot" type="button" data-date-target="start" aria-label="Select start date">
+              <div class="tbc-field-wrap dates-custom-box single-tour-date" id="tbcDateField">
+                <span class="dates-top-label">{lang === "tr" ? "Tur Tarihi Seçin" : lang === "es" ? "Seleccionar fecha del tour" : "Select Tour Date"}</span>
+                <div class="dates-inputs-row single-date-row">
+                  <button class="date-slot single-date-slot" type="button" data-date-target="start" aria-label={lang === "tr" ? "Tur tarihi seçin" : lang === "es" ? "Seleccionar fecha del tour" : "Select tour date"}>
                     <span class="d-m" id="startMonth">Aug</span>
-                    <span class="d-d" id="startDay">15</span>
-                    <span class="d-a" aria-hidden="true">⌄</span>
-                  </button>
-                  <span class="date-divider" aria-hidden="true">→</span>
-                  <button class="date-slot" type="button" data-date-target="end" aria-label="Select end date">
-                    <span class="d-m" id="endMonth">Aug</span>
-                    <span class="d-d" id="endDay">16</span>
+                    <span class="d-d" id="startDay">30</span>
                     <span class="d-a" aria-hidden="true">⌄</span>
                   </button>
                 </div>
-                <input type="hidden" id="startDateInput" name="Start Date" required />
+                <input type="hidden" id="startDateInput" name="Tour Date" required />
                 <input type="hidden" id="endDateInput" name="End Date" />
                 <div class="tbc-date-popover" id="tbcDatePopover" aria-hidden="true">
                   <div class="tbc-date-head">
@@ -582,7 +576,7 @@ const homepageReviews = [
                   </div>
                   <div class="tbc-date-months" id="tbcDateMonths"></div>
                   <div class="tbc-date-help">
-                    {lang === "tr" ? "Başlangıç ve bitiş tarihini seçin" : lang === "es" ? "Seleccione la fecha de inicio y fin" : "Select start and end dates"}
+                    {lang === "tr" ? "Tur tarihinizi seçin" : lang === "es" ? "Seleccione la fecha de su tour" : "Select your tour date"}
                   </div>
                 </div>
               </div>
@@ -1011,8 +1005,6 @@ const homepageReviews = [
       const endInput = document.getElementById('endDateInput');
       const startMonth = document.getElementById('startMonth');
       const startDay = document.getElementById('startDay');
-      const endMonth = document.getElementById('endMonth');
-      const endDay = document.getElementById('endDay');
       const datePopover = document.getElementById('tbcDatePopover');
       const dateMonths = document.getElementById('tbcDateMonths');
       const dateTitle = document.getElementById('tbcDateTitle');
@@ -1033,16 +1025,12 @@ const homepageReviews = [
       };
       const dayOnly = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
-      let activeDateTarget = 'start';
       let calendarCursor = new Date();
       calendarCursor.setDate(1);
 
       const today = dayOnly(new Date());
-      const tomorrow = new Date(today);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-
       if (startInput && !startInput.value) startInput.value = dateKey(today);
-      if (endInput && !endInput.value) endInput.value = dateKey(tomorrow);
+      if (endInput && !endInput.value) endInput.value = startInput?.value || dateKey(today);
 
       const paintDateLabels = () => {
         if (startInput?.value) {
@@ -1050,14 +1038,7 @@ const homepageReviews = [
           startMonth.textContent = monthNames[d.getMonth()];
           startDay.textContent = d.getDate();
         }
-        if (endInput?.value) {
-          const d = fromKey(endInput.value);
-          endMonth.textContent = monthNames[d.getMonth()];
-          endDay.textContent = d.getDate();
-        }
       };
-
-      const isBetween = (date, start, end) => date > start && date < end;
 
       const renderMonth = (year, month) => {
         const monthWrap = document.createElement('div');
@@ -1079,7 +1060,6 @@ const homepageReviews = [
         }
 
         const selectedStart = startInput?.value ? fromKey(startInput.value) : null;
-        const selectedEnd = endInput?.value ? fromKey(endInput.value) : null;
 
         for (let day = 1; day <= last.getDate(); day++) {
           const current = new Date(year, month, day);
@@ -1092,36 +1072,15 @@ const homepageReviews = [
           if (current < today) btn.disabled = true;
           if (dateKey(current) === dateKey(today)) btn.classList.add('is-today');
           if (selectedStart && dateKey(current) === dateKey(selectedStart)) btn.classList.add('is-selected');
-          if (selectedEnd && dateKey(current) === dateKey(selectedEnd)) btn.classList.add('is-selected');
-          if (selectedStart && selectedEnd && isBetween(current, selectedStart, selectedEnd)) btn.classList.add('is-range');
 
           btn.addEventListener('click', () => {
-            if (!startInput || !endInput) return;
-            const selected = fromKey(btn.dataset.date);
-            if (activeDateTarget === 'start') {
-              startInput.value = btn.dataset.date;
-              const currentEnd = endInput.value ? fromKey(endInput.value) : null;
-              if (!currentEnd || currentEnd <= selected) {
-                const nextDay = new Date(selected);
-                nextDay.setDate(nextDay.getDate() + 1);
-                endInput.value = dateKey(nextDay);
-              }
-              activeDateTarget = 'end';
-            } else {
-              const start = startInput.value ? fromKey(startInput.value) : today;
-              if (selected <= start) {
-                startInput.value = btn.dataset.date;
-                const nextDay = new Date(selected);
-                nextDay.setDate(nextDay.getDate() + 1);
-                endInput.value = dateKey(nextDay);
-              } else {
-                endInput.value = btn.dataset.date;
-              }
-              activeDateTarget = 'start';
-              closeDatePopover();
-            }
+            if (!startInput) return;
+            startInput.value = btn.dataset.date;
+            // Keep endDate synchronized for any legacy code, but the UI uses one tour date only.
+            if (endInput) endInput.value = btn.dataset.date;
             paintDateLabels();
             renderCalendar();
+            closeDatePopover();
           });
 
           grid.appendChild(btn);
@@ -1143,10 +1102,9 @@ const homepageReviews = [
         if (!singleMonth) dateMonths.appendChild(renderMonth(second.getFullYear(), second.getMonth()));
       };
 
-      const openDatePopover = (target = 'start') => {
+      const openDatePopover = () => {
         if (!datePopover) return;
-        activeDateTarget = target;
-        const sourceValue = target === 'end' ? endInput?.value : startInput?.value;
+        const sourceValue = startInput?.value;
         if (sourceValue) {
           const d = fromKey(sourceValue);
           calendarCursor = new Date(d.getFullYear(), d.getMonth(), 1);
@@ -1167,7 +1125,7 @@ const homepageReviews = [
           event.preventDefault();
           event.stopPropagation();
           closeAllSelects();
-          openDatePopover(slot.getAttribute('data-date-target') || 'start');
+          openDatePopover();
         });
       });
 
@@ -12709,3 +12667,18 @@ body>.tbc-options.tbc-portal-options .tbc-option:focus{
   });
 })();
 </script>
+
+<style is:global>
+/* FINAL: single-date booking field. Keeps the existing yellow/navy visual system. */
+.booking-callout .single-tour-date .single-date-row{
+  display:flex!important;align-items:center!important;width:100%!important;gap:0!important;
+}
+.booking-callout .single-tour-date .single-date-slot{
+  width:auto!important;max-width:100%!important;display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;gap:4px!important;
+}
+.booking-callout .single-tour-date .date-divider{display:none!important;}
+.booking-callout .single-tour-date .dates-top-label{white-space:nowrap!important;}
+@media(max-width:720px){
+  .booking-callout .single-tour-date .single-date-slot{min-width:88px!important;}
+}
+</style>
