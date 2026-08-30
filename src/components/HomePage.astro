@@ -470,8 +470,21 @@ const homepageReviews = [
 
     <!-- BOOKING CALLOUT — hero altına taşan görünür başlık + mevcut rezervasyon paneli -->
     <div class="booking-callout">
-      <div class="booking-section-heading" aria-label="Plan Your Flight & Tour with CappadociaGo">
-        <span>Plan Your Flight &amp; Tour with&nbsp;</span><strong class="booking-brand-blue">Cappadocia</strong><strong class="booking-brand-gold">Go</strong>
+      <div class="booking-section-heading booking-ready-heading" aria-label="Ready for your Cappadocia flight">
+        {lang === "tr" ? (
+          <>
+            <span>Hayal gibi bir uçuşa </span><strong class="booking-highlight">hazır mısınız?</strong>
+          </>
+        ) : lang === "es" ? (
+          <>
+            <span>¿Estás </span><strong class="booking-highlight">listo</strong><span> para un vuelo de </span><strong class="booking-highlight">ensueño?</strong>
+          </>
+        ) : (
+          <>
+            <span>Are you </span><strong class="booking-highlight">ready</strong><br />
+            <span class="booking-heading-sub">for a </span><strong class="booking-highlight booking-heading-sub">dreamy</strong><span class="booking-heading-sub"> flight?</span>
+          </>
+        )}
       </div>
       <div class="tbc-booking-wrap">
         <div class="tbc-booking-box">
@@ -9769,5 +9782,169 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .tbc-video-content{padding:78px 14px 24px!important;}
   .tbc-booking-wrap{padding:0 6px 12px!important;}
   .infinite-slider-section{padding-top:10px!important;}
+}
+</style>
+
+
+<style is:global>
+/* ==========================================================================
+   REFERENCE BOOKING BAR — 2026-08-30
+   Visual match for the supplied yellow / royal-navy booking reference.
+   Keeps all existing tour, date, guest and submit functionality intact.
+   ========================================================================== */
+.booking-callout{
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:min(1180px,calc(100% - 48px))!important;
+  bottom:22px!important;
+  z-index:40!important;
+}
+.booking-callout .booking-ready-heading{
+  margin:0 auto 28px!important;
+  max-width:980px!important;
+  text-align:center!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  font-family:"Plus Jakarta Sans",Arial,sans-serif!important;
+  font-weight:900!important;
+  font-size:clamp(56px,5.7vw,92px)!important;
+  line-height:.88!important;
+  letter-spacing:-.055em!important;
+  text-shadow:0 4px 18px rgba(2,20,66,.28)!important;
+}
+.booking-callout .booking-ready-heading .booking-heading-sub{
+  font-size:.58em!important;
+  letter-spacing:-.04em!important;
+}
+.booking-callout .booking-ready-heading .booking-highlight{
+  color:#ffd400!important;
+  -webkit-text-fill-color:#ffd400!important;
+  font:inherit!important;
+}
+.booking-callout .tbc-booking-wrap{width:100%!important;}
+.booking-callout .tbc-booking-box{
+  background:#ffd400!important;
+  border:0!important;
+  border-radius:52px!important;
+  padding:0!important;
+  box-shadow:0 18px 42px rgba(7,24,77,.25)!important;
+  overflow:visible!important;
+}
+.booking-callout .tbc-booking-grid{
+  display:grid!important;
+  grid-template-columns:1.12fr 1.55fr 1fr 170px!important;
+  gap:0!important;
+  align-items:stretch!important;
+  min-height:98px!important;
+}
+.booking-callout .tbc-field-wrap{
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  position:relative!important;
+}
+.booking-callout .tbc-field-wrap:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  top:18px;bottom:18px;right:0;
+  width:1px;background:#182995;opacity:.42;
+  pointer-events:none;
+}
+.booking-callout .tbc-select-btn,
+.booking-callout .dates-custom-box{
+  height:100%!important;
+  min-height:98px!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#172899!important;
+}
+.booking-callout .tbc-select-btn{
+  padding:18px 34px!important;
+  font-family:"Plus Jakarta Sans",Arial,sans-serif!important;
+  font-size:20px!important;
+  font-weight:900!important;
+}
+.booking-callout .tbc-placeholder,
+.booking-callout .tbc-arrow{color:#172899!important;-webkit-text-fill-color:#172899!important;}
+.booking-callout .dates-custom-box{
+  padding:14px 30px 10px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+}
+.booking-callout .dates-top-label{
+  color:#172899!important;
+  -webkit-text-fill-color:#172899!important;
+  font-family:"Plus Jakarta Sans",Arial,sans-serif!important;
+  font-size:15px!important;
+  line-height:1.05!important;
+  font-weight:900!important;
+  text-transform:none!important;
+  letter-spacing:-.01em!important;
+}
+.booking-callout .dates-inputs-row{gap:16px!important;align-items:center!important;}
+.booking-callout .date-slot{
+  color:#172899!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  padding:0!important;
+  min-width:auto!important;
+}
+.booking-callout .date-slot .d-m{font-size:17px!important;font-weight:900!important;color:#172899!important;}
+.booking-callout .date-slot .d-d{font-size:34px!important;line-height:.9!important;font-weight:950!important;color:#172899!important;}
+.booking-callout .date-slot .d-a,
+.booking-callout .date-divider{font-size:21px!important;font-weight:900!important;color:#172899!important;}
+.booking-callout .tbc-submit{
+  height:100%!important;
+  min-height:98px!important;
+  width:100%!important;
+  border:0!important;
+  border-radius:0 52px 52px 0!important;
+  background:#202b98!important;
+  color:#fff!important;
+  font-family:"Plus Jakarta Sans",Arial,sans-serif!important;
+  font-size:22px!important;
+  font-weight:950!important;
+  letter-spacing:-.025em!important;
+  box-shadow:none!important;
+}
+.booking-callout .tbc-submit:hover{background:#14237f!important;transform:none!important;}
+.booking-callout .tbc-options{
+  border:1px solid rgba(23,40,153,.18)!important;
+  border-radius:20px!important;
+  box-shadow:0 18px 40px rgba(4,24,73,.20)!important;
+}
+
+@media(max-width:900px){
+  .booking-callout{width:calc(100% - 28px)!important;bottom:14px!important;}
+  .booking-callout .booking-ready-heading{font-size:clamp(42px,9vw,66px)!important;margin-bottom:20px!important;}
+  .booking-callout .tbc-booking-grid{grid-template-columns:1fr 1.35fr!important;min-height:0!important;}
+  .booking-callout .tbc-field-wrap{min-height:78px!important;}
+  .booking-callout .tbc-field-wrap:nth-child(2)::after{display:none!important;}
+  .booking-callout .tbc-select-btn,.booking-callout .dates-custom-box{min-height:78px!important;}
+  .booking-callout .tbc-submit{min-height:78px!important;border-radius:0 0 32px 0!important;}
+  .booking-callout .tbc-booking-box{border-radius:32px!important;}
+}
+@media(max-width:600px){
+  .booking-callout{position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;width:calc(100% - 20px)!important;margin:-210px auto 12px!important;z-index:50!important;}
+  .booking-callout .booking-ready-heading{font-size:clamp(38px,13vw,56px)!important;line-height:.88!important;margin:0 auto 18px!important;max-width:360px!important;}
+  .booking-callout .booking-ready-heading .booking-heading-sub{font-size:.58em!important;}
+  .booking-callout .tbc-booking-box{border-radius:28px!important;overflow:visible!important;}
+  .booking-callout .tbc-booking-grid{display:grid!important;grid-template-columns:1fr!important;}
+  .booking-callout .tbc-field-wrap{min-height:66px!important;}
+  .booking-callout .tbc-field-wrap::after{top:auto!important;left:20px!important;right:20px!important;bottom:0!important;width:auto!important;height:1px!important;}
+  .booking-callout .tbc-field-wrap:nth-child(2)::after{display:block!important;}
+  .booking-callout .tbc-field-wrap:last-child::after{display:none!important;}
+  .booking-callout .tbc-select-btn{min-height:66px!important;padding:12px 22px!important;font-size:17px!important;}
+  .booking-callout .dates-custom-box{min-height:86px!important;padding:10px 22px!important;}
+  .booking-callout .dates-top-label{font-size:12px!important;}
+  .booking-callout .date-slot .d-m{font-size:14px!important;}
+  .booking-callout .date-slot .d-d{font-size:27px!important;}
+  .booking-callout .tbc-submit{min-height:68px!important;border-radius:0 0 28px 28px!important;font-size:19px!important;}
 }
 </style>
