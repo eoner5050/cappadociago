@@ -11634,3 +11634,190 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .booking-callout .tbc-submit{height:34px!important;min-height:34px!important;font-size:12px!important;}
 }
 </style>
+
+<style is:global>
+/* 2026-08-30 FINAL BOOKING REFERENCE MATCH — presentation only, booking logic untouched */
+.booking-callout .tbc-booking-wrap{
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+}
+@media (max-width:700px){
+  .tbc-hero-form > .booking-callout,
+  .booking-callout{
+    width:calc(100% - 28px)!important;
+    max-width:372px!important;
+    margin:0 auto!important;
+  }
+  .booking-callout .tbc-booking-wrap{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+  }
+  .booking-callout .tbc-booking-box{
+    background:#FFD400!important;
+    border:0!important;
+    border-radius:28px!important;
+    padding:7px!important;
+    box-shadow:0 8px 20px rgba(7,31,58,.16)!important;
+    overflow:visible!important;
+  }
+  .booking-callout .tbc-booking-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:5px!important;
+    padding:0!important;
+    background:transparent!important;
+  }
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-field-wrap.dates-custom-box{
+    width:100%!important;
+    height:51px!important;
+    min-height:51px!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:24px!important;
+    background:#fff!important;
+    box-shadow:none!important;
+    overflow:visible!important;
+  }
+  .booking-callout .tbc-select-btn{
+    width:100%!important;
+    height:51px!important;
+    min-height:51px!important;
+    padding:0 17px!important;
+    border:0!important;
+    border-radius:24px!important;
+    background:#fff!important;
+    color:#0B1E35!important;
+    font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+    font-size:12.5px!important;
+    line-height:1!important;
+    font-weight:800!important;
+    letter-spacing:-.015em!important;
+    box-shadow:none!important;
+  }
+  .booking-callout .tbc-placeholder{
+    font-size:12.5px!important;
+    font-weight:800!important;
+    color:#0B1E35!important;
+  }
+  .booking-callout .tbc-arrow{
+    font-size:14px!important;
+    color:#0B1E35!important;
+    line-height:1!important;
+  }
+  .booking-callout .dates-custom-box{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    align-items:flex-start!important;
+    height:51px!important;
+    min-height:51px!important;
+    padding:6px 17px!important;
+    background:#fff!important;
+  }
+  .booking-callout .dates-top-label,
+  .booking-callout .tbc-date-label{
+    display:block!important;
+    margin:0 0 2px!important;
+    color:#0B1E35!important;
+    font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+    font-size:7.6px!important;
+    line-height:1.05!important;
+    font-weight:900!important;
+    letter-spacing:-.02em!important;
+    text-transform:uppercase!important;
+    white-space:nowrap!important;
+  }
+  .booking-callout .dates-inputs-row{
+    display:flex!important;
+    align-items:center!important;
+    gap:7px!important;
+    width:auto!important;
+    min-width:0!important;
+  }
+  .booking-callout .date-slot{
+    display:inline-flex!important;
+    align-items:center!important;
+    gap:3px!important;
+    padding:0!important;
+    min-width:0!important;
+    height:auto!important;
+    border:0!important;
+    background:transparent!important;
+    color:#0B1E35!important;
+    font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+    line-height:1!important;
+  }
+  .booking-callout .date-slot .d-m,
+  .booking-callout .date-slot .d-d,
+  .booking-callout .tbc-date-value{
+    color:#0B1E35!important;
+    font-size:12.5px!important;
+    line-height:1!important;
+    font-weight:900!important;
+  }
+  .booking-callout .date-slot .d-a{
+    color:#0B1E35!important;
+    font-size:9px!important;
+    font-weight:900!important;
+    line-height:1!important;
+  }
+  .booking-callout .date-divider{
+    color:#0B1E35!important;
+    font-size:11px!important;
+    line-height:1!important;
+    font-weight:800!important;
+  }
+  .booking-callout .tbc-field-wrap:last-child{
+    height:51px!important;
+    min-height:51px!important;
+    background:#0B1E35!important;
+    border-radius:24px!important;
+  }
+  .booking-callout .tbc-submit{
+    width:100%!important;
+    height:51px!important;
+    min-height:51px!important;
+    margin:0!important;
+    padding:0 16px!important;
+    border:0!important;
+    border-radius:24px!important;
+    background:#0B1E35!important;
+    color:#fff!important;
+    font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+    font-size:13.5px!important;
+    line-height:1!important;
+    font-weight:900!important;
+    letter-spacing:.01em!important;
+    box-shadow:none!important;
+  }
+  .booking-callout .tbc-field-wrap:not(:last-child),
+  .booking-callout .dates-custom-box{
+    border-bottom:0!important;
+  }
+}
+@media (max-width:380px){
+  .tbc-hero-form > .booking-callout,
+  .booking-callout{width:calc(100% - 24px)!important;max-width:348px!important;}
+  .booking-callout .tbc-booking-box{padding:6px!important;border-radius:25px!important;}
+  .booking-callout .tbc-booking-grid{gap:4px!important;}
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-field-wrap.dates-custom-box,
+  .booking-callout .tbc-select-btn,
+  .booking-callout .tbc-field-wrap:last-child,
+  .booking-callout .tbc-submit{height:48px!important;min-height:48px!important;}
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-field-wrap.dates-custom-box,
+  .booking-callout .tbc-select-btn,
+  .booking-callout .tbc-field-wrap:last-child,
+  .booking-callout .tbc-submit{border-radius:22px!important;}
+  .booking-callout .tbc-select-btn{padding-inline:15px!important;}
+  .booking-callout .dates-custom-box{padding:6px 15px!important;}
+  .booking-callout .tbc-placeholder{font-size:12px!important;}
+  .booking-callout .dates-top-label{font-size:7px!important;}
+  .booking-callout .date-slot .d-m,
+  .booking-callout .date-slot .d-d{font-size:12px!important;}
+  .booking-callout .tbc-submit{font-size:13px!important;}
+}
+</style>
