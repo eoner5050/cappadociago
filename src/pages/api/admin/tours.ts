@@ -5,6 +5,7 @@ import { existingTourCatalog } from '../../../data/existingTourCatalog';
 export const prerender = false;
 
 const langs = ['tr','en','es'] as const;
+const canonicalTourSlug = (slug:string) => slug === 'goreme-standard-hot-air-balloon-tour' ? 'goreme-standart-hot-air-balloon-tour' : slug;
 const textArray = (v: unknown) => Array.isArray(v) ? v.map(String).map(x=>x.trim()).filter(Boolean) : [];
 const cleanTranslation = (t: any) => ({
   title: String(t?.title || '').trim(),
@@ -87,7 +88,7 @@ export const POST: APIRoute = async ({ request }) => {
     const body = await request.json();
     const requestedId = body.id ? String(body.id) : null;
     const id = requestedId && !requestedId.startsWith('static:') ? requestedId : null;
-    const slug = String(body.slug || '').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    const slug = canonicalTourSlug(String(body.slug || '').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''));
     const category = String(body.category || '').trim();
     if (!slug || !category) return new Response(JSON.stringify({error:'Slug and category are required.'}), {status:400,headers:{'Content-Type':'application/json'}});
     const translations = body.translations || {};

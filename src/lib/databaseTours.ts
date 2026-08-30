@@ -1,5 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 
+function tourSlugCandidates(slug: string) {
+  const clean = String(slug || '').trim().toLowerCase();
+  const aliases: Record<string,string[]> = {
+    'goreme-standart-hot-air-balloon-tour': ['goreme-standart-hot-air-balloon-tour','goreme-standard-hot-air-balloon-tour'],
+    'goreme-standard-hot-air-balloon-tour': ['goreme-standard-hot-air-balloon-tour','goreme-standart-hot-air-balloon-tour'],
+  };
+  return aliases[clean] || [clean];
+}
+
 export async function getPublishedTour(slug: string, lang: string) {
   const url = import.meta.env.PUBLIC_SUPABASE_URL || '';
   // This module is server-only (middleware + SSR routes). Prefer the service-role
@@ -12,7 +21,9 @@ export async function getPublishedTour(slug: string, lang: string) {
     auth: { persistSession: false, autoRefreshToken: false },
     global: { fetch: noStoreFetch },
   });
-  const { data: tour, error } = await db.from('tours').select('*').eq('slug', slug).eq('is_published', true).maybeSingle();
+  const candidates = tourSlugCandidates(slug);
+  const { data: tours, error } = await db.from('tours').select('*').in('slug', candidates).eq('is_published', true);
+  const tour = (tours || []).sort((a:any,b:any) => candidates.indexOf(a.slug) - candidates.indexOf(b.slug))[0] || null;
   if (error || !tour) return null;
   let { data: translation } = await db.from('tour_translations').select('*').eq('tour_id', tour.id).eq('lang', lang).maybeSingle();
   if (!translation) {

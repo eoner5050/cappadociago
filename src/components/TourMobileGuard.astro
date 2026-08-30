@@ -115,3 +115,16 @@ body .hero>p,body .tbc-tour-desc{color:rgba(255,255,255,.84)!important;}
   body .iti input[type=tel],body input.iti__tel-input,body .iti__tel-input{padding-left:95px!important;font-size:12px!important}
 }
 </style>
+
+<style is:global>
+/* FINAL MOBILE TOUR ORDER — authoritative and loaded last.
+   Required order: title/hero -> gallery -> price -> quick reservation -> tour content. */
+@media (max-width: 900px){
+  body .grid, body .tbc-tour-grid{display:flex!important;flex-direction:column!important;}
+  body .side, body .tbc-tour-side{order:1!important;display:flex!important;flex-direction:column!important;}
+  body .main-col, body .tbc-tour-main{order:2!important;}
+  body .side>.price-card, body .tbc-tour-side>.tbc-tour-side-card, body .tbc-tour-side>.tbc-price-card{order:1!important;}
+  body .side>.booking, body .tbc-tour-side>.tbc-booking-card{order:2!important;}
+  body .main-col, body .tbc-tour-main, body .content, body .tbc-tour-main-card{width:100%!important;max-width:100%!important;min-width:0!important;}
+}
+</style>
