@@ -1,0 +1,10 @@
+CappadociaGo Tour Mobile Content / Comfort Baseline Fix
+Date: 2026-08-30
+
+- Every real tour detail route now loads /tour-mobile-comfort-final.css LAST.
+- The Comfort Balloon page is used as the visual baseline for hero, gallery, content cards, sidebar, typography and spacing.
+- Mobile content is forced to full width and normal horizontal writing mode.
+- Legacy narrow-grid / word-break / hidden-content rules are overridden.
+- Mobile order: main tour content first, price/booking sidebar after it.
+- Header and footer remain the shared CappadociaGo components.
+- Existing reservation/calendar JavaScript was not rewritten.

@@ -249,3 +249,6 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.me
   document.getElementById('logoutTourBtn')!.addEventListener('click',async()=>{await supabase.auth.signOut();location.href='/admin/'});
   boot().catch((e)=>{gateMessage.textContent=e.message||String(e)});
 </script>
+
+<!-- CG_FINAL_TOUR_MOBILE_COMFORT -->
+<link rel="stylesheet" href="/tour-mobile-comfort-final.css" />

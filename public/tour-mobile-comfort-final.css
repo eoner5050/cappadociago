@@ -1,0 +1,326 @@
+/* CappadociaGo — final tour mobile/desktop harmonization.
+   Loaded LAST on every real tour detail route. Comfort tour is the visual baseline. */
+
+:root{
+  --cg-final-navy:#062d63;
+  --cg-final-blue:#075aa6;
+  --cg-final-gold:#d9a51f;
+  --cg-final-text:#314b64;
+  --cg-final-muted:#65788b;
+  --cg-final-line:#d6e1ea;
+  --cg-final-card:#ffffff;
+  --cg-final-bg:#edf3f7;
+}
+
+/* page canvas */
+html,body{
+  overflow-x:hidden!important;
+  background:
+    radial-gradient(circle at 8% 4%,rgba(217,165,31,.10),transparent 24%),
+    radial-gradient(circle at 92% 10%,rgba(7,90,166,.09),transparent 28%),
+    linear-gradient(145deg,#f0ede7 0%,#f5f7f8 47%,#e8f0f5 100%)!important;
+  color:var(--cg-final-text)!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+}
+.tbc-tour-page,.tour-page,.tour-detail-page,.page,main{background:transparent!important}
+
+/* Force every tour template into the Comfort layout geometry. */
+.tbc-tour-page,.page{
+  width:100%!important;
+  max-width:none!important;
+  padding:20px 14px 58px!important;
+}
+.tbc-tour-container,.container{
+  width:min(1180px,100%)!important;
+  max-width:1180px!important;
+  min-width:0!important;
+  margin:0 auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Hero */
+.tbc-tour-hero,.hero{
+  width:100%!important;
+  min-width:0!important;
+  padding:28px 30px!important;
+  margin:0 0 18px!important;
+  border-radius:22px!important;
+  border:1px solid rgba(255,255,255,.15)!important;
+  background:linear-gradient(130deg,#123b63 0%,#0b315a 58%,#082646 100%)!important;
+  color:#fff!important;
+  overflow:hidden!important;
+  box-shadow:0 16px 38px rgba(7,46,82,.13)!important;
+}
+.tbc-tour-title,.hero h1{
+  width:100%!important;
+  max-width:980px!important;
+  min-width:0!important;
+  margin:9px 0 10px!important;
+  color:#fff!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+  font-size:clamp(30px,3vw,46px)!important;
+  line-height:1.08!important;
+  font-weight:800!important;
+  letter-spacing:-.035em!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  writing-mode:horizontal-tb!important;
+}
+.tbc-tour-desc,.hero>p{
+  width:100%!important;
+  max-width:920px!important;
+  min-width:0!important;
+  color:rgba(255,255,255,.86)!important;
+  font-size:14px!important;
+  line-height:1.7!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+}
+
+/* Gallery exactly like Comfort cards. */
+.tbc-photo-grid-wrapper,.gallery{
+  width:100%!important;
+  min-width:0!important;
+  padding:8px!important;
+  margin:0 0 20px!important;
+  border:1px solid var(--cg-final-line)!important;
+  border-radius:21px!important;
+  background:rgba(255,255,255,.97)!important;
+  box-shadow:0 13px 30px rgba(7,46,82,.07)!important;
+}
+.tbc-main-photo,.main-photo,.tbc-side-photo-item,.side-photos button{border-radius:14px!important;overflow:hidden!important}
+
+/* Main/side columns. Do not allow a legacy grid to squeeze text to one character wide. */
+.tbc-tour-grid,.grid{
+  width:100%!important;
+  min-width:0!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(290px,330px)!important;
+  gap:20px!important;
+  align-items:start!important;
+}
+.tbc-tour-grid>* , .grid>*{
+  min-width:0!important;
+  max-width:100%!important;
+}
+.tbc-tour-main,.main-col,.tbc-tour-main-card,.card.content,.content{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  flex:1 1 auto!important;
+}
+.tbc-tour-side,.side{
+  width:100%!important;
+  min-width:0!important;
+  max-width:330px!important;
+  position:sticky!important;
+  top:96px!important;
+}
+
+/* Main content cards — Comfort visual baseline. */
+.tbc-tour-card,.card,.card.content,.content{
+  border:1px solid var(--cg-final-line)!important;
+  border-radius:21px!important;
+  background:rgba(255,255,255,.98)!important;
+  box-shadow:0 12px 30px rgba(7,46,82,.07)!important;
+}
+.tbc-tour-main-card,.card.content,.content{padding:0!important;overflow:hidden!important}
+.tbc-tour-section,.content>section,.content section{
+  display:block!important;
+  position:static!important;
+  float:none!important;
+  clear:both!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:25px 27px!important;
+  visibility:visible!important;
+  opacity:1!important;
+  overflow:visible!important;
+  clip:auto!important;
+  clip-path:none!important;
+  transform:none!important;
+  border-bottom:1px solid #e3eaf0!important;
+}
+.tbc-tour-section:last-child,.content>section:last-child,.content section:last-child{border-bottom:0!important}
+
+/* Absolute protection against the mobile one-character-per-line bug. */
+.tbc-tour-section h1,.tbc-tour-section h2,.tbc-tour-section h3,
+.content h1,.content h2,.content h3,
+.tbc-tour-section p,.tbc-tour-section li,.tbc-tour-section div,.tbc-tour-section span,
+.content p,.content li,.content div,.content span,
+.tbc-tour-list,.tbc-tour-list-item,.checks,.checks>div{
+  writing-mode:horizontal-tb!important;
+  text-orientation:mixed!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+  max-width:100%!important;
+  min-width:0!important;
+}
+.tbc-tour-section h1,.tbc-tour-section h2,.tbc-tour-section h3,
+.content h1,.content h2,.content h3{
+  display:block!important;
+  width:100%!important;
+  color:var(--cg-final-navy)!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+  font-weight:800!important;
+  letter-spacing:-.025em!important;
+}
+.tbc-tour-section h2,.content h2{font-size:22px!important;line-height:1.24!important;margin:0 0 12px!important}
+.tbc-tour-section p,.content p{
+  display:block!important;
+  width:100%!important;
+  margin:0 0 12px!important;
+  color:#50677c!important;
+  font-size:14px!important;
+  line-height:1.78!important;
+}
+.tbc-tour-section li,.content li{
+  display:list-item!important;
+  width:auto!important;
+  color:#50677c!important;
+  font-size:14px!important;
+  line-height:1.7!important;
+}
+.tbc-tour-list,.checks{width:100%!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px 14px!important}
+.tbc-tour-list-item,.checks>div{display:flex!important;width:100%!important;align-items:flex-start!important;gap:8px!important;font-size:13px!important;line-height:1.6!important}
+
+/* Reviews */
+.tbc-reviews-card,.reviews,.review-card,.tbc-review-card,.tbc-review-item{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+
+/* Sidebar is same visual family as Comfort. */
+.tbc-price-card,.price-card{
+  border-radius:20px!important;
+  background:linear-gradient(155deg,#061f49 0%,#073a71 72%,#075aa6 100%)!important;
+  border:1px solid rgba(217,165,31,.34)!important;
+  color:#fff!important;
+}
+.tbc-booking-card,.booking{
+  border:1px solid var(--cg-final-line)!important;
+  border-top:4px solid var(--cg-final-gold)!important;
+  border-radius:20px!important;
+  background:#fff!important;
+  overflow:visible!important;
+}
+
+/* Shared header/footer always same as homepage components. */
+.cg-tour-header,.cg-global-footer{width:100%!important;max-width:none!important}
+
+@media(max-width:1024px){
+  .tbc-tour-grid,.grid{
+    display:flex!important;
+    flex-direction:column!important;
+    grid-template-columns:none!important;
+    gap:14px!important;
+  }
+  .tbc-tour-main,.main-col,.tbc-tour-main-card,.card.content,.content{
+    order:1!important;
+    width:100%!important;
+    max-width:100%!important;
+    flex:0 0 auto!important;
+  }
+  .tbc-tour-side,.side{
+    order:2!important;
+    position:static!important;
+    top:auto!important;
+    width:100%!important;
+    max-width:100%!important;
+    flex:0 0 auto!important;
+  }
+}
+
+@media(max-width:700px){
+  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+  .tbc-tour-page,.page{padding:10px 8px 34px!important}
+  .tbc-tour-container,.container{width:100%!important;max-width:100%!important;min-width:0!important}
+  .tbc-breadcrumb,.breadcrumb{font-size:10px!important;overflow-wrap:break-word!important}
+
+  .tbc-tour-hero,.hero{padding:18px 15px!important;border-radius:17px!important;margin-bottom:11px!important}
+  .tbc-tour-title,.hero h1{
+    font-size:25px!important;
+    line-height:1.11!important;
+    word-break:normal!important;
+    overflow-wrap:break-word!important;
+  }
+  .tbc-tour-desc,.hero>p{font-size:12px!important;line-height:1.62!important}
+  .tbc-hero-badges-bar,.hero-badges{display:grid!important;grid-template-columns:1fr!important;gap:5px!important}
+  .tbc-badge-item,.hero-badges>*{width:100%!important;min-width:0!important}
+
+  .tbc-photo-grid-wrapper,.gallery{padding:5px!important;border-radius:16px!important;margin-bottom:11px!important}
+  .tbc-main-photo,.main-photo{height:220px!important;min-height:220px!important}
+  .tbc-side-photos,.side-photos{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important;height:auto!important}
+  .tbc-side-photo-item,.side-photos button{height:94px!important;min-height:94px!important}
+
+  .tbc-tour-grid,.grid{display:flex!important;flex-direction:column!important;width:100%!important;gap:11px!important}
+  .tbc-tour-grid>* , .grid>*{width:100%!important;max-width:100%!important;min-width:0!important;flex:0 0 auto!important}
+
+  .tbc-tour-card,.card,.card.content,.content,.tbc-booking-card,.booking,.tbc-price-card,.price-card{border-radius:16px!important}
+  .tbc-tour-main-card,.card.content,.content{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important}
+  .tbc-tour-section,.content>section,.content section{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    padding:16px 14px!important;
+    display:block!important;
+    overflow:visible!important;
+  }
+  .tbc-tour-section h1,.tbc-tour-section h2,.tbc-tour-section h3,
+  .content h1,.content h2,.content h3{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    font-size:18px!important;
+    line-height:1.28!important;
+    white-space:normal!important;
+    word-break:normal!important;
+    overflow-wrap:break-word!important;
+  }
+  .tbc-tour-section p,.content p,.tbc-tour-section li,.content li{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    font-size:12px!important;
+    line-height:1.7!important;
+    white-space:normal!important;
+    word-break:normal!important;
+    overflow-wrap:break-word!important;
+  }
+  .tbc-tour-list,.checks{grid-template-columns:1fr!important;gap:7px!important}
+  .tbc-tour-list-item,.checks>div{width:100%!important;max-width:100%!important;min-width:0!important}
+
+  .tbc-tour-side,.side{width:100%!important;max-width:100%!important;min-width:0!important;position:static!important}
+  .tbc-booking-card,.booking,.tbc-price-card,.price-card{width:100%!important;max-width:100%!important;padding:15px!important}
+
+  /* Calendar modal stays usable, never pushes page content sideways. */
+  .calendar.open,.tbc-custom-calendar.is-open{
+    position:fixed!important;
+    left:50%!important;right:auto!important;top:50%!important;
+    transform:translate(-50%,-50%)!important;
+    width:min(306px,calc(100vw - 18px))!important;
+    max-width:calc(100vw - 18px)!important;
+    max-height:calc(100vh - 24px)!important;
+    overflow:auto!important;
+    margin:0!important;
+    z-index:2147483000!important;
+  }
+}
+
+@media(max-width:380px){
+  .tbc-tour-page,.page{padding-left:6px!important;padding-right:6px!important}
+  .tbc-tour-title,.hero h1{font-size:23px!important}
+  .tbc-tour-section,.content>section,.content section{padding:14px 12px!important}
+  .tbc-tour-section h2,.content h2{font-size:17px!important}
+}
