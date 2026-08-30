@@ -466,23 +466,32 @@ const homepageReviews = [
         </div>
       </div>
 
-    </section>
-
-    <!-- BOOKING CALLOUT — hero altına taşan görünür başlık + mevcut rezervasyon paneli -->
+    <!-- BOOKING CALLOUT — hero içinde referans kompozisyon -->
     <div class="booking-callout">
-      <div class="booking-section-heading booking-ready-heading" aria-label="Ready for your Cappadocia flight">
+      <div class="booking-review-row" aria-label="Guest ratings">
+        <div class="booking-review-pill booking-review-tripadvisor">
+          <span class="booking-review-logo" aria-hidden="true">TA</span>
+          <span class="booking-review-copy"><strong>4.9/5</strong><span>TripAdvisor</span></span>
+          <span class="booking-review-stars" aria-hidden="true">★★★★★</span>
+        </div>
+        <div class="booking-review-pill booking-review-google">
+          <span class="booking-review-logo" aria-hidden="true">G</span>
+          <span class="booking-review-copy"><strong>4.8/5</strong><span>Google Reviews</span></span>
+          <span class="booking-review-stars" aria-hidden="true">★★★★★</span>
+        </div>
+      </div>
+      <div class="booking-section-heading booking-ready-heading" aria-label="Ready to float over the fairy chimneys">
         {lang === "tr" ? (
           <>
-            <span>Hayal gibi bir uçuşa </span><strong class="booking-highlight">hazır mısınız?</strong>
+            <strong class="booking-word-yellow">Peri bacalarının üzerinde</strong><span class="booking-word-white"> süzülmeye </span><strong class="booking-word-blue">hazır mısınız?</strong>
           </>
         ) : lang === "es" ? (
           <>
-            <span>¿Estás </span><strong class="booking-highlight">listo</strong><span> para un vuelo de </span><strong class="booking-highlight">ensueño?</strong>
+            <strong class="booking-word-yellow">¿Listo</strong><span class="booking-word-white"> para flotar sobre </span><strong class="booking-word-blue">las chimeneas de hadas?</strong>
           </>
         ) : (
           <>
-            <span>Are you </span><strong class="booking-highlight">ready</strong><br />
-            <span class="booking-heading-sub">for a </span><strong class="booking-highlight booking-heading-sub">dreamy</strong><span class="booking-heading-sub"> flight?</span>
+            <strong class="booking-word-yellow">Ready</strong><span class="booking-word-white"> to float over </span><strong class="booking-word-blue">the fairy chimneys</strong><span class="booking-word-white">?</span>
           </>
         )}
       </div>
@@ -614,7 +623,8 @@ const homepageReviews = [
         </div><!-- /.tbc-booking-box -->
       </div><!-- /.tbc-booking-wrap -->
     </div><!-- /.booking-callout -->
-  </section>
+    </section><!-- /.tbc-video-hero -->
+  </section><!-- /.tbc-hero-form -->
 
   <!-- KAYAN KATEGORİ SLIDER'I -->
   <section class="infinite-slider-section">
@@ -9946,5 +9956,175 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .booking-callout .date-slot .d-m{font-size:14px!important;}
   .booking-callout .date-slot .d-d{font-size:27px!important;}
   .booking-callout .tbc-submit{min-height:68px!important;border-radius:0 0 28px 28px!important;font-size:19px!important;}
+}
+
+
+/* === 2026-08-30 FINAL HERO BOOKING COMPOSITION === */
+.tbc-video-hero{
+  min-height:820px!important;
+  height:820px!important;
+  overflow:visible!important;
+  position:relative!important;
+}
+.tbc-video-content{
+  top:30%!important;
+  transform:translate(-50%,-50%)!important;
+  max-width:760px!important;
+}
+.booking-callout{
+  position:absolute!important;
+  left:50%!important;
+  right:auto!important;
+  bottom:20px!important;
+  transform:translateX(-50%)!important;
+  width:min(1180px,calc(100% - 44px))!important;
+  margin:0!important;
+  z-index:60!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  gap:14px!important;
+}
+.booking-review-row{
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  gap:12px!important;
+  flex-wrap:wrap!important;
+  margin:0!important;
+}
+.booking-review-pill{
+  display:grid!important;
+  grid-template-columns:36px auto auto!important;
+  align-items:center!important;
+  gap:10px!important;
+  min-height:54px!important;
+  padding:7px 14px 7px 8px!important;
+  border-radius:16px!important;
+  background:rgba(7,31,65,.88)!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  box-shadow:0 10px 26px rgba(2,18,46,.20)!important;
+  backdrop-filter:blur(9px)!important;
+  -webkit-backdrop-filter:blur(9px)!important;
+  color:#fff!important;
+  font-family:"Plus Jakarta Sans",Arial,sans-serif!important;
+}
+.booking-review-logo{
+  width:36px!important;height:36px!important;border-radius:11px!important;
+  display:grid!important;place-items:center!important;
+  font-size:12px!important;font-weight:950!important;letter-spacing:-.04em!important;
+  background:#fff!important;color:#0b467f!important;
+}
+.booking-review-tripadvisor .booking-review-logo{background:#28d7a1!important;color:#063a33!important;}
+.booking-review-google .booking-review-logo{background:linear-gradient(135deg,#4285f4,#34a853,#fbbc05,#ea4335)!important;color:#fff!important;}
+.booking-review-copy{display:flex!important;flex-direction:column!important;line-height:1.05!important;gap:3px!important;}
+.booking-review-copy strong{font-size:14px!important;font-weight:900!important;color:#fff!important;}
+.booking-review-copy span{font-size:10px!important;font-weight:700!important;color:rgba(255,255,255,.78)!important;}
+.booking-review-stars{font-size:12px!important;letter-spacing:1px!important;color:#ffd400!important;white-space:nowrap!important;}
+.booking-callout .booking-ready-heading{
+  margin:0!important;
+  max-width:1080px!important;
+  text-align:center!important;
+  font-family:"Plus Jakarta Sans",Arial,sans-serif!important;
+  font-size:clamp(42px,4.8vw,72px)!important;
+  line-height:.98!important;
+  letter-spacing:-.045em!important;
+  font-weight:900!important;
+  text-shadow:0 3px 14px rgba(4,21,52,.30)!important;
+  white-space:normal!important;
+}
+.booking-callout .booking-ready-heading strong,
+.booking-callout .booking-ready-heading span{
+  font:inherit!important;
+  font-weight:900!important;
+  display:inline!important;
+}
+.booking-callout .booking-word-yellow{color:#ffd400!important;-webkit-text-fill-color:#ffd400!important;}
+.booking-callout .booking-word-white{color:#fff!important;-webkit-text-fill-color:#fff!important;}
+.booking-callout .booking-word-blue{color:#0b4f8f!important;-webkit-text-fill-color:#0b4f8f!important;}
+.booking-callout .tbc-booking-wrap{width:100%!important;margin:0!important;position:relative!important;inset:auto!important;transform:none!important;}
+.booking-callout .tbc-booking-box{margin:0!important;}
+.infinite-slider-section{padding-top:28px!important;}
+
+@media(max-width:900px){
+  .tbc-video-hero{min-height:930px!important;height:930px!important;}
+  .tbc-video-content{top:27%!important;width:min(720px,calc(100% - 30px))!important;}
+  .booking-callout{bottom:16px!important;width:calc(100% - 24px)!important;gap:12px!important;}
+  .booking-callout .booking-ready-heading{font-size:clamp(36px,7vw,52px)!important;max-width:760px!important;}
+  .booking-review-pill{min-height:50px!important;}
+}
+@media(max-width:600px){
+  .tbc-video-hero{min-height:1120px!important;height:1120px!important;overflow:visible!important;}
+  .tbc-video-content{top:24%!important;width:calc(100% - 28px)!important;}
+  .booking-callout{
+    position:absolute!important;left:50%!important;bottom:12px!important;transform:translateX(-50%)!important;
+    width:calc(100% - 18px)!important;margin:0!important;gap:10px!important;
+  }
+  .booking-review-row{gap:7px!important;width:100%!important;}
+  .booking-review-pill{
+    flex:1 1 calc(50% - 4px)!important;
+    min-width:0!important;
+    grid-template-columns:30px 1fr!important;
+    gap:8px!important;
+    min-height:48px!important;
+    padding:6px 9px 6px 6px!important;
+    border-radius:14px!important;
+  }
+  .booking-review-logo{width:30px!important;height:30px!important;border-radius:9px!important;font-size:10px!important;}
+  .booking-review-copy strong{font-size:12px!important;}
+  .booking-review-copy span{font-size:9px!important;}
+  .booking-review-stars{display:none!important;}
+  .booking-callout .booking-ready-heading{
+    font-size:clamp(30px,9.5vw,42px)!important;
+    line-height:1.02!important;
+    letter-spacing:-.04em!important;
+    max-width:360px!important;
+    padding:0 4px!important;
+  }
+  .booking-callout .tbc-booking-grid{grid-template-columns:1fr!important;}
+  .booking-callout .tbc-booking-box{border-radius:25px!important;}
+  .infinite-slider-section{padding-top:18px!important;}
+}
+@media(max-width:380px){
+  .tbc-video-hero{min-height:1160px!important;height:1160px!important;}
+  .booking-callout .booking-ready-heading{font-size:30px!important;max-width:330px!important;}
+  .booking-review-pill{grid-template-columns:28px 1fr!important;padding-right:7px!important;}
+  .booking-review-logo{width:28px!important;height:28px!important;}
+}
+
+
+/* === FINAL: BOOKING LIVES INSIDE HERO IMAGE, ZERO COLLISIONS === */
+.tbc-hero-form{position:relative!important;margin:0!important;padding:0!important;}
+.tbc-video-hero{
+  min-height:900px!important;
+  height:900px!important;
+  overflow:visible!important;
+}
+.tbc-video-content{
+  top:28%!important;
+  width:min(760px,calc(100% - 40px))!important;
+}
+.booking-callout{
+  bottom:22px!important;
+  width:min(1180px,calc(100% - 46px))!important;
+}
+.booking-review-row{margin-bottom:0!important;}
+.booking-callout .booking-ready-heading{margin:0 0 2px!important;}
+.infinite-slider-section{padding-top:24px!important;margin-top:0!important;}
+
+@media(max-width:900px){
+  .tbc-video-hero{min-height:1010px!important;height:1010px!important;}
+  .tbc-video-content{top:25%!important;}
+  .booking-callout{bottom:16px!important;}
+}
+@media(max-width:600px){
+  .tbc-video-hero{min-height:1280px!important;height:1280px!important;}
+  .tbc-video-content{top:21%!important;}
+  .booking-callout{bottom:10px!important;}
+  .booking-callout .booking-ready-heading{max-width:350px!important;}
+  .booking-review-row{max-width:390px!important;}
+}
+@media(max-width:380px){
+  .tbc-video-hero{min-height:1320px!important;height:1320px!important;}
 }
 </style>
