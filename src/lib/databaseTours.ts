@@ -2,9 +2,16 @@ import { createClient } from '@supabase/supabase-js';
 
 export async function getPublishedTour(slug: string, lang: string) {
   const url = import.meta.env.PUBLIC_SUPABASE_URL || '';
-  const key = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+  // This module is server-only (middleware + SSR routes). Prefer the service-role
+  // key so an admin-published revision cannot be hidden by an accidental RLS mismatch.
+  // Fall back to the public key for installations that do not provide it.
+  const key = import.meta.env.SUPABASE_SERVICE_ROLE_KEY || import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
   if (!url || !key) return null;
-  const db = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+  const noStoreFetch: typeof fetch = (input, init = {}) => fetch(input, { ...init, cache: 'no-store' });
+  const db = createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { fetch: noStoreFetch },
+  });
   const { data: tour, error } = await db.from('tours').select('*').eq('slug', slug).eq('is_published', true).maybeSingle();
   if (error || !tour) return null;
   let { data: translation } = await db.from('tour_translations').select('*').eq('tour_id', tour.id).eq('lang', lang).maybeSingle();

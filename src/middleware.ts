@@ -8,12 +8,15 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (!match) return next();
 
   const [, lang, slug] = match;
-  // If a tour has been revised/published from the admin panel, render the
-  // database version even when an older static .astro route exists.
+  // A published admin revision always wins over the built-in static tour route.
+  // The rewrite preserves the public URL while serving the database-backed page.
   try {
     const published = await getPublishedTour(slug, lang);
     if (published) {
-      return context.rewrite(`/${lang}/managed-tours/${slug}`);
+      const response = await context.rewrite(`/${lang}/managed-tours/${slug}`);
+      response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+      response.headers.set('Pragma', 'no-cache');
+      return response;
     }
   } catch (error) {
     console.warn('[CappadociaGo] tour override lookup failed:', error);
