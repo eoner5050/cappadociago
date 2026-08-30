@@ -1,0 +1,6 @@
+2026-08-30 final surgical changes:
+- Restored All Tours as the first category tab; all prior category tabs retained.
+- Reduced mobile booking field/calendar/person/search sizes while preserving yellow/navy design.
+- Collapsed legacy mobile min-height/height/spacer rules so the slider follows the booking block immediately.
+- Corrected mobile footer WhatsApp icon/text alignment only.
+- Hamburger menu untouched.

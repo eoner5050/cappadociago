@@ -68,3 +68,37 @@ const copy = {
 }
 @media(max-width:350px){.cg-global-footer__actions{grid-template-columns:1fr!important;}}
 </style>
+
+<style is:global>
+/* 2026-08-30 FINAL footer WhatsApp alignment only */
+@media(max-width:560px){
+  .cg-global-footer__actions .secondary{
+    display:inline-flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:7px!important;
+    white-space:nowrap!important;
+    line-height:1!important;
+    min-width:0!important;
+    overflow:hidden!important;
+  }
+  .cg-global-footer__actions .secondary img{
+    width:14px!important;
+    height:14px!important;
+    min-width:14px!important;
+    max-width:14px!important;
+    flex:0 0 14px!important;
+    object-fit:contain!important;
+  }
+  .cg-global-footer__grid>div:last-child a[href^="https://wa.me"]{
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:7px!important;
+    white-space:normal!important;
+    line-height:1.25!important;
+  }
+}
+</style>

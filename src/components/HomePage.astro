@@ -660,7 +660,8 @@ const homepageReviews = [
   <section class="category-tabs-section">
     <div class="container">
       <div class="category-tabs" id="tourCategoryTabs">
-        <button type="button" class="tab-item active" data-filter="balloon">{lang === "tr" ? "Kapadokya Sıcak Hava Balonu" : lang === "es" ? "Globo Aerostático Capadocia" : "Hot Air Balloon Cappadocia"}</button>
+        <button type="button" class="tab-item active" data-filter="all">{lang === "tr" ? "Tüm Turlar" : lang === "es" ? "Todos los Tours" : "All Tours"}</button>
+        <button type="button" class="tab-item" data-filter="balloon">{lang === "tr" ? "Kapadokya Sıcak Hava Balonu" : lang === "es" ? "Globo Aerostático Capadocia" : "Hot Air Balloon Cappadocia"}</button>
         <button type="button" class="tab-item" data-filter="daily">{lang === "tr" ? "Kapadokya Turları" : lang === "es" ? "Tours por Capadocia" : "Cappadocia Tours"}</button>
         <button type="button" class="tab-item" data-filter="activities">{lang === "tr" ? "Aktiviteler" : lang === "es" ? "Actividades" : "Activities"}</button>
         <button type="button" class="tab-item" data-filter="private">{lang === "tr" ? "Özel Turlar" : lang === "es" ? "Tours Privados" : "Private Tours"}</button>
@@ -11466,5 +11467,170 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .category-tabs-section{padding:7px 0 5px!important;margin:0!important;background:#f7f9fc!important;}
   .category-tabs{gap:6px!important;padding:1px 10px 5px!important;}
   .tab-item{min-height:36px!important;padding:0 12px!important;font-size:10.5px!important;}
+}
+</style>
+
+
+<style is:global>
+/* 2026-08-30 FINAL SURGICAL MOBILE PASS
+   Requested only: restore All Tours, collapse residual mobile spacer,
+   make booking controls softer/smaller, keep existing colors/design. */
+@media (max-width:700px){
+  /* Collapse every legacy height/min-height that could reserve blank space
+     between the booking panel and the horizontal tour slider. */
+  .tbc-hero-form{
+    display:flex!important;
+    flex-direction:column!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+  .tbc-video-hero{
+    flex:none!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding-bottom:8px!important;
+  }
+  .tbc-hero-form > .booking-callout,
+  .booking-callout{
+    position:relative!important;
+    inset:auto!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    translate:none!important;
+    transform:none!important;
+    flex:none!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    width:calc(100% - 42px)!important;
+    max-width:318px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    gap:4px!important;
+  }
+  .booking-callout .tbc-booking-wrap,
+  .booking-callout .tbc-booking-box,
+  .booking-callout .tbc-booking-grid{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .booking-callout .tbc-booking-box{
+    border-radius:15px!important;
+  }
+  .booking-callout .tbc-booking-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+  }
+
+  /* Smaller, softer booking fields — same yellow/navy brand palette. */
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-select-btn{
+    height:34px!important;
+    min-height:34px!important;
+  }
+  .booking-callout .tbc-select-btn{
+    padding:0 11px!important;
+    font-size:8.7px!important;
+    line-height:1!important;
+    font-weight:800!important;
+  }
+  .booking-callout .tbc-arrow{
+    font-size:10px!important;
+  }
+  .booking-callout .dates-custom-box{
+    height:43px!important;
+    min-height:43px!important;
+    padding:4px 11px!important;
+  }
+  .booking-callout .tbc-date-label{
+    font-size:6.6px!important;
+    line-height:1!important;
+    letter-spacing:-.015em!important;
+    margin-bottom:2px!important;
+  }
+  .booking-callout .tbc-date-value{
+    font-size:12.8px!important;
+    line-height:1!important;
+  }
+  .booking-callout .tbc-submit{
+    height:36px!important;
+    min-height:36px!important;
+    font-size:12.5px!important;
+    line-height:1!important;
+  }
+  .booking-callout .tbc-field-wrap:not(:last-child),
+  .booking-callout .dates-custom-box{
+    border-bottom:1px solid rgba(33,48,160,.18)!important;
+  }
+
+  /* Remove the actual residual white spacer: slider follows immediately. */
+  .tbc-hero-form + .infinite-slider-section,
+  .infinite-slider-section{
+    position:relative!important;
+    top:auto!important;
+    bottom:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:5px 0 7px!important;
+    background:#f7f9fc!important;
+  }
+  .infinite-slider-section .container,
+  .infinite-slider-section .slider-wrapper,
+  .infinite-slider-section .infinite-track-container,
+  .infinite-slider-section .infinite-track{
+    position:relative!important;
+    top:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin-top:0!important;
+    margin-bottom:0!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+  }
+  .infinite-slider-section .slider-wrapper{
+    align-items:center!important;
+  }
+
+  /* Keep All Tours + every other option, compact and horizontally scrollable. */
+  .category-tabs-section{
+    margin:0!important;
+    padding:5px 0 4px!important;
+  }
+  .category-tabs{
+    justify-content:flex-start!important;
+    gap:6px!important;
+    padding:1px 10px 4px!important;
+    overflow-x:auto!important;
+  }
+  .tab-item{
+    min-height:34px!important;
+    padding:0 11px!important;
+    font-size:9.7px!important;
+  }
+}
+@media (max-width:380px){
+  .tbc-hero-form > .booking-callout,
+  .booking-callout{width:calc(100% - 50px)!important;max-width:300px!important;}
+  .booking-callout .tbc-field-wrap,
+  .booking-callout .tbc-select-btn{height:32px!important;min-height:32px!important;}
+  .booking-callout .dates-custom-box{height:40px!important;min-height:40px!important;}
+  .booking-callout .tbc-select-btn{font-size:8.3px!important;}
+  .booking-callout .tbc-date-label{font-size:6.2px!important;}
+  .booking-callout .tbc-date-value{font-size:12px!important;}
+  .booking-callout .tbc-submit{height:34px!important;min-height:34px!important;font-size:12px!important;}
 }
 </style>
