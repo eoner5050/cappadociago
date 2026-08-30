@@ -1,0 +1,277 @@
+/* CappadociaGo — final unified tour-page system (desktop + mobile)
+   Keeps the same content on every viewport and makes all tour detail templates
+   visually consistent with the site's shared header/footer and homepage type system. */
+:root{
+  --cg-tour-navy:#062d63;
+  --cg-tour-blue:#075aa6;
+  --cg-tour-gold:#d9a51f;
+  --cg-tour-ink:#243e59;
+  --cg-tour-muted:#64778b;
+  --cg-tour-line:#d5e0e9;
+  --cg-tour-surface:#ffffff;
+  --cg-tour-bg-a:#e8eef3;
+  --cg-tour-bg-b:#f4f6f7;
+  --cg-tour-bg-c:#ece4d8;
+}
+
+html,body{
+  margin:0!important;
+  background:
+    radial-gradient(circle at 8% 5%,rgba(217,165,31,.13),transparent 24%),
+    radial-gradient(circle at 92% 14%,rgba(7,90,166,.12),transparent 27%),
+    linear-gradient(145deg,var(--cg-tour-bg-c) 0%,var(--cg-tour-bg-b) 48%,var(--cg-tour-bg-a) 100%)!important;
+  background-attachment:fixed!important;
+  color:var(--cg-tour-ink)!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+}
+body *{box-sizing:border-box}
+
+/* Never let legacy page rules paint a different page background. */
+.page,.tbc-tour-page,.tour-page,.tour-detail-page,main{
+  background:transparent!important;
+}
+.page,.tbc-tour-page{
+  width:100%!important;
+  padding:22px 16px 64px!important;
+}
+.container,.tbc-tour-container{
+  width:min(1180px,100%)!important;
+  max-width:1180px!important;
+  margin-inline:auto!important;
+}
+
+/* Shared typography: same family as homepage, no template-specific serif drift. */
+.hero h1,.tbc-tour-title,
+.content h1,.content h2,.content h3,
+.tbc-tour-section h1,.tbc-tour-section h2,.tbc-tour-section h3,
+.booking h3,.tbc-booking-head h3,
+.price-card h3,.tbc-price-card h3,
+.tbc-reviews-main-title{
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+  letter-spacing:-.035em!important;
+}
+.hero h1,.tbc-tour-title{
+  font-size:clamp(31px,3.1vw,47px)!important;
+  line-height:1.06!important;
+  font-weight:800!important;
+}
+.hero>p,.tbc-tour-desc{
+  font-size:14px!important;
+  line-height:1.75!important;
+}
+
+/* Hero — same component language on every tour page. */
+.hero,.tbc-tour-hero{
+  position:relative!important;
+  overflow:hidden!important;
+  padding:30px 32px!important;
+  margin-bottom:18px!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  border-radius:24px!important;
+  background:linear-gradient(125deg,#123b63 0%,#0c315a 56%,#082646 100%)!important;
+  box-shadow:0 18px 42px rgba(7,44,79,.16)!important;
+  color:#fff!important;
+}
+.hero h1,.tbc-tour-title{color:#fff!important;text-shadow:none!important;margin-top:10px!important}
+.hero>p,.tbc-tour-desc{color:rgba(255,255,255,.84)!important;max-width:920px!important}
+.kicker,.tbc-tour-kicker{
+  background:rgba(217,165,31,.12)!important;
+  border:1px solid rgba(244,203,101,.68)!important;
+  color:#f5ce67!important;
+  border-radius:999px!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  letter-spacing:.12em!important;
+}
+.hero-badges,.tbc-hero-badges-bar{gap:8px!important;flex-wrap:wrap!important}
+.hero-badges>*,.tbc-badge-item{
+  min-height:34px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(255,255,255,.20)!important;
+  background:rgba(255,255,255,.09)!important;
+  color:#fff!important;
+  backdrop-filter:blur(8px)!important;
+}
+
+/* Gallery. */
+.gallery,.tbc-photo-grid-wrapper{
+  padding:9px!important;
+  margin-bottom:22px!important;
+  border:1px solid var(--cg-tour-line)!important;
+  border-radius:22px!important;
+  background:rgba(255,255,255,.96)!important;
+  box-shadow:0 14px 34px rgba(7,46,82,.08)!important;
+}
+.main-photo,.tbc-main-photo,.side-photos button,.tbc-side-photo-item{
+  overflow:hidden!important;
+  border-radius:15px!important;
+}
+.gallery img,.tbc-photo-grid-wrapper img{object-fit:cover!important}
+
+/* Main two-column content system. */
+.grid,.tbc-tour-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 330px!important;
+  gap:22px!important;
+  align-items:start!important;
+}
+.main-col,.tbc-tour-main,.tbc-tour-main-card{min-width:0!important}
+.side,.tbc-tour-side{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:16px!important;
+  position:sticky!important;
+  top:96px!important;
+  order:0!important;
+}
+.card,.tbc-tour-card,.booking,.tbc-booking-card,.price-card,.tbc-price-card{
+  border-radius:22px!important;
+  box-shadow:0 13px 32px rgba(7,46,82,.075)!important;
+}
+.card,.tbc-tour-card,.booking,.tbc-booking-card{
+  background:rgba(255,255,255,.97)!important;
+  border:1px solid var(--cg-tour-line)!important;
+}
+.content{padding:28px 30px!important}
+.content>section,.tbc-tour-section{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+.content>section{
+  padding-bottom:22px!important;
+  margin-bottom:22px!important;
+  border-bottom:1px solid #e2e9ef!important;
+}
+.content>section:last-child{border-bottom:0!important;margin-bottom:0!important;padding-bottom:0!important}
+.content h2,.tbc-tour-section h2{
+  margin:0 0 12px!important;
+  color:var(--cg-tour-navy)!important;
+  font-size:23px!important;
+  line-height:1.2!important;
+  font-weight:800!important;
+}
+.content p,.tbc-tour-section p,
+.content li,.tbc-tour-section li{
+  display:list-item!important;
+  visibility:visible!important;
+  opacity:1!important;
+  max-height:none!important;
+  overflow:visible!important;
+  color:#51667b!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+  font-size:14px!important;
+  line-height:1.82!important;
+}
+.content p,.tbc-tour-section p{display:block!important;margin:0 0 13px!important}
+.content p:last-child,.tbc-tour-section p:last-child{margin-bottom:0!important}
+.checks,.tbc-tour-checks{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px 16px!important}
+.checks>div,.tbc-tour-check-row{font-size:13px!important;line-height:1.65!important;color:#334b64!important}
+
+/* Sidebar / pricing / booking — same colors and spacing across templates. */
+.price-card,.tbc-price-card{
+  padding:21px!important;
+  background:linear-gradient(155deg,#061f49 0%,#073a71 72%,#075aa6 100%)!important;
+  border:1px solid rgba(244,203,101,.34)!important;
+  color:#fff!important;
+}
+.price-card *,.tbc-price-card *{font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important}
+.price-card .label,.tbc-tour-price-label{color:#c8d8e8!important}
+.price strong,.tbc-tour-price-value strong,.tbc-price{color:#f3c64e!important}
+.price-card .side-list,.price-card .side-list span,.tbc-price-card .side-list,.tbc-price-card p{color:#e8f1fa!important}
+.booking,.tbc-booking-card{
+  overflow:visible!important;
+  padding:21px!important;
+  border-top:4px solid var(--cg-tour-gold)!important;
+}
+.booking h3,.tbc-booking-head h3{color:var(--cg-tour-navy)!important;font-size:19px!important;font-weight:800!important}
+.booking>p,.tbc-booking-head p{color:var(--cg-tour-muted)!important;font-size:12px!important;line-height:1.6!important}
+.booking label,.tbc-booking-group label{color:#334b64!important;font-size:11px!important;font-weight:800!important}
+.booking input,.booking select,.booking textarea,
+.tbc-booking-group input,.tbc-booking-group select,.tbc-booking-group textarea{
+  width:100%!important;
+  min-height:45px!important;
+  padding:10px 12px!important;
+  border:1px solid #cbdbe8!important;
+  border-radius:13px!important;
+  background:#f8fbfd!important;
+  color:var(--cg-tour-navy)!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+  font-size:13px!important;
+}
+.submit,.tbc-booking-submit,.tbc-submit-btn{
+  min-height:46px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:linear-gradient(135deg,var(--cg-tour-blue),#0c77c8)!important;
+  color:#fff!important;
+  font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important;
+  font-size:13px!important;
+  font-weight:900!important;
+}
+
+/* Reviews/content modules: ensure they stay visible on both desktop and mobile. */
+.tbc-reviews-section,.tbc-review-card,.reviews,.review-card{
+  visibility:visible!important;
+  opacity:1!important;
+  max-height:none!important;
+}
+
+/* Calendars stay above every card; mobile becomes a compact modal. */
+.calendar,.tbc-custom-calendar{z-index:2147481000!important}
+
+/* Shared header/footer must win over legacy generic header/footer rules. */
+.cg-tour-header{display:block!important;width:100%!important;font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important}
+.cg-global-footer{display:block!important;width:100%!important;font-family:"Plus Jakarta Sans","Inter",Arial,sans-serif!important}
+.cg-global-footer__shell{display:block!important}
+
+@media(max-width:1024px){
+  .grid,.tbc-tour-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .side,.tbc-tour-side{position:static!important;top:auto!important;order:0!important}
+  .checks,.tbc-tour-checks{grid-template-columns:1fr!important}
+  .gallery,.tbc-photo-grid-wrapper{grid-template-columns:1fr!important}
+}
+
+@media(max-width:640px){
+  html,body{overflow-x:hidden!important}
+  .page,.tbc-tour-page{padding:13px 10px 40px!important}
+  .container,.tbc-tour-container{width:100%!important;max-width:100%!important}
+  .hero,.tbc-tour-hero{padding:20px 17px!important;border-radius:18px!important;margin-bottom:13px!important}
+  .hero h1,.tbc-tour-title{font-size:27px!important;line-height:1.08!important;overflow-wrap:anywhere!important}
+  .hero>p,.tbc-tour-desc{font-size:12px!important;line-height:1.68!important}
+  .hero-badges,.tbc-hero-badges-bar{display:grid!important;grid-template-columns:1fr!important;gap:6px!important}
+  .hero-badges>*,.tbc-badge-item{width:100%!important;min-width:0!important}
+  .gallery,.tbc-photo-grid-wrapper{padding:6px!important;border-radius:17px!important;margin-bottom:14px!important}
+  .main-photo,.tbc-main-photo{height:255px!important}
+  .side-photos{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(2,102px)!important;height:auto!important;gap:6px!important}
+  .side-photos img{height:102px!important;min-height:0!important}
+  .card,.tbc-tour-card,.booking,.tbc-booking-card,.price-card,.tbc-price-card{border-radius:17px!important}
+  .content{padding:18px 16px!important}
+  .content>section,.tbc-tour-section{padding:0 0 18px!important;margin:0 0 18px!important}
+  .content h2,.tbc-tour-section h2{font-size:19px!important;line-height:1.24!important}
+  .content p,.tbc-tour-section p,.content li,.tbc-tour-section li{font-size:12.5px!important;line-height:1.72!important}
+  .price-card,.tbc-price-card,.booking,.tbc-booking-card{padding:17px!important}
+  .booking input,.booking select,.booking textarea,.tbc-booking-group input,.tbc-booking-group select,.tbc-booking-group textarea{min-height:43px!important;font-size:12px!important}
+  .calendar.open,.tbc-custom-calendar.is-open{
+    position:fixed!important;
+    left:50%!important;right:auto!important;top:50%!important;
+    transform:translate(-50%,-50%)!important;
+    width:min(320px,calc(100vw - 20px))!important;
+    max-width:calc(100vw - 20px)!important;
+    max-height:calc(100vh - 26px)!important;
+    overflow:auto!important;
+    margin:0!important;
+    padding:12px!important;
+    border-radius:16px!important;
+    background:#fff!important;
+    border:1px solid #c7d7e4!important;
+    border-top:4px solid var(--cg-tour-gold)!important;
+    box-shadow:0 25px 70px rgba(3,22,42,.36)!important;
+    color:var(--cg-tour-navy)!important;
+  }
+  .calendar.open .day,.tbc-custom-calendar.is-open .tbc-cal-day{min-height:43px!important;height:auto!important;font-size:11px!important}
+}

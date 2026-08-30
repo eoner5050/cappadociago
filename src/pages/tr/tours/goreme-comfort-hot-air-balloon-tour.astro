@@ -389,6 +389,7 @@ const galleryPhotoWord = 'fotoğraf';
 <script define:vars={{ galleryImages }}>
 const tbcGalleryItems=galleryImages||[];const tbcGalleryModal=document.getElementById('tbcGalleryModal');const tbcGalleryImg=document.getElementById('tbcGalleryModalImg');const tbcGalleryCount=document.getElementById('tbcGalleryCount');let tbcGalleryIndex=0;function tbcShowGallery(i){if(!tbcGalleryItems.length||!tbcGalleryModal||!tbcGalleryImg)return;tbcGalleryIndex=(i+tbcGalleryItems.length)%tbcGalleryItems.length;tbcGalleryImg.src=tbcGalleryItems[tbcGalleryIndex];if(tbcGalleryCount)tbcGalleryCount.textContent=`${tbcGalleryIndex+1} / ${tbcGalleryItems.length}`;tbcGalleryModal.classList.add('is-open');document.body.style.overflow='hidden'}function tbcCloseGallery(){tbcGalleryModal?.classList.remove('is-open');document.body.style.overflow=''}document.querySelectorAll('.tbc-gallery-click').forEach(b=>b.addEventListener('click',()=>tbcShowGallery(Number(b.dataset.galleryIndex||0))));tbcGalleryModal?.querySelector('.tbc-gallery-close')?.addEventListener('click',tbcCloseGallery);tbcGalleryModal?.querySelector('.tbc-gallery-prev')?.addEventListener('click',()=>tbcShowGallery(tbcGalleryIndex-1));tbcGalleryModal?.querySelector('.tbc-gallery-next')?.addEventListener('click',()=>tbcShowGallery(tbcGalleryIndex+1));tbcGalleryModal?.addEventListener('click',e=>{if(e.target===tbcGalleryModal)tbcCloseGallery()});document.addEventListener('keydown',e=>{if(!tbcGalleryModal?.classList.contains('is-open'))return;if(e.key==='Escape')tbcCloseGallery();if(e.key==='ArrowLeft')tbcShowGallery(tbcGalleryIndex-1);if(e.key==='ArrowRight')tbcShowGallery(tbcGalleryIndex+1)});
 </script>
+<link rel="stylesheet" href="/tour-unified-final.css" />
 </body>
 </html>
 
@@ -1477,3 +1478,5 @@ document.addEventListener("DOMContentLoaded", function () {
 <style is:global>
 html,body{background:radial-gradient(circle at 12% 3%,rgba(217,165,31,.10),transparent 24%),radial-gradient(circle at 88% 18%,rgba(7,90,166,.10),transparent 28%),linear-gradient(180deg,#eef5fa 0%,#e8f0f6 52%,#f3eee5 100%)!important;background-attachment:fixed!important;color:#062d63!important}.tbc-page,.page,.tour-page,.tour-detail-page,main{background:transparent!important}
 </style>
+
+<link rel="stylesheet" href="/tour-unified-final.css" />

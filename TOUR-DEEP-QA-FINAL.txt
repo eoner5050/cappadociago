@@ -1,0 +1,21 @@
+CAPPADOCIAGO TOUR PAGE DEEP QA — 2026-08-30
+
+Tour route files scanned: 69
+- activity-wrapper: 39
+- custom-shared: 16
+- redirect: 2
+- standard-wrapper: 12
+
+Shared architecture checks:
+- Homepage uses SiteHeader + TourFooter: YES
+- Standardized tour pipeline uses SiteHeader + TourFooter + TourPremiumTheme: YES
+- Custom tour templates use shared SiteHeader + TourFooter: YES where non-redirect
+- Final cross-template stylesheet loaded last on custom templates: YES
+- Mobile content visibility overrides enabled: YES
+- Header/footer generic legacy CSS guarded by component-specific final rules: YES
+- Homepage font family propagated to tour pages (Plus Jakarta Sans): YES
+- Tour detail background unified: YES
+
+Remaining static issues: NONE FOUND
+
+Note: npm ci could not complete in this environment because dependency installation timed out, so a full Astro compile/runtime browser pass was not possible here. Static template and CSS integration checks passed.
