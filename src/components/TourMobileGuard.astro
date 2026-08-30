@@ -128,3 +128,60 @@ body .hero>p,body .tbc-tour-desc{color:rgba(255,255,255,.84)!important;}
   body .main-col, body .tbc-tour-main, body .content, body .tbc-tour-main-card{width:100%!important;max-width:100%!important;min-width:0!important;}
 }
 </style>
+
+<script is:inline>
+(() => {
+  const MOBILE_MAX = 900;
+  const pairs = [
+    { grid: '.grid', main: '.main-col', side: '.side', price: '.price-card', booking: '.booking' },
+    { grid: '.tbc-tour-grid', main: '.tbc-tour-main', side: '.tbc-tour-side', price: '.tbc-tour-side-card, .tbc-price-card', booking: '.tbc-booking-card' },
+    { grid: '.tour-layout', main: '.tour-content', side: '.tour-sidebar', price: '.price-card, .tour-price-card', booking: '.booking, .booking-card' }
+  ];
+
+  function forceOrder() {
+    if (window.innerWidth > MOBILE_MAX) return;
+
+    pairs.forEach((cfg) => {
+      document.querySelectorAll(cfg.grid).forEach((grid) => {
+        const main = grid.querySelector(`:scope > ${cfg.main}`) || grid.querySelector(cfg.main);
+        const side = grid.querySelector(`:scope > ${cfg.side}`) || grid.querySelector(cfg.side);
+        if (!main || !side) return;
+
+        // Ensure sidebar is physically before the content column on mobile.
+        if (side.parentElement === grid && main.parentElement === grid && grid.firstElementChild !== side) {
+          grid.insertBefore(side, main);
+        }
+
+        const price = side.querySelector(cfg.price);
+        const booking = side.querySelector(cfg.booking);
+        if (price && booking && price.nextElementSibling !== booking) {
+          side.insertBefore(price, side.firstElementChild);
+          if (price.nextElementSibling !== booking) side.insertBefore(booking, price.nextElementSibling);
+        }
+
+        // Inline styles are intentional here: older tour templates contain high-specificity
+        // mobile rules that can otherwise override the shared CSS ordering.
+        grid.style.setProperty('display', 'flex', 'important');
+        grid.style.setProperty('flex-direction', 'column', 'important');
+        side.style.setProperty('order', '1', 'important');
+        side.style.setProperty('display', 'flex', 'important');
+        side.style.setProperty('flex-direction', 'column', 'important');
+        main.style.setProperty('order', '2', 'important');
+        if (price) price.style.setProperty('order', '1', 'important');
+        if (booking) booking.style.setProperty('order', '2', 'important');
+      });
+    });
+  }
+
+  const run = () => requestAnimationFrame(() => requestAnimationFrame(forceOrder));
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run, { once: true });
+  else run();
+  window.addEventListener('load', run, { once: true });
+  window.addEventListener('resize', run, { passive: true });
+
+  // Database/admin revisions can hydrate/replace tour markup after the initial paint.
+  const observer = new MutationObserver(() => run());
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  setTimeout(() => observer.disconnect(), 8000);
+})();
+</script>
