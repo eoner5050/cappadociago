@@ -1,4 +1,25 @@
 <style is:global>
+/* CAPPADOCIAGO — final authoritative tour visual system.
+   Rendered last on every real tour page. */
+html,body{background:#eaf1f6!important;}
+body{
+  background:
+    radial-gradient(circle at 10% 4%,rgba(217,165,31,.12),transparent 24%),
+    radial-gradient(circle at 90% 16%,rgba(7,90,166,.11),transparent 28%),
+    linear-gradient(180deg,#eef5fa 0%,#e7eff5 56%,#f3eee5 100%)!important;
+  background-attachment:fixed!important;
+}
+body .page,body .tbc-tour-page,body .tour-page,body .tour-detail-page,body main{background:transparent!important;}
+body .hero,body .tbc-tour-hero{
+  background:linear-gradient(120deg,#123b63 0%,#0d3158 58%,#092648 100%)!important;
+  color:#fff!important;border:1px solid rgba(255,255,255,.10)!important;
+  box-shadow:0 16px 38px rgba(8,44,80,.16)!important;
+}
+body .hero h1,body .tbc-tour-title{color:#fff!important;text-shadow:none!important;}
+body .hero>p,body .tbc-tour-desc{color:rgba(255,255,255,.84)!important;}
+</style>
+
+<style is:global>
 /* CAPPADOCIAGO — authoritative tour mobile layout guard.
    This component is intentionally rendered LAST on tour detail pages. */
 @media (max-width: 900px){
@@ -20,16 +41,20 @@
   }
   body .main-col,body .tbc-tour-main,body .tour-content,
   body .tbc-tour-main-card,body .card.content,body .content{
-    order:1!important;display:block!important;position:static!important;float:none!important;
+    order:2!important;display:block!important;position:static!important;float:none!important;
     width:100%!important;max-width:100%!important;min-width:0!important;flex:0 0 auto!important;
     margin-left:0!important;margin-right:0!important;left:auto!important;right:auto!important;
     transform:none!important;overflow:visible!important;column-count:auto!important;columns:auto!important;
   }
   body .side,body .tbc-tour-side,body .tour-sidebar{
-    order:2!important;display:flex!important;flex-direction:column!important;position:static!important;float:none!important;
+    order:1!important;display:flex!important;flex-direction:column!important;position:static!important;float:none!important;
     width:100%!important;max-width:100%!important;min-width:0!important;flex:0 0 auto!important;
     margin:0!important;left:auto!important;right:auto!important;transform:none!important;
   }
+  body .side>*,body .tbc-tour-side>*{width:100%!important;max-width:100%!important;min-width:0!important;}
+  body .side>.price-card,body .tbc-tour-side>.tbc-tour-side-card,body .tbc-tour-side>.tbc-price-card{order:1!important;}
+  body .side>.booking,body .tbc-tour-side>.tbc-booking-card{order:2!important;}
+  /* Mobile order is intentionally: price -> quick reservation -> description/content. */
 
   /* Content sections must remain real full-width blocks. */
   body .content>section,body .content section,body .tbc-tour-section,body .content-block{

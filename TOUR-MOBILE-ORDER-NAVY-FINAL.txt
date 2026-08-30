@@ -1,0 +1,22 @@
+CappadociaGo final tour detail revision
+Date: 2026-08-30
+
+Applied globally through TourMobileGuard, which is rendered last on all real tour detail pages.
+
+Mobile order (<=900px):
+1. Tour price card
+2. Quick Reservation Form
+3. Tour description/content sections
+
+Visual consistency:
+- All tour title/hero sections forced to the same CappadociaGo navy gradient as the Göreme Comfort Balloon page.
+- All tour detail page backgrounds forced to the same premium pale blue / warm neutral gradient.
+- Existing content, pricing, availability, calendar and reservation logic remain unchanged.
+- Mobile content remains full-width and horizontal; anti-vertical-letter rules remain active.
+- Phone country-code/phone-input separation remains active.
+
+Coverage audit:
+- 69 EN/TR/ES tour route files scanned.
+- 15 legacy/special pages render TourMobileGuard directly.
+- Remaining real pages render it through StandardizedPrivateTourPage / shared templates.
+- No literal \\n<script invalid escape sequences remain in src/*.astro.
