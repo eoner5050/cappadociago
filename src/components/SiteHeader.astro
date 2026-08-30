@@ -205,3 +205,29 @@ const routeFor = (targetLang) => detailSlug
   .cg-tour-header__mobile-phone{min-height:50px!important;}
 }
 </style>
+
+<style is:global>
+/* 2026-08-30 mobile header polish: keep WhatsApp number visible without crowding actions */
+@media(max-width:680px){
+  .cg-tour-header__inner{width:calc(100% - 14px)!important;height:66px!important;gap:5px!important;}
+  .cg-tour-header__brand{gap:4px!important;min-width:0!important;}
+  .cg-tour-header__logo img{height:47px!important;max-width:118px!important;}
+  .cg-tour-header__phone{
+    width:auto!important;max-width:116px!important;height:34px!important;padding:0 7px!important;gap:4px!important;
+    border-radius:999px!important;justify-content:center!important;box-shadow:none!important;
+  }
+  .cg-tour-header__phone img{width:14px!important;height:14px!important;flex:0 0 14px!important;}
+  .cg-tour-header__phone span{display:inline!important;font-size:8.2px!important;line-height:1!important;font-weight:900!important;letter-spacing:-.025em!important;white-space:nowrap!important;}
+  .cg-tour-header__actions{gap:5px!important;}
+  .cg-tour-header__language-btn{min-width:52px!important;width:52px!important;height:34px!important;padding:0 7px!important;font-size:9px!important;}
+  .cg-tour-header__burger{width:34px!important;height:34px!important;flex:0 0 34px!important;}
+}
+@media(max-width:380px){
+  .cg-tour-header__logo img{height:44px!important;max-width:105px!important;}
+  .cg-tour-header__phone{max-width:101px!important;height:32px!important;padding-inline:5px!important;}
+  .cg-tour-header__phone img{width:13px!important;height:13px!important;flex-basis:13px!important;}
+  .cg-tour-header__phone span{font-size:7.3px!important;}
+  .cg-tour-header__language-btn{min-width:48px!important;width:48px!important;height:32px!important;}
+  .cg-tour-header__burger{width:32px!important;height:32px!important;flex-basis:32px!important;}
+}
+</style>

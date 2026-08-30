@@ -1,0 +1,6 @@
+Final mobile polish:
+- Mobile home booking/search card reduced to a compact 318px max width with smaller fields/text.
+- TripAdvisor + Google cards reduced; real logos, ratings, sources and stars remain visible.
+- Header WhatsApp number remains visible next to a smaller WhatsApp icon on mobile.
+- Footer WhatsApp controls are compact and responsive on mobile.
+- Existing colors, hero design, booking behavior and desktop layout preserved.
