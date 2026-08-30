@@ -275,3 +275,137 @@ body *{box-sizing:border-box}
   }
   .calendar.open .day,.tbc-custom-calendar.is-open .tbc-cal-day{min-height:43px!important;height:auto!important;font-size:11px!important}
 }
+
+/* =========================================================
+   MOBILE TOUR CONTENT VISIBILITY HOTFIX — 2026-08-30
+   Purpose: keep the exact same tour content available on mobile and desktop.
+   This intentionally overrides legacy template rules that hide/collapse sections.
+   ========================================================= */
+@media (max-width: 700px){
+  main.page,
+  .page,
+  .container,
+  .grid,
+  .main-col,
+  .tbc-tour-page,
+  .tbc-tour-container,
+  .tbc-tour-grid,
+  .tbc-tour-main,
+  .tbc-tour-main-card,
+  .card.content,
+  .content,
+  .tbc-tour-card,
+  .tbc-tour-section,
+  .content > section,
+  .content section,
+  .checks,
+  .tbc-tour-checks,
+  .checks > div,
+  .tbc-tour-check-row {
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    clip: auto !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+
+  .main-col,
+  .tbc-tour-main,
+  .tbc-tour-main-card,
+  .card.content,
+  .content,
+  .content > section,
+  .content section,
+  .tbc-tour-section {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .grid,
+  .tbc-tour-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 14px !important;
+  }
+
+  /* Content first, booking/sidebar after content on mobile. */
+  .main-col,
+  .tbc-tour-main,
+  .tbc-tour-main-card { order: 1 !important; }
+  .side,
+  .tbc-tour-side {
+    order: 2 !important;
+    display: flex !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .content > section,
+  .content section,
+  .tbc-tour-section {
+    padding: 17px 15px !important;
+    margin: 0 !important;
+    border-bottom: 1px solid #e2e9ef !important;
+  }
+  .content > section:last-child,
+  .content section:last-child,
+  .tbc-tour-section:last-child { border-bottom: 0 !important; }
+
+  .content h1,.content h2,.content h3,
+  .tbc-tour-section h1,.tbc-tour-section h2,.tbc-tour-section h3 {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .content p,
+  .content li,
+  .content ul,
+  .content ol,
+  .content div,
+  .tbc-tour-section p,
+  .tbc-tour-section li,
+  .tbc-tour-section ul,
+  .tbc-tour-section ol,
+  .tbc-tour-section div {
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .content p,.tbc-tour-section p {
+    display: block !important;
+    font-size: 12.5px !important;
+    line-height: 1.72 !important;
+    margin: 0 0 12px !important;
+  }
+  .content li,.tbc-tour-section li {
+    display: list-item !important;
+    font-size: 12.5px !important;
+    line-height: 1.68 !important;
+  }
+  .checks,.tbc-tour-checks {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .checks > div,.tbc-tour-check-row {
+    display: flex !important;
+    align-items: flex-start !important;
+  }
+}
