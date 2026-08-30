@@ -660,12 +660,11 @@ const homepageReviews = [
   <section class="category-tabs-section">
     <div class="container">
       <div class="category-tabs" id="tourCategoryTabs">
-        <button type="button" class="tab-item active" data-filter="all">{t.categories.allTours}</button>
-        <button type="button" class="tab-item" data-filter="balloon">{t.categories.balloonTours}</button>
-        <button type="button" class="tab-item" data-filter="daily">{t.categories.dailyTours}</button>
-        <button type="button" class="tab-item" data-filter="private">{t.categories.privateTours}</button>
-        <button type="button" class="tab-item" data-filter="transfers">{t.categories.transfers}</button>
-        <button type="button" class="tab-item" data-filter="activities">{t.categories.activities}</button>
+        <button type="button" class="tab-item active" data-filter="balloon">{lang === "tr" ? "Kapadokya Sıcak Hava Balonu" : lang === "es" ? "Globo Aerostático Capadocia" : "Hot Air Balloon Cappadocia"}</button>
+        <button type="button" class="tab-item" data-filter="daily">{lang === "tr" ? "Kapadokya Turları" : lang === "es" ? "Tours por Capadocia" : "Cappadocia Tours"}</button>
+        <button type="button" class="tab-item" data-filter="activities">{lang === "tr" ? "Aktiviteler" : lang === "es" ? "Actividades" : "Activities"}</button>
+        <button type="button" class="tab-item" data-filter="private">{lang === "tr" ? "Özel Turlar" : lang === "es" ? "Tours Privados" : "Private Tours"}</button>
+        <button type="button" class="tab-item" data-filter="transfers">{lang === "tr" ? "Kapadokya Transferleri" : lang === "es" ? "Traslados en Capadocia" : "Cappadocia Transfers"}</button>
       </div>
     </div>
   </section>
@@ -1269,6 +1268,8 @@ const homepageReviews = [
         });
       });
     });
+
+    if (tabButtons.length) tabButtons[0].click();
 
     // 1. TRIPADVISOR SLIDER OKLARI
     const taContainer = document.getElementById('taReviewsContainer');
@@ -11434,5 +11435,36 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
   .booking-callout .tbc-date-label{font-size:7px!important;}
   .booking-callout .tbc-date-value{font-size:14px!important;}
   .booking-callout .tbc-submit{height:42px!important;min-height:42px!important;font-size:14px!important;}
+}
+</style>
+
+<style is:global>
+/* 2026-08-30 SURGICAL FINAL FIX — only requested mobile spacing/footer/tab polish */
+@media (max-width:700px){
+  /* Remove the inherited legacy spacer between the hero booking bar and tour cards. */
+  .tbc-hero-form,
+  .tbc-video-hero{margin-bottom:0!important;padding-bottom:0!important;}
+  .infinite-slider-section{
+    margin:0!important;
+    padding:6px 0 8px!important;
+    min-height:0!important;
+    height:auto!important;
+    background:#f7f9fc!important;
+  }
+  .infinite-slider-section .container,
+  .infinite-slider-section .slider-wrapper,
+  .infinite-slider-section .infinite-track-container,
+  .infinite-slider-section .infinite-track{
+    margin-top:0!important;
+    padding-top:0!important;
+    min-height:0!important;
+  }
+  .infinite-slider-section .slider-wrapper{align-items:flex-start!important;}
+  .infinite-slider-section .cat-card{margin-top:0!important;}
+
+  /* Category pills: same wording/design language as hamburger, without altering hamburger itself. */
+  .category-tabs-section{padding:7px 0 5px!important;margin:0!important;background:#f7f9fc!important;}
+  .category-tabs{gap:6px!important;padding:1px 10px 5px!important;}
+  .tab-item{min-height:36px!important;padding:0 12px!important;font-size:10.5px!important;}
 }
 </style>
