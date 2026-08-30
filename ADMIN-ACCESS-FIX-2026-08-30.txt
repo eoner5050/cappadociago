@@ -1,0 +1,16 @@
+CappadociaGo Admin Access Fix
+
+Fixed:
+- /admin/ was loading src/scripts/admin.ts through a raw src URL.
+- In production/Vercel this can leave the login form without its bundled JS.
+- It now imports admin.ts through Astro's processed script pipeline.
+
+Required Vercel Environment Variables:
+- PUBLIC_SUPABASE_URL
+- PUBLIC_SUPABASE_ANON_KEY OR PUBLIC_SUPABASE_PUBLISHABLE_KEY
+- SUPABASE_SERVICE_ROLE_KEY (required for /admin/tours API writes/uploads)
+
+Required Supabase row:
+public.admin_users.user_id must equal auth.users.id for the login user.
+
+If /admin/ signs in but /admin/tours fails after that, the likely missing value is SUPABASE_SERVICE_ROLE_KEY on Vercel.
