@@ -1,0 +1,11 @@
+---
+import DatabaseTourPage from '../../../components/DatabaseTourPage.astro';
+import FloatingAssistant from '../../../components/FloatingAssistant.astro';
+import { getPublishedTour } from '../../../lib/databaseTours';
+export const prerender = false;
+const { slug = '' } = Astro.params;
+const result = await getPublishedTour(slug, 'tr');
+if (!result) return Astro.redirect('/tr/cappadocia-tours/');
+---
+<DatabaseTourPage lang="tr" tour={result.tour} translation={result.translation} />
+<FloatingAssistant lang="tr" />

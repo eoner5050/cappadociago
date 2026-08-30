@@ -1,8 +1,8 @@
-CappadociaGo — reference layout pass
+CappadociaGo — TurkeyBalloons reference layout pass
 Date: 2026-08-29
 
 Changed only presentation/layout for the homepage:
-- White desktop header aligned with the CappadociaGo design system
+- White 94px desktop header inspired by turkeyballoonscappadocia.com
 - Compact desktop navigation and pill language control
 - Functional hamburger menu for tablet/mobile
 - Full-width, viewport-height hero using the existing CappadociaGo hero image

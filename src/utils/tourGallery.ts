@@ -63,31 +63,29 @@ export function getTourGallery({
   // Always honor page-level preferred images first. Some private/package tours
   // intentionally use related Red/Green/Mix/Activity photos whose filenames do
   // not share the page slug, so filtering only by slug would hide the gallery.
-  const preferredEntries = preferred
-    .map(url => String(url || '').trim())
-    .filter(Boolean)
-    .map(url => ({ url, base: url.split('?')[0].split('/').pop() || '' }));
+  const existingPreferred = preferred
+    .map(url => ({ url, base: url.split('/').pop() || '' }))
+    .filter(x => x.base && files.includes(x.base));
 
-  // Local numbered families can still be expanded automatically, while full
-  // Supabase/public URLs uploaded from the CappadociaGo admin panel are kept
-  // exactly as entered and shown first.
-  for (const p of preferredEntries) {
-    if (!files.includes(p.base)) continue;
+  // Also allow the image families referenced by the page so we can fill the
+  // gallery up to `max` with related numbered photos when available.
+  for (const p of existingPreferred) {
     const fam = familyName(p.base);
     if (fam) allowedFamilies.add(fam);
   }
 
   const matched = files
     .filter(file => allowedFamilies.has(familyName(file)))
-    .sort(gallerySort)
-    .map(file => `/images/tours/${file}`);
+    .sort(gallerySort);
 
   const ordered = [
-    ...preferredEntries.map(x => x.url),
+    ...existingPreferred.map(x => x.base),
     ...matched
   ];
 
-  return [...new Set(ordered)].slice(0, Math.max(1, max));
+  return [...new Set(ordered)]
+    .slice(0, Math.max(1, max))
+    .map(file => `/images/tours/${file}`);
 }
 
 export function getSiteGallery(max = 8) {

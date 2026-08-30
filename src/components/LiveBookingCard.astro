@@ -124,25 +124,7 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
       <input data-lbc-name type="text" placeholder={c.name} required />
 
       <label>{c.phone}</label>
-      <div class="lbc-phone-field">
-        <select data-lbc-country aria-label="Country code">
-          <option value="+90" selected>🇹🇷 +90</option>
-          <option value="+1">🇺🇸 +1</option>
-          <option value="+44">🇬🇧 +44</option>
-          <option value="+49">🇩🇪 +49</option>
-          <option value="+33">🇫🇷 +33</option>
-          <option value="+34">🇪🇸 +34</option>
-          <option value="+39">🇮🇹 +39</option>
-          <option value="+31">🇳🇱 +31</option>
-          <option value="+7">🇷🇺 +7</option>
-          <option value="+966">🇸🇦 +966</option>
-          <option value="+971">🇦🇪 +971</option>
-          <option value="+86">🇨🇳 +86</option>
-          <option value="+81">🇯🇵 +81</option>
-          <option value="+82">🇰🇷 +82</option>
-        </select>
-        <input data-lbc-phone type="tel" inputmode="tel" placeholder="5xx xxx xx xx" required />
-      </div>
+      <input data-lbc-phone type="tel" placeholder="+90 5xx xxx xx xx" required />
 
       <label>{c.date}</label>
       <div class="lbc-date-wrap">
@@ -183,7 +165,7 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
   .lbc-start-price{display:flex;align-items:flex-end;gap:8px;margin:7px 0 10px}.lbc-start-price del{display:none;font-size:16px;line-height:1.2;color:#8b95a5;text-decoration:line-through;font-weight:700;padding-bottom:4px}.lbc-start-price del.has-price{display:inline}.lbc-start-price strong{font-size:38px;line-height:1;color:#bd8500;font-weight:900}.lbc-start-price span{font-size:12px;color:#64748b;font-weight:700;padding-bottom:4px}
   .lbc-badges{display:flex;flex-wrap:wrap;gap:7px}.lbc-badges span{background:#fffaf0;border:1px solid #ecd793;border-radius:999px;padding:6px 10px;font-size:10px;font-weight:800;color:#765500}
   .lbc-ask-link{display:none;align-items:center;justify-content:center;min-height:42px;border-radius:999px;background:#0b2d55;color:#fff;text-decoration:none;font-size:12px;font-weight:900;margin:10px 0}.lbc-ask-link.is-visible{display:flex}.lbc-ask-link:hover{background:#071f3d}.lbc-separator{height:1px;background:#e5e7eb;margin:18px 0}
-  .lbc-phone-field{display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px;align-items:stretch}.lbc-phone-field select{min-width:0;border:1px solid #d7e2ec;border-radius:12px;background:#f4f9fc;color:#082f5f;font-weight:800;padding:0 8px}.lbc-phone-field input{min-width:0}.lbc-phone,.lbc-wa{display:flex;align-items:center;justify-content:center;gap:7px;min-height:45px;border-radius:999px;text-decoration:none;font-weight:900;font-size:13px;margin-top:9px}.lbc-phone{border:1px solid #d8e1ec;color:#0b1f3a;background:#fff}.lbc-wa{background:#16a34a;color:#fff;border:1px solid #16a34a}.lbc-wa img{display:block;object-fit:contain}
+  .lbc-phone,.lbc-wa{display:flex;align-items:center;justify-content:center;gap:7px;min-height:45px;border-radius:999px;text-decoration:none;font-weight:900;font-size:13px;margin-top:9px}.lbc-phone{border:1px solid #d8e1ec;color:#0b1f3a;background:#fff}.lbc-wa{background:#16a34a;color:#fff;border:1px solid #16a34a}.lbc-wa img{display:block;object-fit:contain}
   .lbc-highlights{margin-top:16px;display:grid;gap:8px}.lbc-highlights>div{display:flex;gap:8px;align-items:flex-start}.lbc-highlights span{color:#d99a00;font-weight:900}.lbc-highlights p{margin:0;font-size:12px;line-height:1.55;color:#475569}
   .lbc-form-card h3{margin:0 0 7px;font-size:20px;color:#0b1f3a}.lbc-form-desc{margin:0 0 13px;color:#64748b;font-size:12px;line-height:1.55}
   .lbc-form-card label{display:block;margin:11px 0 6px;font-size:11px;font-weight:800;color:#253b59}
@@ -217,7 +199,7 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
 
     const $ = (s) => root.querySelector(s);
     const el = {
-      start: $("[data-lbc-start-price]"), oldStart: $("[data-lbc-old-price]"), suffix: $("[data-lbc-price-suffix]"), askLink: $("[data-lbc-ask-link]"), form: $("[data-lbc-form]"), name: $("[data-lbc-name]"), phone: $("[data-lbc-phone]"), country: $("[data-lbc-country]"),
+      start: $("[data-lbc-start-price]"), oldStart: $("[data-lbc-old-price]"), suffix: $("[data-lbc-price-suffix]"), askLink: $("[data-lbc-ask-link]"), form: $("[data-lbc-form]"), name: $("[data-lbc-name]"), phone: $("[data-lbc-phone]"),
       date: $("[data-lbc-date]"), open: $("[data-lbc-open]"), calendar: $("[data-lbc-calendar]"), days: $("[data-lbc-days]"), title: $("[data-lbc-title]"),
       prev: $("[data-lbc-prev]"), next: $("[data-lbc-next]"), people: $("[data-lbc-people]"), priceBox: $("[data-lbc-price-box]"), unit: $("[data-lbc-unit]"), total: $("[data-lbc-total]"), message: $("[data-lbc-message]")
     };
@@ -327,7 +309,7 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
         "CappadociaGo - Reservation Request",
         `Tour: ${tourTitle}`,
         `Name: ${el.name.value}`,
-        `Phone: ${(el.country?.value || "") + " " + el.phone.value}`,
+        `Phone: ${el.phone.value}`,
         `Date: ${el.date.value}`,
         `People: ${qty}`,
         `Price: ${askForPrice?c.priceOnRequest:money(selectedRow.price)}`,
@@ -341,6 +323,3 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
   });
 })();
 </script>
-
-<!-- CG_FINAL_MOBILE_TOUR_CONTENT_PHONE -->
-<link rel="stylesheet" href="/tour-mobile-critical-v3.css" />

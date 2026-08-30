@@ -1,0 +1,146 @@
+/* CappadociaGo authoritative mobile tour layout fix.
+   Loaded LAST on every tour detail page to prevent legacy desktop grid rules
+   from collapsing content to a one-character-wide column. */
+@media (max-width: 900px){
+  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+
+  body .tbc-tour-page,
+  body .page,
+  body .tour-page,
+  body .tour-detail-page,
+  body main{width:100%!important;max-width:100%!important;min-width:0!important;overflow:visible!important}
+
+  body .tbc-tour-container,
+  body .page>.container,
+  body main>.container{
+    display:block!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    box-sizing:border-box!important;
+    margin:0 auto!important;
+    padding-left:14px!important;padding-right:14px!important;
+  }
+
+  /* EXACTLY override the high-specificity desktop display:contents rules. */
+  body .tbc-tour-container>.tbc-tour-grid,
+  body .page>.container>.grid,
+  body .tbc-tour-grid,
+  body .grid.tour-layout{
+    display:flex!important;
+    flex-direction:column!important;
+    grid-template-columns:none!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    gap:14px!important;
+    align-items:stretch!important;
+  }
+
+  body .tbc-tour-container>.tbc-tour-grid>.tbc-tour-main,
+  body .page>.container>.grid>.main-col,
+  body .tbc-tour-main,
+  body .main-col,
+  body .tour-content{
+    order:1!important;
+    display:block!important;
+    position:static!important;
+    grid-column:auto!important;grid-row:auto!important;
+    float:none!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    flex:1 1 auto!important;
+    margin:0!important;padding:0!important;
+    overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+
+  body .tbc-tour-container>.tbc-tour-grid>.tbc-tour-side,
+  body .page>.container>.grid>.side,
+  body .tbc-tour-side,
+  body .side,
+  body .tour-sidebar{
+    order:2!important;
+    display:flex!important;flex-direction:column!important;
+    position:static!important;
+    grid-column:auto!important;grid-row:auto!important;
+    float:none!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    margin:0!important;
+    overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+
+  body .tbc-tour-main-card,
+  body .card.content,
+  body .content,
+  body .tour-content{
+    display:block!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    height:auto!important;max-height:none!important;
+    overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+
+  body .tbc-tour-section,
+  body .content>section,
+  body .content section,
+  body .content-block{
+    display:block!important;
+    position:relative!important;
+    float:none!important;clear:both!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    height:auto!important;min-height:0!important;max-height:none!important;
+    padding:16px 15px!important;margin:0 0 12px!important;
+    overflow:visible!important;
+    visibility:visible!important;opacity:1!important;
+    box-sizing:border-box!important;
+    writing-mode:horizontal-tb!important;text-orientation:mixed!important;
+  }
+
+  body .tbc-tour-section *,
+  body .content>section *,
+  body .content section *,
+  body .content-block *{
+    min-width:0!important;max-width:100%!important;
+    writing-mode:horizontal-tb!important;text-orientation:mixed!important;
+    word-break:normal!important;overflow-wrap:break-word!important;
+  }
+
+  body .tbc-tour-section h1,body .tbc-tour-section h2,body .tbc-tour-section h3,
+  body .content h1,body .content h2,body .content h3,
+  body .content-block h1,body .content-block h2,body .content-block h3{
+    display:block!important;width:100%!important;max-width:100%!important;
+    margin-left:0!important;margin-right:0!important;
+    white-space:normal!important;
+    line-height:1.28!important;
+  }
+  body .tbc-tour-section h2,body .content h2,body .content-block h2{font-size:18px!important}
+
+  body .tbc-tour-section p,body .content p,body .content-block p,
+  body .tbc-tour-section li,body .content li,body .content-block li,
+  body .tbc-tour-list-item,body .checks>div{
+    display:block!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    white-space:normal!important;word-break:normal!important;overflow-wrap:break-word!important;
+    font-size:12.25px!important;line-height:1.72!important;
+  }
+  body .tbc-tour-list-item,body .checks>div{display:flex!important;align-items:flex-start!important;gap:8px!important}
+  body .tbc-tour-list,body .checks,body .check-grid{display:grid!important;grid-template-columns:1fr!important;width:100%!important;gap:8px!important}
+
+  /* Booking / phone stays full width without crushing the main content. */
+  body .tbc-tour-side .tbc-tour-card,
+  body .booking,body .tbc-booking-card,body .price-card,body .tbc-price-card{
+    width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;
+  }
+  body .iti{display:block!important;position:relative!important;width:100%!important;max-width:100%!important;min-width:0!important;overflow:visible!important}
+  body .iti__country-container{position:absolute!important;left:0!important;top:0!important;bottom:0!important;width:92px!important;min-width:92px!important;max-width:92px!important;z-index:5!important}
+  body .iti__selected-country{width:92px!important;min-width:92px!important;max-width:92px!important;padding:0 8px!important;box-sizing:border-box!important}
+  body .iti__selected-dial-code{font-size:12px!important;font-weight:800!important;white-space:nowrap!important}
+  body .iti__tel-input{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding-left:102px!important;padding-right:12px!important;font-size:13px!important}
+}
+
+@media (max-width: 390px){
+  body .tbc-tour-container,body .page>.container,body main>.container{padding-left:10px!important;padding-right:10px!important}
+  body .tbc-tour-section,body .content>section,body .content section,body .content-block{padding:14px 12px!important}
+  body .tbc-tour-section h2,body .content h2,body .content-block h2{font-size:17px!important}
+  body .tbc-tour-section p,body .content p,body .content-block p,
+  body .tbc-tour-section li,body .content li,body .content-block li,body .tbc-tour-list-item{font-size:11.75px!important}
+  body .iti__country-container,body .iti__selected-country{width:88px!important;min-width:88px!important;max-width:88px!important}
+  body .iti__tel-input{padding-left:98px!important;font-size:12.5px!important}
+}

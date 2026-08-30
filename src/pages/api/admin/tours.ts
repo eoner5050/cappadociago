@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { requireAdmin, adminErrorResponse } from '../../../lib/adminAuth';
+import { existingTourCatalog } from '../../../data/existingTourCatalog';
 
 export const prerender = false;
 
@@ -47,11 +48,28 @@ export const GET: APIRoute = async ({ request }) => {
       if (res.error) throw res.error;
       translations = res.data || [];
     }
-    const rows = (tours || []).map((tour:any)=>({
+    const catalog = existingTourCatalog as readonly any[];
+    const catalogBySlug = new Map(catalog.map((x:any)=>[x.slug,x]));
+    const dbRows = (tours || []).map((tour:any)=>({
       ...tour,
+      source: 'database',
+      origin: catalogBySlug.has(tour.slug) ? 'site' : 'admin',
       translations: Object.fromEntries(translations.filter((x:any)=>x.tour_id===tour.id).map((x:any)=>[x.lang,x]))
     }));
-    return new Response(JSON.stringify({ tours: rows }), { headers: { 'Content-Type':'application/json' } });
+    const dbSlugs = new Set(dbRows.map((x:any)=>x.slug));
+    const siteRows = catalog
+      .filter((tour:any)=>!dbSlugs.has(tour.slug))
+      .map((tour:any)=>({
+        ...tour,
+        id: `static:${tour.slug}`,
+        source: 'site',
+        origin: 'site',
+        is_static: true,
+        created_at: null,
+        updated_at: null,
+      }));
+    const rows = [...dbRows, ...siteRows].sort((a:any,b:any)=>String(a.slug).localeCompare(String(b.slug)));
+    return new Response(JSON.stringify({ tours: rows, siteTourCount: catalog.length }), { headers: { 'Content-Type':'application/json' } });
   } catch (err) { return adminErrorResponse(err); }
 };
 
@@ -59,7 +77,8 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const { admin } = await requireAdmin(request);
     const body = await request.json();
-    const id = body.id ? String(body.id) : null;
+    const requestedId = body.id ? String(body.id) : null;
+    const id = requestedId && !requestedId.startsWith('static:') ? requestedId : null;
     const slug = String(body.slug || '').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     const category = String(body.category || '').trim();
     if (!slug || !category) return new Response(JSON.stringify({error:'Slug and category are required.'}), {status:400,headers:{'Content-Type':'application/json'}});
@@ -126,7 +145,25 @@ export const DELETE: APIRoute = async ({ request }) => {
     if (!id) return new Response(JSON.stringify({error:'Tour id is required.'}), {status:400,headers:{'Content-Type':'application/json'}});
     const { data: tour } = await admin.from('tours').select('slug').eq('id',id).maybeSingle();
     const res = await admin.from('tours').delete().eq('id',id); if (res.error) throw res.error;
-    if (tour?.slug) await admin.from('products').update({active:false}).eq('slug',tour.slug);
+    if (tour?.slug) {
+      const builtIn = (existingTourCatalog as readonly any[]).find((x:any)=>x.slug===tour.slug);
+      // Removing a revision of a built-in site tour should reveal the original
+      // static page again and restore its original product defaults.
+      if (builtIn) {
+        const originalName = builtIn.translations?.en?.title || builtIn.translations?.tr?.title || builtIn.slug;
+        await admin.from('products').upsert({
+          slug: builtIn.slug,
+          name: originalName,
+          category: builtIn.category,
+          default_price: Number(builtIn.price || 0),
+          default_capacity: Math.max(1, Number(builtIn.default_capacity || 20)),
+          active: true,
+          ask_for_price: Boolean(builtIn.ask_for_price),
+        }, { onConflict:'slug' });
+      } else {
+        await admin.from('products').update({active:false}).eq('slug',tour.slug);
+      }
+    }
     return new Response(JSON.stringify({success:true}), {headers:{'Content-Type':'application/json'}});
   } catch (err) { return adminErrorResponse(err); }
 };
