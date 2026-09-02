@@ -1276,6 +1276,45 @@ const homepageReviews = [
     const cards = [...grid.querySelectorAll('.home-tour-card[data-product-slug]')];
     if (!cards.length) return;
 
+    const canonicalSlug = (value) => {
+      const slug = String(value || '').trim().toLowerCase();
+      return slug === 'goreme-standard-hot-air-balloon-tour' ? 'goreme-standart-hot-air-balloon-tour' : slug;
+    };
+    const hideTourEverywhere = (slug) => {
+      const canonical = canonicalSlug(slug);
+      cards.forEach((card) => {
+        if (canonicalSlug(card.dataset.productSlug) !== canonical) return;
+        card.hidden = true;
+        card.style.setProperty('display', 'none', 'important');
+        card.setAttribute('aria-hidden', 'true');
+        card.dataset.deletedTour = 'true';
+      });
+      document.querySelectorAll('a[href*="/tours/"]').forEach((link) => {
+        const href = String(link.getAttribute('href') || '');
+        const hrefSlug = canonicalSlug(href.split('/').filter(Boolean).pop());
+        if (hrefSlug !== canonical) return;
+        const tile = link.closest('.cat-card') || link.closest('.home-tour-card') || link;
+        tile.hidden = true;
+        tile.style.setProperty('display', 'none', 'important');
+        tile.setAttribute('aria-hidden', 'true');
+      });
+    };
+
+    // Server-authoritative deletion check. Static homepage cards must be removed
+    // even when a product row was physically deleted or public RLS hides it.
+    // The endpoint reads the admin tombstone (__deleted__) using the service role
+    // and returns only status booleans; no secret key is exposed to the browser.
+    try {
+      const slugs = [...new Set(cards.map(card => canonicalSlug(card.dataset.productSlug)).filter(Boolean))];
+      const statusRes = await fetch(`/api/tour-status?slugs=${encodeURIComponent(slugs.join(','))}`, { cache: 'no-store' });
+      if (statusRes.ok) {
+        const status = await statusRes.json();
+        [...(status.deleted || []), ...(status.inactive || [])].forEach(hideTourEverywhere);
+      }
+    } catch (err) {
+      console.error('Homepage tour status error:', err);
+    }
+
     const money = (n) => `${Math.round(Number(n))} €`;
     const numericPrice = (text) => {
       const match = String(text || '').replace(',', '.').match(/([0-9]+(?:\.[0-9]+)?)/);
@@ -1320,23 +1359,14 @@ const homepageReviews = [
 
         if (!productRes.ok) continue;
         const products = await productRes.json();
+        // If the product exists but every row is inactive, the tour is deleted/disabled.
+        // If there is no product row at all, the server-authoritative tombstone check
+        // above decides whether the static card should be hidden.
         if (!Array.isArray(products) || !products.length) continue;
 
         const activeProducts = products.filter(p => p.active === true);
         if (!activeProducts.length) {
-          card.hidden = true;
-          card.style.display = 'none';
-          card.setAttribute('aria-hidden', 'true');
-
-          // The homepage also contains a horizontal featured-tour slider with
-          // static links. Remove every matching link there as well so a deleted
-          // tour disappears from the whole homepage, not just Most Popular.
-          document.querySelectorAll(`a[href*="/tours/${slug}"]`).forEach((link) => {
-            const tile = link.closest('.cat-card') || link;
-            tile.hidden = true;
-            tile.style.display = 'none';
-            tile.setAttribute('aria-hidden', 'true');
-          });
+          hideTourEverywhere(slug);
           continue;
         }
 
