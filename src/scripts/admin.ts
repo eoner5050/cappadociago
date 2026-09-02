@@ -76,6 +76,12 @@ const yyyyMmDd = (d:Date) => {
   return `${y}-${m}-${day}`;
 };
 const selectedProduct = () => products.find(p => p.id === productSelect.value);
+
+async function adminAuthHeaders(){
+  const { data:{ session } } = await supabase.auth.getSession();
+  if(!session?.access_token) throw new Error("Yönetici oturumu bulunamadı. Lütfen tekrar giriş yapın.");
+  return { Authorization: `Bearer ${session.access_token}` };
+}
 function updateAskPriceButton(){
   const p=selectedProduct(); if(!p||!askPriceBtn) return;
   askPriceBtn.classList.toggle("on",!!p.ask_for_price);
@@ -127,10 +133,32 @@ async function loadProducts() {
   if (reservationProduct) reservationProduct.innerHTML = products.map(p=>`<option value="${p.id}">${p.name}</option>`).join("");
   if (reservationFilterProduct) reservationFilterProduct.innerHTML = `<option value="">Tüm turlar</option>` + products.map(p=>`<option value="${p.id}">${p.name}</option>`).join("");
   $("productsGrid").innerHTML = products.map(p=>`
-    <div class="product-card"><h3>${p.name}</h3><p>${p.category}</p>
-    <p>Fiyat modu: <b>${p.ask_for_price ? "Fiyat Sorunuz" : "Takvim / Sabit Fiyat"}</b></p>
-    <p>Varsayılan fiyat: <b>${p.ask_for_price ? "Ask For Price" : `${p.default_price} €`}</b></p><p>Varsayılan kontenjan: <b>${p.default_capacity}</b></p></div>
+    <div class="product-card" data-product-card="${p.id}">
+      <h3>${escapeHtml(p.name)}</h3><p>${escapeHtml(p.category)}</p>
+      <p>Fiyat modu: <b>${p.ask_for_price ? "Fiyat Sorunuz" : "Takvim / Sabit Fiyat"}</b></p>
+      <label class="product-edit-label">Varsayılan fiyat (€)<input class="product-default-price" type="number" min="0" step="0.01" value="${Number(p.default_price||0)}" ${p.ask_for_price?'disabled':''}></label>
+      <label class="product-edit-label">Varsayılan kontenjan<input class="product-default-capacity" type="number" min="1" step="1" value="${Number(p.default_capacity||1)}"></label>
+      <button type="button" class="btn primary product-save-defaults" data-product-id="${p.id}">Varsayılanları Kaydet</button>
+      <small class="product-save-status" aria-live="polite"></small>
+    </div>
   `).join("");
+  $("productsGrid").querySelectorAll<HTMLButtonElement>(".product-save-defaults").forEach(btn=>btn.addEventListener("click",async()=>{
+    const card=btn.closest<HTMLElement>("[data-product-card]"); if(!card) return;
+    const id=btn.dataset.productId || ""; const p=products.find(x=>x.id===id); if(!p) return;
+    const price=Number((card.querySelector(".product-default-price") as HTMLInputElement)?.value || 0);
+    const capacity=Math.max(1,Number((card.querySelector(".product-default-capacity") as HTMLInputElement)?.value || 1));
+    const status=card.querySelector<HTMLElement>(".product-save-status");
+    if(!Number.isFinite(price)||price<0){if(status)status.textContent="Geçerli bir fiyat girin.";return}
+    try{
+      btn.disabled=true;if(status)status.textContent="Kaydediliyor…";
+      const headers=await adminAuthHeaders();
+      const res=await fetch("/api/admin/products",{method:"PATCH",headers:{...headers,"Content-Type":"application/json"},body:JSON.stringify({id,default_price:price,default_capacity:capacity})});
+      const data=await res.json(); if(!res.ok) throw new Error(data.error||"Varsayılan fiyat kaydedilemedi.");
+      p.default_price=Number(data.product?.default_price ?? price);p.default_capacity=Number(data.product?.default_capacity ?? capacity);
+      if(status)status.textContent="✓ Kaydedildi";
+      if(selectedProduct()?.id===p.id) await loadMonth();
+    }catch(err:any){if(status)status.textContent=err.message||String(err)}finally{btn.disabled=false}
+  }));
   updateAskPriceButton();
 }
 

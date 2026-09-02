@@ -4,6 +4,7 @@ import FloatingAssistant from '../../../components/FloatingAssistant.astro';
 import { getPublishedTour } from '../../../lib/databaseTours';
 export const prerender = false;
 const { slug = '' } = Astro.params;
+Astro.response.headers.set('Cache-Control','no-store, no-cache, must-revalidate');
 const result = await getPublishedTour(slug, 'tr');
 if (!result) return Astro.redirect('/tr/cappadocia-tours/');
 ---

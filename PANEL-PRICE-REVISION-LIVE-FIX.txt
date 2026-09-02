@@ -1,0 +1,19 @@
+CappadociaGo admin panel fix
+
+1. Products / default price
+- Added server-side /api/admin/products PATCH endpoint using the service-role client after validating the logged-in admin.
+- Products tab now has editable Default Price and Default Capacity fields with a Save Defaults button.
+- Saving a default also syncs matching editable tour revision price/capacity when one exists.
+- Homepage already reads products.default_price, so saved defaults can be reflected without editing source files.
+
+2. Existing tour revisions not appearing live
+- All 22 EN + 22 TR + 22 ES built-in tour detail routes are now on-demand (prerender=false).
+- This ensures Astro middleware executes on the live tour URL.
+- Middleware checks Supabase for a published admin revision and rewrites the same public URL to /managed-tours/[slug].
+- Managed tour pages are marked no-store/no-cache.
+- Public URL/slug remains unchanged.
+
+3. Publishing behavior
+- Save Draft does not change the live site.
+- Save & Publish / Publish Revision creates or updates the database tour and translations.
+- Existing site tour revisions keep the same URL.
