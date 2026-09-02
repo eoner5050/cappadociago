@@ -1,9 +1,0 @@
-CappadociaGo — Existing Tour Revision System
-
-- /admin/tours now lists the 22 existing CappadociaGo tour pages together with newly-created database tours.
-- Existing site tours are marked “Mevcut Site Turu”. Open one to revise its price, images and TR/EN/ES content.
-- The first save creates a database override while preserving the same public URL.
-- src/middleware.ts checks for a published override. If one exists it rewrites the request to the managed database tour page; otherwise the original static page remains untouched.
-- “Revizyonu Geri Al” deletes only the override and immediately falls back to the original static tour page.
-- New tours continue to work through /{lang}/tours/[slug].
-- Existing catalog source: src/data/existingTourCatalog.ts (generated from the current EN/TR/ES tour files).

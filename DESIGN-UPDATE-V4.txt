@@ -1,8 +1,0 @@
-CappadociaGo V4 design update
-- Homepage spacing and booking/dock overlap refinements
-- Mobile homepage tour cards: 2 columns
-- Shared EN/TR/ES tour detail theme aligned to homepage navy/blue/gold palette
-- Tour title areas use dark blue branded hero with premium serif typography
-- Gallery/content/sidebar surfaces unified across all activity/private/tour pages
-- Booking calendar presentation refined without changing Supabase/availability logic
-- Category page theme aligned to homepage

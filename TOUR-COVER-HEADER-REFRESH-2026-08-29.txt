@@ -1,9 +1,0 @@
-CappadociaGo tour refresh
-
-- Replaced every existing tour cover with a tour-specific alternate image already present in the project.
-- Removed old cover image files from public/images/tours so they cannot return inside galleries.
-- Regenerated tourImageFiles.generated.ts from files that actually exist.
-- Replaced old cover references throughout source/data.
-- Integrated one shared SiteHeader into standardized detail pages and every standalone EN/TR/ES tour detail page.
-- Shared header includes logo, WhatsApp phone pill, desktop nav, logo-blue language control, working mobile hamburger menu, and language links that preserve the current tour slug.
-- Booking/calendar/tour content logic was not rewritten.

@@ -1,2 +1,0 @@
-Reference-match update applied to src/components/HomePage.astro.
-Desktop header, hero composition, typography, background treatment, CTA buttons, booking heading and booking bar were tuned to the supplied 2048x768 reference while preserving existing booking form behavior and mobile rules.

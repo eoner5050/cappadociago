@@ -1,9 +1,0 @@
-CappadociaGo final mobile tour content + phone field fix
-
-- All real tour/transfer detail pages load /tour-mobile-critical-v3.css LAST.
-- Mobile content columns are forced to full width horizontal writing mode.
-- Headings/paragraphs/lists cannot collapse into one-character vertical columns.
-- Quick Reservation intl-tel-input receives a fixed 92px country-code lane and a separate number lane.
-- At <=380px the country lane is 88px and number input padding is adjusted.
-- Desktop design, reservation logic, Supabase, dates and prices are unchanged.
-- The final CSS was linked to 88 tour/detail/shared component files so old template CSS cannot override it.
