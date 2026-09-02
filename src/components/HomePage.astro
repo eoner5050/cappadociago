@@ -1309,10 +1309,12 @@ const homepageReviews = [
       if (!currentEl || !oldEl) continue;
 
       try {
-        // Fetch ALL active rows for this slug.
-        // This intentionally handles legacy/duplicate product rows safely.
+        // Fetch every product row for this slug, including inactive rows.
+        // When an existing/static tour is deleted in Admin, the API marks its
+        // product active=false. The homepage is statically rendered, so we must
+        // hide that pre-rendered card at runtime instead of leaving it visible.
         const productRes = await fetch(
-          `${base}/rest/v1/products?slug=eq.${encodeURIComponent(slug)}&active=eq.true&select=id,default_price,ask_for_price`,
+          `${base}/rest/v1/products?slug=eq.${encodeURIComponent(slug)}&select=id,default_price,ask_for_price,active`,
           { headers, cache: 'no-store' }
         );
 
@@ -1320,9 +1322,27 @@ const homepageReviews = [
         const products = await productRes.json();
         if (!Array.isArray(products) || !products.length) continue;
 
+        const activeProducts = products.filter(p => p.active === true);
+        if (!activeProducts.length) {
+          card.hidden = true;
+          card.style.display = 'none';
+          card.setAttribute('aria-hidden', 'true');
+
+          // The homepage also contains a horizontal featured-tour slider with
+          // static links. Remove every matching link there as well so a deleted
+          // tour disappears from the whole homepage, not just Most Popular.
+          document.querySelectorAll(`a[href*="/tours/${slug}"]`).forEach((link) => {
+            const tile = link.closest('.cat-card') || link;
+            tile.hidden = true;
+            tile.style.display = 'none';
+            tile.setAttribute('aria-hidden', 'true');
+          });
+          continue;
+        }
+
         // Homepage intentionally ignores date-specific availability pricing.
-        // It always shows the lowest positive default_price for the product slug.
-        const defaults = products
+        // It always shows the lowest positive default_price for active rows.
+        const defaults = activeProducts
           .map(p => Number(p.default_price || 0))
           .filter(v => v > 0);
         if (!defaults.length) continue;
