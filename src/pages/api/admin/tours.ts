@@ -59,7 +59,8 @@ export const GET: APIRoute = async ({ request }) => {
     }
     const catalog = existingTourCatalog as readonly any[];
     const catalogBySlug = new Map(catalog.map((x:any)=>[x.slug,x]));
-    const dbRows = tours.map((tour:any)=>({
+    const deletedSlugs = new Set(tours.filter((tour:any)=>tour.category==='__deleted__').map((tour:any)=>tour.slug));
+    const dbRows = tours.filter((tour:any)=>tour.category!=='__deleted__').map((tour:any)=>({
       ...tour,
       source: 'database',
       origin: catalogBySlug.has(tour.slug) ? 'site' : 'admin',
@@ -67,7 +68,7 @@ export const GET: APIRoute = async ({ request }) => {
     }));
     const dbSlugs = new Set(dbRows.map((x:any)=>x.slug));
     const siteRows = catalog
-      .filter((tour:any)=>!dbSlugs.has(tour.slug))
+      .filter((tour:any)=>!dbSlugs.has(tour.slug) && !deletedSlugs.has(tour.slug))
       .map((tour:any)=>({
         ...tour,
         id: `static:${tour.slug}`,
@@ -150,15 +151,60 @@ export const POST: APIRoute = async ({ request }) => {
 export const DELETE: APIRoute = async ({ request }) => {
   try {
     const { admin } = await requireAdmin(request);
-    const url = new URL(request.url); const id = url.searchParams.get('id');
+    const url = new URL(request.url);
+    const id = url.searchParams.get('id');
+    const requestedSlug = canonicalTourSlug(String(url.searchParams.get('slug') || '').trim());
     if (!id) return new Response(JSON.stringify({error:'Tour id is required.'}), {status:400,headers:{'Content-Type':'application/json'}});
-    const { data: tour } = await admin.from('tours').select('slug').eq('id',id).maybeSingle();
+
+    // Built-in/static tours cannot be physically removed from a deployed bundle at runtime.
+    // Store a lightweight tombstone row instead. Middleware then returns 404 and product is deactivated.
+    if (id.startsWith('static:')) {
+      const slug = requestedSlug || canonicalTourSlug(id.slice('static:'.length));
+      const builtIn = (existingTourCatalog as readonly any[]).find((x:any)=>canonicalTourSlug(x.slug)===slug);
+      if (!builtIn) return new Response(JSON.stringify({error:'Existing site tour was not found.'}), {status:404,headers:{'Content-Type':'application/json'}});
+      const tombstone:any = {
+        slug,
+        category:'__deleted__',
+        price:Number(builtIn.price || 0),
+        old_price:null,
+        duration_minutes:builtIn.duration_minutes || null,
+        rating:Number(builtIn.rating || 4.9),
+        reviews_count:Number(builtIn.reviews_count || 0),
+        hero_image:builtIn.hero_image || null,
+        gallery_images:builtIn.gallery_images || [],
+        is_published:false,
+        price_mode:builtIn.price_mode || 'perPerson',
+        ask_for_price:Boolean(builtIn.ask_for_price),
+        default_capacity:Math.max(1, Number(builtIn.default_capacity || 20)),
+      };
+      const existing = await admin.from('tours').select('id').eq('slug',slug).maybeSingle();
+      if (existing.error) throw existing.error;
+      if (existing.data?.id) {
+        const upd = await admin.from('tours').update(tombstone).eq('id',existing.data.id);
+        if (upd.error) throw upd.error;
+      } else {
+        const ins = await admin.from('tours').insert(tombstone);
+        if (ins.error) throw ins.error;
+      }
+      const productRes = await admin.from('products').upsert({
+        slug,
+        name: builtIn.translations?.en?.title || builtIn.translations?.tr?.title || slug,
+        category: builtIn.category,
+        default_price:Number(builtIn.price || 0),
+        default_capacity:Math.max(1, Number(builtIn.default_capacity || 20)),
+        active:false,
+        ask_for_price:Boolean(builtIn.ask_for_price),
+      }, { onConflict:'slug' });
+      if (productRes.error) throw productRes.error;
+      return new Response(JSON.stringify({success:true, deletedStatic:true}), {headers:{'Content-Type':'application/json'}});
+    }
+
+    const { data: tour } = await admin.from('tours').select('slug,category').eq('id',id).maybeSingle();
     const res = await admin.from('tours').delete().eq('id',id); if (res.error) throw res.error;
     if (tour?.slug) {
-      const builtIn = (existingTourCatalog as readonly any[]).find((x:any)=>x.slug===tour.slug);
-      // Removing a revision of a built-in site tour should reveal the original
-      // static page again and restore its original product defaults.
+      const builtIn = (existingTourCatalog as readonly any[]).find((x:any)=>canonicalTourSlug(x.slug)===canonicalTourSlug(tour.slug));
       if (builtIn) {
+        // Deleting an editable revision restores the built-in tour.
         const originalName = builtIn.translations?.en?.title || builtIn.translations?.tr?.title || builtIn.slug;
         await admin.from('products').upsert({
           slug: builtIn.slug,

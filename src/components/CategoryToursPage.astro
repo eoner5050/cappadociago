@@ -162,7 +162,7 @@ const heroTrust = lang==='tr'
   const norm=(v='')=>String(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const today=new Date(), todayKey=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
   Promise.all([
-    fetch(`${base}/rest/v1/products?active=eq.true&select=id,slug,name,default_price,ask_for_price`,{headers,cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)),
+    fetch(`${base}/rest/v1/products?select=id,slug,name,default_price,ask_for_price,active`,{headers,cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)),
     fetch(`${base}/rest/v1/availability?date=gte.${todayKey}&status=eq.available&select=product_id,price,capacity,booked&limit=5000`,{headers,cache:'no-store'}).then(r=>r.ok?r.json():[])
   ]).then(([products,availability])=>{
     const bySlug=new Map(products.map(p=>[String(p.slug||'').trim().toLowerCase(),p]));
@@ -170,7 +170,7 @@ const heroTrust = lang==='tr'
     const minById=new Map();
     for(const r of availability){const price=Number(r.price||0),remaining=Number(r.capacity||0)-Number(r.booked||0);if(price<=0||remaining<=0)continue;const id=String(r.product_id||''),prev=minById.get(id);if(!(prev>0)||price<prev)minById.set(id,price)}
     const pageLang=document.documentElement.lang||'en', ask=pageLang==='tr'?'Fiyat Sorunuz':pageLang==='es'?'Consultar Precio':'Ask For Price';
-    for(const card of cards){const product=bySlug.get(String(card.dataset.productSlug||'').trim().toLowerCase())||byName.get(norm(card.dataset.productName||''));if(!product)continue;const cur=card.querySelector('[data-cat-current-price]'),old=card.querySelector('[data-cat-old-price]');if(!cur||!old)continue;if(product.ask_for_price){cur.textContent=ask;old.textContent='';old.style.display='none';continue}const min=Number(minById.get(String(product.id))||0)||Number(product.default_price||0);if(!(min>0))continue;cur.textContent=`${Math.round(min)} €`;old.textContent=`${Math.round(min*1.20)} €`;old.style.display='';}
+    for(const card of cards){const product=bySlug.get(String(card.dataset.productSlug||'').trim().toLowerCase())||byName.get(norm(card.dataset.productName||''));if(!product)continue;if(product.active===false){card.remove();continue;}const cur=card.querySelector('[data-cat-current-price]'),old=card.querySelector('[data-cat-old-price]');if(!cur||!old)continue;if(product.ask_for_price){cur.textContent=ask;old.textContent='';old.style.display='none';continue}const min=Number(minById.get(String(product.id))||0)||Number(product.default_price||0);if(!(min>0))continue;cur.textContent=`${Math.round(min)} €`;old.textContent=`${Math.round(min*1.20)} €`;old.style.display='';}
   }).catch(e=>console.error('Category live prices failed',e));
 })();
 </script>

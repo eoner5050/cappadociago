@@ -8,7 +8,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const SITE_URL = 'https://www.cappadociago.com';
+const SITE_URL = 'https://cappadociago.com';
 const pathname = Astro.url.pathname;
 const cleanPath = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
 const canonical = `${SITE_URL}${cleanPath}`;
@@ -18,7 +18,9 @@ const imageUrl = image?.startsWith('http') ? image : `${SITE_URL}${image || '/im
 {description && <meta name="description" content={description} />}
 <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'} />
 <link rel="canonical" href={canonical} />
-<link rel="icon" type="image/webp" href="/favicon.webp?v=10" />
+<link rel="icon" type="image/webp" href="/favicon.webp?v=20" />
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=20" />
+<link rel="shortcut icon" href="/favicon.ico?v=20" />
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content="CappadociaGo" />
 <meta property="og:title" content={title} />

@@ -250,8 +250,9 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.me
     else if(t.origin==='site'){state.textContent=t.is_published?'REVİZE EDİLDİ · YAYINDA':'REVİZYON TASLAĞI';state.className='status '+(t.is_published?'live':'draft');setMsg('Bu kayıt mevcut site turunun panel üzerinden hazırlanmış revizyonudur.','info');}
     else{state.textContent=t.is_published?'YAYINDA':'TASLAK';state.className='status '+(t.is_published?'live':'draft');setMsg('');}
     const del=document.getElementById('deleteTourBtn') as HTMLButtonElement;
-    if(t.source==='site'){del.classList.add('hidden');}
-    else{del.classList.remove('hidden');del.textContent=t.origin==='site'?'Revizyonu Geri Al':'Sil';}
+    del.classList.remove('hidden');
+    if(t.source==='site') del.textContent='Turu Sil';
+    else del.textContent=t.origin==='site'?'Revizyonu Geri Al':'Sil';
     const publish=document.getElementById('publishBtn') as HTMLButtonElement; publish.textContent=t.origin==='site'?'Revizyonu Yayınla':'Kaydet & Yayınla';
     renderImages();renderList();window.scrollTo({top:0,behavior:'smooth'});
   }
@@ -265,10 +266,12 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.me
   async function save(publish:boolean){try{setMsg(publish?'Tur yayınlanıyor…':'Taslak kaydediliyor…');const res=await fetch('/api/admin/tours',{method:'POST',headers:{...authHeaders(),'Content-Type':'application/json'},body:JSON.stringify(collect(publish))});const data=await res.json();if(!res.ok)throw new Error(data.error||'Kaydetme başarısız');setMsg(publish?'Tur başarıyla yayınlandı.':'Taslak kaydedildi.','ok');await loadTours();editTour(data.tour.id)}catch(err:any){setMsg(err.message,'err')}}
   form.addEventListener('submit',e=>{e.preventDefault();save(true)});document.getElementById('saveDraftBtn')!.addEventListener('click',()=>save(false));document.getElementById('saveDraftBottom')!.addEventListener('click',()=>save(false));document.getElementById('newTourBtn')!.addEventListener('click',resetForm);document.getElementById('tourSearch')!.addEventListener('input',(e:any)=>renderList(e.target.value));
   document.getElementById('deleteTourBtn')!.addEventListener('click',async()=>{
-    if(!current||current.source==='site')return;
-    const reverting=current.origin==='site';
-    if(!confirm(reverting?'Bu revizyonu geri alıp sitenin orijinal tur içeriğine dönmek istediğinize emin misiniz?':'Bu turu silmek istediğinize emin misiniz?'))return;
-    const res=await fetch(`/api/admin/tours?id=${encodeURIComponent(current.id)}`,{method:'DELETE',headers:authHeaders()});const data=await res.json();if(!res.ok)return setMsg(data.error||'Silinemedi','err');await loadTours();resetForm();setMsg(reverting?'Revizyon kaldırıldı; orijinal site turu yeniden aktif.':'Tur silindi.','ok')
+    if(!current)return;
+    const staticTour=current.source==='site';
+    const reverting=!staticTour&&current.origin==='site';
+    const prompt=staticTour?'Bu mevcut turu canlı siteden kaldırmak istediğinize emin misiniz? Tur sayfası 404 olacaktır ve ürün pasif hale getirilecektir.':(reverting?'Bu revizyonu geri alıp sitenin orijinal tur içeriğine dönmek istediğinize emin misiniz?':'Bu turu silmek istediğinize emin misiniz?');
+    if(!confirm(prompt))return;
+    const res=await fetch(`/api/admin/tours?id=${encodeURIComponent(current.id)}&slug=${encodeURIComponent(current.slug||'')}`,{method:'DELETE',headers:authHeaders()});const data=await res.json();if(!res.ok)return setMsg(data.error||'Silinemedi','err');await loadTours();resetForm();setMsg(staticTour?'Tur canlı siteden kaldırıldı.':(reverting?'Revizyon kaldırıldı; orijinal site turu yeniden aktif.':'Tur silindi.'),'ok')
   });
   document.getElementById('tourLoginForm')?.addEventListener('submit',async(e:any)=>{
     e.preventDefault();

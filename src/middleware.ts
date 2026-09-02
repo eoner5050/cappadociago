@@ -1,5 +1,5 @@
 import { defineMiddleware } from 'astro:middleware';
-import { getPublishedTour } from './lib/databaseTours';
+import { getTourState } from './lib/databaseTours';
 
 const TOUR_ROUTE = /^\/(en|tr|es)\/tours\/([^/?#]+)\/?$/;
 
@@ -11,8 +11,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // A published admin revision always wins over the built-in static tour route.
   // The rewrite preserves the public URL while serving the database-backed page.
   try {
-    const published = await getPublishedTour(slug, lang);
-    if (published) {
+    const state = await getTourState(slug, lang);
+    if (state.deleted) return new Response('Not Found', { status: 404, headers: { 'Cache-Control':'no-store' } });
+    if (state.published) {
       const response = await context.rewrite(`/${lang}/managed-tours/${slug}`);
       response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
       response.headers.set('Pragma', 'no-cache');
