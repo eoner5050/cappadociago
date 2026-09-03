@@ -1557,12 +1557,11 @@ document.addEventListener("DOMContentLoaded", function () {
   async function tbcGet(path){const r=await fetch(SUPABASE_URL+"/rest/v1/"+path,{headers:{apikey:SUPABASE_KEY,Authorization:"Bearer "+SUPABASE_KEY}});if(!r.ok)throw new Error(await r.text());return r.json()}
 
   async function tbcLoadProduct(){
-    const rows=await tbcGet("products?slug=eq."+encodeURIComponent(TBC_PRODUCT_SLUG)+"&active=eq.true&select=id,default_price,default_capacity&limit=1");
-    tbcProduct=rows[0]||null;if(!tbcProduct)throw new Error("Product not found: "+TBC_PRODUCT_SLUG);
-    const today=new Date().toISOString().slice(0,10);
-    const future=await tbcGet("availability?product_id=eq."+tbcProduct.id+"&date=gte."+today+"&status=eq.available&select=price,capacity,booked&order=price.asc&limit=250");
-    const values=future.filter(r=>tbcRemaining(r)>0).map(r=>Number(r.price||0)).filter(v=>v>0);
-    const min=values.length?Math.min(...values):Number(tbcProduct.default_price||0);
+    const r=await fetch('/api/public/tour-pricing?slug='+encodeURIComponent(TBC_PRODUCT_SLUG),{cache:'no-store'});
+    if(!r.ok) throw new Error(await r.text());
+    const data=await r.json();
+    tbcProduct=data.product||null;if(!tbcProduct)throw new Error("Product not found: "+TBC_PRODUCT_SLUG);
+    const min=Number(data.minPrice||tbcProduct.default_price||0);
     if(min>0 && tbcMainPrice){
       tbcMainPrice.textContent=tbcMoney(min);
       const oldPrice=document.getElementById("tbc-main-old-price");
@@ -1572,9 +1571,11 @@ document.addEventListener("DOMContentLoaded", function () {
   async function tbcLoadMonth(){
     if(!tbcProduct)return;
     tbcCalendarDays.innerHTML='<div class="tbc-calendar-message">'+tbcText['loading']+'</div>';
-    const first=`${tbcCurrentYear}-${tbcPad(tbcCurrentMonth+1)}-01`, lastDay=new Date(tbcCurrentYear,tbcCurrentMonth+1,0).getDate(), last=`${tbcCurrentYear}-${tbcPad(tbcCurrentMonth+1)}-${tbcPad(lastDay)}`;
-    const rows=await tbcGet("availability?product_id=eq."+tbcProduct.id+"&date=gte."+first+"&date=lte."+last+"&select=date,price,capacity,booked,status&order=date.asc");
-    tbcAvailability={};rows.forEach(r=>tbcAvailability[r.date]=r);tbcRenderCalendar();
+    const monthKey=`${tbcCurrentYear}-${tbcPad(tbcCurrentMonth+1)}`;
+    const r=await fetch('/api/public/tour-pricing?slug='+encodeURIComponent(TBC_PRODUCT_SLUG)+'&month='+monthKey,{cache:'no-store'});
+    if(!r.ok) throw new Error(await r.text());
+    const data=await r.json();
+    tbcAvailability={};(data.availability||[]).forEach(row=>tbcAvailability[row.date]=row);tbcRenderCalendar();
   }
   function tbcRenderCalendar(){
     if(!tbcCalendarDays||!tbcCalendarTitle)return;tbcCalendarDays.innerHTML="";tbcCalendarTitle.textContent=tbcMonthNames[tbcCurrentMonth]+" "+tbcCurrentYear;

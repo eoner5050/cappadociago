@@ -25,8 +25,7 @@ const preserveMainPhoto = new Set([
   'jeep-safari-cappadocia',
   'ihlara-valley-balloons-tour'
 ]).has(String(slug));
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
-const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+
 ---
 <!doctype html>
 <html lang={lang}>
@@ -61,17 +60,30 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.me
   <section class="card booking"><h3>{copy.form}</h3><p>{copy.formDesc}</p><form id="bookingForm"><label>{copy.name}<input id="name" required placeholder={copy.name}/></label><label>{copy.phone}<input id="phone" type="tel" required/></label><label>{copy.date}<div class="date-wrap"><input id="date" readonly required placeholder={copy.selectDate}/><button type="button" id="calOpen">📅</button><div id="calendar" class="calendar"><div class="cal-head"><button type="button" id="prev">‹</button><b id="calTitle"></b><button type="button" id="next">›</button></div><div class="week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div id="days" class="days"></div></div></div></label><label>{copy.people}<select id="people" required><option value="">{copy.selectPeople}</option></select><small class="children">{copy.children}</small></label><div id="priceBox" class="price-box"><div><span id="unitLabel">{priceMode==='group'?copy.groupPrice:copy.unit}</span><b id="unit">—</b></div><div><span>{copy.total}</span><strong id="total">—</strong></div></div><label>{copy.message}<textarea id="message" placeholder={copy.messagePh}></textarea></label><button class="submit">{copy.send}</button></form></section></aside></div>
 </div></main>
 <TourFooter lang={lang} />
-<script define:vars={{slug,lang,priceMode,copy,supabaseUrl,supabaseKey}}>
-const URL=supabaseUrl, KEY=supabaseKey;
+<script define:vars={{slug,lang,priceMode,copy}}>
 let runtimePriceMode=priceMode;
 const $=id=>document.getElementById(id); const months=lang==='tr'?['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık']:lang==='es'?['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']:['January','February','March','April','May','June','July','August','September','October','November','December'];
 let product=null, availability={}, selected=null, selKey='', cm=new Date().getMonth(), cy=new Date().getFullYear();
 const pad=n=>String(n).padStart(2,'0'), key=(y,m,d)=>`${y}-${pad(m+1)}-${pad(d)}`, display=k=>{const [y,m,d]=k.split('-');return `${d}.${m}.${y}`}, money=v=>`${Number(v||0).toLocaleString(lang==='tr'?'tr-TR':lang==='es'?'es-ES':'en-US',{maximumFractionDigits:2})} €`, rem=r=>Math.max(Number(r?.capacity||0)-Number(r?.booked||0),0);
-async function get(path){const r=await fetch(`${URL}/rest/v1/${path}`,{headers:{apikey:KEY,Authorization:`Bearer ${KEY}`}});if(!r.ok)throw new Error(await r.text());return r.json()}
+async function pricingApi(month=''){
+  const qs=new URLSearchParams({slug});if(month)qs.set('month',month);
+  const r=await fetch(`/api/public/tour-pricing?${qs.toString()}`,{cache:'no-store'});
+  if(!r.ok){const t=await r.text();throw new Error(t||`Pricing API ${r.status}`)}
+  return r.json();
+}
 function effective(k){return availability[k]||{date:k,price:Number(product?.default_price||0),capacity:Number(product?.default_capacity||0),booked:0,status:'available',_default:true}}
 function available(r){return r&&r.status==='available'&&Number(r.capacity)>0&&rem(r)>0}
-async function loadProduct(){if(!URL||!KEY)return;const rows=await get(`products?slug=eq.${encodeURIComponent(slug)}&active=eq.true&select=id,default_price,default_capacity,ask_for_price&limit=1`);product=rows[0]||null;if(!product)return;if(product.ask_for_price)runtimePriceMode='ask';if(runtimePriceMode==='ask'){$('mainPrice').textContent=copy.ask;const old=$('mainOldPrice');if(old){old.textContent='';old.classList.remove('has-price')}const suf=$('priceSuffix');if(suf)suf.style.display='none';$('askPriceLink')?.classList.add('show');}if(runtimePriceMode!=='ask'){const today=new Date().toISOString().slice(0,10);const rows2=await get(`availability?product_id=eq.${product.id}&date=gte.${today}&status=eq.available&select=price,capacity,booked&limit=365`);const vals=rows2.filter(r=>rem(r)>0).map(r=>Number(r.price||0)).filter(v=>v>0);const min=vals.length?Math.min(...vals):Number(product.default_price||0);$('mainPrice').textContent=min>0?money(min):'—';const old=$('mainOldPrice');if(old){if(min>0){old.textContent=money(Math.round(min*1.20));old.classList.add('has-price')}else{old.textContent='';old.classList.remove('has-price')}}}}
-async function loadMonth(){if(!product){$('days').innerHTML=`<div class="msg">${copy.availability}</div>`;return}const first=`${cy}-${pad(cm+1)}-01`,ld=new Date(cy,cm+1,0).getDate(),last=`${cy}-${pad(cm+1)}-${pad(ld)}`;const rows=await get(`availability?product_id=eq.${product.id}&date=gte.${first}&date=lte.${last}&select=date,price,capacity,booked,status`);availability={};rows.forEach(r=>availability[r.date]=r);render()}
+async function loadProduct(){
+  const data=await pricingApi();product=data.product||null;if(!product)return;
+  if(product.ask_for_price)runtimePriceMode='ask';
+  if(runtimePriceMode==='ask'){$('mainPrice').textContent=copy.ask;const old=$('mainOldPrice');if(old){old.textContent='';old.classList.remove('has-price')}const suf=$('priceSuffix');if(suf)suf.style.display='none';$('askPriceLink')?.classList.add('show');return;}
+  const min=Number(data.minPrice||product.default_price||0);$('mainPrice').textContent=min>0?money(min):'—';
+  const old=$('mainOldPrice');if(old){if(min>0){old.textContent=money(Math.round(min*1.20));old.classList.add('has-price')}else{old.textContent='';old.classList.remove('has-price')}}
+}
+async function loadMonth(){
+  if(!product){$('days').innerHTML=`<div class="msg">${copy.availability}</div>`;return}
+  const data=await pricingApi(`${cy}-${pad(cm+1)}`);availability={};(data.availability||[]).forEach(r=>availability[r.date]=r);render();
+}
 function render(){$('days').innerHTML='';$('calTitle').textContent=`${months[cm]} ${cy}`;let off=new Date(cy,cm,1).getDay();off=off===0?6:off-1;for(let i=0;i<off;i++)$('days').insertAdjacentHTML('beforeend','<button class="day empty" disabled></button>');const last=new Date(cy,cm+1,0).getDate();for(let d=1;d<=last;d++){const k=key(cy,cm,d),r=effective(k),past=new Date(cy,cm,d)<new Date(new Date().setHours(0,0,0,0)),ok=!past&&available(r),b=document.createElement('button');b.type='button';b.className=`day ${ok?'':'disabled'} ${k===selKey?'selected':''}`;b.disabled=!ok;const status=r.status==='closed'?copy.closed:rem(r)<=0?copy.sold:`${rem(r)} ${copy.left}`;b.innerHTML=`<b>${d}</b>${runtimePriceMode==='ask'?'':`<span>${money(r.price)}</span>`}<small>${status}</small>`;if(ok)b.onclick=()=>choose(r,k);$('days').appendChild(b)}}
 function fillPeople(max,selectedVal=''){const s=$('people');s.innerHTML=`<option value="">${copy.selectPeople}</option>`;for(let i=1;i<=Math.min(max,20);i++){const o=document.createElement('option');o.value=String(i);o.textContent=`${i} ${i===1?(lang==='tr'?'Kişi':lang==='es'?'Persona':'Person'):(lang==='tr'?'Kişi':lang==='es'?'Personas':'People')}`;s.appendChild(o)}if(selectedVal)s.value=String(selectedVal)}
 function updatePrice(){if(!selected){return}const n=Number($('people').value||0);if(runtimePriceMode==='ask'){$('unit').textContent=copy.ask;$('total').textContent=copy.ask;return}const unit=Number(selected.price||product?.default_price||0);$('unit').textContent=money(unit);$('total').textContent=runtimePriceMode==='group'?money(unit):(n?money(unit*n):'—')}
