@@ -1,0 +1,10 @@
+CappadociaGo default price + calendar repair
+
+- Homepage cards use /api/public/tour-pricing and show products.default_price.
+- Tour detail price cards show products.default_price (not minimum date price).
+- Calendar date rows show date-specific price/capacity when set.
+- If a date row has price/capacity 0, it inherits the product default price/capacity.
+- Dates without an availability row inherit product defaults and show remaining capacity.
+- Pricing API supports standard/standart Göreme slug aliases.
+- Pricing API falls back to published tours table and then existingTourCatalog for older built-in tours.
+- Direct browser Supabase pricing dependency was removed from homepage pricing updates.

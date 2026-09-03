@@ -71,13 +71,13 @@ async function pricingApi(month=''){
   if(!r.ok){const t=await r.text();throw new Error(t||`Pricing API ${r.status}`)}
   return r.json();
 }
-function effective(k){return availability[k]||{date:k,price:Number(product?.default_price||0),capacity:Number(product?.default_capacity||0),booked:0,status:'available',_default:true}}
+function effective(k){const base={date:k,price:Number(product?.default_price||0),capacity:Number(product?.default_capacity||0),booked:0,status:'available',_default:true};const row=availability[k];if(!row)return base;return {...row,price:Number(row.price||0)>0?Number(row.price):base.price,capacity:Number(row.capacity||0)>0?Number(row.capacity):base.capacity,booked:Math.max(0,Number(row.booked||0)),status:row.status||'available'} }
 function available(r){return r&&r.status==='available'&&Number(r.capacity)>0&&rem(r)>0}
 async function loadProduct(){
   const data=await pricingApi();product=data.product||null;if(!product)return;
   if(product.ask_for_price)runtimePriceMode='ask';
   if(runtimePriceMode==='ask'){$('mainPrice').textContent=copy.ask;const old=$('mainOldPrice');if(old){old.textContent='';old.classList.remove('has-price')}const suf=$('priceSuffix');if(suf)suf.style.display='none';$('askPriceLink')?.classList.add('show');return;}
-  const min=Number(data.minPrice||product.default_price||0);$('mainPrice').textContent=min>0?money(min):'—';
+  const min=Number(data.defaultPrice||product.default_price||0);$('mainPrice').textContent=min>0?money(min):'—';
   const old=$('mainOldPrice');if(old){if(min>0){old.textContent=money(Math.round(min*1.20));old.classList.add('has-price')}else{old.textContent='';old.classList.remove('has-price')}}
 }
 async function loadMonth(){

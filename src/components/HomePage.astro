@@ -1336,48 +1336,33 @@ const homepageReviews = [
       }
     }
 
-    if (!base || !key) return;
-    const headers = { apikey: key, Authorization: `Bearer ${key}` };
-
+    // Read prices through our own server API. This avoids public-RLS/browser-key
+    // differences and guarantees the same admin-controlled default price is used
+    // on homepage cards and inside tour detail pages.
     for (const card of cards) {
       const slug = String(card.dataset.productSlug || '').trim();
-      if (!slug) continue;
-
+      if (!slug || card.dataset.deletedTour === 'true') continue;
       const currentEl = card.querySelector('[data-current-price]');
       const oldEl = card.querySelector('[data-old-price]');
       if (!currentEl || !oldEl) continue;
-
       try {
-        // Fetch every product row for this slug, including inactive rows.
-        // When an existing/static tour is deleted in Admin, the API marks its
-        // product active=false. The homepage is statically rendered, so we must
-        // hide that pre-rendered card at runtime instead of leaving it visible.
-        const productRes = await fetch(
-          `${base}/rest/v1/products?slug=eq.${encodeURIComponent(slug)}&select=id,default_price,ask_for_price,active`,
-          { headers, cache: 'no-store' }
-        );
-
-        if (!productRes.ok) continue;
-        const products = await productRes.json();
-        // If the product exists but every row is inactive, the tour is deleted/disabled.
-        // If there is no product row at all, the server-authoritative tombstone check
-        // above decides whether the static card should be hidden.
-        if (!Array.isArray(products) || !products.length) continue;
-
-        const activeProducts = products.filter(p => p.active === true);
-        if (!activeProducts.length) {
+        const res = await fetch(`/api/public/tour-pricing?slug=${encodeURIComponent(slug)}`, { cache: 'no-store' });
+        if (res.status === 404) continue;
+        if (!res.ok) throw new Error(await res.text());
+        const data = await res.json();
+        const product = data.product;
+        if (!product || product.active !== true) {
           hideTourEverywhere(slug);
           continue;
         }
-
-        // Homepage intentionally ignores date-specific availability pricing.
-        // It always shows the lowest positive default_price for active rows.
-        const defaults = activeProducts
-          .map(p => Number(p.default_price || 0))
-          .filter(v => v > 0);
-        if (!defaults.length) continue;
-
-        const defaultPrice = Math.min(...defaults);
+        if (product.ask_for_price) {
+          currentEl.textContent = 'Ask for Price';
+          currentEl.classList.add('is-ask-price');
+          oldEl.style.display = 'none';
+          continue;
+        }
+        const defaultPrice = Number(data.defaultPrice || product.default_price || 0);
+        if (!(defaultPrice > 0)) continue;
         currentEl.classList.remove('is-ask-price');
         currentEl.textContent = money(defaultPrice);
         oldEl.textContent = money(defaultPrice * 1.25);
