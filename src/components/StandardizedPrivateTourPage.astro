@@ -5,6 +5,7 @@ import SiteHeader from './SiteHeader.astro';
 import TourPremiumTheme from './TourPremiumTheme.astro';
 import TourFooter from './TourFooter.astro';
 import { getTourGallery } from '../utils/tourGallery';
+import { existingTourCatalog } from '../data/existingTourCatalog';
 
 const {
   lang = 'en', slug, title, heroDesc, overviewTitle, overviewParagraphs = [], priceTitle, priceText,
@@ -25,6 +26,14 @@ const preserveMainPhoto = new Set([
   'jeep-safari-cappadocia',
   'ihlara-valley-balloons-tour'
 ]).has(String(slug));
+const slugCandidates = String(slug)==='goreme-standard-hot-air-balloon-tour'
+  ? ['goreme-standard-hot-air-balloon-tour','goreme-standart-hot-air-balloon-tour']
+  : String(slug)==='goreme-standart-hot-air-balloon-tour'
+    ? ['goreme-standart-hot-air-balloon-tour','goreme-standard-hot-air-balloon-tour']
+    : [String(slug)];
+const builtInTour:any = existingTourCatalog.find((t:any)=>slugCandidates.includes(String(t.slug)));
+const fallbackDefaultPrice = Math.max(0, Number(builtInTour?.price || 0));
+const fallbackDefaultCapacity = Math.max(1, Number(builtInTour?.default_capacity || 20));
 
 ---
 <!doctype html>
@@ -56,11 +65,11 @@ const preserveMainPhoto = new Set([
     <section><h2>{detailsTitle}</h2>{details.map((p)=><p>{p}</p>)}</section>
     {extraSections.map((s)=><section><h2>{s.title}</h2>{s.paragraphs?.map((p)=><p>{p}</p>)}{s.items && <div class="checks">{s.items.map((x)=><div><i>✓</i><span>{x}</span></div>)}</div>}</section>)}
   </section></div>
-  <aside class="side"><section class="card price-card"><span class="label">{copy.price}</span><div class="price"><del id="mainOldPrice"></del><strong id="mainPrice">{priceMode==='ask'?copy.ask:'—'}</strong><small id="priceSuffix">{priceMode==='perPerson'?copy.perPerson:priceMode==='group'?copy.group:''}</small></div><a id="askPriceLink" class:list={["ask-price-link",priceMode==='ask'&&"show"]} href={`https://wa.me/905401015050?text=${encodeURIComponent(`Hello CappadociaGo, please send me a price for ${title}.`)}`}>💬 {copy.ask}</a><div class="badges">{sidebarBadges.map((x)=><span>{x}</span>)}</div><hr/><a class="phone" href="tel:+905401015050">📞 +90 540 101 50 50</a><a class="wa" href="https://wa.me/905401015050"><img src="/images/icons/whatsapp-logo.webp" alt="" loading="lazy" width="24" height="24"/>{copy.contact}</a><div class="side-list">{sideHighlights.map((x)=><div>✓ <span>{x}</span></div>)}</div></section>
+  <aside class="side"><section class="card price-card"><span class="label">{copy.price}</span><div class="price"><del id="mainOldPrice"></del><strong id="mainPrice">{priceMode==='ask'?copy.ask:(fallbackDefaultPrice>0?`${fallbackDefaultPrice} €`:'—')}</strong><small id="priceSuffix">{priceMode==='perPerson'?copy.perPerson:priceMode==='group'?copy.group:''}</small></div><a id="askPriceLink" class:list={["ask-price-link",priceMode==='ask'&&"show"]} href={`https://wa.me/905401015050?text=${encodeURIComponent(`Hello CappadociaGo, please send me a price for ${title}.`)}`}>💬 {copy.ask}</a><div class="badges">{sidebarBadges.map((x)=><span>{x}</span>)}</div><hr/><a class="phone" href="tel:+905401015050">📞 +90 540 101 50 50</a><a class="wa" href="https://wa.me/905401015050"><img src="/images/icons/whatsapp-logo.webp" alt="" loading="lazy" width="24" height="24"/>{copy.contact}</a><div class="side-list">{sideHighlights.map((x)=><div>✓ <span>{x}</span></div>)}</div></section>
   <section class="card booking"><h3>{copy.form}</h3><p>{copy.formDesc}</p><form id="bookingForm"><label>{copy.name}<input id="name" required placeholder={copy.name}/></label><label>{copy.phone}<input id="phone" type="tel" required/></label><label>{copy.date}<div class="date-wrap"><input id="date" readonly required placeholder={copy.selectDate}/><button type="button" id="calOpen">📅</button><div id="calendar" class="calendar"><div class="cal-head"><button type="button" id="prev">‹</button><b id="calTitle"></b><button type="button" id="next">›</button></div><div class="week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div id="days" class="days"></div></div></div></label><label>{copy.people}<select id="people" required><option value="">{copy.selectPeople}</option></select><small class="children">{copy.children}</small></label><div id="priceBox" class="price-box"><div><span id="unitLabel">{priceMode==='group'?copy.groupPrice:copy.unit}</span><b id="unit">—</b></div><div><span>{copy.total}</span><strong id="total">—</strong></div></div><label>{copy.message}<textarea id="message" placeholder={copy.messagePh}></textarea></label><button class="submit">{copy.send}</button></form></section></aside></div>
 </div></main>
 <TourFooter lang={lang} />
-<script define:vars={{slug,lang,priceMode,copy}}>
+<script define:vars={{slug,lang,priceMode,copy,fallbackDefaultPrice,fallbackDefaultCapacity}}>
 let runtimePriceMode=priceMode;
 const $=id=>document.getElementById(id); const months=lang==='tr'?['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık']:lang==='es'?['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']:['January','February','March','April','May','June','July','August','September','October','November','December'];
 let product=null, availability={}, selected=null, selKey='', cm=new Date().getMonth(), cy=new Date().getFullYear();
@@ -71,18 +80,45 @@ async function pricingApi(month=''){
   if(!r.ok){const t=await r.text();throw new Error(t||`Pricing API ${r.status}`)}
   return r.json();
 }
-function effective(k){const base={date:k,price:Number(product?.default_price||0),capacity:Number(product?.default_capacity||0),booked:0,status:'available',_default:true};const row=availability[k];if(!row)return base;return {...row,price:Number(row.price||0)>0?Number(row.price):base.price,capacity:Number(row.capacity||0)>0?Number(row.capacity):base.capacity,booked:Math.max(0,Number(row.booked||0)),status:row.status||'available'} }
+function effective(k){const base={date:k,price:Number(product?.default_price||fallbackDefaultPrice||0),capacity:Number(product?.default_capacity||fallbackDefaultCapacity||20),booked:0,status:'available',_default:true};const row=availability[k];if(!row)return base;return {...row,price:Number(row.price||0)>0?Number(row.price):base.price,capacity:Number(row.capacity||0)>0?Number(row.capacity):base.capacity,booked:Math.max(0,Number(row.booked||0)),status:row.status||'available'} }
 function available(r){return r&&r.status==='available'&&Number(r.capacity)>0&&rem(r)>0}
 async function loadProduct(){
-  const data=await pricingApi();product=data.product||null;if(!product)return;
-  if(product.ask_for_price)runtimePriceMode='ask';
-  if(runtimePriceMode==='ask'){$('mainPrice').textContent=copy.ask;const old=$('mainOldPrice');if(old){old.textContent='';old.classList.remove('has-price')}const suf=$('priceSuffix');if(suf)suf.style.display='none';$('askPriceLink')?.classList.add('show');return;}
-  const min=Number(data.defaultPrice||product.default_price||0);$('mainPrice').textContent=min>0?money(min):'—';
-  const old=$('mainOldPrice');if(old){if(min>0){old.textContent=money(Math.round(min*1.20));old.classList.add('has-price')}else{old.textContent='';old.classList.remove('has-price')}}
+  try{
+    const data=await pricingApi();
+    product=data.product||null;
+    if(!product) throw new Error('No pricing product');
+    if(product.ask_for_price)runtimePriceMode='ask';
+    if(runtimePriceMode==='ask'){
+      $('mainPrice').textContent=copy.ask;
+      const old=$('mainOldPrice');if(old){old.textContent='';old.classList.remove('has-price')}
+      const suf=$('priceSuffix');if(suf)suf.style.display='none';
+      $('askPriceLink')?.classList.add('show');return;
+    }
+    const visibleDefault=Number(data.defaultPrice||product.default_price||fallbackDefaultPrice||0);
+    $('mainPrice').textContent=visibleDefault>0?money(visibleDefault):'—';
+    const old=$('mainOldPrice');if(old){if(visibleDefault>0){old.textContent=money(Math.round(visibleDefault*1.20));old.classList.add('has-price')}else{old.textContent='';old.classList.remove('has-price')}}
+  }catch(err){
+    console.error('Pricing API fallback:',err);
+    product={id:null,slug,default_price:Number(fallbackDefaultPrice||0),default_capacity:Number(fallbackDefaultCapacity||20),ask_for_price:priceMode==='ask'};
+    runtimePriceMode=priceMode;
+    const visibleDefault=Number(fallbackDefaultPrice||0);
+    $('mainPrice').textContent=runtimePriceMode==='ask'?copy.ask:(visibleDefault>0?money(visibleDefault):'—');
+    const old=$('mainOldPrice');if(old){if(visibleDefault>0&&runtimePriceMode!=='ask'){old.textContent=money(Math.round(visibleDefault*1.20));old.classList.add('has-price')}else{old.textContent='';old.classList.remove('has-price')}}
+  }
 }
 async function loadMonth(){
-  if(!product){$('days').innerHTML=`<div class="msg">${copy.availability}</div>`;return}
-  const data=await pricingApi(`${cy}-${pad(cm+1)}`);availability={};(data.availability||[]).forEach(r=>availability[r.date]=r);render();
+  if(!product){
+    product={id:null,slug,default_price:Number(fallbackDefaultPrice||0),default_capacity:Number(fallbackDefaultCapacity||20),ask_for_price:priceMode==='ask'};
+  }
+  try{
+    const data=await pricingApi(`${cy}-${pad(cm+1)}`);
+    if(data?.product) product={...product,...data.product};
+    availability={};(data.availability||[]).forEach(r=>availability[r.date]=r);
+  }catch(err){
+    console.error('Calendar API fallback:',err);
+    availability={};
+  }
+  render();
 }
 function render(){$('days').innerHTML='';$('calTitle').textContent=`${months[cm]} ${cy}`;let off=new Date(cy,cm,1).getDay();off=off===0?6:off-1;for(let i=0;i<off;i++)$('days').insertAdjacentHTML('beforeend','<button class="day empty" disabled></button>');const last=new Date(cy,cm+1,0).getDate();for(let d=1;d<=last;d++){const k=key(cy,cm,d),r=effective(k),past=new Date(cy,cm,d)<new Date(new Date().setHours(0,0,0,0)),ok=!past&&available(r),b=document.createElement('button');b.type='button';b.className=`day ${ok?'':'disabled'} ${k===selKey?'selected':''}`;b.disabled=!ok;const status=r.status==='closed'?copy.closed:rem(r)<=0?copy.sold:`${rem(r)} ${copy.left}`;b.innerHTML=`<b>${d}</b>${runtimePriceMode==='ask'?'':`<span>${money(r.price)}</span>`}<small>${status}</small>`;if(ok)b.onclick=()=>choose(r,k);$('days').appendChild(b)}}
 function fillPeople(max,selectedVal=''){const s=$('people');s.innerHTML=`<option value="">${copy.selectPeople}</option>`;for(let i=1;i<=Math.min(max,20);i++){const o=document.createElement('option');o.value=String(i);o.textContent=`${i} ${i===1?(lang==='tr'?'Kişi':lang==='es'?'Persona':'Person'):(lang==='tr'?'Kişi':lang==='es'?'Personas':'People')}`;s.appendChild(o)}if(selectedVal)s.value=String(selectedVal)}
@@ -262,6 +298,15 @@ html,body{background:radial-gradient(circle at 12% 3%,rgba(217,165,31,.10),trans
   body .iti__country-container, body .iti__selected-country{width:88px!important;min-width:88px!important;max-width:88px!important;}
   body .iti__tel-input{padding-left:100px!important;}
 }
+</style>
+
+<style is:global>
+/* FINAL PHONE INPUT VISIBILITY — keep typed digits visible immediately on every shared tour page. */
+body .booking .iti input[type="tel"], body .booking input.iti__tel-input, body .iti__tel-input{
+  color:#071d3b!important;caret-color:#071d3b!important;opacity:1!important;-webkit-text-fill-color:#071d3b!important;
+  background:#fff!important;position:relative!important;z-index:1!important;
+}
+body .booking .iti__country-container{z-index:3!important;}
 </style>
 
 

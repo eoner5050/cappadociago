@@ -1433,6 +1433,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
   const SUPABASE_KEY = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
   const TBC_PRODUCT_SLUG = 'goreme-standart-hot-air-balloon-tour';
+  const TBC_FALLBACK_PRICE = 80;
+  const TBC_FALLBACK_CAPACITY = 24;
   const tbcMonthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const tbcText = {'left': 'left', 'closed': 'Closed', 'sold': 'Sold out', 'unavailable': 'Unavailable', 'loading': 'Loading availability...', 'selectPeople': 'Select People', 'person': 'Person', 'people': 'People', 'children': 'Children are included in this number of people.', 'unit': 'Price per person', 'total': 'Total price', 'request': 'New Reservation Request', 'name': 'Name', 'phone': 'Phone', 'date': 'Date', 'guests': 'People', 'message': 'Message', 'alert': 'Please complete name, phone, date and number of people before sending.'};
 
@@ -1459,32 +1461,51 @@ document.addEventListener("DOMContentLoaded", function () {
   function tbcIsPast(y,m,d){const x=new Date(y,m,d);x.setHours(0,0,0,0);const n=new Date();n.setHours(0,0,0,0);return x<n}
   function tbcEffectiveRow(key){
     if(tbcAvailability[key]) return tbcAvailability[key];
-    if(!tbcProduct) return null;
-    return {date:key,price:Number(tbcProduct.default_price||0),capacity:Number(tbcProduct.default_capacity||0),booked:0,status:"available",_default:true};
+    if(!tbcProduct) tbcProduct={id:null,slug:TBC_PRODUCT_SLUG,default_price:TBC_FALLBACK_PRICE,default_capacity:TBC_FALLBACK_CAPACITY,ask_for_price:false};
+    return {date:key,price:Number(tbcProduct.default_price||TBC_FALLBACK_PRICE||0),capacity:Number(tbcProduct.default_capacity||TBC_FALLBACK_CAPACITY||20),booked:0,status:"available",_default:true};
   }
   function tbcAvailable(row){return !!row && row.status==="available" && Number(row.capacity||0)>0 && tbcRemaining(row)>0}
   async function tbcGet(path){const r=await fetch(SUPABASE_URL+"/rest/v1/"+path,{headers:{apikey:SUPABASE_KEY,Authorization:"Bearer "+SUPABASE_KEY}});if(!r.ok)throw new Error(await r.text());return r.json()}
 
   async function tbcLoadProduct(){
-    const r=await fetch('/api/public/tour-pricing?slug='+encodeURIComponent(TBC_PRODUCT_SLUG),{cache:'no-store'});
-    if(!r.ok) throw new Error(await r.text());
-    const data=await r.json();
-    tbcProduct=data.product||null;if(!tbcProduct)throw new Error("Product not found: "+TBC_PRODUCT_SLUG);
-    const min=Number(data.defaultPrice||tbcProduct.default_price||0);
-    if(min>0 && tbcMainPrice){
-      tbcMainPrice.textContent=tbcMoney(min);
+    try{
+      const r=await fetch('/api/public/tour-pricing?slug='+encodeURIComponent(TBC_PRODUCT_SLUG),{cache:'no-store'});
+      if(!r.ok) throw new Error(await r.text());
+      const data=await r.json();
+      tbcProduct=data.product||null;
+      if(!tbcProduct) throw new Error("Product not found: "+TBC_PRODUCT_SLUG);
+      const visibleDefault=Number(data.defaultPrice||tbcProduct.default_price||TBC_FALLBACK_PRICE||0);
+      tbcProduct.default_price=visibleDefault;
+      tbcProduct.default_capacity=Number(tbcProduct.default_capacity||TBC_FALLBACK_CAPACITY||20);
+      if(visibleDefault>0 && tbcMainPrice){
+        tbcMainPrice.textContent=tbcMoney(visibleDefault);
+        const oldPrice=document.getElementById("tbc-main-old-price");
+        if(oldPrice){oldPrice.textContent=tbcMoney(Math.round(visibleDefault*1.20));oldPrice.style.display="inline";}
+      }
+    }catch(err){
+      console.error('Pricing API fallback:',err);
+      tbcProduct={id:null,slug:TBC_PRODUCT_SLUG,default_price:TBC_FALLBACK_PRICE,default_capacity:TBC_FALLBACK_CAPACITY,ask_for_price:false};
+      if(tbcMainPrice && TBC_FALLBACK_PRICE>0)tbcMainPrice.textContent=tbcMoney(TBC_FALLBACK_PRICE);
       const oldPrice=document.getElementById("tbc-main-old-price");
-      if(oldPrice){oldPrice.textContent=tbcMoney(Math.round(min*1.20));oldPrice.style.display="inline";}
+      if(oldPrice && TBC_FALLBACK_PRICE>0){oldPrice.textContent=tbcMoney(Math.round(TBC_FALLBACK_PRICE*1.20));oldPrice.style.display="inline";}
     }
   }
   async function tbcLoadMonth(){
-    if(!tbcProduct)return;
-    tbcCalendarDays.innerHTML='<div class="tbc-calendar-message">'+tbcText['loading']+'</div>';
-    const monthKey=`${tbcCurrentYear}-${tbcPad(tbcCurrentMonth+1)}`;
-    const r=await fetch('/api/public/tour-pricing?slug='+encodeURIComponent(TBC_PRODUCT_SLUG)+'&month='+monthKey,{cache:'no-store'});
-    if(!r.ok) throw new Error(await r.text());
-    const data=await r.json();
-    tbcAvailability={};(data.availability||[]).forEach(row=>{const basePrice=Number(tbcProduct?.default_price||0),baseCapacity=Number(tbcProduct?.default_capacity||0);tbcAvailability[row.date]={...row,price:Number(row.price||0)>0?Number(row.price):basePrice,capacity:Number(row.capacity||0)>0?Number(row.capacity):baseCapacity,booked:Math.max(0,Number(row.booked||0)),status:row.status||'available'}});tbcRenderCalendar();
+    if(!tbcProduct)tbcProduct={id:null,slug:TBC_PRODUCT_SLUG,default_price:TBC_FALLBACK_PRICE,default_capacity:TBC_FALLBACK_CAPACITY,ask_for_price:false};
+    if(tbcCalendarDays)tbcCalendarDays.innerHTML='<div class="tbc-calendar-message">'+tbcText['loading']+'</div>';
+    try{
+      const monthKey=`${tbcCurrentYear}-${tbcPad(tbcCurrentMonth+1)}`;
+      const r=await fetch('/api/public/tour-pricing?slug='+encodeURIComponent(TBC_PRODUCT_SLUG)+'&month='+monthKey,{cache:'no-store'});
+      if(!r.ok) throw new Error(await r.text());
+      const data=await r.json();
+      if(data?.product)tbcProduct={...tbcProduct,...data.product};
+      tbcAvailability={};
+      (data.availability||[]).forEach(row=>{
+        const basePrice=Number(tbcProduct?.default_price||TBC_FALLBACK_PRICE||0),baseCapacity=Number(tbcProduct?.default_capacity||TBC_FALLBACK_CAPACITY||20);
+        tbcAvailability[row.date]={...row,price:Number(row.price||0)>0?Number(row.price):basePrice,capacity:Number(row.capacity||0)>0?Number(row.capacity):baseCapacity,booked:Math.max(0,Number(row.booked||0)),status:row.status||'available'};
+      });
+    }catch(err){console.error('Calendar API fallback:',err);tbcAvailability={};}
+    tbcRenderCalendar();
   }
   function tbcRenderCalendar(){
     if(!tbcCalendarDays||!tbcCalendarTitle)return;tbcCalendarDays.innerHTML="";tbcCalendarTitle.textContent=tbcMonthNames[tbcCurrentMonth]+" "+tbcCurrentYear;
@@ -1634,6 +1655,15 @@ html,body{background:radial-gradient(circle at 12% 3%,rgba(217,165,31,.10),trans
 
 <TourMobileGuard />
   <link rel="stylesheet" href="/tour-authoritative-order-v6.css" />
+
+<style is:global>
+/* FINAL_ALL_TOURS_NAUTICAL_HERO_PHONE */
+body .tbc-tour-hero,body .hero{background:linear-gradient(120deg,#123b63 0%,#0d3158 58%,#092648 100%)!important;color:#fff!important;border-color:rgba(255,255,255,.10)!important;}
+body .tbc-tour-title,body .hero h1{color:#fff!important;text-shadow:none!important;}
+body .tbc-tour-desc,body .hero>p{color:rgba(255,255,255,.84)!important;}
+body .iti input[type=tel],body input.iti__tel-input,body .iti__tel-input{color:#071d3b!important;caret-color:#071d3b!important;opacity:1!important;-webkit-text-fill-color:#071d3b!important;background:#fff!important;position:relative!important;z-index:1!important;}
+body .iti__country-container{z-index:3!important;}
+</style>
 </body>
 </html>
 

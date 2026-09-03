@@ -25,11 +25,25 @@ export const GET: APIRoute = async ({ url }) => {
 
   const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || import.meta.env.SUPABASE_URL || '';
   const serviceKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY || import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
-  if (!supabaseUrl || !serviceKey) return json({ error: 'Supabase environment variables are missing' }, 500);
+  const candidates = aliasMap[slug] || [slug];
+  const builtIn:any = existingTourCatalog.find((t:any) => candidates.includes(String(t.slug)));
+  let product:any = null;
+
+  // Keep public pricing usable even if a deployment temporarily misses Supabase envs.
+  // When envs exist, admin-controlled database values still take precedence below.
+  if (!supabaseUrl || !serviceKey) {
+    if (builtIn && builtIn.is_published !== false) {
+      const defaultPrice = Math.max(0, Number(builtIn.price || 0));
+      const defaultCapacity = Math.max(1, Number(builtIn.default_capacity || 20));
+      return json({
+        product: { id:null, slug:builtIn.slug, default_price:defaultPrice, default_capacity:defaultCapacity, ask_for_price:Boolean(builtIn.ask_for_price), active:true, _catalogFallback:true },
+        availability: [], defaultPrice, minPrice: defaultPrice
+      });
+    }
+    return json({ error: 'Supabase environment variables are missing', product:null, availability:[], defaultPrice:0, minPrice:0 }, 500);
+  }
 
   const db = createClient(supabaseUrl, serviceKey, { auth: { persistSession: false, autoRefreshToken: false } });
-  const candidates = aliasMap[slug] || [slug];
-  let product:any = null;
 
   // Do not use maybeSingle here. Old installs can contain duplicate product rows,
   // and maybeSingle turns that harmless situation into a 500/PGRST116 error.
@@ -78,7 +92,6 @@ export const GET: APIRoute = async ({ url }) => {
   // Final fallback for untouched built-in pages that have never been saved in
   // Admin yet. This keeps their original default price/capacity visible.
   if (!product) {
-    const builtIn:any = existingTourCatalog.find((t:any) => candidates.includes(String(t.slug)));
     if (builtIn && builtIn.is_published !== false) {
       product = {
         id: null, slug: builtIn.slug, default_price: Number(builtIn.price || 0),
