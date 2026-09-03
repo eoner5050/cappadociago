@@ -185,3 +185,155 @@ body .hero>p,body .tbc-tour-desc{color:rgba(255,255,255,.84)!important;}
   setTimeout(() => observer.disconnect(), 8000);
 })();
 </script>
+
+<style is:inline>
+/* =========================================================
+   CAPPADOCIAGO FINAL RUNTIME OVERRIDE v8
+   is:inline is intentional: Astro must not hoist this block.
+   It has to stay after all legacy tour styles so every tour
+   gets the same Comfort-Class navy hero and a usable phone field.
+   ========================================================= */
+body .hero,
+body .tbc-tour-hero,
+body .tour-hero,
+body .tour-detail-hero {
+  background: linear-gradient(120deg,#123b63 0%,#0d3158 58%,#092648 100%) !important;
+  background-color:#0d3158 !important;
+  color:#fff !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  box-shadow:0 16px 38px rgba(8,44,80,.16) !important;
+}
+body .hero::before,
+body .tbc-tour-hero::before,
+body .tour-hero::before,
+body .tour-detail-hero::before {
+  background:radial-gradient(circle,rgba(213,154,24,.16),transparent 68%) !important;
+}
+body .hero h1,
+body .tbc-tour-title,
+body .tour-hero h1,
+body .tour-detail-hero h1 {
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  text-shadow:none !important;
+}
+body .hero > p,
+body .tbc-tour-desc,
+body .tour-hero > p,
+body .tour-detail-hero > p {
+  color:rgba(255,255,255,.86) !important;
+  -webkit-text-fill-color:rgba(255,255,255,.86) !important;
+}
+body .hero .kicker,
+body .tbc-tour-kicker,
+body .tour-hero .kicker {
+  background:rgba(213,154,24,.12) !important;
+  border-color:rgba(238,199,91,.62) !important;
+  color:#ffd866 !important;
+  -webkit-text-fill-color:#ffd866 !important;
+}
+body .hero-badges,
+body .tbc-hero-badges-bar { border-top-color:rgba(255,255,255,.20) !important; }
+body .hero-badges > span,
+body .hero-badges > a,
+body .tbc-badge-item {
+  background:#f8fbff !important;
+  color:#0b3158 !important;
+  -webkit-text-fill-color:#0b3158 !important;
+  border-color:#dbe5ec !important;
+}
+
+/* intl-tel-input: reserve a real, non-overlapping country-code lane on every viewport. */
+body .tbc-phone-group .iti,
+body .booking .iti,
+body .tbc-booking-card .iti,
+body .reservation-form .iti,
+body .iti {
+  position:relative !important;
+  display:block !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  overflow:visible !important;
+}
+body .iti__country-container {
+  position:absolute !important;
+  inset:0 auto 0 0 !important;
+  width:116px !important;
+  min-width:116px !important;
+  max-width:116px !important;
+  z-index:10 !important;
+}
+body .iti__selected-country {
+  width:116px !important;
+  min-width:116px !important;
+  max-width:116px !important;
+  height:100% !important;
+  box-sizing:border-box !important;
+  padding:0 10px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:5px !important;
+  background:#f4f8fc !important;
+  border-right:1px solid #c9d9e6 !important;
+  border-radius:12px 0 0 12px !important;
+}
+body .iti__selected-country-primary {
+  display:flex !important;
+  align-items:center !important;
+  gap:5px !important;
+  min-width:0 !important;
+  padding:0 !important;
+}
+body .iti__selected-dial-code {
+  display:inline-block !important;
+  margin:0 !important;
+  white-space:nowrap !important;
+  color:#062d63 !important;
+  -webkit-text-fill-color:#062d63 !important;
+  font-size:12px !important;
+  line-height:1 !important;
+  font-weight:800 !important;
+}
+body .iti input[type="tel"],
+body input.iti__tel-input,
+body .iti__tel-input,
+body #tbc-phone,
+body #phone {
+  position:relative !important;
+  z-index:1 !important;
+  display:block !important;
+  box-sizing:border-box !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  padding-left:130px !important;
+  padding-right:14px !important;
+  text-indent:0 !important;
+  direction:ltr !important;
+  text-align:left !important;
+  color:#071d3b !important;
+  -webkit-text-fill-color:#071d3b !important;
+  caret-color:#071d3b !important;
+  opacity:1 !important;
+  background:#fff !important;
+}
+body .iti input[type="tel"]::placeholder,
+body .iti__tel-input::placeholder { color:#8ba0b5 !important; opacity:1 !important; }
+body .iti__country-list { z-index:2147483647 !important; }
+
+@media (max-width:640px) {
+  body .iti__country-container,
+  body .iti__selected-country {
+    width:108px !important;
+    min-width:108px !important;
+    max-width:108px !important;
+  }
+  body .iti input[type="tel"],
+  body input.iti__tel-input,
+  body .iti__tel-input,
+  body #tbc-phone,
+  body #phone { padding-left:121px !important; }
+}
+</style>
