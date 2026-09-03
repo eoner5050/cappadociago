@@ -1,0 +1,42 @@
+---
+const googleAdsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID || 'AW-18426176965';
+const whatsappSendTo = import.meta.env.PUBLIC_GOOGLE_ADS_WHATSAPP_SEND_TO || '';
+const reservationSendTo = import.meta.env.PUBLIC_GOOGLE_ADS_RESERVATION_SEND_TO || '';
+---
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`}></script>
+<script is:inline define:vars={{ googleAdsId, whatsappSendTo, reservationSendTo }}>
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', googleAdsId, { allow_enhanced_conversions: true });
+
+  const sendEvent = (eventName, details = {}, sendTo = '') => {
+    const payload = {
+      page_location: window.location.href,
+      page_title: document.title,
+      ...details,
+    };
+    window.dataLayer.push({ event: eventName, ...payload });
+    window.gtag('event', eventName, payload);
+    if (sendTo) {
+      window.gtag('event', 'conversion', { send_to: sendTo, ...payload });
+    }
+  };
+
+  window.CappadociaGoAds = {
+    trackReservation(details = {}) {
+      sendEvent('cappadociago_reservation_submit', details, reservationSendTo);
+    },
+  };
+
+  document.addEventListener('click', (event) => {
+    const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (!/wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i.test(href)) return;
+    sendEvent('cappadociago_whatsapp_click', {
+      link_url: link.href,
+      link_text: (link.textContent || '').trim().slice(0, 100),
+    }, whatsappSendTo);
+  }, { capture: true });
+</script>

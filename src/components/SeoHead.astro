@@ -1,4 +1,6 @@
 ---
+import AdsTracking from './AdsTracking.astro';
+
 const {
   title = 'CappadociaGo',
   description = '',
@@ -31,3 +33,4 @@ const imageUrl = image?.startsWith('http') ? image : `${SITE_URL}${image || '/im
 <meta name="twitter:title" content={title} />
 {description && <meta name="twitter:description" content={description} />}
 <meta name="twitter:image" content={imageUrl} />
+<AdsTracking />

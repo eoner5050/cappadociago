@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getSiteGallery, getTourGallery } from '../utils/tourGallery';
 import SiteHeader from './SiteHeader.astro';
 import TourFooter from './TourFooter.astro';
+import AdsTracking from './AdsTracking.astro';
 const { t, lang } = Astro.props;
 const footerTourImages = getSiteGallery(4);
 const sliderTourImages = {
@@ -399,8 +400,12 @@ const homepageReviews = [
   <meta name="twitter:image" content={socialImage} />
 
   <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+  <AdsTracking />
 
   <!-- Google Fonts: render-blocking olmadan yükle; ilk boyamada sistem fontu kullanılır. -->
+  <link rel="preload" as="image" href="/images/hero-reference-cappadociago.jpg" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
@@ -1574,6 +1579,21 @@ const homepageReviews = [
   .lang-btn{height:36px!important;padding:0 10px!important}
 }
 
+</style>
+
+<style is:global>
+/* Keep below-the-fold sections out of the initial mobile render workload. */
+.infinite-slider-section,
+.category-tabs-section,
+.tours-section,
+.tbc-process-section,
+.tbc-why-section,
+.reviews-section,
+.dc-partners,
+.tbc-gallery-section{
+  content-visibility:auto;
+  contain-intrinsic-size:auto 720px;
+}
 </style>
 
 
