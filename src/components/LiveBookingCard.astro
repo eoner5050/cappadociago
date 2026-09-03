@@ -38,6 +38,9 @@ const copy = {
     person: "Person",
     peopleWord: "People",
     priceOnRequest: "Price on Request",
+    sending: "Sending...",
+    sent: "Reservation request received. Our team will contact you shortly.",
+    sendError: "Your request could not be sent automatically. WhatsApp will open as a fallback.",
   },
   tr: {
     price: "Tur Fiyatı, başlangıç",
@@ -66,6 +69,9 @@ const copy = {
     person: "Kişi",
     peopleWord: "Kişi",
     priceOnRequest: "Fiyat Sorunuz",
+    sending: "Gönderiliyor...",
+    sent: "Rezervasyon talebiniz alındı. Ekibimiz kısa sürede sizinle iletişime geçecek.",
+    sendError: "Talebiniz otomatik gönderilemedi. Yedek olarak WhatsApp açılacak.",
   },
   es: {
     price: "Precio del tour, desde",
@@ -94,6 +100,9 @@ const copy = {
     person: "Persona",
     peopleWord: "Personas",
     priceOnRequest: "Precio a Consultar",
+    sending: "Enviando...",
+    sent: "Hemos recibido tu solicitud de reserva. Nuestro equipo se pondrá en contacto contigo pronto.",
+    sendError: "No se pudo enviar automáticamente. WhatsApp se abrirá como alternativa.",
   },
 }[lang] || null;
 
@@ -171,7 +180,9 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
 
       <label>{c.message}</label>
       <textarea data-lbc-message placeholder={c.placeholder}></textarea>
-      <button class="lbc-submit" type="submit">{c.send}</button>
+      <input data-lbc-website type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none" />
+      <button class="lbc-submit" data-lbc-submit type="submit">{c.send}</button>
+      <div data-lbc-submit-status class="lbc-submit-status" aria-live="polite"></div>
     </form>
   </section>
 </div>
@@ -199,7 +210,7 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
   :global(.lbc-cal-message){grid-column:1/-1;text-align:center;padding:18px 6px;color:#64748b;font-size:12px}
   .lbc-note{border-top:1px solid #e5e7eb;margin-top:10px;padding-top:9px;color:#64748b;font-size:10px;line-height:1.4}
   .lbc-price-box{display:none;margin-top:12px;border:1px solid #ecd793;background:#fffaf0;border-radius:13px;padding:11px 13px}.lbc-price-box.is-visible{display:block}.lbc-price-box>div{display:flex;justify-content:space-between;gap:10px;align-items:center}.lbc-price-box span{font-size:11px;color:#64748b;font-weight:700}.lbc-price-box strong{font-size:16px;color:#a87500}.lbc-total-row{border-top:1px solid #eedfa9;margin-top:8px;padding-top:8px}.lbc-total-row strong{font-size:20px}
-  .lbc-submit{width:100%;border:0;border-radius:999px;background:#e3a800;color:#0b1f3a;font-weight:900;padding:13px;margin-top:13px;cursor:pointer;font-size:13px}.lbc-submit:hover{background:#c99300}
+  .lbc-submit{width:100%;border:0;border-radius:999px;background:#e3a800;color:#0b1f3a;font-weight:900;padding:13px;margin-top:13px;cursor:pointer;font-size:13px}.lbc-submit:hover{background:#c99300}.lbc-submit:disabled{opacity:.65;cursor:wait}.lbc-submit-status{min-height:18px;margin-top:8px;font-size:11px;line-height:1.45;font-weight:700;color:#475569}.lbc-submit-status.is-success{color:#15803d}.lbc-submit-status.is-error{color:#b91c1c}
   @media(max-width:480px){.lbc-card{padding:17px}.lbc-calendar{width:min(345px,calc(100vw - 24px));right:-6px}.lbc-weekdays,.lbc-days{gap:3px}:global(.lbc-day){min-height:52px!important}:global(.lbc-day-price){font-size:8px!important}:global(.lbc-day-stock){font-size:6.5px!important}}
 </style>
 
@@ -219,7 +230,8 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
     const el = {
       start: $("[data-lbc-start-price]"), oldStart: $("[data-lbc-old-price]"), suffix: $("[data-lbc-price-suffix]"), askLink: $("[data-lbc-ask-link]"), form: $("[data-lbc-form]"), name: $("[data-lbc-name]"), phone: $("[data-lbc-phone]"), country: $("[data-lbc-country]"),
       date: $("[data-lbc-date]"), open: $("[data-lbc-open]"), calendar: $("[data-lbc-calendar]"), days: $("[data-lbc-days]"), title: $("[data-lbc-title]"),
-      prev: $("[data-lbc-prev]"), next: $("[data-lbc-next]"), people: $("[data-lbc-people]"), priceBox: $("[data-lbc-price-box]"), unit: $("[data-lbc-unit]"), total: $("[data-lbc-total]"), message: $("[data-lbc-message]")
+      prev: $("[data-lbc-prev]"), next: $("[data-lbc-next]"), people: $("[data-lbc-people]"), priceBox: $("[data-lbc-price-box]"), unit: $("[data-lbc-unit]"), total: $("[data-lbc-total]"), message: $("[data-lbc-message]"),
+      website: $("[data-lbc-website]"), submit: $("[data-lbc-submit]"), submitStatus: $("[data-lbc-submit-status]")
     };
 
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -316,25 +328,64 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
     el.date?.addEventListener("click",async()=>{el.calendar.classList.add("is-open");await refresh()});
     el.prev?.addEventListener("click",async()=>{month--;if(month<0){month=11;year--}await refresh()});
     el.next?.addEventListener("click",async()=>{month++;if(month>11){month=0;year++}await refresh()});
+    fillPeople(Number(product?.default_capacity ?? fallbackCapacity));
     el.people?.addEventListener("change",updateTotal);
     document.addEventListener("click",(ev)=>{if(!root.contains(ev.target))el.calendar?.classList.remove("is-open")});
 
-    el.form?.addEventListener("submit",(ev)=>{
+    el.form?.addEventListener("submit",async(ev)=>{
       ev.preventDefault();
       if(!selectedRow||!el.people.value){el.date.focus();return;}
       const qty=Number(el.people.value), total=Number(selectedRow.price)*qty;
-      const msg=[
+      const phone=`${el.country?.value || ""} ${el.phone.value}`.trim();
+      const payload={
+        tourSlug: slug,
+        tourTitle,
+        name: String(el.name.value || "").trim(),
+        phone,
+        date: el.date.value,
+        dateIso: selectedKey,
+        people: qty,
+        unitPrice: askForPrice ? null : Number(selectedRow.price || 0),
+        totalPrice: askForPrice ? null : total,
+        priceOnRequest: askForPrice,
+        message: String(el.message.value || "").trim(),
+        language: root.dataset.lang || "en",
+        pageUrl: window.location.href,
+        website: String(el.website?.value || "")
+      };
+      const fallbackMsg=[
         "CappadociaGo - Reservation Request",
         `Tour: ${tourTitle}`,
-        `Name: ${el.name.value}`,
-        `Phone: ${(el.country?.value || "") + " " + el.phone.value}`,
+        `Name: ${payload.name}`,
+        `Phone: ${phone}`,
         `Date: ${el.date.value}`,
         `People: ${qty}`,
         `Price: ${askForPrice?c.priceOnRequest:money(selectedRow.price)}`,
         `Total price: ${askForPrice?c.priceOnRequest:money(total)}`,
-        el.message.value?`Message: ${el.message.value}`:""
+        payload.message?`Message: ${payload.message}`:""
       ].filter(Boolean).join("\n");
-      window.open(`https://wa.me/905401015050?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+      if(el.submit){el.submit.disabled=true;el.submit.dataset.originalText=el.submit.textContent || c.send;el.submit.textContent=c.sending;}
+      if(el.submitStatus){el.submitStatus.textContent="";el.submitStatus.className="lbc-submit-status";}
+      try{
+        const response=await fetch("/api/reservation-notify",{
+          method:"POST",
+          headers:{"content-type":"application/json"},
+          body:JSON.stringify(payload)
+        });
+        if(!response.ok) throw new Error(await response.text());
+        if(el.submitStatus){el.submitStatus.textContent=c.sent;el.submitStatus.classList.add("is-success");}
+        window.dispatchEvent(new CustomEvent("cappadociago:reservation-sent",{detail:{tour:tourTitle,date:selectedKey,people:qty,total:payload.totalPrice}}));
+        el.form.reset();
+        selectedRow=null;selectedKey="";fillPeople(Number(product?.default_capacity ?? fallbackCapacity));
+        el.priceBox?.classList.remove("is-visible");
+        if(el.unit)el.unit.textContent="—";if(el.total)el.total.textContent="—";render();
+      }catch(error){
+        console.error("Reservation notification failed",error);
+        if(el.submitStatus){el.submitStatus.textContent=c.sendError;el.submitStatus.classList.add("is-error");}
+        window.open(`https://wa.me/905401015050?text=${encodeURIComponent(fallbackMsg)}`,"_blank","noopener");
+      }finally{
+        if(el.submit){el.submit.disabled=false;el.submit.textContent=el.submit.dataset.originalText || c.send;}
+      }
     });
 
     (async()=>{try{if(!SUPABASE_URL||!SUPABASE_KEY)throw new Error("Supabase env missing");await loadProduct();await refresh()}catch(e){console.error(e);if(el.start)el.start.textContent=money(fallbackPrice);if(el.days)el.days.innerHTML=`<div class="lbc-cal-message">${c.error}</div>`}})();
