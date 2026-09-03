@@ -121,10 +121,33 @@ app.post('/webhook/reservation', async (req, res) => {
 
 app.use((_req, res) => res.status(404).json({ ok: false, error: 'Not found' }));
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`CappadociaGo WhatsApp bot listening on :${PORT}`);
-  console.log(`Health: http://localhost:${PORT}/health`);
+process.on('uncaughtException', (error) => {
+  console.error('UNCAUGHT EXCEPTION:', error);
 });
+
+process.on('unhandledRejection', (error) => {
+  console.error('UNHANDLED REJECTION:', error);
+});
+
+process.on('exit', (code) => {
+  console.error('NODE PROCESS EXITING. CODE:', code);
+});
+
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`CappadociaGo WhatsApp bot listening on :${PORT}`);
+  console.log(`Health: http://127.0.0.1:${PORT}/health`);
+});
+
+server.on('error', (error) => {
+  console.error('HTTP SERVER ERROR:', error);
+});
+
+server.on('close', () => {
+  console.error('HTTP SERVER CLOSED');
+});
+
+// Windows'ta Node prosesinin açık kalmasını garanti et
+const keepAlive = setInterval(() => {}, 60_000);
 
 connectWhatsApp().catch((error) => {
   console.error('Initial WhatsApp connection failed:', error);
