@@ -43,8 +43,6 @@ const fallbackDefaultCapacity = Math.max(1, Number(builtInTour?.default_capacity
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <SeoHead title={seoTitle || `${title} | CappadociaGo`} description={seoDescription || heroDesc || overviewParagraphs[0] || title} lang={lang} />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
-  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
 </head>
 <body>
 <TourPremiumTheme />
@@ -371,3 +369,102 @@ body .booking .iti__country-container{z-index:3!important;}
 
 <TourMobileGuard />
 
+<!-- COMFORT_MASTER_FINAL -->
+<style is:inline>
+/* Authoritative tour-detail design. All tour routes render this exact Comfort shell. */
+:root{--cm-navy:#0b3158;--cm-navy2:#123f69;--cm-gold:#d8a019;--cm-blue:#0d74bd;--cm-text:#4e6278;--cm-line:#d7e2eb;--cm-bg:#eef5f9}
+html,body{background:linear-gradient(180deg,#edf5fa 0%,#f5f8fa 100%)!important;color:#0a2342!important}
+body .page{padding:26px 16px 70px!important;background:transparent!important}
+body .container{width:min(1180px,100%)!important;max-width:1180px!important;margin:0 auto!important}
+body .breadcrumb{margin:0 0 14px!important;font-size:11px!important;color:#6d8195!important}
+body .breadcrumb a{color:#0b67b2!important}
+/* Hero: exact Comfort visual language */
+body .hero{position:relative!important;display:block!important;padding:34px 34px 30px!important;margin:0 0 20px!important;border-radius:24px!important;overflow:hidden!important;background:linear-gradient(120deg,#123b63 0%,#0d3158 58%,#092648 100%)!important;border:1px solid rgba(255,255,255,.10)!important;box-shadow:0 16px 38px rgba(8,44,80,.16)!important;color:#fff!important}
+body .hero:after{content:''!important;position:absolute!important;right:-80px!important;top:-110px!important;width:300px!important;height:300px!important;border-radius:50%!important;background:radial-gradient(circle,rgba(216,160,25,.16),transparent 68%)!important;pointer-events:none!important}
+body .hero .kicker{position:relative!important;z-index:1!important;display:inline-flex!important;align-items:center!important;width:auto!important;background:rgba(255,255,255,.08)!important;border:1px solid rgba(216,160,25,.68)!important;color:#f4cd66!important;border-radius:999px!important;padding:7px 13px!important;font-size:9px!important;font-weight:900!important;letter-spacing:.09em!important;line-height:1!important}
+body .hero h1{position:relative!important;z-index:1!important;margin:14px 0 10px!important;max-width:930px!important;font-family:'Fraunces','Plus Jakarta Sans',Georgia,serif!important;font-size:clamp(31px,3.8vw,48px)!important;line-height:1.05!important;font-weight:700!important;letter-spacing:-.04em!important;color:#fff!important;-webkit-text-fill-color:#fff!important;text-shadow:none!important;opacity:1!important;visibility:visible!important}
+body .hero>p{position:relative!important;z-index:1!important;display:block!important;max-width:900px!important;margin:0!important;color:rgba(255,255,255,.84)!important;-webkit-text-fill-color:rgba(255,255,255,.84)!important;font-size:13px!important;line-height:1.72!important;opacity:1!important;visibility:visible!important}
+body .hero-badges{position:relative!important;z-index:1!important;display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin-top:18px!important;padding-top:15px!important;border-top:1px solid rgba(255,255,255,.18)!important}
+body .hero-badges>span,body .hero-badges>a{display:inline-flex!important;align-items:center!important;gap:6px!important;min-height:34px!important;padding:7px 12px!important;border-radius:999px!important;border:1px solid rgba(255,255,255,.22)!important;background:rgba(255,255,255,.96)!important;color:#0d3158!important;-webkit-text-fill-color:#0d3158!important;box-shadow:none!important;font-size:10px!important;font-style:normal!important;text-decoration:none!important}
+body .hero-stars{color:#e0aa22!important;-webkit-text-fill-color:#e0aa22!important}
+/* Gallery */
+body .gallery{display:grid!important;grid-template-columns:2fr 1fr!important;gap:8px!important;margin:0 0 22px!important;padding:8px!important;border-radius:22px!important;border:1px solid var(--cm-line)!important;background:#fff!important;box-shadow:0 12px 32px rgba(9,47,86,.07)!important;overflow:hidden!important}
+body .main-photo{height:360px!important;border-radius:15px!important;overflow:hidden!important}
+body .side-photos{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;height:360px!important}
+body .side-photos button{min-width:0!important;overflow:hidden!important;border-radius:12px!important}
+body .main-photo img,body .side-photos img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+/* Desktop content geometry */
+body .grid{display:grid!important;grid-template-columns:minmax(0,1.8fr) minmax(300px,.82fr)!important;gap:22px!important;align-items:start!important;width:100%!important}
+body .main-col{min-width:0!important;order:initial!important}
+body .side{display:grid!important;gap:16px!important;min-width:0!important;position:sticky!important;top:100px!important;order:initial!important}
+body .card{background:#fff!important;border:1px solid var(--cm-line)!important;border-radius:22px!important;box-shadow:0 12px 30px rgba(9,47,86,.06)!important}
+body .content{padding:0!important;overflow:hidden!important}
+body .content>section{display:block!important;width:100%!important;padding:24px 26px!important;margin:0!important;border-bottom:1px solid #e9f0f5!important}
+body .content>section:last-child{border-bottom:0!important}
+body .content h2{margin:0 0 12px!important;font-family:'Fraunces','Plus Jakarta Sans',Georgia,serif!important;color:#0a2342!important;font-size:22px!important;line-height:1.25!important;font-weight:700!important;letter-spacing:-.025em!important}
+body .content p{margin:0 0 12px!important;color:var(--cm-text)!important;font-size:12.5px!important;line-height:1.82!important}
+body .checks{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px 14px!important}
+body .checks>div{display:flex!important;gap:8px!important;color:#36516b!important;font-size:11.5px!important;line-height:1.65!important}
+body .checks i{flex:0 0 18px!important;width:18px!important;height:18px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:50%!important;background:#eef7fd!important;color:#0b67b2!important;font-style:normal!important}
+/* Price + reservation cards */
+body .price-card,body .booking{padding:22px!important;background:#fff!important;border:1px solid var(--cm-line)!important;border-top:4px solid var(--cm-gold)!important;border-radius:22px!important;box-shadow:0 12px 30px rgba(9,47,86,.06)!important}
+body .price-card .label{display:block!important;color:#708397!important;font-size:10px!important;font-weight:800!important;text-transform:uppercase!important;letter-spacing:.05em!important}
+body .price{display:flex!important;align-items:flex-end!important;gap:8px!important;margin:6px 0 11px!important}
+body .price strong{font-size:34px!important;line-height:1!important;color:#d59a18!important;-webkit-text-fill-color:#d59a18!important}
+body .price small{padding-bottom:4px!important;font-size:10px!important;color:#708397!important}
+body .badges{display:flex!important;flex-wrap:wrap!important;gap:7px!important}
+body .badges span{padding:6px 9px!important;border-radius:999px!important;background:#fff8e6!important;color:#7e5b09!important;border:1px solid #eed99a!important;font-size:9px!important;font-weight:800!important}
+body .price-card .phone,body .price-card .wa{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:42px!important;border-radius:13px!important;font-size:10px!important;font-weight:800!important;text-decoration:none!important}
+body .price-card .phone{border:1px solid #cbddea!important;color:#0d3158!important;background:#fff!important}
+body .price-card .wa{margin-top:8px!important;background:#f0fbf5!important;color:#147344!important;border:1px solid #bfe5d0!important}
+body .side-list{display:grid!important;gap:12px!important;margin-top:18px!important;color:#496178!important;font-size:10.5px!important;line-height:1.55!important}
+body .booking h3{margin:0 0 6px!important;font-family:'Fraunces','Plus Jakarta Sans',Georgia,serif!important;color:#0a2342!important;font-size:20px!important;line-height:1.2!important;font-weight:700!important}
+body .booking>p{margin:0 0 14px!important;color:#708397!important;font-size:11px!important;line-height:1.55!important}
+body .booking form{display:grid!important;gap:11px!important}
+body .booking label{display:grid!important;gap:6px!important;color:#334155!important;font-size:10px!important;font-weight:800!important}
+body .booking input,body .booking select,body .booking textarea{box-sizing:border-box!important;width:100%!important;min-width:0!important;min-height:46px!important;border:1px solid #cbd8e8!important;border-radius:13px!important;background:#fff!important;color:#0d3158!important;-webkit-text-fill-color:#0d3158!important;font-size:13px!important;outline:none!important;box-shadow:none!important;text-align:left!important;direction:ltr!important}
+body .booking textarea{min-height:90px!important;padding:12px!important;resize:vertical!important}
+body .booking input:focus,body .booking select:focus,body .booking textarea:focus{border-color:#075aa6!important;box-shadow:0 0 0 3px rgba(7,90,166,.10)!important}
+/* Phone field: fixed prefix column, number begins immediately after divider. */
+body .cg-phone-field{display:grid!important;grid-template-columns:92px minmax(0,1fr)!important;width:100%!important;min-width:0!important;height:46px!important;border:1px solid #cbd8e8!important;border-radius:13px!important;background:#fff!important;overflow:hidden!important;direction:ltr!important}
+body .cg-phone-field .cg-phone-code{box-sizing:border-box!important;width:92px!important;min-width:92px!important;max-width:92px!important;height:44px!important;margin:0!important;padding:0 8px!important;border:0!important;border-right:1px solid #d8e2ec!important;border-radius:0!important;background:#f7fbff!important;color:#0d3158!important;-webkit-text-fill-color:#0d3158!important;font-size:11px!important;font-weight:800!important;line-height:44px!important;text-align:left!important;direction:ltr!important;appearance:auto!important}
+body .cg-phone-field .cg-phone-number{box-sizing:border-box!important;width:100%!important;min-width:0!important;height:44px!important;min-height:44px!important;margin:0!important;padding:0 10px!important;border:0!important;border-radius:0!important;background:#fff!important;color:#0d3158!important;-webkit-text-fill-color:#0d3158!important;caret-color:#0d3158!important;font-size:13px!important;line-height:44px!important;text-align:left!important;direction:ltr!important;letter-spacing:0!important;text-indent:0!important;transform:none!important}
+body .cg-phone-field .cg-phone-number::placeholder{color:#91a4b8!important;-webkit-text-fill-color:#91a4b8!important}
+body .cg-phone-field:focus-within{border-color:#075aa6!important;box-shadow:0 0 0 3px rgba(7,90,166,.10)!important}
+body .submit{width:100%!important;min-height:46px!important;border:0!important;border-radius:13px!important;background:linear-gradient(135deg,#075aa6,#1286d5)!important;color:#fff!important;-webkit-text-fill-color:#fff!important;font-size:13px!important;font-weight:900!important}
+/* Calendar */
+body .date-wrap{position:relative!important}
+body .calendar{z-index:99999!important;width:360px!important;max-width:calc(100vw - 30px)!important;padding:16px!important;border:1px solid #caddea!important;border-top:4px solid var(--cm-gold)!important;border-radius:20px!important;background:#fff!important;box-shadow:0 20px 50px rgba(8,44,80,.18)!important}
+body .days{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:4px!important}
+body .day{min-width:0!important;min-height:55px!important;border:1px solid #e1ebf3!important;border-radius:10px!important;background:#f7fbfe!important;color:#0a2342!important}
+body .day span{display:block!important;color:#d59a18!important;font-size:8px!important;font-weight:800!important}
+body .day small{display:block!important;font-size:7px!important;line-height:1.15!important}
+body .day.selected{background:#0b67b2!important;border-color:#0b67b2!important;color:#fff!important}
+body .day.selected span,body .day.selected small{color:#fff!important}
+/* Mobile order: price -> booking -> content, same cards and typography. */
+@media(max-width:900px){
+  body .page{padding:14px 10px 48px!important}
+  body .container{width:100%!important;max-width:100%!important}
+  body .hero{padding:24px 18px 22px!important;border-radius:18px!important}
+  body .hero h1{font-size:29px!important;line-height:1.06!important}
+  body .hero>p{font-size:12px!important;line-height:1.68!important}
+  body .gallery{grid-template-columns:1fr!important;padding:6px!important;border-radius:16px!important}
+  body .main-photo{height:245px!important}
+  body .side-photos{height:auto!important;grid-template-columns:1fr 1fr!important;grid-template-rows:repeat(2,105px)!important}
+  body .side-photos button{height:105px!important}
+  body .grid{display:flex!important;flex-direction:column!important;gap:14px!important;width:100%!important}
+  body .grid>.main-col,body .grid>.side{display:contents!important}
+  body .grid>.side>.price-card{order:10!important;width:100%!important}
+  body .grid>.side>.booking{order:20!important;width:100%!important}
+  body .grid>.main-col>.content{order:30!important;width:100%!important}
+  body .side{position:static!important}
+  body .content>section{padding:19px 17px!important}
+  body .content h2{font-size:19px!important}
+  body .content p{font-size:12px!important}
+  body .checks{grid-template-columns:1fr!important}
+  body .price-card,body .booking{padding:18px!important;border-radius:18px!important}
+  body .cg-phone-field{grid-template-columns:92px minmax(0,1fr)!important}
+  body .cg-phone-field .cg-phone-code{width:92px!important;min-width:92px!important;max-width:92px!important}
+  body .calendar{position:fixed!important;left:50%!important;right:auto!important;top:50%!important;transform:translate(-50%,-50%)!important;width:min(360px,calc(100vw - 20px))!important;max-height:calc(100vh - 24px)!important;overflow:auto!important}
+}
+</style>
