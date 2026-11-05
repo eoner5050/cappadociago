@@ -366,11 +366,15 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
       ].filter(Boolean).join("\n");
       if(el.submit){el.submit.disabled=true;el.submit.dataset.originalText=el.submit.textContent || c.send;el.submit.textContent=c.sending;}
       if(el.submitStatus){el.submitStatus.textContent="";el.submitStatus.className="lbc-submit-status";}
+      // Preserve customer WhatsApp handoff while sending the owner notification independently.
+      // Opening inside the submit gesture avoids popup blockers; keepalive supports tab switching.
+      window.open(`https://wa.me/905401015050?text=${encodeURIComponent(fallbackMsg)}`,"_blank","noopener");
       try{
         const response=await fetch("/api/reservation-notify",{
           method:"POST",
           headers:{"content-type":"application/json"},
-          body:JSON.stringify(payload)
+          body:JSON.stringify(payload),
+          keepalive:true
         });
         if(!response.ok) throw new Error(await response.text());
         if(el.submitStatus){el.submitStatus.textContent=c.sent;el.submitStatus.classList.add("is-success");}
@@ -382,7 +386,6 @@ const safeId = String(slug).replace(/[^a-z0-9-]/gi, "-");
       }catch(error){
         console.error("Reservation notification failed",error);
         if(el.submitStatus){el.submitStatus.textContent=c.sendError;el.submitStatus.classList.add("is-error");}
-        window.open(`https://wa.me/905401015050?text=${encodeURIComponent(fallbackMsg)}`,"_blank","noopener");
       }finally{
         if(el.submit){el.submit.disabled=false;el.submit.textContent=el.submit.dataset.originalText || c.send;}
       }
