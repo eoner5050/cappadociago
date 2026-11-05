@@ -178,7 +178,7 @@ $('bookingForm').onsubmit=async e=>{
   const priceOnRequest=runtimePriceMode==='ask';
   const total=priceOnRequest?copy.ask:money(totalValue);
   const tourTitle=document.querySelector('h1')?.textContent?.trim()||String(slug);
-  const lines=[copy.request,`Tour: ${tourTitle}`,`${copy.name}: ${name}`,`${copy.phone}: ${phone}`,`${copy.date}: ${date}`,`${copy.people}: ${people}`,`${runtimePriceMode==='group'?copy.groupPrice:copy.unit}: ${priceOnRequest?copy.ask:money(unit)}`,`${copy.total}: ${total}`,msg?`${copy.message}: ${msg}`:''].filter(Boolean).join('\\n');
+  const lines=[copy.request,`Tour: ${tourTitle}`,`${copy.name}: ${name}`,`${copy.phone}: ${phone}`,`${copy.date}: ${date}`,`${copy.people}: ${people}`,`${runtimePriceMode==='group'?copy.groupPrice:copy.unit}: ${priceOnRequest?copy.ask:money(unit)}`,`${copy.total}: ${total}`,msg?`${copy.message}: ${msg}`:''].filter(Boolean).join('\n');
   const fallbackUrl=`https://wa.me/905401015050?text=${encodeURIComponent(lines)}`;
   const payload={tourSlug:String(slug),tourTitle,name,phone,date,dateIso:selKey,people:qty,
     unitPrice:priceOnRequest?null:unit,totalPrice:priceOnRequest?null:totalValue,
