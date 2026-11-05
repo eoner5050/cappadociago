@@ -77,16 +77,19 @@ export const POST: APIRoute = async ({ request, url }) => {
   const greenRecipient = import.meta.env.GREEN_API_NOTIFY_TO || process.env.GREEN_API_NOTIFY_TO;
   const greenBase = import.meta.env.GREEN_API_URL || process.env.GREEN_API_URL || 'https://api.green-api.com';
 
-  if (greenInstance && greenToken && greenRecipient) {
-    const number = String(greenRecipient).replace(/\\D/g, '');
-    if (!/^\\d{6,15}$/.test(String(greenInstance)) || !/^\\d{8,15}$/.test(number)) {
+  if (greenInstance || greenToken || greenRecipient) {
+    if (!greenInstance || !greenToken || !greenRecipient) {
+      return json(503, { ok: false, error: 'GREEN-API configuration incomplete' });
+    }
+    const number = String(greenRecipient).replace(/\D/g, '');
+    if (!/^\d{6,15}$/.test(String(greenInstance)) || !/^\d{8,15}$/.test(number)) {
       return json(503, { ok: false, error: 'Notification configuration invalid' });
     }
     let apiHost: URL;
     try {
       apiHost = new URL(greenBase);
       if (apiHost.protocol !== 'https:' ||
-          !/^(?:[a-z0-9-]+\\.)*(?:green-api\\.com|greenapi\\.com)$/.test(apiHost.hostname) ||
+          !/^(?:[a-z0-9-]+\.)*(?:green-api\.com|greenapi\.com)$/.test(apiHost.hostname) ||
           apiHost.username || apiHost.password || apiHost.search || apiHost.hash) {
         throw new Error('Invalid API host');
       }
@@ -105,11 +108,11 @@ export const POST: APIRoute = async ({ request, url }) => {
       '*Total:* ' + total,
       payload.message ? '*Note:* ' + payload.message : '',
       '*Status:* Awaiting confirmation'
-    ].filter(Boolean).join('\\n');
+    ].filter(Boolean).join('\n');
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 8000);
     try {
-      const base = apiHost.origin + apiHost.pathname.replace(/\\/$/, '');
+      const base = apiHost.origin + apiHost.pathname.replace(/\/$/, '');
       const endpoint = base + '/waInstance' + greenInstance + '/sendMessage/' + encodeURIComponent(greenToken);
       const upstream = await fetch(endpoint, {
         method: 'POST',
@@ -121,6 +124,8 @@ export const POST: APIRoute = async ({ request, url }) => {
         console.error('GREEN-API message request failed', upstream.status);
         return json(502, { ok: false, error: 'Notification service rejected the request' });
       }
+      const result = await upstream.json().catch(() => null);
+      if (!result?.idMessage) return json(502, { ok: false, error: 'Notification was not accepted' });
       return json(200, { ok: true });
     } catch {
       console.error('GREEN-API request could not complete');
