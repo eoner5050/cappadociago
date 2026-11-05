@@ -183,21 +183,23 @@ $('bookingForm').onsubmit=async e=>{
   const payload={tourSlug:String(slug),tourTitle,name,phone,date,dateIso:selKey,people:qty,
     unitPrice:priceOnRequest?null:unit,totalPrice:priceOnRequest?null:totalValue,
     priceOnRequest,message:msg,language:lang,pageUrl:window.location.href};
+  // Open the customer's WhatsApp chat from the submit gesture so popup blockers do not block it.
+  // The independent notification request uses keepalive so it can finish if the customer switches tabs.
+  window.open(fallbackUrl,'_blank','noopener');
   button.disabled=true;
   setStatus(lang==='tr'?'Rezervasyon talebiniz gönderiliyor...':lang==='es'?'Enviando solicitud de reserva...':'Sending reservation request...','#475569');
   try{
     const response=await fetch('/api/reservation-notify',{
-      method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)
+      method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload),keepalive:true
     });
     if(!response.ok)throw new Error('Reservation notification HTTP '+response.status);
     window.CappadociaGoAds?.trackReservation({tour_slug:String(slug),tour_name:tourTitle,
       travel_date:date,people_count:qty,value:priceOnRequest?undefined:totalValue,currency:'EUR'});
-    setStatus(lang==='tr'?'Rezervasyon talebiniz iletildi. Ekibimiz sizinle iletişime geçecek.':lang==='es'?'Solicitud enviada. Nuestro equipo se pondrá en contacto contigo.':'Request sent. Our team will contact you shortly.','#15803d');
+    setStatus(lang==='tr'?'Talebiniz iletildi. Lütfen açılan WhatsApp sohbetinden mesajınızı da gönderin.':lang==='es'?'Solicitud enviada. Envía también tu mensaje en el chat de WhatsApp abierto.':'Request forwarded. Please also send your message in the WhatsApp chat that opened.','#15803d');
     $('bookingForm').reset();selected=null;selKey='';$('priceBox').classList.remove('show');
   }catch(error){
     console.error('Reservation notification failed',error);
-    setStatus(lang==='tr'?'Otomatik bildirim gönderilemedi. WhatsApp üzerinden devam edin.':lang==='es'?'No se pudo enviar automáticamente. Continúa por WhatsApp.':'Automatic notification failed. Please continue via WhatsApp.','#b91c1c');
-    window.location.href=fallbackUrl;
+    setStatus(lang==='tr'?'Otomatik bildirim başarısız. Açılan WhatsApp sohbetinden mesajınızı gönderin.':lang==='es'?'La notificación automática falló. Envía tu mensaje por WhatsApp.':'Automatic notification failed. Send your message in the opened WhatsApp chat.','#b91c1c');
   }finally{button.disabled=false}
 };
 (async()=>{await loadProduct();await loadMonth();const qp=new URLSearchParams(location.search),qd=qp.get('date'),qpeople=Math.max(1,Math.min(20,Number(qp.get('people')||0)));if(qd&&/^\d{4}-\d{2}-\d{2}$/.test(qd)&&product){const [y,m]=qd.split('-').map(Number);cy=y;cm=m-1;await loadMonth();const r=effective(qd);if(available(r))choose(r,qd,qpeople||'')}})().catch(console.error)
