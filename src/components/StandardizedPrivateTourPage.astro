@@ -78,7 +78,7 @@ const fallbackDefaultCapacity = Math.max(1, Number(builtInTour?.default_capacity
 <option value="+7">🇷🇺 +7</option>
 <option value="+966">🇸🇦 +966</option>
 <option value="+971">🇦🇪 +971</option>
-<option value="+91">🇮🇳 +91</option></select><input id="phone" class:list={["cg-phone-number", isStandardBalloon && "cg-phone-number-standard"]} type="text" inputmode="tel" autocomplete="tel-national" dir="ltr" style={isStandardBalloon ? "text-align:left!important;direction:ltr!important;writing-mode:horizontal-tb!important;unicode-bidi:isolate!important;padding-left:14px!important;padding-right:14px!important;" : undefined} placeholder="5xx xxx xx xx" required/></div></label><label>{copy.date}<div class="date-wrap"><input id="date" readonly required placeholder={copy.selectDate}/><button type="button" id="calOpen">📅</button><div id="calendar" class="calendar"><div class="cal-head"><button type="button" id="prev">‹</button><b id="calTitle"></b><button type="button" id="next">›</button></div><div class="week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div id="days" class="days"></div></div></div></label><label>{copy.people}<select id="people" required><option value="">{copy.selectPeople}</option></select><small class="children">{copy.children}</small></label><div id="priceBox" class="price-box"><div><span id="unitLabel">{priceMode==='group'?copy.groupPrice:copy.unit}</span><b id="unit">—</b></div><div><span>{copy.total}</span><strong id="total">—</strong></div></div><label>{copy.message}<textarea id="message" placeholder={copy.messagePh}></textarea></label><button class="submit">{copy.send}</button></form></section></aside></div>
+<option value="+91">🇮🇳 +91</option></select><input id="phone" class:list={["cg-phone-number", isStandardBalloon && "cg-phone-number-standard"]} type="text" inputmode="tel" autocomplete="tel-national" dir="ltr" style={isStandardBalloon ? "text-align:left!important;direction:ltr!important;writing-mode:horizontal-tb!important;unicode-bidi:isolate!important;padding-left:14px!important;padding-right:14px!important;" : undefined} placeholder="5xx xxx xx xx" required/></div></label><label>{copy.date}<div class="date-wrap"><input id="date" readonly required placeholder={copy.selectDate}/><button type="button" id="calOpen">📅</button><div id="calendar" class="calendar"><div class="cal-head"><button type="button" id="prev">‹</button><b id="calTitle"></b><button type="button" id="next">›</button></div><div class="week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div id="days" class="days"></div></div></div></label><label>{copy.people}<select id="people" required><option value="">{copy.selectPeople}</option></select><small class="children">{copy.children}</small></label><div id="priceBox" class="price-box"><div><span id="unitLabel">{priceMode==='group'?copy.groupPrice:copy.unit}</span><b id="unit">—</b></div><div><span>{copy.total}</span><strong id="total">—</strong></div></div><label>{copy.message}<textarea id="message" placeholder={copy.messagePh}></textarea></label><button class="submit" id="reservationSubmit" type="submit">{copy.send}</button><p id="reservationStatus" role="status" aria-live="polite" style="margin:0;font-size:12px;line-height:1.5;"></p></form></section></aside></div>
 </div></main>
 <FloatingAssistant lang={lang} />
 <TourFooter lang={lang} />
@@ -160,7 +160,46 @@ if (['goreme-standart-hot-air-balloon-tour','goreme-standard-hot-air-balloon-tou
     standardPhone.addEventListener('focus', forceStandardPhoneLeft);
   }
 }
-$('bookingForm').onsubmit=e=>{e.preventDefault();const name=$('name').value.trim(),phone=((document.getElementById('phoneCode')?.value||'+90')+' '+$('phone').value.trim()).trim(),date=$('date').value,people=$('people').value,msg=$('message').value.trim();if(!name||!phone||!date||!people||!selected){alert(copy.alert);return}const unit=Number(selected.price||0),total=runtimePriceMode==='ask'?copy.ask:runtimePriceMode==='group'?money(unit):money(unit*Number(people));window.CappadociaGoAds?.trackReservation({tour_slug:String(slug),tour_name:document.querySelector('h1')?.textContent||String(slug),travel_date:date,people_count:Number(people),value:runtimePriceMode==='ask'?undefined:(runtimePriceMode==='group'?unit:unit*Number(people)),currency:'EUR'});const lines=[copy.request,`Tour: ${document.querySelector('h1').textContent}`,`${copy.name}: ${name}`,`${copy.phone}: ${phone}`,`${copy.date}: ${date}`,`${copy.people}: ${people}`,`${runtimePriceMode==='group'?copy.groupPrice:copy.unit}: ${runtimePriceMode==='ask'?copy.ask:money(unit)}`,`${copy.total}: ${total}`,msg?`${copy.message}: ${msg}`:''].filter(Boolean).join('\n');window.open(`https://wa.me/905401015050?text=${encodeURIComponent(lines)}`,'_blank')};
+$('bookingForm').onsubmit=async e=>{
+  e.preventDefault();
+  const name=$('name').value.trim();
+  const phone=((document.getElementById('phoneCode')?.value||'+90')+' '+$('phone').value.trim()).trim();
+  const date=$('date').value,people=$('people').value,msg=$('message').value.trim();
+  const status=$('reservationStatus'),button=$('reservationSubmit');
+  const setStatus=(text,color)=>{if(status){status.textContent=text;status.style.color=color}};
+  if(!name||!$('phone').value.trim()||!date||!people||!selected){
+    setStatus(copy.alert||'Please select a date and number of guests.','#b45309');
+    if(!selected)$('date').focus();
+    return;
+  }
+  if(button.disabled)return;
+  const unit=Number(selected.price||0),qty=Number(people);
+  const totalValue=runtimePriceMode==='group'?unit:unit*qty;
+  const priceOnRequest=runtimePriceMode==='ask';
+  const total=priceOnRequest?copy.ask:money(totalValue);
+  const tourTitle=document.querySelector('h1')?.textContent?.trim()||String(slug);
+  const lines=[copy.request,`Tour: ${tourTitle}`,`${copy.name}: ${name}`,`${copy.phone}: ${phone}`,`${copy.date}: ${date}`,`${copy.people}: ${people}`,`${runtimePriceMode==='group'?copy.groupPrice:copy.unit}: ${priceOnRequest?copy.ask:money(unit)}`,`${copy.total}: ${total}`,msg?`${copy.message}: ${msg}`:''].filter(Boolean).join('\\n');
+  const fallbackUrl=`https://wa.me/905401015050?text=${encodeURIComponent(lines)}`;
+  const payload={tourSlug:String(slug),tourTitle,name,phone,date,dateIso:selKey,people:qty,
+    unitPrice:priceOnRequest?null:unit,totalPrice:priceOnRequest?null:totalValue,
+    priceOnRequest,message:msg,language:lang,pageUrl:window.location.href};
+  button.disabled=true;
+  setStatus(lang==='tr'?'Rezervasyon talebiniz gönderiliyor...':lang==='es'?'Enviando solicitud de reserva...':'Sending reservation request...','#475569');
+  try{
+    const response=await fetch('/api/reservation-notify',{
+      method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)
+    });
+    if(!response.ok)throw new Error('Reservation notification HTTP '+response.status);
+    window.CappadociaGoAds?.trackReservation({tour_slug:String(slug),tour_name:tourTitle,
+      travel_date:date,people_count:qty,value:priceOnRequest?undefined:totalValue,currency:'EUR'});
+    setStatus(lang==='tr'?'Rezervasyon talebiniz iletildi. Ekibimiz sizinle iletişime geçecek.':lang==='es'?'Solicitud enviada. Nuestro equipo se pondrá en contacto contigo.':'Request sent. Our team will contact you shortly.','#15803d');
+    $('bookingForm').reset();selected=null;selKey='';$('priceBox').classList.remove('show');
+  }catch(error){
+    console.error('Reservation notification failed',error);
+    setStatus(lang==='tr'?'Otomatik bildirim gönderilemedi. WhatsApp üzerinden devam edin.':lang==='es'?'No se pudo enviar automáticamente. Continúa por WhatsApp.':'Automatic notification failed. Please continue via WhatsApp.','#b91c1c');
+    window.location.href=fallbackUrl;
+  }finally{button.disabled=false}
+};
 (async()=>{await loadProduct();await loadMonth();const qp=new URLSearchParams(location.search),qd=qp.get('date'),qpeople=Math.max(1,Math.min(20,Number(qp.get('people')||0)));if(qd&&/^\d{4}-\d{2}-\d{2}$/.test(qd)&&product){const [y,m]=qd.split('-').map(Number);cy=y;cm=m-1;await loadMonth();const r=effective(qd);if(available(r))choose(r,qd,qpeople||'')}})().catch(console.error)
 </script>
 <style is:inline>
